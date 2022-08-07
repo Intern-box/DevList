@@ -246,7 +246,7 @@ namespace DevList
             this.Controls.Add(this.menuStrip_Glavnoe_Menu);
             this.Name = "Glavnoe_Okno";
             this.ShowIcon = false;
-            this.Text = "DevList 1.0";
+            this.Text = "DevList 2.0";
             this.Load += new System.EventHandler(this.Glavnoe_Okno_Load);
             this.contextMenuStrip_Vsplivauschee_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.ResumeLayout(false);
