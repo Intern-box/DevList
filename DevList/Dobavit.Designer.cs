@@ -41,7 +41,6 @@ namespace DevList
             this.comboBox_Tip = new System.Windows.Forms.ComboBox();
             this.button_Dobavit = new System.Windows.Forms.Button();
             this.button_Otmenit = new System.Windows.Forms.Button();
-            this.checkBox_Peremeschenie = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label_InvNomer
@@ -190,24 +189,12 @@ namespace DevList
             this.button_Otmenit.UseVisualStyleBackColor = true;
             this.button_Otmenit.Click += new System.EventHandler(this.button_Otmenit_Click);
             // 
-            // checkBox_Peremeschenie
-            // 
-            this.checkBox_Peremeschenie.AutoSize = true;
-            this.checkBox_Peremeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox_Peremeschenie.Location = new System.Drawing.Point(20, 191);
-            this.checkBox_Peremeschenie.Name = "checkBox_Peremeschenie";
-            this.checkBox_Peremeschenie.Size = new System.Drawing.Size(121, 20);
-            this.checkBox_Peremeschenie.TabIndex = 14;
-            this.checkBox_Peremeschenie.Text = "Перемещение";
-            this.checkBox_Peremeschenie.UseVisualStyleBackColor = true;
-            // 
             // Dobavit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(507, 223);
-            this.Controls.Add(this.checkBox_Peremeschenie);
             this.Controls.Add(this.button_Otmenit);
             this.Controls.Add(this.button_Dobavit);
             this.Controls.Add(this.comboBox_Tip);
@@ -245,6 +232,5 @@ namespace DevList
         private System.Windows.Forms.ComboBox comboBox_Tip;
         private System.Windows.Forms.Button button_Dobavit;
         private System.Windows.Forms.Button button_Otmenit;
-        private System.Windows.Forms.CheckBox checkBox_Peremeschenie;
     }
 }

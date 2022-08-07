@@ -44,6 +44,7 @@ namespace DevList
             this.label_IDNomer = new System.Windows.Forms.Label();
             this.textBox_IDNomer = new System.Windows.Forms.TextBox();
             this.button_Chitat = new System.Windows.Forms.Button();
+            this.checkBox_Peremeschenie = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button_Otmenit
@@ -222,12 +223,24 @@ namespace DevList
             this.button_Chitat.UseVisualStyleBackColor = true;
             this.button_Chitat.Click += new System.EventHandler(this.button_Chitat_Click);
             // 
+            // checkBox_Peremeschenie
+            // 
+            this.checkBox_Peremeschenie.AutoSize = true;
+            this.checkBox_Peremeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox_Peremeschenie.Location = new System.Drawing.Point(20, 267);
+            this.checkBox_Peremeschenie.Name = "checkBox_Peremeschenie";
+            this.checkBox_Peremeschenie.Size = new System.Drawing.Size(121, 20);
+            this.checkBox_Peremeschenie.TabIndex = 29;
+            this.checkBox_Peremeschenie.Text = "Перемещение";
+            this.checkBox_Peremeschenie.UseVisualStyleBackColor = true;
+            // 
             // Pravit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(507, 301);
+            this.Controls.Add(this.checkBox_Peremeschenie);
             this.Controls.Add(this.button_Chitat);
             this.Controls.Add(this.textBox_IDNomer);
             this.Controls.Add(this.label_IDNomer);
@@ -272,5 +285,6 @@ namespace DevList
         private System.Windows.Forms.Label label_IDNomer;
         private System.Windows.Forms.TextBox textBox_IDNomer;
         private System.Windows.Forms.Button button_Chitat;
+        private System.Windows.Forms.CheckBox checkBox_Peremeschenie;
     }
 }
