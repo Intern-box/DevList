@@ -1,0 +1,255 @@
+﻿
+namespace DevList
+{
+    partial class Poisk
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.textBox_IDNomer = new System.Windows.Forms.TextBox();
+            this.label_IDNomer = new System.Windows.Forms.Label();
+            this.button_Otmenit = new System.Windows.Forms.Button();
+            this.button_Poisk = new System.Windows.Forms.Button();
+            this.comboBox_Tip = new System.Windows.Forms.ComboBox();
+            this.textBox_Kommentarii = new System.Windows.Forms.TextBox();
+            this.textBox_Naimenovanie = new System.Windows.Forms.TextBox();
+            this.textBox_Pomeschenie = new System.Windows.Forms.TextBox();
+            this.textBox_InvNomer = new System.Windows.Forms.TextBox();
+            this.label_Kommentarii = new System.Windows.Forms.Label();
+            this.label_Tip = new System.Windows.Forms.Label();
+            this.label_Naimenovanie = new System.Windows.Forms.Label();
+            this.label_Pomeschenie = new System.Windows.Forms.Label();
+            this.label_InvNomer = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // textBox_IDNomer
+            // 
+            this.textBox_IDNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_IDNomer.Location = new System.Drawing.Point(135, 12);
+            this.textBox_IDNomer.Name = "textBox_IDNomer";
+            this.textBox_IDNomer.Size = new System.Drawing.Size(350, 23);
+            this.textBox_IDNomer.TabIndex = 42;
+            // 
+            // label_IDNomer
+            // 
+            this.label_IDNomer.AutoSize = true;
+            this.label_IDNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_IDNomer.Location = new System.Drawing.Point(101, 15);
+            this.label_IDNomer.Name = "label_IDNomer";
+            this.label_IDNomer.Size = new System.Drawing.Size(28, 16);
+            this.label_IDNomer.TabIndex = 41;
+            this.label_IDNomer.Text = "ID:";
+            // 
+            // button_Otmenit
+            // 
+            this.button_Otmenit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_Otmenit.Location = new System.Drawing.Point(396, 216);
+            this.button_Otmenit.Name = "button_Otmenit";
+            this.button_Otmenit.Size = new System.Drawing.Size(89, 29);
+            this.button_Otmenit.TabIndex = 40;
+            this.button_Otmenit.Text = "Отменить";
+            this.button_Otmenit.UseVisualStyleBackColor = true;
+            this.button_Otmenit.Click += new System.EventHandler(this.button_Otmenit_Click);
+            // 
+            // button_Poisk
+            // 
+            this.button_Poisk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_Poisk.Location = new System.Drawing.Point(301, 216);
+            this.button_Poisk.Name = "button_Poisk";
+            this.button_Poisk.Size = new System.Drawing.Size(89, 29);
+            this.button_Poisk.TabIndex = 39;
+            this.button_Poisk.Text = "Поиск";
+            this.button_Poisk.UseVisualStyleBackColor = true;
+            this.button_Poisk.Click += new System.EventHandler(this.button_Poisk_Click);
+            // 
+            // comboBox_Tip
+            // 
+            this.comboBox_Tip.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox_Tip.FormattingEnabled = true;
+            this.comboBox_Tip.Items.AddRange(new object[] {
+            "Монитор",
+            "Системный блок",
+            "Клавиатура",
+            "Мышь",
+            "Колонки",
+            "Наушники",
+            "Сетевой Фильтр",
+            "Принтер",
+            "Сканер",
+            "МФУ",
+            "ИБП",
+            "Коммутатор",
+            "Маршрутизатор",
+            "Корпус системного блока",
+            "Блок питания",
+            "Материнская плата",
+            "Процессор",
+            "Оперативная память",
+            "Видеокарта",
+            "Сетевая карта",
+            "Витая пара",
+            "Коннектор RJ45",
+            "Обжимные клещи",
+            "Силовой кабель 1.8м",
+            "Кабель VGA",
+            "Кабель DVI",
+            "Кабель HDMI"});
+            this.comboBox_Tip.Location = new System.Drawing.Point(135, 152);
+            this.comboBox_Tip.Name = "comboBox_Tip";
+            this.comboBox_Tip.Size = new System.Drawing.Size(350, 24);
+            this.comboBox_Tip.TabIndex = 37;
+            // 
+            // textBox_Kommentarii
+            // 
+            this.textBox_Kommentarii.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_Kommentarii.Location = new System.Drawing.Point(135, 187);
+            this.textBox_Kommentarii.Name = "textBox_Kommentarii";
+            this.textBox_Kommentarii.Size = new System.Drawing.Size(350, 23);
+            this.textBox_Kommentarii.TabIndex = 38;
+            // 
+            // textBox_Naimenovanie
+            // 
+            this.textBox_Naimenovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_Naimenovanie.Location = new System.Drawing.Point(135, 117);
+            this.textBox_Naimenovanie.Name = "textBox_Naimenovanie";
+            this.textBox_Naimenovanie.Size = new System.Drawing.Size(350, 23);
+            this.textBox_Naimenovanie.TabIndex = 36;
+            // 
+            // textBox_Pomeschenie
+            // 
+            this.textBox_Pomeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_Pomeschenie.Location = new System.Drawing.Point(135, 82);
+            this.textBox_Pomeschenie.Name = "textBox_Pomeschenie";
+            this.textBox_Pomeschenie.Size = new System.Drawing.Size(350, 23);
+            this.textBox_Pomeschenie.TabIndex = 35;
+            // 
+            // textBox_InvNomer
+            // 
+            this.textBox_InvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_InvNomer.Location = new System.Drawing.Point(135, 47);
+            this.textBox_InvNomer.Name = "textBox_InvNomer";
+            this.textBox_InvNomer.Size = new System.Drawing.Size(350, 23);
+            this.textBox_InvNomer.TabIndex = 34;
+            // 
+            // label_Kommentarii
+            // 
+            this.label_Kommentarii.AutoSize = true;
+            this.label_Kommentarii.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Kommentarii.Location = new System.Drawing.Point(26, 190);
+            this.label_Kommentarii.Name = "label_Kommentarii";
+            this.label_Kommentarii.Size = new System.Drawing.Size(103, 16);
+            this.label_Kommentarii.TabIndex = 33;
+            this.label_Kommentarii.Text = "Комментарий:";
+            // 
+            // label_Tip
+            // 
+            this.label_Tip.AutoSize = true;
+            this.label_Tip.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Tip.Location = new System.Drawing.Point(90, 155);
+            this.label_Tip.Name = "label_Tip";
+            this.label_Tip.Size = new System.Drawing.Size(39, 16);
+            this.label_Tip.TabIndex = 32;
+            this.label_Tip.Text = "Тип:";
+            // 
+            // label_Naimenovanie
+            // 
+            this.label_Naimenovanie.AutoSize = true;
+            this.label_Naimenovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Naimenovanie.Location = new System.Drawing.Point(17, 120);
+            this.label_Naimenovanie.Name = "label_Naimenovanie";
+            this.label_Naimenovanie.Size = new System.Drawing.Size(112, 16);
+            this.label_Naimenovanie.TabIndex = 31;
+            this.label_Naimenovanie.Text = "Наименование:";
+            // 
+            // label_Pomeschenie
+            // 
+            this.label_Pomeschenie.AutoSize = true;
+            this.label_Pomeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Pomeschenie.Location = new System.Drawing.Point(37, 85);
+            this.label_Pomeschenie.Name = "label_Pomeschenie";
+            this.label_Pomeschenie.Size = new System.Drawing.Size(92, 16);
+            this.label_Pomeschenie.TabIndex = 30;
+            this.label_Pomeschenie.Text = "Помещение:";
+            // 
+            // label_InvNomer
+            // 
+            this.label_InvNomer.AutoSize = true;
+            this.label_InvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_InvNomer.Location = new System.Drawing.Point(65, 50);
+            this.label_InvNomer.Name = "label_InvNomer";
+            this.label_InvNomer.Size = new System.Drawing.Size(64, 16);
+            this.label_InvNomer.TabIndex = 29;
+            this.label_InvNomer.Text = "Инв. №:";
+            // 
+            // Poisk
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(507, 257);
+            this.Controls.Add(this.textBox_IDNomer);
+            this.Controls.Add(this.label_IDNomer);
+            this.Controls.Add(this.button_Otmenit);
+            this.Controls.Add(this.button_Poisk);
+            this.Controls.Add(this.comboBox_Tip);
+            this.Controls.Add(this.textBox_Kommentarii);
+            this.Controls.Add(this.textBox_Naimenovanie);
+            this.Controls.Add(this.textBox_Pomeschenie);
+            this.Controls.Add(this.textBox_InvNomer);
+            this.Controls.Add(this.label_Kommentarii);
+            this.Controls.Add(this.label_Tip);
+            this.Controls.Add(this.label_Naimenovanie);
+            this.Controls.Add(this.label_Pomeschenie);
+            this.Controls.Add(this.label_InvNomer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "Poisk";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "DevList - Поиск";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+        private System.Windows.Forms.TextBox textBox_IDNomer;
+        private System.Windows.Forms.Label label_IDNomer;
+        private System.Windows.Forms.Button button_Otmenit;
+        private System.Windows.Forms.Button button_Poisk;
+        private System.Windows.Forms.ComboBox comboBox_Tip;
+        private System.Windows.Forms.TextBox textBox_Kommentarii;
+        private System.Windows.Forms.TextBox textBox_Naimenovanie;
+        private System.Windows.Forms.TextBox textBox_Pomeschenie;
+        private System.Windows.Forms.TextBox textBox_InvNomer;
+        private System.Windows.Forms.Label label_Kommentarii;
+        private System.Windows.Forms.Label label_Tip;
+        private System.Windows.Forms.Label label_Naimenovanie;
+        private System.Windows.Forms.Label label_Pomeschenie;
+        private System.Windows.Forms.Label label_InvNomer;
+    }
+}
