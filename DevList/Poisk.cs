@@ -12,21 +12,19 @@ namespace DevList
 {
     public partial class Poisk : Form
     {
+        public static string[] stroka = new string[6];
         public Poisk()
         {
             InitializeComponent();
         }
         private void button_Poisk_Click(object sender, EventArgs e)
         {
-            string[] stroka = new string[]
-            {
-                textBox_IDNomer.Text,
-                textBox_InvNomer.Text,
-                textBox_Pomeschenie.Text,
-                textBox_Naimenovanie.Text,
-                comboBox_Tip.Text,
-                textBox_Kommentarii.Text
-            };
+            stroka[0] = textBox_IDNomer.Text;
+            stroka[1] = textBox_InvNomer.Text;
+            stroka[2] = textBox_Pomeschenie.Text;
+            stroka[3] = textBox_Naimenovanie.Text;
+            stroka[4] = comboBox_Tip.Text;
+            stroka[5] = textBox_Kommentarii.Text;
 
             Close();
         }

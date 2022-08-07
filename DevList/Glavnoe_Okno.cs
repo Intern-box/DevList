@@ -77,7 +77,6 @@ namespace DevList
 
             poisk.ShowDialog();
         }
-
         private void ToolStripMenuItem_Context_Poisk_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem_Poisk_Click(sender, e);
