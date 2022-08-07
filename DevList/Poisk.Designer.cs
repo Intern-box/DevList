@@ -51,7 +51,7 @@ namespace DevList
             this.textBox_IDNomer.Location = new System.Drawing.Point(135, 12);
             this.textBox_IDNomer.Name = "textBox_IDNomer";
             this.textBox_IDNomer.Size = new System.Drawing.Size(350, 23);
-            this.textBox_IDNomer.TabIndex = 42;
+            this.textBox_IDNomer.TabIndex = 33;
             // 
             // label_IDNomer
             // 
