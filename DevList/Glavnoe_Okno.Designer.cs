@@ -51,6 +51,7 @@ namespace DevList
             this.ToolStripMenuItem_Udalit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Pravit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Poisk = new System.Windows.Forms.ToolStripMenuItem();
+            this.перечитатьБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Vsplivauschee_Menu.SuspendLayout();
             this.menuStrip_Glavnoe_Menu.SuspendLayout();
             this.SuspendLayout();
@@ -159,7 +160,8 @@ namespace DevList
             this.menuStrip_Glavnoe_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_Fail,
             this.ToolStripMenuItem_Pravka,
-            this.ToolStripMenuItem_Poisk});
+            this.ToolStripMenuItem_Poisk,
+            this.перечитатьБДToolStripMenuItem});
             this.menuStrip_Glavnoe_Menu.Location = new System.Drawing.Point(0, 0);
             this.menuStrip_Glavnoe_Menu.Name = "menuStrip_Glavnoe_Menu";
             this.menuStrip_Glavnoe_Menu.Size = new System.Drawing.Size(884, 24);
@@ -225,6 +227,13 @@ namespace DevList
             this.ToolStripMenuItem_Poisk.Text = "Поиск";
             this.ToolStripMenuItem_Poisk.Click += new System.EventHandler(this.ToolStripMenuItem_Poisk_Click);
             // 
+            // перечитатьБДToolStripMenuItem
+            // 
+            this.перечитатьБДToolStripMenuItem.Name = "перечитатьБДToolStripMenuItem";
+            this.перечитатьБДToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
+            this.перечитатьБДToolStripMenuItem.Text = "Перечитать БД";
+            this.перечитатьБДToolStripMenuItem.Click += new System.EventHandler(this.перечитатьБДToolStripMenuItem_Click);
+            // 
             // Glavnoe_Okno
             // 
             this.AllowDrop = true;
@@ -269,6 +278,7 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Pravit;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Context_Poisk;
         public System.Windows.Forms.ListView listView_Tablica_Vivoda_Bazi;
+        private System.Windows.Forms.ToolStripMenuItem перечитатьБДToolStripMenuItem;
     }
 }
 
