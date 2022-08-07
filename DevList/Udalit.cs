@@ -20,6 +20,11 @@ namespace DevList
         {
             Glavnoe_Okno.baza.RemoveAt(int.Parse(textBox_IDNomer.Text) - 1);
 
+            for (int i = 0; i < Glavnoe_Okno.baza.Count; i++)
+            {
+                Glavnoe_Okno.baza[i][0] = (i + 1).ToString();
+            }
+
             Close();
         }
         private void button_Otmenit_Click(object sender, EventArgs e)
