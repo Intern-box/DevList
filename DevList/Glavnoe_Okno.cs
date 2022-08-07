@@ -22,10 +22,12 @@ namespace DevList
         }
         private void Glavnoe_Okno_Load(object sender, EventArgs e)
         {
-            Chistim_I_Chitaem_Tablicu(listView_Tablica_Vivoda_Bazi, baza);
+            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
-        public static void Chtenie_Bazi(ListView listview, List<string[]> baza)
+        private void Chtenie_Bazi(ListView listview, List<string[]> baza)
         {
+            listView_Tablica_Vivoda_Bazi.Items.Clear();
+
             for (int i = 0; i < baza.Count; i++)
             {
                 ListViewItem iz_bazi_v_tablicu = new ListViewItem(baza[i]);
@@ -33,19 +35,13 @@ namespace DevList
                 listview.Items.Add(iz_bazi_v_tablicu);
             }
         }
-        private void Chistim_I_Chitaem_Tablicu(ListView listview, List<string[]> baza)
-        {
-            listView_Tablica_Vivoda_Bazi.Items.Clear();
-
-            Chtenie_Bazi(listview, baza);
-        }
         private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)
         {
             Dobavit dobavit = new Dobavit();
 
             dobavit.ShowDialog();
 
-            Chistim_I_Chitaem_Tablicu(listView_Tablica_Vivoda_Bazi, baza);
+            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
         private void ToolStripMenuItem_Udalit_Click(object sender, EventArgs e)
         {
@@ -53,7 +49,7 @@ namespace DevList
 
             udalit.ShowDialog();
 
-            Chistim_I_Chitaem_Tablicu(listView_Tablica_Vivoda_Bazi, baza);
+            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
         private void ToolStripMenuItem_Context_Dobavit_Click(object sender, EventArgs e)
         {
@@ -69,7 +65,7 @@ namespace DevList
 
             pravit.ShowDialog();
 
-            Chistim_I_Chitaem_Tablicu(listView_Tablica_Vivoda_Bazi, baza);
+            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
         private void ToolStripMenuItem_Context_Pravit_Click(object sender, EventArgs e)
         {
