@@ -34,6 +34,8 @@ namespace DevList
             comboBox_Tip.Enabled = true;
             textBox_Kommentarii.Enabled = true;
             button_Pravit.Enabled = true;
+            textBox_IDNomer.Enabled = false;
+            button_Chitat.Enabled = false;
 
             string[] stroka = Glavnoe_Okno.baza[index];
 
