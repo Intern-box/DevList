@@ -159,6 +159,11 @@ namespace DevList
         }
         private void ToolStripMenuItem_Perechitat_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < baza.Count; i++)
+            {
+                baza[i][0] = (i + 1).ToString();
+            }
+
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
     }
