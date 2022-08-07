@@ -157,7 +157,7 @@ namespace DevList
 
             return lv;
         }
-        private void перечитатьБДToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Perechitat_Click(object sender, EventArgs e)
         {
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
