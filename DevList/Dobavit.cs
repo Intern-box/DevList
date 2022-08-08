@@ -32,6 +32,11 @@ namespace DevList
 
             Glavnoe_Okno.baza.Add(stroka);
 
+            for (int i = 0; i < Glavnoe_Okno.baza.Count; i++)
+            {
+                Glavnoe_Okno.baza[i][0] = (i + 1).ToString();
+            }
+
             Close();
         }
         private void button_Otmenit_Click(object sender, EventArgs e)

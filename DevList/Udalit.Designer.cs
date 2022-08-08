@@ -52,6 +52,7 @@ namespace DevList
             this.textBox_IDNomer.Name = "textBox_IDNomer";
             this.textBox_IDNomer.Size = new System.Drawing.Size(137, 23);
             this.textBox_IDNomer.TabIndex = 1;
+            this.textBox_IDNomer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_IDNomer_KeyUp);
             // 
             // button_Udalit
             // 

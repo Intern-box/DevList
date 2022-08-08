@@ -38,5 +38,12 @@ namespace DevList
         {
             Close();
         }
+        private void textBox_IDNomer_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_Udalit_Click(sender, e);
+            }
+        }
     }
 }

@@ -77,8 +77,6 @@ namespace DevList
 
             poisk.ShowDialog();
 
-            listView_Tablica_Vivoda_Bazi.Items.Clear();
-
             int po_skolki_parametram_sravnivaem = 0;
             int vsego_odinakovih_parametrov = 0;
 
@@ -139,8 +137,15 @@ namespace DevList
                     }
                 }
 
+                if (po_skolki_parametram_sravnivaem == 0)
+                {
+                    return;
+                }
+
                 if (vsego_odinakovih_parametrov >= po_skolki_parametram_sravnivaem)
                 {
+                    listView_Tablica_Vivoda_Bazi.Items.Clear();
+
                     listView_Tablica_Vivoda_Bazi.Items.Add(Viborka_Strok_Iz_Bazi(stroka));
                 }
 
@@ -165,11 +170,6 @@ namespace DevList
             }
 
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
-        }
-
-        private void listView_Tablica_Vivoda_Bazi_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
