@@ -24,6 +24,18 @@ namespace DevList
         public Glavnoe_Okno()
         {
             InitializeComponent();
+
+            string[] stolbci = new string[]
+            {
+                listView_Tablica_Vivoda_Bazi.Columns[0].Text,
+                listView_Tablica_Vivoda_Bazi.Columns[1].Text,
+                listView_Tablica_Vivoda_Bazi.Columns[2].Text,
+                listView_Tablica_Vivoda_Bazi.Columns[3].Text,
+                listView_Tablica_Vivoda_Bazi.Columns[4].Text,
+                listView_Tablica_Vivoda_Bazi.Columns[5].Text
+            };
+
+            spisok_stolbcov.Add(stolbci);
         }
         private void Glavnoe_Okno_Load(object sender, EventArgs e)
         {
@@ -178,18 +190,6 @@ namespace DevList
         }
         private void ToolStripMenuItem_Sohranit_Kak_Click(object sender, EventArgs e)
         {
-            string[] stolbci = new string[]
-            {
-                listView_Tablica_Vivoda_Bazi.Columns[0].Text,
-                listView_Tablica_Vivoda_Bazi.Columns[1].Text,
-                listView_Tablica_Vivoda_Bazi.Columns[2].Text,
-                listView_Tablica_Vivoda_Bazi.Columns[3].Text,
-                listView_Tablica_Vivoda_Bazi.Columns[4].Text,
-                listView_Tablica_Vivoda_Bazi.Columns[5].Text
-            };
-
-            spisok_stolbcov.Add(stolbci);
-
             SaveFileDialog put_k_failu = new SaveFileDialog() { Filter = "*.CSV|*.csv" };
 
             if (put_k_failu.ShowDialog() == DialogResult.OK)
@@ -203,9 +203,16 @@ namespace DevList
         }
         private void toolStripMenuItem_Sohranit_Click(object sender, EventArgs e)
         {
-            File.WriteAllLines(put_k_baze.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
+            try
+            {
+                File.WriteAllLines(put_k_baze.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
 
-            File.AppendAllLines(put_k_baze.FileName, baza.Select(x => string.Join(",", x)));
+                File.AppendAllLines(put_k_baze.FileName, baza.Select(x => string.Join(",", x)));
+            }
+            catch (Exception)
+            {
+
+            }
         }
         private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)
         {
@@ -213,12 +220,16 @@ namespace DevList
             {
                 string[] ves_fail = File.ReadAllLines(put_k_baze.FileName);
 
+                baza.Clear();
+
                 foreach (string stroka in ves_fail)
                 {
                     baza.Add(Perebor_Stroki(stroka));
                 }
 
                 baza.Remove(baza[0]);
+
+                listView_Tablica_Vivoda_Bazi.Items.Clear();
 
                 Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
             }
