@@ -26,25 +26,32 @@ namespace DevList
         }
         private void button_Chitat_Click(object sender, EventArgs e)
         {
-            index = int.Parse(textBox_IDNomer.Text) - 1;
+            try
+            {
+                index = int.Parse(textBox_IDNomer.Text) - 1;
 
-            textBox_InvNomer.Enabled = true;
-            textBox_Pomeschenie.Enabled = true;
-            textBox_Naimenovanie.Enabled = true;
-            comboBox_Tip.Enabled = true;
-            textBox_Kommentarii.Enabled = true;
-            button_Pravit.Enabled = true;
-            textBox_IDNomer.Enabled = false;
-            button_Chitat.Enabled = false;
+                textBox_InvNomer.Enabled = true;
+                textBox_Pomeschenie.Enabled = true;
+                textBox_Naimenovanie.Enabled = true;
+                comboBox_Tip.Enabled = true;
+                textBox_Kommentarii.Enabled = true;
+                button_Pravit.Enabled = true;
+                textBox_IDNomer.Enabled = false;
+                button_Chitat.Enabled = false;
 
-            string[] stroka = Glavnoe_Okno.baza[index];
+                string[] stroka = Glavnoe_Okno.baza[index];
 
-            textBox_IDNomer.Text = stroka[0];
-            textBox_InvNomer.Text = stroka[1];
-            textBox_Pomeschenie.Text = stroka[2];
-            textBox_Naimenovanie.Text = stroka[3];
-            comboBox_Tip.Text = stroka[4];
-            textBox_Kommentarii.Text = stroka[5];
+                textBox_IDNomer.Text = stroka[0];
+                textBox_InvNomer.Text = stroka[1];
+                textBox_Pomeschenie.Text = stroka[2];
+                textBox_Naimenovanie.Text = stroka[3];
+                comboBox_Tip.Text = stroka[4];
+                textBox_Kommentarii.Text = stroka[5];
+            }
+            catch (Exception)
+            {
+
+            }
         }
         private void button_Pravit_Click(object sender, EventArgs e)
         {

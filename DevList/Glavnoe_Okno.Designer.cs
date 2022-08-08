@@ -82,6 +82,7 @@ namespace DevList
             this.listView_Tablica_Vivoda_Bazi.TabIndex = 1;
             this.listView_Tablica_Vivoda_Bazi.UseCompatibleStateImageBehavior = false;
             this.listView_Tablica_Vivoda_Bazi.View = System.Windows.Forms.View.Details;
+            this.listView_Tablica_Vivoda_Bazi.SelectedIndexChanged += new System.EventHandler(this.listView_Tablica_Vivoda_Bazi_SelectedIndexChanged);
             // 
             // IDnomer
             // 
@@ -254,7 +255,7 @@ namespace DevList
             this.Controls.Add(this.menuStrip_Glavnoe_Menu);
             this.Name = "Glavnoe_Okno";
             this.ShowIcon = false;
-            this.Text = "DevList 2.3";
+            this.Text = "DevList 2.3.1";
             this.Load += new System.EventHandler(this.Glavnoe_Okno_Load);
             this.contextMenuStrip_Vsplivauschee_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.ResumeLayout(false);

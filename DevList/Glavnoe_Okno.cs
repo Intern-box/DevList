@@ -166,5 +166,10 @@ namespace DevList
 
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
+
+        private void listView_Tablica_Vivoda_Bazi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
