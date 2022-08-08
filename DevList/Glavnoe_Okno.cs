@@ -15,7 +15,12 @@ namespace DevList
     {
         public static List<string[]> baza = new List<string[]>();
 
+        OpenFileDialog put_k_baze = new OpenFileDialog() { Filter = "*.CSV|*.csv" };
+
         public static uint index = 0;
+
+        List<string[]> spisok_stolbcov = new List<string[]> ();
+
         public Glavnoe_Okno()
         {
             InitializeComponent();
@@ -170,6 +175,41 @@ namespace DevList
             }
 
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+        }
+        private void ToolStripMenuItem_Sohranit_Kak_Click(object sender, EventArgs e)
+        {
+            string[] stolbci = new string[]
+            {
+                listView_Tablica_Vivoda_Bazi.Columns[0].Text,
+                listView_Tablica_Vivoda_Bazi.Columns[1].Text,
+                listView_Tablica_Vivoda_Bazi.Columns[2].Text,
+                listView_Tablica_Vivoda_Bazi.Columns[3].Text,
+                listView_Tablica_Vivoda_Bazi.Columns[4].Text,
+                listView_Tablica_Vivoda_Bazi.Columns[5].Text
+            };
+
+            spisok_stolbcov.Add(stolbci);
+
+            SaveFileDialog put_k_failu = new SaveFileDialog() { Filter = "*.CSV|*.csv" };
+
+            if (put_k_failu.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllLines(put_k_failu.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
+
+                File.AppendAllLines(put_k_failu.FileName, baza.Select(x => string.Join(",", x)));
+
+                put_k_baze.FileName = put_k_failu.FileName;
+            }
+        }
+        private void toolStripMenuItem_Sohranit_Click(object sender, EventArgs e)
+        {
+            File.WriteAllLines(put_k_baze.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
+
+            File.AppendAllLines(put_k_baze.FileName, baza.Select(x => string.Join(",", x)));
+        }
+        private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

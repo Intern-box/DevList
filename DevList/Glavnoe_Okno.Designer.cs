@@ -44,9 +44,9 @@ namespace DevList
             this.ToolStripMenuItem_Context_Poisk = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip_Glavnoe_Menu = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItem_Fail = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Sozdat = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Otkrit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Sohranit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Sohranit = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Sohranit_Kak = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Pravka = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Dobavit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Udalit = new System.Windows.Forms.ToolStripMenuItem();
@@ -172,30 +172,33 @@ namespace DevList
             // ToolStripMenuItem_Fail
             // 
             this.ToolStripMenuItem_Fail.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_Sozdat,
             this.ToolStripMenuItem_Otkrit,
-            this.ToolStripMenuItem_Sohranit});
+            this.toolStripMenuItem_Sohranit,
+            this.ToolStripMenuItem_Sohranit_Kak});
             this.ToolStripMenuItem_Fail.Name = "ToolStripMenuItem_Fail";
             this.ToolStripMenuItem_Fail.Size = new System.Drawing.Size(48, 20);
             this.ToolStripMenuItem_Fail.Text = "Файл";
             // 
-            // ToolStripMenuItem_Sozdat
-            // 
-            this.ToolStripMenuItem_Sozdat.Name = "ToolStripMenuItem_Sozdat";
-            this.ToolStripMenuItem_Sozdat.Size = new System.Drawing.Size(133, 22);
-            this.ToolStripMenuItem_Sozdat.Text = "Создать";
-            // 
             // ToolStripMenuItem_Otkrit
             // 
             this.ToolStripMenuItem_Otkrit.Name = "ToolStripMenuItem_Otkrit";
-            this.ToolStripMenuItem_Otkrit.Size = new System.Drawing.Size(133, 22);
+            this.ToolStripMenuItem_Otkrit.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_Otkrit.Text = "Открыть";
+            this.ToolStripMenuItem_Otkrit.Click += new System.EventHandler(this.ToolStripMenuItem_Otkrit_Click);
             // 
-            // ToolStripMenuItem_Sohranit
+            // toolStripMenuItem_Sohranit
             // 
-            this.ToolStripMenuItem_Sohranit.Name = "ToolStripMenuItem_Sohranit";
-            this.ToolStripMenuItem_Sohranit.Size = new System.Drawing.Size(133, 22);
-            this.ToolStripMenuItem_Sohranit.Text = "Сохранить";
+            this.toolStripMenuItem_Sohranit.Name = "toolStripMenuItem_Sohranit";
+            this.toolStripMenuItem_Sohranit.Size = new System.Drawing.Size(163, 22);
+            this.toolStripMenuItem_Sohranit.Text = "Сохранить";
+            this.toolStripMenuItem_Sohranit.Click += new System.EventHandler(this.toolStripMenuItem_Sohranit_Click);
+            // 
+            // ToolStripMenuItem_Sohranit_Kak
+            // 
+            this.ToolStripMenuItem_Sohranit_Kak.Name = "ToolStripMenuItem_Sohranit_Kak";
+            this.ToolStripMenuItem_Sohranit_Kak.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Sohranit_Kak.Text = "Сохранить как...";
+            this.ToolStripMenuItem_Sohranit_Kak.Click += new System.EventHandler(this.ToolStripMenuItem_Sohranit_Kak_Click);
             // 
             // ToolStripMenuItem_Pravka
             // 
@@ -254,7 +257,7 @@ namespace DevList
             this.Controls.Add(this.menuStrip_Glavnoe_Menu);
             this.Name = "Glavnoe_Okno";
             this.ShowIcon = false;
-            this.Text = "DevList 2.3.1";
+            this.Text = "DevList 2.4";
             this.Load += new System.EventHandler(this.Glavnoe_Okno_Load);
             this.contextMenuStrip_Vsplivauschee_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.ResumeLayout(false);
@@ -273,7 +276,6 @@ namespace DevList
         private System.Windows.Forms.ColumnHeader Kommentarii;
         private System.Windows.Forms.MenuStrip menuStrip_Glavnoe_Menu;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Fail;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sozdat;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Otkrit;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Poisk;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Pravka;
@@ -287,7 +289,8 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Context_Poisk;
         public System.Windows.Forms.ListView listView_Tablica_Vivoda_Bazi;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Perechitat;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sohranit;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sohranit_Kak;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Sohranit;
     }
 }
 
