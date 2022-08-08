@@ -209,7 +209,28 @@ namespace DevList
         }
         private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)
         {
+            if (put_k_baze.ShowDialog() == DialogResult.OK)
+            {
+                string[] ves_fail = File.ReadAllLines(put_k_baze.FileName);
 
+                foreach (string stroka in ves_fail)
+                {
+                    baza.Add(Perebor_Stroki(stroka));
+                }
+
+                baza.Remove(baza[0]);
+
+                Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+            }
+        }
+        private string[] Perebor_Stroki(string stroka)
+        {
+            _ = stroka.TrimEnd('\r');
+            _ = stroka.TrimEnd('\n');
+
+            string[] massiv_strok = stroka.Split(',');
+
+            return massiv_strok;
         }
     }
 }
