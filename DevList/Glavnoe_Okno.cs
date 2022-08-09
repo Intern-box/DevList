@@ -243,5 +243,29 @@ namespace DevList
 
             return massiv_strok;
         }
+        private void ToolStripMenuItem_Kopirovat_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem_Pravit_Click(sender, e);
+        }
+        private void ToolStripMenuItem_Peremestit_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem_Pravit_Click(sender, e);
+        }
+        private void ToolStripMenuItem_Context_Kopirovat_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem_Pravit_Click(sender, e);
+        }
+        private void ToolStripMenuItem_Context_Peremestit_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem_Pravit_Click(sender, e);
+        }
+        private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            baza.Clear();
+
+            index = 0;
+
+            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+        }
     }
 }

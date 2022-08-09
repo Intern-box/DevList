@@ -23,6 +23,8 @@ namespace DevList
             comboBox_Tip.Enabled = false;
             textBox_Kommentarii.Enabled = false;
             button_Pravit.Enabled = false;
+            checkBox_Kopirovanie.Enabled = false;
+            checkBox_Peremeschenie.Enabled = false;
         }
         private void button_Chitat_Click(object sender, EventArgs e)
         {
@@ -36,6 +38,8 @@ namespace DevList
                 comboBox_Tip.Enabled = true;
                 textBox_Kommentarii.Enabled = true;
                 button_Pravit.Enabled = true;
+                checkBox_Kopirovanie.Enabled = true;
+                checkBox_Peremeschenie.Enabled = true;
                 textBox_IDNomer.Enabled = false;
                 button_Chitat.Enabled = false;
 
@@ -65,7 +69,21 @@ namespace DevList
                 textBox_Kommentarii.Text
             };
 
-            Glavnoe_Okno.baza[index] = stroka;
+            if (checkBox_Kopirovanie.Checked)
+            {
+                Glavnoe_Okno.index++;
+
+                Glavnoe_Okno.baza.Add(stroka);
+
+                for (int i = 0; i < Glavnoe_Okno.baza.Count; i++)
+                {
+                    Glavnoe_Okno.baza[i][0] = (i + 1).ToString();
+                }
+            }
+            else
+            {
+                Glavnoe_Okno.baza[index] = stroka;
+            }
 
             Close();
         }
