@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace DevList
 {
@@ -79,11 +80,33 @@ namespace DevList
                 {
                     Glavnoe_Okno.baza[i][0] = (i + 1).ToString();
                 }
+
+                Close();
             }
-            else
+            
+            if (checkBox_Peremeschenie.Checked)
             {
-                Glavnoe_Okno.baza[index] = stroka;
+                Directory.CreateDirectory("История перемещений");
+
+                string[] stroki = new string[]
+                {
+                    "В Помещение:",
+                    textBox_Pomeschenie.Text,
+                    "перемещено из помещения:",
+                    Glavnoe_Okno.baza[int.Parse(textBox_IDNomer.Text) - 1][2],
+                    "МЦ:",
+                    Glavnoe_Okno.baza[int.Parse(textBox_IDNomer.Text) - 1][3],
+                    "Инв. №" + Glavnoe_Okno.baza[int.Parse(textBox_IDNomer.Text) - 1][1],
+                    DateTime.Today.ToString().TrimEnd(' '),
+                    "\n"
+                };
+
+                File.AppendAllLines("История перемещений\\" + textBox_Pomeschenie.Text + ".txt", stroki);
+
+                Close();
             }
+
+            Glavnoe_Okno.baza[index] = stroka;
 
             Close();
         }

@@ -38,26 +38,26 @@ namespace DevList
             this.Tip = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Kommentarii = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip_Vsplivauschee_Menu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItem_Context_Poisk = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Context_Dobavit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Context_Udalit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Context_Pravit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Context_Poisk = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Context_Kopirovat = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Context_Peremestit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip_Glavnoe_Menu = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItem_Fail = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Sozdat = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Otkrit = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem_Sohranit = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Sohranit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Sohranit_Kak = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Pravka = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Dobavit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Udalit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Pravit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Poisk = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Perechitat = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Kopirovat = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Peremestit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Context_Kopirovat = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Context_Peremestit = new System.Windows.Forms.ToolStripMenuItem();
-            this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Poisk = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Perechitat = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Vsplivauschee_Menu.SuspendLayout();
             this.menuStrip_Glavnoe_Menu.SuspendLayout();
             this.SuspendLayout();
@@ -135,6 +135,13 @@ namespace DevList
             this.contextMenuStrip_Vsplivauschee_Menu.Name = "contextMenuStrip_Vsplivauschee_Menu";
             this.contextMenuStrip_Vsplivauschee_Menu.Size = new System.Drawing.Size(147, 136);
             // 
+            // ToolStripMenuItem_Context_Poisk
+            // 
+            this.ToolStripMenuItem_Context_Poisk.Name = "ToolStripMenuItem_Context_Poisk";
+            this.ToolStripMenuItem_Context_Poisk.Size = new System.Drawing.Size(146, 22);
+            this.ToolStripMenuItem_Context_Poisk.Text = "Поиск";
+            this.ToolStripMenuItem_Context_Poisk.Click += new System.EventHandler(this.ToolStripMenuItem_Context_Poisk_Click);
+            // 
             // ToolStripMenuItem_Context_Dobavit
             // 
             this.ToolStripMenuItem_Context_Dobavit.Name = "ToolStripMenuItem_Context_Dobavit";
@@ -156,12 +163,19 @@ namespace DevList
             this.ToolStripMenuItem_Context_Pravit.Text = "Править";
             this.ToolStripMenuItem_Context_Pravit.Click += new System.EventHandler(this.ToolStripMenuItem_Context_Pravit_Click);
             // 
-            // ToolStripMenuItem_Context_Poisk
+            // ToolStripMenuItem_Context_Kopirovat
             // 
-            this.ToolStripMenuItem_Context_Poisk.Name = "ToolStripMenuItem_Context_Poisk";
-            this.ToolStripMenuItem_Context_Poisk.Size = new System.Drawing.Size(146, 22);
-            this.ToolStripMenuItem_Context_Poisk.Text = "Поиск";
-            this.ToolStripMenuItem_Context_Poisk.Click += new System.EventHandler(this.ToolStripMenuItem_Context_Poisk_Click);
+            this.ToolStripMenuItem_Context_Kopirovat.Name = "ToolStripMenuItem_Context_Kopirovat";
+            this.ToolStripMenuItem_Context_Kopirovat.Size = new System.Drawing.Size(146, 22);
+            this.ToolStripMenuItem_Context_Kopirovat.Text = "Копировать";
+            this.ToolStripMenuItem_Context_Kopirovat.Click += new System.EventHandler(this.ToolStripMenuItem_Context_Kopirovat_Click);
+            // 
+            // ToolStripMenuItem_Context_Peremestit
+            // 
+            this.ToolStripMenuItem_Context_Peremestit.Name = "ToolStripMenuItem_Context_Peremestit";
+            this.ToolStripMenuItem_Context_Peremestit.Size = new System.Drawing.Size(146, 22);
+            this.ToolStripMenuItem_Context_Peremestit.Text = "Переместить";
+            this.ToolStripMenuItem_Context_Peremestit.Click += new System.EventHandler(this.ToolStripMenuItem_Context_Peremestit_Click);
             // 
             // menuStrip_Glavnoe_Menu
             // 
@@ -179,13 +193,20 @@ namespace DevList
             // ToolStripMenuItem_Fail
             // 
             this.ToolStripMenuItem_Fail.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.создатьToolStripMenuItem,
+            this.ToolStripMenuItem_Sozdat,
             this.ToolStripMenuItem_Otkrit,
-            this.toolStripMenuItem_Sohranit,
+            this.ToolStripMenuItem_Sohranit,
             this.ToolStripMenuItem_Sohranit_Kak});
             this.ToolStripMenuItem_Fail.Name = "ToolStripMenuItem_Fail";
             this.ToolStripMenuItem_Fail.Size = new System.Drawing.Size(48, 20);
             this.ToolStripMenuItem_Fail.Text = "Файл";
+            // 
+            // ToolStripMenuItem_Sozdat
+            // 
+            this.ToolStripMenuItem_Sozdat.Name = "ToolStripMenuItem_Sozdat";
+            this.ToolStripMenuItem_Sozdat.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Sozdat.Text = "Создать";
+            this.ToolStripMenuItem_Sozdat.Click += new System.EventHandler(this.ToolStripMenuItem_Sozdat_Click);
             // 
             // ToolStripMenuItem_Otkrit
             // 
@@ -194,12 +215,12 @@ namespace DevList
             this.ToolStripMenuItem_Otkrit.Text = "Открыть";
             this.ToolStripMenuItem_Otkrit.Click += new System.EventHandler(this.ToolStripMenuItem_Otkrit_Click);
             // 
-            // toolStripMenuItem_Sohranit
+            // ToolStripMenuItem_Sohranit
             // 
-            this.toolStripMenuItem_Sohranit.Name = "toolStripMenuItem_Sohranit";
-            this.toolStripMenuItem_Sohranit.Size = new System.Drawing.Size(163, 22);
-            this.toolStripMenuItem_Sohranit.Text = "Сохранить";
-            this.toolStripMenuItem_Sohranit.Click += new System.EventHandler(this.toolStripMenuItem_Sohranit_Click);
+            this.ToolStripMenuItem_Sohranit.Name = "ToolStripMenuItem_Sohranit";
+            this.ToolStripMenuItem_Sohranit.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Sohranit.Text = "Сохранить";
+            this.ToolStripMenuItem_Sohranit.Click += new System.EventHandler(this.ToolStripMenuItem_Sohranit_Click);
             // 
             // ToolStripMenuItem_Sohranit_Kak
             // 
@@ -223,23 +244,37 @@ namespace DevList
             // ToolStripMenuItem_Dobavit
             // 
             this.ToolStripMenuItem_Dobavit.Name = "ToolStripMenuItem_Dobavit";
-            this.ToolStripMenuItem_Dobavit.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Dobavit.Size = new System.Drawing.Size(146, 22);
             this.ToolStripMenuItem_Dobavit.Text = "Добавить";
             this.ToolStripMenuItem_Dobavit.Click += new System.EventHandler(this.ToolStripMenuItem_Dobavit_Click);
             // 
             // ToolStripMenuItem_Udalit
             // 
             this.ToolStripMenuItem_Udalit.Name = "ToolStripMenuItem_Udalit";
-            this.ToolStripMenuItem_Udalit.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Udalit.Size = new System.Drawing.Size(146, 22);
             this.ToolStripMenuItem_Udalit.Text = "Удалить";
             this.ToolStripMenuItem_Udalit.Click += new System.EventHandler(this.ToolStripMenuItem_Udalit_Click);
             // 
             // ToolStripMenuItem_Pravit
             // 
             this.ToolStripMenuItem_Pravit.Name = "ToolStripMenuItem_Pravit";
-            this.ToolStripMenuItem_Pravit.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Pravit.Size = new System.Drawing.Size(146, 22);
             this.ToolStripMenuItem_Pravit.Text = "Править";
             this.ToolStripMenuItem_Pravit.Click += new System.EventHandler(this.ToolStripMenuItem_Pravit_Click);
+            // 
+            // ToolStripMenuItem_Kopirovat
+            // 
+            this.ToolStripMenuItem_Kopirovat.Name = "ToolStripMenuItem_Kopirovat";
+            this.ToolStripMenuItem_Kopirovat.Size = new System.Drawing.Size(146, 22);
+            this.ToolStripMenuItem_Kopirovat.Text = "Копировать";
+            this.ToolStripMenuItem_Kopirovat.Click += new System.EventHandler(this.ToolStripMenuItem_Kopirovat_Click);
+            // 
+            // ToolStripMenuItem_Peremestit
+            // 
+            this.ToolStripMenuItem_Peremestit.Name = "ToolStripMenuItem_Peremestit";
+            this.ToolStripMenuItem_Peremestit.Size = new System.Drawing.Size(146, 22);
+            this.ToolStripMenuItem_Peremestit.Text = "Переместить";
+            this.ToolStripMenuItem_Peremestit.Click += new System.EventHandler(this.ToolStripMenuItem_Peremestit_Click);
             // 
             // ToolStripMenuItem_Poisk
             // 
@@ -255,41 +290,6 @@ namespace DevList
             this.ToolStripMenuItem_Perechitat.Text = "Перечитать БД";
             this.ToolStripMenuItem_Perechitat.Click += new System.EventHandler(this.ToolStripMenuItem_Perechitat_Click);
             // 
-            // ToolStripMenuItem_Kopirovat
-            // 
-            this.ToolStripMenuItem_Kopirovat.Name = "ToolStripMenuItem_Kopirovat";
-            this.ToolStripMenuItem_Kopirovat.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_Kopirovat.Text = "Копировать";
-            this.ToolStripMenuItem_Kopirovat.Click += new System.EventHandler(this.ToolStripMenuItem_Kopirovat_Click);
-            // 
-            // ToolStripMenuItem_Peremestit
-            // 
-            this.ToolStripMenuItem_Peremestit.Name = "ToolStripMenuItem_Peremestit";
-            this.ToolStripMenuItem_Peremestit.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_Peremestit.Text = "Переместить";
-            this.ToolStripMenuItem_Peremestit.Click += new System.EventHandler(this.ToolStripMenuItem_Peremestit_Click);
-            // 
-            // ToolStripMenuItem_Context_Kopirovat
-            // 
-            this.ToolStripMenuItem_Context_Kopirovat.Name = "ToolStripMenuItem_Context_Kopirovat";
-            this.ToolStripMenuItem_Context_Kopirovat.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_Context_Kopirovat.Text = "Копировать";
-            this.ToolStripMenuItem_Context_Kopirovat.Click += new System.EventHandler(this.ToolStripMenuItem_Context_Kopirovat_Click);
-            // 
-            // ToolStripMenuItem_Context_Peremestit
-            // 
-            this.ToolStripMenuItem_Context_Peremestit.Name = "ToolStripMenuItem_Context_Peremestit";
-            this.ToolStripMenuItem_Context_Peremestit.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_Context_Peremestit.Text = "Переместить";
-            this.ToolStripMenuItem_Context_Peremestit.Click += new System.EventHandler(this.ToolStripMenuItem_Context_Peremestit_Click);
-            // 
-            // создатьToolStripMenuItem
-            // 
-            this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.создатьToolStripMenuItem.Text = "Создать";
-            this.создатьToolStripMenuItem.Click += new System.EventHandler(this.создатьToolStripMenuItem_Click);
-            // 
             // Glavnoe_Okno
             // 
             this.AllowDrop = true;
@@ -302,7 +302,8 @@ namespace DevList
             this.Controls.Add(this.menuStrip_Glavnoe_Menu);
             this.Name = "Glavnoe_Okno";
             this.ShowIcon = false;
-            this.Text = "DevList 2.5.3";
+            this.Text = "DevList 2.6";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Glavnoe_Okno_FormClosed);
             this.Load += new System.EventHandler(this.Glavnoe_Okno_Load);
             this.contextMenuStrip_Vsplivauschee_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.ResumeLayout(false);
@@ -335,12 +336,12 @@ namespace DevList
         public System.Windows.Forms.ListView listView_Tablica_Vivoda_Bazi;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Perechitat;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sohranit_Kak;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Sohranit;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sohranit;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Context_Kopirovat;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Context_Peremestit;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Kopirovat;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Peremestit;
-        private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sozdat;
     }
 }
 

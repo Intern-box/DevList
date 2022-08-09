@@ -201,7 +201,7 @@ namespace DevList
                 put_k_baze.FileName = put_k_failu.FileName;
             }
         }
-        private void toolStripMenuItem_Sohranit_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Sohranit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -259,13 +259,38 @@ namespace DevList
         {
             ToolStripMenuItem_Pravit_Click(sender, e);
         }
-        private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Sozdat_Click(object sender, EventArgs e)
         {
             baza.Clear();
 
             index = 0;
 
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+        }
+        private void Glavnoe_Okno_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DialogResult resultat_vibora =
+
+            MessageBox.Show
+            (
+                "Сохранить изменения?",
+                "Закрытие программы",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1
+            );
+
+            if (resultat_vibora == DialogResult.Yes)
+            {
+                if (baza.Count == 0)
+                {
+                    ToolStripMenuItem_Sohranit_Kak_Click(sender, e);
+                }
+                else
+                {
+                    ToolStripMenuItem_Sohranit_Click(sender, e);
+                }
+            }
         }
     }
 }
