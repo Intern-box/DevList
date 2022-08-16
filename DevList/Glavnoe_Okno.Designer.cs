@@ -34,6 +34,7 @@ namespace DevList
             this.IDnomer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.InvNomer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Pomescheniie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FIO = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Naimenovanie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Tip = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Kommentarii = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -58,6 +59,7 @@ namespace DevList
             this.ToolStripMenuItem_Peremestit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Poisk = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Perechitat = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.contextMenuStrip_Vsplivauschee_Menu.SuspendLayout();
             this.menuStrip_Glavnoe_Menu.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +74,7 @@ namespace DevList
             this.IDnomer,
             this.InvNomer,
             this.Pomescheniie,
+            this.FIO,
             this.Naimenovanie,
             this.Tip,
             this.Kommentarii});
@@ -83,7 +86,7 @@ namespace DevList
             this.listView_Tablica_Vivoda_Bazi.Location = new System.Drawing.Point(0, 24);
             this.listView_Tablica_Vivoda_Bazi.Name = "listView_Tablica_Vivoda_Bazi";
             this.listView_Tablica_Vivoda_Bazi.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.listView_Tablica_Vivoda_Bazi.Size = new System.Drawing.Size(884, 337);
+            this.listView_Tablica_Vivoda_Bazi.Size = new System.Drawing.Size(1044, 537);
             this.listView_Tablica_Vivoda_Bazi.TabIndex = 1;
             this.listView_Tablica_Vivoda_Bazi.UseCompatibleStateImageBehavior = false;
             this.listView_Tablica_Vivoda_Bazi.View = System.Windows.Forms.View.Details;
@@ -104,6 +107,12 @@ namespace DevList
             this.Pomescheniie.Text = "Помещение";
             this.Pomescheniie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Pomescheniie.Width = 160;
+            // 
+            // FIO
+            // 
+            this.FIO.Text = "ФИО";
+            this.FIO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FIO.Width = 160;
             // 
             // Naimenovanie
             // 
@@ -186,7 +195,7 @@ namespace DevList
             this.ToolStripMenuItem_Perechitat});
             this.menuStrip_Glavnoe_Menu.Location = new System.Drawing.Point(0, 0);
             this.menuStrip_Glavnoe_Menu.Name = "menuStrip_Glavnoe_Menu";
-            this.menuStrip_Glavnoe_Menu.Size = new System.Drawing.Size(884, 24);
+            this.menuStrip_Glavnoe_Menu.Size = new System.Drawing.Size(1044, 24);
             this.menuStrip_Glavnoe_Menu.TabIndex = 2;
             this.menuStrip_Glavnoe_Menu.Text = "menuStrip1";
             // 
@@ -290,6 +299,14 @@ namespace DevList
             this.ToolStripMenuItem_Perechitat.Text = "Перечитать БД";
             this.ToolStripMenuItem_Perechitat.Click += new System.EventHandler(this.ToolStripMenuItem_Perechitat_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(523, 237);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(306, 230);
+            this.textBox1.TabIndex = 3;
+            // 
             // Glavnoe_Okno
             // 
             this.AllowDrop = true;
@@ -297,7 +314,8 @@ namespace DevList
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(884, 361);
+            this.ClientSize = new System.Drawing.Size(1044, 561);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listView_Tablica_Vivoda_Bazi);
             this.Controls.Add(this.menuStrip_Glavnoe_Menu);
             this.Name = "Glavnoe_Okno";
@@ -342,6 +360,8 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Kopirovat;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Peremestit;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sozdat;
+        private System.Windows.Forms.ColumnHeader FIO;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

@@ -13,18 +13,34 @@ namespace DevList
 {
     public partial class Glavnoe_Okno : Form
     {
+        List<string[]> spisok_stolbcov = new List<string[]>();        // Названия столбцов из таблицы
+
+        public static string put_do_BD = "";                          // Путь к файлу с базой
+        public static string put_do_spiska_pomeschenii = "";          // Путь к списку помещений
+        public static string put_do_spiska_tipov_oborudovania = "";   // Путь к списку типов оборудования
+        public static string put_do_spiska_sotrudnikov = "";          // Путь к списку сотрудников
+
         public static List<string[]> baza = new List<string[]>();
 
         OpenFileDialog put_k_baze = new OpenFileDialog() { Filter = "*.CSV|*.csv" };
 
         public static uint index = 0;
 
-        List<string[]> spisok_stolbcov = new List<string[]> ();
+        public static bool kopirovanie;
+
+        public static bool peremeschenie;
+
+        public static string pomescheniia;
+
+        public static string tip;
+
+        public static string sotrudniki;
 
         public Glavnoe_Okno()
         {
             InitializeComponent();
 
+            // Сохраняем названия столбцов из таблицы
             string[] stolbci = new string[]
             {
                 listView_Tablica_Vivoda_Bazi.Columns[0].Text,
@@ -32,10 +48,127 @@ namespace DevList
                 listView_Tablica_Vivoda_Bazi.Columns[2].Text,
                 listView_Tablica_Vivoda_Bazi.Columns[3].Text,
                 listView_Tablica_Vivoda_Bazi.Columns[4].Text,
-                listView_Tablica_Vivoda_Bazi.Columns[5].Text
+                listView_Tablica_Vivoda_Bazi.Columns[5].Text,
+                listView_Tablica_Vivoda_Bazi.Columns[6].Text
             };
 
             spisok_stolbcov.Add(stolbci);
+
+            try
+            {
+                // Читаем файл с настройками
+                string[] ini_fail = new string[4];
+
+                if (File.Exists("DevList.ini"))
+                {
+                    ini_fail = File.ReadAllLines("DevList.ini");
+                }
+                else
+                {
+                    // Если файла нет, предлагаем его создать
+                    DialogResult resultat_vibora =
+
+                    MessageBox.Show
+                    (
+                        "Создать новый файл вида:\r\n" +
+                        "БД = БД\\БД.csv\r\n" +
+                        "Помещения = БД\\Помещения.txt\r\n" +
+                        "Тип = БД\\Тип.txt\r\n" +
+                        "Сотрудники = БД\\Сотрудники.txt\r\n?",
+                        "Нет файла с настройками DevList.ini",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1
+                    );
+
+                    if (resultat_vibora == DialogResult.Yes)
+                    {
+                        // Создаём файл с настройками
+
+                        File.AppendAllText
+                        (
+                            "DevList.ini",
+                            "БД = БД\\БД.csv\r\n" +
+                            "Помещения = БД\\Помещения.txt\r\n" +
+                            "Тип = БД\\Тип.txt\r\n" +
+                            "Сотрудники = БД\\Сотрудники.txt"
+                        );
+
+                        if (Directory.Exists("БД") == false)
+                        {
+                            Directory.CreateDirectory("БД");
+                        }
+                        if (Directory.Exists("История перемещений") == false)
+                        {
+                            Directory.CreateDirectory("История перемещений");
+                        }
+
+                        File.WriteAllLines("БД\\БД.csv", spisok_stolbcov.Select(x => string.Join(",", x)));
+                        File.AppendAllText("БД\\Помещения.txt", "// Заполните элементами в виде списка. Новый элемент с новой строки!");
+                        File.AppendAllText("БД\\Сотрудники.txt", "// Заполните элементами в виде списка. Новый элемент с новой строки!");
+                        File.AppendAllText("БД\\Тип.txt", "// Заполните элементами в виде списка. Новый элемент с новой строки!");
+
+                        put_do_BD = "БД\\БД.csv";
+                        put_do_spiska_pomeschenii = "БД\\Помещения.txt";
+                        put_do_spiska_sotrudnikov = "БД\\Сотрудники.txt";
+                        put_do_spiska_tipov_oborudovania = "БД\\Тип.txt";
+                    }
+                    else
+                    {
+                        // Если отказались от создания файла с настройками,
+                        // то полностью закрываем приложение
+                        Close();
+                    }
+                }
+
+                put_do_BD                        = Chitaem_Puti_Baz(ini_fail, 0);
+                put_do_spiska_pomeschenii        = Chitaem_Puti_Baz(ini_fail, 1);
+                put_do_spiska_sotrudnikov        = Chitaem_Puti_Baz(ini_fail, 2);
+                put_do_spiska_tipov_oborudovania = Chitaem_Puti_Baz(ini_fail, 4);
+
+                textBox1.Text += put_do_BD + "\r\n";
+                textBox1.Text += put_do_spiska_pomeschenii + "\r\n";
+                textBox1.Text += put_do_spiska_tipov_oborudovania + "\r\n";
+                textBox1.Text += put_do_spiska_sotrudnikov;
+
+                string[] ves_fail = File.ReadAllLines(ini_fail.ElementAt(1).Substring('='));
+
+                baza.Clear();
+
+                foreach (string stroka in ves_fail)
+                {
+                    baza.Add(Perebor_Stroki(stroka));
+                }
+
+                baza.Remove(baza[0]);
+
+                listView_Tablica_Vivoda_Bazi.Items.Clear();
+
+                Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+
+                ////////////////////////////////////////////////////////////////////////////////
+
+                pomescheniia = ini_fail.ElementAt(2).Substring('=');
+                tip = ini_fail.ElementAt(3).Substring('=');
+                sotrudniki = ini_fail.ElementAt(4).Substring('=');
+            }
+            catch (Exception)
+            {
+            }
+        }
+        private string Chitaem_Puti_Baz(string[] ini_fail, int nomer_stroki_v_faile)
+        {
+            string put = "";
+
+            for (int i = 0; i < ini_fail[nomer_stroki_v_faile].Length; i++)
+            {
+                if (ini_fail[nomer_stroki_v_faile][i] != ' ')
+                {
+                    put += ini_fail[nomer_stroki_v_faile][i];
+                }
+            }
+
+            return put;
         }
         private void Glavnoe_Okno_Load(object sender, EventArgs e)
         {
@@ -245,18 +378,26 @@ namespace DevList
         }
         private void ToolStripMenuItem_Kopirovat_Click(object sender, EventArgs e)
         {
+            kopirovanie = true;
+
             ToolStripMenuItem_Pravit_Click(sender, e);
         }
         private void ToolStripMenuItem_Peremestit_Click(object sender, EventArgs e)
         {
+            peremeschenie = true;
+
             ToolStripMenuItem_Pravit_Click(sender, e);
         }
         private void ToolStripMenuItem_Context_Kopirovat_Click(object sender, EventArgs e)
         {
+            kopirovanie = true;
+
             ToolStripMenuItem_Pravit_Click(sender, e);
         }
         private void ToolStripMenuItem_Context_Peremestit_Click(object sender, EventArgs e)
         {
+            peremeschenie = true;
+
             ToolStripMenuItem_Pravit_Click(sender, e);
         }
         private void ToolStripMenuItem_Sozdat_Click(object sender, EventArgs e)

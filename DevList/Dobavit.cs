@@ -24,7 +24,7 @@ namespace DevList
             {
                 Glavnoe_Okno.index.ToString(),
                 textBox_InvNomer.Text,
-                textBox_Pomeschenie.Text,
+                comboBox_Pomeschenie.Text,
                 textBox_Naimenovanie.Text,
                 comboBox_Tip.Text,
                 textBox_Kommentarii.Text
@@ -42,31 +42,6 @@ namespace DevList
         private void button_Otmenit_Click(object sender, EventArgs e)
         {
             Close();
-        }
-        private void textBox_InvNomer_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                button_Dobavit_Click(sender, e);
-        }
-        private void textBox_Pomeschenie_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                button_Dobavit_Click(sender, e);
-        }
-        private void textBox_Naimenovanie_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                button_Dobavit_Click(sender, e);
-        }
-        private void comboBox_Tip_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                button_Dobavit_Click(sender, e);
-        }
-        private void textBox_Kommentarii_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                button_Dobavit_Click(sender, e);
         }
     }
 }

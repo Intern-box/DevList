@@ -21,7 +21,7 @@ namespace DevList
         {
             stroka[0] = textBox_IDNomer.Text;
             stroka[1] = textBox_InvNomer.Text;
-            stroka[2] = textBox_Pomeschenie.Text;
+            stroka[2] = comboBox_Pomeschenie.Text;
             stroka[3] = textBox_Naimenovanie.Text;
             stroka[4] = comboBox_Tip.Text;
             stroka[5] = textBox_Kommentarii.Text;

@@ -36,13 +36,15 @@ namespace DevList
             this.comboBox_Tip = new System.Windows.Forms.ComboBox();
             this.textBox_Kommentarii = new System.Windows.Forms.TextBox();
             this.textBox_Naimenovanie = new System.Windows.Forms.TextBox();
-            this.textBox_Pomeschenie = new System.Windows.Forms.TextBox();
-            this.textBox_InvNomer = new System.Windows.Forms.TextBox();
             this.label_Kommentarii = new System.Windows.Forms.Label();
             this.label_Tip = new System.Windows.Forms.Label();
             this.label_Naimenovanie = new System.Windows.Forms.Label();
             this.label_Pomeschenie = new System.Windows.Forms.Label();
             this.label_InvNomer = new System.Windows.Forms.Label();
+            this.comboBox_FIO = new System.Windows.Forms.ComboBox();
+            this.label_FIO = new System.Windows.Forms.Label();
+            this.textBox_InvNomer = new System.Windows.Forms.TextBox();
+            this.comboBox_Pomeschenie = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textBox_IDNomer
@@ -66,7 +68,7 @@ namespace DevList
             // button_Otmenit
             // 
             this.button_Otmenit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Otmenit.Location = new System.Drawing.Point(396, 216);
+            this.button_Otmenit.Location = new System.Drawing.Point(396, 258);
             this.button_Otmenit.Name = "button_Otmenit";
             this.button_Otmenit.Size = new System.Drawing.Size(89, 29);
             this.button_Otmenit.TabIndex = 40;
@@ -77,7 +79,7 @@ namespace DevList
             // button_Poisk
             // 
             this.button_Poisk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Poisk.Location = new System.Drawing.Point(301, 216);
+            this.button_Poisk.Location = new System.Drawing.Point(301, 258);
             this.button_Poisk.Name = "button_Poisk";
             this.button_Poisk.Size = new System.Drawing.Size(89, 29);
             this.button_Poisk.TabIndex = 39;
@@ -117,7 +119,7 @@ namespace DevList
             "Кабель VGA",
             "Кабель DVI",
             "Кабель HDMI"});
-            this.comboBox_Tip.Location = new System.Drawing.Point(135, 152);
+            this.comboBox_Tip.Location = new System.Drawing.Point(135, 187);
             this.comboBox_Tip.Name = "comboBox_Tip";
             this.comboBox_Tip.Size = new System.Drawing.Size(350, 24);
             this.comboBox_Tip.TabIndex = 37;
@@ -125,7 +127,7 @@ namespace DevList
             // textBox_Kommentarii
             // 
             this.textBox_Kommentarii.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Kommentarii.Location = new System.Drawing.Point(135, 187);
+            this.textBox_Kommentarii.Location = new System.Drawing.Point(135, 222);
             this.textBox_Kommentarii.Name = "textBox_Kommentarii";
             this.textBox_Kommentarii.Size = new System.Drawing.Size(350, 23);
             this.textBox_Kommentarii.TabIndex = 38;
@@ -133,32 +135,16 @@ namespace DevList
             // textBox_Naimenovanie
             // 
             this.textBox_Naimenovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Naimenovanie.Location = new System.Drawing.Point(135, 117);
+            this.textBox_Naimenovanie.Location = new System.Drawing.Point(135, 152);
             this.textBox_Naimenovanie.Name = "textBox_Naimenovanie";
             this.textBox_Naimenovanie.Size = new System.Drawing.Size(350, 23);
             this.textBox_Naimenovanie.TabIndex = 36;
-            // 
-            // textBox_Pomeschenie
-            // 
-            this.textBox_Pomeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Pomeschenie.Location = new System.Drawing.Point(135, 82);
-            this.textBox_Pomeschenie.Name = "textBox_Pomeschenie";
-            this.textBox_Pomeschenie.Size = new System.Drawing.Size(350, 23);
-            this.textBox_Pomeschenie.TabIndex = 35;
-            // 
-            // textBox_InvNomer
-            // 
-            this.textBox_InvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_InvNomer.Location = new System.Drawing.Point(135, 47);
-            this.textBox_InvNomer.Name = "textBox_InvNomer";
-            this.textBox_InvNomer.Size = new System.Drawing.Size(350, 23);
-            this.textBox_InvNomer.TabIndex = 34;
             // 
             // label_Kommentarii
             // 
             this.label_Kommentarii.AutoSize = true;
             this.label_Kommentarii.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Kommentarii.Location = new System.Drawing.Point(26, 190);
+            this.label_Kommentarii.Location = new System.Drawing.Point(26, 225);
             this.label_Kommentarii.Name = "label_Kommentarii";
             this.label_Kommentarii.Size = new System.Drawing.Size(103, 16);
             this.label_Kommentarii.TabIndex = 33;
@@ -168,7 +154,7 @@ namespace DevList
             // 
             this.label_Tip.AutoSize = true;
             this.label_Tip.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Tip.Location = new System.Drawing.Point(90, 155);
+            this.label_Tip.Location = new System.Drawing.Point(90, 190);
             this.label_Tip.Name = "label_Tip";
             this.label_Tip.Size = new System.Drawing.Size(39, 16);
             this.label_Tip.TabIndex = 32;
@@ -178,7 +164,7 @@ namespace DevList
             // 
             this.label_Naimenovanie.AutoSize = true;
             this.label_Naimenovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Naimenovanie.Location = new System.Drawing.Point(17, 120);
+            this.label_Naimenovanie.Location = new System.Drawing.Point(17, 155);
             this.label_Naimenovanie.Name = "label_Naimenovanie";
             this.label_Naimenovanie.Size = new System.Drawing.Size(112, 16);
             this.label_Naimenovanie.TabIndex = 31;
@@ -204,12 +190,107 @@ namespace DevList
             this.label_InvNomer.TabIndex = 29;
             this.label_InvNomer.Text = "Инв. №:";
             // 
+            // comboBox_FIO
+            // 
+            this.comboBox_FIO.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox_FIO.FormattingEnabled = true;
+            this.comboBox_FIO.Items.AddRange(new object[] {
+            "Монитор",
+            "Системный блок",
+            "Клавиатура",
+            "Мышь",
+            "Колонки",
+            "Наушники",
+            "Сетевой Фильтр",
+            "Принтер",
+            "Сканер",
+            "МФУ",
+            "ИБП",
+            "Коммутатор",
+            "Маршрутизатор",
+            "Корпус системного блока",
+            "Блок питания",
+            "Материнская плата",
+            "Процессор",
+            "Оперативная память",
+            "Видеокарта",
+            "Сетевая карта",
+            "Витая пара",
+            "Коннектор RJ45",
+            "Обжимные клещи",
+            "Силовой кабель 1.8м",
+            "Кабель VGA",
+            "Кабель DVI",
+            "Кабель HDMI"});
+            this.comboBox_FIO.Location = new System.Drawing.Point(135, 117);
+            this.comboBox_FIO.Name = "comboBox_FIO";
+            this.comboBox_FIO.Size = new System.Drawing.Size(350, 24);
+            this.comboBox_FIO.TabIndex = 43;
+            // 
+            // label_FIO
+            // 
+            this.label_FIO.AutoSize = true;
+            this.label_FIO.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_FIO.Location = new System.Drawing.Point(85, 120);
+            this.label_FIO.Name = "label_FIO";
+            this.label_FIO.Size = new System.Drawing.Size(44, 16);
+            this.label_FIO.TabIndex = 42;
+            this.label_FIO.Text = "ФИО:";
+            // 
+            // textBox_InvNomer
+            // 
+            this.textBox_InvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_InvNomer.Location = new System.Drawing.Point(135, 47);
+            this.textBox_InvNomer.Name = "textBox_InvNomer";
+            this.textBox_InvNomer.Size = new System.Drawing.Size(350, 23);
+            this.textBox_InvNomer.TabIndex = 34;
+            // 
+            // comboBox_Pomeschenie
+            // 
+            this.comboBox_Pomeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox_Pomeschenie.FormattingEnabled = true;
+            this.comboBox_Pomeschenie.Items.AddRange(new object[] {
+            "Монитор",
+            "Системный блок",
+            "Клавиатура",
+            "Мышь",
+            "Колонки",
+            "Наушники",
+            "Сетевой Фильтр",
+            "Принтер",
+            "Сканер",
+            "МФУ",
+            "ИБП",
+            "Коммутатор",
+            "Маршрутизатор",
+            "Корпус системного блока",
+            "Блок питания",
+            "Материнская плата",
+            "Процессор",
+            "Оперативная память",
+            "Видеокарта",
+            "Сетевая карта",
+            "Витая пара",
+            "Коннектор RJ45",
+            "Обжимные клещи",
+            "Силовой кабель 1.8м",
+            "Кабель VGA",
+            "Кабель DVI",
+            "Кабель HDMI"});
+            this.comboBox_Pomeschenie.Location = new System.Drawing.Point(135, 82);
+            this.comboBox_Pomeschenie.Name = "comboBox_Pomeschenie";
+            this.comboBox_Pomeschenie.Size = new System.Drawing.Size(350, 24);
+            this.comboBox_Pomeschenie.TabIndex = 44;
+            // 
             // Poisk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(507, 257);
+            this.ClientSize = new System.Drawing.Size(507, 295);
+            this.Controls.Add(this.comboBox_Pomeschenie);
+            this.Controls.Add(this.comboBox_FIO);
+            this.Controls.Add(this.label_FIO);
             this.Controls.Add(this.textBox_IDNomer);
             this.Controls.Add(this.label_IDNomer);
             this.Controls.Add(this.button_Otmenit);
@@ -217,7 +298,6 @@ namespace DevList
             this.Controls.Add(this.comboBox_Tip);
             this.Controls.Add(this.textBox_Kommentarii);
             this.Controls.Add(this.textBox_Naimenovanie);
-            this.Controls.Add(this.textBox_Pomeschenie);
             this.Controls.Add(this.textBox_InvNomer);
             this.Controls.Add(this.label_Kommentarii);
             this.Controls.Add(this.label_Tip);
@@ -244,12 +324,14 @@ namespace DevList
         private System.Windows.Forms.ComboBox comboBox_Tip;
         private System.Windows.Forms.TextBox textBox_Kommentarii;
         private System.Windows.Forms.TextBox textBox_Naimenovanie;
-        private System.Windows.Forms.TextBox textBox_Pomeschenie;
-        private System.Windows.Forms.TextBox textBox_InvNomer;
         private System.Windows.Forms.Label label_Kommentarii;
         private System.Windows.Forms.Label label_Tip;
         private System.Windows.Forms.Label label_Naimenovanie;
         private System.Windows.Forms.Label label_Pomeschenie;
         private System.Windows.Forms.Label label_InvNomer;
+        private System.Windows.Forms.ComboBox comboBox_FIO;
+        private System.Windows.Forms.Label label_FIO;
+        private System.Windows.Forms.TextBox textBox_InvNomer;
+        private System.Windows.Forms.ComboBox comboBox_Pomeschenie;
     }
 }

@@ -19,13 +19,23 @@ namespace DevList
             InitializeComponent();
 
             textBox_InvNomer.Enabled = false;
-            textBox_Pomeschenie.Enabled = false;
+            comboBox_Pomeschenie.Enabled = false;
             textBox_Naimenovanie.Enabled = false;
             comboBox_Tip.Enabled = false;
             textBox_Kommentarii.Enabled = false;
             button_Pravit.Enabled = false;
             checkBox_Kopirovanie.Enabled = false;
             checkBox_Peremeschenie.Enabled = false;
+
+            if (Glavnoe_Okno.peremeschenie)
+            {
+                checkBox_Peremeschenie.Checked = true;
+            }
+
+            if (Glavnoe_Okno.kopirovanie)
+            {
+                checkBox_Kopirovanie.Checked = true;
+            }
         }
         private void button_Chitat_Click(object sender, EventArgs e)
         {
@@ -34,7 +44,7 @@ namespace DevList
                 index = int.Parse(textBox_IDNomer.Text) - 1;
 
                 textBox_InvNomer.Enabled = true;
-                textBox_Pomeschenie.Enabled = true;
+                comboBox_Pomeschenie.Enabled = true;
                 textBox_Naimenovanie.Enabled = true;
                 comboBox_Tip.Enabled = true;
                 textBox_Kommentarii.Enabled = true;
@@ -48,7 +58,7 @@ namespace DevList
 
                 textBox_IDNomer.Text = stroka[0];
                 textBox_InvNomer.Text = stroka[1];
-                textBox_Pomeschenie.Text = stroka[2];
+                comboBox_Pomeschenie.Text = stroka[2];
                 textBox_Naimenovanie.Text = stroka[3];
                 comboBox_Tip.Text = stroka[4];
                 textBox_Kommentarii.Text = stroka[5];
@@ -64,7 +74,7 @@ namespace DevList
             {
                 textBox_IDNomer.Text,
                 textBox_InvNomer.Text,
-                textBox_Pomeschenie.Text,
+                comboBox_Pomeschenie.Text,
                 textBox_Naimenovanie.Text,
                 comboBox_Tip.Text,
                 textBox_Kommentarii.Text
@@ -81,6 +91,10 @@ namespace DevList
                     Glavnoe_Okno.baza[i][0] = (i + 1).ToString();
                 }
 
+                Glavnoe_Okno.kopirovanie = false;
+
+                checkBox_Kopirovanie.Checked = false;
+
                 Close();
             }
             
@@ -91,7 +105,7 @@ namespace DevList
                 string[] stroki = new string[]
                 {
                     "В Помещение:",
-                    textBox_Pomeschenie.Text,
+                    comboBox_Pomeschenie.Text,
                     "перемещено из помещения:",
                     Glavnoe_Okno.baza[int.Parse(textBox_IDNomer.Text) - 1][2],
                     "МЦ:",
@@ -101,7 +115,11 @@ namespace DevList
                     "\n"
                 };
 
-                File.AppendAllLines("История перемещений\\" + textBox_Pomeschenie.Text + ".txt", stroki);
+                File.AppendAllLines("История перемещений\\" + comboBox_Pomeschenie.Text + ".txt", stroki);
+
+                Glavnoe_Okno.peremeschenie = false;
+
+                checkBox_Peremeschenie.Checked = false;
 
                 Close();
             }
@@ -112,7 +130,7 @@ namespace DevList
         }
         private void button_Otmenit_Click(object sender, EventArgs e)
         {
-            Close();
+           Close();
         }
         private void textBox_InvNomer_KeyUp(object sender, KeyEventArgs e)
         {
@@ -143,6 +161,16 @@ namespace DevList
         {
             if (e.KeyCode == Keys.Enter)
                 button_Pravit_Click(sender, e);
+        }
+        private void Pravit_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Glavnoe_Okno.kopirovanie = false;
+
+            checkBox_Kopirovanie.Checked = false;
+
+            Glavnoe_Okno.peremeschenie = false;
+
+            checkBox_Peremeschenie.Checked = false;
         }
     }
 }
