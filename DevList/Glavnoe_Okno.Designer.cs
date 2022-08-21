@@ -312,7 +312,6 @@ namespace DevList
             this.ShowIcon = false;
             this.Text = "DevList 2.6";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Glavnoe_Okno_FormClosed);
-            this.Load += new System.EventHandler(this.Glavnoe_Okno_Load);
             this.contextMenuStrip_Vsplivauschee_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.PerformLayout();

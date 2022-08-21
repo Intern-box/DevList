@@ -20,19 +20,13 @@ namespace DevList
         public static string put_do_spiska_tipov_oborudovania = "";   // Путь к списку типов оборудования
         public static string put_do_spiska_sotrudnikov = "";          // Путь к списку сотрудников
 
-        public static List<string[]> baza = new List<string[]>();
+        public static List<string[]> baza = new List<string[]>();     // БД в виде списка для удобной работы
 
-        public static uint index = 0;
+        public static uint index = 0;                                 // Индекс элемента в БД. При добавлении +, при удалении -
 
-        public static bool kopirovanie;
+        public static bool kopirovanie;                               // Флаг копирования при операции "Копирование"
 
-        public static bool peremeschenie;
-
-        public static string pomescheniia;
-
-        public static string tip;
-
-        public static string sotrudniki;
+        public static bool peremeschenie;                             // Флаг перемещения при операции "Перемещение"
 
         public Glavnoe_Okno()
         {
@@ -118,18 +112,25 @@ namespace DevList
                 }
 
                 // Сохраняем пути к нужным файлам
-                put_do_BD                        = Chitaem_Puti_Baz(ini_fail, 0);
-                put_do_spiska_pomeschenii        = Chitaem_Puti_Baz(ini_fail, 1);
-                put_do_spiska_tipov_oborudovania = Chitaem_Puti_Baz(ini_fail, 2);
-                put_do_spiska_sotrudnikov        = Chitaem_Puti_Baz(ini_fail, 3);
+                put_do_BD                        = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 0);
+                put_do_spiska_pomeschenii        = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 1);
+                put_do_spiska_tipov_oborudovania = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 2);
+                put_do_spiska_sotrudnikov        = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 3);
 
+                /*
+                 * Открываем базу
+                 */
                 ToolStripMenuItem_Otkrit_Click(Glavnoe_Okno.baza, EventArgs.Empty);
             }
             catch (Exception)
             {
             }
         }
-        private string Chitaem_Puti_Baz(string[] ini_fail, int nomer_stroki_v_faile)
+
+        /*
+         * Обрабатываем строки из *.ini-файла. Строковые методы почему то не работают
+         */
+        private string Chitaem_Puti_K_Failam_S_Dannimi(string[] ini_fail, int nomer_stroki_v_faile)
         {
             string put = "";
 
@@ -157,10 +158,10 @@ namespace DevList
 
             return put;
         }
-        private void Glavnoe_Okno_Load(object sender, EventArgs e)
-        {
-            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
-        }
+
+        /*
+         * Читаем данные из "списка" БД в таблицу главного окна
+         */
         private void Chtenie_Bazi(ListView listview, List<string[]> baza)
         {
             listView_Tablica_Vivoda_Bazi.Items.Clear();
@@ -293,6 +294,10 @@ namespace DevList
         {
             ToolStripMenuItem_Poisk_Click(sender, e);
         }
+
+        /*
+         * Для добавления строк в таблицу главного окна при использовании метода Poisk
+         */
         private ListViewItem Viborka_Strok_Iz_Bazi(string[] stroka)
         {
             ListViewItem lv = new ListViewItem(stroka);
@@ -356,6 +361,10 @@ namespace DevList
 
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
+
+        /*
+         * Перевод из *.CSV в List<>
+         */
         private string[] Perebor_Stroki(string stroka)
         {
             _ = stroka.TrimEnd('\r');
