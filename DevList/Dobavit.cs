@@ -25,6 +25,7 @@ namespace DevList
                 Glavnoe_Okno.index.ToString(),
                 textBox_InvNomer.Text,
                 comboBox_Pomeschenie.Text,
+                comboBox_FIO.Text,
                 textBox_Naimenovanie.Text,
                 comboBox_Tip.Text,
                 textBox_Kommentarii.Text

@@ -59,7 +59,6 @@ namespace DevList
             this.ToolStripMenuItem_Peremestit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Poisk = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Perechitat = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.contextMenuStrip_Vsplivauschee_Menu.SuspendLayout();
             this.menuStrip_Glavnoe_Menu.SuspendLayout();
             this.SuspendLayout();
@@ -299,14 +298,6 @@ namespace DevList
             this.ToolStripMenuItem_Perechitat.Text = "Перечитать БД";
             this.ToolStripMenuItem_Perechitat.Click += new System.EventHandler(this.ToolStripMenuItem_Perechitat_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(523, 237);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(306, 230);
-            this.textBox1.TabIndex = 3;
-            // 
             // Glavnoe_Okno
             // 
             this.AllowDrop = true;
@@ -315,7 +306,6 @@ namespace DevList
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1044, 561);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listView_Tablica_Vivoda_Bazi);
             this.Controls.Add(this.menuStrip_Glavnoe_Menu);
             this.Name = "Glavnoe_Okno";
@@ -361,7 +351,6 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Peremestit;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sozdat;
         private System.Windows.Forms.ColumnHeader FIO;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

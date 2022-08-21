@@ -109,7 +109,7 @@ namespace DevList
             this.textBox_Naimenovanie.Location = new System.Drawing.Point(135, 117);
             this.textBox_Naimenovanie.Name = "textBox_Naimenovanie";
             this.textBox_Naimenovanie.Size = new System.Drawing.Size(350, 23);
-            this.textBox_Naimenovanie.TabIndex = 9;
+            this.textBox_Naimenovanie.TabIndex = 10;
             // 
             // textBox_Kommentarii
             // 
@@ -117,7 +117,7 @@ namespace DevList
             this.textBox_Kommentarii.Location = new System.Drawing.Point(135, 187);
             this.textBox_Kommentarii.Name = "textBox_Kommentarii";
             this.textBox_Kommentarii.Size = new System.Drawing.Size(350, 23);
-            this.textBox_Kommentarii.TabIndex = 11;
+            this.textBox_Kommentarii.TabIndex = 12;
             // 
             // comboBox_Tip
             // 
@@ -154,7 +154,7 @@ namespace DevList
             this.comboBox_Tip.Location = new System.Drawing.Point(135, 152);
             this.comboBox_Tip.Name = "comboBox_Tip";
             this.comboBox_Tip.Size = new System.Drawing.Size(350, 24);
-            this.comboBox_Tip.TabIndex = 10;
+            this.comboBox_Tip.TabIndex = 11;
             // 
             // button_Dobavit
             // 
@@ -162,7 +162,7 @@ namespace DevList
             this.button_Dobavit.Location = new System.Drawing.Point(301, 224);
             this.button_Dobavit.Name = "button_Dobavit";
             this.button_Dobavit.Size = new System.Drawing.Size(89, 29);
-            this.button_Dobavit.TabIndex = 12;
+            this.button_Dobavit.TabIndex = 13;
             this.button_Dobavit.Text = "Добавить";
             this.button_Dobavit.UseVisualStyleBackColor = true;
             this.button_Dobavit.Click += new System.EventHandler(this.button_Dobavit_Click);
@@ -173,7 +173,7 @@ namespace DevList
             this.button_Otmenit.Location = new System.Drawing.Point(396, 224);
             this.button_Otmenit.Name = "button_Otmenit";
             this.button_Otmenit.Size = new System.Drawing.Size(89, 29);
-            this.button_Otmenit.TabIndex = 13;
+            this.button_Otmenit.TabIndex = 14;
             this.button_Otmenit.Text = "Отменить";
             this.button_Otmenit.UseVisualStyleBackColor = true;
             this.button_Otmenit.Click += new System.EventHandler(this.button_Otmenit_Click);
@@ -213,7 +213,7 @@ namespace DevList
             this.comboBox_Pomeschenie.Location = new System.Drawing.Point(135, 47);
             this.comboBox_Pomeschenie.Name = "comboBox_Pomeschenie";
             this.comboBox_Pomeschenie.Size = new System.Drawing.Size(350, 24);
-            this.comboBox_Pomeschenie.TabIndex = 14;
+            this.comboBox_Pomeschenie.TabIndex = 8;
             // 
             // label_FIO
             // 
@@ -260,7 +260,7 @@ namespace DevList
             this.comboBox_FIO.Location = new System.Drawing.Point(135, 82);
             this.comboBox_FIO.Name = "comboBox_FIO";
             this.comboBox_FIO.Size = new System.Drawing.Size(350, 24);
-            this.comboBox_FIO.TabIndex = 16;
+            this.comboBox_FIO.TabIndex = 9;
             // 
             // Dobavit
             // 
