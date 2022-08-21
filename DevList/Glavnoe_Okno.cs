@@ -28,6 +28,8 @@ namespace DevList
 
         public static bool peremeschenie;                             // Флаг перемещения при операции "Перемещение"
 
+        public static int nomer_najatoi_stroki;                       // При клике мышкой запоминает номер строки в таблице на главном окне
+
         public Glavnoe_Okno()
         {
             InitializeComponent();
@@ -429,6 +431,23 @@ namespace DevList
                 {
                     ToolStripMenuItem_Sohranit_Click(sender, e);
                 }
+            }
+        }
+        private void listView_Tablica_Vivoda_Bazi_MouseDown(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                ListViewHitTestInfo stroka_v_tablice = listView_Tablica_Vivoda_Bazi.HitTest(e.X, e.Y);
+
+                if (stroka_v_tablice != null)
+                {
+                    nomer_najatoi_stroki = stroka_v_tablice.Item.Index;
+
+                    nomer_najatoi_stroki++;
+                }
+            }
+            catch (Exception)
+            {
             }
         }
     }

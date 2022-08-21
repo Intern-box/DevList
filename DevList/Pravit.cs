@@ -30,14 +30,7 @@ namespace DevList
             string[] tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
             comboBox_Tip.Items.AddRange(tipi);
 
-            textBox_InvNomer.Enabled = false;
-            comboBox_Pomeschenie.Enabled = false;
-            textBox_Naimenovanie.Enabled = false;
-            comboBox_Tip.Enabled = false;
-            textBox_Kommentarii.Enabled = false;
-            button_Pravit.Enabled = false;
-            checkBox_Kopirovanie.Enabled = false;
-            checkBox_Peremeschenie.Enabled = false;
+            textBox_IDNomer.Text = Glavnoe_Okno.nomer_najatoi_stroki.ToString();
 
             if (Glavnoe_Okno.peremeschenie)
             {
@@ -48,23 +41,10 @@ namespace DevList
             {
                 checkBox_Kopirovanie.Checked = true;
             }
-        }
-        private void button_Chitat_Click(object sender, EventArgs e)
-        {
+
             try
             {
                 index = int.Parse(textBox_IDNomer.Text) - 1;
-
-                textBox_InvNomer.Enabled = true;
-                comboBox_Pomeschenie.Enabled = true;
-                textBox_Naimenovanie.Enabled = true;
-                comboBox_Tip.Enabled = true;
-                textBox_Kommentarii.Enabled = true;
-                button_Pravit.Enabled = true;
-                checkBox_Kopirovanie.Enabled = true;
-                checkBox_Peremeschenie.Enabled = true;
-                textBox_IDNomer.Enabled = false;
-                button_Chitat.Enabled = false;
 
                 string[] stroka = Glavnoe_Okno.baza[index];
 
@@ -88,6 +68,7 @@ namespace DevList
                 textBox_IDNomer.Text,
                 textBox_InvNomer.Text,
                 comboBox_Pomeschenie.Text,
+                comboBox_FIO.Text,
                 textBox_Naimenovanie.Text,
                 comboBox_Tip.Text,
                 textBox_Kommentarii.Text
@@ -184,6 +165,11 @@ namespace DevList
             Glavnoe_Okno.peremeschenie = false;
 
             checkBox_Peremeschenie.Checked = false;
+        }
+        private void comboBox_FIO_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                button_Pravit_Click(sender, e);
         }
     }
 }

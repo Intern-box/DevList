@@ -42,7 +42,6 @@ namespace DevList
             this.label_InvNomer = new System.Windows.Forms.Label();
             this.label_IDNomer = new System.Windows.Forms.Label();
             this.textBox_IDNomer = new System.Windows.Forms.TextBox();
-            this.button_Chitat = new System.Windows.Forms.Button();
             this.checkBox_Peremeschenie = new System.Windows.Forms.CheckBox();
             this.checkBox_Kopirovanie = new System.Windows.Forms.CheckBox();
             this.comboBox_Pomeschenie = new System.Windows.Forms.ComboBox();
@@ -178,17 +177,6 @@ namespace DevList
             this.textBox_IDNomer.Size = new System.Drawing.Size(350, 23);
             this.textBox_IDNomer.TabIndex = 27;
             // 
-            // button_Chitat
-            // 
-            this.button_Chitat.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Chitat.Location = new System.Drawing.Point(396, 54);
-            this.button_Chitat.Name = "button_Chitat";
-            this.button_Chitat.Size = new System.Drawing.Size(89, 29);
-            this.button_Chitat.TabIndex = 30;
-            this.button_Chitat.Text = "Читать";
-            this.button_Chitat.UseVisualStyleBackColor = true;
-            this.button_Chitat.Click += new System.EventHandler(this.button_Chitat_Click);
-            // 
             // checkBox_Peremeschenie
             // 
             this.checkBox_Peremeschenie.AutoSize = true;
@@ -228,6 +216,7 @@ namespace DevList
             this.comboBox_FIO.Name = "comboBox_FIO";
             this.comboBox_FIO.Size = new System.Drawing.Size(350, 24);
             this.comboBox_FIO.TabIndex = 33;
+            this.comboBox_FIO.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBox_FIO_KeyUp);
             // 
             // label_FIO
             // 
@@ -250,7 +239,6 @@ namespace DevList
             this.Controls.Add(this.comboBox_Pomeschenie);
             this.Controls.Add(this.checkBox_Kopirovanie);
             this.Controls.Add(this.checkBox_Peremeschenie);
-            this.Controls.Add(this.button_Chitat);
             this.Controls.Add(this.textBox_IDNomer);
             this.Controls.Add(this.label_IDNomer);
             this.Controls.Add(this.button_Otmenit);
@@ -292,7 +280,6 @@ namespace DevList
         private System.Windows.Forms.Label label_InvNomer;
         private System.Windows.Forms.Label label_IDNomer;
         private System.Windows.Forms.TextBox textBox_IDNomer;
-        private System.Windows.Forms.Button button_Chitat;
         private System.Windows.Forms.CheckBox checkBox_Peremeschenie;
         private System.Windows.Forms.CheckBox checkBox_Kopirovanie;
         private System.Windows.Forms.ComboBox comboBox_Pomeschenie;
