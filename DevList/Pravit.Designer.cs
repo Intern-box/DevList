@@ -56,7 +56,7 @@ namespace DevList
             this.button_Otmenit.Location = new System.Drawing.Point(396, 293);
             this.button_Otmenit.Name = "button_Otmenit";
             this.button_Otmenit.Size = new System.Drawing.Size(89, 29);
-            this.button_Otmenit.TabIndex = 25;
+            this.button_Otmenit.TabIndex = 38;
             this.button_Otmenit.Text = "Отменить";
             this.button_Otmenit.UseVisualStyleBackColor = true;
             this.button_Otmenit.Click += new System.EventHandler(this.button_Otmenit_Click);
@@ -67,7 +67,7 @@ namespace DevList
             this.button_Pravit.Location = new System.Drawing.Point(301, 293);
             this.button_Pravit.Name = "button_Pravit";
             this.button_Pravit.Size = new System.Drawing.Size(89, 29);
-            this.button_Pravit.TabIndex = 24;
+            this.button_Pravit.TabIndex = 37;
             this.button_Pravit.Text = "Выполнить";
             this.button_Pravit.UseVisualStyleBackColor = true;
             this.button_Pravit.Click += new System.EventHandler(this.button_Pravit_Click);
@@ -77,38 +77,10 @@ namespace DevList
             // 
             this.comboBox_Tip.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_Tip.FormattingEnabled = true;
-            this.comboBox_Tip.Items.AddRange(new object[] {
-            "Монитор",
-            "Системный блок",
-            "Клавиатура",
-            "Мышь",
-            "Колонки",
-            "Наушники",
-            "Сетевой Фильтр",
-            "Принтер",
-            "Сканер",
-            "МФУ",
-            "ИБП",
-            "Коммутатор",
-            "Маршрутизатор",
-            "Корпус системного блока",
-            "Блок питания",
-            "Материнская плата",
-            "Процессор",
-            "Оперативная память",
-            "Видеокарта",
-            "Сетевая карта",
-            "Витая пара",
-            "Коннектор RJ45",
-            "Обжимные клещи",
-            "Силовой кабель 1.8м",
-            "Кабель VGA",
-            "Кабель DVI",
-            "Кабель HDMI"});
             this.comboBox_Tip.Location = new System.Drawing.Point(135, 229);
             this.comboBox_Tip.Name = "comboBox_Tip";
             this.comboBox_Tip.Size = new System.Drawing.Size(350, 24);
-            this.comboBox_Tip.TabIndex = 22;
+            this.comboBox_Tip.TabIndex = 35;
             this.comboBox_Tip.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBox_Tip_KeyUp);
             // 
             // textBox_Kommentarii
@@ -117,7 +89,7 @@ namespace DevList
             this.textBox_Kommentarii.Location = new System.Drawing.Point(135, 264);
             this.textBox_Kommentarii.Name = "textBox_Kommentarii";
             this.textBox_Kommentarii.Size = new System.Drawing.Size(350, 23);
-            this.textBox_Kommentarii.TabIndex = 23;
+            this.textBox_Kommentarii.TabIndex = 36;
             this.textBox_Kommentarii.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Kommentarii_KeyUp);
             // 
             // textBox_Naimenovanie
@@ -126,7 +98,7 @@ namespace DevList
             this.textBox_Naimenovanie.Location = new System.Drawing.Point(135, 194);
             this.textBox_Naimenovanie.Name = "textBox_Naimenovanie";
             this.textBox_Naimenovanie.Size = new System.Drawing.Size(350, 23);
-            this.textBox_Naimenovanie.TabIndex = 21;
+            this.textBox_Naimenovanie.TabIndex = 34;
             this.textBox_Naimenovanie.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Naimenovanie_KeyUp);
             // 
             // textBox_InvNomer
@@ -135,7 +107,7 @@ namespace DevList
             this.textBox_InvNomer.Location = new System.Drawing.Point(135, 89);
             this.textBox_InvNomer.Name = "textBox_InvNomer";
             this.textBox_InvNomer.Size = new System.Drawing.Size(350, 23);
-            this.textBox_InvNomer.TabIndex = 19;
+            this.textBox_InvNomer.TabIndex = 31;
             this.textBox_InvNomer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_InvNomer_KeyUp);
             // 
             // label_Kommentarii
@@ -212,7 +184,7 @@ namespace DevList
             this.button_Chitat.Location = new System.Drawing.Point(396, 54);
             this.button_Chitat.Name = "button_Chitat";
             this.button_Chitat.Size = new System.Drawing.Size(89, 29);
-            this.button_Chitat.TabIndex = 28;
+            this.button_Chitat.TabIndex = 30;
             this.button_Chitat.Text = "Читать";
             this.button_Chitat.UseVisualStyleBackColor = true;
             this.button_Chitat.Click += new System.EventHandler(this.button_Chitat_Click);
@@ -235,7 +207,7 @@ namespace DevList
             this.checkBox_Kopirovanie.Location = new System.Drawing.Point(135, 59);
             this.checkBox_Kopirovanie.Name = "checkBox_Kopirovanie";
             this.checkBox_Kopirovanie.Size = new System.Drawing.Size(115, 20);
-            this.checkBox_Kopirovanie.TabIndex = 30;
+            this.checkBox_Kopirovanie.TabIndex = 28;
             this.checkBox_Kopirovanie.Text = "Копирование";
             this.checkBox_Kopirovanie.UseVisualStyleBackColor = true;
             // 
@@ -243,75 +215,19 @@ namespace DevList
             // 
             this.comboBox_Pomeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_Pomeschenie.FormattingEnabled = true;
-            this.comboBox_Pomeschenie.Items.AddRange(new object[] {
-            "Монитор",
-            "Системный блок",
-            "Клавиатура",
-            "Мышь",
-            "Колонки",
-            "Наушники",
-            "Сетевой Фильтр",
-            "Принтер",
-            "Сканер",
-            "МФУ",
-            "ИБП",
-            "Коммутатор",
-            "Маршрутизатор",
-            "Корпус системного блока",
-            "Блок питания",
-            "Материнская плата",
-            "Процессор",
-            "Оперативная память",
-            "Видеокарта",
-            "Сетевая карта",
-            "Витая пара",
-            "Коннектор RJ45",
-            "Обжимные клещи",
-            "Силовой кабель 1.8м",
-            "Кабель VGA",
-            "Кабель DVI",
-            "Кабель HDMI"});
             this.comboBox_Pomeschenie.Location = new System.Drawing.Point(135, 124);
             this.comboBox_Pomeschenie.Name = "comboBox_Pomeschenie";
             this.comboBox_Pomeschenie.Size = new System.Drawing.Size(350, 24);
-            this.comboBox_Pomeschenie.TabIndex = 45;
+            this.comboBox_Pomeschenie.TabIndex = 32;
             // 
             // comboBox_FIO
             // 
             this.comboBox_FIO.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_FIO.FormattingEnabled = true;
-            this.comboBox_FIO.Items.AddRange(new object[] {
-            "Монитор",
-            "Системный блок",
-            "Клавиатура",
-            "Мышь",
-            "Колонки",
-            "Наушники",
-            "Сетевой Фильтр",
-            "Принтер",
-            "Сканер",
-            "МФУ",
-            "ИБП",
-            "Коммутатор",
-            "Маршрутизатор",
-            "Корпус системного блока",
-            "Блок питания",
-            "Материнская плата",
-            "Процессор",
-            "Оперативная память",
-            "Видеокарта",
-            "Сетевая карта",
-            "Витая пара",
-            "Коннектор RJ45",
-            "Обжимные клещи",
-            "Силовой кабель 1.8м",
-            "Кабель VGA",
-            "Кабель DVI",
-            "Кабель HDMI"});
             this.comboBox_FIO.Location = new System.Drawing.Point(135, 159);
             this.comboBox_FIO.Name = "comboBox_FIO";
             this.comboBox_FIO.Size = new System.Drawing.Size(350, 24);
-            this.comboBox_FIO.TabIndex = 47;
+            this.comboBox_FIO.TabIndex = 33;
             // 
             // label_FIO
             // 

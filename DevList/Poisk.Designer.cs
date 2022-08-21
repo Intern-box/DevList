@@ -71,7 +71,7 @@ namespace DevList
             this.button_Otmenit.Location = new System.Drawing.Point(396, 258);
             this.button_Otmenit.Name = "button_Otmenit";
             this.button_Otmenit.Size = new System.Drawing.Size(89, 29);
-            this.button_Otmenit.TabIndex = 40;
+            this.button_Otmenit.TabIndex = 41;
             this.button_Otmenit.Text = "Отменить";
             this.button_Otmenit.UseVisualStyleBackColor = true;
             this.button_Otmenit.Click += new System.EventHandler(this.button_Otmenit_Click);
@@ -82,7 +82,7 @@ namespace DevList
             this.button_Poisk.Location = new System.Drawing.Point(301, 258);
             this.button_Poisk.Name = "button_Poisk";
             this.button_Poisk.Size = new System.Drawing.Size(89, 29);
-            this.button_Poisk.TabIndex = 39;
+            this.button_Poisk.TabIndex = 40;
             this.button_Poisk.Text = "Поиск";
             this.button_Poisk.UseVisualStyleBackColor = true;
             this.button_Poisk.Click += new System.EventHandler(this.button_Poisk_Click);
@@ -91,38 +91,10 @@ namespace DevList
             // 
             this.comboBox_Tip.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_Tip.FormattingEnabled = true;
-            this.comboBox_Tip.Items.AddRange(new object[] {
-            "Монитор",
-            "Системный блок",
-            "Клавиатура",
-            "Мышь",
-            "Колонки",
-            "Наушники",
-            "Сетевой Фильтр",
-            "Принтер",
-            "Сканер",
-            "МФУ",
-            "ИБП",
-            "Коммутатор",
-            "Маршрутизатор",
-            "Корпус системного блока",
-            "Блок питания",
-            "Материнская плата",
-            "Процессор",
-            "Оперативная память",
-            "Видеокарта",
-            "Сетевая карта",
-            "Витая пара",
-            "Коннектор RJ45",
-            "Обжимные клещи",
-            "Силовой кабель 1.8м",
-            "Кабель VGA",
-            "Кабель DVI",
-            "Кабель HDMI"});
             this.comboBox_Tip.Location = new System.Drawing.Point(135, 187);
             this.comboBox_Tip.Name = "comboBox_Tip";
             this.comboBox_Tip.Size = new System.Drawing.Size(350, 24);
-            this.comboBox_Tip.TabIndex = 37;
+            this.comboBox_Tip.TabIndex = 38;
             // 
             // textBox_Kommentarii
             // 
@@ -130,7 +102,7 @@ namespace DevList
             this.textBox_Kommentarii.Location = new System.Drawing.Point(135, 222);
             this.textBox_Kommentarii.Name = "textBox_Kommentarii";
             this.textBox_Kommentarii.Size = new System.Drawing.Size(350, 23);
-            this.textBox_Kommentarii.TabIndex = 38;
+            this.textBox_Kommentarii.TabIndex = 39;
             // 
             // textBox_Naimenovanie
             // 
@@ -138,7 +110,7 @@ namespace DevList
             this.textBox_Naimenovanie.Location = new System.Drawing.Point(135, 152);
             this.textBox_Naimenovanie.Name = "textBox_Naimenovanie";
             this.textBox_Naimenovanie.Size = new System.Drawing.Size(350, 23);
-            this.textBox_Naimenovanie.TabIndex = 36;
+            this.textBox_Naimenovanie.TabIndex = 37;
             // 
             // label_Kommentarii
             // 
@@ -194,38 +166,10 @@ namespace DevList
             // 
             this.comboBox_FIO.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_FIO.FormattingEnabled = true;
-            this.comboBox_FIO.Items.AddRange(new object[] {
-            "Монитор",
-            "Системный блок",
-            "Клавиатура",
-            "Мышь",
-            "Колонки",
-            "Наушники",
-            "Сетевой Фильтр",
-            "Принтер",
-            "Сканер",
-            "МФУ",
-            "ИБП",
-            "Коммутатор",
-            "Маршрутизатор",
-            "Корпус системного блока",
-            "Блок питания",
-            "Материнская плата",
-            "Процессор",
-            "Оперативная память",
-            "Видеокарта",
-            "Сетевая карта",
-            "Витая пара",
-            "Коннектор RJ45",
-            "Обжимные клещи",
-            "Силовой кабель 1.8м",
-            "Кабель VGA",
-            "Кабель DVI",
-            "Кабель HDMI"});
             this.comboBox_FIO.Location = new System.Drawing.Point(135, 117);
             this.comboBox_FIO.Name = "comboBox_FIO";
             this.comboBox_FIO.Size = new System.Drawing.Size(350, 24);
-            this.comboBox_FIO.TabIndex = 43;
+            this.comboBox_FIO.TabIndex = 36;
             // 
             // label_FIO
             // 
@@ -249,38 +193,10 @@ namespace DevList
             // 
             this.comboBox_Pomeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_Pomeschenie.FormattingEnabled = true;
-            this.comboBox_Pomeschenie.Items.AddRange(new object[] {
-            "Монитор",
-            "Системный блок",
-            "Клавиатура",
-            "Мышь",
-            "Колонки",
-            "Наушники",
-            "Сетевой Фильтр",
-            "Принтер",
-            "Сканер",
-            "МФУ",
-            "ИБП",
-            "Коммутатор",
-            "Маршрутизатор",
-            "Корпус системного блока",
-            "Блок питания",
-            "Материнская плата",
-            "Процессор",
-            "Оперативная память",
-            "Видеокарта",
-            "Сетевая карта",
-            "Витая пара",
-            "Коннектор RJ45",
-            "Обжимные клещи",
-            "Силовой кабель 1.8м",
-            "Кабель VGA",
-            "Кабель DVI",
-            "Кабель HDMI"});
             this.comboBox_Pomeschenie.Location = new System.Drawing.Point(135, 82);
             this.comboBox_Pomeschenie.Name = "comboBox_Pomeschenie";
             this.comboBox_Pomeschenie.Size = new System.Drawing.Size(350, 24);
-            this.comboBox_Pomeschenie.TabIndex = 44;
+            this.comboBox_Pomeschenie.TabIndex = 35;
             // 
             // Poisk
             // 

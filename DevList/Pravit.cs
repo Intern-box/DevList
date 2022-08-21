@@ -18,6 +18,18 @@ namespace DevList
         {
             InitializeComponent();
 
+            /*
+             * Заполняем поля combobox
+             */
+            string[] pomescheniia = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_pomeschenii);
+            comboBox_Pomeschenie.Items.AddRange(pomescheniia);
+
+            string[] sotrudniki = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_sotrudnikov);
+            comboBox_FIO.Items.AddRange(sotrudniki);
+
+            string[] tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
+            comboBox_Tip.Items.AddRange(tipi);
+
             textBox_InvNomer.Enabled = false;
             comboBox_Pomeschenie.Enabled = false;
             textBox_Naimenovanie.Enabled = false;
@@ -59,9 +71,10 @@ namespace DevList
                 textBox_IDNomer.Text = stroka[0];
                 textBox_InvNomer.Text = stroka[1];
                 comboBox_Pomeschenie.Text = stroka[2];
-                textBox_Naimenovanie.Text = stroka[3];
-                comboBox_Tip.Text = stroka[4];
-                textBox_Kommentarii.Text = stroka[5];
+                comboBox_FIO.Text = stroka[3];
+                textBox_Naimenovanie.Text = stroka[4];
+                comboBox_Tip.Text = stroka[5];
+                textBox_Kommentarii.Text = stroka[6];
             }
             catch (Exception)
             {

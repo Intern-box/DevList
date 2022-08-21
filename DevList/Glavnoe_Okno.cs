@@ -365,7 +365,7 @@ namespace DevList
         /*
          * Перевод из *.CSV в List<>
          */
-        private string[] Perebor_Stroki(string stroka)
+        public static string[] Perebor_Stroki(string stroka)
         {
             _ = stroka.TrimEnd('\r');
             _ = stroka.TrimEnd('\n');
