@@ -29,6 +29,8 @@ namespace DevList
             string[] tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
             comboBox_Tip.Items.AddRange(tipi);
 
+            textBox_IDNomer.Enabled = false;
+
             if (Glavnoe_Okno.nomer_najatoi_stroki != 0)
             {
                 textBox_IDNomer.Text = Glavnoe_Okno.nomer_najatoi_stroki.ToString();
