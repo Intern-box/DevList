@@ -425,7 +425,7 @@ namespace DevList
 
             if (resultat_vibora == DialogResult.Yes)
             {
-                if (baza.Count == 0)
+                if (put_do_BD == "")
                 {
                     ToolStripMenuItem_Sohranit_Kak_Click(sender, e);
                 }
