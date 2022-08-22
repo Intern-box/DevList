@@ -22,7 +22,7 @@ namespace DevList
         
         public static List<string[]> baza = new List<string[]>();     // БД в виде списка для удобной работы
 
-        public static uint index = 0;                                 // Индекс элемента в БД. При добавлении +, при удалении -
+        public static int index = 0;                                 // Индекс элемента в БД. При добавлении +, при удалении -
 
         public static bool kopirovanie;                               // Флаг копирования при операции "Копирование"
 

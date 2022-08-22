@@ -29,6 +29,25 @@ namespace DevList
 
             string[] tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
             comboBox_Tip.Items.AddRange(tipi);
+
+            try
+            {
+                Glavnoe_Okno.index = int.Parse(textBox_IDNomer.Text) - 1;
+
+                string[] stroka = Glavnoe_Okno.baza[Glavnoe_Okno.index];
+
+                textBox_IDNomer.Text = stroka[0];
+                textBox_InvNomer.Text = stroka[1];
+                comboBox_Pomeschenie.Text = stroka[2];
+                comboBox_FIO.Text = stroka[3];
+                textBox_Naimenovanie.Text = stroka[4];
+                comboBox_Tip.Text = stroka[5];
+                textBox_Kommentarii.Text = stroka[6];
+            }
+            catch (Exception)
+            {
+
+            }
         }
         private void button_Poisk_Click(object sender, EventArgs e)
         {

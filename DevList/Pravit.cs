@@ -13,7 +13,6 @@ namespace DevList
 {
     public partial class Pravit : Form
     {
-        public int index = 0;
         public Pravit()
         {
             InitializeComponent();
@@ -30,7 +29,14 @@ namespace DevList
             string[] tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
             comboBox_Tip.Items.AddRange(tipi);
 
-            textBox_IDNomer.Text = Glavnoe_Okno.nomer_najatoi_stroki.ToString();
+            if (Glavnoe_Okno.nomer_najatoi_stroki != 0)
+            {
+                textBox_IDNomer.Text = Glavnoe_Okno.nomer_najatoi_stroki.ToString();
+            }
+            else
+            {
+                textBox_IDNomer.Text = "пусто";
+            }
 
             if (Glavnoe_Okno.peremeschenie)
             {
@@ -44,9 +50,9 @@ namespace DevList
 
             try
             {
-                index = int.Parse(textBox_IDNomer.Text) - 1;
+                Glavnoe_Okno.index = int.Parse(textBox_IDNomer.Text) - 1;
 
-                string[] stroka = Glavnoe_Okno.baza[index];
+                string[] stroka = Glavnoe_Okno.baza[Glavnoe_Okno.index];
 
                 textBox_IDNomer.Text = stroka[0];
                 textBox_InvNomer.Text = stroka[1];
@@ -118,7 +124,7 @@ namespace DevList
                 Close();
             }
 
-            Glavnoe_Okno.baza[index] = stroka;
+            Glavnoe_Okno.baza[Glavnoe_Okno.index] = stroka;
 
             Close();
         }
