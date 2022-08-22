@@ -17,9 +17,9 @@ namespace DevList
 
         public static string put_do_BD = "";                          // Путь к файлу с базой
         public static string put_do_spiska_pomeschenii = "";          // Путь к списку помещений
-        public static string put_do_spiska_tipov_oborudovania = "";   // Путь к списку типов оборудования
         public static string put_do_spiska_sotrudnikov = "";          // Путь к списку сотрудников
-
+        public static string put_do_spiska_tipov_oborudovania = "";   // Путь к списку типов оборудования
+        
         public static List<string[]> baza = new List<string[]>();     // БД в виде списка для удобной работы
 
         public static uint index = 0;                                 // Индекс элемента в БД. При добавлении +, при удалении -
@@ -104,6 +104,8 @@ namespace DevList
                         File.AppendAllText("БД\\Помещения.txt", "// Заполните элементами в виде списка. Новый элемент с новой строки!");
                         File.AppendAllText("БД\\Тип.txt", "// Заполните элементами в виде списка. Новый элемент с новой строки!");
                         File.AppendAllText("БД\\Сотрудники.txt", "// Заполните элементами в виде списка. Новый элемент с новой строки!");
+
+                        ini_fail = File.ReadAllLines("DevList.ini");
                     }
                     else
                     {
