@@ -43,6 +43,12 @@ namespace DevList
             this.comboBox_Pomeschenie = new System.Windows.Forms.ComboBox();
             this.label_FIO = new System.Windows.Forms.Label();
             this.comboBox_FIO = new System.Windows.Forms.ComboBox();
+            this.button_tip_minus = new System.Windows.Forms.Button();
+            this.button_tip_plus = new System.Windows.Forms.Button();
+            this.button_fio_minus = new System.Windows.Forms.Button();
+            this.button_fio_plus = new System.Windows.Forms.Button();
+            this.button_pomeschenie_minus = new System.Windows.Forms.Button();
+            this.button_pomeschenie_plus = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_InvNomer
@@ -178,12 +184,78 @@ namespace DevList
             this.comboBox_FIO.Size = new System.Drawing.Size(350, 24);
             this.comboBox_FIO.TabIndex = 9;
             // 
+            // button_tip_minus
+            // 
+            this.button_tip_minus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_tip_minus.Location = new System.Drawing.Point(514, 151);
+            this.button_tip_minus.Name = "button_tip_minus";
+            this.button_tip_minus.Size = new System.Drawing.Size(21, 26);
+            this.button_tip_minus.TabIndex = 58;
+            this.button_tip_minus.Text = "-";
+            this.button_tip_minus.UseVisualStyleBackColor = true;
+            // 
+            // button_tip_plus
+            // 
+            this.button_tip_plus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_tip_plus.Location = new System.Drawing.Point(489, 151);
+            this.button_tip_plus.Name = "button_tip_plus";
+            this.button_tip_plus.Size = new System.Drawing.Size(21, 26);
+            this.button_tip_plus.TabIndex = 57;
+            this.button_tip_plus.Text = "+";
+            this.button_tip_plus.UseVisualStyleBackColor = true;
+            // 
+            // button_fio_minus
+            // 
+            this.button_fio_minus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_fio_minus.Location = new System.Drawing.Point(514, 81);
+            this.button_fio_minus.Name = "button_fio_minus";
+            this.button_fio_minus.Size = new System.Drawing.Size(21, 26);
+            this.button_fio_minus.TabIndex = 56;
+            this.button_fio_minus.Text = "-";
+            this.button_fio_minus.UseVisualStyleBackColor = true;
+            // 
+            // button_fio_plus
+            // 
+            this.button_fio_plus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_fio_plus.Location = new System.Drawing.Point(489, 81);
+            this.button_fio_plus.Name = "button_fio_plus";
+            this.button_fio_plus.Size = new System.Drawing.Size(21, 26);
+            this.button_fio_plus.TabIndex = 55;
+            this.button_fio_plus.Text = "+";
+            this.button_fio_plus.UseVisualStyleBackColor = true;
+            // 
+            // button_pomeschenie_minus
+            // 
+            this.button_pomeschenie_minus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_pomeschenie_minus.Location = new System.Drawing.Point(514, 46);
+            this.button_pomeschenie_minus.Name = "button_pomeschenie_minus";
+            this.button_pomeschenie_minus.Size = new System.Drawing.Size(21, 26);
+            this.button_pomeschenie_minus.TabIndex = 54;
+            this.button_pomeschenie_minus.Text = "-";
+            this.button_pomeschenie_minus.UseVisualStyleBackColor = true;
+            // 
+            // button_pomeschenie_plus
+            // 
+            this.button_pomeschenie_plus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_pomeschenie_plus.Location = new System.Drawing.Point(489, 46);
+            this.button_pomeschenie_plus.Name = "button_pomeschenie_plus";
+            this.button_pomeschenie_plus.Size = new System.Drawing.Size(21, 26);
+            this.button_pomeschenie_plus.TabIndex = 53;
+            this.button_pomeschenie_plus.Text = "+";
+            this.button_pomeschenie_plus.UseVisualStyleBackColor = true;
+            // 
             // Dobavit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(507, 262);
+            this.ClientSize = new System.Drawing.Size(557, 262);
+            this.Controls.Add(this.button_tip_minus);
+            this.Controls.Add(this.button_tip_plus);
+            this.Controls.Add(this.button_fio_minus);
+            this.Controls.Add(this.button_fio_plus);
+            this.Controls.Add(this.button_pomeschenie_minus);
+            this.Controls.Add(this.button_pomeschenie_plus);
             this.Controls.Add(this.comboBox_FIO);
             this.Controls.Add(this.label_FIO);
             this.Controls.Add(this.comboBox_Pomeschenie);
@@ -225,5 +297,11 @@ namespace DevList
         private System.Windows.Forms.ComboBox comboBox_Pomeschenie;
         private System.Windows.Forms.Label label_FIO;
         private System.Windows.Forms.ComboBox comboBox_FIO;
+        private System.Windows.Forms.Button button_tip_minus;
+        private System.Windows.Forms.Button button_tip_plus;
+        private System.Windows.Forms.Button button_fio_minus;
+        private System.Windows.Forms.Button button_fio_plus;
+        private System.Windows.Forms.Button button_pomeschenie_minus;
+        private System.Windows.Forms.Button button_pomeschenie_plus;
     }
 }

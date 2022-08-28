@@ -101,9 +101,9 @@ namespace DevList
                         }
 
                         File.WriteAllLines("БД\\БД.csv", spisok_stolbcov.Select(x => string.Join(",", x)));
-                        File.AppendAllText("БД\\Помещения.txt", "// Заполните элементами в виде списка. Новый элемент с новой строки!");
-                        File.AppendAllText("БД\\Тип.txt", "// Заполните элементами в виде списка. Новый элемент с новой строки!");
-                        File.AppendAllText("БД\\Сотрудники.txt", "// Заполните элементами в виде списка. Новый элемент с новой строки!");
+                        File.AppendAllText("БД\\Помещения.txt", "");
+                        File.AppendAllText("БД\\Тип.txt", "");
+                        File.AppendAllText("БД\\Сотрудники.txt", "");
 
                         ini_fail = File.ReadAllLines("DevList.ini");
                     }
@@ -124,7 +124,7 @@ namespace DevList
                 /*
                  * Открываем базу
                  */
-                ToolStripMenuItem_Otkrit_Click(Glavnoe_Okno.baza, EventArgs.Empty);
+                ToolStripMenuItem_Otkrit_Click(baza, EventArgs.Empty);
             }
             catch (Exception)
             {

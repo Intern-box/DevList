@@ -13,6 +13,12 @@ namespace DevList
 {
     public partial class Pravit : Form
     {
+        public static string[] pomescheniia;
+
+        public static string[] sotrudniki;
+
+        public static string[] tipi;
+
         public Pravit()
         {
             InitializeComponent();
@@ -20,16 +26,14 @@ namespace DevList
             /*
              * Заполняем поля combobox
              */
-            string[] pomescheniia = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_pomeschenii);
+            pomescheniia = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_pomeschenii);
             comboBox_Pomeschenie.Items.AddRange(pomescheniia);
 
-            string[] sotrudniki = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_sotrudnikov);
+            sotrudniki = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_sotrudnikov);
             comboBox_FIO.Items.AddRange(sotrudniki);
 
-            string[] tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
+            tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
             comboBox_Tip.Items.AddRange(tipi);
-
-            textBox_IDNomer.Enabled = false;
 
             if (Glavnoe_Okno.nomer_najatoi_stroki != 0)
             {
@@ -38,6 +42,22 @@ namespace DevList
             else
             {
                 textBox_IDNomer.Text = "пусто";
+
+                textBox_InvNomer.Enabled = false;
+                comboBox_Pomeschenie.Enabled = false;
+                comboBox_FIO.Enabled = false;
+                textBox_Naimenovanie.Enabled = false;
+                comboBox_Tip.Enabled = false;
+                textBox_Kommentarii.Enabled = false;
+                checkBox_Kopirovanie.Enabled = false;
+                checkBox_Peremeschenie.Enabled = false;
+                button_fio_minus.Enabled = false;
+                button_fio_plus.Enabled = false;
+                button_pomeschenie_minus.Enabled = false;
+                button_pomeschenie_plus.Enabled = false;
+                button_Pravit.Enabled = false;
+                button_tip_minus.Enabled = false;
+                button_tip_plus.Enabled = false;
             }
 
             if (Glavnoe_Okno.peremeschenie)
@@ -178,6 +198,31 @@ namespace DevList
         {
             if (e.KeyCode == Keys.Enter)
                 button_Pravit_Click(sender, e);
+        }
+        private void button_pomeschenie_plus_Click(object sender, EventArgs e)
+        {
+            File.AppendAllText(Glavnoe_Okno.put_do_spiska_pomeschenii, "\r\n" + comboBox_Pomeschenie.Text);
+
+            pomescheniia = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_pomeschenii);
+            comboBox_Pomeschenie.Items.AddRange(pomescheniia);
+        }
+        private void button_fio_plus_Click(object sender, EventArgs e)
+        {
+            File.AppendAllText(Glavnoe_Okno.put_do_spiska_sotrudnikov, "\r\n" + comboBox_FIO.Text);
+
+            sotrudniki = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_sotrudnikov);
+            comboBox_FIO.Items.AddRange(sotrudniki);
+        }
+        private void button_tip_plus_Click(object sender, EventArgs e)
+        {
+            File.AppendAllText(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, "\r\n" + comboBox_Tip.Text);
+
+            tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
+            comboBox_Tip.Items.AddRange(tipi);
+        }
+        private void button_pomeschenie_minus_Click(object sender, EventArgs e)
+        {
+            //List<string> spisok_elementov = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_pomeschenii).ToList<>;
         }
     }
 }
