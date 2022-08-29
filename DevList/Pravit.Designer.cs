@@ -265,6 +265,7 @@ namespace DevList
             this.button_fio_minus.TabIndex = 50;
             this.button_fio_minus.Text = "-";
             this.button_fio_minus.UseVisualStyleBackColor = true;
+            this.button_fio_minus.Click += new System.EventHandler(this.button_fio_minus_Click);
             // 
             // button_fio_plus
             // 
@@ -286,6 +287,7 @@ namespace DevList
             this.button_tip_minus.TabIndex = 52;
             this.button_tip_minus.Text = "-";
             this.button_tip_minus.UseVisualStyleBackColor = true;
+            this.button_tip_minus.Click += new System.EventHandler(this.button_tip_minus_Click);
             // 
             // button_tip_plus
             // 

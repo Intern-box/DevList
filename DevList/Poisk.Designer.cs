@@ -213,6 +213,7 @@ namespace DevList
             this.button_tip_minus.TabIndex = 58;
             this.button_tip_minus.Text = "-";
             this.button_tip_minus.UseVisualStyleBackColor = true;
+            this.button_tip_minus.Click += new System.EventHandler(this.button_tip_minus_Click);
             // 
             // button_tip_plus
             // 
@@ -223,6 +224,7 @@ namespace DevList
             this.button_tip_plus.TabIndex = 57;
             this.button_tip_plus.Text = "+";
             this.button_tip_plus.UseVisualStyleBackColor = true;
+            this.button_tip_plus.Click += new System.EventHandler(this.button_tip_plus_Click);
             // 
             // button_fio_minus
             // 
@@ -233,6 +235,7 @@ namespace DevList
             this.button_fio_minus.TabIndex = 56;
             this.button_fio_minus.Text = "-";
             this.button_fio_minus.UseVisualStyleBackColor = true;
+            this.button_fio_minus.Click += new System.EventHandler(this.button_fio_minus_Click);
             // 
             // button_fio_plus
             // 
@@ -243,6 +246,7 @@ namespace DevList
             this.button_fio_plus.TabIndex = 55;
             this.button_fio_plus.Text = "+";
             this.button_fio_plus.UseVisualStyleBackColor = true;
+            this.button_fio_plus.Click += new System.EventHandler(this.button_fio_plus_Click);
             // 
             // button_pomeschenie_minus
             // 
@@ -253,6 +257,7 @@ namespace DevList
             this.button_pomeschenie_minus.TabIndex = 54;
             this.button_pomeschenie_minus.Text = "-";
             this.button_pomeschenie_minus.UseVisualStyleBackColor = true;
+            this.button_pomeschenie_minus.Click += new System.EventHandler(this.button_pomeschenie_minus_Click);
             // 
             // button_pomeschenie_plus
             // 
@@ -263,6 +268,7 @@ namespace DevList
             this.button_pomeschenie_plus.TabIndex = 53;
             this.button_pomeschenie_plus.Text = "+";
             this.button_pomeschenie_plus.UseVisualStyleBackColor = true;
+            this.button_pomeschenie_plus.Click += new System.EventHandler(this.button_pomeschenie_plus_Click);
             // 
             // Poisk
             // 

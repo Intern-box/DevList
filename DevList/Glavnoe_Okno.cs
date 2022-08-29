@@ -452,5 +452,12 @@ namespace DevList
             {
             }
         }
+
+        private void toolStripMenuItem_Redaktirovanie_Spiskov_Click(object sender, EventArgs e)
+        {
+            Redaktirovanie_Spiskov redaktirovanie_spiskov = new Redaktirovanie_Spiskov();
+
+            redaktirovanie_spiskov.ShowDialog();
+        }
     }
 }

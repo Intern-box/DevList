@@ -199,30 +199,60 @@ namespace DevList
             if (e.KeyCode == Keys.Enter)
                 button_Pravit_Click(sender, e);
         }
+        private void Plus_Element(string put, ComboBox textovaia_stroka, string[] spisok)
+        {
+            File.AppendAllText(put, textovaia_stroka.Text + "\r\n");
+
+            spisok = File.ReadAllLines(put);
+
+            textovaia_stroka.Items.Clear();
+
+            textovaia_stroka.Items.AddRange(spisok);
+        }
+        private void Minus_Element(string put, ComboBox textovaia_stroka, string[] spisok)
+        {
+            string[] massiv_strok = File.ReadAllLines(put);
+
+            string spisok_strok = "";
+
+            foreach (string stroka in massiv_strok)
+            {
+                if (stroka != textovaia_stroka.Text)
+                {
+                    spisok_strok += stroka + "\r\n";
+                }
+            }
+
+            File.Delete(put);
+            File.AppendAllText(put, spisok_strok.ToString());
+
+            spisok = File.ReadAllLines(put);
+            textovaia_stroka.Items.Clear();
+            textovaia_stroka.Items.AddRange(spisok);
+        }
         private void button_pomeschenie_plus_Click(object sender, EventArgs e)
         {
-            File.AppendAllText(Glavnoe_Okno.put_do_spiska_pomeschenii, "\r\n" + comboBox_Pomeschenie.Text);
-
-            pomescheniia = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_pomeschenii);
-            comboBox_Pomeschenie.Items.AddRange(pomescheniia);
+            Plus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, pomescheniia);
         }
         private void button_fio_plus_Click(object sender, EventArgs e)
         {
-            File.AppendAllText(Glavnoe_Okno.put_do_spiska_sotrudnikov, "\r\n" + comboBox_FIO.Text);
-
-            sotrudniki = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_sotrudnikov);
-            comboBox_FIO.Items.AddRange(sotrudniki);
+            Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, sotrudniki);
         }
         private void button_tip_plus_Click(object sender, EventArgs e)
         {
-            File.AppendAllText(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, "\r\n" + comboBox_Tip.Text);
-
-            tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
-            comboBox_Tip.Items.AddRange(tipi);
+            Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, tipi);
         }
         private void button_pomeschenie_minus_Click(object sender, EventArgs e)
         {
-            //List<string> spisok_elementov = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_pomeschenii).ToList<>;
+            Minus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, pomescheniia);
+        }
+        private void button_fio_minus_Click(object sender, EventArgs e)
+        {
+            Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, sotrudniki);
+        }
+        private void button_tip_minus_Click(object sender, EventArgs e)
+        {
+            Minus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, tipi);
         }
     }
 }
