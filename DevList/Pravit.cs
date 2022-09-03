@@ -35,11 +35,7 @@ namespace DevList
             tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
             comboBox_Tip.Items.AddRange(tipi);
 
-            if (Glavnoe_Okno.nomer_najatoi_stroki != 0)
-            {
-                textBox_IDNomer.Text = Glavnoe_Okno.nomer_najatoi_stroki.ToString();
-            }
-            else
+            if (Glavnoe_Okno.nomer_najatoi_stroki == 0)
             {
                 Close();
             }
@@ -56,11 +52,10 @@ namespace DevList
 
             try
             {
-                Glavnoe_Okno.index = int.Parse(textBox_IDNomer.Text) - 1;
+                Glavnoe_Okno.index = Glavnoe_Okno.nomer_najatoi_stroki - 1;
 
                 string[] stroka = Glavnoe_Okno.baza[Glavnoe_Okno.index];
 
-                textBox_IDNomer.Text = stroka[0];
                 textBox_InvNomer.Text = stroka[1];
                 comboBox_Pomeschenie.Text = stroka[2];
                 comboBox_FIO.Text = stroka[3];
@@ -77,7 +72,6 @@ namespace DevList
         {
             string[] stroka = new string[]
             {
-                textBox_IDNomer.Text,
                 textBox_InvNomer.Text,
                 comboBox_Pomeschenie.Text,
                 comboBox_FIO.Text,
@@ -112,10 +106,10 @@ namespace DevList
                     "В Помещение:",
                     comboBox_Pomeschenie.Text,
                     "перемещено из помещения:",
-                    Glavnoe_Okno.baza[int.Parse(textBox_IDNomer.Text) - 1][2],
+                    Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki - 1][2],
                     "МЦ:",
-                    Glavnoe_Okno.baza[int.Parse(textBox_IDNomer.Text) - 1][3],
-                    "Инв. №" + Glavnoe_Okno.baza[int.Parse(textBox_IDNomer.Text) - 1][1],
+                    Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki - 1][3],
+                    "Инв. №" + Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki - 1][1],
                     DateTime.Today.ToString().TrimEnd(' '),
                     "\n"
                 };

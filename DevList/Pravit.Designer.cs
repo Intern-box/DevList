@@ -40,8 +40,6 @@ namespace DevList
             this.label_Naimenovanie = new System.Windows.Forms.Label();
             this.label_Pomeschenie = new System.Windows.Forms.Label();
             this.label_InvNomer = new System.Windows.Forms.Label();
-            this.label_IDNomer = new System.Windows.Forms.Label();
-            this.textBox_IDNomer = new System.Windows.Forms.TextBox();
             this.checkBox_Peremeschenie = new System.Windows.Forms.CheckBox();
             this.checkBox_Kopirovanie = new System.Windows.Forms.CheckBox();
             this.comboBox_Pomeschenie = new System.Windows.Forms.ComboBox();
@@ -58,7 +56,7 @@ namespace DevList
             // button_Otmenit
             // 
             this.button_Otmenit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Otmenit.Location = new System.Drawing.Point(396, 293);
+            this.button_Otmenit.Location = new System.Drawing.Point(396, 216);
             this.button_Otmenit.Name = "button_Otmenit";
             this.button_Otmenit.Size = new System.Drawing.Size(89, 29);
             this.button_Otmenit.TabIndex = 38;
@@ -69,7 +67,7 @@ namespace DevList
             // button_Pravit
             // 
             this.button_Pravit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Pravit.Location = new System.Drawing.Point(301, 293);
+            this.button_Pravit.Location = new System.Drawing.Point(301, 216);
             this.button_Pravit.Name = "button_Pravit";
             this.button_Pravit.Size = new System.Drawing.Size(89, 29);
             this.button_Pravit.TabIndex = 37;
@@ -82,7 +80,7 @@ namespace DevList
             // 
             this.comboBox_Tip.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_Tip.FormattingEnabled = true;
-            this.comboBox_Tip.Location = new System.Drawing.Point(135, 229);
+            this.comboBox_Tip.Location = new System.Drawing.Point(135, 152);
             this.comboBox_Tip.Name = "comboBox_Tip";
             this.comboBox_Tip.Size = new System.Drawing.Size(350, 24);
             this.comboBox_Tip.TabIndex = 35;
@@ -91,7 +89,7 @@ namespace DevList
             // textBox_Kommentarii
             // 
             this.textBox_Kommentarii.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Kommentarii.Location = new System.Drawing.Point(135, 264);
+            this.textBox_Kommentarii.Location = new System.Drawing.Point(135, 187);
             this.textBox_Kommentarii.Name = "textBox_Kommentarii";
             this.textBox_Kommentarii.Size = new System.Drawing.Size(350, 23);
             this.textBox_Kommentarii.TabIndex = 36;
@@ -100,7 +98,7 @@ namespace DevList
             // textBox_Naimenovanie
             // 
             this.textBox_Naimenovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Naimenovanie.Location = new System.Drawing.Point(135, 194);
+            this.textBox_Naimenovanie.Location = new System.Drawing.Point(135, 117);
             this.textBox_Naimenovanie.Name = "textBox_Naimenovanie";
             this.textBox_Naimenovanie.Size = new System.Drawing.Size(350, 23);
             this.textBox_Naimenovanie.TabIndex = 34;
@@ -109,7 +107,7 @@ namespace DevList
             // textBox_InvNomer
             // 
             this.textBox_InvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_InvNomer.Location = new System.Drawing.Point(135, 89);
+            this.textBox_InvNomer.Location = new System.Drawing.Point(135, 12);
             this.textBox_InvNomer.Name = "textBox_InvNomer";
             this.textBox_InvNomer.Size = new System.Drawing.Size(350, 23);
             this.textBox_InvNomer.TabIndex = 31;
@@ -119,7 +117,7 @@ namespace DevList
             // 
             this.label_Kommentarii.AutoSize = true;
             this.label_Kommentarii.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Kommentarii.Location = new System.Drawing.Point(26, 267);
+            this.label_Kommentarii.Location = new System.Drawing.Point(26, 190);
             this.label_Kommentarii.Name = "label_Kommentarii";
             this.label_Kommentarii.Size = new System.Drawing.Size(103, 16);
             this.label_Kommentarii.TabIndex = 18;
@@ -129,7 +127,7 @@ namespace DevList
             // 
             this.label_Tip.AutoSize = true;
             this.label_Tip.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Tip.Location = new System.Drawing.Point(90, 232);
+            this.label_Tip.Location = new System.Drawing.Point(90, 155);
             this.label_Tip.Name = "label_Tip";
             this.label_Tip.Size = new System.Drawing.Size(39, 16);
             this.label_Tip.TabIndex = 17;
@@ -139,7 +137,7 @@ namespace DevList
             // 
             this.label_Naimenovanie.AutoSize = true;
             this.label_Naimenovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Naimenovanie.Location = new System.Drawing.Point(17, 197);
+            this.label_Naimenovanie.Location = new System.Drawing.Point(17, 120);
             this.label_Naimenovanie.Name = "label_Naimenovanie";
             this.label_Naimenovanie.Size = new System.Drawing.Size(112, 16);
             this.label_Naimenovanie.TabIndex = 16;
@@ -149,7 +147,7 @@ namespace DevList
             // 
             this.label_Pomeschenie.AutoSize = true;
             this.label_Pomeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Pomeschenie.Location = new System.Drawing.Point(37, 127);
+            this.label_Pomeschenie.Location = new System.Drawing.Point(37, 50);
             this.label_Pomeschenie.Name = "label_Pomeschenie";
             this.label_Pomeschenie.Size = new System.Drawing.Size(92, 16);
             this.label_Pomeschenie.TabIndex = 15;
@@ -159,35 +157,17 @@ namespace DevList
             // 
             this.label_InvNomer.AutoSize = true;
             this.label_InvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_InvNomer.Location = new System.Drawing.Point(65, 92);
+            this.label_InvNomer.Location = new System.Drawing.Point(65, 15);
             this.label_InvNomer.Name = "label_InvNomer";
             this.label_InvNomer.Size = new System.Drawing.Size(64, 16);
             this.label_InvNomer.TabIndex = 14;
             this.label_InvNomer.Text = "Инв. №:";
             // 
-            // label_IDNomer
-            // 
-            this.label_IDNomer.AutoSize = true;
-            this.label_IDNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_IDNomer.Location = new System.Drawing.Point(101, 28);
-            this.label_IDNomer.Name = "label_IDNomer";
-            this.label_IDNomer.Size = new System.Drawing.Size(28, 16);
-            this.label_IDNomer.TabIndex = 26;
-            this.label_IDNomer.Text = "ID:";
-            // 
-            // textBox_IDNomer
-            // 
-            this.textBox_IDNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_IDNomer.Location = new System.Drawing.Point(135, 25);
-            this.textBox_IDNomer.Name = "textBox_IDNomer";
-            this.textBox_IDNomer.Size = new System.Drawing.Size(350, 23);
-            this.textBox_IDNomer.TabIndex = 27;
-            // 
             // checkBox_Peremeschenie
             // 
             this.checkBox_Peremeschenie.AutoSize = true;
             this.checkBox_Peremeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox_Peremeschenie.Location = new System.Drawing.Point(256, 59);
+            this.checkBox_Peremeschenie.Location = new System.Drawing.Point(174, 221);
             this.checkBox_Peremeschenie.Name = "checkBox_Peremeschenie";
             this.checkBox_Peremeschenie.Size = new System.Drawing.Size(121, 20);
             this.checkBox_Peremeschenie.TabIndex = 29;
@@ -198,7 +178,7 @@ namespace DevList
             // 
             this.checkBox_Kopirovanie.AutoSize = true;
             this.checkBox_Kopirovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox_Kopirovanie.Location = new System.Drawing.Point(135, 59);
+            this.checkBox_Kopirovanie.Location = new System.Drawing.Point(53, 221);
             this.checkBox_Kopirovanie.Name = "checkBox_Kopirovanie";
             this.checkBox_Kopirovanie.Size = new System.Drawing.Size(115, 20);
             this.checkBox_Kopirovanie.TabIndex = 28;
@@ -209,7 +189,7 @@ namespace DevList
             // 
             this.comboBox_Pomeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_Pomeschenie.FormattingEnabled = true;
-            this.comboBox_Pomeschenie.Location = new System.Drawing.Point(135, 124);
+            this.comboBox_Pomeschenie.Location = new System.Drawing.Point(135, 47);
             this.comboBox_Pomeschenie.Name = "comboBox_Pomeschenie";
             this.comboBox_Pomeschenie.Size = new System.Drawing.Size(350, 24);
             this.comboBox_Pomeschenie.TabIndex = 32;
@@ -218,7 +198,7 @@ namespace DevList
             // 
             this.comboBox_FIO.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_FIO.FormattingEnabled = true;
-            this.comboBox_FIO.Location = new System.Drawing.Point(135, 159);
+            this.comboBox_FIO.Location = new System.Drawing.Point(135, 82);
             this.comboBox_FIO.Name = "comboBox_FIO";
             this.comboBox_FIO.Size = new System.Drawing.Size(350, 24);
             this.comboBox_FIO.TabIndex = 33;
@@ -228,7 +208,7 @@ namespace DevList
             // 
             this.label_FIO.AutoSize = true;
             this.label_FIO.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_FIO.Location = new System.Drawing.Point(85, 162);
+            this.label_FIO.Location = new System.Drawing.Point(85, 85);
             this.label_FIO.Name = "label_FIO";
             this.label_FIO.Size = new System.Drawing.Size(44, 16);
             this.label_FIO.TabIndex = 46;
@@ -237,7 +217,7 @@ namespace DevList
             // button_pomeschenie_plus
             // 
             this.button_pomeschenie_plus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_pomeschenie_plus.Location = new System.Drawing.Point(489, 123);
+            this.button_pomeschenie_plus.Location = new System.Drawing.Point(489, 46);
             this.button_pomeschenie_plus.Name = "button_pomeschenie_plus";
             this.button_pomeschenie_plus.Size = new System.Drawing.Size(21, 26);
             this.button_pomeschenie_plus.TabIndex = 47;
@@ -248,7 +228,7 @@ namespace DevList
             // button_pomeschenie_minus
             // 
             this.button_pomeschenie_minus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_pomeschenie_minus.Location = new System.Drawing.Point(514, 123);
+            this.button_pomeschenie_minus.Location = new System.Drawing.Point(514, 46);
             this.button_pomeschenie_minus.Name = "button_pomeschenie_minus";
             this.button_pomeschenie_minus.Size = new System.Drawing.Size(21, 26);
             this.button_pomeschenie_minus.TabIndex = 48;
@@ -259,7 +239,7 @@ namespace DevList
             // button_fio_minus
             // 
             this.button_fio_minus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_fio_minus.Location = new System.Drawing.Point(514, 158);
+            this.button_fio_minus.Location = new System.Drawing.Point(514, 81);
             this.button_fio_minus.Name = "button_fio_minus";
             this.button_fio_minus.Size = new System.Drawing.Size(21, 26);
             this.button_fio_minus.TabIndex = 50;
@@ -270,7 +250,7 @@ namespace DevList
             // button_fio_plus
             // 
             this.button_fio_plus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_fio_plus.Location = new System.Drawing.Point(489, 158);
+            this.button_fio_plus.Location = new System.Drawing.Point(489, 81);
             this.button_fio_plus.Name = "button_fio_plus";
             this.button_fio_plus.Size = new System.Drawing.Size(21, 26);
             this.button_fio_plus.TabIndex = 49;
@@ -281,7 +261,7 @@ namespace DevList
             // button_tip_minus
             // 
             this.button_tip_minus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_tip_minus.Location = new System.Drawing.Point(514, 228);
+            this.button_tip_minus.Location = new System.Drawing.Point(514, 151);
             this.button_tip_minus.Name = "button_tip_minus";
             this.button_tip_minus.Size = new System.Drawing.Size(21, 26);
             this.button_tip_minus.TabIndex = 52;
@@ -292,7 +272,7 @@ namespace DevList
             // button_tip_plus
             // 
             this.button_tip_plus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_tip_plus.Location = new System.Drawing.Point(489, 228);
+            this.button_tip_plus.Location = new System.Drawing.Point(489, 151);
             this.button_tip_plus.Name = "button_tip_plus";
             this.button_tip_plus.Size = new System.Drawing.Size(21, 26);
             this.button_tip_plus.TabIndex = 51;
@@ -305,7 +285,7 @@ namespace DevList
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(557, 332);
+            this.ClientSize = new System.Drawing.Size(557, 255);
             this.Controls.Add(this.button_tip_minus);
             this.Controls.Add(this.button_tip_plus);
             this.Controls.Add(this.button_fio_minus);
@@ -317,8 +297,6 @@ namespace DevList
             this.Controls.Add(this.comboBox_Pomeschenie);
             this.Controls.Add(this.checkBox_Kopirovanie);
             this.Controls.Add(this.checkBox_Peremeschenie);
-            this.Controls.Add(this.textBox_IDNomer);
-            this.Controls.Add(this.label_IDNomer);
             this.Controls.Add(this.button_Otmenit);
             this.Controls.Add(this.button_Pravit);
             this.Controls.Add(this.comboBox_Tip);
@@ -356,8 +334,6 @@ namespace DevList
         private System.Windows.Forms.Label label_Naimenovanie;
         private System.Windows.Forms.Label label_Pomeschenie;
         private System.Windows.Forms.Label label_InvNomer;
-        private System.Windows.Forms.Label label_IDNomer;
-        private System.Windows.Forms.TextBox textBox_IDNomer;
         private System.Windows.Forms.CheckBox checkBox_Peremeschenie;
         private System.Windows.Forms.CheckBox checkBox_Kopirovanie;
         private System.Windows.Forms.ComboBox comboBox_Pomeschenie;
