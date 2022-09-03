@@ -41,23 +41,7 @@ namespace DevList
             }
             else
             {
-                textBox_IDNomer.Text = "пусто";
-
-                textBox_InvNomer.Enabled = false;
-                comboBox_Pomeschenie.Enabled = false;
-                comboBox_FIO.Enabled = false;
-                textBox_Naimenovanie.Enabled = false;
-                comboBox_Tip.Enabled = false;
-                textBox_Kommentarii.Enabled = false;
-                checkBox_Kopirovanie.Enabled = false;
-                checkBox_Peremeschenie.Enabled = false;
-                button_fio_minus.Enabled = false;
-                button_fio_plus.Enabled = false;
-                button_pomeschenie_minus.Enabled = false;
-                button_pomeschenie_plus.Enabled = false;
-                button_Pravit.Enabled = false;
-                button_tip_minus.Enabled = false;
-                button_tip_plus.Enabled = false;
+                Close();
             }
 
             if (Glavnoe_Okno.peremeschenie)
@@ -119,8 +103,7 @@ namespace DevList
 
                 Close();
             }
-            
-            if (checkBox_Peremeschenie.Checked)
+            else if (checkBox_Peremeschenie.Checked)
             {
                 Directory.CreateDirectory("История перемещений");
 
@@ -145,10 +128,12 @@ namespace DevList
 
                 Close();
             }
+            else
+            {
+                Glavnoe_Okno.baza[Glavnoe_Okno.index] = stroka;
 
-            Glavnoe_Okno.baza[Glavnoe_Okno.index] = stroka;
-
-            Close();
+                Close();
+            }
         }
         private void button_Otmenit_Click(object sender, EventArgs e)
         {

@@ -19,7 +19,7 @@ namespace DevList
 
         public static string[] tipi;
 
-        public static string[] stroka = new string[6];
+        public static string[] stroka = new string[7];
         public Poisk()
         {
             InitializeComponent();
@@ -35,6 +35,15 @@ namespace DevList
 
             tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
             comboBox_Tip.Items.AddRange(tipi);
+
+            if (Glavnoe_Okno.nomer_najatoi_stroki != 0)
+            {
+                textBox_IDNomer.Text = Glavnoe_Okno.nomer_najatoi_stroki.ToString();
+            }
+            else
+            {
+                Close();
+            }
 
             try
             {
@@ -60,9 +69,10 @@ namespace DevList
             stroka[0] = textBox_IDNomer.Text;
             stroka[1] = textBox_InvNomer.Text;
             stroka[2] = comboBox_Pomeschenie.Text;
-            stroka[3] = textBox_Naimenovanie.Text;
-            stroka[4] = comboBox_Tip.Text;
-            stroka[5] = textBox_Kommentarii.Text;
+            stroka[3] = comboBox_FIO.Text;
+            stroka[4] = textBox_Naimenovanie.Text;
+            stroka[5] = comboBox_Tip.Text;
+            stroka[6] = textBox_Kommentarii.Text;
 
             Close();
         }

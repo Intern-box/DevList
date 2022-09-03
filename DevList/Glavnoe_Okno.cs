@@ -219,79 +219,35 @@ namespace DevList
 
             poisk.ShowDialog();
 
-            int po_skolki_parametram_sravnivaem = 0;
-            int vsego_odinakovih_parametrov = 0;
+            int chislo_parametrov_dlia_sravneniia = 0;
+
+            int chislo_naidennih_sovpadenii = 0;
+
+            for (int i = 0; i < Poisk.stroka.Length; i++)
+            {
+                if (Poisk.stroka[i].Length > 0)
+                {
+                    chislo_parametrov_dlia_sravneniia++;
+                }
+            }
+
+            listView_Tablica_Vivoda_Bazi.Items.Clear();
 
             foreach (string[] stroka in baza)
             {
-                if (Poisk.stroka[0] != "")
+                for (int i = 0; i < listView_Tablica_Vivoda_Bazi.Columns.Count; i++)
                 {
-                    po_skolki_parametram_sravnivaem++;
-
-                    if (Poisk.stroka[0] == stroka[0])
-                    {
-                        vsego_odinakovih_parametrov++;
-                    }
-                }
-                if (Poisk.stroka[1] != "")
-                {
-                    po_skolki_parametram_sravnivaem++;
-
-                    if (Poisk.stroka[1] == stroka[1])
-                    {
-                        vsego_odinakovih_parametrov++;
-                    }
-                }
-                if (Poisk.stroka[2] != "")
-                {
-                    po_skolki_parametram_sravnivaem++;
-
-                    if (Poisk.stroka[2] == stroka[2])
-                    {
-                        vsego_odinakovih_parametrov++;
-                    }
-                }
-                if (Poisk.stroka[3] != "")
-                {
-                    po_skolki_parametram_sravnivaem++;
-
-                    if (Poisk.stroka[3] == stroka[3])
-                    {
-                        vsego_odinakovih_parametrov++;
-                    }
-                }
-                if (Poisk.stroka[4] != "")
-                {
-                    po_skolki_parametram_sravnivaem++;
-
-                    if (Poisk.stroka[4] == stroka[4])
-                    {
-                        vsego_odinakovih_parametrov++;
-                    }
-                }
-                if (Poisk.stroka[5] != "")
-                {
-                    po_skolki_parametram_sravnivaem++;
-
-                    if (Poisk.stroka[5] == stroka[5])
-                    {
-                        vsego_odinakovih_parametrov++;
-                    }
+                    if (stroka[i] == Poisk.stroka[i]) { chislo_naidennih_sovpadenii++; }
                 }
 
-                if (po_skolki_parametram_sravnivaem == 0)
+                if (chislo_naidennih_sovpadenii >= chislo_parametrov_dlia_sravneniia)
                 {
-                    return;
-                }
-
-                if (vsego_odinakovih_parametrov >= po_skolki_parametram_sravnivaem)
-                {
-                    listView_Tablica_Vivoda_Bazi.Items.Clear();
+                    stroka[6] = chislo_parametrov_dlia_sravneniia.ToString() + "/" + chislo_naidennih_sovpadenii.ToString();
 
                     listView_Tablica_Vivoda_Bazi.Items.Add(Viborka_Strok_Iz_Bazi(stroka));
                 }
 
-                po_skolki_parametram_sravnivaem = vsego_odinakovih_parametrov = 0;
+                chislo_naidennih_sovpadenii = 0;
             }
         }
         private void ToolStripMenuItem_Context_Poisk_Click(object sender, EventArgs e)
@@ -452,7 +408,6 @@ namespace DevList
             {
             }
         }
-
         private void toolStripMenuItem_Redaktirovanie_Spiskov_Click(object sender, EventArgs e)
         {
             Redaktirovanie_Spiskov redaktirovanie_spiskov = new Redaktirovanie_Spiskov();

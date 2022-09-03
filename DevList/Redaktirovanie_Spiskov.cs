@@ -23,6 +23,8 @@ namespace DevList
             {
                 string[] spisok_strok_iz_faila = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_pomeschenii);
 
+                textBox_Soderjimoe.Clear();
+
                 foreach (string stroka in spisok_strok_iz_faila)
                 {
                     textBox_Soderjimoe.Text += stroka + "\r\n";
@@ -33,6 +35,8 @@ namespace DevList
             {
                 string[] spisok_strok_iz_faila = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_sotrudnikov);
 
+                textBox_Soderjimoe.Clear();
+
                 foreach (string stroka in spisok_strok_iz_faila)
                 {
                     textBox_Soderjimoe.Text += stroka + "\r\n";
@@ -42,6 +46,8 @@ namespace DevList
             if (comboBox_Elementi.SelectedIndex == 2)
             {
                 string[] spisok_strok_iz_faila = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
+
+                textBox_Soderjimoe.Clear();
 
                 foreach (string stroka in spisok_strok_iz_faila)
                 {
