@@ -242,8 +242,6 @@ namespace DevList
 
                 if (chislo_naidennih_sovpadenii >= chislo_parametrov_dlia_sravneniia)
                 {
-                    stroka[6] = chislo_parametrov_dlia_sravneniia.ToString() + "/" + chislo_naidennih_sovpadenii.ToString();
-
                     listView_Tablica_Vivoda_Bazi.Items.Add(Viborka_Strok_Iz_Bazi(stroka));
                 }
 
