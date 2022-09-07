@@ -39,21 +39,11 @@ namespace DevList
             tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
             comboBox_Tip.Items.AddRange(tipi);
 
-            if (Glavnoe_Okno.nomer_najatoi_stroki != 0)
-            {
-                textBox_IDNomer.Text = Glavnoe_Okno.nomer_najatoi_stroki.ToString();
-            }
-            else
-            {
-                button_Otmenit_Click(null, EventArgs.Empty);
-            }
-
             try
             {
-                Glavnoe_Okno.index = int.Parse(textBox_IDNomer.Text) - 1;
+                string[] stroka = Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki - 1];
 
-                string[] stroka = Glavnoe_Okno.baza[Glavnoe_Okno.index];
-
+                textBox_IDNomer.Text = stroka[0];
                 textBox_Data_Priobreteniia.Text = stroka[1];
                 textBox_InvNomer.Text = stroka[2];
                 comboBox_Pomeschenie.Text = stroka[3];
@@ -136,6 +126,10 @@ namespace DevList
         {
             Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, sotrudniki);
         }
+        private void button_fio_minus_Click(object sender, EventArgs e)
+        {
+            Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, sotrudniki);
+        }
         private void button_tip_minus_Click(object sender, EventArgs e)
         {
             Minus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, tipi);
@@ -143,10 +137,6 @@ namespace DevList
         private void button_tip_plus_Click(object sender, EventArgs e)
         {
             Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, tipi);
-        }
-        private void button_fio_minus_Click(object sender, EventArgs e)
-        {
-            Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, sotrudniki);
         }
         private void button_Izmenil_plus_Click(object sender, EventArgs e)
         {
