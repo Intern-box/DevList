@@ -219,47 +219,52 @@ namespace DevList
 
             poisk.ShowDialog();
 
-            int chislo_parametrov_dlia_sravnenia = 0;
-
-            int chislo_naidennih_parametrov = 0;
-
-            foreach (string stroka in Poisk.stroka)
+            if (Poisk.otmenit)
             {
-                if (stroka != "")
-                {
-                    chislo_parametrov_dlia_sravnenia++;
-                }
-            }
+                int chislo_parametrov_dlia_sravnenia = 0;
 
-            if (chislo_parametrov_dlia_sravnenia > 0)
-            {
-                listView_Tablica_Vivoda_Bazi.Items.Clear();
+                int chislo_naidennih_parametrov = 0;
 
-                foreach (string[] stroka in baza)
+                foreach (string stroka in Poisk.stroka)
                 {
-                    for (int i = 0; i < Poisk.stroka.Length; i++)
+                    if (stroka != "")
                     {
-                        if (Poisk.stroka[i] != "")
+                        chislo_parametrov_dlia_sravnenia++;
+                    }
+                }
+
+                if (chislo_parametrov_dlia_sravnenia > 0)
+                {
+                    listView_Tablica_Vivoda_Bazi.Items.Clear();
+
+                    foreach (string[] stroka in baza)
+                    {
+                        for (int i = 0; i < Poisk.stroka.Length; i++)
                         {
-                            if (Poisk.stroka[i] == stroka[i])
+                            if (Poisk.stroka[i] != "")
                             {
-                                chislo_naidennih_parametrov++;
+                                if (Poisk.stroka[i] == stroka[i])
+                                {
+                                    chislo_naidennih_parametrov++;
+                                }
                             }
                         }
+
+                        if (chislo_naidennih_parametrov >= chislo_parametrov_dlia_sravnenia)
+                        {
+                            ListViewItem lv = new ListViewItem(stroka);
+
+                            listView_Tablica_Vivoda_Bazi.Items.Add(lv);
+                        }
+
+                        chislo_naidennih_parametrov = 0;
                     }
 
-                    if (chislo_naidennih_parametrov >= chislo_parametrov_dlia_sravnenia)
-                    {
-                        ListViewItem lv = new ListViewItem(stroka);
-
-                        listView_Tablica_Vivoda_Bazi.Items.Add(lv);
-                    }
-
-                    chislo_naidennih_parametrov = 0;
+                    menuStrip_Glavnoe_Menu.Items[4].Visible = true;
                 }
-
-                menuStrip_Glavnoe_Menu.Items[4].Visible = true;
             }
+
+            Poisk.otmenit = true;
         }
         private void ToolStripMenuItem_Context_Poisk_Click(object sender, EventArgs e)
         {
