@@ -262,6 +262,10 @@ namespace DevList
 
                     menuStrip_Glavnoe_Menu.Items[4].Visible = true;
                 }
+                else
+                {
+                    listView_Tablica_Vivoda_Bazi.Items.Clear();
+                }
             }
 
             Poisk.otmenit = true;
