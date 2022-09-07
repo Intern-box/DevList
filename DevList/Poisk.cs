@@ -20,6 +20,8 @@ namespace DevList
         public static string[] tipi;
 
         public static string[] stroka = new string[7];
+
+        public static bool otmenit = true;
         public Poisk()
         {
             InitializeComponent();
@@ -78,6 +80,8 @@ namespace DevList
         }
         private void button_Otmenit_Click(object sender, EventArgs e)
         {
+            otmenit = false;
+
             Close();
         }
         private void Plus_Element(string put, ComboBox textovaia_stroka, string[] spisok)

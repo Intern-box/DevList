@@ -27,6 +27,8 @@ namespace DevList
         }
         private void button_Udalit_Click(object sender, EventArgs e)
         {
+            Glavnoe_Okno.izmeneniia_s_otkritiia = true;
+
             try
             {
                 Glavnoe_Okno.baza.RemoveAt(int.Parse(textBox_IDNomer.Text) - 1);

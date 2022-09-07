@@ -37,6 +37,8 @@ namespace DevList
         }
         private void button_Dobavit_Click(object sender, EventArgs e)
         {
+            Glavnoe_Okno.izmeneniia_s_otkritiia = true;
+
             Glavnoe_Okno.index++;
 
             string[] stroka = new string[]

@@ -121,8 +121,10 @@ namespace DevList
             // 
             this.textBox_Kommentarii.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_Kommentarii.Location = new System.Drawing.Point(135, 187);
+            this.textBox_Kommentarii.Multiline = true;
             this.textBox_Kommentarii.Name = "textBox_Kommentarii";
-            this.textBox_Kommentarii.Size = new System.Drawing.Size(350, 23);
+            this.textBox_Kommentarii.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox_Kommentarii.Size = new System.Drawing.Size(350, 143);
             this.textBox_Kommentarii.TabIndex = 12;
             // 
             // comboBox_Tip
@@ -137,7 +139,7 @@ namespace DevList
             // button_Dobavit
             // 
             this.button_Dobavit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Dobavit.Location = new System.Drawing.Point(301, 224);
+            this.button_Dobavit.Location = new System.Drawing.Point(301, 336);
             this.button_Dobavit.Name = "button_Dobavit";
             this.button_Dobavit.Size = new System.Drawing.Size(89, 29);
             this.button_Dobavit.TabIndex = 13;
@@ -148,7 +150,7 @@ namespace DevList
             // button_Otmenit
             // 
             this.button_Otmenit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Otmenit.Location = new System.Drawing.Point(396, 224);
+            this.button_Otmenit.Location = new System.Drawing.Point(396, 336);
             this.button_Otmenit.Name = "button_Otmenit";
             this.button_Otmenit.Size = new System.Drawing.Size(89, 29);
             this.button_Otmenit.TabIndex = 14;
@@ -255,7 +257,7 @@ namespace DevList
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(557, 262);
+            this.ClientSize = new System.Drawing.Size(557, 375);
             this.Controls.Add(this.button_tip_minus);
             this.Controls.Add(this.button_tip_plus);
             this.Controls.Add(this.button_fio_minus);

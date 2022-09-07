@@ -56,7 +56,7 @@ namespace DevList
             // button_Otmenit
             // 
             this.button_Otmenit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Otmenit.Location = new System.Drawing.Point(396, 216);
+            this.button_Otmenit.Location = new System.Drawing.Point(396, 336);
             this.button_Otmenit.Name = "button_Otmenit";
             this.button_Otmenit.Size = new System.Drawing.Size(89, 29);
             this.button_Otmenit.TabIndex = 38;
@@ -67,7 +67,7 @@ namespace DevList
             // button_Pravit
             // 
             this.button_Pravit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Pravit.Location = new System.Drawing.Point(301, 216);
+            this.button_Pravit.Location = new System.Drawing.Point(301, 336);
             this.button_Pravit.Name = "button_Pravit";
             this.button_Pravit.Size = new System.Drawing.Size(89, 29);
             this.button_Pravit.TabIndex = 37;
@@ -90,8 +90,10 @@ namespace DevList
             // 
             this.textBox_Kommentarii.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_Kommentarii.Location = new System.Drawing.Point(135, 187);
+            this.textBox_Kommentarii.Multiline = true;
             this.textBox_Kommentarii.Name = "textBox_Kommentarii";
-            this.textBox_Kommentarii.Size = new System.Drawing.Size(350, 23);
+            this.textBox_Kommentarii.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox_Kommentarii.Size = new System.Drawing.Size(350, 143);
             this.textBox_Kommentarii.TabIndex = 36;
             this.textBox_Kommentarii.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Kommentarii_KeyUp);
             // 
@@ -167,7 +169,7 @@ namespace DevList
             // 
             this.checkBox_Peremeschenie.AutoSize = true;
             this.checkBox_Peremeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox_Peremeschenie.Location = new System.Drawing.Point(174, 221);
+            this.checkBox_Peremeschenie.Location = new System.Drawing.Point(174, 341);
             this.checkBox_Peremeschenie.Name = "checkBox_Peremeschenie";
             this.checkBox_Peremeschenie.Size = new System.Drawing.Size(121, 20);
             this.checkBox_Peremeschenie.TabIndex = 29;
@@ -178,7 +180,7 @@ namespace DevList
             // 
             this.checkBox_Kopirovanie.AutoSize = true;
             this.checkBox_Kopirovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox_Kopirovanie.Location = new System.Drawing.Point(53, 221);
+            this.checkBox_Kopirovanie.Location = new System.Drawing.Point(53, 341);
             this.checkBox_Kopirovanie.Name = "checkBox_Kopirovanie";
             this.checkBox_Kopirovanie.Size = new System.Drawing.Size(115, 20);
             this.checkBox_Kopirovanie.TabIndex = 28;
@@ -285,7 +287,7 @@ namespace DevList
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(557, 255);
+            this.ClientSize = new System.Drawing.Size(557, 375);
             this.Controls.Add(this.button_tip_minus);
             this.Controls.Add(this.button_tip_plus);
             this.Controls.Add(this.button_fio_minus);

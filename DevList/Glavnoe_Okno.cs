@@ -30,6 +30,8 @@ namespace DevList
 
         public static int nomer_najatoi_stroki;                       // При клике мышкой запоминает номер строки в таблице на главном окне
 
+        public static bool izmeneniia_s_otkritiia = false;            // Отслеживает были ли изменения с открытия программы.
+
         public Glavnoe_Okno()
         {
             InitializeComponent();
@@ -124,7 +126,7 @@ namespace DevList
                 /*
                  * Открываем базу
                  */
-                ToolStripMenuItem_Otkrit_Click(baza, EventArgs.Empty);
+                Otkrit();
             }
             catch (Exception)
             {
@@ -219,33 +221,47 @@ namespace DevList
 
             poisk.ShowDialog();
 
-            int chislo_parametrov_dlia_sravneniia = 0;
-
-            int chislo_naidennih_sovpadenii = 0;
-
-            for (int i = 0; i < Poisk.stroka.Length; i++)
+            try
             {
-                if (Poisk.stroka[i].Length > 0)
+                if (Poisk.otmenit)
                 {
-                    chislo_parametrov_dlia_sravneniia++;
+                    int chislo_parametrov_dlia_sravneniia = 0;
+
+                    int chislo_naidennih_sovpadenii = 0;
+
+                    for (int i = 0; i < Poisk.stroka.Length; i++)
+                    {
+                        if (Poisk.stroka[i].Length > 0)
+                        {
+                            chislo_parametrov_dlia_sravneniia++;
+                        }
+                    }
+
+                    listView_Tablica_Vivoda_Bazi.Items.Clear();
+
+                    if (chislo_parametrov_dlia_sravneniia != 0)
+                    {
+                        foreach (string[] stroka in baza)
+                        {
+                            for (int i = 0; i < listView_Tablica_Vivoda_Bazi.Columns.Count; i++)
+                            {
+                                if (stroka[i] == Poisk.stroka[i]) { chislo_naidennih_sovpadenii++; }
+                            }
+
+                            if (chislo_naidennih_sovpadenii >= chislo_parametrov_dlia_sravneniia)
+                            {
+                                listView_Tablica_Vivoda_Bazi.Items.Add(Viborka_Strok_Iz_Bazi(stroka));
+                            }
+
+                            chislo_naidennih_sovpadenii = 0;
+                        }
+                    }
                 }
+
+                Poisk.otmenit = true;
             }
-
-            listView_Tablica_Vivoda_Bazi.Items.Clear();
-
-            foreach (string[] stroka in baza)
+            catch (Exception)
             {
-                for (int i = 0; i < listView_Tablica_Vivoda_Bazi.Columns.Count; i++)
-                {
-                    if (stroka[i] == Poisk.stroka[i]) { chislo_naidennih_sovpadenii++; }
-                }
-
-                if (chislo_naidennih_sovpadenii >= chislo_parametrov_dlia_sravneniia)
-                {
-                    listView_Tablica_Vivoda_Bazi.Items.Add(Viborka_Strok_Iz_Bazi(stroka));
-                }
-
-                chislo_naidennih_sovpadenii = 0;
             }
         }
         private void ToolStripMenuItem_Context_Poisk_Click(object sender, EventArgs e)
@@ -299,9 +315,65 @@ namespace DevList
         }
         private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)
         {
+            if (izmeneniia_s_otkritiia)
+            {
+                DialogResult resultat_vibora =
+
+                MessageBox.Show
+                (
+                    "Сохранить изменения?",
+                    "Открытие файла",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1
+                );
+
+                if (resultat_vibora == DialogResult.Yes)
+                {
+                    if (put_do_BD == "")
+                    {
+                        ToolStripMenuItem_Sohranit_Kak_Click(sender, e);
+                    }
+                    else
+                    {
+                        ToolStripMenuItem_Sohranit_Click(sender, e);
+                    }
+                }
+
+                izmeneniia_s_otkritiia = false;
+            }
+
+            OpenFileDialog openFile = new OpenFileDialog();
+
+            openFile.ShowDialog();
+
+            if (File.Exists(openFile.FileName) == false)
+            {
+                File.WriteAllLines(openFile.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
+            }
+
+            string[] ves_fail = File.ReadAllLines(openFile.FileName);
+
+            baza.Clear();
+
+            foreach (string stroka in ves_fail)
+            {
+                baza.Add(Perebor_Stroki(stroka));
+            }
+
+            baza.Remove(baza[0]);
+
+            listView_Tablica_Vivoda_Bazi.Items.Clear();
+
+            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+        }
+        private void Otkrit()
+        {
             if (File.Exists(put_do_BD) == false)
             {
-                File.WriteAllLines(put_do_BD, spisok_stolbcov.Select(x => string.Join(",", x)));
+                OpenFileDialog openFile = new OpenFileDialog();
+
+                File.WriteAllLines(openFile.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
             }
 
             string[] ves_fail = File.ReadAllLines(put_do_BD);
@@ -366,26 +438,29 @@ namespace DevList
         }
         private void Glavnoe_Okno_FormClosed(object sender, FormClosedEventArgs e)
         {
-            DialogResult resultat_vibora =
-
-            MessageBox.Show
-            (
-                "Сохранить изменения?",
-                "Закрытие программы",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Information,
-                MessageBoxDefaultButton.Button1
-            );
-
-            if (resultat_vibora == DialogResult.Yes)
+            if (izmeneniia_s_otkritiia)
             {
-                if (put_do_BD == "")
+                DialogResult resultat_vibora =
+
+                MessageBox.Show
+                (
+                    "Сохранить изменения?",
+                    "Закрытие программы",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1
+                );
+
+                if (resultat_vibora == DialogResult.Yes)
                 {
-                    ToolStripMenuItem_Sohranit_Kak_Click(sender, e);
-                }
-                else
-                {
-                    ToolStripMenuItem_Sohranit_Click(sender, e);
+                    if (put_do_BD == "")
+                    {
+                        ToolStripMenuItem_Sohranit_Kak_Click(sender, e);
+                    }
+                    else
+                    {
+                        ToolStripMenuItem_Sohranit_Click(sender, e);
+                    }
                 }
             }
         }
@@ -411,6 +486,14 @@ namespace DevList
             Redaktirovanie_Spiskov redaktirovanie_spiskov = new Redaktirovanie_Spiskov();
 
             redaktirovanie_spiskov.ShowDialog();
+        }
+        private void listView_Tablica_Vivoda_Bazi_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            listView_Tablica_Vivoda_Bazi.Clear();
+
+            ///
+
+            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
     }
 }

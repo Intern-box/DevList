@@ -70,8 +70,11 @@ namespace DevList
         }
         private void button_Pravit_Click(object sender, EventArgs e)
         {
+            Glavnoe_Okno.izmeneniia_s_otkritiia = true;
+
             string[] stroka = new string[]
             {
+                Glavnoe_Okno.nomer_najatoi_stroki.ToString(),
                 textBox_InvNomer.Text,
                 comboBox_Pomeschenie.Text,
                 comboBox_FIO.Text,
