@@ -22,30 +22,36 @@ namespace DevList
         
         public static List<string[]> baza = new List<string[]>();     // БД в виде списка для удобной работы
 
-        public static int index = 0;                                 // Индекс элемента в БД. При добавлении +, при удалении -
+        public static int index = 0;                                  // Индекс элемента в БД. При добавлении +, при удалении -
 
         public static bool kopirovanie;                               // Флаг копирования при операции "Копирование"
-
         public static bool peremeschenie;                             // Флаг перемещения при операции "Перемещение"
 
         public static int nomer_najatoi_stroki;                       // При клике мышкой запоминает номер строки в таблице на главном окне
-
         public static bool izmeneniia_s_otkritiia = false;            // Отслеживает были ли изменения с открытия программы.
 
         public Glavnoe_Okno()
         {
             InitializeComponent();
 
+            menuStrip_Glavnoe_Menu.Items[4].Visible = false;
+
             // Сохраняем названия столбцов из таблицы
             string[] stolbci = new string[]
             {
-                listView_Tablica_Vivoda_Bazi.Columns[0].Text,
-                listView_Tablica_Vivoda_Bazi.Columns[1].Text,
-                listView_Tablica_Vivoda_Bazi.Columns[2].Text,
-                listView_Tablica_Vivoda_Bazi.Columns[3].Text,
-                listView_Tablica_Vivoda_Bazi.Columns[4].Text,
-                listView_Tablica_Vivoda_Bazi.Columns[5].Text,
-                listView_Tablica_Vivoda_Bazi.Columns[6].Text
+                listView_Tablica_Vivoda_Bazi.Columns[0].Text,         // ID
+                listView_Tablica_Vivoda_Bazi.Columns[1].Text,         // Дата приобретения
+                listView_Tablica_Vivoda_Bazi.Columns[2].Text,         // Инв. №
+                listView_Tablica_Vivoda_Bazi.Columns[3].Text,         // Помещение
+                listView_Tablica_Vivoda_Bazi.Columns[4].Text,         // Закреплено за ФИО
+                listView_Tablica_Vivoda_Bazi.Columns[5].Text,         // Наименование
+                listView_Tablica_Vivoda_Bazi.Columns[6].Text,         // Тип
+                listView_Tablica_Vivoda_Bazi.Columns[7].Text,         // Состояние
+                listView_Tablica_Vivoda_Bazi.Columns[8].Text,         // Инвентаризация
+                listView_Tablica_Vivoda_Bazi.Columns[9].Text,         // Комментарий
+                listView_Tablica_Vivoda_Bazi.Columns[10].Text,        // Hostname
+                listView_Tablica_Vivoda_Bazi.Columns[11].Text,        // IP
+                listView_Tablica_Vivoda_Bazi.Columns[12].Text,        // Изменил ФИО
             };
 
             // Записываем названия столбцов из таблицы
@@ -57,14 +63,14 @@ namespace DevList
                 // Пробуем читать ini-файл с адресами нужных списков
                 string[] ini_fail = new string[4];
 
+                // Если файла нет, предлагаем его создать
+                // Создаём папки и файлы для работы программы
                 if (File.Exists("DevList.ini"))
                 {
                     ini_fail = File.ReadAllLines("DevList.ini");
                 }
                 else
                 {
-                    // Если файла нет, предлагаем его создать
-                    // Создаём папки и файлы для работы программы
                     DialogResult resultat_vibora =
 
                     MessageBox.Show
@@ -123,19 +129,13 @@ namespace DevList
                 put_do_spiska_tipov_oborudovania = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 2);
                 put_do_spiska_sotrudnikov        = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 3);
 
-                /*
-                 * Открываем базу
-                 */
+                 // Открываем базу
                 Otkrit();
             }
-            catch (Exception)
-            {
-            }
+            catch (Exception) {}
         }
 
-        /*
-         * Обрабатываем строки из *.ini-файла. Строковые методы почему то не работают
-         */
+        // Обрабатываем строки из *.ini-файла. Строковые методы почему то не работают
         private string Chitaem_Puti_K_Failam_S_Dannimi(string[] ini_fail, int nomer_stroki_v_faile)
         {
             string put = "";
@@ -165,9 +165,7 @@ namespace DevList
             return put;
         }
 
-        /*
-         * Читаем данные из "списка" БД в таблицу главного окна
-         */
+        // Читаем данные из "списка" БД в таблицу главного окна
         private void Chtenie_Bazi(ListView listview, List<string[]> baza)
         {
             listView_Tablica_Vivoda_Bazi.Items.Clear();
@@ -217,14 +215,21 @@ namespace DevList
         }
         private void ToolStripMenuItem_Poisk_Click(object sender, EventArgs e)
         {
-            Poisk poisk = new Poisk();
-
-            poisk.ShowDialog();
-
             try
             {
+                Poisk poisk = new Poisk();
+
+                poisk.ShowDialog();
+
                 if (Poisk.otmenit)
                 {
+                    for (int i = 0; i < baza.Count; i++)
+                    {
+                        baza[i][0] = (i + 1).ToString();
+                    }
+
+                    Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+
                     int chislo_parametrov_dlia_sravneniia = 0;
 
                     int chislo_naidennih_sovpadenii = 0;
@@ -256,22 +261,20 @@ namespace DevList
                             chislo_naidennih_sovpadenii = 0;
                         }
                     }
-                }
 
-                Poisk.otmenit = true;
+                    menuStrip_Glavnoe_Menu.Items[4].Visible = true;
+
+                    Poisk.otmenit = true;
+                }
             }
-            catch (Exception)
-            {
-            }
+            catch (Exception) { }
         }
         private void ToolStripMenuItem_Context_Poisk_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem_Poisk_Click(sender, e);
         }
 
-        /*
-         * Для добавления строк в таблицу главного окна при использовании метода Poisk
-         */
+        // Для добавления строк в таблицу главного окна при использовании метода Poisk
         private ListViewItem Viborka_Strok_Iz_Bazi(string[] stroka)
         {
             ListViewItem lv = new ListViewItem(stroka);
@@ -286,6 +289,8 @@ namespace DevList
             }
 
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+
+            menuStrip_Glavnoe_Menu.Items[4].Visible = false;
         }
         private void ToolStripMenuItem_Sohranit_Kak_Click(object sender, EventArgs e)
         {
@@ -392,9 +397,7 @@ namespace DevList
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
 
-        /*
-         * Перевод из *.CSV в List<>
-         */
+        // Перевод из *.CSV в List<>
         public static string[] Perebor_Stroki(string stroka)
         {
             _ = stroka.TrimEnd('\r');

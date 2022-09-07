@@ -31,6 +31,7 @@ namespace DevList
 
             sotrudniki = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_sotrudnikov);
             comboBox_FIO.Items.AddRange(sotrudniki);
+            comboBox_Izmenil.Items.AddRange(sotrudniki);
 
             tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
             comboBox_Tip.Items.AddRange(tipi);
@@ -44,12 +45,18 @@ namespace DevList
             string[] stroka = new string[]
             {
                 Glavnoe_Okno.index.ToString(),
+                textBox_Data_Priobreteniia.Text,
                 textBox_InvNomer.Text,
                 comboBox_Pomeschenie.Text,
                 comboBox_FIO.Text,
                 textBox_Naimenovanie.Text,
                 comboBox_Tip.Text,
-                textBox_Kommentarii.Text
+                comboBox_Sostoianie.Text,
+                textBox_Inventarizaciia.Text,
+                textBox_Kommentarii.Text,
+                textBox_Hostname.Text,
+                textBox_IP.Text,
+                comboBox_Izmenil.Text
             };
 
             Glavnoe_Okno.baza.Add(stroka);
@@ -100,6 +107,10 @@ namespace DevList
         {
             Plus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, pomescheniia);
         }
+        private void button_pomeschenie_minus_Click(object sender, EventArgs e)
+        {
+            Minus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, pomescheniia);
+        }
         private void button_fio_plus_Click(object sender, EventArgs e)
         {
             Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, sotrudniki);
@@ -108,17 +119,21 @@ namespace DevList
         {
             Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, tipi);
         }
-        private void button_pomeschenie_minus_Click(object sender, EventArgs e)
+        private void button_tip_minus_Click(object sender, EventArgs e)
         {
-            Minus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, pomescheniia);
+            Minus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, tipi);
         }
         private void button_fio_minus_Click(object sender, EventArgs e)
         {
             Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, sotrudniki);
         }
-        private void button_tip_minus_Click(object sender, EventArgs e)
+        private void button_Izmenil_plus_Click(object sender, EventArgs e)
         {
-            Minus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, tipi);
+            Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, sotrudniki);
+        }
+        private void button_Izmenil_minus_Click(object sender, EventArgs e)
+        {
+            Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, tipi);
         }
     }
 }

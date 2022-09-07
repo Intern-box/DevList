@@ -60,6 +60,12 @@ namespace DevList
             this.ToolStripMenuItem_Poisk = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Redaktirovanie_Spiskov = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Perechitat = new System.Windows.Forms.ToolStripMenuItem();
+            this.Hostname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Sostoianie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DataPriobreteniia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Inventarizaciia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.izmenil = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip_Vsplivauschee_Menu.SuspendLayout();
             this.menuStrip_Glavnoe_Menu.SuspendLayout();
             this.SuspendLayout();
@@ -72,12 +78,18 @@ namespace DevList
             this.listView_Tablica_Vivoda_Bazi.AutoArrange = false;
             this.listView_Tablica_Vivoda_Bazi.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.IDnomer,
+            this.DataPriobreteniia,
             this.InvNomer,
             this.Pomescheniie,
             this.FIO,
             this.Naimenovanie,
             this.Tip,
-            this.Kommentarii});
+            this.Sostoianie,
+            this.Inventarizaciia,
+            this.Kommentarii,
+            this.Hostname,
+            this.IP,
+            this.izmenil});
             this.listView_Tablica_Vivoda_Bazi.ContextMenuStrip = this.contextMenuStrip_Vsplivauschee_Menu;
             this.listView_Tablica_Vivoda_Bazi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView_Tablica_Vivoda_Bazi.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -86,7 +98,7 @@ namespace DevList
             this.listView_Tablica_Vivoda_Bazi.Location = new System.Drawing.Point(0, 24);
             this.listView_Tablica_Vivoda_Bazi.Name = "listView_Tablica_Vivoda_Bazi";
             this.listView_Tablica_Vivoda_Bazi.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.listView_Tablica_Vivoda_Bazi.Size = new System.Drawing.Size(1044, 537);
+            this.listView_Tablica_Vivoda_Bazi.Size = new System.Drawing.Size(1251, 537);
             this.listView_Tablica_Vivoda_Bazi.TabIndex = 1;
             this.listView_Tablica_Vivoda_Bazi.UseCompatibleStateImageBehavior = false;
             this.listView_Tablica_Vivoda_Bazi.View = System.Windows.Forms.View.Details;
@@ -96,43 +108,43 @@ namespace DevList
             // IDnomer
             // 
             this.IDnomer.Text = "  ID";
-            this.IDnomer.Width = 54;
+            this.IDnomer.Width = 45;
             // 
             // InvNomer
             // 
             this.InvNomer.Text = "Инв. №";
             this.InvNomer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.InvNomer.Width = 96;
+            this.InvNomer.Width = 78;
             // 
             // Pomescheniie
             // 
             this.Pomescheniie.Text = "Помещение";
             this.Pomescheniie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Pomescheniie.Width = 160;
+            this.Pomescheniie.Width = 113;
             // 
             // FIO
             // 
-            this.FIO.Text = "ФИО";
+            this.FIO.Text = "Закреплено за ФИО";
             this.FIO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.FIO.Width = 160;
+            this.FIO.Width = 150;
             // 
             // Naimenovanie
             // 
             this.Naimenovanie.Text = "Наименование";
             this.Naimenovanie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Naimenovanie.Width = 250;
+            this.Naimenovanie.Width = 115;
             // 
             // Tip
             // 
             this.Tip.Text = "Тип";
             this.Tip.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Tip.Width = 150;
+            this.Tip.Width = 51;
             // 
             // Kommentarii
             // 
             this.Kommentarii.Text = "Комментарий";
             this.Kommentarii.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Kommentarii.Width = 170;
+            this.Kommentarii.Width = 105;
             // 
             // contextMenuStrip_Vsplivauschee_Menu
             // 
@@ -198,7 +210,7 @@ namespace DevList
             this.ToolStripMenuItem_Perechitat});
             this.menuStrip_Glavnoe_Menu.Location = new System.Drawing.Point(0, 0);
             this.menuStrip_Glavnoe_Menu.Name = "menuStrip_Glavnoe_Menu";
-            this.menuStrip_Glavnoe_Menu.Size = new System.Drawing.Size(1044, 24);
+            this.menuStrip_Glavnoe_Menu.Size = new System.Drawing.Size(1251, 24);
             this.menuStrip_Glavnoe_Menu.TabIndex = 2;
             this.menuStrip_Glavnoe_Menu.Text = "menuStrip1";
             // 
@@ -304,10 +316,48 @@ namespace DevList
             // 
             // ToolStripMenuItem_Perechitat
             // 
+            this.ToolStripMenuItem_Perechitat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ToolStripMenuItem_Perechitat.ForeColor = System.Drawing.Color.Red;
             this.ToolStripMenuItem_Perechitat.Name = "ToolStripMenuItem_Perechitat";
-            this.ToolStripMenuItem_Perechitat.Size = new System.Drawing.Size(101, 20);
-            this.ToolStripMenuItem_Perechitat.Text = "Перечитать БД";
+            this.ToolStripMenuItem_Perechitat.Size = new System.Drawing.Size(114, 20);
+            this.ToolStripMenuItem_Perechitat.Text = "Убрать фильтры";
             this.ToolStripMenuItem_Perechitat.Click += new System.EventHandler(this.ToolStripMenuItem_Perechitat_Click);
+            // 
+            // Hostname
+            // 
+            this.Hostname.Text = "Hostname";
+            this.Hostname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Hostname.Width = 80;
+            // 
+            // IP
+            // 
+            this.IP.Text = "IP";
+            this.IP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.IP.Width = 30;
+            // 
+            // Sostoianie
+            // 
+            this.Sostoianie.Text = "Состояние";
+            this.Sostoianie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Sostoianie.Width = 90;
+            // 
+            // DataPriobreteniia
+            // 
+            this.DataPriobreteniia.Text = "Дата приобретения";
+            this.DataPriobreteniia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DataPriobreteniia.Width = 150;
+            // 
+            // Inventarizaciia
+            // 
+            this.Inventarizaciia.Text = "Инвентаризация";
+            this.Inventarizaciia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Inventarizaciia.Width = 130;
+            // 
+            // izmenil
+            // 
+            this.izmenil.Text = "Изменил ФИО";
+            this.izmenil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.izmenil.Width = 110;
             // 
             // Glavnoe_Okno
             // 
@@ -316,7 +366,7 @@ namespace DevList
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1044, 561);
+            this.ClientSize = new System.Drawing.Size(1251, 561);
             this.Controls.Add(this.listView_Tablica_Vivoda_Bazi);
             this.Controls.Add(this.menuStrip_Glavnoe_Menu);
             this.Name = "Glavnoe_Okno";
@@ -362,6 +412,12 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sozdat;
         private System.Windows.Forms.ColumnHeader FIO;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Redaktirovanie_Spiskov;
+        private System.Windows.Forms.ColumnHeader DataPriobreteniia;
+        private System.Windows.Forms.ColumnHeader Sostoianie;
+        private System.Windows.Forms.ColumnHeader Inventarizaciia;
+        private System.Windows.Forms.ColumnHeader Hostname;
+        private System.Windows.Forms.ColumnHeader IP;
+        private System.Windows.Forms.ColumnHeader izmenil;
     }
 }
 
