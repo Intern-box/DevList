@@ -235,11 +235,17 @@ namespace DevList
             {
                 listView_Tablica_Vivoda_Bazi.Items.Clear();
 
-                foreach  (string[] stroka in baza)
+                foreach (string[] stroka in baza)
                 {
                     for (int i = 0; i < Poisk.stroka.Length; i++)
                     {
-                        if (stroka[i] == Poisk.stroka[i]) { chislo_naidennih_parametrov++; }
+                        if (Poisk.stroka[i] != "")
+                        {
+                            if (Poisk.stroka[i] == stroka[i])
+                            {
+                                chislo_naidennih_parametrov++;
+                            }
+                        }
                     }
 
                     if (chislo_naidennih_parametrov >= chislo_parametrov_dlia_sravnenia)
