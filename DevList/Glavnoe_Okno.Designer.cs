@@ -93,6 +93,7 @@ namespace DevList
             this.listView_Tablica_Vivoda_Bazi.ContextMenuStrip = this.contextMenuStrip_Vsplivauschee_Menu;
             this.listView_Tablica_Vivoda_Bazi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView_Tablica_Vivoda_Bazi.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listView_Tablica_Vivoda_Bazi.FullRowSelect = true;
             this.listView_Tablica_Vivoda_Bazi.GridLines = true;
             this.listView_Tablica_Vivoda_Bazi.HideSelection = false;
             this.listView_Tablica_Vivoda_Bazi.Location = new System.Drawing.Point(0, 24);
@@ -373,6 +374,7 @@ namespace DevList
             this.ShowIcon = false;
             this.Text = "DevList 4.5";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Glavnoe_Okno_FormClosed);
+            this.Load += new System.EventHandler(this.Glavnoe_Okno_Load);
             this.contextMenuStrip_Vsplivauschee_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.PerformLayout();

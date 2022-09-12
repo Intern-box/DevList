@@ -14,13 +14,18 @@ namespace DevList
     public partial class Glavnoe_Okno : Form
     {
         List<string[]> spisok_stolbcov = new List<string[]>();        // Названия столбцов из таблицы
-
+        public static string[] ini_fail = new string[4];              // Файл с настройками
         public static string put_do_BD = "";                          // Путь к файлу с базой
         public static string put_do_spiska_pomeschenii = "";          // Путь к списку помещений
         public static string put_do_spiska_sotrudnikov = "";          // Путь к списку сотрудников
         public static string put_do_spiska_tipov_oborudovania = "";   // Путь к списку типов оборудования
-        
         public static List<string[]> baza = new List<string[]>();     // БД в виде списка для удобной работы
+
+
+
+
+
+
 
         public static int index = 0;                                  // Индекс элемента в БД. При добавлении +, при удалении -
 
@@ -34,9 +39,8 @@ namespace DevList
         {
             InitializeComponent();
 
-            menuStrip_Glavnoe_Menu.Items[4].Visible = false;
-
-            // Сохраняем названия столбцов из таблицы
+            // Сохраняем названия столбцов из таблицы и
+            // записываем в форме списка для удобства записи в *.csv
             string[] stolbci = new string[]
             {
                 listView_Tablica_Vivoda_Bazi.Columns[0].Text,         // ID
@@ -53,86 +57,173 @@ namespace DevList
                 listView_Tablica_Vivoda_Bazi.Columns[11].Text,        // IP
                 listView_Tablica_Vivoda_Bazi.Columns[12].Text,        // Изменил ФИО
             };
-
-            // Записываем названия столбцов из таблицы
-            // в форме списка для удобной записи в *.csv
             spisok_stolbcov.Add(stolbci);
 
-            try
+            // Отключаем видимость кнопки с Фильтрами
+            menuStrip_Glavnoe_Menu.Items[4].Visible = false;
+
+            // Ищим файл с настройками
+            // Если его нет, предлагаем создать
+            // При отказе - выходим из программы
+            if (File.Exists("DevList.ini") == false)
             {
-                // Пробуем читать ini-файл с адресами нужных списков
-                string[] ini_fail = new string[4];
-
-                // Если файла нет, предлагаем его создать
-                // Создаём папки и файлы для работы программы
-                if (File.Exists("DevList.ini"))
+                if (Zapros_Da_Net("Нет файла с настройками", "Создать?") == DialogResult.Yes)
                 {
-                    ini_fail = File.ReadAllLines("DevList.ini");
-                }
-                else
-                {
-                    DialogResult resultat_vibora =
-
-                    MessageBox.Show
+                    File.AppendAllText
                     (
-                        "Создать новый файл вида:\r\n\r\n" +
+                        "DevList.ini",
                         "БД = БД\\БД.csv\r\n" +
                         "Помещения = БД\\Помещения.txt\r\n" +
                         "Тип = БД\\Тип.txt\r\n" +
-                        "Сотрудники = БД\\Сотрудники.txt,\r\n\r\n" +
-                        "а также сопутствующие папки и файлы?",
-                        "Нет файла с настройками DevList.ini",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Information,
-                        MessageBoxDefaultButton.Button1
+                        "Сотрудники = БД\\Сотрудники.txt"
                     );
 
-                    if (resultat_vibora == DialogResult.Yes)
+                    if (Directory.Exists("БД") == false)
+                        Directory.CreateDirectory("БД");
+
+                    if (Directory.Exists("История перемещений") == false)
+                        Directory.CreateDirectory("История перемещений");
+                }
+                else
+                {
+                    Close();
+                }
+            }
+
+            // Читаем файл с настройками
+            ini_fail = File.ReadAllLines("DevList.ini");
+        }
+        private void Glavnoe_Okno_Load(object sender, EventArgs e)
+        {
+            // Сохраняем пути к нужным файлам
+            put_do_BD = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 0);
+            put_do_spiska_pomeschenii = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 1);
+            put_do_spiska_tipov_oborudovania = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 2);
+            put_do_spiska_sotrudnikov = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 3);
+
+            // Проверяем есть ли файл с БД
+            // Если нет, предлагаем создать или открыть свой
+            // после чего записываем путь к файлу в поля и в файл с настройками
+            // Если есть, читаем БД
+            if (File.Exists(put_do_BD) == false)
+            {
+                if (Zapros_Da_Net("Нет файла с базой", "Создать?") == DialogResult.Yes)
+                {
+                    File.WriteAllLines(put_do_BD, spisok_stolbcov.Select(x => string.Join(",", x)));
+                }
+                else
+                {
+                    put_do_BD = ini_fail[0] = "БД = " + Zapros_Na_Otkritie_Faila();
+
+                    if (put_do_BD != "БД = ")
                     {
-                        // Создаём папки и файлы
-                        File.AppendAllText
-                        (
-                            "DevList.ini",
-                            "БД = БД\\БД.csv\r\n" +
-                            "Помещения = БД\\Помещения.txt\r\n" +
-                            "Тип = БД\\Тип.txt\r\n" +
-                            "Сотрудники = БД\\Сотрудники.txt"
-                        );
-
-                        if (Directory.Exists("БД") == false)
-                        {
-                            Directory.CreateDirectory("БД");
-                        }
-                        if (Directory.Exists("История перемещений") == false)
-                        {
-                            Directory.CreateDirectory("История перемещений");
-                        }
-
-                        File.WriteAllLines("БД\\БД.csv", spisok_stolbcov.Select(x => string.Join(",", x)));
-                        File.AppendAllText("БД\\Помещения.txt", "");
-                        File.AppendAllText("БД\\Тип.txt", "");
-                        File.AppendAllText("БД\\Сотрудники.txt", "");
-
-                        ini_fail = File.ReadAllLines("DevList.ini");
-                    }
-                    else
-                    {
-                        // Если отказались от создания папок и файлов,
-                        // то полностью закрываем приложение
-                        Environment.Exit(0);
+                        File.WriteAllLines("DevList.ini", ini_fail);
                     }
                 }
-
-                // Сохраняем пути к нужным файлам
-                put_do_BD                        = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 0);
-                put_do_spiska_pomeschenii        = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 1);
-                put_do_spiska_tipov_oborudovania = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 2);
-                put_do_spiska_sotrudnikov        = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 3);
-
-                 // Открываем базу
-                Otkrit();
             }
-            catch (Exception) {}
+
+            // Проверяем есть ли файл со списком помещений
+            // Если нет, предлагаем создать или открыть свой
+            // после чего записываем путь к файлу в поля и в файл с настройками
+            if (File.Exists(put_do_spiska_pomeschenii) == false)
+            {
+                if (Zapros_Da_Net("Нет файла со списком помещений", "Создать?") == DialogResult.Yes)
+                {
+                    File.Create(put_do_spiska_pomeschenii);
+                }
+                else
+                {
+                    put_do_spiska_pomeschenii = ini_fail[1] = "Помещения = " + Zapros_Na_Otkritie_Faila();
+
+                    if (put_do_spiska_pomeschenii != "Помещения = ")
+                    {
+                        File.WriteAllLines("DevList.ini", ini_fail);
+                    }
+                }
+            }
+
+            // Проверяем есть ли файл со списком типов МЦ
+            // Если нет, предлагаем создать или открыть свой
+            // после чего записываем путь к файлу в поля и в файл с настройками
+            if (File.Exists(put_do_spiska_tipov_oborudovania) == false)
+            {
+                if (Zapros_Da_Net("Нет файла со списком типов МЦ", "Создать?") == DialogResult.Yes)
+                {
+                    File.Create(put_do_spiska_tipov_oborudovania);
+                }
+                else
+                {
+                    put_do_spiska_tipov_oborudovania = ini_fail[2] = "Тип = " + Zapros_Na_Otkritie_Faila();
+
+                    if (put_do_spiska_tipov_oborudovania != "Тип = ")
+                    {
+                        File.WriteAllLines("DevList.ini", ini_fail);
+                    }
+                }
+            }
+
+            // Проверяем есть ли файл со списком сотрудников
+            // Если нет, предлагаем создать или открыть свой
+            // после чего записываем путь к файлу в поля и в файл с настройками
+            if (File.Exists(put_do_spiska_sotrudnikov) == false)
+            {
+                if (Zapros_Da_Net("Нет файла со списком сотрудников", "Создать?") == DialogResult.Yes)
+                {
+                    File.Create(put_do_spiska_sotrudnikov);
+                }
+                else
+                {
+                    put_do_spiska_sotrudnikov = ini_fail[3] = "Сотрудники = " + Zapros_Na_Otkritie_Faila();
+
+                    if (put_do_spiska_sotrudnikov != "Сотрудники = ")
+                    {
+                        File.WriteAllLines("DevList.ini", ini_fail);
+                    }
+                }
+            }
+
+            // Перечитываем пути к нужным файлам, таким образом уходим от ошибки
+            // System.NotSupportedException: Данный формат пути не поддерживается
+            // Видимо OpenFileDialog что то дописывает в путь...
+            put_do_BD = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 0);
+            put_do_spiska_pomeschenii = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 1);
+            put_do_spiska_tipov_oborudovania = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 2);
+            put_do_spiska_sotrudnikov = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 3);
+
+            // Открываем базу
+            string[] ves_fail = File.ReadAllLines(put_do_BD);
+
+            baza.Clear();
+
+            foreach (string stroka in ves_fail)
+            {
+                baza.Add(Perebor_Stroki(stroka));
+            }
+
+            if (new FileInfo(put_do_BD).Length > 0)
+            {
+                baza.Remove(baza[0]);
+            }
+
+            // Выводим содержимое базы в таблицу
+            listView_Tablica_Vivoda_Bazi.Items.Clear();
+
+            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+        }
+        private DialogResult Zapros_Da_Net(string zagolovok_okna, string tekst)
+        {
+            DialogResult otvet_na_zapros =
+
+            MessageBox.Show
+            (
+                tekst,
+                zagolovok_okna,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1
+            );
+
+            return otvet_na_zapros;
         }
 
         // Обрабатываем строки из *.ini-файла. Строковые методы почему то не работают
@@ -146,23 +237,33 @@ namespace DevList
             {
                 if (pishem)
                 {
-                    if (ini_fail[nomer_stroki_v_faile][i] != ' ')
-                    {
-                        put += ini_fail[nomer_stroki_v_faile][i];
-                    }
                     if (ini_fail[nomer_stroki_v_faile][i] == '\\')
                     {
                         put += "\\";
+                    }
+                    else
+                    {
+                        put += ini_fail[nomer_stroki_v_faile][i];
                     }
                 }
 
                 if (ini_fail[nomer_stroki_v_faile][i] == '=')
                 {
                     pishem = true;
+
+                    i++;
                 }
             }
 
             return put;
+        }
+        private string Zapros_Na_Otkritie_Faila()
+        {
+            OpenFileDialog okno_dlia_poiska_faila = new OpenFileDialog();
+
+            okno_dlia_poiska_faila.ShowDialog();
+
+            return okno_dlia_poiska_faila.FileName;
         }
 
         // Читаем данные из "списка" БД в таблицу главного окна
@@ -274,7 +375,6 @@ namespace DevList
         {
             ToolStripMenuItem_Poisk_Click(sender, e);
         }
-
         private void ToolStripMenuItem_Perechitat_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < baza.Count; i++)
@@ -352,30 +452,6 @@ namespace DevList
             }
 
             string[] ves_fail = File.ReadAllLines(openFile.FileName);
-
-            baza.Clear();
-
-            foreach (string stroka in ves_fail)
-            {
-                baza.Add(Perebor_Stroki(stroka));
-            }
-
-            baza.Remove(baza[0]);
-
-            listView_Tablica_Vivoda_Bazi.Items.Clear();
-
-            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
-        }
-        private void Otkrit()
-        {
-            if (File.Exists(put_do_BD) == false)
-            {
-                OpenFileDialog openFile = new OpenFileDialog();
-
-                File.WriteAllLines(openFile.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
-            }
-
-            string[] ves_fail = File.ReadAllLines(put_do_BD);
 
             baza.Clear();
 
