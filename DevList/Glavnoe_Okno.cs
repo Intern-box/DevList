@@ -20,6 +20,7 @@ namespace DevList
         public static string put_do_spiska_sotrudnikov = "";          // Путь к списку сотрудников
         public static string put_do_spiska_tipov_oborudovania = "";   // Путь к списку типов оборудования
         public static List<string[]> baza = new List<string[]>();     // БД в виде списка для удобной работы
+        public static bool izmeneniia_s_otkritiia = false;            // Отслеживает были ли изменения с открытия программы
 
 
 
@@ -33,7 +34,6 @@ namespace DevList
         public static bool peremeschenie;                             // Флаг перемещения при операции "Перемещение"
 
         public static int nomer_najatoi_stroki;                       // При клике мышкой запоминает номер строки в таблице на главном окне
-        public static bool izmeneniia_s_otkritiia = false;            // Отслеживает были ли изменения с открытия программы.
 
         public Glavnoe_Okno()
         {
@@ -109,17 +109,16 @@ namespace DevList
             {
                 if (Zapros_Da_Net("Нет файла с базой", "Создать?") == DialogResult.Yes)
                 {
-                    File.WriteAllLines(put_do_BD, spisok_stolbcov.Select(x => string.Join(",", x)));
+                    File.WriteAllLines("БД\\БД.csv", spisok_stolbcov.Select(x => string.Join(",", x)));
+
+                    ini_fail[0] = "БД = БД\\БД.csv";
                 }
                 else
                 {
                     put_do_BD = ini_fail[0] = "БД = " + Zapros_Na_Otkritie_Faila();
-
-                    if (put_do_BD != "БД = ")
-                    {
-                        File.WriteAllLines("DevList.ini", ini_fail);
-                    }
                 }
+
+                File.WriteAllLines("DevList.ini", ini_fail);
             }
 
             // Проверяем есть ли файл со списком помещений
@@ -129,17 +128,16 @@ namespace DevList
             {
                 if (Zapros_Da_Net("Нет файла со списком помещений", "Создать?") == DialogResult.Yes)
                 {
-                    File.Create(put_do_spiska_pomeschenii);
+                    File.Create("БД\\Помещения.txt");
+
+                    ini_fail[1] = "Помещения = БД\\Помещения.txt";
                 }
                 else
                 {
                     put_do_spiska_pomeschenii = ini_fail[1] = "Помещения = " + Zapros_Na_Otkritie_Faila();
-
-                    if (put_do_spiska_pomeschenii != "Помещения = ")
-                    {
-                        File.WriteAllLines("DevList.ini", ini_fail);
-                    }
                 }
+
+                File.WriteAllLines("DevList.ini", ini_fail);
             }
 
             // Проверяем есть ли файл со списком типов МЦ
@@ -149,17 +147,16 @@ namespace DevList
             {
                 if (Zapros_Da_Net("Нет файла со списком типов МЦ", "Создать?") == DialogResult.Yes)
                 {
-                    File.Create(put_do_spiska_tipov_oborudovania);
+                    File.Create("БД\\Тип.txt");
+
+                    ini_fail[2] = "Тип = БД\\Тип.txt";
                 }
                 else
                 {
                     put_do_spiska_tipov_oborudovania = ini_fail[2] = "Тип = " + Zapros_Na_Otkritie_Faila();
-
-                    if (put_do_spiska_tipov_oborudovania != "Тип = ")
-                    {
-                        File.WriteAllLines("DevList.ini", ini_fail);
-                    }
                 }
+
+                File.WriteAllLines("DevList.ini", ini_fail);
             }
 
             // Проверяем есть ли файл со списком сотрудников
@@ -169,17 +166,16 @@ namespace DevList
             {
                 if (Zapros_Da_Net("Нет файла со списком сотрудников", "Создать?") == DialogResult.Yes)
                 {
-                    File.Create(put_do_spiska_sotrudnikov);
+                    File.Create("БД\\Сотрудники.txt");
+
+                    ini_fail[3] = "Сотрудники = БД\\Сотрудники.txt";
                 }
                 else
                 {
                     put_do_spiska_sotrudnikov = ini_fail[3] = "Сотрудники = " + Zapros_Na_Otkritie_Faila();
-
-                    if (put_do_spiska_sotrudnikov != "Сотрудники = ")
-                    {
-                        File.WriteAllLines("DevList.ini", ini_fail);
-                    }
                 }
+
+                File.WriteAllLines("DevList.ini", ini_fail);
             }
 
             // Перечитываем пути к нужным файлам, таким образом уходим от ошибки
@@ -190,25 +186,32 @@ namespace DevList
             put_do_spiska_tipov_oborudovania = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 2);
             put_do_spiska_sotrudnikov = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 3);
 
-            // Открываем базу
-            string[] ves_fail = File.ReadAllLines(put_do_BD);
-
-            baza.Clear();
-
-            foreach (string stroka in ves_fail)
+            if (File.Exists(put_do_BD) && File.Exists(put_do_spiska_pomeschenii) && File.Exists(put_do_spiska_tipov_oborudovania) && File.Exists(put_do_spiska_sotrudnikov))
             {
-                baza.Add(Perebor_Stroki(stroka));
-            }
+                // Открываем базу
+                string[] ves_fail = File.ReadAllLines(put_do_BD);
 
-            if (new FileInfo(put_do_BD).Length > 0)
+                baza.Clear();
+
+                foreach (string stroka in ves_fail)
+                {
+                    baza.Add(Perebor_Stroki(stroka));
+                }
+
+                if (new FileInfo(put_do_BD).Length > 0)
+                {
+                    baza.Remove(baza[0]);
+                }
+
+                // Выводим содержимое базы в таблицу
+                listView_Tablica_Vivoda_Bazi.Items.Clear();
+
+                Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+            }
+            else
             {
-                baza.Remove(baza[0]);
+                Close();
             }
-
-            // Выводим содержимое базы в таблицу
-            listView_Tablica_Vivoda_Bazi.Items.Clear();
-
-            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
         private DialogResult Zapros_Da_Net(string zagolovok_okna, string tekst)
         {
@@ -261,9 +264,16 @@ namespace DevList
         {
             OpenFileDialog okno_dlia_poiska_faila = new OpenFileDialog();
 
-            okno_dlia_poiska_faila.ShowDialog();
+            DialogResult otvet_na_zapros = okno_dlia_poiska_faila.ShowDialog();
 
-            return okno_dlia_poiska_faila.FileName;
+            if (otvet_na_zapros == DialogResult.Cancel)
+            {
+                return null;
+            }
+            else
+            {
+                return okno_dlia_poiska_faila.FileName;
+            }
         }
 
         // Читаем данные из "списка" БД в таблицу главного окна
