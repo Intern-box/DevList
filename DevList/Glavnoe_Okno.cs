@@ -411,16 +411,9 @@ namespace DevList
         }
         private void ToolStripMenuItem_Sohranit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                File.WriteAllLines(put_do_BD, spisok_stolbcov.Select(x => string.Join(",", x)));
+            File.WriteAllLines(put_do_BD, spisok_stolbcov.Select(x => string.Join(",", x)));
 
-                File.AppendAllLines(put_do_BD, baza.Select(x => string.Join(",", x)));
-            }
-            catch (Exception)
-            {
-
-            }
+            File.AppendAllLines(put_do_BD, baza.Select(x => string.Join(",", x)));
         }
         private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)
         {
@@ -452,16 +445,16 @@ namespace DevList
                 izmeneniia_s_otkritiia = false;
             }
 
-            OpenFileDialog openFile = new OpenFileDialog();
+            OpenFileDialog otkrit_fail = new OpenFileDialog();
 
-            openFile.ShowDialog();
+            otkrit_fail.ShowDialog();
 
-            if (File.Exists(openFile.FileName) == false)
+            if (File.Exists(otkrit_fail.FileName) == false)
             {
-                File.WriteAllLines(openFile.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
+                File.WriteAllLines(otkrit_fail.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
             }
 
-            string[] ves_fail = File.ReadAllLines(openFile.FileName);
+            string[] ves_fail = File.ReadAllLines(otkrit_fail.FileName);
 
             baza.Clear();
 
@@ -515,9 +508,9 @@ namespace DevList
         {
             baza.Clear();
 
-            index = 0;
-
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+
+            izmeneniia_s_otkritiia = true;
         }
         private void Glavnoe_Okno_FormClosed(object sender, FormClosedEventArgs e)
         {
