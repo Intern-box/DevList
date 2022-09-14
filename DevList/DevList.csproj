@@ -53,6 +53,24 @@
     <Compile Include="Dobavit.Designer.cs">
       <DependentUpon>Dobavit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Udalit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Udalit.Designer.cs">
+      <DependentUpon>Udalit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izmenit_Stroku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izmenit_Stroku.Designer.cs">
+      <DependentUpon>Izmenit_Stroku.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izmenit_Iz_Spiska.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izmenit_Iz_Spiska.Designer.cs">
+      <DependentUpon>Izmenit_Iz_Spiska.cs</DependentUpon>
+    </Compile>
     <Compile Include="Redaktirovanie_Spiskov.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,12 +89,6 @@
     <Compile Include="Pravit.Designer.cs">
       <DependentUpon>Pravit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Udalit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Udalit.Designer.cs">
-      <DependentUpon>Udalit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Glavnoe_Okno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +99,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dobavit.resx">
       <DependentUpon>Dobavit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izmenit_Stroku.resx">
+      <DependentUpon>Izmenit_Stroku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izmenit_Iz_Spiska.resx">
+      <DependentUpon>Izmenit_Iz_Spiska.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Redaktirovanie_Spiskov.resx">
       <DependentUpon>Redaktirovanie_Spiskov.cs</DependentUpon>

@@ -21,6 +21,8 @@ namespace DevList
         public static string put_do_spiska_tipov_oborudovania = "";   // Путь к списку типов оборудования
         public static List<string[]> baza = new List<string[]>();     // БД в виде списка для удобной работы
         public static bool izmeneniia_s_otkritiia = false;            // Отслеживает были ли изменения с открытия программы
+        public static int nomer_najatoi_stroki;                       // При клике мышкой запоминает номер строки в таблице на главном окне
+        public static int nomer_stolbca;                              // При клике мышкой запоминает номер столбца
 
 
 
@@ -32,8 +34,6 @@ namespace DevList
 
         public static bool kopirovanie;                               // Флаг копирования при операции "Копирование"
         public static bool peremeschenie;                             // Флаг перемещения при операции "Перемещение"
-
-        public static int nomer_najatoi_stroki;                       // При клике мышкой запоминает номер строки в таблице на главном окне
 
         public Glavnoe_Okno()
         {
@@ -314,11 +314,24 @@ namespace DevList
         }
         private void ToolStripMenuItem_Pravit_Click(object sender, EventArgs e)
         {
-            Pravit pravit = new Pravit();
+            izmeneniia_s_otkritiia = true;
 
-            pravit.ShowDialog();
+            if (nomer_stolbca == 1 || nomer_stolbca == 2 || nomer_stolbca == 5 || nomer_stolbca == 8 || nomer_stolbca == 9 || nomer_stolbca == 10 || nomer_stolbca == 11 || nomer_stolbca == 12)
+            {
+                Izmenit_Stroku izmenit_stroku = new Izmenit_Stroku();
 
-            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+                izmenit_stroku.ShowDialog();
+
+                Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+            }
+            if (nomer_stolbca == 3 || nomer_stolbca == 4 || nomer_stolbca == 6 || nomer_stolbca == 7)
+            {
+                Izmenit_Iz_Spiska izmenit_Iz_spiska = new Izmenit_Iz_Spiska();
+
+                izmenit_Iz_spiska.ShowDialog();
+
+                Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+            }
         }
         private void ToolStripMenuItem_Context_Pravit_Click(object sender, EventArgs e)
         {
@@ -550,12 +563,10 @@ namespace DevList
                 {
                     nomer_najatoi_stroki = stroka_v_tablice.Item.Index;
 
-                    nomer_najatoi_stroki++;
+                    nomer_stolbca = stroka_v_tablice.Item.SubItems.IndexOf(stroka_v_tablice.SubItem);
                 }
             }
-            catch (Exception)
-            {
-            }
+            catch (Exception) { }
         }
         private void toolStripMenuItem_Redaktirovanie_Spiskov_Click(object sender, EventArgs e)
         {

@@ -15,15 +15,6 @@ namespace DevList
         public Udalit()
         {
             InitializeComponent();
-
-            if (Glavnoe_Okno.nomer_najatoi_stroki != 0)
-            {
-                textBox_IDNomer.Text = Glavnoe_Okno.nomer_najatoi_stroki.ToString();
-            }
-            else
-            {
-                textBox_IDNomer.Text = "пусто";
-            }
         }
         private void button_Udalit_Click(object sender, EventArgs e)
         {
@@ -31,30 +22,24 @@ namespace DevList
 
             try
             {
-                Glavnoe_Okno.baza.RemoveAt(int.Parse(textBox_IDNomer.Text) - 1);
-
-                for (int i = 0; i < Glavnoe_Okno.baza.Count; i++)
+                if (Glavnoe_Okno.nomer_najatoi_stroki + 1 != 0)
                 {
-                    Glavnoe_Okno.baza[i][0] = (i + 1).ToString();
+                    Glavnoe_Okno.baza.RemoveAt(Glavnoe_Okno.nomer_najatoi_stroki);
+
+                    for (int i = 0; i < Glavnoe_Okno.baza.Count; i++)
+                    {
+                        Glavnoe_Okno.baza[i][0] = (i + 1).ToString();
+                    }
+
+                    Close();
                 }
-
-                Close();
             }
-            catch (Exception)
-            {
-
-            }
+            catch (Exception) { }
         }
+
         private void button_Otmenit_Click(object sender, EventArgs e)
         {
             Close();
-        }
-        private void textBox_IDNomer_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button_Udalit_Click(sender, e);
-            }
         }
     }
 }
