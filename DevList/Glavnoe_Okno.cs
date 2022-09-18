@@ -564,9 +564,47 @@ namespace DevList
         {
             listView_Tablica_Vivoda_Bazi.Clear();
 
-            ///
+            /// Сортировка по колонкам
 
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+        }
+        private void Obschii_poisk()
+        {
+            bool popadanie = false;
+
+            listView_Tablica_Vivoda_Bazi.Items.Clear();
+
+            foreach (string[] stroka_iz_bazi in baza)
+            {
+                for (int i = 0; i < stroka_iz_bazi.Length; i++)
+                {
+                    if (i > 0)
+                    {
+                        if (stroka_iz_bazi[i].Contains(textBox_Obschii_Poisk.Text))
+                        {
+                            popadanie = true;
+                        }
+                    }
+                }
+
+                if (popadanie)
+                {
+                    ListViewItem lvi = new ListViewItem(stroka_iz_bazi);
+
+                    listView_Tablica_Vivoda_Bazi.Items.Add(lvi);
+
+                    menuStrip_Glavnoe_Menu.Items[4].Visible = true;
+                }
+
+                popadanie = false;
+            }
+        }
+        private void textBox_Obschii_Poisk_KeyUp_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Obschii_poisk();
+            }
         }
     }
 }

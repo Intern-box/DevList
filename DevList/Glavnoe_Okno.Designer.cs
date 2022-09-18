@@ -62,6 +62,8 @@ namespace DevList
             this.ToolStripMenuItem_Poisk = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Redaktirovanie_Spiskov = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Perechitat = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox_Obschii_Poisk = new System.Windows.Forms.TextBox();
+            this.label_Obschii_Poisk = new System.Windows.Forms.Label();
             this.contextMenuStrip_Vsplivauschee_Menu.SuspendLayout();
             this.menuStrip_Glavnoe_Menu.SuspendLayout();
             this.SuspendLayout();
@@ -92,10 +94,10 @@ namespace DevList
             this.listView_Tablica_Vivoda_Bazi.FullRowSelect = true;
             this.listView_Tablica_Vivoda_Bazi.GridLines = true;
             this.listView_Tablica_Vivoda_Bazi.HideSelection = false;
-            this.listView_Tablica_Vivoda_Bazi.Location = new System.Drawing.Point(0, 24);
+            this.listView_Tablica_Vivoda_Bazi.Location = new System.Drawing.Point(0, 25);
             this.listView_Tablica_Vivoda_Bazi.Name = "listView_Tablica_Vivoda_Bazi";
             this.listView_Tablica_Vivoda_Bazi.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.listView_Tablica_Vivoda_Bazi.Size = new System.Drawing.Size(1251, 537);
+            this.listView_Tablica_Vivoda_Bazi.Size = new System.Drawing.Size(1251, 536);
             this.listView_Tablica_Vivoda_Bazi.TabIndex = 1;
             this.listView_Tablica_Vivoda_Bazi.UseCompatibleStateImageBehavior = false;
             this.listView_Tablica_Vivoda_Bazi.View = System.Windows.Forms.View.Details;
@@ -219,6 +221,7 @@ namespace DevList
             // 
             // menuStrip_Glavnoe_Menu
             // 
+            this.menuStrip_Glavnoe_Menu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.menuStrip_Glavnoe_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_Fail,
             this.ToolStripMenuItem_Pravka,
@@ -227,7 +230,7 @@ namespace DevList
             this.ToolStripMenuItem_Perechitat});
             this.menuStrip_Glavnoe_Menu.Location = new System.Drawing.Point(0, 0);
             this.menuStrip_Glavnoe_Menu.Name = "menuStrip_Glavnoe_Menu";
-            this.menuStrip_Glavnoe_Menu.Size = new System.Drawing.Size(1251, 24);
+            this.menuStrip_Glavnoe_Menu.Size = new System.Drawing.Size(1251, 25);
             this.menuStrip_Glavnoe_Menu.TabIndex = 2;
             this.menuStrip_Glavnoe_Menu.Text = "menuStrip1";
             // 
@@ -239,34 +242,34 @@ namespace DevList
             this.ToolStripMenuItem_Sohranit,
             this.ToolStripMenuItem_Sohranit_Kak});
             this.ToolStripMenuItem_Fail.Name = "ToolStripMenuItem_Fail";
-            this.ToolStripMenuItem_Fail.Size = new System.Drawing.Size(48, 20);
+            this.ToolStripMenuItem_Fail.Size = new System.Drawing.Size(50, 21);
             this.ToolStripMenuItem_Fail.Text = "Файл";
             // 
             // ToolStripMenuItem_Sozdat
             // 
             this.ToolStripMenuItem_Sozdat.Name = "ToolStripMenuItem_Sozdat";
-            this.ToolStripMenuItem_Sozdat.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Sozdat.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Sozdat.Text = "Создать";
             this.ToolStripMenuItem_Sozdat.Click += new System.EventHandler(this.ToolStripMenuItem_Sozdat_Click);
             // 
             // ToolStripMenuItem_Otkrit
             // 
             this.ToolStripMenuItem_Otkrit.Name = "ToolStripMenuItem_Otkrit";
-            this.ToolStripMenuItem_Otkrit.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Otkrit.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Otkrit.Text = "Открыть";
             this.ToolStripMenuItem_Otkrit.Click += new System.EventHandler(this.ToolStripMenuItem_Otkrit_Click);
             // 
             // ToolStripMenuItem_Sohranit
             // 
             this.ToolStripMenuItem_Sohranit.Name = "ToolStripMenuItem_Sohranit";
-            this.ToolStripMenuItem_Sohranit.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Sohranit.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Sohranit.Text = "Сохранить";
             this.ToolStripMenuItem_Sohranit.Click += new System.EventHandler(this.ToolStripMenuItem_Sohranit_Click);
             // 
             // ToolStripMenuItem_Sohranit_Kak
             // 
             this.ToolStripMenuItem_Sohranit_Kak.Name = "ToolStripMenuItem_Sohranit_Kak";
-            this.ToolStripMenuItem_Sohranit_Kak.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Sohranit_Kak.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Sohranit_Kak.Text = "Сохранить как...";
             this.ToolStripMenuItem_Sohranit_Kak.Click += new System.EventHandler(this.ToolStripMenuItem_Sohranit_Kak_Click);
             // 
@@ -277,41 +280,41 @@ namespace DevList
             this.ToolStripMenuItem_Dobavit,
             this.ToolStripMenuItem_Udalit});
             this.ToolStripMenuItem_Pravka.Name = "ToolStripMenuItem_Pravka";
-            this.ToolStripMenuItem_Pravka.Size = new System.Drawing.Size(59, 20);
+            this.ToolStripMenuItem_Pravka.Size = new System.Drawing.Size(64, 21);
             this.ToolStripMenuItem_Pravka.Text = "Правка";
             // 
             // ToolStripMenuItem_Pravit
             // 
             this.ToolStripMenuItem_Pravit.Name = "ToolStripMenuItem_Pravit";
-            this.ToolStripMenuItem_Pravit.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Pravit.Size = new System.Drawing.Size(134, 22);
             this.ToolStripMenuItem_Pravit.Text = "Править";
             this.ToolStripMenuItem_Pravit.Click += new System.EventHandler(this.ToolStripMenuItem_Pravit_Click);
             // 
             // ToolStripMenuItem_Dobavit
             // 
             this.ToolStripMenuItem_Dobavit.Name = "ToolStripMenuItem_Dobavit";
-            this.ToolStripMenuItem_Dobavit.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Dobavit.Size = new System.Drawing.Size(134, 22);
             this.ToolStripMenuItem_Dobavit.Text = "Добавить";
             this.ToolStripMenuItem_Dobavit.Click += new System.EventHandler(this.ToolStripMenuItem_Dobavit_Click);
             // 
             // ToolStripMenuItem_Udalit
             // 
             this.ToolStripMenuItem_Udalit.Name = "ToolStripMenuItem_Udalit";
-            this.ToolStripMenuItem_Udalit.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Udalit.Size = new System.Drawing.Size(134, 22);
             this.ToolStripMenuItem_Udalit.Text = "Удалить";
             this.ToolStripMenuItem_Udalit.Click += new System.EventHandler(this.ToolStripMenuItem_Udalit_Click);
             // 
             // ToolStripMenuItem_Poisk
             // 
             this.ToolStripMenuItem_Poisk.Name = "ToolStripMenuItem_Poisk";
-            this.ToolStripMenuItem_Poisk.Size = new System.Drawing.Size(54, 20);
+            this.ToolStripMenuItem_Poisk.Size = new System.Drawing.Size(56, 21);
             this.ToolStripMenuItem_Poisk.Text = "Поиск";
             this.ToolStripMenuItem_Poisk.Click += new System.EventHandler(this.ToolStripMenuItem_Poisk_Click);
             // 
             // toolStripMenuItem_Redaktirovanie_Spiskov
             // 
             this.toolStripMenuItem_Redaktirovanie_Spiskov.Name = "toolStripMenuItem_Redaktirovanie_Spiskov";
-            this.toolStripMenuItem_Redaktirovanie_Spiskov.Size = new System.Drawing.Size(156, 20);
+            this.toolStripMenuItem_Redaktirovanie_Spiskov.Size = new System.Drawing.Size(168, 21);
             this.toolStripMenuItem_Redaktirovanie_Spiskov.Text = "Редактирование списков";
             this.toolStripMenuItem_Redaktirovanie_Spiskov.Click += new System.EventHandler(this.toolStripMenuItem_Redaktirovanie_Spiskov_Click);
             // 
@@ -320,9 +323,28 @@ namespace DevList
             this.ToolStripMenuItem_Perechitat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ToolStripMenuItem_Perechitat.ForeColor = System.Drawing.Color.Red;
             this.ToolStripMenuItem_Perechitat.Name = "ToolStripMenuItem_Perechitat";
-            this.ToolStripMenuItem_Perechitat.Size = new System.Drawing.Size(114, 20);
+            this.ToolStripMenuItem_Perechitat.Size = new System.Drawing.Size(114, 21);
             this.ToolStripMenuItem_Perechitat.Text = "Убрать фильтры";
             this.ToolStripMenuItem_Perechitat.Click += new System.EventHandler(this.ToolStripMenuItem_Perechitat_Click);
+            // 
+            // textBox_Obschii_Poisk
+            // 
+            this.textBox_Obschii_Poisk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_Obschii_Poisk.Location = new System.Drawing.Point(940, 1);
+            this.textBox_Obschii_Poisk.Name = "textBox_Obschii_Poisk";
+            this.textBox_Obschii_Poisk.Size = new System.Drawing.Size(310, 23);
+            this.textBox_Obschii_Poisk.TabIndex = 3;
+            this.textBox_Obschii_Poisk.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Obschii_Poisk_KeyUp_1);
+            // 
+            // label_Obschii_Poisk
+            // 
+            this.label_Obschii_Poisk.AutoSize = true;
+            this.label_Obschii_Poisk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Obschii_Poisk.Location = new System.Drawing.Point(829, 4);
+            this.label_Obschii_Poisk.Name = "label_Obschii_Poisk";
+            this.label_Obschii_Poisk.Size = new System.Drawing.Size(105, 16);
+            this.label_Obschii_Poisk.TabIndex = 4;
+            this.label_Obschii_Poisk.Text = "Общий поиск:";
             // 
             // Glavnoe_Okno
             // 
@@ -332,6 +354,8 @@ namespace DevList
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1251, 561);
+            this.Controls.Add(this.label_Obschii_Poisk);
+            this.Controls.Add(this.textBox_Obschii_Poisk);
             this.Controls.Add(this.listView_Tablica_Vivoda_Bazi);
             this.Controls.Add(this.menuStrip_Glavnoe_Menu);
             this.Name = "Glavnoe_Okno";
@@ -380,6 +404,8 @@ namespace DevList
         private System.Windows.Forms.ColumnHeader Hostname;
         private System.Windows.Forms.ColumnHeader IP;
         private System.Windows.Forms.ColumnHeader izmenil;
+        private System.Windows.Forms.TextBox textBox_Obschii_Poisk;
+        private System.Windows.Forms.Label label_Obschii_Poisk;
     }
 }
 
