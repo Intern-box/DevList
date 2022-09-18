@@ -13,15 +13,7 @@ namespace DevList
 {
     public partial class Poisk : Form
     {
-        public static string[] pomescheniia;
-
-        public static string[] sotrudniki;
-
-        public static string[] tipi;
-
-        public static string[] stroka = new string[13];
-
-        public static bool otmenit = true;
+        public static string[] stroka_iz_poiska = new string[13];
         public Poisk()
         {
             InitializeComponent();
@@ -29,21 +21,15 @@ namespace DevList
             /*
              * Заполняем поля combobox
              */
-            pomescheniia = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_pomeschenii);
-            comboBox_Pomeschenie.Items.AddRange(pomescheniia);
+            comboBox_Pomeschenie.Items.AddRange(Glavnoe_Okno.pomescheniia);
+            comboBox_FIO.Items.AddRange(Glavnoe_Okno.sotrudniki);
+            comboBox_Izmenil.Items.AddRange(Glavnoe_Okno.sotrudniki);
+            comboBox_Tip.Items.AddRange(Glavnoe_Okno.tipi);
 
-            sotrudniki = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_sotrudnikov);
-            comboBox_FIO.Items.AddRange(sotrudniki);
-            comboBox_Izmenil.Items.AddRange(sotrudniki);
-
-            tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
-            comboBox_Tip.Items.AddRange(tipi);
-
-            try
+            if (Glavnoe_Okno.nomer_najatoi_stroki >= 0)
             {
-                string[] stroka = Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki - 1];
+                string[] stroka = Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki];
 
-                textBox_IDNomer.Text = stroka[0];
                 textBox_Data_Priobreteniia.Text = stroka[1];
                 textBox_InvNomer.Text = stroka[2];
                 comboBox_Pomeschenie.Text = stroka[3];
@@ -57,29 +43,31 @@ namespace DevList
                 textBox_IP.Text = stroka[11];
                 comboBox_Izmenil.Text = stroka[12];
             }
-            catch (Exception) { }
         }
         private void button_Poisk_Click(object sender, EventArgs e)
         {
-            stroka[0] = textBox_IDNomer.Text;
-            stroka[1] = textBox_Data_Priobreteniia.Text;
-            stroka[2] = textBox_InvNomer.Text;
-            stroka[3] = comboBox_Pomeschenie.Text;
-            stroka[4] = comboBox_FIO.Text;
-            stroka[5] = textBox_Naimenovanie.Text;
-            stroka[6] = comboBox_Tip.Text;
-            stroka[7] = comboBox_Sostoianie.Text;
-            stroka[8] = textBox_Inventarizaciia.Text;
-            stroka[9] = textBox_Kommentarii.Text;
-            stroka[10] = textBox_Hostname.Text;
-            stroka[11] = textBox_IP.Text;
-            stroka[12] = comboBox_Izmenil.Text;
+            try
+            {
+                stroka_iz_poiska[1] = textBox_Data_Priobreteniia.Text;
+                stroka_iz_poiska[2] = textBox_InvNomer.Text;
+                stroka_iz_poiska[3] = comboBox_Pomeschenie.Text;
+                stroka_iz_poiska[4] = comboBox_FIO.Text;
+                stroka_iz_poiska[5] = textBox_Naimenovanie.Text;
+                stroka_iz_poiska[6] = comboBox_Tip.Text;
+                stroka_iz_poiska[7] = comboBox_Sostoianie.Text;
+                stroka_iz_poiska[8] = textBox_Inventarizaciia.Text;
+                stroka_iz_poiska[9] = textBox_Kommentarii.Text;
+                stroka_iz_poiska[10] = textBox_Hostname.Text;
+                stroka_iz_poiska[11] = textBox_IP.Text;
+                stroka_iz_poiska[12] = comboBox_Izmenil.Text;
+            }
+            catch { }
 
             Close();
         }
         private void button_Otmenit_Click(object sender, EventArgs e)
         {
-            otmenit = false;
+            stroka_iz_poiska = null;
 
             Close();
         }
@@ -116,35 +104,39 @@ namespace DevList
         }
         private void button_pomeschenie_plus_Click(object sender, EventArgs e)
         {
-            Plus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, pomescheniia);
+            Plus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, Glavnoe_Okno.pomescheniia);
         }
         private void button_pomeschenie_minus_Click(object sender, EventArgs e)
         {
-            Minus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, pomescheniia);
+            Minus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, Glavnoe_Okno.pomescheniia);
         }
         private void button_fio_plus_Click(object sender, EventArgs e)
         {
-            Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, sotrudniki);
+            Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
         }
         private void button_fio_minus_Click(object sender, EventArgs e)
         {
-            Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, sotrudniki);
+            Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
         }
         private void button_tip_minus_Click(object sender, EventArgs e)
         {
-            Minus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, tipi);
+            Minus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, Glavnoe_Okno.tipi);
         }
         private void button_tip_plus_Click(object sender, EventArgs e)
         {
-            Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, tipi);
+            Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, Glavnoe_Okno.tipi);
         }
         private void button_Izmenil_plus_Click(object sender, EventArgs e)
         {
-            Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, sotrudniki);
+            Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
         }
         private void button_Izmenil_minus_Click(object sender, EventArgs e)
         {
-            Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, sotrudniki);
+            Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
+        }
+        private void Poisk_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Close();
         }
     }
 }

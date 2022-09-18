@@ -20,6 +20,8 @@ namespace DevList
         }
         private void button_Vipolnit_Click(object sender, EventArgs e)
         {
+            Glavnoe_Okno.izmeneniia_s_otkritiia = true;
+
             Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki][Glavnoe_Okno.nomer_stolbca] = textBox_Tekst.Text;
 
             Close();

@@ -13,11 +13,7 @@ namespace DevList
 {
     public partial class Izmenit_Iz_Spiska : Form
     {
-        public static string[] pomescheniia;
-
-        public static string[] sotrudniki;
-
-        public static string[] tipi;
+        string iz, naimenovanie, inv_nomer;
 
         public Izmenit_Iz_Spiska()
         {
@@ -27,22 +23,23 @@ namespace DevList
             {
                 label_Nazvanie.Text = "Помещения";
 
-                pomescheniia = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_pomeschenii);
-                comboBox_Spisok_Vibora.Items.AddRange(pomescheniia);
+                iz = Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki][Glavnoe_Okno.nomer_stolbca];
+                inv_nomer = Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki][2];
+                naimenovanie = Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki][5];
+
+                comboBox_Spisok_Vibora.Items.AddRange(Glavnoe_Okno.pomescheniia);
             }
             else if (Glavnoe_Okno.nomer_stolbca == 4)       // Сотрудники
             {
                 label_Nazvanie.Text = "Сотрудники";
 
-                sotrudniki = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_sotrudnikov);
-                comboBox_Spisok_Vibora.Items.AddRange(sotrudniki);
+                comboBox_Spisok_Vibora.Items.AddRange(Glavnoe_Okno.sotrudniki);
             }
             else if (Glavnoe_Okno.nomer_stolbca == 6)       // Тип
             {
                 label_Nazvanie.Text = "Тип";
 
-                tipi = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_tipov_oborudovania);
-                comboBox_Spisok_Vibora.Items.AddRange(tipi);
+                comboBox_Spisok_Vibora.Items.AddRange(Glavnoe_Okno.tipi);
             }
             else if (Glavnoe_Okno.nomer_stolbca == 7)       // Состояние
             {
@@ -60,6 +57,23 @@ namespace DevList
         }
         private void button_Vipolnit_Click(object sender, EventArgs e)
         {
+            Glavnoe_Okno.izmeneniia_s_otkritiia = true;
+
+            // Если изменяется Помещение, то происходит запись в папку "История перемещений"
+            // В файл с названием помещения КУДА перемещают МЦ добавляется строка
+            // с названием помещения ОТКУДА переместили и датой перемещения
+            if (Glavnoe_Okno.nomer_stolbca == 3)
+            {
+                File.AppendAllText
+                (
+                    $"История перемещений\\{comboBox_Spisok_Vibora.Text}.txt",
+                    $"Из помещения: {iz}\r\n" +
+                    $"переместили: {DateTime.Now}\r\n" +
+                    $"{naimenovanie}\r\n" +
+                    $"с инв.№: {inv_nomer}\r\n\r\n"
+                );
+            }
+
             Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki][Glavnoe_Okno.nomer_stolbca] = comboBox_Spisok_Vibora.Text;
 
             Close();
@@ -103,30 +117,30 @@ namespace DevList
         {
             if (Glavnoe_Okno.nomer_stolbca == 3)            // Помещения
             {
-                Plus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Spisok_Vibora, pomescheniia);
+                Plus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Spisok_Vibora, Glavnoe_Okno.pomescheniia);
             }
             else if (Glavnoe_Okno.nomer_stolbca == 4)       // Сотрудники
             {
-                Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_Spisok_Vibora, sotrudniki);
+                Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_Spisok_Vibora, Glavnoe_Okno.sotrudniki);
             }
             else if (Glavnoe_Okno.nomer_stolbca == 6)       // Тип
             {
-                Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Spisok_Vibora, tipi);
+                Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Spisok_Vibora, Glavnoe_Okno.tipi);
             }
         }
         private void button_tip_minus_Click(object sender, EventArgs e)
         {
             if (Glavnoe_Okno.nomer_stolbca == 3)            // Помещения
             {
-                Minus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Spisok_Vibora, pomescheniia);
+                Minus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Spisok_Vibora, Glavnoe_Okno.pomescheniia);
             }
             else if (Glavnoe_Okno.nomer_stolbca == 4)       // Сотрудники
             {
-                Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_Spisok_Vibora, sotrudniki);
+                Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_Spisok_Vibora, Glavnoe_Okno.sotrudniki);
             }
             else if (Glavnoe_Okno.nomer_stolbca == 6)       // Тип
             {
-                Minus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Spisok_Vibora, tipi);
+                Minus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Spisok_Vibora, Glavnoe_Okno.tipi);
             }
         }
     }

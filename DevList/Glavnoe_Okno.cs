@@ -21,19 +21,11 @@ namespace DevList
         public static string put_do_spiska_tipov_oborudovania = "";   // Путь к списку типов оборудования
         public static List<string[]> baza = new List<string[]>();     // БД в виде списка для удобной работы
         public static bool izmeneniia_s_otkritiia = false;            // Отслеживает были ли изменения с открытия программы
-        public static int nomer_najatoi_stroki;                       // При клике мышкой запоминает номер строки в таблице на главном окне
+        public static int nomer_najatoi_stroki = -1;                  // При клике мышкой запоминает номер строки в таблице на главном окне
         public static int nomer_stolbca;                              // При клике мышкой запоминает номер столбца
-
-
-
-
-
-
-
-        public static int index = 0;                                  // Индекс элемента в БД. При добавлении +, при удалении -
-
-        public static bool kopirovanie;                               // Флаг копирования при операции "Копирование"
-        public static bool peremeschenie;                             // Флаг перемещения при операции "Перемещение"
+        public static string[] pomescheniia;                          // Список помещений
+        public static string[] sotrudniki;                            // Список сотрудников
+        public static string[] tipi;                                  // Список типов оборудования
 
         public Glavnoe_Okno()
         {
@@ -107,6 +99,12 @@ namespace DevList
             // Если есть, читаем БД
             if (File.Exists(put_do_BD) == false)
             {
+                if (Directory.Exists("БД") == false)
+                    Directory.CreateDirectory("БД");
+
+                if (Directory.Exists("История перемещений") == false)
+                    Directory.CreateDirectory("История перемещений");
+
                 if (Zapros_Da_Net("Нет файла с базой", "Создать?") == DialogResult.Yes)
                 {
                     File.WriteAllLines("БД\\БД.csv", spisok_stolbcov.Select(x => string.Join(",", x)));
@@ -128,7 +126,7 @@ namespace DevList
             {
                 if (Zapros_Da_Net("Нет файла со списком помещений", "Создать?") == DialogResult.Yes)
                 {
-                    File.Create("БД\\Помещения.txt");
+                    File.WriteAllText("БД\\Помещения.txt", "");
 
                     ini_fail[1] = "Помещения = БД\\Помещения.txt";
                 }
@@ -147,7 +145,7 @@ namespace DevList
             {
                 if (Zapros_Da_Net("Нет файла со списком типов МЦ", "Создать?") == DialogResult.Yes)
                 {
-                    File.Create("БД\\Тип.txt");
+                    File.WriteAllText("БД\\Тип.txt", "");
 
                     ini_fail[2] = "Тип = БД\\Тип.txt";
                 }
@@ -166,7 +164,7 @@ namespace DevList
             {
                 if (Zapros_Da_Net("Нет файла со списком сотрудников", "Создать?") == DialogResult.Yes)
                 {
-                    File.Create("БД\\Сотрудники.txt");
+                    File.WriteAllText("БД\\Сотрудники.txt", "");
 
                     ini_fail[3] = "Сотрудники = БД\\Сотрудники.txt";
                 }
@@ -207,6 +205,11 @@ namespace DevList
                 listView_Tablica_Vivoda_Bazi.Items.Clear();
 
                 Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+
+                // Читаем списки Помещений, Сотрудников, Типов оборудования
+                pomescheniia = File.ReadAllLines(put_do_spiska_pomeschenii);
+                sotrudniki = File.ReadAllLines(put_do_spiska_sotrudnikov);
+                tipi = File.ReadAllLines(put_do_spiska_tipov_oborudovania);
             }
             else
             {
@@ -223,7 +226,8 @@ namespace DevList
                 zagolovok_okna,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Information,
-                MessageBoxDefaultButton.Button1
+                MessageBoxDefaultButton.Button1,
+                MessageBoxOptions.DefaultDesktopOnly
             );
 
             return otvet_na_zapros;
@@ -295,6 +299,8 @@ namespace DevList
             dobavit.ShowDialog();
 
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+
+            listView_Tablica_Vivoda_Bazi.Items[listView_Tablica_Vivoda_Bazi.Items.Count - 1].Selected = true;
         }
         private void ToolStripMenuItem_Udalit_Click(object sender, EventArgs e)
         {
@@ -314,8 +320,6 @@ namespace DevList
         }
         private void ToolStripMenuItem_Pravit_Click(object sender, EventArgs e)
         {
-            izmeneniia_s_otkritiia = true;
-
             if (nomer_stolbca == 1 || nomer_stolbca == 2 || nomer_stolbca == 5 || nomer_stolbca == 8 || nomer_stolbca == 9 || nomer_stolbca == 10 || nomer_stolbca == 11 || nomer_stolbca == 12)
             {
                 Izmenit_Stroku izmenit_stroku = new Izmenit_Stroku();
@@ -343,17 +347,20 @@ namespace DevList
 
             poisk.ShowDialog();
 
-            if (Poisk.otmenit)
+            if (Poisk.stroka_iz_poiska != null)
             {
                 int chislo_parametrov_dlia_sravnenia = 0;
 
                 int chislo_naidennih_parametrov = 0;
 
-                foreach (string stroka in Poisk.stroka)
+                for (int i = 0; i < Poisk.stroka_iz_poiska.Length; i++)
                 {
-                    if (stroka != "")
+                    if (i > 0)
                     {
-                        chislo_parametrov_dlia_sravnenia++;
+                        if (Poisk.stroka_iz_poiska[i] != "")
+                        {
+                            chislo_parametrov_dlia_sravnenia++;
+                        }
                     }
                 }
 
@@ -361,22 +368,25 @@ namespace DevList
                 {
                     listView_Tablica_Vivoda_Bazi.Items.Clear();
 
-                    foreach (string[] stroka in baza)
+                    foreach (string[] stroka_iz_bazi in baza)
                     {
-                        for (int i = 0; i < Poisk.stroka.Length; i++)
+                        for (int i = 0; i < Poisk.stroka_iz_poiska.Length; i++)
                         {
-                            if (Poisk.stroka[i] != "")
+                            if (i > 0)
                             {
-                                if (Poisk.stroka[i] == stroka[i])
+                                if (Poisk.stroka_iz_poiska[i] != "")
                                 {
-                                    chislo_naidennih_parametrov++;
+                                    if (Poisk.stroka_iz_poiska[i] == stroka_iz_bazi[i])
+                                    {
+                                        chislo_naidennih_parametrov++;
+                                    }
                                 }
                             }
                         }
 
                         if (chislo_naidennih_parametrov >= chislo_parametrov_dlia_sravnenia)
                         {
-                            ListViewItem lv = new ListViewItem(stroka);
+                            ListViewItem lv = new ListViewItem(stroka_iz_bazi);
 
                             listView_Tablica_Vivoda_Bazi.Items.Add(lv);
                         }
@@ -389,10 +399,10 @@ namespace DevList
                 else
                 {
                     listView_Tablica_Vivoda_Bazi.Items.Clear();
+
+                    menuStrip_Glavnoe_Menu.Items[4].Visible = true;
                 }
             }
-
-            Poisk.otmenit = true;
         }
         private void ToolStripMenuItem_Context_Poisk_Click(object sender, EventArgs e)
         {
@@ -492,30 +502,6 @@ namespace DevList
             string[] massiv_strok = stroka.Split(',');
 
             return massiv_strok;
-        }
-        private void ToolStripMenuItem_Kopirovat_Click(object sender, EventArgs e)
-        {
-            kopirovanie = true;
-
-            ToolStripMenuItem_Pravit_Click(sender, e);
-        }
-        private void ToolStripMenuItem_Peremestit_Click(object sender, EventArgs e)
-        {
-            peremeschenie = true;
-
-            ToolStripMenuItem_Pravit_Click(sender, e);
-        }
-        private void ToolStripMenuItem_Context_Kopirovat_Click(object sender, EventArgs e)
-        {
-            kopirovanie = true;
-
-            ToolStripMenuItem_Pravit_Click(sender, e);
-        }
-        private void ToolStripMenuItem_Context_Peremestit_Click(object sender, EventArgs e)
-        {
-            peremeschenie = true;
-
-            ToolStripMenuItem_Pravit_Click(sender, e);
         }
         private void ToolStripMenuItem_Sozdat_Click(object sender, EventArgs e)
         {
