@@ -78,6 +78,8 @@ namespace DevList
                     File.WriteAllText(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, textBox_Soderjimoe.Text + "\r\n");
                 }
             }
+
+            Close();
         }
     }
 }
