@@ -108,10 +108,12 @@ namespace DevList
             this.Controls.Add(this.comboBox_Elementi);
             this.Controls.Add(this.label_Spisok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "Redaktirovanie_Spiskov";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Редактирование списков";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Redaktirovanie_Spiskov_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

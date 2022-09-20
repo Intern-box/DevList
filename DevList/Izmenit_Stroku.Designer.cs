@@ -76,11 +76,13 @@ namespace DevList
             this.Controls.Add(this.button_Vipolnit);
             this.Controls.Add(this.textBox_Tekst);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Izmenit_Stroku";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Правка строки";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Izmenit_Stroku_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

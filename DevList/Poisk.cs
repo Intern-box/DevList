@@ -138,5 +138,16 @@ namespace DevList
         {
             Close();
         }
+        private void Poisk_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_Poisk_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                button_Otmenit_Click(sender, e);
+            }
+        }
     }
 }

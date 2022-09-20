@@ -41,5 +41,17 @@ namespace DevList
         {
             Close();
         }
+
+        private void Udalit_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_Udalit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                button_Otmenit_Click(sender, e);
+            }
+        }
     }
 }

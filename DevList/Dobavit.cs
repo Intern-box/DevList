@@ -144,5 +144,16 @@ namespace DevList
         {
             Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, Glavnoe_Okno.tipi);
         }
+        private void Dobavit_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_Dobavit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                button_Otmenit_Click(sender, e);
+            }
+        }
     }
 }

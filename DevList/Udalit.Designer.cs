@@ -64,11 +64,13 @@ namespace DevList
             this.Controls.Add(this.button_Otmenit);
             this.Controls.Add(this.button_Udalit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Udalit";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Удалить элемент";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Udalit_KeyUp);
             this.ResumeLayout(false);
 
         }

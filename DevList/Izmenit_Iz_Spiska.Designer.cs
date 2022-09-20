@@ -125,11 +125,13 @@ namespace DevList
             this.Controls.Add(this.comboBox_Spisok_Vibora);
             this.Controls.Add(this.label_Spisok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Izmenit_Iz_Spiska";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Правка из списков";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Izmenit_Iz_Spiska_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

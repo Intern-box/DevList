@@ -113,6 +113,18 @@ namespace DevList
             textovaia_stroka.Items.Clear();
             textovaia_stroka.Items.AddRange(spisok);
         }
+        private void Izmenit_Iz_Spiska_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_Vipolnit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                button_Otmenit_Click(sender, e);
+            }
+        }
+
         private void button_tip_plus_Click(object sender, EventArgs e)
         {
             if (Glavnoe_Okno.nomer_stolbca == 3)            // Помещения

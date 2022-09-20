@@ -61,6 +61,10 @@ namespace DevList
             this.ToolStripMenuItem_Udalit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Poisk = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Redaktirovanie_Spiskov = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Otcheti = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_KolVo_V_Pomeschenii = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Perechitat = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_Obschii_Poisk = new System.Windows.Forms.TextBox();
             this.label_Obschii_Poisk = new System.Windows.Forms.Label();
@@ -227,6 +231,7 @@ namespace DevList
             this.ToolStripMenuItem_Pravka,
             this.ToolStripMenuItem_Poisk,
             this.toolStripMenuItem_Redaktirovanie_Spiskov,
+            this.ToolStripMenuItem_Otcheti,
             this.ToolStripMenuItem_Perechitat});
             this.menuStrip_Glavnoe_Menu.Location = new System.Drawing.Point(0, 0);
             this.menuStrip_Glavnoe_Menu.Name = "menuStrip_Glavnoe_Menu";
@@ -318,6 +323,37 @@ namespace DevList
             this.toolStripMenuItem_Redaktirovanie_Spiskov.Text = "Редактирование списков";
             this.toolStripMenuItem_Redaktirovanie_Spiskov.Click += new System.EventHandler(this.toolStripMenuItem_Redaktirovanie_Spiskov_Click);
             // 
+            // ToolStripMenuItem_Otcheti
+            // 
+            this.ToolStripMenuItem_Otcheti.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam,
+            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu,
+            this.ToolStripMenuItem_KolVo_V_Pomeschenii});
+            this.ToolStripMenuItem_Otcheti.Name = "ToolStripMenuItem_Otcheti";
+            this.ToolStripMenuItem_Otcheti.Size = new System.Drawing.Size(63, 21);
+            this.ToolStripMenuItem_Otcheti.Text = "Отчёты";
+            // 
+            // ToolStripMenuItem_Obschee_KolVo_Po_Tipam
+            // 
+            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam.Name = "ToolStripMenuItem_Obschee_KolVo_Po_Tipam";
+            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam.Text = "Общее кол-во МЦ по типам";
+            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam.Click += new System.EventHandler(this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam_Click);
+            // 
+            // ToolStripMenuItem_Obschee_KolVo_Po_Tipu
+            // 
+            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu.Name = "ToolStripMenuItem_Obschee_KolVo_Po_Tipu";
+            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu.Text = "Общее кол-во МЦ по типу";
+            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu.Click += new System.EventHandler(this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu_Click);
+            // 
+            // ToolStripMenuItem_KolVo_V_Pomeschenii
+            // 
+            this.ToolStripMenuItem_KolVo_V_Pomeschenii.Name = "ToolStripMenuItem_KolVo_V_Pomeschenii";
+            this.ToolStripMenuItem_KolVo_V_Pomeschenii.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem_KolVo_V_Pomeschenii.Text = "Кол-во МЦ в помещении";
+            this.ToolStripMenuItem_KolVo_V_Pomeschenii.Click += new System.EventHandler(this.ToolStripMenuItem_KolVo_V_Pomeschenii_Click);
+            // 
             // ToolStripMenuItem_Perechitat
             // 
             this.ToolStripMenuItem_Perechitat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -329,15 +365,17 @@ namespace DevList
             // 
             // textBox_Obschii_Poisk
             // 
+            this.textBox_Obschii_Poisk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_Obschii_Poisk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_Obschii_Poisk.Location = new System.Drawing.Point(940, 1);
             this.textBox_Obschii_Poisk.Name = "textBox_Obschii_Poisk";
             this.textBox_Obschii_Poisk.Size = new System.Drawing.Size(310, 23);
             this.textBox_Obschii_Poisk.TabIndex = 3;
-            this.textBox_Obschii_Poisk.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Obschii_Poisk_KeyUp_1);
+            this.textBox_Obschii_Poisk.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Obschii_Poisk_KeyUp);
             // 
             // label_Obschii_Poisk
             // 
+            this.label_Obschii_Poisk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label_Obschii_Poisk.AutoSize = true;
             this.label_Obschii_Poisk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_Obschii_Poisk.Location = new System.Drawing.Point(829, 4);
@@ -358,11 +396,13 @@ namespace DevList
             this.Controls.Add(this.textBox_Obschii_Poisk);
             this.Controls.Add(this.listView_Tablica_Vivoda_Bazi);
             this.Controls.Add(this.menuStrip_Glavnoe_Menu);
+            this.KeyPreview = true;
             this.Name = "Glavnoe_Okno";
             this.ShowIcon = false;
             this.Text = "DevList 4.5";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Glavnoe_Okno_FormClosed);
             this.Load += new System.EventHandler(this.Glavnoe_Okno_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Glavnoe_Okno_KeyUp);
             this.contextMenuStrip_Vsplivauschee_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.PerformLayout();
@@ -406,6 +446,10 @@ namespace DevList
         private System.Windows.Forms.ColumnHeader izmenil;
         private System.Windows.Forms.TextBox textBox_Obschii_Poisk;
         private System.Windows.Forms.Label label_Obschii_Poisk;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Otcheti;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Obschee_KolVo_Po_Tipam;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Obschee_KolVo_Po_Tipu;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_KolVo_V_Pomeschenii;
     }
 }
 

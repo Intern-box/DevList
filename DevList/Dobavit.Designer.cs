@@ -443,12 +443,14 @@ namespace DevList
             this.Controls.Add(this.label_Pomeschenie);
             this.Controls.Add(this.label_InvNomer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Dobavit";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Добавить элемент";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Dobavit_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

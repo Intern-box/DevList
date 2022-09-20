@@ -30,7 +30,9 @@ namespace DevList
         public Glavnoe_Okno()
         {
             InitializeComponent();
-
+        }
+        private void Glavnoe_Okno_Load(object sender, EventArgs e)
+        {
             // Сохраняем названия столбцов из таблицы и
             // записываем в форме списка для удобства записи в *.csv
             string[] stolbci = new string[]
@@ -52,7 +54,7 @@ namespace DevList
             spisok_stolbcov.Add(stolbci);
 
             // Отключаем видимость кнопки с Фильтрами
-            menuStrip_Glavnoe_Menu.Items[4].Visible = false;
+            menuStrip_Glavnoe_Menu.Items[5].Visible = false;
 
             // Ищим файл с настройками
             // Если его нет, предлагаем создать
@@ -69,12 +71,6 @@ namespace DevList
                         "Тип = БД\\Тип.txt\r\n" +
                         "Сотрудники = БД\\Сотрудники.txt"
                     );
-
-                    if (Directory.Exists("БД") == false)
-                        Directory.CreateDirectory("БД");
-
-                    if (Directory.Exists("История перемещений") == false)
-                        Directory.CreateDirectory("История перемещений");
                 }
                 else
                 {
@@ -84,9 +80,7 @@ namespace DevList
 
             // Читаем файл с настройками
             ini_fail = File.ReadAllLines("DevList.ini");
-        }
-        private void Glavnoe_Okno_Load(object sender, EventArgs e)
-        {
+
             // Сохраняем пути к нужным файлам
             put_do_BD = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 0);
             put_do_spiska_pomeschenii = Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 1);
@@ -97,14 +91,14 @@ namespace DevList
             // Если нет, предлагаем создать или открыть свой
             // после чего записываем путь к файлу в поля и в файл с настройками
             // Если есть, читаем БД
+            if (Directory.Exists("БД") == false)
+                Directory.CreateDirectory("БД");
+
+            if (Directory.Exists("История перемещений") == false)
+                Directory.CreateDirectory("История перемещений");
+
             if (File.Exists(put_do_BD) == false)
             {
-                if (Directory.Exists("БД") == false)
-                    Directory.CreateDirectory("БД");
-
-                if (Directory.Exists("История перемещений") == false)
-                    Directory.CreateDirectory("История перемещений");
-
                 if (Zapros_Da_Net("Нет файла с базой", "Создать?") == DialogResult.Yes)
                 {
                     File.WriteAllLines("БД\\БД.csv", spisok_stolbcov.Select(x => string.Join(",", x)));
@@ -299,8 +293,6 @@ namespace DevList
             dobavit.ShowDialog();
 
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
-
-            listView_Tablica_Vivoda_Bazi.Items[listView_Tablica_Vivoda_Bazi.Items.Count - 1].Selected = true;
         }
         private void ToolStripMenuItem_Udalit_Click(object sender, EventArgs e)
         {
@@ -394,13 +386,13 @@ namespace DevList
                         chislo_naidennih_parametrov = 0;
                     }
 
-                    menuStrip_Glavnoe_Menu.Items[4].Visible = true;
+                    menuStrip_Glavnoe_Menu.Items[5].Visible = true;
                 }
                 else
                 {
                     listView_Tablica_Vivoda_Bazi.Items.Clear();
 
-                    menuStrip_Glavnoe_Menu.Items[4].Visible = true;
+                    menuStrip_Glavnoe_Menu.Items[5].Visible = true;
                 }
             }
         }
@@ -410,6 +402,8 @@ namespace DevList
         }
         private void ToolStripMenuItem_Perechitat_Click(object sender, EventArgs e)
         {
+            baza.Sort((x, y) => x[2].CompareTo(y[2]));
+
             for (int i = 0; i < baza.Count; i++)
             {
                 baza[i][0] = (i + 1).ToString();
@@ -417,7 +411,7 @@ namespace DevList
 
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
 
-            menuStrip_Glavnoe_Menu.Items[4].Visible = false;
+            menuStrip_Glavnoe_Menu.Items[5].Visible = false;
         }
         private void ToolStripMenuItem_Sohranit_Kak_Click(object sender, EventArgs e)
         {
@@ -470,27 +464,28 @@ namespace DevList
 
             OpenFileDialog otkrit_fail = new OpenFileDialog();
 
-            otkrit_fail.ShowDialog();
-
-            if (File.Exists(otkrit_fail.FileName) == false)
+            if (otkrit_fail.ShowDialog() == DialogResult.Yes)
             {
-                File.WriteAllLines(otkrit_fail.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
+                if (File.Exists(otkrit_fail.FileName) == false)
+                {
+                    File.WriteAllLines(otkrit_fail.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
+                }
+
+                string[] ves_fail = File.ReadAllLines(otkrit_fail.FileName);
+
+                baza.Clear();
+
+                foreach (string stroka in ves_fail)
+                {
+                    baza.Add(Perebor_Stroki(stroka));
+                }
+
+                baza.Remove(baza[0]);
+
+                listView_Tablica_Vivoda_Bazi.Items.Clear();
+
+                Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
             }
-
-            string[] ves_fail = File.ReadAllLines(otkrit_fail.FileName);
-
-            baza.Clear();
-
-            foreach (string stroka in ves_fail)
-            {
-                baza.Add(Perebor_Stroki(stroka));
-            }
-
-            baza.Remove(baza[0]);
-
-            listView_Tablica_Vivoda_Bazi.Items.Clear();
-
-            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
 
         // Перевод из *.CSV в List<>
@@ -562,11 +557,13 @@ namespace DevList
         }
         private void listView_Tablica_Vivoda_Bazi_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            listView_Tablica_Vivoda_Bazi.Clear();
+            listView_Tablica_Vivoda_Bazi.Items.Clear();
 
-            /// Сортировка по колонкам
+            baza.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
 
             Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+
+            ToolStripMenuItem_Perechitat.Visible = true;
         }
         private void Obschii_poisk()
         {
@@ -599,12 +596,43 @@ namespace DevList
                 popadanie = false;
             }
         }
-        private void textBox_Obschii_Poisk_KeyUp_1(object sender, KeyEventArgs e)
+        private void textBox_Obschii_Poisk_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 Obschii_poisk();
             }
+        }
+        private void Glavnoe_Okno_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.F))
+            {
+                ToolStripMenuItem_Poisk_Click(sender, e);
+            }
+            if (e.KeyData == (Keys.Control | Keys.S))
+            {
+                ToolStripMenuItem_Sohranit_Click(sender, e);
+
+                izmeneniia_s_otkritiia = false;
+            }
+        }
+        private void ToolStripMenuItem_Obschee_KolVo_Po_Tipam_Click(object sender, EventArgs e)
+        {
+            Otcheti_Po_MC otchet = new Otcheti_Po_MC(1);
+
+            otchet.ShowDialog();
+        }
+        private void ToolStripMenuItem_Obschee_KolVo_Po_Tipu_Click(object sender, EventArgs e)
+        {
+            Otcheti_Po_MC otchet = new Otcheti_Po_MC(2);
+
+            otchet.ShowDialog();
+        }
+        private void ToolStripMenuItem_KolVo_V_Pomeschenii_Click(object sender, EventArgs e)
+        {
+            Otcheti_Po_MC otchet = new Otcheti_Po_MC(3);
+
+            otchet.ShowDialog();
         }
     }
 }
