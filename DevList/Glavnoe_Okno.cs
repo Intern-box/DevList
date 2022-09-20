@@ -596,6 +596,20 @@ namespace DevList
                 popadanie = false;
             }
         }
+        public static int Poisk_Shtuk(string stroka_dlia_poiska, int stolbec)
+        {
+            int kol_vo_naidennih_elementov = 0;
+
+            foreach (string[] stroka_iz_bazi in baza)
+            {
+                if (stroka_iz_bazi[stolbec].Contains(stroka_dlia_poiska))
+                {
+                    kol_vo_naidennih_elementov++;
+                }
+            }
+
+            return kol_vo_naidennih_elementov;
+        }
         private void textBox_Obschii_Poisk_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
