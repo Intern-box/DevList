@@ -21,12 +21,12 @@ namespace DevList
             /*
              * Заполняем поля combobox
              */
-            comboBox_Pomeschenie.Items.AddRange(Glavnoe_Okno.pomescheniia);
-            comboBox_FIO.Items.AddRange(Glavnoe_Okno.sotrudniki);
-            comboBox_Izmenil.Items.AddRange(Glavnoe_Okno.sotrudniki);
-            comboBox_Tip.Items.AddRange(Glavnoe_Okno.tipi);
+            //comboBox_Pomeschenie.Items.AddRange(Glavnoe_Okno.pomescheniia);
+            //comboBox_FIO.Items.AddRange(Glavnoe_Okno.sotrudniki);
+            //comboBox_Izmenil.Items.AddRange(Glavnoe_Okno.sotrudniki);
+            //comboBox_Tip.Items.AddRange(Glavnoe_Okno.tipi);
 
-            if (Glavnoe_Okno.nomer_najatoi_stroki >= 0)
+            /*if (Glavnoe_Okno.nomer_najatoi_stroki >= 0)
             {
                 string[] stroka = Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki];
 
@@ -42,7 +42,7 @@ namespace DevList
                 textBox_Hostname.Text = stroka[10];
                 textBox_IP.Text = stroka[11];
                 comboBox_Izmenil.Text = stroka[12];
-            }
+            }*/
         }
         private void button_Poisk_Click(object sender, EventArgs e)
         {
@@ -104,35 +104,35 @@ namespace DevList
         }
         private void button_pomeschenie_plus_Click(object sender, EventArgs e)
         {
-            Plus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, Glavnoe_Okno.pomescheniia);
+            //Plus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, Glavnoe_Okno.pomescheniia);
         }
         private void button_pomeschenie_minus_Click(object sender, EventArgs e)
         {
-            Minus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, Glavnoe_Okno.pomescheniia);
+            //Minus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, Glavnoe_Okno.pomescheniia);
         }
         private void button_fio_plus_Click(object sender, EventArgs e)
         {
-            Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
+            //Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
         }
         private void button_fio_minus_Click(object sender, EventArgs e)
         {
-            Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
+            //Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
         }
         private void button_tip_minus_Click(object sender, EventArgs e)
         {
-            Minus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, Glavnoe_Okno.tipi);
+            //Minus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, Glavnoe_Okno.tipi);
         }
         private void button_tip_plus_Click(object sender, EventArgs e)
         {
-            Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, Glavnoe_Okno.tipi);
+            //Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, Glavnoe_Okno.tipi);
         }
         private void button_Izmenil_plus_Click(object sender, EventArgs e)
         {
-            Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
+            //Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
         }
         private void button_Izmenil_minus_Click(object sender, EventArgs e)
         {
-            Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
+            //Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
         }
         private void Poisk_FormClosed(object sender, FormClosedEventArgs e)
         {

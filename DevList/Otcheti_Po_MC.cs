@@ -21,7 +21,7 @@ namespace DevList
 
             this.nomer_otcheta = nomer_otcheta;
         }
-        private void Otcheti_Po_MC_Load(object sender, EventArgs e)
+        /*private void Otcheti_Po_MC_Load(object sender, EventArgs e)
         {
             comboBox_Tip.Items.AddRange(Glavnoe_Okno.tipi);
             comboBox_Pomeschenie.Items.AddRange(Glavnoe_Okno.pomescheniia);
@@ -67,7 +67,7 @@ namespace DevList
                 comboBox_Tip.Enabled = false;
                 comboBox_Pomeschenie.Enabled = true;
             }
-        }
+        }*/
         private void button_Zakrit_Click(object sender, EventArgs e)
         {
             Close();
@@ -76,7 +76,7 @@ namespace DevList
         {
             
         }
-        private void comboBox_Tip_TextChanged(object sender, EventArgs e)
+        /*private void comboBox_Tip_TextChanged(object sender, EventArgs e)
         {
             textBox_Pole_Vivoda.Text = "";
 
@@ -94,7 +94,7 @@ namespace DevList
             }
 
             textBox_Pole_Vivoda.Text = $"{comboBox_Tip.Text}: {kol_vo_naidennih_elementov} шт.";
-        }
+        }*/
         private void comboBox_Pomeschenie_TextChanged(object sender, EventArgs e)
         {
             textBox_Pole_Vivoda.Text = "";

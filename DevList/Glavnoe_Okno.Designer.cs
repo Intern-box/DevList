@@ -105,79 +105,77 @@ namespace DevList
             this.listView_Tablica_Vivoda_Bazi.TabIndex = 1;
             this.listView_Tablica_Vivoda_Bazi.UseCompatibleStateImageBehavior = false;
             this.listView_Tablica_Vivoda_Bazi.View = System.Windows.Forms.View.Details;
-            this.listView_Tablica_Vivoda_Bazi.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_Tablica_Vivoda_Bazi_ColumnClick);
-            this.listView_Tablica_Vivoda_Bazi.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listView_Tablica_Vivoda_Bazi_MouseDown);
             // 
             // IDnomer
             // 
             this.IDnomer.Text = "  ID";
-            this.IDnomer.Width = 45;
+            this.IDnomer.Width = 150;
             // 
             // DataPriobreteniia
             // 
             this.DataPriobreteniia.Text = "Дата приобретения";
             this.DataPriobreteniia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DataPriobreteniia.Width = 150;
+            this.DataPriobreteniia.Width = 78;
             // 
             // InvNomer
             // 
             this.InvNomer.Text = "Инв. №";
             this.InvNomer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.InvNomer.Width = 78;
+            this.InvNomer.Width = 113;
             // 
             // Pomescheniie
             // 
             this.Pomescheniie.Text = "Помещение";
             this.Pomescheniie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Pomescheniie.Width = 113;
+            this.Pomescheniie.Width = 150;
             // 
             // FIO
             // 
             this.FIO.Text = "Закреплено за ФИО";
             this.FIO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.FIO.Width = 150;
+            this.FIO.Width = 115;
             // 
             // Naimenovanie
             // 
             this.Naimenovanie.Text = "Наименование";
             this.Naimenovanie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Naimenovanie.Width = 115;
+            this.Naimenovanie.Width = 51;
             // 
             // Tip
             // 
             this.Tip.Text = "Тип";
             this.Tip.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Tip.Width = 51;
+            this.Tip.Width = 90;
             // 
             // Sostoianie
             // 
             this.Sostoianie.Text = "Состояние";
             this.Sostoianie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Sostoianie.Width = 90;
+            this.Sostoianie.Width = 130;
             // 
             // Inventarizaciia
             // 
             this.Inventarizaciia.Text = "Инвентаризация";
             this.Inventarizaciia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Inventarizaciia.Width = 130;
+            this.Inventarizaciia.Width = 105;
             // 
             // Kommentarii
             // 
             this.Kommentarii.Text = "Комментарий";
             this.Kommentarii.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Kommentarii.Width = 105;
+            this.Kommentarii.Width = 80;
             // 
             // Hostname
             // 
             this.Hostname.Text = "Hostname";
             this.Hostname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Hostname.Width = 80;
+            this.Hostname.Width = 30;
             // 
             // IP
             // 
             this.IP.Text = "IP";
             this.IP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.IP.Width = 30;
+            this.IP.Width = 110;
             // 
             // izmenil
             // 
@@ -255,28 +253,24 @@ namespace DevList
             this.ToolStripMenuItem_Sozdat.Name = "ToolStripMenuItem_Sozdat";
             this.ToolStripMenuItem_Sozdat.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Sozdat.Text = "Создать";
-            this.ToolStripMenuItem_Sozdat.Click += new System.EventHandler(this.ToolStripMenuItem_Sozdat_Click);
             // 
             // ToolStripMenuItem_Otkrit
             // 
             this.ToolStripMenuItem_Otkrit.Name = "ToolStripMenuItem_Otkrit";
             this.ToolStripMenuItem_Otkrit.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Otkrit.Text = "Открыть";
-            this.ToolStripMenuItem_Otkrit.Click += new System.EventHandler(this.ToolStripMenuItem_Otkrit_Click);
             // 
             // ToolStripMenuItem_Sohranit
             // 
             this.ToolStripMenuItem_Sohranit.Name = "ToolStripMenuItem_Sohranit";
             this.ToolStripMenuItem_Sohranit.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Sohranit.Text = "Сохранить";
-            this.ToolStripMenuItem_Sohranit.Click += new System.EventHandler(this.ToolStripMenuItem_Sohranit_Click);
             // 
             // ToolStripMenuItem_Sohranit_Kak
             // 
             this.ToolStripMenuItem_Sohranit_Kak.Name = "ToolStripMenuItem_Sohranit_Kak";
             this.ToolStripMenuItem_Sohranit_Kak.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Sohranit_Kak.Text = "Сохранить как...";
-            this.ToolStripMenuItem_Sohranit_Kak.Click += new System.EventHandler(this.ToolStripMenuItem_Sohranit_Kak_Click);
             // 
             // ToolStripMenuItem_Pravka
             // 
@@ -314,14 +308,12 @@ namespace DevList
             this.ToolStripMenuItem_Poisk.Name = "ToolStripMenuItem_Poisk";
             this.ToolStripMenuItem_Poisk.Size = new System.Drawing.Size(56, 21);
             this.ToolStripMenuItem_Poisk.Text = "Поиск";
-            this.ToolStripMenuItem_Poisk.Click += new System.EventHandler(this.ToolStripMenuItem_Poisk_Click);
             // 
             // toolStripMenuItem_Redaktirovanie_Spiskov
             // 
             this.toolStripMenuItem_Redaktirovanie_Spiskov.Name = "toolStripMenuItem_Redaktirovanie_Spiskov";
             this.toolStripMenuItem_Redaktirovanie_Spiskov.Size = new System.Drawing.Size(168, 21);
             this.toolStripMenuItem_Redaktirovanie_Spiskov.Text = "Редактирование списков";
-            this.toolStripMenuItem_Redaktirovanie_Spiskov.Click += new System.EventHandler(this.toolStripMenuItem_Redaktirovanie_Spiskov_Click);
             // 
             // ToolStripMenuItem_Otcheti
             // 
@@ -361,7 +353,7 @@ namespace DevList
             this.ToolStripMenuItem_Perechitat.Name = "ToolStripMenuItem_Perechitat";
             this.ToolStripMenuItem_Perechitat.Size = new System.Drawing.Size(114, 21);
             this.ToolStripMenuItem_Perechitat.Text = "Убрать фильтры";
-            this.ToolStripMenuItem_Perechitat.Click += new System.EventHandler(this.ToolStripMenuItem_Perechitat_Click);
+            this.ToolStripMenuItem_Perechitat.Visible = false;
             // 
             // textBox_Obschii_Poisk
             // 
@@ -371,7 +363,6 @@ namespace DevList
             this.textBox_Obschii_Poisk.Name = "textBox_Obschii_Poisk";
             this.textBox_Obschii_Poisk.Size = new System.Drawing.Size(310, 23);
             this.textBox_Obschii_Poisk.TabIndex = 3;
-            this.textBox_Obschii_Poisk.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Obschii_Poisk_KeyUp);
             // 
             // label_Obschii_Poisk
             // 
@@ -400,9 +391,7 @@ namespace DevList
             this.Name = "Glavnoe_Okno";
             this.ShowIcon = false;
             this.Text = "DevList 4.5";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Glavnoe_Okno_FormClosed);
             this.Load += new System.EventHandler(this.Glavnoe_Okno_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Glavnoe_Okno_KeyUp);
             this.contextMenuStrip_Vsplivauschee_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.PerformLayout();

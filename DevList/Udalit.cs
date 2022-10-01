@@ -16,7 +16,7 @@ namespace DevList
         {
             InitializeComponent();
         }
-        private void button_Udalit_Click(object sender, EventArgs e)
+        /*private void button_Udalit_Click(object sender, EventArgs e)
         {
             Glavnoe_Okno.izmeneniia_s_otkritiia = true;
 
@@ -35,14 +35,14 @@ namespace DevList
                 }
             }
             catch (Exception) { }
-        }
+        }*/
 
         private void button_Otmenit_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void Udalit_KeyUp(object sender, KeyEventArgs e)
+        /*private void Udalit_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -52,6 +52,6 @@ namespace DevList
             {
                 button_Otmenit_Click(sender, e);
             }
-        }
+        }*/
     }
 }

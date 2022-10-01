@@ -15,7 +15,7 @@ namespace DevList
     {
         string iz, naimenovanie, inv_nomer;
 
-        public Izmenit_Iz_Spiska()
+        /*public Izmenit_Iz_Spiska()
         {
             InitializeComponent();
 
@@ -54,8 +54,8 @@ namespace DevList
             {
                 Close();
             }
-        }
-        private void button_Vipolnit_Click(object sender, EventArgs e)
+        }*/
+        /*private void button_Vipolnit_Click(object sender, EventArgs e)
         {
             Glavnoe_Okno.izmeneniia_s_otkritiia = true;
 
@@ -77,7 +77,7 @@ namespace DevList
             Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki][Glavnoe_Okno.nomer_stolbca] = comboBox_Spisok_Vibora.Text;
 
             Close();
-        }
+        }*/
         private void button_Otmenit_Click(object sender, EventArgs e)
         {
             Close();
@@ -113,7 +113,7 @@ namespace DevList
             textovaia_stroka.Items.Clear();
             textovaia_stroka.Items.AddRange(spisok);
         }
-        private void Izmenit_Iz_Spiska_KeyUp(object sender, KeyEventArgs e)
+        /*private void Izmenit_Iz_Spiska_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -123,11 +123,11 @@ namespace DevList
             {
                 button_Otmenit_Click(sender, e);
             }
-        }
+        }*/
 
         private void button_tip_plus_Click(object sender, EventArgs e)
         {
-            if (Glavnoe_Okno.nomer_stolbca == 3)            // Помещения
+            /*if (Glavnoe_Okno.nomer_stolbca == 3)            // Помещения
             {
                 Plus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Spisok_Vibora, Glavnoe_Okno.pomescheniia);
             }
@@ -138,11 +138,11 @@ namespace DevList
             else if (Glavnoe_Okno.nomer_stolbca == 6)       // Тип
             {
                 Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Spisok_Vibora, Glavnoe_Okno.tipi);
-            }
+            }*/
         }
         private void button_tip_minus_Click(object sender, EventArgs e)
         {
-            if (Glavnoe_Okno.nomer_stolbca == 3)            // Помещения
+            /*if (Glavnoe_Okno.nomer_stolbca == 3)            // Помещения
             {
                 Minus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Spisok_Vibora, Glavnoe_Okno.pomescheniia);
             }
@@ -153,7 +153,7 @@ namespace DevList
             else if (Glavnoe_Okno.nomer_stolbca == 6)       // Тип
             {
                 Minus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Spisok_Vibora, Glavnoe_Okno.tipi);
-            }
+            }*/
         }
     }
 }

@@ -83,7 +83,7 @@ namespace DevList
             this.comboBox_Tip.Name = "comboBox_Tip";
             this.comboBox_Tip.Size = new System.Drawing.Size(350, 24);
             this.comboBox_Tip.TabIndex = 4;
-            this.comboBox_Tip.TextChanged += new System.EventHandler(this.comboBox_Tip_TextChanged);
+            //this.comboBox_Tip.TextChanged += new System.EventHandler(this.comboBox_Tip_TextChanged);
             // 
             // label_Tip
             // 
@@ -131,7 +131,7 @@ namespace DevList
             this.Name = "Otcheti_Po_MC";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Load += new System.EventHandler(this.Otcheti_Po_MC_Load);
+            //this.Load += new System.EventHandler(this.Otcheti_Po_MC_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

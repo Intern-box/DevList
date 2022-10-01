@@ -19,7 +19,7 @@ namespace DevList
         }
         private void comboBox_Elementi_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (comboBox_Elementi.SelectedIndex == 0)
+            /*if (comboBox_Elementi.SelectedIndex == 0)
             {
                 string[] spisok_strok_iz_faila = File.ReadAllLines(Glavnoe_Okno.put_do_spiska_pomeschenii);
 
@@ -53,7 +53,7 @@ namespace DevList
                 {
                     textBox_Soderjimoe.Text += stroka + "\r\n";
                 }
-            }
+            }*/
         }
         private void button_Otmenit_Click(object sender, EventArgs e)
         {
@@ -61,7 +61,7 @@ namespace DevList
         }
         private void button_Sohranit_Click(object sender, EventArgs e)
         {
-            if (textBox_Soderjimoe.Text != "")
+            /*if (textBox_Soderjimoe.Text != "")
             {
                 if (comboBox_Elementi.SelectedIndex == 0)
                 {
@@ -77,7 +77,7 @@ namespace DevList
                 {
                     File.WriteAllText(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, textBox_Soderjimoe.Text + "\r\n");
                 }
-            }
+            }*/
 
             Close();
         }

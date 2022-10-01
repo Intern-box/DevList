@@ -77,7 +77,7 @@ namespace DevList
             this.button_Vipolnit.TabIndex = 3;
             this.button_Vipolnit.Text = "Выполнить";
             this.button_Vipolnit.UseVisualStyleBackColor = true;
-            this.button_Vipolnit.Click += new System.EventHandler(this.button_Vipolnit_Click);
+            //this.button_Vipolnit.Click += new System.EventHandler(this.button_Vipolnit_Click);
             // 
             // label_Nazvanie
             // 
@@ -131,7 +131,7 @@ namespace DevList
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Правка из списков";
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Izmenit_Iz_Spiska_KeyUp);
+            //this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Izmenit_Iz_Spiska_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
