@@ -62,15 +62,13 @@ namespace DevList
                 textBox_Hostname.Text = stroka[10];
                 textBox_IP.Text = stroka[11];
                 comboBox_Izmenil.Text = stroka[12];
-
-                baza.baza.Add(stroka);
             }
         }
         private void button_Dobavit_Click(object sender, EventArgs e)
         {
             string[] stroka = new string[]
             {
-                koordinati_mishi.Item.Index.ToString(),
+                (baza.baza.Count).ToString(),
                 textBox_Data_Priobreteniia.Text,
                 textBox_InvNomer.Text,
                 comboBox_Pomeschenie.Text,
@@ -88,11 +86,6 @@ namespace DevList
             /////////////////// Попробовать добавить строку инсёртом!
 
             baza.baza.Add(stroka);
-
-            for (int i = 0; i < baza.baza.Count; i++)
-            {
-                baza.baza[i][0] = (i + 1).ToString();
-            }
 
             Close();
         }

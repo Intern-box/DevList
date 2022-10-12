@@ -51,57 +51,62 @@ namespace DevList
             // label_BD
             // 
             this.label_BD.AutoSize = true;
-            this.label_BD.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_BD.Location = new System.Drawing.Point(12, 9);
+            this.label_BD.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_BD.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label_BD.Location = new System.Drawing.Point(12, 10);
             this.label_BD.Name = "label_BD";
-            this.label_BD.Size = new System.Drawing.Size(98, 16);
+            this.label_BD.Size = new System.Drawing.Size(94, 14);
             this.label_BD.TabIndex = 0;
             this.label_BD.Text = "База данных:";
             // 
             // label_Pomescheniia
             // 
             this.label_Pomescheniia.AutoSize = true;
-            this.label_Pomescheniia.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Pomescheniia.Location = new System.Drawing.Point(12, 58);
+            this.label_Pomescheniia.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Pomescheniia.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label_Pomescheniia.Location = new System.Drawing.Point(12, 70);
             this.label_Pomescheniia.Name = "label_Pomescheniia";
-            this.label_Pomescheniia.Size = new System.Drawing.Size(145, 16);
+            this.label_Pomescheniia.Size = new System.Drawing.Size(138, 14);
             this.label_Pomescheniia.TabIndex = 1;
             this.label_Pomescheniia.Text = "Список помещений:";
             // 
             // label_Oborudovanie
             // 
             this.label_Oborudovanie.AutoSize = true;
-            this.label_Oborudovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Oborudovanie.Location = new System.Drawing.Point(12, 110);
+            this.label_Oborudovanie.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Oborudovanie.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label_Oborudovanie.Location = new System.Drawing.Point(12, 130);
             this.label_Oborudovanie.Name = "label_Oborudovanie";
-            this.label_Oborudovanie.Size = new System.Drawing.Size(164, 16);
+            this.label_Oborudovanie.Size = new System.Drawing.Size(155, 14);
             this.label_Oborudovanie.TabIndex = 2;
             this.label_Oborudovanie.Text = "Список оборудования:";
             // 
             // label_Sotrudniki
             // 
             this.label_Sotrudniki.AutoSize = true;
-            this.label_Sotrudniki.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Sotrudniki.Location = new System.Drawing.Point(12, 164);
+            this.label_Sotrudniki.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Sotrudniki.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label_Sotrudniki.Location = new System.Drawing.Point(12, 190);
             this.label_Sotrudniki.Name = "label_Sotrudniki";
-            this.label_Sotrudniki.Size = new System.Drawing.Size(155, 16);
+            this.label_Sotrudniki.Size = new System.Drawing.Size(144, 14);
             this.label_Sotrudniki.TabIndex = 3;
             this.label_Sotrudniki.Text = "Список сотрудников:";
             // 
             // textBox__BD
             // 
             this.textBox__BD.Enabled = false;
-            this.textBox__BD.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox__BD.Location = new System.Drawing.Point(15, 28);
+            this.textBox__BD.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox__BD.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.textBox__BD.Location = new System.Drawing.Point(12, 27);
             this.textBox__BD.Name = "textBox__BD";
-            this.textBox__BD.Size = new System.Drawing.Size(312, 22);
+            this.textBox__BD.Size = new System.Drawing.Size(312, 21);
             this.textBox__BD.TabIndex = 1;
             // 
             // button__BD
             // 
             this.button__BD.Enabled = false;
             this.button__BD.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button__BD.Location = new System.Drawing.Point(333, 28);
+            this.button__BD.Location = new System.Drawing.Point(330, 26);
             this.button__BD.Name = "button__BD";
             this.button__BD.Size = new System.Drawing.Size(75, 23);
             this.button__BD.TabIndex = 2;
@@ -113,7 +118,7 @@ namespace DevList
             // 
             this.button__Pomescheniia.Enabled = false;
             this.button__Pomescheniia.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button__Pomescheniia.Location = new System.Drawing.Point(333, 77);
+            this.button__Pomescheniia.Location = new System.Drawing.Point(330, 86);
             this.button__Pomescheniia.Name = "button__Pomescheniia";
             this.button__Pomescheniia.Size = new System.Drawing.Size(75, 23);
             this.button__Pomescheniia.TabIndex = 4;
@@ -124,17 +129,18 @@ namespace DevList
             // textBox_Pomescheniia
             // 
             this.textBox_Pomescheniia.Enabled = false;
-            this.textBox_Pomescheniia.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Pomescheniia.Location = new System.Drawing.Point(15, 77);
+            this.textBox_Pomescheniia.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_Pomescheniia.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.textBox_Pomescheniia.Location = new System.Drawing.Point(12, 87);
             this.textBox_Pomescheniia.Name = "textBox_Pomescheniia";
-            this.textBox_Pomescheniia.Size = new System.Drawing.Size(312, 22);
+            this.textBox_Pomescheniia.Size = new System.Drawing.Size(312, 21);
             this.textBox_Pomescheniia.TabIndex = 3;
             // 
             // button__Oborudovanie
             // 
             this.button__Oborudovanie.Enabled = false;
             this.button__Oborudovanie.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button__Oborudovanie.Location = new System.Drawing.Point(333, 129);
+            this.button__Oborudovanie.Location = new System.Drawing.Point(330, 146);
             this.button__Oborudovanie.Name = "button__Oborudovanie";
             this.button__Oborudovanie.Size = new System.Drawing.Size(75, 23);
             this.button__Oborudovanie.TabIndex = 6;
@@ -145,17 +151,18 @@ namespace DevList
             // textBox_Oborudovanie
             // 
             this.textBox_Oborudovanie.Enabled = false;
-            this.textBox_Oborudovanie.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Oborudovanie.Location = new System.Drawing.Point(15, 129);
+            this.textBox_Oborudovanie.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_Oborudovanie.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.textBox_Oborudovanie.Location = new System.Drawing.Point(12, 147);
             this.textBox_Oborudovanie.Name = "textBox_Oborudovanie";
-            this.textBox_Oborudovanie.Size = new System.Drawing.Size(312, 22);
+            this.textBox_Oborudovanie.Size = new System.Drawing.Size(312, 21);
             this.textBox_Oborudovanie.TabIndex = 5;
             // 
             // button__Sotrudniki
             // 
             this.button__Sotrudniki.Enabled = false;
             this.button__Sotrudniki.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button__Sotrudniki.Location = new System.Drawing.Point(333, 183);
+            this.button__Sotrudniki.Location = new System.Drawing.Point(330, 206);
             this.button__Sotrudniki.Name = "button__Sotrudniki";
             this.button__Sotrudniki.Size = new System.Drawing.Size(75, 23);
             this.button__Sotrudniki.TabIndex = 8;
@@ -166,17 +173,18 @@ namespace DevList
             // textBox_Sotrudniki
             // 
             this.textBox_Sotrudniki.Enabled = false;
-            this.textBox_Sotrudniki.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Sotrudniki.Location = new System.Drawing.Point(15, 183);
+            this.textBox_Sotrudniki.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_Sotrudniki.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.textBox_Sotrudniki.Location = new System.Drawing.Point(12, 207);
             this.textBox_Sotrudniki.Name = "textBox_Sotrudniki";
-            this.textBox_Sotrudniki.Size = new System.Drawing.Size(312, 22);
+            this.textBox_Sotrudniki.Size = new System.Drawing.Size(312, 21);
             this.textBox_Sotrudniki.TabIndex = 7;
             // 
             // button_Zagruzit
             // 
             this.button_Zagruzit.Enabled = false;
             this.button_Zagruzit.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Zagruzit.Location = new System.Drawing.Point(15, 211);
+            this.button_Zagruzit.Location = new System.Drawing.Point(12, 262);
             this.button_Zagruzit.Name = "button_Zagruzit";
             this.button_Zagruzit.Size = new System.Drawing.Size(95, 23);
             this.button_Zagruzit.TabIndex = 9;
@@ -188,7 +196,7 @@ namespace DevList
             // 
             this.label__BD_status.AutoSize = true;
             this.label__BD_status.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label__BD_status.Location = new System.Drawing.Point(116, 9);
+            this.label__BD_status.Location = new System.Drawing.Point(112, 8);
             this.label__BD_status.Name = "label__BD_status";
             this.label__BD_status.Size = new System.Drawing.Size(54, 16);
             this.label__BD_status.TabIndex = 13;
@@ -199,7 +207,7 @@ namespace DevList
             // 
             this.label_Pomescheniia_status.AutoSize = true;
             this.label_Pomescheniia_status.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Pomescheniia_status.Location = new System.Drawing.Point(163, 58);
+            this.label_Pomescheniia_status.Location = new System.Drawing.Point(156, 68);
             this.label_Pomescheniia_status.Name = "label_Pomescheniia_status";
             this.label_Pomescheniia_status.Size = new System.Drawing.Size(54, 16);
             this.label_Pomescheniia_status.TabIndex = 14;
@@ -210,7 +218,7 @@ namespace DevList
             // 
             this.label__Oborudovanie_status.AutoSize = true;
             this.label__Oborudovanie_status.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label__Oborudovanie_status.Location = new System.Drawing.Point(182, 110);
+            this.label__Oborudovanie_status.Location = new System.Drawing.Point(173, 128);
             this.label__Oborudovanie_status.Name = "label__Oborudovanie_status";
             this.label__Oborudovanie_status.Size = new System.Drawing.Size(54, 16);
             this.label__Oborudovanie_status.TabIndex = 15;
@@ -221,7 +229,7 @@ namespace DevList
             // 
             this.label__Sotrudniki_status.AutoSize = true;
             this.label__Sotrudniki_status.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label__Sotrudniki_status.Location = new System.Drawing.Point(173, 164);
+            this.label__Sotrudniki_status.Location = new System.Drawing.Point(162, 188);
             this.label__Sotrudniki_status.Name = "label__Sotrudniki_status";
             this.label__Sotrudniki_status.Size = new System.Drawing.Size(54, 16);
             this.label__Sotrudniki_status.TabIndex = 16;
@@ -233,7 +241,7 @@ namespace DevList
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(421, 244);
+            this.ClientSize = new System.Drawing.Size(421, 294);
             this.Controls.Add(this.label__Sotrudniki_status);
             this.Controls.Add(this.label__Oborudovanie_status);
             this.Controls.Add(this.label_Pomescheniia_status);

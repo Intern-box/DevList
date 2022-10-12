@@ -35,7 +35,7 @@ namespace DevList
         // Читаем данные из "списка" БД в таблицу главного окна
         private void Chtenie_Bazi(ListView listview, List<string[]> baza)
         {
-            listView_Tablica_Vivoda_Bazi.Clear();
+            listView_Tablica_Vivoda_Bazi.Items.Clear();
 
             foreach (string stroka in baza[0])
             {
