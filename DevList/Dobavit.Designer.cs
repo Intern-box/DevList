@@ -450,6 +450,7 @@ namespace DevList
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Добавить элемент";
+            this.Load += new System.EventHandler(this.Dobavit_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Dobavit_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -11,29 +11,28 @@ namespace DevList
 {
     public class Baza
     {
-        public readonly string put_do_bazi;                             // Путь до БД
-        public List<string[]> baza;                                     // База
+        public List<string[]> baza = new List<string[]>();              // База
+        public bool izmeneniia_v_baze;                                  // Флаг изменения в базе
 
         public Baza()
         {
         }
-        public Baza(string[] stolbci)                                   // При создании экзепляра, передавая массив строк, создаётся новая база
+        public Baza(string put_do_bazi, string[] stolbci)               // При создании экзепляра, передавая массив строк и путь, создаётся новая база и файл
         {
-            List<string[]> baza = new List<string[]>();
-
             baza.Clear();
 
             baza.Add(stolbci);
 
-            this.baza = baza;
+            File.WriteAllLines(put_do_bazi, stolbci.Select(x => string.Join(",", x)));
         }
-        public Baza(string put_do_bazi)                                 // При создании экзепляра, передавая "путь", создаётся объект с базой
+        public Baza(string put_do_bazi)                                 // При создании экзепляра, передавая "путь", создаётся объект с базой и открывается файл
         {
-            this.put_do_bazi = put_do_bazi;
-
-            List<string[]> baza = new List<string[]>();
-
             baza.Clear();
+
+            if (File.Exists(put_do_bazi) == false)
+            {
+                File.WriteAllText(put_do_bazi, "");
+            }
 
             foreach (string stroka in File.ReadAllLines(put_do_bazi))
             {
@@ -43,8 +42,10 @@ namespace DevList
 
                 baza.Add(stroka.Split(','));
             }
-
-            this.baza = baza;
+        }
+        public void Zapisat(string put_do_bazi)
+        {
+            File.AppendAllLines(put_do_bazi, baza.Select(x => string.Join(",", x)));
         }
     }
 }

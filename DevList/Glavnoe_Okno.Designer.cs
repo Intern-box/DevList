@@ -31,19 +31,6 @@ namespace DevList
         {
             this.components = new System.ComponentModel.Container();
             this.listView_Tablica_Vivoda_Bazi = new System.Windows.Forms.ListView();
-            this.IDnomer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.DataPriobreteniia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.InvNomer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Pomescheniie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FIO = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Naimenovanie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Tip = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Sostoianie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Inventarizaciia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Kommentarii = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Hostname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.IP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.izmenil = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip_Vsplivauschee_Menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItem_Context_Pravit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Context_Dobavit = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,20 +65,6 @@ namespace DevList
             this.listView_Tablica_Vivoda_Bazi.AllowColumnReorder = true;
             this.listView_Tablica_Vivoda_Bazi.AllowDrop = true;
             this.listView_Tablica_Vivoda_Bazi.AutoArrange = false;
-            this.listView_Tablica_Vivoda_Bazi.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.IDnomer,
-            this.DataPriobreteniia,
-            this.InvNomer,
-            this.Pomescheniie,
-            this.FIO,
-            this.Naimenovanie,
-            this.Tip,
-            this.Sostoianie,
-            this.Inventarizaciia,
-            this.Kommentarii,
-            this.Hostname,
-            this.IP,
-            this.izmenil});
             this.listView_Tablica_Vivoda_Bazi.ContextMenuStrip = this.contextMenuStrip_Vsplivauschee_Menu;
             this.listView_Tablica_Vivoda_Bazi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView_Tablica_Vivoda_Bazi.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -105,83 +78,7 @@ namespace DevList
             this.listView_Tablica_Vivoda_Bazi.TabIndex = 1;
             this.listView_Tablica_Vivoda_Bazi.UseCompatibleStateImageBehavior = false;
             this.listView_Tablica_Vivoda_Bazi.View = System.Windows.Forms.View.Details;
-            // 
-            // IDnomer
-            // 
-            this.IDnomer.Text = "  ID";
-            this.IDnomer.Width = 150;
-            // 
-            // DataPriobreteniia
-            // 
-            this.DataPriobreteniia.Text = "Дата приобретения";
-            this.DataPriobreteniia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DataPriobreteniia.Width = 78;
-            // 
-            // InvNomer
-            // 
-            this.InvNomer.Text = "Инв. №";
-            this.InvNomer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.InvNomer.Width = 113;
-            // 
-            // Pomescheniie
-            // 
-            this.Pomescheniie.Text = "Помещение";
-            this.Pomescheniie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Pomescheniie.Width = 150;
-            // 
-            // FIO
-            // 
-            this.FIO.Text = "Закреплено за ФИО";
-            this.FIO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.FIO.Width = 115;
-            // 
-            // Naimenovanie
-            // 
-            this.Naimenovanie.Text = "Наименование";
-            this.Naimenovanie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Naimenovanie.Width = 51;
-            // 
-            // Tip
-            // 
-            this.Tip.Text = "Тип";
-            this.Tip.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Tip.Width = 90;
-            // 
-            // Sostoianie
-            // 
-            this.Sostoianie.Text = "Состояние";
-            this.Sostoianie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Sostoianie.Width = 130;
-            // 
-            // Inventarizaciia
-            // 
-            this.Inventarizaciia.Text = "Инвентаризация";
-            this.Inventarizaciia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Inventarizaciia.Width = 105;
-            // 
-            // Kommentarii
-            // 
-            this.Kommentarii.Text = "Комментарий";
-            this.Kommentarii.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Kommentarii.Width = 80;
-            // 
-            // Hostname
-            // 
-            this.Hostname.Text = "Hostname";
-            this.Hostname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Hostname.Width = 30;
-            // 
-            // IP
-            // 
-            this.IP.Text = "IP";
-            this.IP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.IP.Width = 110;
-            // 
-            // izmenil
-            // 
-            this.izmenil.Text = "Изменил ФИО";
-            this.izmenil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.izmenil.Width = 110;
+            this.listView_Tablica_Vivoda_Bazi.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView_Tablica_Vivoda_Bazi_MouseClick);
             // 
             // contextMenuStrip_Vsplivauschee_Menu
             // 
@@ -401,12 +298,6 @@ namespace DevList
         }
 
         #endregion
-        private System.Windows.Forms.ColumnHeader IDnomer;
-        private System.Windows.Forms.ColumnHeader InvNomer;
-        private System.Windows.Forms.ColumnHeader Pomescheniie;
-        private System.Windows.Forms.ColumnHeader Naimenovanie;
-        private System.Windows.Forms.ColumnHeader Tip;
-        private System.Windows.Forms.ColumnHeader Kommentarii;
         private System.Windows.Forms.MenuStrip menuStrip_Glavnoe_Menu;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Fail;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Otkrit;
@@ -425,14 +316,7 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sohranit_Kak;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sohranit;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Sozdat;
-        private System.Windows.Forms.ColumnHeader FIO;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Redaktirovanie_Spiskov;
-        private System.Windows.Forms.ColumnHeader DataPriobreteniia;
-        private System.Windows.Forms.ColumnHeader Sostoianie;
-        private System.Windows.Forms.ColumnHeader Inventarizaciia;
-        private System.Windows.Forms.ColumnHeader Hostname;
-        private System.Windows.Forms.ColumnHeader IP;
-        private System.Windows.Forms.ColumnHeader izmenil;
         private System.Windows.Forms.TextBox textBox_Obschii_Poisk;
         private System.Windows.Forms.Label label_Obschii_Poisk;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Otcheti;

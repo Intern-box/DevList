@@ -48,6 +48,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Baza.cs" />
+    <Compile Include="Nastroiki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nastroiki.Designer.cs">
+      <DependentUpon>Nastroiki.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Oshibka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oshibka.Designer.cs">
+      <DependentUpon>Oshibka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ini_Fail.cs" />
     <Compile Include="Spisok.cs" />
     <Compile Include="Dobavit.cs">
       <SubType>Form</SubType>
@@ -107,6 +120,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Izmenit_Iz_Spiska.resx">
       <DependentUpon>Izmenit_Iz_Spiska.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nastroiki.resx">
+      <DependentUpon>Nastroiki.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oshibka.resx">
+      <DependentUpon>Oshibka.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Otcheti_Po_MC.resx">
       <DependentUpon>Otcheti_Po_MC.cs</DependentUpon>

@@ -13,21 +13,42 @@ namespace DevList
 {
     public partial class Dobavit : Form
     {
-        public Dobavit()
+        ListViewHitTestInfo koordinati_mishi;
+        Baza baza;
+        Spisok pomescheniia;
+        Spisok oborudovanie;
+        Spisok sotrudniki;
+        Nastroiki nastroiki;
+
+        public Dobavit(Baza baza, ListViewHitTestInfo koordinati_mishi)
         {
             InitializeComponent();
 
-            /*
-             * Заполняем поля combobox
-             */
-            //comboBox_Pomeschenie.Items.AddRange(Glavnoe_Okno.pomescheniia);
-            //comboBox_FIO.Items.AddRange(Glavnoe_Okno.sotrudniki);
-            //comboBox_Izmenil.Items.AddRange(Glavnoe_Okno.sotrudniki);
-            //comboBox_Tip.Items.AddRange(Glavnoe_Okno.tipi);
+            this.baza = baza;
 
-            /*if (Glavnoe_Okno.nomer_najatoi_stroki >= 0)
+            this.koordinati_mishi = koordinati_mishi;
+        }
+        private void Dobavit_Load(object sender, EventArgs e)
+        {
+            nastroiki = new Nastroiki();
+
+            nastroiki.Schitat();
+
+            pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
+
+            oborudovanie = new Spisok(nastroiki.put_do_tipov_oborudovaniia);
+
+            sotrudniki = new Spisok(nastroiki.put_do_sotrudnikov);
+
+            // Заполняем поля combobox
+            comboBox_Pomeschenie.Items.AddRange(pomescheniia.spisok);
+            comboBox_FIO.Items.AddRange(sotrudniki.spisok);
+            comboBox_Izmenil.Items.AddRange(sotrudniki.spisok);
+            comboBox_Tip.Items.AddRange(oborudovanie.spisok);
+
+            if (koordinati_mishi.Item.Index >= 0)
             {
-                string[] stroka = Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki];
+                string[] stroka = baza.baza[koordinati_mishi.Item.Index + 1];
 
                 textBox_Data_Priobreteniia.Text = stroka[1];
                 textBox_InvNomer.Text = stroka[2];
@@ -41,17 +62,15 @@ namespace DevList
                 textBox_Hostname.Text = stroka[10];
                 textBox_IP.Text = stroka[11];
                 comboBox_Izmenil.Text = stroka[12];
-            }*/
+
+                baza.baza.Add(stroka);
+            }
         }
         private void button_Dobavit_Click(object sender, EventArgs e)
         {
-            Glavnoe_Okno.izmeneniia_s_otkritiia = true;
-
-            Glavnoe_Okno.nomer_najatoi_stroki = -1;
-
             string[] stroka = new string[]
             {
-                Glavnoe_Okno.nomer_najatoi_stroki.ToString(),
+                koordinati_mishi.Item.Index.ToString(),
                 textBox_Data_Priobreteniia.Text,
                 textBox_InvNomer.Text,
                 comboBox_Pomeschenie.Text,
@@ -68,14 +87,14 @@ namespace DevList
 
             /////////////////// Попробовать добавить строку инсёртом!
 
-            /*Glavnoe_Okno.baza.Add(stroka);
+            baza.baza.Add(stroka);
 
-            for (int i = 0; i < Glavnoe_Okno.baza.Count; i++)
+            for (int i = 0; i < baza.baza.Count; i++)
             {
-                Glavnoe_Okno.baza[i][0] = (i + 1).ToString();
+                baza.baza[i][0] = (i + 1).ToString();
             }
 
-            Close();*/
+            Close();
         }
         private void button_Otmenit_Click(object sender, EventArgs e)
         {
@@ -114,35 +133,35 @@ namespace DevList
         }
         private void button_pomeschenie_plus_Click(object sender, EventArgs e)
         {
-            //Plus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, Glavnoe_Okno.pomescheniia);
+            Plus_Element(nastroiki.put_do_pomeschenii, comboBox_Pomeschenie, pomescheniia.spisok);
         }
         private void button_pomeschenie_minus_Click(object sender, EventArgs e)
         {
-            //Minus_Element(Glavnoe_Okno.put_do_spiska_pomeschenii, comboBox_Pomeschenie, Glavnoe_Okno.pomescheniia);
+            Minus_Element(nastroiki.put_do_pomeschenii, comboBox_Pomeschenie, pomescheniia.spisok);
         }
         private void button_fio_plus_Click(object sender, EventArgs e)
         {
-            //Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
-        }
-        private void button_tip_plus_Click(object sender, EventArgs e)
-        {
-            //Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, Glavnoe_Okno.tipi);
-        }
-        private void button_tip_minus_Click(object sender, EventArgs e)
-        {
-            //Minus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, Glavnoe_Okno.tipi);
+            Plus_Element(nastroiki.put_do_sotrudnikov, comboBox_FIO, sotrudniki.spisok);
         }
         private void button_fio_minus_Click(object sender, EventArgs e)
         {
-            //Minus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
+            Minus_Element(nastroiki.put_do_sotrudnikov, comboBox_FIO, sotrudniki.spisok);
         }
         private void button_Izmenil_plus_Click(object sender, EventArgs e)
         {
-            //Plus_Element(Glavnoe_Okno.put_do_spiska_sotrudnikov, comboBox_FIO, Glavnoe_Okno.sotrudniki);
+            Plus_Element(nastroiki.put_do_sotrudnikov, comboBox_FIO, sotrudniki.spisok);
         }
         private void button_Izmenil_minus_Click(object sender, EventArgs e)
         {
-            //Plus_Element(Glavnoe_Okno.put_do_spiska_tipov_oborudovania, comboBox_Tip, Glavnoe_Okno.tipi);
+            Minus_Element(nastroiki.put_do_sotrudnikov, comboBox_FIO, sotrudniki.spisok);
+        }
+        private void button_tip_plus_Click(object sender, EventArgs e)
+        {
+            Plus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Tip, oborudovanie.spisok);
+        }
+        private void button_tip_minus_Click(object sender, EventArgs e)
+        {
+            Minus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Tip, oborudovanie.spisok);
         }
         private void Dobavit_KeyUp(object sender, KeyEventArgs e)
         {

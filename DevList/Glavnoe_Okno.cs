@@ -13,297 +13,64 @@ namespace DevList
 {
     public partial class Glavnoe_Okno : Form
     {
-        public static string[] ini_fail = new string[4];              // Файл с настройками
-        public static bool izmeneniia_s_otkritiia = false;            // Отслеживает были ли изменения с открытия программы
-        public static int nomer_najatoi_stroki = -1;                  // При клике мышкой запоминает номер строки в таблице на главном окне
-        public static int nomer_stolbca;                              // При клике мышкой запоминает номер столбца
+        Nastroiki nastroiki;
+        ListViewHitTestInfo koordinati_mishi;
+        Baza baza;
 
         public Glavnoe_Okno()
         {
             InitializeComponent();
         }
-        private void Glavnoe_Okno_Load(object sender, EventArgs e)
+        public void Glavnoe_Okno_Load(object sender, EventArgs e)
         {
-            // Ищим файл с настройками
-            // Если его нет, предлагаем создать
-            // При отказе - выходим из программы
-            if (File.Exists("DevList.ini") == false)
-            {
-                if (Zapros_Da_Net("Нет файла с настройками", "Создать?") == DialogResult.Yes)
-                {
-                    File.AppendAllText
-                    (
-                        "DevList.ini",
-                        "БД = \r\n" +
-                        "Помещения = \r\n" +
-                        "Тип = \r\n" +
-                        "Сотрудники = "
-                    );
-                }
-                else
-                {
-                    Environment.Exit(0);
+            nastroiki = new Nastroiki();
 
-                    Close();
-                }
-            }
+            nastroiki.ShowDialog();
 
-            if (Directory.Exists("БД") == false)
-                Directory.CreateDirectory("БД");
+            baza = new Baza(nastroiki.put_do_bazi);
 
-            if (Directory.Exists("История перемещений") == false)
-                Directory.CreateDirectory("История перемещений");
-
-            // Читаем файл с настройками
-            ini_fail = File.ReadAllLines("DevList.ini");
-
-            // Проверяем есть ли файл с БД
-            // Если нет, предлагаем создать или открыть свой
-            // Если есть, создаём экземпляр
-            if (File.Exists(Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 0)) == false)
-            {
-                if (Zapros_Da_Net("Нет файла с базой", "Создать?") == DialogResult.Yes)
-                {
-                    File.WriteAllText("БД\\БД.csv", "");
-
-                    ini_fail[0] = "БД = БД\\БД.csv";
-                }
-                else
-                {
-                    ini_fail[0] = "БД = " + Zapros_Na_Otkritie_Faila();
-                }
-
-                File.WriteAllLines("DevList.ini", ini_fail);
-            }
-
-            Baza baza = new Baza();
-
-            try
-            {
-                baza = new Baza(Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 0));
-            }
-            catch (Exception)
-            {
-                MessageBox.Show
-                (
-                    "Не удалось создать экземпляр с базой!",
-                    "Ошибка создания БД",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error,
-                    (MessageBoxDefaultButton)MessageBoxOptions.DefaultDesktopOnly
-                );
-            }
-
-            // Проверяем есть ли файл со списком помещений
-            // Если нет, предлагаем создать или открыть свой
-            // Если есть, создаём экземпляр
-            if (File.Exists(Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 1)) == false)
-            {
-                if (Zapros_Da_Net("Нет файла со списком помещений", "Создать?") == DialogResult.Yes)
-                {
-                    File.WriteAllText("БД\\Помещения.txt", "");
-
-                    ini_fail[1] = "Помещения = БД\\Помещения.txt";
-                }
-                else
-                {
-                    ini_fail[1] = "Помещения = " + Zapros_Na_Otkritie_Faila();
-                }
-
-                File.WriteAllLines("DevList.ini", ini_fail);
-            }
-
-            Spisok pomescheniia = new Spisok();
-
-            try
-            {
-                pomescheniia = new Spisok(Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 1));
-            }
-            catch (Exception)
-            {
-                MessageBox.Show
-                (
-                    "Не удалось создать экземпляр со списком помещений!",
-                    "Ошибка создания списка",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error,
-                    (MessageBoxDefaultButton)MessageBoxOptions.DefaultDesktopOnly
-                );
-            }
-
-            // Проверяем есть ли файл со списком типов МЦ
-            // Если нет, предлагаем создать или открыть свой
-            // Если есть, создаём экземпляр
-            if (File.Exists(Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 2)) == false)
-            {
-                if (Zapros_Da_Net("Нет файла со списком типов МЦ", "Создать?") == DialogResult.Yes)
-                {
-                    File.WriteAllText("БД\\Тип.txt", "");
-
-                    ini_fail[2] = "Тип = БД\\Тип.txt";
-                }
-                else
-                {
-                    ini_fail[2] = "Тип = " + Zapros_Na_Otkritie_Faila();
-                }
-
-                File.WriteAllLines("DevList.ini", ini_fail);
-            }
-
-            Spisok tipi_oborudovania = new Spisok();
-
-            try
-            {
-                tipi_oborudovania = new Spisok(Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 2));
-            }
-            catch (Exception)
-            {
-                MessageBox.Show
-                (
-                    "Не удалось создать экземпляр со списком типов оборудования!",
-                    "Ошибка создания списка",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error,
-                    (MessageBoxDefaultButton)MessageBoxOptions.DefaultDesktopOnly
-                );
-            }
-
-            // Проверяем есть ли файл со списком сотрудников
-            // Если нет, предлагаем создать или открыть свой
-            // Если есть, создаём экземпляр
-            if (File.Exists(Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 3)) == false)
-            {
-                if (Zapros_Da_Net("Нет файла со списком сотрудников", "Создать?") == DialogResult.Yes)
-                {
-                    File.WriteAllText("БД\\Сотрудники.txt", "");
-
-                    ini_fail[3] = "Сотрудники = БД\\Сотрудники.txt";
-                }
-                else
-                {
-                    ini_fail[3] = "Сотрудники = " + Zapros_Na_Otkritie_Faila();
-                }
-
-                File.WriteAllLines("DevList.ini", ini_fail);
-            }
-
-            Spisok sotrudniki = new Spisok();
-
-            try
-            {
-                sotrudniki = new Spisok(Chitaem_Puti_K_Failam_S_Dannimi(ini_fail, 3));
-            }
-            catch (Exception)
-            {
-                MessageBox.Show
-                (
-                    "Не удалось создать экземпляр со списком сотрудников!",
-                    "Ошибка создания списка",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error,
-                    (MessageBoxDefaultButton)MessageBoxOptions.DefaultDesktopOnly
-                );
-            }
-
-            // Если все файлы для работы программы существуют
-            // Выводим содержимое базы в таблицу
-            // Иначе - выходим из программы
-            if (File.Exists(baza.put_do_bazi) && File.Exists(pomescheniia.put_do_spiska) && File.Exists(tipi_oborudovania.put_do_spiska) && File.Exists(sotrudniki.put_do_spiska))
-            {
-                listView_Tablica_Vivoda_Bazi.Items.Clear();
-
-                Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza.baza);
-            }
-            else
-            {
-                Environment.Exit(0);
-
-                Close();
-            }
-        }
-        private DialogResult Zapros_Da_Net(string zagolovok_okna, string tekst)
-        {
-            DialogResult otvet_na_zapros =
-
-            MessageBox.Show
-            (
-                tekst,
-                zagolovok_okna,
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Information,
-                MessageBoxDefaultButton.Button1,
-                MessageBoxOptions.DefaultDesktopOnly
-            );
-
-            return otvet_na_zapros;
-        }
-
-        // Обрабатываем строки из *.ini-файла. Строковые методы почему то не работают
-        private string Chitaem_Puti_K_Failam_S_Dannimi(string[] ini_fail, int nomer_stroki_v_faile)
-        {
-            string put = "";
-
-            bool pishem = false;
-
-            for (int i = 0; i < ini_fail[nomer_stroki_v_faile].Length; i++)
-            {
-                if (pishem)
-                {
-                    if (ini_fail[nomer_stroki_v_faile][i] == '\\')
-                    {
-                        put += "\\";
-                    }
-                    else
-                    {
-                        put += ini_fail[nomer_stroki_v_faile][i];
-                    }
-                }
-
-                if (ini_fail[nomer_stroki_v_faile][i] == '=')
-                {
-                    pishem = true;
-
-                    i++;
-                }
-            }
-
-            return put;
-        }
-        private string Zapros_Na_Otkritie_Faila()
-        {
-            OpenFileDialog okno_dlia_poiska_faila = new OpenFileDialog();
-
-            DialogResult otvet_na_zapros = okno_dlia_poiska_faila.ShowDialog();
-
-            if (otvet_na_zapros == DialogResult.Cancel)
-            {
-                return null;
-            }
-            else
-            {
-                return okno_dlia_poiska_faila.FileName;
-            }
+            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza.baza);
         }
 
         // Читаем данные из "списка" БД в таблицу главного окна
         private void Chtenie_Bazi(ListView listview, List<string[]> baza)
         {
-            listView_Tablica_Vivoda_Bazi.Items.Clear();
+            listView_Tablica_Vivoda_Bazi.Clear();
 
-            for (int i = 0; i < baza.Count; i++)
+            foreach (string stroka in baza[0])
             {
-                ListViewItem iz_bazi_v_tablicu = new ListViewItem(baza[i]);
+                ColumnHeader stolbec = new ColumnHeader() { Text = stroka, TextAlign = HorizontalAlignment.Center};
 
-                listview.Items.Add(iz_bazi_v_tablicu);
+                listView_Tablica_Vivoda_Bazi.Columns.Add(stolbec);
             }
+
+            for (int i = 1; i < baza.Count; i++)
+            {
+                ListViewItem stroka = new ListViewItem(baza[i]);
+
+                listview.Items.Add(stroka);
+            }
+
+            listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+        private void listView_Tablica_Vivoda_Bazi_MouseClick(object sender, MouseEventArgs e)
+        {
+            koordinati_mishi = listView_Tablica_Vivoda_Bazi.HitTest(e.X, e.Y);
         }
         private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)
         {
-            Dobavit dobavit = new Dobavit();
+            if (koordinati_mishi != null)
+            {
+                Dobavit dobavit = new Dobavit(baza, koordinati_mishi);
 
-            dobavit.ShowDialog();
+                dobavit.ShowDialog();
+            }
 
-            //Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza.baza);
+        }
+        private void ToolStripMenuItem_Context_Dobavit_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem_Dobavit_Click(sender, e);
         }
         private void ToolStripMenuItem_Udalit_Click(object sender, EventArgs e)
         {
@@ -313,17 +80,13 @@ namespace DevList
 
             //Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
         }
-        private void ToolStripMenuItem_Context_Dobavit_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem_Dobavit_Click(sender, e);
-        }
         private void ToolStripMenuItem_Context_Udalit_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem_Udalit_Click(sender, e);
         }
         private void ToolStripMenuItem_Pravit_Click(object sender, EventArgs e)
         {
-            if (nomer_stolbca == 1 || nomer_stolbca == 2 || nomer_stolbca == 5 || nomer_stolbca == 8 || nomer_stolbca == 9 || nomer_stolbca == 10 || nomer_stolbca == 11 || nomer_stolbca == 12)
+            /*if (nomer_stolbca == 1 || nomer_stolbca == 2 || nomer_stolbca == 5 || nomer_stolbca == 8 || nomer_stolbca == 9 || nomer_stolbca == 10 || nomer_stolbca == 11 || nomer_stolbca == 12)
             {
                 Izmenit_Stroku izmenit_stroku = new Izmenit_Stroku();
 
@@ -338,7 +101,7 @@ namespace DevList
                 izmenit_Iz_spiska.ShowDialog();
 
                 //Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
-            }
+            }*/
         }
         private void ToolStripMenuItem_Context_Pravit_Click(object sender, EventArgs e)
         {
@@ -544,22 +307,9 @@ namespace DevList
                     }
                 }
             }
-        }
-        private void listView_Tablica_Vivoda_Bazi_MouseDown(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                ListViewHitTestInfo stroka_v_tablice = listView_Tablica_Vivoda_Bazi.HitTest(e.X, e.Y);
-
-                if (stroka_v_tablice != null)
-                {
-                    nomer_najatoi_stroki = stroka_v_tablice.Item.Index;
-
-                    nomer_stolbca = stroka_v_tablice.Item.SubItems.IndexOf(stroka_v_tablice.SubItem);
-                }
-            }
-            catch (Exception) { }
-        }
+        }*/
+        
+        /*
         private void toolStripMenuItem_Redaktirovanie_Spiskov_Click(object sender, EventArgs e)
         {
             Redaktirovanie_Spiskov redaktirovanie_spiskov = new Redaktirovanie_Spiskov();
