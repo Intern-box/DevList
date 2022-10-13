@@ -12,37 +12,28 @@ namespace DevList
 {
     public partial class Udalit : Form
     {
-        public Udalit()
+        ListViewHitTestInfo koordinati_mishi;
+        Baza baza;
+
+        public Udalit(Baza baza, ListViewHitTestInfo koordinati_mishi)
         {
             InitializeComponent();
+
+            this.baza = baza;
+
+            this.koordinati_mishi = koordinati_mishi;
         }
-        /*private void button_Udalit_Click(object sender, EventArgs e)
+        private void button_Udalit_Click(object sender, EventArgs e)
         {
-            Glavnoe_Okno.izmeneniia_s_otkritiia = true;
+            baza.baza.RemoveAt(koordinati_mishi.Item.Index + 1);
 
-            try
-            {
-                if (Glavnoe_Okno.nomer_najatoi_stroki + 1 != 0)
-                {
-                    Glavnoe_Okno.baza.RemoveAt(Glavnoe_Okno.nomer_najatoi_stroki);
-
-                    for (int i = 0; i < Glavnoe_Okno.baza.Count; i++)
-                    {
-                        Glavnoe_Okno.baza[i][0] = (i + 1).ToString();
-                    }
-
-                    Close();
-                }
-            }
-            catch (Exception) { }
-        }*/
-
+            Close();
+        }
         private void button_Otmenit_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-        /*private void Udalit_KeyUp(object sender, KeyEventArgs e)
+        private void Udalit_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -52,6 +43,6 @@ namespace DevList
             {
                 button_Otmenit_Click(sender, e);
             }
-        }*/
+        }
     }
 }

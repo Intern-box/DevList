@@ -53,7 +53,7 @@ namespace DevList
             this.button_Udalit.TabIndex = 15;
             this.button_Udalit.Text = "Удалить";
             this.button_Udalit.UseVisualStyleBackColor = true;
-            //this.button_Udalit.Click += new System.EventHandler(this.button_Udalit_Click);
+            this.button_Udalit.Click += new System.EventHandler(this.button_Udalit_Click);
             // 
             // Udalit
             // 
@@ -70,7 +70,6 @@ namespace DevList
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Удалить элемент";
-            //this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Udalit_KeyUp);
             this.ResumeLayout(false);
 
         }

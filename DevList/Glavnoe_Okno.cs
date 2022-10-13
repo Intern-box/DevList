@@ -35,6 +35,7 @@ namespace DevList
         // Читаем данные из "списка" БД в таблицу главного окна
         private void Chtenie_Bazi(ListView listview, List<string[]> baza)
         {
+            listView_Tablica_Vivoda_Bazi.Columns.Clear();
             listView_Tablica_Vivoda_Bazi.Items.Clear();
 
             foreach (string stroka in baza[0])
@@ -42,6 +43,11 @@ namespace DevList
                 ColumnHeader stolbec = new ColumnHeader() { Text = stroka, TextAlign = HorizontalAlignment.Center};
 
                 listView_Tablica_Vivoda_Bazi.Columns.Add(stolbec);
+            }
+
+            for (int i = 1; i < baza.Count; i++)
+            {
+                baza[i][0] = i.ToString();
             }
 
             for (int i = 1; i < baza.Count; i++)
@@ -74,11 +80,14 @@ namespace DevList
         }
         private void ToolStripMenuItem_Udalit_Click(object sender, EventArgs e)
         {
-            Udalit udalit = new Udalit();
+            if (koordinati_mishi != null)
+            {
+                Udalit udalit = new Udalit(baza, koordinati_mishi);
 
-            udalit.ShowDialog();
+                udalit.ShowDialog();
+            }
 
-            //Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza.baza);
         }
         private void ToolStripMenuItem_Context_Udalit_Click(object sender, EventArgs e)
         {
@@ -86,22 +95,24 @@ namespace DevList
         }
         private void ToolStripMenuItem_Pravit_Click(object sender, EventArgs e)
         {
-            /*if (nomer_stolbca == 1 || nomer_stolbca == 2 || nomer_stolbca == 5 || nomer_stolbca == 8 || nomer_stolbca == 9 || nomer_stolbca == 10 || nomer_stolbca == 11 || nomer_stolbca == 12)
+            int nomer_stolbca = koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem);
+
+            if (nomer_stolbca == 1 || nomer_stolbca == 2 || nomer_stolbca == 5 || nomer_stolbca == 8 || nomer_stolbca == 9 || nomer_stolbca == 10 || nomer_stolbca == 11 || nomer_stolbca == 12)
             {
-                Izmenit_Stroku izmenit_stroku = new Izmenit_Stroku();
+                Izmenit_Stroku izmenit_stroku = new Izmenit_Stroku(baza, koordinati_mishi);
 
                 izmenit_stroku.ShowDialog();
 
-                //Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+                Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza.baza);
             }
             if (nomer_stolbca == 3 || nomer_stolbca == 4 || nomer_stolbca == 6 || nomer_stolbca == 7)
             {
-                Izmenit_Iz_Spiska izmenit_Iz_spiska = new Izmenit_Iz_Spiska();
+                Izmenit_Iz_Spiska izmenit_Iz_spiska = new Izmenit_Iz_Spiska(baza, koordinati_mishi);
 
                 izmenit_Iz_spiska.ShowDialog();
 
-                //Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
-            }*/
+                Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza.baza);
+            }
         }
         private void ToolStripMenuItem_Context_Pravit_Click(object sender, EventArgs e)
         {

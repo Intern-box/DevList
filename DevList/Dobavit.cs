@@ -68,7 +68,7 @@ namespace DevList
         {
             string[] stroka = new string[]
             {
-                (baza.baza.Count).ToString(),
+                (koordinati_mishi.Item.Index + 1).ToString(),
                 textBox_Data_Priobreteniia.Text,
                 textBox_InvNomer.Text,
                 comboBox_Pomeschenie.Text,
@@ -83,9 +83,7 @@ namespace DevList
                 comboBox_Izmenil.Text
             };
 
-            /////////////////// Попробовать добавить строку инсёртом!
-
-            baza.baza.Add(stroka);
+            baza.baza.Insert(koordinati_mishi.Item.Index + 1, stroka);
 
             Close();
         }

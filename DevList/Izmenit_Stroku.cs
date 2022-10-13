@@ -12,7 +12,10 @@ namespace DevList
 {
     public partial class Izmenit_Stroku : Form
     {
-        public Izmenit_Stroku()
+        ListViewHitTestInfo koordinati_mishi;
+        Baza baza;
+
+        public Izmenit_Stroku(Baza baza, ListViewHitTestInfo koordinati_mishi)
         {
             InitializeComponent();
 
