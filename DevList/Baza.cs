@@ -17,16 +17,8 @@ namespace DevList
         public Baza()
         {
         }
-        public Baza(string put_do_bazi, string[] stolbci)               // При создании экзепляра, передавая массив строк и путь, создаётся новая база и файл
-        {
-            baza.Clear();
-
-            baza.Add(stolbci);
-
-            File.WriteAllLines(put_do_bazi, stolbci.Select(x => string.Join(",", x)));
-        }
-        public Baza(string put_do_bazi)                                 // При создании экзепляра, передавая "путь", создаётся объект с базой и открывается файл
-        {
+        public Baza(string put_do_bazi)                                 // При создании экзепляра, передавая путь к файлу
+        {                                                               // создаётся объект с базой и открывается файл
             baza.Clear();
 
             if (File.Exists(put_do_bazi) == false)
@@ -34,7 +26,7 @@ namespace DevList
                 File.WriteAllText(put_do_bazi, "");
             }
 
-            foreach (string stroka in File.ReadAllLines(put_do_bazi))
+            foreach (string stroka in File.ReadAllLines(put_do_bazi))   // Преобразуем из *.csv в List<string[]>
             {
                 stroka.TrimEnd('\r');
 
@@ -43,17 +35,11 @@ namespace DevList
                 baza.Add(stroka.Split(','));
             }
         }
-        public void Zapisat(string put_do_bazi)
+        public void Zapisat(string put_do_bazi, string[] stolbci)       // Запись базы в файл
         {
-            string[] stolbci = baza[0];
-
-            baza.RemoveAt(0);
-
             File.WriteAllLines(put_do_bazi, stolbci.Select(x => string.Join(",", x)));
 
             File.AppendAllLines(put_do_bazi, baza.Select(x => string.Join(",", x)));
-
-            baza.Insert(0, stolbci);
         }
     }
 }

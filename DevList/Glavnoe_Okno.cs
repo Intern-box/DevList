@@ -16,6 +16,7 @@ namespace DevList
         Nastroiki nastroiki;
         ListViewHitTestInfo koordinati_mishi;
         Baza baza;
+        string[] stolbci;
 
         public Glavnoe_Okno()
         {
@@ -27,7 +28,38 @@ namespace DevList
 
             nastroiki.ShowDialog();
 
-            baza = new Baza(nastroiki.put_do_bazi);
+            Otkrit_Bazu(nastroiki.put_do_bazi);
+
+            for (int i = 0; i < listView_Tablica_Vivoda_Bazi.Columns.Count; i++)
+            {
+                Array.Resize<string>(ref stolbci, i + 1);
+
+                stolbci[i] = listView_Tablica_Vivoda_Bazi.Columns[i].Text;
+            }
+        }
+
+        // Читаем данные из "списка" БД в таблицу главного окна
+        private void Chtenie_Bazi()
+        {
+            listView_Tablica_Vivoda_Bazi.Items.Clear();
+
+            for (int i = 1; i < baza.baza.Count; i++)                   // Пересчёт порядковых номеров
+            {                                                           // в столбце ID
+                baza.baza[i][0] = i.ToString();
+            }
+
+            for (int i = 1; i < baza.baza.Count; i++)                   // Чтение строк в базе
+            {                                                           // в ListView
+                ListViewItem stroka = new ListViewItem(baza.baza[i]);
+
+                listView_Tablica_Vivoda_Bazi.Items.Add(stroka);
+            }
+
+            listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+        private void Otkrit_Bazu(string put)
+        {
+            baza = new Baza(put);
 
             if (baza != null && baza.baza.Count > 0)
             {
@@ -38,25 +70,39 @@ namespace DevList
                 listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
-
-        // Читаем данные из "списка" БД в таблицу главного окна
-        private void Chtenie_Bazi()
+        private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)
         {
-            listView_Tablica_Vivoda_Bazi.Items.Clear();
-
-            for (int i = 1; i < baza.baza.Count; i++)
+            if (baza.izmeneniia_v_baze)
             {
-                baza.baza[i][0] = i.ToString();
+                DialogResult resultat_vibora =
+
+                MessageBox.Show
+                (
+                    "Сохранить изменения?",
+                    "Открытие файла",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1
+                );
+
+                if (resultat_vibora == DialogResult.Yes) { ToolStripMenuItem_Sohranit_Click(sender, e); }
+
+                baza.izmeneniia_v_baze = false;
             }
 
-            for (int i = 1; i < baza.baza.Count; i++)
+            OpenFileDialog otkrit_fail = new OpenFileDialog();
+
+            if (otkrit_fail.ShowDialog() == DialogResult.Yes)
             {
-                ListViewItem stroka = new ListViewItem(baza.baza[i]);
+                if (File.Exists(otkrit_fail.FileName) == false)
+                {
+                    File.WriteAllText(otkrit_fail.FileName, "");
+                }
 
-                listView_Tablica_Vivoda_Bazi.Items.Add(stroka);
+                nastroiki.put_do_bazi = otkrit_fail.FileName;
+
+                Otkrit_Bazu(nastroiki.put_do_bazi);
             }
-
-            listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
         private void listView_Tablica_Vivoda_Bazi_MouseClick(object sender, MouseEventArgs e)
         {
@@ -145,7 +191,7 @@ namespace DevList
         }
         private void ToolStripMenuItem_Sohranit_Click(object sender, EventArgs e)
         {
-            baza.Zapisat(nastroiki.put_do_bazi);
+            baza.Zapisat(nastroiki.put_do_bazi, stolbci);
         }
         private void ToolStripMenuItem_Sohranit_Kak_Click(object sender, EventArgs e)
         {
@@ -153,43 +199,7 @@ namespace DevList
 
             if (put_k_failu.ShowDialog() == DialogResult.OK)
             {
-                baza.Zapisat(put_k_failu.FileName);
-            }
-        }
-        private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)
-        {
-            if (baza.izmeneniia_v_baze)
-            {
-                DialogResult resultat_vibora =
-
-                MessageBox.Show
-                (
-                    "Сохранить изменения?",
-                    "Открытие файла",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Information,
-                    MessageBoxDefaultButton.Button1
-                );
-
-                if (resultat_vibora == DialogResult.Yes) { ToolStripMenuItem_Sohranit_Click(sender, e); }
-
-                baza.izmeneniia_v_baze = false;
-            }
-
-            OpenFileDialog otkrit_fail = new OpenFileDialog();
-
-            if (otkrit_fail.ShowDialog() == DialogResult.Yes)
-            {
-                if (File.Exists(otkrit_fail.FileName) == false)
-                {
-                    File.WriteAllText(otkrit_fail.FileName, "");
-                }
-
-                nastroiki.put_do_bazi = otkrit_fail.FileName;
-
-                baza = new Baza(nastroiki.put_do_bazi);
-
-                Chtenie_Bazi();
+                baza.Zapisat(put_k_failu.FileName, stolbci);
             }
         }
         private void ToolStripMenuItem_Sozdat_Click(object sender, EventArgs e)
@@ -300,7 +310,7 @@ namespace DevList
 
                 if (resultat_vibora == DialogResult.Yes)
                 {
-                    baza.Zapisat(nastroiki.put_do_bazi);
+                    baza.Zapisat(nastroiki.put_do_bazi, stolbci);
                 }
             }
         }
