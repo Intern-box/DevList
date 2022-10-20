@@ -13,7 +13,6 @@ namespace DevList
 {
     public partial class Izmenit_Iz_Spiska : Form
     {
-        ListViewHitTestInfo koordinati_mishi;
         Baza baza;
         Spisok pomescheniia;
         Spisok oborudovanie;
@@ -25,8 +24,6 @@ namespace DevList
         public Izmenit_Iz_Spiska(Baza baza, ListViewHitTestInfo koordinati_mishi)
         {
             InitializeComponent();
-
-            this.koordinati_mishi = koordinati_mishi;
 
             this.baza = baza;
 
@@ -99,7 +96,7 @@ namespace DevList
                 );
             }
 
-            baza.baza[nomer_stroki][nomer_stolbca] = comboBox_Spisok_Vibora.Text;
+            baza.baza[nomer_stroki + 1][nomer_stolbca] = comboBox_Spisok_Vibora.Text;
 
             Close();
         }

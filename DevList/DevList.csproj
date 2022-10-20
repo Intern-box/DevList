@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Baza.cs" />
+    <Compile Include="Naiti_V_Baze.cs" />
     <Compile Include="Nastroiki.cs">
       <SubType>Form</SubType>
     </Compile>

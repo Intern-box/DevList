@@ -54,6 +54,7 @@ namespace DevList
             this.button_Otmenit.Text = "Отменить";
             this.button_Otmenit.UseVisualStyleBackColor = true;
             this.button_Otmenit.Click += new System.EventHandler(this.button_Otmenit_Click);
+            this.button_Otmenit.KeyUp += new System.Windows.Forms.KeyEventHandler(this.button_Otmenit_KeyUp);
             // 
             // button_Vipolnit
             // 
@@ -64,7 +65,7 @@ namespace DevList
             this.button_Vipolnit.TabIndex = 6;
             this.button_Vipolnit.Text = "Выполнить";
             this.button_Vipolnit.UseVisualStyleBackColor = true;
-            //this.button_Vipolnit.Click += new System.EventHandler(this.button_Vipolnit_Click);
+            this.button_Vipolnit.Click += new System.EventHandler(this.button_Vipolnit_Click);
             // 
             // Izmenit_Stroku
             // 
@@ -82,7 +83,7 @@ namespace DevList
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Правка строки";
-            //this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Izmenit_Stroku_KeyUp);
+            this.Load += new System.EventHandler(this.Izmenit_Stroku_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -12,28 +12,35 @@ namespace DevList
 {
     public partial class Izmenit_Stroku : Form
     {
-        ListViewHitTestInfo koordinati_mishi;
         Baza baza;
+        int nomer_stroki;
+        int nomer_stolbca;
 
         public Izmenit_Stroku(Baza baza, ListViewHitTestInfo koordinati_mishi)
         {
             InitializeComponent();
 
-            //textBox_Tekst.Text = Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki][Glavnoe_Okno.nomer_stolbca];
-        }
-        /*private void button_Vipolnit_Click(object sender, EventArgs e)
-        {
-            Glavnoe_Okno.izmeneniia_s_otkritiia = true;
+            this.baza = baza;
 
-            Glavnoe_Okno.baza[Glavnoe_Okno.nomer_najatoi_stroki][Glavnoe_Okno.nomer_stolbca] = textBox_Tekst.Text;
+            nomer_stroki = koordinati_mishi.Item.Index;
+
+            nomer_stolbca = koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem);
+        }
+        private void Izmenit_Stroku_Load(object sender, EventArgs e)
+        {
+            textBox_Tekst.Text = baza.baza[nomer_stroki + 1][nomer_stolbca];
+        }
+        private void button_Vipolnit_Click(object sender, EventArgs e)
+        {
+            baza.baza[nomer_stroki + 1][nomer_stolbca] = textBox_Tekst.Text;
 
             Close();
-        }*/
+        }
         private void button_Otmenit_Click(object sender, EventArgs e)
         {
             Close();
         }
-        /*private void Izmenit_Stroku_KeyUp(object sender, KeyEventArgs e)
+        private void button_Otmenit_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -43,6 +50,6 @@ namespace DevList
             {
                 button_Otmenit_Click(sender, e);
             }
-        }*/
+        }
     }
 }

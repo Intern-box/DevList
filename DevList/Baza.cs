@@ -12,7 +12,7 @@ namespace DevList
     public class Baza
     {
         public List<string[]> baza = new List<string[]>();              // База
-        public bool izmeneniia_v_baze;                                  // Флаг изменения в базе
+        public bool izmeneniia_v_baze = false;                          // Флаг изменения в базе
 
         public Baza()
         {
@@ -45,7 +45,15 @@ namespace DevList
         }
         public void Zapisat(string put_do_bazi)
         {
+            string[] stolbci = baza[0];
+
+            baza.RemoveAt(0);
+
+            File.WriteAllLines(put_do_bazi, stolbci.Select(x => string.Join(",", x)));
+
             File.AppendAllLines(put_do_bazi, baza.Select(x => string.Join(",", x)));
+
+            baza.Insert(0, stolbci);
         }
     }
 }

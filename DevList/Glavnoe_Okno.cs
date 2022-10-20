@@ -29,32 +29,31 @@ namespace DevList
 
             baza = new Baza(nastroiki.put_do_bazi);
 
-            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza.baza);
+            if (baza != null && baza.baza.Count > 0)
+            {
+                Chtenie_Bazi();
+            }
+            else
+            {
+                listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
         }
 
         // Читаем данные из "списка" БД в таблицу главного окна
-        private void Chtenie_Bazi(ListView listview, List<string[]> baza)
+        private void Chtenie_Bazi()
         {
-            listView_Tablica_Vivoda_Bazi.Columns.Clear();
             listView_Tablica_Vivoda_Bazi.Items.Clear();
 
-            foreach (string stroka in baza[0])
+            for (int i = 1; i < baza.baza.Count; i++)
             {
-                ColumnHeader stolbec = new ColumnHeader() { Text = stroka, TextAlign = HorizontalAlignment.Center};
-
-                listView_Tablica_Vivoda_Bazi.Columns.Add(stolbec);
+                baza.baza[i][0] = i.ToString();
             }
 
-            for (int i = 1; i < baza.Count; i++)
+            for (int i = 1; i < baza.baza.Count; i++)
             {
-                baza[i][0] = i.ToString();
-            }
+                ListViewItem stroka = new ListViewItem(baza.baza[i]);
 
-            for (int i = 1; i < baza.Count; i++)
-            {
-                ListViewItem stroka = new ListViewItem(baza[i]);
-
-                listview.Items.Add(stroka);
+                listView_Tablica_Vivoda_Bazi.Items.Add(stroka);
             }
 
             listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
@@ -65,14 +64,20 @@ namespace DevList
         }
         private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)
         {
-            if (koordinati_mishi != null)
+            try
             {
                 Dobavit dobavit = new Dobavit(baza, koordinati_mishi);
 
                 dobavit.ShowDialog();
-            }
 
-            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza.baza);
+                baza.izmeneniia_v_baze = true;
+
+                Chtenie_Bazi();
+            }
+            catch (Exception)
+            {
+
+            }
         }
         private void ToolStripMenuItem_Context_Dobavit_Click(object sender, EventArgs e)
         {
@@ -85,9 +90,11 @@ namespace DevList
                 Udalit udalit = new Udalit(baza, koordinati_mishi);
 
                 udalit.ShowDialog();
+
+                baza.izmeneniia_v_baze = true;
             }
 
-            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza.baza);
+            Chtenie_Bazi();
         }
         private void ToolStripMenuItem_Context_Udalit_Click(object sender, EventArgs e)
         {
@@ -103,20 +110,91 @@ namespace DevList
 
                 izmenit_stroku.ShowDialog();
 
-                Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza.baza);
+                baza.izmeneniia_v_baze = true;
+
+                Chtenie_Bazi();
             }
-            if (nomer_stolbca == 3 || nomer_stolbca == 4 || nomer_stolbca == 6 || nomer_stolbca == 7)
+            else if (nomer_stolbca == 3 || nomer_stolbca == 4 || nomer_stolbca == 6 || nomer_stolbca == 7)
             {
                 Izmenit_Iz_Spiska izmenit_Iz_spiska = new Izmenit_Iz_Spiska(baza, koordinati_mishi);
 
                 izmenit_Iz_spiska.ShowDialog();
 
-                Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza.baza);
+                baza.izmeneniia_v_baze = true;
+
+                Chtenie_Bazi();
             }
         }
         private void ToolStripMenuItem_Context_Pravit_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem_Pravit_Click(sender, e);
+        }
+        private void ToolStripMenuItem_Perechitat_Click(object sender, EventArgs e)
+        {
+            string[] stolbci = baza.baza[0];
+
+            baza.baza.RemoveAt(0);
+
+            baza.baza.Sort((x, y) => x[2].CompareTo(y[2]));
+
+            baza.baza.Insert(0, stolbci);
+
+            Chtenie_Bazi();
+
+            menuStrip_Glavnoe_Menu.Items[5].Visible = false;
+        }
+        private void ToolStripMenuItem_Sohranit_Click(object sender, EventArgs e)
+        {
+            baza.Zapisat(nastroiki.put_do_bazi);
+        }
+        private void ToolStripMenuItem_Sohranit_Kak_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog put_k_failu = new SaveFileDialog() { Filter = "*.CSV|*.csv" };
+
+            if (put_k_failu.ShowDialog() == DialogResult.OK)
+            {
+                baza.Zapisat(put_k_failu.FileName);
+            }
+        }
+        private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)
+        {
+            if (baza.izmeneniia_v_baze)
+            {
+                DialogResult resultat_vibora =
+
+                MessageBox.Show
+                (
+                    "Сохранить изменения?",
+                    "Открытие файла",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1
+                );
+
+                if (resultat_vibora == DialogResult.Yes) { ToolStripMenuItem_Sohranit_Click(sender, e); }
+
+                baza.izmeneniia_v_baze = false;
+            }
+
+            OpenFileDialog otkrit_fail = new OpenFileDialog();
+
+            if (otkrit_fail.ShowDialog() == DialogResult.Yes)
+            {
+                if (File.Exists(otkrit_fail.FileName) == false)
+                {
+                    File.WriteAllText(otkrit_fail.FileName, "");
+                }
+
+                nastroiki.put_do_bazi = otkrit_fail.FileName;
+
+                baza = new Baza(nastroiki.put_do_bazi);
+
+                Chtenie_Bazi();
+            }
+        }
+        private void ToolStripMenuItem_Sozdat_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem_Otkrit_Click(sender, e);
         }
         /*private void ToolStripMenuItem_Poisk_Click(object sender, EventArgs e)
         {
@@ -183,117 +261,31 @@ namespace DevList
         }*/
         private void ToolStripMenuItem_Context_Poisk_Click(object sender, EventArgs e)
         {
-            //ToolStripMenuItem_Poisk_Click(sender, e);
-        }
-        /*private void ToolStripMenuItem_Perechitat_Click(object sender, EventArgs e)
-        {
-            baza.Sort((x, y) => x[2].CompareTo(y[2]));
-
-            for (int i = 0; i < baza.Count; i++)
+            if (koordinati_mishi != null)
             {
-                baza[i][0] = (i + 1).ToString();
-            }
+                Poisk poisk = new Poisk(koordinati_mishi, baza);
 
-            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+                poisk.ShowDialog();
 
-            menuStrip_Glavnoe_Menu.Items[5].Visible = false;
-        }*/
-        /*private void ToolStripMenuItem_Sohranit_Kak_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog put_k_failu = new SaveFileDialog() { Filter = "*.CSV|*.csv" };
-
-            if (put_k_failu.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllLines(put_k_failu.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
-
-                File.AppendAllLines(put_k_failu.FileName, baza.Select(x => string.Join(",", x)));
-
-                put_do_BD = put_k_failu.FileName;
-            }
-        }*/
-        /*private void ToolStripMenuItem_Sohranit_Click(object sender, EventArgs e)
-        {
-            File.WriteAllLines(put_do_BD, spisok_stolbcov.Select(x => string.Join(",", x)));
-
-            File.AppendAllLines(put_do_BD, baza.Select(x => string.Join(",", x)));
-        }*/
-        /*private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)
-        {
-            if (izmeneniia_s_otkritiia)
-            {
-                DialogResult resultat_vibora =
-
-                MessageBox.Show
-                (
-                    "Сохранить изменения?",
-                    "Открытие файла",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Information,
-                    MessageBoxDefaultButton.Button1
-                );
-
-                if (resultat_vibora == DialogResult.Yes)
-                {
-                    if (put_do_BD == "")
-                    {
-                        ToolStripMenuItem_Sohranit_Kak_Click(sender, e);
-                    }
-                    else
-                    {
-                        ToolStripMenuItem_Sohranit_Click(sender, e);
-                    }
-                }
-
-                izmeneniia_s_otkritiia = false;
-            }/*
-
-            OpenFileDialog otkrit_fail = new OpenFileDialog();
-
-            if (otkrit_fail.ShowDialog() == DialogResult.Yes)
-            {
-                if (File.Exists(otkrit_fail.FileName) == false)
-                {
-                    File.WriteAllLines(otkrit_fail.FileName, spisok_stolbcov.Select(x => string.Join(",", x)));
-                }
-
-                string[] ves_fail = File.ReadAllLines(otkrit_fail.FileName);
-
-                baza.Clear();
-
-                foreach (string stroka in ves_fail)
-                {
-                    baza.Add(Perebor_Stroki(stroka));
-                }
-
-                baza.Remove(baza[0]);
+                List<string[]> resultat = Naiti_V_Baze.Perebor(baza.baza, poisk.stroka_iz_poiska);
 
                 listView_Tablica_Vivoda_Bazi.Items.Clear();
 
-                Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+                for (int i = 1; i < resultat.Count; i++)
+                {
+                    ListViewItem stroka = new ListViewItem(resultat[i]);
+
+                    listView_Tablica_Vivoda_Bazi.Items.Add(stroka);
+                }
+
+                listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+                ToolStripMenuItem_Perechitat.Visible = true;
             }
-        }
-
-        // Перевод из *.CSV в List<>
-        public static string[] Perebor_Stroki(string stroka)
-        {
-            _ = stroka.TrimEnd('\r');
-            _ = stroka.TrimEnd('\n');
-
-            string[] massiv_strok = stroka.Split(',');
-
-            return massiv_strok;
-        }
-        private void ToolStripMenuItem_Sozdat_Click(object sender, EventArgs e)
-        {
-            baza.Clear();
-
-            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
-
-            izmeneniia_s_otkritiia = true;
         }
         private void Glavnoe_Okno_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (izmeneniia_s_otkritiia)
+            if (baza.izmeneniia_v_baze)
             {
                 DialogResult resultat_vibora =
 
@@ -308,19 +300,10 @@ namespace DevList
 
                 if (resultat_vibora == DialogResult.Yes)
                 {
-                    if (put_do_BD == "")
-                    {
-                        ToolStripMenuItem_Sohranit_Kak_Click(sender, e);
-                    }
-                    else
-                    {
-                        ToolStripMenuItem_Sohranit_Click(sender, e);
-                    }
+                    baza.Zapisat(nastroiki.put_do_bazi);
                 }
             }
-        }*/
-        
-        /*
+        }
         private void toolStripMenuItem_Redaktirovanie_Spiskov_Click(object sender, EventArgs e)
         {
             Redaktirovanie_Spiskov redaktirovanie_spiskov = new Redaktirovanie_Spiskov();
@@ -329,15 +312,21 @@ namespace DevList
         }
         private void listView_Tablica_Vivoda_Bazi_ColumnClick(object sender, ColumnClickEventArgs e)
         {
+            string[] stolbci = baza.baza[0];
+
+            baza.baza.RemoveAt(0);
+
             listView_Tablica_Vivoda_Bazi.Items.Clear();
 
-            baza.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
+            baza.baza.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
 
-            Chtenie_Bazi(listView_Tablica_Vivoda_Bazi, baza);
+            baza.baza.Insert(0, stolbci);
+
+            Chtenie_Bazi();
 
             ToolStripMenuItem_Perechitat.Visible = true;
         }
-        private void Obschii_poisk()
+        /*private void Obschii_poisk()
         {
             bool popadanie = false;
 

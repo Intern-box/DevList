@@ -46,6 +46,7 @@ namespace DevList
             this.label_Pomescheniia_status = new System.Windows.Forms.Label();
             this.label__Oborudovanie_status = new System.Windows.Forms.Label();
             this.label__Sotrudniki_status = new System.Windows.Forms.Label();
+            this.button_Novaia_Baza = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_BD
@@ -236,12 +237,26 @@ namespace DevList
             this.label__Sotrudniki_status.Text = "статус";
             this.label__Sotrudniki_status.Visible = false;
             // 
+            // button_Novaia_Baza
+            // 
+            this.button_Novaia_Baza.Enabled = false;
+            this.button_Novaia_Baza.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_Novaia_Baza.Location = new System.Drawing.Point(113, 262);
+            this.button_Novaia_Baza.Name = "button_Novaia_Baza";
+            this.button_Novaia_Baza.Size = new System.Drawing.Size(292, 23);
+            this.button_Novaia_Baza.TabIndex = 17;
+            this.button_Novaia_Baza.Text = "Создать новую базу";
+            this.button_Novaia_Baza.UseVisualStyleBackColor = true;
+            this.button_Novaia_Baza.Visible = false;
+            this.button_Novaia_Baza.Click += new System.EventHandler(this.button_Novaia_Baza_Click);
+            // 
             // Nastroiki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(421, 294);
+            this.Controls.Add(this.button_Novaia_Baza);
             this.Controls.Add(this.label__Sotrudniki_status);
             this.Controls.Add(this.label__Oborudovanie_status);
             this.Controls.Add(this.label_Pomescheniia_status);
@@ -291,5 +306,6 @@ namespace DevList
         private System.Windows.Forms.Label label_Pomescheniia_status;
         private System.Windows.Forms.Label label__Oborudovanie_status;
         private System.Windows.Forms.Label label__Sotrudniki_status;
+        private System.Windows.Forms.Button button_Novaia_Baza;
     }
 }

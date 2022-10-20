@@ -31,6 +31,19 @@ namespace DevList
         {
             this.components = new System.ComponentModel.Container();
             this.listView_Tablica_Vivoda_Bazi = new System.Windows.Forms.ListView();
+            this.columnHeader_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Data = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Inv_nomer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Pomeschenie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Zakrepleno_Za = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Naimenovanie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Oborudovanie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Sostoianiie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Inventarizaciia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Kommentarii = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Hostname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_IP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Izmenil = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip_Vsplivauschee_Menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItem_Context_Pravit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Context_Dobavit = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +78,20 @@ namespace DevList
             this.listView_Tablica_Vivoda_Bazi.AllowColumnReorder = true;
             this.listView_Tablica_Vivoda_Bazi.AllowDrop = true;
             this.listView_Tablica_Vivoda_Bazi.AutoArrange = false;
+            this.listView_Tablica_Vivoda_Bazi.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader_ID,
+            this.columnHeader_Data,
+            this.columnHeader_Inv_nomer,
+            this.columnHeader_Pomeschenie,
+            this.columnHeader_Zakrepleno_Za,
+            this.columnHeader_Naimenovanie,
+            this.columnHeader_Oborudovanie,
+            this.columnHeader_Sostoianiie,
+            this.columnHeader_Inventarizaciia,
+            this.columnHeader_Kommentarii,
+            this.columnHeader_Hostname,
+            this.columnHeader_IP,
+            this.columnHeader_Izmenil});
             this.listView_Tablica_Vivoda_Bazi.ContextMenuStrip = this.contextMenuStrip_Vsplivauschee_Menu;
             this.listView_Tablica_Vivoda_Bazi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView_Tablica_Vivoda_Bazi.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -78,7 +105,72 @@ namespace DevList
             this.listView_Tablica_Vivoda_Bazi.TabIndex = 1;
             this.listView_Tablica_Vivoda_Bazi.UseCompatibleStateImageBehavior = false;
             this.listView_Tablica_Vivoda_Bazi.View = System.Windows.Forms.View.Details;
+            this.listView_Tablica_Vivoda_Bazi.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_Tablica_Vivoda_Bazi_ColumnClick);
             this.listView_Tablica_Vivoda_Bazi.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView_Tablica_Vivoda_Bazi_MouseClick);
+            // 
+            // columnHeader_ID
+            // 
+            this.columnHeader_ID.Text = "ID";
+            // 
+            // columnHeader_Data
+            // 
+            this.columnHeader_Data.Text = "Дата приобретения";
+            this.columnHeader_Data.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader_Inv_nomer
+            // 
+            this.columnHeader_Inv_nomer.Text = "Инв. №";
+            this.columnHeader_Inv_nomer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader_Pomeschenie
+            // 
+            this.columnHeader_Pomeschenie.Text = "Помещение";
+            this.columnHeader_Pomeschenie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader_Zakrepleno_Za
+            // 
+            this.columnHeader_Zakrepleno_Za.Text = "Закреплено за";
+            this.columnHeader_Zakrepleno_Za.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader_Naimenovanie
+            // 
+            this.columnHeader_Naimenovanie.Text = "Наименование";
+            this.columnHeader_Naimenovanie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader_Oborudovanie
+            // 
+            this.columnHeader_Oborudovanie.Text = "Оборудование";
+            this.columnHeader_Oborudovanie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader_Sostoianiie
+            // 
+            this.columnHeader_Sostoianiie.Text = "Состояние";
+            this.columnHeader_Sostoianiie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader_Inventarizaciia
+            // 
+            this.columnHeader_Inventarizaciia.Text = "Инвентаризация";
+            this.columnHeader_Inventarizaciia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader_Kommentarii
+            // 
+            this.columnHeader_Kommentarii.Text = "Комментарий";
+            this.columnHeader_Kommentarii.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader_Hostname
+            // 
+            this.columnHeader_Hostname.Text = "Hostname";
+            this.columnHeader_Hostname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader_IP
+            // 
+            this.columnHeader_IP.Text = "IP";
+            this.columnHeader_IP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader_Izmenil
+            // 
+            this.columnHeader_Izmenil.Text = "Изменил";
+            this.columnHeader_Izmenil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // contextMenuStrip_Vsplivauschee_Menu
             // 
@@ -156,18 +248,21 @@ namespace DevList
             this.ToolStripMenuItem_Otkrit.Name = "ToolStripMenuItem_Otkrit";
             this.ToolStripMenuItem_Otkrit.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Otkrit.Text = "Открыть";
+            this.ToolStripMenuItem_Otkrit.Click += new System.EventHandler(this.ToolStripMenuItem_Otkrit_Click);
             // 
             // ToolStripMenuItem_Sohranit
             // 
             this.ToolStripMenuItem_Sohranit.Name = "ToolStripMenuItem_Sohranit";
             this.ToolStripMenuItem_Sohranit.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Sohranit.Text = "Сохранить";
+            this.ToolStripMenuItem_Sohranit.Click += new System.EventHandler(this.ToolStripMenuItem_Sohranit_Click);
             // 
             // ToolStripMenuItem_Sohranit_Kak
             // 
             this.ToolStripMenuItem_Sohranit_Kak.Name = "ToolStripMenuItem_Sohranit_Kak";
             this.ToolStripMenuItem_Sohranit_Kak.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Sohranit_Kak.Text = "Сохранить как...";
+            this.ToolStripMenuItem_Sohranit_Kak.Click += new System.EventHandler(this.ToolStripMenuItem_Sohranit_Kak_Click);
             // 
             // ToolStripMenuItem_Pravka
             // 
@@ -211,6 +306,7 @@ namespace DevList
             this.toolStripMenuItem_Redaktirovanie_Spiskov.Name = "toolStripMenuItem_Redaktirovanie_Spiskov";
             this.toolStripMenuItem_Redaktirovanie_Spiskov.Size = new System.Drawing.Size(168, 21);
             this.toolStripMenuItem_Redaktirovanie_Spiskov.Text = "Редактирование списков";
+            this.toolStripMenuItem_Redaktirovanie_Spiskov.Click += new System.EventHandler(this.toolStripMenuItem_Redaktirovanie_Spiskov_Click);
             // 
             // ToolStripMenuItem_Otcheti
             // 
@@ -251,6 +347,7 @@ namespace DevList
             this.ToolStripMenuItem_Perechitat.Size = new System.Drawing.Size(114, 21);
             this.ToolStripMenuItem_Perechitat.Text = "Убрать фильтры";
             this.ToolStripMenuItem_Perechitat.Visible = false;
+            this.ToolStripMenuItem_Perechitat.Click += new System.EventHandler(this.ToolStripMenuItem_Perechitat_Click);
             // 
             // textBox_Obschii_Poisk
             // 
@@ -288,6 +385,7 @@ namespace DevList
             this.Name = "Glavnoe_Okno";
             this.ShowIcon = false;
             this.Text = "DevList 4.5";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Glavnoe_Okno_FormClosed);
             this.Load += new System.EventHandler(this.Glavnoe_Okno_Load);
             this.contextMenuStrip_Vsplivauschee_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.ResumeLayout(false);
@@ -323,6 +421,19 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Obschee_KolVo_Po_Tipam;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Obschee_KolVo_Po_Tipu;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_KolVo_V_Pomeschenii;
+        private System.Windows.Forms.ColumnHeader columnHeader_ID;
+        private System.Windows.Forms.ColumnHeader columnHeader_Data;
+        private System.Windows.Forms.ColumnHeader columnHeader_Inv_nomer;
+        private System.Windows.Forms.ColumnHeader columnHeader_Pomeschenie;
+        private System.Windows.Forms.ColumnHeader columnHeader_Zakrepleno_Za;
+        private System.Windows.Forms.ColumnHeader columnHeader_Naimenovanie;
+        private System.Windows.Forms.ColumnHeader columnHeader_Oborudovanie;
+        private System.Windows.Forms.ColumnHeader columnHeader_Sostoianiie;
+        private System.Windows.Forms.ColumnHeader columnHeader_Inventarizaciia;
+        private System.Windows.Forms.ColumnHeader columnHeader_Kommentarii;
+        private System.Windows.Forms.ColumnHeader columnHeader_Hostname;
+        private System.Windows.Forms.ColumnHeader columnHeader_IP;
+        private System.Windows.Forms.ColumnHeader columnHeader_Izmenil;
     }
 }
 

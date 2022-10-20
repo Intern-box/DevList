@@ -450,6 +450,7 @@ namespace DevList
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Поиск";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Poisk_FormClosed);
+            this.Load += new System.EventHandler(this.Poisk_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Poisk_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();

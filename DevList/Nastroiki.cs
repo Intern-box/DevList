@@ -91,6 +91,12 @@ namespace DevList
             {
                 textBox_Sotrudniki.Text = put_do_sotrudnikov;
             }
+
+            if (textBox__BD.Text == "" && textBox_Pomescheniia.Text == "" && textBox_Oborudovanie.Text == "" && textBox_Sotrudniki.Text == "")
+            {
+                button_Novaia_Baza.Visible = true;
+                button_Novaia_Baza.Enabled = true;
+            }
         }
 
         // Читаем и запоминаем адреса файлов
@@ -158,6 +164,29 @@ namespace DevList
         }
         private void button_Zagruzit_Click(object sender, EventArgs e)
         {
+            Hide();
+        }
+        private void button_Novaia_Baza_Click(object sender, EventArgs e)
+        {
+            put_do_bazi = "БД\\БД.csv";
+            put_do_pomeschenii = "БД\\Помещения.txt";
+            put_do_tipov_oborudovaniia = "БД\\Оборудование.txt";
+            put_do_sotrudnikov = "БД\\Сотрудники.txt";
+
+            File.WriteAllText(put_do_bazi, "");
+            File.WriteAllText(put_do_pomeschenii, "");
+            File.WriteAllText(put_do_tipov_oborudovaniia, "");
+            File.WriteAllText(put_do_sotrudnikov, "");
+
+            File.WriteAllText
+            (
+                "DevList.ini",
+                "БД\\БД.csv" + "\r\n" +
+                "БД\\Помещения.txt" + "\r\n" +
+                "БД\\Оборудование.txt" + "\r\n" +
+                "БД\\Сотрудники.txt"
+            );
+
             Hide();
         }
     }

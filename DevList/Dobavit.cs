@@ -63,6 +63,10 @@ namespace DevList
                 textBox_IP.Text = stroka[11];
                 comboBox_Izmenil.Text = stroka[12];
             }
+            else
+            {
+
+            }
         }
         private void button_Dobavit_Click(object sender, EventArgs e)
         {
