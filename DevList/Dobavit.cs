@@ -46,7 +46,7 @@ namespace DevList
             comboBox_Izmenil.Items.AddRange(sotrudniki.spisok);
             comboBox_Tip.Items.AddRange(oborudovanie.spisok);
 
-            if (koordinati_mishi.Item.Index >= 0)
+            if (koordinati_mishi != null)
             {
                 string[] stroka = baza.baza[koordinati_mishi.Item.Index + 1];
 
@@ -63,31 +63,51 @@ namespace DevList
                 textBox_IP.Text = stroka[11];
                 comboBox_Izmenil.Text = stroka[12];
             }
-            else
-            {
-
-            }
         }
         private void button_Dobavit_Click(object sender, EventArgs e)
         {
-            string[] stroka = new string[]
+            if (koordinati_mishi != null)
             {
-                (koordinati_mishi.Item.Index + 1).ToString(),
-                textBox_Data_Priobreteniia.Text,
-                textBox_InvNomer.Text,
-                comboBox_Pomeschenie.Text,
-                comboBox_FIO.Text,
-                textBox_Naimenovanie.Text,
-                comboBox_Tip.Text,
-                comboBox_Sostoianie.Text,
-                textBox_Inventarizaciia.Text,
-                textBox_Kommentarii.Text,
-                textBox_Hostname.Text,
-                textBox_IP.Text,
-                comboBox_Izmenil.Text
-            };
+                string[] stroka = 
+                {
+                    (koordinati_mishi.Item.Index + 1).ToString(),
+                    textBox_Data_Priobreteniia.Text,
+                    textBox_InvNomer.Text,
+                    comboBox_Pomeschenie.Text,
+                    comboBox_FIO.Text,
+                    textBox_Naimenovanie.Text,
+                    comboBox_Tip.Text,
+                    comboBox_Sostoianie.Text,
+                    textBox_Inventarizaciia.Text,
+                    textBox_Kommentarii.Text,
+                    textBox_Hostname.Text,
+                    textBox_IP.Text,
+                    comboBox_Izmenil.Text
+                };
 
-            baza.baza.Insert(koordinati_mishi.Item.Index + 1, stroka);
+                baza.baza.Insert(koordinati_mishi.Item.Index + 1, stroka);
+            }
+            else
+            {
+                string[] stroka =
+                {
+                    (baza.baza.Count - 1).ToString(),
+                    textBox_Data_Priobreteniia.Text,
+                    textBox_InvNomer.Text,
+                    comboBox_Pomeschenie.Text,
+                    comboBox_FIO.Text,
+                    textBox_Naimenovanie.Text,
+                    comboBox_Tip.Text,
+                    comboBox_Sostoianie.Text,
+                    textBox_Inventarizaciia.Text,
+                    textBox_Kommentarii.Text,
+                    textBox_Hostname.Text,
+                    textBox_IP.Text,
+                    comboBox_Izmenil.Text
+                };
+
+                baza.baza.Add(stroka);
+            }
 
             Close();
         }

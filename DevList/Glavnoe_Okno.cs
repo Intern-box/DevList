@@ -32,7 +32,7 @@ namespace DevList
 
             for (int i = 0; i < listView_Tablica_Vivoda_Bazi.Columns.Count; i++)
             {
-                Array.Resize<string>(ref stolbci, i + 1);
+                Array.Resize(ref stolbci, i + 1);
 
                 stolbci[i] = listView_Tablica_Vivoda_Bazi.Columns[i].Text;
             }
@@ -43,7 +43,7 @@ namespace DevList
         {
             listView_Tablica_Vivoda_Bazi.Items.Clear();
 
-            for (int i = 1; i < baza.baza.Count; i++)                   // Пересчёт порядковых номеров
+            for (int i = 0; i < baza.baza.Count; i++)                   // Пересчёт порядковых номеров
             {                                                           // в столбце ID
                 baza.baza[i][0] = i.ToString();
             }
@@ -110,20 +110,13 @@ namespace DevList
         }
         private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Dobavit dobavit = new Dobavit(baza, koordinati_mishi);
+            Dobavit dobavit = new Dobavit(baza, koordinati_mishi);
 
-                dobavit.ShowDialog();
+            dobavit.ShowDialog();
 
-                baza.izmeneniia_v_baze = true;
+            baza.izmeneniia_v_baze = true;
 
-                Chtenie_Bazi();
-            }
-            catch (Exception)
-            {
-
-            }
+            Chtenie_Bazi();
         }
         private void ToolStripMenuItem_Context_Dobavit_Click(object sender, EventArgs e)
         {
@@ -191,7 +184,7 @@ namespace DevList
         }
         private void ToolStripMenuItem_Sohranit_Click(object sender, EventArgs e)
         {
-            baza.Zapisat(nastroiki.put_do_bazi, stolbci);
+            baza.Zapisat(nastroiki.put_do_bazi);
         }
         private void ToolStripMenuItem_Sohranit_Kak_Click(object sender, EventArgs e)
         {
@@ -199,7 +192,7 @@ namespace DevList
 
             if (put_k_failu.ShowDialog() == DialogResult.OK)
             {
-                baza.Zapisat(put_k_failu.FileName, stolbci);
+                baza.Zapisat(put_k_failu.FileName);
             }
         }
         private void ToolStripMenuItem_Sozdat_Click(object sender, EventArgs e)
@@ -310,7 +303,7 @@ namespace DevList
 
                 if (resultat_vibora == DialogResult.Yes)
                 {
-                    baza.Zapisat(nastroiki.put_do_bazi, stolbci);
+                    ToolStripMenuItem_Sohranit_Click(sender, e);
                 }
             }
         }

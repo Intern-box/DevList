@@ -43,7 +43,7 @@ namespace DevList
             this.comboBox_Elementi.Items.AddRange(new object[] {
             "Помещения",
             "Сотрудники",
-            "Тип"});
+            "Оборудование"});
             this.comboBox_Elementi.Location = new System.Drawing.Point(78, 12);
             this.comboBox_Elementi.Name = "comboBox_Elementi";
             this.comboBox_Elementi.Size = new System.Drawing.Size(350, 24);

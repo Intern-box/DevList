@@ -59,19 +59,25 @@ namespace DevList
                 }
             }
 
-            textBox__BD.Enabled = true;
-            button__BD.Enabled = true;
-            textBox_Pomescheniia.Enabled = true;
-            button__Pomescheniia.Enabled = true;
-            textBox_Oborudovanie.Enabled = true;
-            button__Oborudovanie.Enabled = true;
-            textBox_Sotrudniki.Enabled = true;
-            button__Sotrudniki.Enabled = true;
-            button_Zagruzit.Enabled = true;
-
             Schitat();
 
-            // Ищим файлы, выводим пути в строки
+            Ischim_Faili();
+        }
+
+        // Читаем и запоминаем адреса файлов
+        public void Schitat()
+        {
+            ini_fail = File.ReadAllLines("DevList.ini");
+
+            put_do_bazi = ini_fail[0];
+            put_do_pomeschenii = ini_fail[1];
+            put_do_tipov_oborudovaniia = ini_fail[2];
+            put_do_sotrudnikov = ini_fail[3];
+        }
+
+        // Ищим файлы, выводим пути в строки
+        private void Ischim_Faili()
+        {
             if (File.Exists(put_do_bazi))
             {
                 textBox__BD.Text = put_do_bazi;
@@ -97,25 +103,13 @@ namespace DevList
                 button_Novaia_Baza.Visible = true;
                 button_Novaia_Baza.Enabled = true;
             }
+
+            if (textBox__BD.Text != "" && textBox_Pomescheniia.Text != "" && textBox_Oborudovanie.Text != "" && textBox_Sotrudniki.Text != "")
+            {
+                button_Zagruzit.Enabled = true;
+            }
         }
-
-        // Читаем и запоминаем адреса файлов
-        public void Schitat()
-        {
-            ini_fail = File.ReadAllLines("DevList.ini");
-
-            put_do_bazi = ini_fail[0];
-            put_do_pomeschenii = ini_fail[1];
-            put_do_tipov_oborudovaniia = ini_fail[2];
-            put_do_sotrudnikov = ini_fail[3];
-        }
-        private void Nastroiki_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Environment.Exit(0);
-
-            Close();
-        }
-
+        
         // Ищим и открываем файл
         private string Ischim_Fail()
         {
@@ -124,30 +118,6 @@ namespace DevList
             otkrit_fail.ShowDialog();
 
             return otkrit_fail.FileName;
-        }
-        private void button__BD_Click(object sender, EventArgs e)
-        {
-            textBox__BD.Text = put_do_bazi = Ischim_Fail();
-
-            Sohraniaem_Nastroiki();
-        }
-        private void button__Pomescheniia_Click(object sender, EventArgs e)
-        {
-            textBox_Pomescheniia.Text = put_do_pomeschenii = Ischim_Fail();
-
-            Sohraniaem_Nastroiki();
-        }
-        private void button__Oborudovanie_Click(object sender, EventArgs e)
-        {
-            textBox_Oborudovanie.Text = put_do_tipov_oborudovaniia = Ischim_Fail();
-
-            Sohraniaem_Nastroiki();
-        }
-        private void button__Sotrudniki_Click(object sender, EventArgs e)
-        {
-            textBox_Sotrudniki.Text = put_do_sotrudnikov = Ischim_Fail();
-
-            Sohraniaem_Nastroiki();
         }
 
         // Сохраняем файл с настройками
@@ -161,6 +131,38 @@ namespace DevList
                 put_do_tipov_oborudovaniia + "\r\n" +
                 put_do_sotrudnikov + "\r\n"
             );
+        }
+        private void button__BD_Click(object sender, EventArgs e)
+        {
+            textBox__BD.Text = put_do_bazi = Ischim_Fail();
+
+            Sohraniaem_Nastroiki();
+
+            Ischim_Faili();
+        }
+        private void button__Pomescheniia_Click(object sender, EventArgs e)
+        {
+            textBox_Pomescheniia.Text = put_do_pomeschenii = Ischim_Fail();
+
+            Sohraniaem_Nastroiki();
+
+            Ischim_Faili();
+        }
+        private void button__Oborudovanie_Click(object sender, EventArgs e)
+        {
+            textBox_Oborudovanie.Text = put_do_tipov_oborudovaniia = Ischim_Fail();
+
+            Sohraniaem_Nastroiki();
+
+            Ischim_Faili();
+        }
+        private void button__Sotrudniki_Click(object sender, EventArgs e)
+        {
+            textBox_Sotrudniki.Text = put_do_sotrudnikov = Ischim_Fail();
+
+            Sohraniaem_Nastroiki();
+
+            Ischim_Faili();
         }
         private void button_Zagruzit_Click(object sender, EventArgs e)
         {
@@ -188,6 +190,12 @@ namespace DevList
             );
 
             Hide();
+        }
+        private void Nastroiki_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
+
+            Close();
         }
     }
 }

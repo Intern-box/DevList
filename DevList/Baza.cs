@@ -35,11 +35,11 @@ namespace DevList
                 baza.Add(stroka.Split(','));
             }
         }
-        public void Zapisat(string put_do_bazi, string[] stolbci)       // Запись базы в файл
+        public void Zapisat(string put_do_bazi)       // Запись базы в файл
         {
-            File.WriteAllLines(put_do_bazi, stolbci.Select(x => string.Join(",", x)));
+            File.WriteAllLines(put_do_bazi, baza.Select(x => string.Join(",", x)));
 
-            File.AppendAllLines(put_do_bazi, baza.Select(x => string.Join(",", x)));
+            izmeneniia_v_baze = false;
         }
     }
 }

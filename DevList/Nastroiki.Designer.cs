@@ -42,10 +42,6 @@ namespace DevList
             this.button__Sotrudniki = new System.Windows.Forms.Button();
             this.textBox_Sotrudniki = new System.Windows.Forms.TextBox();
             this.button_Zagruzit = new System.Windows.Forms.Button();
-            this.label__BD_status = new System.Windows.Forms.Label();
-            this.label_Pomescheniia_status = new System.Windows.Forms.Label();
-            this.label__Oborudovanie_status = new System.Windows.Forms.Label();
-            this.label__Sotrudniki_status = new System.Windows.Forms.Label();
             this.button_Novaia_Baza = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -95,7 +91,6 @@ namespace DevList
             // 
             // textBox__BD
             // 
-            this.textBox__BD.Enabled = false;
             this.textBox__BD.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox__BD.ForeColor = System.Drawing.SystemColors.ControlText;
             this.textBox__BD.Location = new System.Drawing.Point(12, 27);
@@ -105,7 +100,6 @@ namespace DevList
             // 
             // button__BD
             // 
-            this.button__BD.Enabled = false;
             this.button__BD.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button__BD.Location = new System.Drawing.Point(330, 26);
             this.button__BD.Name = "button__BD";
@@ -117,7 +111,6 @@ namespace DevList
             // 
             // button__Pomescheniia
             // 
-            this.button__Pomescheniia.Enabled = false;
             this.button__Pomescheniia.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button__Pomescheniia.Location = new System.Drawing.Point(330, 86);
             this.button__Pomescheniia.Name = "button__Pomescheniia";
@@ -129,7 +122,6 @@ namespace DevList
             // 
             // textBox_Pomescheniia
             // 
-            this.textBox_Pomescheniia.Enabled = false;
             this.textBox_Pomescheniia.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_Pomescheniia.ForeColor = System.Drawing.SystemColors.ControlText;
             this.textBox_Pomescheniia.Location = new System.Drawing.Point(12, 87);
@@ -139,7 +131,6 @@ namespace DevList
             // 
             // button__Oborudovanie
             // 
-            this.button__Oborudovanie.Enabled = false;
             this.button__Oborudovanie.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button__Oborudovanie.Location = new System.Drawing.Point(330, 146);
             this.button__Oborudovanie.Name = "button__Oborudovanie";
@@ -151,7 +142,6 @@ namespace DevList
             // 
             // textBox_Oborudovanie
             // 
-            this.textBox_Oborudovanie.Enabled = false;
             this.textBox_Oborudovanie.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_Oborudovanie.ForeColor = System.Drawing.SystemColors.ControlText;
             this.textBox_Oborudovanie.Location = new System.Drawing.Point(12, 147);
@@ -161,7 +151,6 @@ namespace DevList
             // 
             // button__Sotrudniki
             // 
-            this.button__Sotrudniki.Enabled = false;
             this.button__Sotrudniki.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button__Sotrudniki.Location = new System.Drawing.Point(330, 206);
             this.button__Sotrudniki.Name = "button__Sotrudniki";
@@ -173,7 +162,6 @@ namespace DevList
             // 
             // textBox_Sotrudniki
             // 
-            this.textBox_Sotrudniki.Enabled = false;
             this.textBox_Sotrudniki.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_Sotrudniki.ForeColor = System.Drawing.SystemColors.ControlText;
             this.textBox_Sotrudniki.Location = new System.Drawing.Point(12, 207);
@@ -192,50 +180,6 @@ namespace DevList
             this.button_Zagruzit.Text = "Загрузить";
             this.button_Zagruzit.UseVisualStyleBackColor = true;
             this.button_Zagruzit.Click += new System.EventHandler(this.button_Zagruzit_Click);
-            // 
-            // label__BD_status
-            // 
-            this.label__BD_status.AutoSize = true;
-            this.label__BD_status.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label__BD_status.Location = new System.Drawing.Point(112, 8);
-            this.label__BD_status.Name = "label__BD_status";
-            this.label__BD_status.Size = new System.Drawing.Size(54, 16);
-            this.label__BD_status.TabIndex = 13;
-            this.label__BD_status.Text = "статус";
-            this.label__BD_status.Visible = false;
-            // 
-            // label_Pomescheniia_status
-            // 
-            this.label_Pomescheniia_status.AutoSize = true;
-            this.label_Pomescheniia_status.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Pomescheniia_status.Location = new System.Drawing.Point(156, 68);
-            this.label_Pomescheniia_status.Name = "label_Pomescheniia_status";
-            this.label_Pomescheniia_status.Size = new System.Drawing.Size(54, 16);
-            this.label_Pomescheniia_status.TabIndex = 14;
-            this.label_Pomescheniia_status.Text = "статус";
-            this.label_Pomescheniia_status.Visible = false;
-            // 
-            // label__Oborudovanie_status
-            // 
-            this.label__Oborudovanie_status.AutoSize = true;
-            this.label__Oborudovanie_status.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label__Oborudovanie_status.Location = new System.Drawing.Point(173, 128);
-            this.label__Oborudovanie_status.Name = "label__Oborudovanie_status";
-            this.label__Oborudovanie_status.Size = new System.Drawing.Size(54, 16);
-            this.label__Oborudovanie_status.TabIndex = 15;
-            this.label__Oborudovanie_status.Text = "статус";
-            this.label__Oborudovanie_status.Visible = false;
-            // 
-            // label__Sotrudniki_status
-            // 
-            this.label__Sotrudniki_status.AutoSize = true;
-            this.label__Sotrudniki_status.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label__Sotrudniki_status.Location = new System.Drawing.Point(162, 188);
-            this.label__Sotrudniki_status.Name = "label__Sotrudniki_status";
-            this.label__Sotrudniki_status.Size = new System.Drawing.Size(54, 16);
-            this.label__Sotrudniki_status.TabIndex = 16;
-            this.label__Sotrudniki_status.Text = "статус";
-            this.label__Sotrudniki_status.Visible = false;
             // 
             // button_Novaia_Baza
             // 
@@ -257,10 +201,6 @@ namespace DevList
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(421, 294);
             this.Controls.Add(this.button_Novaia_Baza);
-            this.Controls.Add(this.label__Sotrudniki_status);
-            this.Controls.Add(this.label__Oborudovanie_status);
-            this.Controls.Add(this.label_Pomescheniia_status);
-            this.Controls.Add(this.label__BD_status);
             this.Controls.Add(this.button_Zagruzit);
             this.Controls.Add(this.button__Sotrudniki);
             this.Controls.Add(this.textBox_Sotrudniki);
@@ -302,10 +242,6 @@ namespace DevList
         private System.Windows.Forms.Button button__Sotrudniki;
         private System.Windows.Forms.TextBox textBox_Sotrudniki;
         private System.Windows.Forms.Button button_Zagruzit;
-        private System.Windows.Forms.Label label__BD_status;
-        private System.Windows.Forms.Label label_Pomescheniia_status;
-        private System.Windows.Forms.Label label__Oborudovanie_status;
-        private System.Windows.Forms.Label label__Sotrudniki_status;
         private System.Windows.Forms.Button button_Novaia_Baza;
     }
 }
