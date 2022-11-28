@@ -98,12 +98,6 @@ namespace DevList
                 textBox_Sotrudniki.Text = put_do_sotrudnikov;
             }
 
-            if (textBox__BD.Text == "" && textBox_Pomescheniia.Text == "" && textBox_Oborudovanie.Text == "" && textBox_Sotrudniki.Text == "")
-            {
-                button_Novaia_Baza.Visible = true;
-                button_Novaia_Baza.Enabled = true;
-            }
-
             if (textBox__BD.Text != "" && textBox_Pomescheniia.Text != "" && textBox_Oborudovanie.Text != "" && textBox_Sotrudniki.Text != "")
             {
                 button_Zagruzit.Enabled = true;
@@ -170,10 +164,43 @@ namespace DevList
         }
         private void button_Novaia_Baza_Click(object sender, EventArgs e)
         {
-            put_do_bazi = "БД\\БД.csv";
-            put_do_pomeschenii = "БД\\Помещения.txt";
-            put_do_tipov_oborudovaniia = "БД\\Оборудование.txt";
-            put_do_sotrudnikov = "БД\\Сотрудники.txt";
+            DialogResult otvet_na_zapros =
+
+            MessageBox.Show
+            (
+                "Создать тут или нет?",
+                "Создать?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1
+            );
+
+            if (otvet_na_zapros == DialogResult.Yes)
+            {
+                put_do_bazi = "БД\\БД.csv";
+                put_do_pomeschenii = "БД\\Помещения.txt";
+                put_do_tipov_oborudovaniia = "БД\\Оборудование.txt";
+                put_do_sotrudnikov = "БД\\Сотрудники.txt";
+            }
+            else
+            {
+                FolderBrowserDialog papka_dlia_proiecta = new FolderBrowserDialog();
+
+                if (papka_dlia_proiecta.ShowDialog() == DialogResult.OK)
+                {
+                    put_do_bazi = papka_dlia_proiecta.SelectedPath + "\\БД.csv";
+                    put_do_pomeschenii = papka_dlia_proiecta.SelectedPath + "\\Помещения.txt";
+                    put_do_tipov_oborudovaniia = papka_dlia_proiecta.SelectedPath + "\\Оборудование.txt";
+                    put_do_sotrudnikov = papka_dlia_proiecta.SelectedPath + "\\Сотрудники.txt";
+                }
+                else
+                {
+                    put_do_bazi = "БД\\БД.csv";
+                    put_do_pomeschenii = "БД\\Помещения.txt";
+                    put_do_tipov_oborudovaniia = "БД\\Оборудование.txt";
+                    put_do_sotrudnikov = "БД\\Сотрудники.txt";
+                }
+            }
 
             File.WriteAllText(put_do_bazi, "");
             File.WriteAllText(put_do_pomeschenii, "");

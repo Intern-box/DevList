@@ -45,10 +45,10 @@ namespace DevList
 
             for (int i = 0; i < baza.baza.Count; i++)                   // Пересчёт порядковых номеров
             {                                                           // в столбце ID
-                baza.baza[i][0] = i.ToString();
+                baza.baza[i][0] = (i + 1).ToString();
             }
 
-            for (int i = 1; i < baza.baza.Count; i++)                   // Чтение строк в базе
+            for (int i = 0; i < baza.baza.Count; i++)                   // Чтение строк в базе
             {                                                           // в ListView
                 ListViewItem stroka = new ListViewItem(baza.baza[i]);
 

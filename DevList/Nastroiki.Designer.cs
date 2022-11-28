@@ -183,7 +183,6 @@ namespace DevList
             // 
             // button_Novaia_Baza
             // 
-            this.button_Novaia_Baza.Enabled = false;
             this.button_Novaia_Baza.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_Novaia_Baza.Location = new System.Drawing.Point(113, 262);
             this.button_Novaia_Baza.Name = "button_Novaia_Baza";
@@ -191,7 +190,6 @@ namespace DevList
             this.button_Novaia_Baza.TabIndex = 17;
             this.button_Novaia_Baza.Text = "Создать новую базу";
             this.button_Novaia_Baza.UseVisualStyleBackColor = true;
-            this.button_Novaia_Baza.Visible = false;
             this.button_Novaia_Baza.Click += new System.EventHandler(this.button_Novaia_Baza_Click);
             // 
             // Nastroiki

@@ -21,11 +21,6 @@ namespace DevList
         {                                                               // создаётся объект с базой и открывается файл
             baza.Clear();
 
-            if (File.Exists(put_do_bazi) == false)
-            {
-                File.WriteAllText(put_do_bazi, "");
-            }
-
             foreach (string stroka in File.ReadAllLines(put_do_bazi))   // Преобразуем из *.csv в List<string[]>
             {
                 stroka.TrimEnd('\r');
@@ -35,7 +30,7 @@ namespace DevList
                 baza.Add(stroka.Split(','));
             }
         }
-        public void Zapisat(string put_do_bazi)       // Запись базы в файл
+        public void Zapisat(string put_do_bazi)                         // Запись базы в файл
         {
             File.WriteAllLines(put_do_bazi, baza.Select(x => string.Join(",", x)));
 
