@@ -28,11 +28,11 @@ namespace DevList
         }
         private void Izmenit_Stroku_Load(object sender, EventArgs e)
         {
-            textBox_Tekst.Text = baza.baza[nomer_stroki + 1][nomer_stolbca];
+            textBox_Tekst.Text = baza.baza[nomer_stroki][nomer_stolbca];
         }
         private void button_Vipolnit_Click(object sender, EventArgs e)
         {
-            baza.baza[nomer_stroki + 1][nomer_stolbca] = textBox_Tekst.Text;
+            baza.baza[nomer_stroki][nomer_stolbca] = textBox_Tekst.Text;
 
             Close();
         }

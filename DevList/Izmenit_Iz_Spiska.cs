@@ -52,18 +52,24 @@ namespace DevList
                 naimenovanie = baza.baza[nomer_stroki][5];
 
                 comboBox_Spisok_Vibora.Items.AddRange(pomescheniia.spisok);
+
+                comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
             }
             else if (nomer_stolbca == 4)                                           // Сотрудники
             {
                 label_Nazvanie.Text = "Сотрудники";
 
                 comboBox_Spisok_Vibora.Items.AddRange(sotrudniki.spisok);
+
+                comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
             }
             else if (nomer_stolbca == 6)                                           // Тип
             {
                 label_Nazvanie.Text = "Тип";
 
                 comboBox_Spisok_Vibora.Items.AddRange(oborudovanie.spisok);
+
+                comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
             }
             else if (nomer_stolbca == 7)                                           // Состояние
             {
@@ -73,6 +79,8 @@ namespace DevList
                 comboBox_Spisok_Vibora.Items.Add("в ремонте");
                 comboBox_Spisok_Vibora.Items.Add("сломано");
                 comboBox_Spisok_Vibora.Items.Add("утеряно");
+
+                comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
             }
             else
             {
@@ -96,7 +104,7 @@ namespace DevList
                 );
             }
 
-            baza.baza[nomer_stroki + 1][nomer_stolbca] = comboBox_Spisok_Vibora.Text;
+            baza.baza[nomer_stroki][nomer_stolbca] = comboBox_Spisok_Vibora.Text;
 
             Close();
         }
