@@ -25,7 +25,7 @@ namespace DevList
         }
         private void button_Udalit_Click(object sender, EventArgs e)
         {
-            baza.baza.RemoveAt(koordinati_mishi.Item.Index + 1);
+            baza.baza.RemoveAt(koordinati_mishi.Item.Index);
 
             Close();
         }

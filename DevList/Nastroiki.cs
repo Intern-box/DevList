@@ -188,10 +188,30 @@ namespace DevList
 
                 if (papka_dlia_proiecta.ShowDialog() == DialogResult.OK)
                 {
-                    put_do_bazi = papka_dlia_proiecta.SelectedPath + "\\БД.csv";
-                    put_do_pomeschenii = papka_dlia_proiecta.SelectedPath + "\\Помещения.txt";
-                    put_do_tipov_oborudovaniia = papka_dlia_proiecta.SelectedPath + "\\Оборудование.txt";
-                    put_do_sotrudnikov = papka_dlia_proiecta.SelectedPath + "\\Сотрудники.txt";
+                    if (Directory.Exists(papka_dlia_proiecta.SelectedPath + "\\БД") == false)
+                        Directory.CreateDirectory(papka_dlia_proiecta.SelectedPath + "\\БД");
+
+                    if (Directory.Exists(papka_dlia_proiecta.SelectedPath + "\\История перемещений") == false)
+                        Directory.CreateDirectory(papka_dlia_proiecta.SelectedPath + "\\История перемещений");
+
+                    put_do_bazi = papka_dlia_proiecta.SelectedPath + "\\БД\\БД.csv";
+                    put_do_pomeschenii = papka_dlia_proiecta.SelectedPath + "\\БД\\Помещения.txt";
+                    put_do_tipov_oborudovaniia = papka_dlia_proiecta.SelectedPath + "\\БД\\Оборудование.txt";
+                    put_do_sotrudnikov = papka_dlia_proiecta.SelectedPath + "\\БД\\Сотрудники.txt";
+
+                    if (File.Exists(papka_dlia_proiecta.SelectedPath + "\\DevList.ini") == false)
+                    {
+                        File.AppendAllText
+                        (
+                            papka_dlia_proiecta.SelectedPath + "\\DevList.ini",
+                            "БД = \r\n" +
+                            "Помещения = \r\n" +
+                            "Тип = \r\n" +
+                            "Сотрудники = "
+                        );
+                    }
+
+                    Schitat();
                 }
                 else
                 {

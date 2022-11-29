@@ -231,15 +231,15 @@ namespace DevList
         private System.Windows.Forms.Label label_Pomescheniia;
         private System.Windows.Forms.Label label_Oborudovanie;
         private System.Windows.Forms.Label label_Sotrudniki;
-        private System.Windows.Forms.TextBox textBox__BD;
         private System.Windows.Forms.Button button__BD;
         private System.Windows.Forms.Button button__Pomescheniia;
-        private System.Windows.Forms.TextBox textBox_Pomescheniia;
         private System.Windows.Forms.Button button__Oborudovanie;
-        private System.Windows.Forms.TextBox textBox_Oborudovanie;
         private System.Windows.Forms.Button button__Sotrudniki;
-        private System.Windows.Forms.TextBox textBox_Sotrudniki;
         private System.Windows.Forms.Button button_Zagruzit;
         private System.Windows.Forms.Button button_Novaia_Baza;
+        public System.Windows.Forms.TextBox textBox__BD;
+        public System.Windows.Forms.TextBox textBox_Pomescheniia;
+        public System.Windows.Forms.TextBox textBox_Oborudovanie;
+        public System.Windows.Forms.TextBox textBox_Sotrudniki;
     }
 }

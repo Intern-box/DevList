@@ -208,7 +208,6 @@ namespace DevList
             this.ToolStripMenuItem_Context_Poisk.Name = "ToolStripMenuItem_Context_Poisk";
             this.ToolStripMenuItem_Context_Poisk.Size = new System.Drawing.Size(126, 22);
             this.ToolStripMenuItem_Context_Poisk.Text = "Поиск";
-            this.ToolStripMenuItem_Context_Poisk.Click += new System.EventHandler(this.ToolStripMenuItem_Context_Poisk_Click);
             // 
             // menuStrip_Glavnoe_Menu
             // 
@@ -240,27 +239,28 @@ namespace DevList
             // ToolStripMenuItem_Sozdat
             // 
             this.ToolStripMenuItem_Sozdat.Name = "ToolStripMenuItem_Sozdat";
-            this.ToolStripMenuItem_Sozdat.Size = new System.Drawing.Size(171, 22);
+            this.ToolStripMenuItem_Sozdat.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Sozdat.Text = "Создать";
+            this.ToolStripMenuItem_Sozdat.Click += new System.EventHandler(this.ToolStripMenuItem_Sozdat_Click);
             // 
             // ToolStripMenuItem_Otkrit
             // 
             this.ToolStripMenuItem_Otkrit.Name = "ToolStripMenuItem_Otkrit";
-            this.ToolStripMenuItem_Otkrit.Size = new System.Drawing.Size(171, 22);
+            this.ToolStripMenuItem_Otkrit.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Otkrit.Text = "Открыть";
             this.ToolStripMenuItem_Otkrit.Click += new System.EventHandler(this.ToolStripMenuItem_Otkrit_Click);
             // 
             // ToolStripMenuItem_Sohranit
             // 
             this.ToolStripMenuItem_Sohranit.Name = "ToolStripMenuItem_Sohranit";
-            this.ToolStripMenuItem_Sohranit.Size = new System.Drawing.Size(171, 22);
+            this.ToolStripMenuItem_Sohranit.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Sohranit.Text = "Сохранить";
             this.ToolStripMenuItem_Sohranit.Click += new System.EventHandler(this.ToolStripMenuItem_Sohranit_Click);
             // 
             // ToolStripMenuItem_Sohranit_Kak
             // 
             this.ToolStripMenuItem_Sohranit_Kak.Name = "ToolStripMenuItem_Sohranit_Kak";
-            this.ToolStripMenuItem_Sohranit_Kak.Size = new System.Drawing.Size(171, 22);
+            this.ToolStripMenuItem_Sohranit_Kak.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Sohranit_Kak.Text = "Сохранить как...";
             this.ToolStripMenuItem_Sohranit_Kak.Click += new System.EventHandler(this.ToolStripMenuItem_Sohranit_Kak_Click);
             // 
