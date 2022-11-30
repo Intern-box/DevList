@@ -7,20 +7,15 @@ namespace DevList
     public partial class Nastroiki : Form
     {
         public string[] ini_fail;
-        public string put_do_bazi;
-        public string put_do_pomeschenii;
-        public string put_do_tipov_oborudovaniia;
-        public string put_do_sotrudnikov;
+        public string put_do_faila_nastroek = "DevList.ini";
+        public string put_do_bazi = "БД\\БД.csv";
+        public string put_do_pomeschenii = "БД\\Помещения.txt";
+        public string put_do_tipov_oborudovaniia = "БД\\Оборудование.txt";
+        public string put_do_sotrudnikov = "БД\\Сотрудники.txt";
 
         public Nastroiki()
         {
             InitializeComponent();
-
-            if (Directory.Exists("БД") == false)
-                Directory.CreateDirectory("БД");
-
-            if (Directory.Exists("История перемещений") == false)
-                Directory.CreateDirectory("История перемещений");
         }
         private void Nastroiki_Load(object sender, EventArgs e)
         {
@@ -42,14 +37,7 @@ namespace DevList
 
                 if (otvet_na_zapros == DialogResult.Yes)
                 {
-                    File.AppendAllText
-                    (
-                        "DevList.ini",
-                        "БД = \r\n" +
-                        "Помещения = \r\n" +
-                        "Тип = \r\n" +
-                        "Сотрудники = "
-                    );
+                    button_Novaia_Baza_Click(sender, e);
                 }
                 else
                 {
@@ -59,15 +47,85 @@ namespace DevList
                 }
             }
 
-            Schitat();
+            Chitat();
 
             Ischim_Faili();
         }
+        private void button_Novaia_Baza_Click(object sender, EventArgs e)
+        {
+            DialogResult otvet_na_zapros =
+
+            MessageBox.Show
+            (
+                "Тут или нет?",
+                "Создать",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1
+            );
+
+            if (otvet_na_zapros == DialogResult.No)
+            {
+                FolderBrowserDialog papka_dlia_proiecta = new FolderBrowserDialog();
+
+                if (papka_dlia_proiecta.ShowDialog() == DialogResult.OK)
+                {
+                    put_do_faila_nastroek = papka_dlia_proiecta.SelectedPath + "\\DevList.ini";
+                    put_do_bazi = papka_dlia_proiecta.SelectedPath + "\\БД\\БД.csv";
+                    put_do_pomeschenii = papka_dlia_proiecta.SelectedPath + "\\БД\\Помещения.txt";
+                    put_do_tipov_oborudovaniia = papka_dlia_proiecta.SelectedPath + "\\БД\\Оборудование.txt";
+                    put_do_sotrudnikov = papka_dlia_proiecta.SelectedPath + "\\БД\\Сотрудники.txt";
+                }
+                else
+                {
+                    Environment.Exit(0);
+
+                    Close();
+                }
+
+                if (Directory.Exists(papka_dlia_proiecta.SelectedPath + "\\БД") == false)
+                    Directory.CreateDirectory(papka_dlia_proiecta.SelectedPath + "\\БД");
+
+                if (Directory.Exists(papka_dlia_proiecta.SelectedPath + "\\История перемещений") == false)
+                    Directory.CreateDirectory(papka_dlia_proiecta.SelectedPath + "\\История перемещений");
+
+                File.WriteAllText
+                (
+                    put_do_faila_nastroek,
+                    put_do_bazi + "\r\n" +
+                    put_do_pomeschenii + "\r\n" +
+                    put_do_tipov_oborudovaniia + "\r\n" +
+                    put_do_sotrudnikov
+                );
+            }
+            else
+            {
+                if (Directory.Exists("БД") == false)
+                    Directory.CreateDirectory("БД");
+
+                if (Directory.Exists("История перемещений") == false)
+                    Directory.CreateDirectory("История перемещений");
+
+                File.WriteAllText
+                (
+                    "DevList.ini",
+                    put_do_bazi + "\r\n" +
+                    put_do_pomeschenii + "\r\n" +
+                    put_do_tipov_oborudovaniia + "\r\n" +
+                    put_do_sotrudnikov
+                );
+            }
+
+            File.WriteAllText(put_do_bazi, "");
+            File.WriteAllText(put_do_pomeschenii, "");
+            File.WriteAllText(put_do_tipov_oborudovaniia, "");
+            File.WriteAllText(put_do_sotrudnikov, "");
+        }
 
         // Читаем и запоминаем адреса файлов
-        public void Schitat()
+        public void Chitat()
         {
-            ini_fail = File.ReadAllLines("DevList.ini");
+            ini_fail = File.ReadAllLines(put_do_faila_nastroek);
 
             put_do_bazi = ini_fail[0];
             put_do_pomeschenii = ini_fail[1];
@@ -82,20 +140,36 @@ namespace DevList
             {
                 textBox__BD.Text = put_do_bazi;
             }
+            else
+            {
+                textBox__BD.Text = "";
+            }
 
             if (File.Exists(put_do_pomeschenii))
             {
                 textBox_Pomescheniia.Text = put_do_pomeschenii;
+            }
+            else
+            {
+                textBox_Pomescheniia.Text = "";
             }
 
             if (File.Exists(put_do_tipov_oborudovaniia))
             {
                 textBox_Oborudovanie.Text = put_do_tipov_oborudovaniia;
             }
+            else
+            {
+                textBox_Oborudovanie.Text = "";
+            }
 
             if (File.Exists(put_do_sotrudnikov))
             {
                 textBox_Sotrudniki.Text = put_do_sotrudnikov;
+            }
+            else
+            {
+                textBox_Sotrudniki.Text = "";
             }
 
             if (textBox__BD.Text != "" && textBox_Pomescheniia.Text != "" && textBox_Oborudovanie.Text != "" && textBox_Sotrudniki.Text != "")
@@ -115,7 +189,7 @@ namespace DevList
         }
 
         // Сохраняем файл с настройками
-        private void Sohraniaem_Nastroiki()
+        private void Sohranit()
         {
             File.WriteAllText
             (
@@ -130,7 +204,7 @@ namespace DevList
         {
             textBox__BD.Text = put_do_bazi = Ischim_Fail();
 
-            Sohraniaem_Nastroiki();
+            Sohranit();
 
             Ischim_Faili();
         }
@@ -138,7 +212,7 @@ namespace DevList
         {
             textBox_Pomescheniia.Text = put_do_pomeschenii = Ischim_Fail();
 
-            Sohraniaem_Nastroiki();
+            Sohranit();
 
             Ischim_Faili();
         }
@@ -146,7 +220,7 @@ namespace DevList
         {
             textBox_Oborudovanie.Text = put_do_tipov_oborudovaniia = Ischim_Fail();
 
-            Sohraniaem_Nastroiki();
+            Sohranit();
 
             Ischim_Faili();
         }
@@ -154,88 +228,12 @@ namespace DevList
         {
             textBox_Sotrudniki.Text = put_do_sotrudnikov = Ischim_Fail();
 
-            Sohraniaem_Nastroiki();
+            Sohranit();
 
             Ischim_Faili();
         }
         private void button_Zagruzit_Click(object sender, EventArgs e)
         {
-            Hide();
-        }
-        private void button_Novaia_Baza_Click(object sender, EventArgs e)
-        {
-            DialogResult otvet_na_zapros =
-
-            MessageBox.Show
-            (
-                "Создать тут или нет?",
-                "Создать?",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Information,
-                MessageBoxDefaultButton.Button1
-            );
-
-            if (otvet_na_zapros == DialogResult.Yes)
-            {
-                put_do_bazi = "БД\\БД.csv";
-                put_do_pomeschenii = "БД\\Помещения.txt";
-                put_do_tipov_oborudovaniia = "БД\\Оборудование.txt";
-                put_do_sotrudnikov = "БД\\Сотрудники.txt";
-            }
-            else
-            {
-                FolderBrowserDialog papka_dlia_proiecta = new FolderBrowserDialog();
-
-                if (papka_dlia_proiecta.ShowDialog() == DialogResult.OK)
-                {
-                    if (Directory.Exists(papka_dlia_proiecta.SelectedPath + "\\БД") == false)
-                        Directory.CreateDirectory(papka_dlia_proiecta.SelectedPath + "\\БД");
-
-                    if (Directory.Exists(papka_dlia_proiecta.SelectedPath + "\\История перемещений") == false)
-                        Directory.CreateDirectory(papka_dlia_proiecta.SelectedPath + "\\История перемещений");
-
-                    put_do_bazi = papka_dlia_proiecta.SelectedPath + "\\БД\\БД.csv";
-                    put_do_pomeschenii = papka_dlia_proiecta.SelectedPath + "\\БД\\Помещения.txt";
-                    put_do_tipov_oborudovaniia = papka_dlia_proiecta.SelectedPath + "\\БД\\Оборудование.txt";
-                    put_do_sotrudnikov = papka_dlia_proiecta.SelectedPath + "\\БД\\Сотрудники.txt";
-
-                    if (File.Exists(papka_dlia_proiecta.SelectedPath + "\\DevList.ini") == false)
-                    {
-                        File.AppendAllText
-                        (
-                            papka_dlia_proiecta.SelectedPath + "\\DevList.ini",
-                            "БД = \r\n" +
-                            "Помещения = \r\n" +
-                            "Тип = \r\n" +
-                            "Сотрудники = "
-                        );
-                    }
-
-                    Schitat();
-                }
-                else
-                {
-                    put_do_bazi = "БД\\БД.csv";
-                    put_do_pomeschenii = "БД\\Помещения.txt";
-                    put_do_tipov_oborudovaniia = "БД\\Оборудование.txt";
-                    put_do_sotrudnikov = "БД\\Сотрудники.txt";
-                }
-            }
-
-            File.WriteAllText(put_do_bazi, "");
-            File.WriteAllText(put_do_pomeschenii, "");
-            File.WriteAllText(put_do_tipov_oborudovaniia, "");
-            File.WriteAllText(put_do_sotrudnikov, "");
-
-            File.WriteAllText
-            (
-                "DevList.ini",
-                "БД\\БД.csv" + "\r\n" +
-                "БД\\Помещения.txt" + "\r\n" +
-                "БД\\Оборудование.txt" + "\r\n" +
-                "БД\\Сотрудники.txt"
-            );
-
             Hide();
         }
         private void Nastroiki_FormClosed(object sender, FormClosedEventArgs e)

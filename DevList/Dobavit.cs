@@ -32,7 +32,7 @@ namespace DevList
         {
             nastroiki = new Nastroiki();
 
-            nastroiki.Schitat();
+            nastroiki.Chitat();
 
             pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
 

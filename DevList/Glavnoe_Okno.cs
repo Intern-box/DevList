@@ -150,7 +150,7 @@ namespace DevList
             {
                 if (File.Exists(papka_dlia_proiecta.SelectedPath + "\\DevList.ini"))
                 {
-                    nastroiki.Schitat();
+                    nastroiki.Chitat();
 
                     Otkrit_Bazu(nastroiki.put_do_bazi);
 
