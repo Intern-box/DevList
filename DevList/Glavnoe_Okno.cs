@@ -160,7 +160,7 @@ namespace DevList
         }
         private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)
         {
-            Dobavit dobavit = new Dobavit(baza, koordinati_mishi);
+            Dobavit dobavit = new Dobavit(nastroiki, baza, koordinati_mishi);
 
             dobavit.ShowDialog();
 
@@ -188,7 +188,7 @@ namespace DevList
             }
             else if (nomer_stolbca == 3 || nomer_stolbca == 4 || nomer_stolbca == 6 || nomer_stolbca == 7)
             {
-                Izmenit_Iz_Spiska izmenit_Iz_spiska = new Izmenit_Iz_Spiska(baza, koordinati_mishi);
+                Izmenit_Iz_Spiska izmenit_Iz_spiska = new Izmenit_Iz_Spiska(nastroiki, baza, koordinati_mishi);
 
                 izmenit_Iz_spiska.ShowDialog();
 

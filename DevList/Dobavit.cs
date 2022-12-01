@@ -20,9 +20,11 @@ namespace DevList
         Spisok sotrudniki;
         Nastroiki nastroiki;
 
-        public Dobavit(Baza baza, ListViewHitTestInfo koordinati_mishi)
+        public Dobavit(Nastroiki nastroiki, Baza baza, ListViewHitTestInfo koordinati_mishi)
         {
             InitializeComponent();
+
+            this.nastroiki = nastroiki;
 
             this.baza = baza;
 
@@ -30,10 +32,6 @@ namespace DevList
         }
         private void Dobavit_Load(object sender, EventArgs e)
         {
-            nastroiki = new Nastroiki();
-
-            nastroiki.Chitat();
-
             pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
 
             oborudovanie = new Spisok(nastroiki.put_do_tipov_oborudovaniia);
@@ -48,20 +46,23 @@ namespace DevList
 
             if (koordinati_mishi != null)
             {
-                string[] stroka = baza.baza[koordinati_mishi.Item.Index + 1];
+                if (koordinati_mishi.Item.Index >= 0 && koordinati_mishi.Item.Index < baza.baza.Count)
+                {
+                    string[] stroka = baza.baza[koordinati_mishi.Item.Index];
 
-                textBox_Data_Priobreteniia.Text = stroka[1];
-                textBox_InvNomer.Text = stroka[2];
-                comboBox_Pomeschenie.Text = stroka[3];
-                comboBox_FIO.Text = stroka[4];
-                textBox_Naimenovanie.Text = stroka[5];
-                comboBox_Tip.Text = stroka[6];
-                comboBox_Sostoianie.Text = stroka[7];
-                textBox_Inventarizaciia.Text = stroka[8];
-                textBox_Kommentarii.Text = stroka[9];
-                textBox_Hostname.Text = stroka[10];
-                textBox_IP.Text = stroka[11];
-                comboBox_Izmenil.Text = stroka[12];
+                    textBox_Data_Priobreteniia.Text = stroka[1];
+                    textBox_InvNomer.Text = stroka[2];
+                    comboBox_Pomeschenie.Text = stroka[3];
+                    comboBox_FIO.Text = stroka[4];
+                    textBox_Naimenovanie.Text = stroka[5];
+                    comboBox_Tip.Text = stroka[6];
+                    comboBox_Sostoianie.Text = stroka[7];
+                    textBox_Inventarizaciia.Text = stroka[8];
+                    textBox_Kommentarii.Text = stroka[9];
+                    textBox_Hostname.Text = stroka[10];
+                    textBox_IP.Text = stroka[11];
+                    comboBox_Izmenil.Text = stroka[12];
+                }
             }
         }
         private void button_Dobavit_Click(object sender, EventArgs e)

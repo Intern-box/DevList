@@ -20,11 +20,11 @@ namespace DevList
         private void Nastroiki_Load(object sender, EventArgs e)
         {
             // Ищим файл с настройками
-            // Если его нет, предлагаем создать
+            // Если его нет, предлагаем создать или открыть
             // При отказе - выходим из программы
             if (File.Exists("DevList.ini") == false)
             {
-                DialogResult otvet_na_zapros =
+                DialogResult otvet_na_zapros_1 =
 
                 MessageBox.Show
                 (
@@ -35,15 +35,40 @@ namespace DevList
                     MessageBoxDefaultButton.Button1
                 );
 
-                if (otvet_na_zapros == DialogResult.Yes)
+                if (otvet_na_zapros_1 == DialogResult.Yes)
                 {
                     button_Novaia_Baza_Click(sender, e);
                 }
                 else
                 {
-                    Environment.Exit(0);
+                    DialogResult otvet_na_zapros_2 =
 
-                    Close();
+                    MessageBox.Show
+                    (
+                        "Открыть?",
+                        "Нет файла с настройками",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1
+                    );
+
+                    if (otvet_na_zapros_2 == DialogResult.No)
+                    {
+                        Environment.Exit(0);
+
+                        Close();
+                    }
+
+                    OpenFileDialog fail_s_nastroikami = new OpenFileDialog();
+
+                    if (fail_s_nastroikami.ShowDialog() == DialogResult.No)
+                    {
+                        Environment.Exit(0);
+
+                        Close();
+                    }
+
+                    put_do_faila_nastroek = fail_s_nastroikami.FileName;
                 }
             }
 
@@ -58,7 +83,7 @@ namespace DevList
             MessageBox.Show
             (
                 "Тут или нет?",
-                "Создать",
+                "Создать файл с настройками",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Information,
                 MessageBoxDefaultButton.Button1

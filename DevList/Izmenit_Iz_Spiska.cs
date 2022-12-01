@@ -21,9 +21,11 @@ namespace DevList
         int nomer_stolbca, nomer_stroki;
         string iz, inv_nomer, naimenovanie;
 
-        public Izmenit_Iz_Spiska(Baza baza, ListViewHitTestInfo koordinati_mishi)
+        public Izmenit_Iz_Spiska(Nastroiki nastroiki, Baza baza, ListViewHitTestInfo koordinati_mishi)
         {
             InitializeComponent();
+
+            this.nastroiki = nastroiki;
 
             this.baza = baza;
 
@@ -33,10 +35,6 @@ namespace DevList
         }
         private void Izmenit_Iz_Spiska_Load(object sender, EventArgs e)
         {
-            nastroiki = new Nastroiki();
-
-            nastroiki.Chitat();
-
             pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
 
             oborudovanie = new Spisok(nastroiki.put_do_tipov_oborudovaniia);
