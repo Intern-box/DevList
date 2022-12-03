@@ -14,25 +14,16 @@ namespace DevList
     public partial class Redaktirovanie_Spiskov : Form
     {
         Nastroiki nastroiki;
-        Spisok pomescheniia;
-        Spisok oborudovanie;
-        Spisok sotrudniki;
 
-        public Redaktirovanie_Spiskov()
+        public Redaktirovanie_Spiskov(Nastroiki nastroiki)
         {
             InitializeComponent();
+
+            this.nastroiki = nastroiki;
         }
         private void Redaktirovanie_Spiskov_Load(object sender, EventArgs e)
         {
-            nastroiki = new Nastroiki();
-
-            nastroiki.Chitat();
-
-            pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
-
-            oborudovanie = new Spisok(nastroiki.put_do_tipov_oborudovaniia);
-
-            sotrudniki = new Spisok(nastroiki.put_do_sotrudnikov);
+            
         }
         private void comboBox_Elementi_SelectionChangeCommitted(object sender, EventArgs e)
         {

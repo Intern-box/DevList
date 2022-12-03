@@ -19,8 +19,9 @@ namespace DevList
         Spisok oborudovanie;
         Spisok sotrudniki;
         Nastroiki nastroiki;
+        bool pravka;
 
-        public Dobavit(Nastroiki nastroiki, Baza baza, ListViewHitTestInfo koordinati_mishi)
+        public Dobavit(bool pravka, Nastroiki nastroiki, Baza baza, ListViewHitTestInfo koordinati_mishi)
         {
             InitializeComponent();
 
@@ -29,6 +30,8 @@ namespace DevList
             this.baza = baza;
 
             this.koordinati_mishi = koordinati_mishi;
+
+            this.pravka = pravka;
         }
         private void Dobavit_Load(object sender, EventArgs e)
         {
@@ -64,13 +67,43 @@ namespace DevList
                     comboBox_Izmenil.Text = stroka[12];
                 }
             }
+
+            if (pravka)
+            {
+                Text = "DevList - Править всё";
+
+                button_Dobavit.Text = "Править";
+            }
         }
         private void button_Dobavit_Click(object sender, EventArgs e)
         {
-            if (koordinati_mishi != null)
+            if (pravka)
             {
-                string[] stroka = 
+                string[] stroka =
                 {
+                    (koordinati_mishi.Item.Index).ToString(),
+                    textBox_Data_Priobreteniia.Text,
+                    textBox_InvNomer.Text,
+                    comboBox_Pomeschenie.Text,
+                    comboBox_FIO.Text,
+                    textBox_Naimenovanie.Text,
+                    comboBox_Tip.Text,
+                    comboBox_Sostoianie.Text,
+                    textBox_Inventarizaciia.Text,
+                    textBox_Kommentarii.Text,
+                    textBox_Hostname.Text,
+                    textBox_IP.Text,
+                    comboBox_Izmenil.Text
+                };
+
+                baza.baza[koordinati_mishi.Item.Index] = stroka;
+            }
+            else
+            {
+                if (koordinati_mishi != null)
+                {
+                    string[] stroka =
+                    {
                     (koordinati_mishi.Item.Index + 1).ToString(),
                     textBox_Data_Priobreteniia.Text,
                     textBox_InvNomer.Text,
@@ -86,12 +119,12 @@ namespace DevList
                     comboBox_Izmenil.Text
                 };
 
-                baza.baza.Insert(koordinati_mishi.Item.Index + 1, stroka);
-            }
-            else
-            {
-                string[] stroka =
+                    baza.baza.Insert(koordinati_mishi.Item.Index + 1, stroka);
+                }
+                else
                 {
+                    string[] stroka =
+                    {
                     (baza.baza.Count - 1).ToString(),
                     textBox_Data_Priobreteniia.Text,
                     textBox_InvNomer.Text,
@@ -107,7 +140,8 @@ namespace DevList
                     comboBox_Izmenil.Text
                 };
 
-                baza.baza.Add(stroka);
+                    baza.baza.Add(stroka);
+                }
             }
 
             Close();

@@ -7,6 +7,7 @@ namespace DevList
     public partial class Nastroiki : Form
     {
         public string[] ini_fail;
+        public string put_do_papki;
         public string put_do_faila_nastroek = "DevList.ini";
         public string put_do_bazi = "БД\\БД.csv";
         public string put_do_pomeschenii = "БД\\Помещения.txt";
@@ -69,6 +70,8 @@ namespace DevList
                     }
 
                     put_do_faila_nastroek = fail_s_nastroikami.FileName;
+
+                    put_do_papki = Path.GetDirectoryName(put_do_faila_nastroek);
                 }
             }
 
@@ -95,6 +98,7 @@ namespace DevList
 
                 if (papka_dlia_proiecta.ShowDialog() == DialogResult.OK)
                 {
+                    put_do_papki = papka_dlia_proiecta.SelectedPath;
                     put_do_faila_nastroek = papka_dlia_proiecta.SelectedPath + "\\DevList.ini";
                     put_do_bazi = papka_dlia_proiecta.SelectedPath + "\\БД\\БД.csv";
                     put_do_pomeschenii = papka_dlia_proiecta.SelectedPath + "\\БД\\Помещения.txt";

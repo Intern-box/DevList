@@ -160,7 +160,7 @@ namespace DevList
         }
         private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)
         {
-            Dobavit dobavit = new Dobavit(nastroiki, baza, koordinati_mishi);
+            Dobavit dobavit = new Dobavit(false, nastroiki, baza, koordinati_mishi);
 
             dobavit.ShowDialog();
 
@@ -196,6 +196,20 @@ namespace DevList
 
                 Chtenie_Bazi();
             }
+        }
+        private void toolStripMenuItem_Pravit_Vse_Click(object sender, EventArgs e)
+        {
+            Dobavit dobavit = new Dobavit(true, nastroiki, baza, koordinati_mishi);
+
+            dobavit.ShowDialog();
+
+            baza.izmeneniia_v_baze = true;
+
+            Chtenie_Bazi();
+        }
+        private void toolStripMenuItem_Context_Pravit_Vse_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItem_Pravit_Vse_Click(sender, e);
         }
         private void ToolStripMenuItem_Context_Pravit_Click(object sender, EventArgs e)
         {
@@ -247,7 +261,7 @@ namespace DevList
         }
         private void toolStripMenuItem_Redaktirovanie_Spiskov_Click(object sender, EventArgs e)
         {
-            Redaktirovanie_Spiskov redaktirovanie_spiskov = new Redaktirovanie_Spiskov();
+            Redaktirovanie_Spiskov redaktirovanie_spiskov = new Redaktirovanie_Spiskov(nastroiki);
 
             redaktirovanie_spiskov.ShowDialog();
         }
