@@ -61,12 +61,6 @@
     <Compile Include="Dobavit.Designer.cs">
       <DependentUpon>Dobavit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Otcheti_Po_MC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Otcheti_Po_MC.Designer.cs">
-      <DependentUpon>Otcheti_Po_MC.cs</DependentUpon>
-    </Compile>
     <Compile Include="Udalit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,12 +85,6 @@
     <Compile Include="Redaktirovanie_Spiskov.Designer.cs">
       <DependentUpon>Redaktirovanie_Spiskov.cs</DependentUpon>
     </Compile>
-    <Compile Include="Poisk.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Poisk.Designer.cs">
-      <DependentUpon>Poisk.cs</DependentUpon>
-    </Compile>
     <Compile Include="Glavnoe_Okno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,14 +105,8 @@
     <EmbeddedResource Include="Nastroiki.resx">
       <DependentUpon>Nastroiki.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Otcheti_Po_MC.resx">
-      <DependentUpon>Otcheti_Po_MC.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Redaktirovanie_Spiskov.resx">
       <DependentUpon>Redaktirovanie_Spiskov.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Poisk.resx">
-      <DependentUpon>Poisk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Glavnoe_Okno.resx">
       <DependentUpon>Glavnoe_Okno.cs</DependentUpon>
