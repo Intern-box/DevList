@@ -13,49 +13,49 @@ namespace DevList
 {
     public partial class Glavnoe_Okno : Form
     {
-        Nastroiki nastroiki;
-        ListViewHitTestInfo koordinati_mishi;
-        Baza baza;
+        Nastroiki nastroiki;                                            // Объект файла настроек. Хранит пути до необходимого.
+        ListViewHitTestInfo koordinati_mishi;                           // Объект хранит данные по кликам мыши по таблице.
+        Baza baza;                                                      // Объект для работы с базой.
 
-        public Glavnoe_Okno()
+        public Glavnoe_Okno()                                           // Только инициализация
         {
             InitializeComponent();
         }
-        public void Glavnoe_Okno_Load(object sender, EventArgs e)
+        public void Glavnoe_Okno_Load(object sender, EventArgs e)       // Начинаем загрузку базы
         {
             ToolStripMenuItem_Sozdat_Click(sender, e);
         }
         private void Chtenie_Bazi()                                     // Читаем данные из "списка" БД в таблицу главного окна
         {
-            listView_Tablica_Vivoda_Bazi.Items.Clear();
+            listView_Tablica_Vivoda_Bazi.Items.Clear();                 // Чистим таблицу вывода базы
 
             for (int i = 0; i < baza.baza.Count; i++)                   // Пересчёт порядковых номеров
             {                                                           // в столбце ID
                 baza.baza[i][0] = (i + 1).ToString();
             }
 
-            for (int i = 0; i < baza.baza.Count; i++)                   // Чтение строк в базе
-            {                                                           // в ListView
+            for (int i = 0; i < baza.baza.Count; i++)                   // Чтение строк в базе в ListView
+            {
                 ListViewItem stroka = new ListViewItem(baza.baza[i]);
 
                 listView_Tablica_Vivoda_Bazi.Items.Add(stroka);
             }
 
+                                                                        // Выравнивание по столбцам
             listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
-        private void Otkrit_Bazu(string put)
+        private void Otkrit_Bazu(string put)                            // Открываем файл с базой
         {
             baza = new Baza(put);
 
-            if (baza != null && baza.baza.Count > 0)
+            if (baza != null && baza.baza.Count > 0)                    // Читаем, если не пусто
             {
                 Chtenie_Bazi();
             }
-            else
-            {
-                listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
         }
+        
+                                                                        // При закрытии проверка на изменения.
+                                                                        // Если были, то предлагает сохранить.
         private void Glavnoe_Okno_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (baza.izmeneniia_v_baze)
