@@ -117,7 +117,7 @@ namespace DevList
                     textBox_Hostname.Text,
                     textBox_IP.Text,
                     comboBox_Izmenil.Text
-                };
+                    };
 
                     baza.baza.Insert(koordinati_mishi.Item.Index + 1, stroka);
                 }
@@ -138,7 +138,7 @@ namespace DevList
                     textBox_Hostname.Text,
                     textBox_IP.Text,
                     comboBox_Izmenil.Text
-                };
+                    };
 
                     baza.baza.Add(stroka);
                 }

@@ -16,7 +16,6 @@ namespace DevList
         Nastroiki nastroiki;
         ListViewHitTestInfo koordinati_mishi;
         Baza baza;
-        string[] stolbci;
 
         public Glavnoe_Okno()
         {
@@ -26,9 +25,7 @@ namespace DevList
         {
             ToolStripMenuItem_Sozdat_Click(sender, e);
         }
-
-        // Читаем данные из "списка" БД в таблицу главного окна
-        private void Chtenie_Bazi()
+        private void Chtenie_Bazi()                                     // Читаем данные из "списка" БД в таблицу главного окна
         {
             listView_Tablica_Vivoda_Bazi.Items.Clear();
 
@@ -59,21 +56,6 @@ namespace DevList
                 listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
-        private void Nastroika_Tablici_Vivoda_Bazi()
-        {
-            stolbci = null; Array.Resize(ref stolbci, 0);
-
-            for (int i = 0; i < listView_Tablica_Vivoda_Bazi.Columns.Count; i++)
-            {
-                Array.Resize(ref stolbci, i + 1);
-
-                stolbci[i] = listView_Tablica_Vivoda_Bazi.Columns[i].Text;
-            }
-        }
-        private void listView_Tablica_Vivoda_Bazi_MouseClick(object sender, MouseEventArgs e)
-        {
-            koordinati_mishi = listView_Tablica_Vivoda_Bazi.HitTest(e.X, e.Y);
-        }
         private void Glavnoe_Okno_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (baza.izmeneniia_v_baze)
@@ -95,6 +77,9 @@ namespace DevList
                 }
             }
         }
+
+        // Действия по кнопкам //////////////////////////////////////////////////////////////////////////////////
+
         private void listView_Tablica_Vivoda_Bazi_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             string[] stolbci = baza.baza[0];
@@ -111,9 +96,10 @@ namespace DevList
 
             ToolStripMenuItem_Perechitat.Visible = true;
         }
-
-        // Действия по кнопкам //////////////////////////////////////////////////////////////////////////////////
-
+        private void listView_Tablica_Vivoda_Bazi_MouseClick(object sender, MouseEventArgs e)
+        {
+            koordinati_mishi = listView_Tablica_Vivoda_Bazi.HitTest(e.X, e.Y);
+        }
         private void ToolStripMenuItem_Sozdat_Click(object sender, EventArgs e)
         {
             nastroiki = new Nastroiki();
@@ -121,8 +107,6 @@ namespace DevList
             nastroiki.ShowDialog();
 
             Otkrit_Bazu(nastroiki.put_do_bazi);
-
-            Nastroika_Tablici_Vivoda_Bazi();
         }
         private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)
         {
@@ -153,8 +137,6 @@ namespace DevList
                     nastroiki.Chitat();
 
                     Otkrit_Bazu(nastroiki.put_do_bazi);
-
-                    Nastroika_Tablici_Vivoda_Bazi();
                 }
             }
         }
@@ -174,46 +156,52 @@ namespace DevList
         }
         private void ToolStripMenuItem_Pravit_Click(object sender, EventArgs e)
         {
-            int nomer_stolbca = koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem);
-
-            if (nomer_stolbca == 1 || nomer_stolbca == 2 || nomer_stolbca == 5 || nomer_stolbca == 8 || nomer_stolbca == 9 || nomer_stolbca == 10 || nomer_stolbca == 11 || nomer_stolbca == 12)
+            if (koordinati_mishi != null)
             {
-                Izmenit_Stroku izmenit_stroku = new Izmenit_Stroku(baza, koordinati_mishi);
+                int nomer_stolbca = koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem);
 
-                izmenit_stroku.ShowDialog();
+                if (nomer_stolbca == 1 || nomer_stolbca == 2 || nomer_stolbca == 5 || nomer_stolbca == 8 || nomer_stolbca == 9 || nomer_stolbca == 10 || nomer_stolbca == 11 || nomer_stolbca == 12)
+                {
+                    Izmenit_Stroku izmenit_stroku = new Izmenit_Stroku(baza, koordinati_mishi);
 
-                baza.izmeneniia_v_baze = true;
+                    izmenit_stroku.ShowDialog();
 
-                Chtenie_Bazi();
+                    baza.izmeneniia_v_baze = true;
+
+                    Chtenie_Bazi();
+                }
+                else if (nomer_stolbca == 3 || nomer_stolbca == 4 || nomer_stolbca == 6 || nomer_stolbca == 7)
+                {
+                    Izmenit_Iz_Spiska izmenit_Iz_spiska = new Izmenit_Iz_Spiska(nastroiki, baza, koordinati_mishi);
+
+                    izmenit_Iz_spiska.ShowDialog();
+
+                    baza.izmeneniia_v_baze = true;
+
+                    Chtenie_Bazi();
+                }
             }
-            else if (nomer_stolbca == 3 || nomer_stolbca == 4 || nomer_stolbca == 6 || nomer_stolbca == 7)
-            {
-                Izmenit_Iz_Spiska izmenit_Iz_spiska = new Izmenit_Iz_Spiska(nastroiki, baza, koordinati_mishi);
-
-                izmenit_Iz_spiska.ShowDialog();
-
-                baza.izmeneniia_v_baze = true;
-
-                Chtenie_Bazi();
-            }
-        }
-        private void toolStripMenuItem_Pravit_Vse_Click(object sender, EventArgs e)
-        {
-            Dobavit dobavit = new Dobavit(true, nastroiki, baza, koordinati_mishi);
-
-            dobavit.ShowDialog();
-
-            baza.izmeneniia_v_baze = true;
-
-            Chtenie_Bazi();
-        }
-        private void toolStripMenuItem_Context_Pravit_Vse_Click(object sender, EventArgs e)
-        {
-            toolStripMenuItem_Pravit_Vse_Click(sender, e);
         }
         private void ToolStripMenuItem_Context_Pravit_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem_Pravit_Click(sender, e);
+        }
+        private void toolStripMenuItem_Pravit_Vse_Click(object sender, EventArgs e)
+        {
+            if (koordinati_mishi != null)
+            {
+                Dobavit dobavit = new Dobavit(true, nastroiki, baza, koordinati_mishi);
+
+                dobavit.ShowDialog();
+
+                baza.izmeneniia_v_baze = true;
+
+                Chtenie_Bazi();
+            }
+        }
+        private void toolStripMenuItem_Context_Pravit_Vse_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItem_Pravit_Vse_Click(sender, e);
         }
         private void ToolStripMenuItem_Udalit_Click(object sender, EventArgs e)
         {
