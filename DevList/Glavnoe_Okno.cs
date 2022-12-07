@@ -13,19 +13,19 @@ namespace DevList
 {
     public partial class Glavnoe_Okno : Form
     {
-        Nastroiki nastroiki;                                            // Объект файла настроек. Хранит пути до необходимого.
-        ListViewHitTestInfo koordinati_mishi;                           // Объект хранит данные по кликам мыши по таблице.
-        Baza baza;                                                      // Объект для работы с базой.
+        Nastroiki nastroiki;                                                                            // Объект файла настроек. Хранит пути до необходимого.
+        ListViewHitTestInfo koordinati_mishi;                                                           // Объект хранит данные по кликам мыши по таблице.
+        Baza baza;                                                                                      // Объект для работы с базой.
 
-        public Glavnoe_Okno()                                           // Только инициализация
+        public Glavnoe_Okno()                                                                           // Только инициализация
         {
             InitializeComponent();
         }
-        public void Glavnoe_Okno_Load(object sender, EventArgs e)       // Начинаем загрузку базы
+        public void Glavnoe_Okno_Load(object sender, EventArgs e)                                       // Начинаем загрузку базы
         {
             ToolStripMenuItem_Sozdat_Click(sender, e);
         }
-        private void Chtenie_Bazi()                                     // Читаем данные из "списка" БД в таблицу главного окна
+        private void Chtenie_Bazi()                                                                     // Читаем данные из "списка" БД в таблицу главного окна
         {
             listView_Tablica_Vivoda_Bazi.Items.Clear();                 // Чистим таблицу вывода базы
 
@@ -44,7 +44,7 @@ namespace DevList
                                                                         // Выравнивание по столбцам
             listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
-        private void Otkrit_Bazu(string put)                            // Открываем файл с базой
+        private void Otkrit_Bazu(string put)                                                            // Открываем файл с базой
         {
             baza = new Baza(put);
 
@@ -53,10 +53,7 @@ namespace DevList
                 Chtenie_Bazi();
             }
         }
-        
-                                                                        // При закрытии проверка на изменения.
-                                                                        // Если были, то предлагает сохранить.
-        private void Glavnoe_Okno_FormClosed(object sender, FormClosedEventArgs e)
+        private void Glavnoe_Okno_FormClosed(object sender, FormClosedEventArgs e)                      // При закрытии проверка на изменения. Если были, то предлагает сохранить.
         {
             if (baza.izmeneniia_v_baze)
             {
@@ -80,27 +77,21 @@ namespace DevList
 
         // Действия по кнопкам //////////////////////////////////////////////////////////////////////////////////
 
-        private void listView_Tablica_Vivoda_Bazi_ColumnClick(object sender, ColumnClickEventArgs e)
+        private void listView_Tablica_Vivoda_Bazi_ColumnClick(object sender, ColumnClickEventArgs e)    // Выравнивание по столбцу
         {
-            string[] stolbci = baza.baza[0];
-
-            baza.baza.RemoveAt(0);
-
             listView_Tablica_Vivoda_Bazi.Items.Clear();
 
             baza.baza.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
-
-            baza.baza.Insert(0, stolbci);
 
             Chtenie_Bazi();
 
             ToolStripMenuItem_Perechitat.Visible = true;
         }
-        private void listView_Tablica_Vivoda_Bazi_MouseClick(object sender, MouseEventArgs e)
+        private void listView_Tablica_Vivoda_Bazi_MouseClick(object sender, MouseEventArgs e)           // Сохраняем положение мыши при клике
         {
             koordinati_mishi = listView_Tablica_Vivoda_Bazi.HitTest(e.X, e.Y);
         }
-        private void ToolStripMenuItem_Sozdat_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Sozdat_Click(object sender, EventArgs e)                         // Создаём проект
         {
             nastroiki = new Nastroiki();
 
@@ -108,7 +99,7 @@ namespace DevList
 
             Otkrit_Bazu(nastroiki.put_do_bazi);
         }
-        private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)                         // Открываем проект
         {
             if (baza.izmeneniia_v_baze)
             {
@@ -140,7 +131,7 @@ namespace DevList
                 }
             }
         }
-        private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)                        // Добавляем строку в базу
         {
             Dobavit dobavit = new Dobavit(false, nastroiki, baza, koordinati_mishi);
 
@@ -154,7 +145,7 @@ namespace DevList
         {
             ToolStripMenuItem_Dobavit_Click(sender, e);
         }
-        private void ToolStripMenuItem_Pravit_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Pravit_Click(object sender, EventArgs e)                         // Правка отдельного элемента строки в базе
         {
             if (koordinati_mishi != null)
             {
@@ -186,7 +177,7 @@ namespace DevList
         {
             ToolStripMenuItem_Pravit_Click(sender, e);
         }
-        private void toolStripMenuItem_Pravit_Vse_Click(object sender, EventArgs e)
+        private void toolStripMenuItem_Pravit_Vse_Click(object sender, EventArgs e)                     // Правим строку в базе
         {
             if (koordinati_mishi != null)
             {
@@ -203,7 +194,7 @@ namespace DevList
         {
             toolStripMenuItem_Pravit_Vse_Click(sender, e);
         }
-        private void ToolStripMenuItem_Udalit_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Udalit_Click(object sender, EventArgs e)                         // Удаляем строку из базы
         {
             if (koordinati_mishi != null)
             {
@@ -220,11 +211,11 @@ namespace DevList
         {
             ToolStripMenuItem_Udalit_Click(sender, e);
         }
-        private void ToolStripMenuItem_Sohranit_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Sohranit_Click(object sender, EventArgs e)                       // Сохраняем базу
         {
             baza.Zapisat(nastroiki.put_do_bazi);
         }
-        private void ToolStripMenuItem_Sohranit_Kak_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Sohranit_Kak_Click(object sender, EventArgs e)                   // Сохраняем файл с базой
         {
             SaveFileDialog put_k_failu = new SaveFileDialog() { Filter = "*.CSV|*.csv" };
 
@@ -233,43 +224,31 @@ namespace DevList
                 baza.Zapisat(put_k_failu.FileName);
             }
         }
-        private void ToolStripMenuItem_Perechitat_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Perechitat_Click(object sender, EventArgs e)                     // Убираем фильтры
         {
-            string[] stolbci = baza.baza[0];
-
-            baza.baza.RemoveAt(0);
-
             baza.baza.Sort((x, y) => x[2].CompareTo(y[2]));
-
-            baza.baza.Insert(0, stolbci);
 
             Chtenie_Bazi();
 
             menuStrip_Glavnoe_Menu.Items[5].Visible = false;
         }
-        private void toolStripMenuItem_Redaktirovanie_Spiskov_Click(object sender, EventArgs e)
+        private void toolStripMenuItem_Redaktirovanie_Spiskov_Click(object sender, EventArgs e)         // Редактирование списков Помещений, Оборудования, Сотрудников
         {
             Redaktirovanie_Spiskov redaktirovanie_spiskov = new Redaktirovanie_Spiskov(nastroiki);
 
             redaktirovanie_spiskov.ShowDialog();
         }
-        private void ToolStripMenuItem_Obschee_KolVo_Po_Tipam_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Obschee_KolVo_Po_Tipam_Click(object sender, EventArgs e)         // Отчёт Кол-во по типам
         {
-            Otcheti_Po_MC otchet = new Otcheti_Po_MC(1);
-
-            otchet.ShowDialog();
+            
         }
-        private void ToolStripMenuItem_Obschee_KolVo_Po_Tipu_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Obschee_KolVo_Po_Tipu_Click(object sender, EventArgs e)          // Отчёт Кол-во по типу
         {
-            Otcheti_Po_MC otchet = new Otcheti_Po_MC(2);
-
-            otchet.ShowDialog();
+            
         }
-        private void ToolStripMenuItem_KolVo_V_Pomeschenii_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_KolVo_V_Pomeschenii_Click(object sender, EventArgs e)            // Отчёт Кол-во в помещении
         {
-            Otcheti_Po_MC otchet = new Otcheti_Po_MC(3);
-
-            otchet.ShowDialog();
+            
         }
     }
 }
