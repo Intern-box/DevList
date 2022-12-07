@@ -13,9 +13,9 @@ namespace DevList
 {
     public partial class Glavnoe_Okno : Form
     {
-        Nastroiki nastroiki;                                                                            // Объект файла настроек. Хранит пути до необходимого.
-        ListViewHitTestInfo koordinati_mishi;                                                           // Объект хранит данные по кликам мыши по таблице.
-        Baza baza;                                                                                      // Объект для работы с базой.
+        Nastroiki nastroiki;                                                                            // Объект файла настроек. Хранит пути до необходимого
+        ListViewHitTestInfo koordinati_mishi;                                                           // Объект хранит данные о кликах мыши по таблице
+        Baza baza;                                                                                      // Объект для работы с базой
 
         public Glavnoe_Okno()                                                                           // Только инициализация
         {
@@ -133,7 +133,7 @@ namespace DevList
         }
         private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)                        // Добавляем строку в базу
         {
-            Dobavit dobavit = new Dobavit(false, nastroiki, baza, koordinati_mishi);
+            Dobavit dobavit = new Dobavit(nastroiki, koordinati_mishi, baza, false);
 
             dobavit.ShowDialog();
 
@@ -181,7 +181,7 @@ namespace DevList
         {
             if (koordinati_mishi != null)
             {
-                Dobavit dobavit = new Dobavit(true, nastroiki, baza, koordinati_mishi);
+                Dobavit dobavit = new Dobavit(nastroiki, koordinati_mishi, baza, true);
 
                 dobavit.ShowDialog();
 

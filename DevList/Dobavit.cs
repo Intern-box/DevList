@@ -13,15 +13,13 @@ namespace DevList
 {
     public partial class Dobavit : Form
     {
-        ListViewHitTestInfo koordinati_mishi;
-        Baza baza;
-        Spisok pomescheniia;
-        Spisok oborudovanie;
-        Spisok sotrudniki;
-        Nastroiki nastroiki;
-        bool pravka;
+        Nastroiki nastroiki;                                                                                    // Переданный объект содержащий инфо об файле с настройками
+        Spisok pomescheniia, oborudovanie, sotrudniki;                                                          // Объекты для списков Помещений, оборудования и Сотрудников
+        ListViewHitTestInfo koordinati_mishi;                                                                   // Переданный объект с координатами мыши
+        Baza baza;                                                                                              // Переданный объект с базой
+        bool pravka;                                                                                            // Флаг, указывайщий на функционал для правки
 
-        public Dobavit(bool pravka, Nastroiki nastroiki, Baza baza, ListViewHitTestInfo koordinati_mishi)
+        public Dobavit(Nastroiki nastroiki, ListViewHitTestInfo koordinati_mishi, Baza baza, bool pravka)       // Инициируем объекты
         {
             InitializeComponent();
 
@@ -33,25 +31,22 @@ namespace DevList
 
             this.pravka = pravka;
         }
-        private void Dobavit_Load(object sender, EventArgs e)
+        private void Dobavit_Load(object sender, EventArgs e)                                                   // Добавляем/изменяем данные в окне
         {
             pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
-
             oborudovanie = new Spisok(nastroiki.put_do_tipov_oborudovaniia);
-
             sotrudniki = new Spisok(nastroiki.put_do_sotrudnikov);
-
-            // Заполняем поля combobox
-            comboBox_Pomeschenie.Items.AddRange(pomescheniia.spisok);
+            
+            comboBox_Pomeschenie.Items.AddRange(pomescheniia.spisok);                                           // Заполняем поля combobox
             comboBox_FIO.Items.AddRange(sotrudniki.spisok);
             comboBox_Izmenil.Items.AddRange(sotrudniki.spisok);
             comboBox_Tip.Items.AddRange(oborudovanie.spisok);
 
-            if (koordinati_mishi != null)
+            if (koordinati_mishi != null)                                                                       // Если координаты мыши в нужных пределах, обрабатываем
             {
                 if (koordinati_mishi.Item.Index >= 0 && koordinati_mishi.Item.Index < baza.baza.Count)
                 {
-                    string[] stroka = baza.baza[koordinati_mishi.Item.Index];
+                    string[] stroka = baza.baza[koordinati_mishi.Item.Index];                                   // Читаем данные из активной строки базы и переносим в форму
 
                     textBox_Data_Priobreteniia.Text = stroka[1];
                     textBox_InvNomer.Text = stroka[2];
@@ -68,14 +63,43 @@ namespace DevList
                 }
             }
 
-            if (pravka)
-            {
+            if (pravka)                                                                                         // Если, при инициировании, указан флаг для правки строки
+            {                                                                                                   // меняем вид окна
                 Text = "DevList - Править всё";
 
                 button_Dobavit.Text = "Править";
             }
         }
-        private void button_Dobavit_Click(object sender, EventArgs e)
+        private void Plus_Element(string put, ComboBox textovaia_stroka)                                        // Добавление элементов в список
+        {
+            File.AppendAllText(put, textovaia_stroka.Text + "\r\n");
+
+            textovaia_stroka.Items.Clear();
+
+            textovaia_stroka.Items.AddRange(File.ReadAllLines(put));
+        }
+        private void Minus_Element(string put, ComboBox textovaia_stroka)                                       // Удаление элементов из списка
+        {
+            string spisok_strok = "";
+
+            foreach (string stroka in File.ReadAllLines(put))
+            {
+                if (stroka != textovaia_stroka.Text)
+                {
+                    spisok_strok += stroka + "\r\n";
+                }
+            }
+
+            File.Delete(put);
+            File.AppendAllText(put, spisok_strok.ToString());
+
+            textovaia_stroka.Items.Clear();
+            textovaia_stroka.Items.AddRange(File.ReadAllLines(put));
+        }
+
+        // Действия по кнопкам ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void button_Dobavit_Click(object sender, EventArgs e)                                           // Добавляем данные в базу
         {
             if (pravka)
             {
@@ -96,11 +120,11 @@ namespace DevList
                     comboBox_Izmenil.Text
                 };
 
-                baza.baza[koordinati_mishi.Item.Index] = stroka;
+                baza.baza[koordinati_mishi.Item.Index] = stroka;                                                // По флагу для правки изменяем данные в базе по текущему индексу
             }
             else
             {
-                if (koordinati_mishi != null)
+                if (koordinati_mishi != null)                                                                   // Без флага правки и по проверке координат мыши
                 {
                     string[] stroka =
                     {
@@ -119,7 +143,7 @@ namespace DevList
                     comboBox_Izmenil.Text
                     };
 
-                    baza.baza.Insert(koordinati_mishi.Item.Index + 1, stroka);
+                    baza.baza.Insert(koordinati_mishi.Item.Index + 1, stroka);                                  // либо "встраиваем" данные в базу,
                 }
                 else
                 {
@@ -140,89 +164,47 @@ namespace DevList
                     comboBox_Izmenil.Text
                     };
 
-                    baza.baza.Add(stroka);
+                    baza.baza.Add(stroka);                                                                      // либо добавляем в конец
                 }
             }
 
             Close();
         }
-        private void button_Otmenit_Click(object sender, EventArgs e)
+        private void button_Otmenit_Click(object sender, EventArgs e)                                           // По кнопке Отменить закрываем форму
         {
             Close();
         }
-        private void Plus_Element(string put, ComboBox textovaia_stroka, string[] spisok)
+        private void button_pomeschenie_plus_Click(object sender, EventArgs e)                                  // Добавление в список Помещений по кнопке Плюс
         {
-            File.AppendAllText(put, textovaia_stroka.Text + "\r\n");
-
-            spisok = File.ReadAllLines(put);
-
-            textovaia_stroka.Items.Clear();
-
-            textovaia_stroka.Items.AddRange(spisok);
+            Plus_Element(nastroiki.put_do_pomeschenii, comboBox_Pomeschenie);
         }
-        private void Minus_Element(string put, ComboBox textovaia_stroka, string[] spisok)
+        private void button_pomeschenie_minus_Click(object sender, EventArgs e)                                 // Удаление из списка Помещений по кнопке Минус
         {
-            string[] massiv_strok = File.ReadAllLines(put);
-
-            string spisok_strok = "";
-
-            foreach (string stroka in massiv_strok)
-            {
-                if (stroka != textovaia_stroka.Text)
-                {
-                    spisok_strok += stroka + "\r\n";
-                }
-            }
-
-            File.Delete(put);
-            File.AppendAllText(put, spisok_strok.ToString());
-
-            spisok = File.ReadAllLines(put);
-            textovaia_stroka.Items.Clear();
-            textovaia_stroka.Items.AddRange(spisok);
+            Minus_Element(nastroiki.put_do_pomeschenii, comboBox_Pomeschenie);
         }
-        private void button_pomeschenie_plus_Click(object sender, EventArgs e)
+        private void button_fio_plus_Click(object sender, EventArgs e)                                          // Добавление в список Сотрудников по кнопке Плюс
         {
-            Plus_Element(nastroiki.put_do_pomeschenii, comboBox_Pomeschenie, pomescheniia.spisok);
+            Plus_Element(nastroiki.put_do_sotrudnikov, comboBox_FIO);
         }
-        private void button_pomeschenie_minus_Click(object sender, EventArgs e)
+        private void button_fio_minus_Click(object sender, EventArgs e)                                         // Удаление из списка Сотрудников по кнопке Минус
         {
-            Minus_Element(nastroiki.put_do_pomeschenii, comboBox_Pomeschenie, pomescheniia.spisok);
+            Minus_Element(nastroiki.put_do_sotrudnikov, comboBox_FIO);
         }
-        private void button_fio_plus_Click(object sender, EventArgs e)
+        private void button_Izmenil_plus_Click(object sender, EventArgs e)                                      // Добавление в список Сотрудников по кнопке Плюс
         {
-            Plus_Element(nastroiki.put_do_sotrudnikov, comboBox_FIO, sotrudniki.spisok);
+            Plus_Element(nastroiki.put_do_sotrudnikov, comboBox_FIO);
         }
-        private void button_fio_minus_Click(object sender, EventArgs e)
+        private void button_Izmenil_minus_Click(object sender, EventArgs e)                                     // Удаление из списка Сотрудников по кнопке Минус
         {
-            Minus_Element(nastroiki.put_do_sotrudnikov, comboBox_FIO, sotrudniki.spisok);
+            Minus_Element(nastroiki.put_do_sotrudnikov, comboBox_FIO);
         }
-        private void button_Izmenil_plus_Click(object sender, EventArgs e)
+        private void button_tip_plus_Click(object sender, EventArgs e)                                          // Добавление в список Оборудования по кнопке Плюс
         {
-            Plus_Element(nastroiki.put_do_sotrudnikov, comboBox_FIO, sotrudniki.spisok);
+            Plus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Tip);
         }
-        private void button_Izmenil_minus_Click(object sender, EventArgs e)
+        private void button_tip_minus_Click(object sender, EventArgs e)                                         // Удаление из списка Оборудования по кнопке Минус
         {
-            Minus_Element(nastroiki.put_do_sotrudnikov, comboBox_FIO, sotrudniki.spisok);
-        }
-        private void button_tip_plus_Click(object sender, EventArgs e)
-        {
-            Plus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Tip, oborudovanie.spisok);
-        }
-        private void button_tip_minus_Click(object sender, EventArgs e)
-        {
-            Minus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Tip, oborudovanie.spisok);
-        }
-        private void Dobavit_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button_Dobavit_Click(sender, e);
-            }
-            if (e.KeyCode == Keys.Escape)
-            {
-                button_Otmenit_Click(sender, e);
-            }
+            Minus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Tip);
         }
     }
 }
