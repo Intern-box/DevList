@@ -12,11 +12,11 @@ namespace DevList
 {
     public partial class Izmenit_Stroku : Form
     {
-        Baza baza;
-        int nomer_stroki;
-        int nomer_stolbca;
+        Baza baza;                                                                              // Переданный объект с базой
+        int nomer_stroki;                                                                       // Номер строки
+        int nomer_stolbca;                                                                      // Номер столбца
 
-        public Izmenit_Stroku(Baza baza, ListViewHitTestInfo koordinati_mishi)
+        public Izmenit_Stroku(Baza baza, ListViewHitTestInfo koordinati_mishi)                  // Инициируем объекты
         {
             InitializeComponent();
 
@@ -26,30 +26,22 @@ namespace DevList
 
             nomer_stolbca = koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem);
         }
-        private void Izmenit_Stroku_Load(object sender, EventArgs e)
+        private void Izmenit_Stroku_Load(object sender, EventArgs e)                            // Выводим изначальные данные
         {
             textBox_Tekst.Text = baza.baza[nomer_stroki][nomer_stolbca];
         }
-        private void button_Vipolnit_Click(object sender, EventArgs e)
+
+        // Действия по кнопкам ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void button_Vipolnit_Click(object sender, EventArgs e)                          // Передаём введённые данные
         {
             baza.baza[nomer_stroki][nomer_stolbca] = textBox_Tekst.Text;
 
             Close();
         }
-        private void button_Otmenit_Click(object sender, EventArgs e)
+        private void button_Otmenit_Click(object sender, EventArgs e)                           // Закрываем форму без сохранения
         {
             Close();
-        }
-        private void button_Otmenit_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button_Vipolnit_Click(sender, e);
-            }
-            if (e.KeyCode == Keys.Escape)
-            {
-                button_Otmenit_Click(sender, e);
-            }
         }
     }
 }

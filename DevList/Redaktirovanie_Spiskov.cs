@@ -13,61 +13,51 @@ namespace DevList
 {
     public partial class Redaktirovanie_Spiskov : Form
     {
-        Nastroiki nastroiki;
+        Nastroiki nastroiki;                                                                    // Переданный объект с адресами файлов
 
-        public Redaktirovanie_Spiskov(Nastroiki nastroiki)
+        public Redaktirovanie_Spiskov(Nastroiki nastroiki)                                      // Инициируем объекты
         {
             InitializeComponent();
 
             this.nastroiki = nastroiki;
         }
-        private void Redaktirovanie_Spiskov_Load(object sender, EventArgs e)
+        private void comboBox_Elementi_SelectionChangeCommitted(object sender, EventArgs e)     // При выборе соответствующего списка из него происходит загрузка данных
         {
-            
-        }
-        private void comboBox_Elementi_SelectionChangeCommitted(object sender, EventArgs e)
-        {
+            string[] spisok_strok_iz_faila = null;
+
             if (comboBox_Elementi.SelectedIndex == 0)
             {
-                string[] spisok_strok_iz_faila = File.ReadAllLines(nastroiki.put_do_pomeschenii);
-
-                textBox_Soderjimoe.Clear();
-
-                foreach (string stroka in spisok_strok_iz_faila)
-                {
-                    textBox_Soderjimoe.Text += stroka + "\r\n";
-                }
+                spisok_strok_iz_faila = File.ReadAllLines(nastroiki.put_do_pomeschenii);
             }
 
             if (comboBox_Elementi.SelectedIndex == 1)
             {
-                string[] spisok_strok_iz_faila = File.ReadAllLines(nastroiki.put_do_sotrudnikov);
-
-                textBox_Soderjimoe.Clear();
-
-                foreach (string stroka in spisok_strok_iz_faila)
-                {
-                    textBox_Soderjimoe.Text += stroka + "\r\n";
-                }
+                spisok_strok_iz_faila = File.ReadAllLines(nastroiki.put_do_sotrudnikov);
             }
 
             if (comboBox_Elementi.SelectedIndex == 2)
             {
-                string[] spisok_strok_iz_faila = File.ReadAllLines(nastroiki.put_do_tipov_oborudovaniia);
+                spisok_strok_iz_faila = File.ReadAllLines(nastroiki.put_do_tipov_oborudovaniia);
+            }
 
-                textBox_Soderjimoe.Clear();
+            textBox_Soderjimoe.Clear();
 
+            if (spisok_strok_iz_faila != null)
+            {
                 foreach (string stroka in spisok_strok_iz_faila)
                 {
                     textBox_Soderjimoe.Text += stroka + "\r\n";
                 }
             }
         }
-        private void button_Otmenit_Click(object sender, EventArgs e)
+
+        // Действия по кнопкам ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void button_Otmenit_Click(object sender, EventArgs e)                           // Закрываем форму без обработки
         {
             Close();
         }
-        private void button_Sohranit_Click(object sender, EventArgs e)
+        private void button_Sohranit_Click(object sender, EventArgs e)                          // По кнопке Сохранить сохраняем данные в соответствующие файлы
         {
             if (textBox_Soderjimoe.Text != "")
             {
@@ -85,17 +75,6 @@ namespace DevList
                 {
                     File.WriteAllText(nastroiki.put_do_tipov_oborudovaniia, textBox_Soderjimoe.Text + "\r\n");
                 }
-            }
-        }
-        private void Redaktirovanie_Spiskov_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button_Sohranit_Click(sender, e);
-            }
-            if (e.KeyCode == Keys.Escape)
-            {
-                button_Otmenit_Click(sender, e);
             }
         }
     }

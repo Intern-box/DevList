@@ -13,15 +13,13 @@ namespace DevList
 {
     public partial class Izmenit_Iz_Spiska : Form
     {
-        Baza baza;
-        Spisok pomescheniia;
-        Spisok oborudovanie;
-        Spisok sotrudniki;
-        Nastroiki nastroiki;
-        int nomer_stolbca, nomer_stroki;
-        string iz, inv_nomer, naimenovanie;
+        Baza baza;                                                                                          // Переданный объект с базой
+        Spisok pomescheniia, oborudovanie, sotrudniki;                                                      // Объекты с данными по спискам Помещений, Оборудования и Сотрудников
+        Nastroiki nastroiki;                                                                                // Переданный объект с данными, хранящий адреса к нужным файлам
+        int nomer_stolbca, nomer_stroki;                                                                    // Переданные номера столбца и строки
+        string iz, inv_nomer, naimenovanie;                                                                 // Данные для Истории перемещений оборудования
 
-        public Izmenit_Iz_Spiska(Nastroiki nastroiki, Baza baza, ListViewHitTestInfo koordinati_mishi)
+        public Izmenit_Iz_Spiska(Nastroiki nastroiki, Baza baza, ListViewHitTestInfo koordinati_mishi)      // Инициируем компоненты
         {
             InitializeComponent();
 
@@ -33,27 +31,25 @@ namespace DevList
 
             nomer_stolbca = koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem);
         }
-        private void Izmenit_Iz_Spiska_Load(object sender, EventArgs e)
+        private void Izmenit_Iz_Spiska_Load(object sender, EventArgs e)                                     // Подготовка к обработке данных
         {
             pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
-
             oborudovanie = new Spisok(nastroiki.put_do_tipov_oborudovaniia);
-
             sotrudniki = new Spisok(nastroiki.put_do_sotrudnikov);
-
-            if (nomer_stolbca == 3)                                                // Помещения
+                                                                                                            // Изменяем форму под каждый список в соответствии с номером столбца
+            if (nomer_stolbca == 3)                                                                         // Помещения
             {
                 label_Nazvanie.Text = "Помещения";
 
-                iz = baza.baza[nomer_stroki][nomer_stolbca];
+                iz = baza.baza[nomer_stroki][nomer_stolbca];                                                // Сохраняем данные для Истории перемещений
                 inv_nomer = baza.baza[nomer_stroki][2];
                 naimenovanie = baza.baza[nomer_stroki][5];
 
-                comboBox_Spisok_Vibora.Items.AddRange(pomescheniia.spisok);
+                comboBox_Spisok_Vibora.Items.AddRange(pomescheniia.spisok);                                 // Загружаем список
 
-                comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
+                comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];               // Ищим в списке совпадение. Если находим, выводим
             }
-            else if (nomer_stolbca == 4)                                           // Сотрудники
+            else if (nomer_stolbca == 4)                                                                    // Сотрудники
             {
                 label_Nazvanie.Text = "Сотрудники";
 
@@ -61,7 +57,7 @@ namespace DevList
 
                 comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
             }
-            else if (nomer_stolbca == 6)                                           // Тип
+            else if (nomer_stolbca == 6)                                                                    // Оборудование
             {
                 label_Nazvanie.Text = "Тип";
 
@@ -69,7 +65,7 @@ namespace DevList
 
                 comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
             }
-            else if (nomer_stolbca == 7)                                           // Состояние
+            else if (nomer_stolbca == 7)                                                                    // Состояние
             {
                 label_Nazvanie.Text = "Состояние";
 
@@ -85,7 +81,36 @@ namespace DevList
                 Close();
             }
         }
-        private void button_Vipolnit_Click(object sender, EventArgs e)
+        private void Plus_Element(string put, ComboBox textovaia_stroka)                                    // Добавление элементов в список
+        {
+            File.AppendAllText(put, textovaia_stroka.Text + "\r\n");
+
+            textovaia_stroka.Items.Clear();
+
+            textovaia_stroka.Items.AddRange(File.ReadAllLines(put));
+        }
+        private void Minus_Element(string put, ComboBox textovaia_stroka)                                   // Удаление элементов из списка
+        {
+            string spisok_strok = "";
+
+            foreach (string stroka in File.ReadAllLines(put))
+            {
+                if (stroka != textovaia_stroka.Text)
+                {
+                    spisok_strok += stroka + "\r\n";
+                }
+            }
+
+            File.Delete(put);
+            File.AppendAllText(put, spisok_strok.ToString());
+
+            textovaia_stroka.Items.Clear();
+            textovaia_stroka.Items.AddRange(File.ReadAllLines(put));
+        }
+
+        // Действия по кнопкам ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void button_Vipolnit_Click(object sender, EventArgs e)                                      // Обработка данных
         {
             // Если изменяется Помещение, то происходит запись в папку "История перемещений"
             // В файл с названием помещения КУДА перемещают МЦ добавляется строка
@@ -106,80 +131,38 @@ namespace DevList
 
             Close();
         }
-        private void button_Otmenit_Click(object sender, EventArgs e)
+        private void button_Otmenit_Click(object sender, EventArgs e)                                       // Закрываем форму без обработки
         {
             Close();
         }
-        private void Plus_Element(string put, ComboBox textovaia_stroka, string[] spisok)
-        {
-            File.AppendAllText(put, textovaia_stroka.Text + "\r\n");
-
-            spisok = File.ReadAllLines(put);
-
-            textovaia_stroka.Items.Clear();
-
-            textovaia_stroka.Items.AddRange(spisok);
-        }
-        private void Minus_Element(string put, ComboBox textovaia_stroka, string[] spisok)
-        {
-            string[] massiv_strok = File.ReadAllLines(put);
-
-            string spisok_strok = "";
-
-            foreach (string stroka in massiv_strok)
-            {
-                if (stroka != textovaia_stroka.Text)
-                {
-                    spisok_strok += stroka + "\r\n";
-                }
-            }
-
-            File.Delete(put);
-            File.AppendAllText(put, spisok_strok.ToString());
-
-            spisok = File.ReadAllLines(put);
-            textovaia_stroka.Items.Clear();
-            textovaia_stroka.Items.AddRange(spisok);
-        }
-        private void Izmenit_Iz_Spiska_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button_Vipolnit_Click(sender, e);
-            }
-            if (e.KeyCode == Keys.Escape)
-            {
-                button_Otmenit_Click(sender, e);
-            }
-        }
-        private void button_tip_plus_Click(object sender, EventArgs e)
+        private void button_tip_plus_Click(object sender, EventArgs e)                                      // Добавление в список Оборудования по кнопке Плюс
         {
             if (nomer_stolbca == 3)            // Помещения
             {
-                Plus_Element(nastroiki.put_do_pomeschenii, comboBox_Spisok_Vibora, pomescheniia.spisok);
+                Plus_Element(nastroiki.put_do_pomeschenii, comboBox_Spisok_Vibora);
             }
             else if (nomer_stolbca == 4)       // Сотрудники
             {
-                Plus_Element(nastroiki.put_do_sotrudnikov, comboBox_Spisok_Vibora, sotrudniki.spisok);
+                Plus_Element(nastroiki.put_do_sotrudnikov, comboBox_Spisok_Vibora);
             }
             else if (nomer_stolbca == 6)       // Тип
             {
-                Plus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Spisok_Vibora, oborudovanie.spisok);
+                Plus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Spisok_Vibora);
             }
         }
-        private void button_tip_minus_Click(object sender, EventArgs e)
+        private void button_tip_minus_Click(object sender, EventArgs e)                                     // Удаление из списка Оборудования по кнопке Минус
         {
             if (nomer_stolbca == 3)            // Помещения
             {
-                Minus_Element(nastroiki.put_do_pomeschenii, comboBox_Spisok_Vibora, pomescheniia.spisok);
+                Minus_Element(nastroiki.put_do_pomeschenii, comboBox_Spisok_Vibora);
             }
             else if (nomer_stolbca == 4)       // Сотрудники
             {
-                Minus_Element(nastroiki.put_do_sotrudnikov, comboBox_Spisok_Vibora, sotrudniki.spisok);
+                Minus_Element(nastroiki.put_do_sotrudnikov, comboBox_Spisok_Vibora);
             }
             else if (nomer_stolbca == 6)       // Тип
             {
-                Minus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Spisok_Vibora, oborudovanie.spisok);
+                Minus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Spisok_Vibora);
             }
         }
     }

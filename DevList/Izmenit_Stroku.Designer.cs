@@ -54,7 +54,6 @@ namespace DevList
             this.button_Otmenit.Text = "Отменить";
             this.button_Otmenit.UseVisualStyleBackColor = true;
             this.button_Otmenit.Click += new System.EventHandler(this.button_Otmenit_Click);
-            this.button_Otmenit.KeyUp += new System.Windows.Forms.KeyEventHandler(this.button_Otmenit_KeyUp);
             // 
             // button_Vipolnit
             // 
