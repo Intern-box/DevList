@@ -19,7 +19,7 @@ namespace DevList
         Baza baza;                                                                                              // Переданный объект с базой
         byte flag;                                                                                              // Флаг, указывайщий на функционал
                                                                                                                 // (0 = добавить, 1 = правка, 2 = поиск)
-        public List<string[]> rezultat;                                                                         // Результат поиска
+        public List<string[]> zapros;                                                                           // Запрос для поиска
 
         public Dobavit(Nastroiki nastroiki, ListViewHitTestInfo koordinati_mishi, Baza baza, byte flag)         // Инициируем объекты
         {
@@ -149,7 +149,7 @@ namespace DevList
                     comboBox_Izmenil.Text
                 };
 
-                rezultat = baza.poisk(stroka);
+                zapros = baza.poisk_strok(stroka);                                                                    // Запрос для поиска
             }
             else
             {

@@ -248,7 +248,7 @@ namespace DevList
 
                 baza.izmeneniia_v_baze = true;
 
-                Chtenie_Bazi(poisk.rezultat);
+                Chtenie_Bazi(poisk.zapros);
 
                 menuStrip_Glavnoe_Menu.Items[5].Visible = true;
             }
@@ -259,7 +259,9 @@ namespace DevList
         }
         private void textBox_Obschii_Poisk_TextChanged(object sender, EventArgs e)                      // Общий поиск в форме
         {
+            Chtenie_Bazi(baza.obschii_poisk(textBox_Obschii_Poisk.Text));
 
+            menuStrip_Glavnoe_Menu.Items[5].Visible = true;
         }
         private void ToolStripMenuItem_Obschee_KolVo_Po_Tipam_Click(object sender, EventArgs e)         // Отчёт Кол-во по типам
         {

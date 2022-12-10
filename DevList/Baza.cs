@@ -36,36 +36,70 @@ namespace DevList
 
             izmeneniia_v_baze = false;
         }
-        public List<string[]> poisk(string[] zapros)
+        public List<string[]> obschii_poisk(string zapros)              // Общий поиск в форме
         {
-            if (baza[0].Length >= zapros.Length)
+            List<string[]> resultat = new List<string[]>();
+
+            bool sovpadenie = false;
+
+            foreach (string[] stroka in baza)
             {
-                List<string[]> resultat = new List<string[]>();
-
-                bool sovpadenie = false;
-
-                foreach (string[] stroka in baza)
+                for (int i = 1; i < baza[0].Length; i++)
                 {
-                    for (int i = 1; i < baza[0].Length; i++)
+                    if (stroka[i] == zapros)
                     {
-                        if (stroka[i] == zapros[i])
-                        {
-                            sovpadenie = true;
-                        }
-                    }
-
-                    if (sovpadenie)
-                    {
-                        resultat.Add(stroka);
-
-                        sovpadenie = false;
+                        sovpadenie = true;
                     }
                 }
 
-                return resultat;
+                if (sovpadenie)
+                {
+                    resultat.Add(stroka);
+                }
+
+                sovpadenie = false;
             }
 
-            return null;
+            return resultat;
+        }
+        public List<string[]> poisk_strok(string[] zapros)              // Поиск среди столбцов
+        {
+            List<string[]> resultat = new List<string[]>();
+
+            byte skolko_nado_naiti_sovpadenii = 0;
+
+            for (int i = 1; i < zapros.Length; i++)
+            {
+                if (zapros[i] != "")
+                {
+                    skolko_nado_naiti_sovpadenii++;
+                }
+            }
+
+            byte naideno_sovpadenii = 0;
+
+            foreach (string[] stroka in baza)
+            {
+                for (int i = 1; i < baza[0].Length; i++)
+                {
+                    if (zapros[i] != "")
+                    {
+                        if (stroka[i] == zapros[i])
+                        {
+                            naideno_sovpadenii++;
+                        }
+                    }
+                }
+
+                if (naideno_sovpadenii >= skolko_nado_naiti_sovpadenii)
+                {
+                    resultat.Add(stroka);
+                }
+
+                naideno_sovpadenii = 0;
+            }
+
+            return resultat;
         }
     }
 }
