@@ -36,5 +36,36 @@ namespace DevList
 
             izmeneniia_v_baze = false;
         }
+        public List<string[]> poisk(string[] zapros)
+        {
+            if (baza[0].Length >= zapros.Length)
+            {
+                List<string[]> resultat = new List<string[]>();
+
+                bool sovpadenie = false;
+
+                foreach (string[] stroka in baza)
+                {
+                    for (int i = 1; i < baza[0].Length; i++)
+                    {
+                        if (stroka[i] == zapros[i])
+                        {
+                            sovpadenie = true;
+                        }
+                    }
+
+                    if (sovpadenie)
+                    {
+                        resultat.Add(stroka);
+
+                        sovpadenie = false;
+                    }
+                }
+
+                return resultat;
+            }
+
+            return null;
+        }
     }
 }

@@ -17,9 +17,11 @@ namespace DevList
         Spisok pomescheniia, oborudovanie, sotrudniki;                                                          // Объекты для списков Помещений, оборудования и Сотрудников
         ListViewHitTestInfo koordinati_mishi;                                                                   // Переданный объект с координатами мыши
         Baza baza;                                                                                              // Переданный объект с базой
-        bool pravka;                                                                                            // Флаг, указывайщий на функционал для правки
+        byte flag;                                                                                              // Флаг, указывайщий на функционал
+                                                                                                                // (0 = добавить, 1 = правка, 2 = поиск)
+        public List<string[]> rezultat;                                                                         // Результат поиска
 
-        public Dobavit(Nastroiki nastroiki, ListViewHitTestInfo koordinati_mishi, Baza baza, bool pravka)       // Инициируем объекты
+        public Dobavit(Nastroiki nastroiki, ListViewHitTestInfo koordinati_mishi, Baza baza, byte flag)         // Инициируем объекты
         {
             InitializeComponent();
 
@@ -29,7 +31,7 @@ namespace DevList
 
             this.koordinati_mishi = koordinati_mishi;
 
-            this.pravka = pravka;
+            this.flag = flag;
         }
         private void Dobavit_Load(object sender, EventArgs e)                                                   // Добавляем/изменяем данные в окне
         {
@@ -63,11 +65,17 @@ namespace DevList
                 }
             }
 
-            if (pravka)                                                                                         // Если, при инициировании, указан флаг для правки строки
+            if (flag == 1)                                                                                      // Если, при инициировании, указан флаг для правки строки
             {                                                                                                   // меняем вид окна
                 Text = "DevList - Править всё";
 
                 button_Dobavit.Text = "Править";
+            }
+            if (flag == 2)                                                                                      // Если, при инициировании, указан флаг для поиска строк
+            {                                                                                                   // меняем вид окна
+                Text = "DevList - Поиск";
+
+                button_Dobavit.Text = "Искать";
             }
         }
         private void Plus_Element(string put, ComboBox textovaia_stroka)                                        // Добавление элементов в список
@@ -99,9 +107,9 @@ namespace DevList
 
         // Действия по кнопкам ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        private void button_Dobavit_Click(object sender, EventArgs e)                                           // Добавляем данные в базу
+        private void button_Dobavit_Click(object sender, EventArgs e)                                           // Обработка данных
         {
-            if (pravka)
+            if (flag == 1)
             {
                 string[] stroka =
                 {
@@ -121,6 +129,27 @@ namespace DevList
                 };
 
                 baza.baza[koordinati_mishi.Item.Index] = stroka;                                                // По флагу для правки изменяем данные в базе по текущему индексу
+            }
+            else if (flag == 2)
+            {
+                string[] stroka =
+                {
+                    (koordinati_mishi.Item.Index).ToString(),
+                    textBox_Data_Priobreteniia.Text,
+                    textBox_InvNomer.Text,
+                    comboBox_Pomeschenie.Text,
+                    comboBox_FIO.Text,
+                    textBox_Naimenovanie.Text,
+                    comboBox_Tip.Text,
+                    comboBox_Sostoianie.Text,
+                    textBox_Inventarizaciia.Text,
+                    textBox_Kommentarii.Text,
+                    textBox_Hostname.Text,
+                    textBox_IP.Text,
+                    comboBox_Izmenil.Text
+                };
+
+                rezultat = baza.poisk(stroka);
             }
             else
             {
