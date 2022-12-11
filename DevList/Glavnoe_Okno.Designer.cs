@@ -216,7 +216,7 @@ namespace DevList
             // ToolStripMenuItem_Context_Poisk
             // 
             this.ToolStripMenuItem_Context_Poisk.Name = "ToolStripMenuItem_Context_Poisk";
-            this.ToolStripMenuItem_Context_Poisk.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Context_Poisk.Size = new System.Drawing.Size(141, 22);
             this.ToolStripMenuItem_Context_Poisk.Text = "Поиск";
             this.ToolStripMenuItem_Context_Poisk.Click += new System.EventHandler(this.ToolStripMenuItem_Context_Poisk_Click);
             // 
@@ -250,28 +250,28 @@ namespace DevList
             // ToolStripMenuItem_Sozdat
             // 
             this.ToolStripMenuItem_Sozdat.Name = "ToolStripMenuItem_Sozdat";
-            this.ToolStripMenuItem_Sozdat.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Sozdat.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Sozdat.Text = "Создать";
             this.ToolStripMenuItem_Sozdat.Click += new System.EventHandler(this.ToolStripMenuItem_Sozdat_Click);
             // 
             // ToolStripMenuItem_Otkrit
             // 
             this.ToolStripMenuItem_Otkrit.Name = "ToolStripMenuItem_Otkrit";
-            this.ToolStripMenuItem_Otkrit.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Otkrit.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Otkrit.Text = "Открыть";
             this.ToolStripMenuItem_Otkrit.Click += new System.EventHandler(this.ToolStripMenuItem_Otkrit_Click);
             // 
             // ToolStripMenuItem_Sohranit
             // 
             this.ToolStripMenuItem_Sohranit.Name = "ToolStripMenuItem_Sohranit";
-            this.ToolStripMenuItem_Sohranit.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Sohranit.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Sohranit.Text = "Сохранить";
             this.ToolStripMenuItem_Sohranit.Click += new System.EventHandler(this.ToolStripMenuItem_Sohranit_Click);
             // 
             // ToolStripMenuItem_Sohranit_Kak
             // 
             this.ToolStripMenuItem_Sohranit_Kak.Name = "ToolStripMenuItem_Sohranit_Kak";
-            this.ToolStripMenuItem_Sohranit_Kak.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Sohranit_Kak.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItem_Sohranit_Kak.Text = "Сохранить как...";
             this.ToolStripMenuItem_Sohranit_Kak.Click += new System.EventHandler(this.ToolStripMenuItem_Sohranit_Kak_Click);
             // 
@@ -289,28 +289,28 @@ namespace DevList
             // ToolStripMenuItem_Dobavit
             // 
             this.ToolStripMenuItem_Dobavit.Name = "ToolStripMenuItem_Dobavit";
-            this.ToolStripMenuItem_Dobavit.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Dobavit.Size = new System.Drawing.Size(150, 22);
             this.ToolStripMenuItem_Dobavit.Text = "Добавить";
             this.ToolStripMenuItem_Dobavit.Click += new System.EventHandler(this.ToolStripMenuItem_Dobavit_Click);
             // 
             // ToolStripMenuItem_Pravit
             // 
             this.ToolStripMenuItem_Pravit.Name = "ToolStripMenuItem_Pravit";
-            this.ToolStripMenuItem_Pravit.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Pravit.Size = new System.Drawing.Size(150, 22);
             this.ToolStripMenuItem_Pravit.Text = "Править";
             this.ToolStripMenuItem_Pravit.Click += new System.EventHandler(this.ToolStripMenuItem_Pravit_Click);
             // 
             // toolStripMenuItem_Pravit_Vse
             // 
             this.toolStripMenuItem_Pravit_Vse.Name = "toolStripMenuItem_Pravit_Vse";
-            this.toolStripMenuItem_Pravit_Vse.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem_Pravit_Vse.Size = new System.Drawing.Size(150, 22);
             this.toolStripMenuItem_Pravit_Vse.Text = "Править всё";
             this.toolStripMenuItem_Pravit_Vse.Click += new System.EventHandler(this.toolStripMenuItem_Pravit_Vse_Click);
             // 
             // ToolStripMenuItem_Udalit
             // 
             this.ToolStripMenuItem_Udalit.Name = "ToolStripMenuItem_Udalit";
-            this.ToolStripMenuItem_Udalit.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Udalit.Size = new System.Drawing.Size(150, 22);
             this.ToolStripMenuItem_Udalit.Text = "Удалить";
             this.ToolStripMenuItem_Udalit.Click += new System.EventHandler(this.ToolStripMenuItem_Udalit_Click);
             // 
@@ -377,7 +377,7 @@ namespace DevList
             this.textBox_Obschii_Poisk.Name = "textBox_Obschii_Poisk";
             this.textBox_Obschii_Poisk.Size = new System.Drawing.Size(310, 23);
             this.textBox_Obschii_Poisk.TabIndex = 3;
-            this.textBox_Obschii_Poisk.TextChanged += new System.EventHandler(this.textBox_Obschii_Poisk_TextChanged);
+            this.textBox_Obschii_Poisk.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Obschii_Poisk_KeyUp);
             // 
             // label_Obschii_Poisk
             // 

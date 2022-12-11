@@ -257,11 +257,14 @@ namespace DevList
         {
             ToolStripMenuItem_Poisk_Click(sender, e);
         }
-        private void textBox_Obschii_Poisk_TextChanged(object sender, EventArgs e)                      // Общий поиск в форме
+        private void textBox_Obschii_Poisk_KeyUp(object sender, KeyEventArgs e)                         // Поиск по всей форме по нажатию Enter
         {
-            Chtenie_Bazi(baza.obschii_poisk(textBox_Obschii_Poisk.Text));
+            if (e.KeyCode == Keys.Enter)
+            {
+                Chtenie_Bazi(baza.obschii_poisk(textBox_Obschii_Poisk.Text));
 
-            menuStrip_Glavnoe_Menu.Items[5].Visible = true;
+                menuStrip_Glavnoe_Menu.Items[5].Visible = true;
+            }
         }
         private void ToolStripMenuItem_Obschee_KolVo_Po_Tipam_Click(object sender, EventArgs e)         // Отчёт Кол-во по типам
         {

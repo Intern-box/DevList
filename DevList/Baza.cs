@@ -46,7 +46,7 @@ namespace DevList
             {
                 for (int i = 1; i < baza[0].Length; i++)
                 {
-                    if (stroka[i] == zapros)
+                    if (stroka[i].IndexOf(zapros, StringComparison.CurrentCultureIgnoreCase) != -1)
                     {
                         sovpadenie = true;
                     }
@@ -84,7 +84,7 @@ namespace DevList
                 {
                     if (zapros[i] != "")
                     {
-                        if (stroka[i] == zapros[i])
+                        if (stroka[i].IndexOf(zapros[i], StringComparison.CurrentCultureIgnoreCase) != -1)
                         {
                             naideno_sovpadenii++;
                         }
