@@ -70,7 +70,7 @@ namespace DevList
 
             for (int i = 1; i < zapros.Length; i++)
             {
-                if (zapros[i] != "")
+                if (zapros[i] != null && zapros[i] != "")
                 {
                     skolko_nado_naiti_sovpadenii++;
                 }
@@ -82,7 +82,7 @@ namespace DevList
             {
                 for (int i = 1; i < baza[0].Length; i++)
                 {
-                    if (zapros[i] != "")
+                    if (zapros[i] != null && zapros[i] != "")
                     {
                         if (stroka[i].IndexOf(zapros[i], StringComparison.CurrentCultureIgnoreCase) != -1)
                         {

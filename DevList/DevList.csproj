@@ -48,6 +48,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Baza.cs" />
+    <Compile Include="Podgotovka_K_Otchetu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Podgotovka_K_Otchetu.Designer.cs">
+      <DependentUpon>Podgotovka_K_Otchetu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Otcheti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Otcheti.Designer.cs">
+      <DependentUpon>Otcheti.cs</DependentUpon>
+    </Compile>
     <Compile Include="Nastroiki.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +108,9 @@
     <EmbeddedResource Include="Dobavit.resx">
       <DependentUpon>Dobavit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Podgotovka_K_Otchetu.resx">
+      <DependentUpon>Podgotovka_K_Otchetu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Izmenit_Stroku.resx">
       <DependentUpon>Izmenit_Stroku.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Nastroiki.resx">
       <DependentUpon>Nastroiki.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Otcheti.resx">
+      <DependentUpon>Otcheti.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Redaktirovanie_Spiskov.resx">
       <DependentUpon>Redaktirovanie_Spiskov.cs</DependentUpon>

@@ -65,7 +65,6 @@ namespace DevList
             this.toolStripMenuItem_Redaktirovanie_Spiskov = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Otcheti = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_KolVo_V_Pomeschenii = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Perechitat = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_Obschii_Poisk = new System.Windows.Forms.TextBox();
@@ -332,7 +331,6 @@ namespace DevList
             // 
             this.ToolStripMenuItem_Otcheti.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam,
-            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu,
             this.ToolStripMenuItem_KolVo_V_Pomeschenii});
             this.ToolStripMenuItem_Otcheti.Name = "ToolStripMenuItem_Otcheti";
             this.ToolStripMenuItem_Otcheti.Size = new System.Drawing.Size(63, 21);
@@ -344,13 +342,6 @@ namespace DevList
             this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam.Size = new System.Drawing.Size(248, 22);
             this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam.Text = "Общее кол-во МЦ по типам";
             this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam.Click += new System.EventHandler(this.ToolStripMenuItem_Obschee_KolVo_Po_Tipam_Click);
-            // 
-            // ToolStripMenuItem_Obschee_KolVo_Po_Tipu
-            // 
-            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu.Name = "ToolStripMenuItem_Obschee_KolVo_Po_Tipu";
-            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu.Size = new System.Drawing.Size(248, 22);
-            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu.Text = "Общее кол-во МЦ по типу";
-            this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu.Click += new System.EventHandler(this.ToolStripMenuItem_Obschee_KolVo_Po_Tipu_Click);
             // 
             // ToolStripMenuItem_KolVo_V_Pomeschenii
             // 
@@ -440,7 +431,6 @@ namespace DevList
         private System.Windows.Forms.Label label_Obschii_Poisk;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Otcheti;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Obschee_KolVo_Po_Tipam;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Obschee_KolVo_Po_Tipu;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_KolVo_V_Pomeschenii;
         private System.Windows.Forms.ColumnHeader columnHeader_ID;
         private System.Windows.Forms.ColumnHeader columnHeader_Data;

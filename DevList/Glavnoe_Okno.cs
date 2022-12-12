@@ -27,22 +27,21 @@ namespace DevList
         }
         private void Chtenie_Bazi(List<string[]> tablica)                                               // Читаем данные из "списка" БД в таблицу главного окна
         {
-            listView_Tablica_Vivoda_Bazi.Items.Clear();                 // Чистим таблицу вывода базы
+            listView_Tablica_Vivoda_Bazi.Items.Clear();                                                 // Чистим таблицу вывода базы
 
-            for (int i = 0; i < tablica.Count; i++)                     // Пересчёт порядковых номеров
-            {                                                           // в столбце ID
+            for (int i = 0; i < tablica.Count; i++)                                                     // Пересчёт порядковых номеров
+            {                                                                                           // в столбце ID
                 tablica[i][0] = (i + 1).ToString();
             }
 
-            for (int i = 0; i < tablica.Count; i++)                     // Чтение строк в базе в ListView
+            for (int i = 0; i < tablica.Count; i++)                                                     // Чтение строк в базе в ListView
             {
                 ListViewItem stroka = new ListViewItem(tablica[i]);
 
                 listView_Tablica_Vivoda_Bazi.Items.Add(stroka);
             }
 
-                                                                        // Выравнивание по столбцам
-            listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            listView_Tablica_Vivoda_Bazi.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);     // Выравнивание по столбцам
         }
         private void Otkrit_Bazu(string put)                                                            // Открываем файл с базой
         {
@@ -248,9 +247,12 @@ namespace DevList
 
                 baza.izmeneniia_v_baze = true;
 
-                Chtenie_Bazi(poisk.zapros);
+                if (poisk.zapros != null)
+                {
+                    Chtenie_Bazi(poisk.zapros);
 
-                menuStrip_Glavnoe_Menu.Items[5].Visible = true;
+                    menuStrip_Glavnoe_Menu.Items[5].Visible = true;
+                }
             }
         }
         private void ToolStripMenuItem_Context_Poisk_Click(object sender, EventArgs e)
@@ -268,15 +270,15 @@ namespace DevList
         }
         private void ToolStripMenuItem_Obschee_KolVo_Po_Tipam_Click(object sender, EventArgs e)         // Отчёт Кол-во по типам
         {
-            
-        }
-        private void ToolStripMenuItem_Obschee_KolVo_Po_Tipu_Click(object sender, EventArgs e)          // Отчёт Кол-во по типу
-        {
-            
+            Otcheti otchet = new Otcheti(nastroiki, tip_otcheta: 0, baza);
+
+            otchet.ShowDialog();
         }
         private void ToolStripMenuItem_KolVo_V_Pomeschenii_Click(object sender, EventArgs e)            // Отчёт Кол-во в помещении
         {
-            
+            Otcheti otchet = new Otcheti(nastroiki, tip_otcheta: 1, baza);
+
+            otchet.ShowDialog();
         }
     }
 }
