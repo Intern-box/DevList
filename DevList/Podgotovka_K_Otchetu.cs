@@ -13,10 +13,10 @@ namespace DevList
 {
     public partial class Podgotovka_K_Otchetu : Form
     {
-        Spisok pomescheniia;
-        Nastroiki nastroiki;
-        byte tip_otcheta;
-        public string rezultat;
+        Spisok pomescheniia;                                                    // Объект с данными по списку оборудования
+        Nastroiki nastroiki;                                                    // Объект файла настроек. Хранит пути до необходимого
+        byte tip_otcheta;                                                       // Флаг для выбора параметров обработки данных
+        public string rezultat;                                                 // Результат выбора
 
         public Podgotovka_K_Otchetu(Nastroiki nastroiki, byte tip_otcheta)      // Инициируем компоненты
         {
@@ -26,7 +26,7 @@ namespace DevList
 
             this.tip_otcheta = tip_otcheta;
         }
-        private void Podgotovka_K_Otchetu_Load(object sender, EventArgs e)
+        private void Podgotovka_K_Otchetu_Load(object sender, EventArgs e)      // Обработка данных
         {
             pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
 
@@ -43,13 +43,13 @@ namespace DevList
                 button_Zakrit_Click(sender, e);
             }
         }
-        private void button_Vibrat_Click(object sender, EventArgs e)
+        private void button_Vibrat_Click(object sender, EventArgs e)            // Обработка данных после выбора
         {
             rezultat = comboBox_Spisok_Vibora.Text;
 
             button_Zakrit_Click(sender, e);
         }
-        private void button_Zakrit_Click(object sender, EventArgs e)
+        private void button_Zakrit_Click(object sender, EventArgs e)            // Закрываем без обработки
         {
             Close();
         }
