@@ -68,6 +68,7 @@ namespace DevList
             this.Name = "Otcheti";
             this.Text = "Отчёт";
             this.Load += new System.EventHandler(this.Otcheti_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Otcheti_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

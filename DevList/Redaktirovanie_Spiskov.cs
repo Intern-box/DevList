@@ -53,10 +53,6 @@ namespace DevList
 
         // Действия по кнопкам ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        private void button_Otmenit_Click(object sender, EventArgs e)                           // Закрываем форму без обработки
-        {
-            Close();
-        }
         private void button_Sohranit_Click(object sender, EventArgs e)                          // По кнопке Сохранить сохраняем данные в соответствующие файлы
         {
             if (textBox_Soderjimoe.Text != "")
@@ -75,6 +71,24 @@ namespace DevList
                 {
                     File.WriteAllText(nastroiki.put_do_tipov_oborudovaniia, textBox_Soderjimoe.Text + "\r\n");
                 }
+            }
+        }
+        private void button_Otmenit_Click(object sender, EventArgs e)                           // Закрываем форму без обработки
+        {
+            Close();
+        }
+
+        // Горячие клавиши ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void Redaktirovanie_Spiskov_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)                                                        // Ctrl + Enter - кнопка Сохранить
+            {
+                button_Sohranit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)                                                       // Ctrl + Escape - кнопка Отменить
+            {
+                button_Otmenit_Click(sender, e);
             }
         }
     }

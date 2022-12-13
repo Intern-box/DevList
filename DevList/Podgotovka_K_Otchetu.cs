@@ -53,5 +53,19 @@ namespace DevList
         {
             Close();
         }
+
+        // Горячие клавиши ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void Podgotovka_K_Otchetu_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)                                                                    // Ctrl + Enter - кнопка Выбрать
+            {
+                button_Vibrat_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)                                                                   // Ctrl + Escape - кнопка Закрыть
+            {
+                button_Zakrit_Click(sender, e);
+            }
+        }
     }
 }

@@ -399,6 +399,7 @@ namespace DevList
             this.Text = "DevList 4.5";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Glavnoe_Okno_FormClosed);
             this.Load += new System.EventHandler(this.Glavnoe_Okno_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Glavnoe_Okno_KeyUp);
             this.contextMenuStrip_Vsplivauschee_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.ResumeLayout(false);
             this.menuStrip_Glavnoe_Menu.PerformLayout();

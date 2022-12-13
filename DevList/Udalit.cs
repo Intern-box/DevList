@@ -13,7 +13,7 @@ namespace DevList
     public partial class Udalit : Form
     {
         ListViewHitTestInfo koordinati_mishi;                               // Переданные координаты мыши
-        Baza baza;                                                          // Переданный объект с базой
+        public Baza baza;                                                   // Переданный объект с базой
 
         public Udalit(Baza baza, ListViewHitTestInfo koordinati_mishi)      // Инициирование компонентов
         {
@@ -29,6 +29,8 @@ namespace DevList
         private void button_Udalit_Click(object sender, EventArgs e)        // Обработка данных
         {
             baza.baza.RemoveAt(koordinati_mishi.Item.Index);
+
+            baza.izmeneniia_v_baze = true;
 
             Close();
         }

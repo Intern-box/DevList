@@ -132,6 +132,7 @@ namespace DevList
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Правка из списков";
             this.Load += new System.EventHandler(this.Izmenit_Iz_Spiska_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Izmenit_Iz_Spiska_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

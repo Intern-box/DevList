@@ -83,6 +83,7 @@ namespace DevList
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Правка строки";
             this.Load += new System.EventHandler(this.Izmenit_Stroku_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Izmenit_Stroku_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

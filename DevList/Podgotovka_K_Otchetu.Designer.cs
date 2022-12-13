@@ -106,6 +106,7 @@ namespace DevList
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Подготовка к отчёту";
             this.Load += new System.EventHandler(this.Podgotovka_K_Otchetu_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Podgotovka_K_Otchetu_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

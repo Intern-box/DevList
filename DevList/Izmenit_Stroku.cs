@@ -12,7 +12,7 @@ namespace DevList
 {
     public partial class Izmenit_Stroku : Form
     {
-        Baza baza;                                                                              // Переданный объект с базой
+        public Baza baza;                                                                              // Переданный объект с базой
         int nomer_stroki;                                                                       // Номер строки
         int nomer_stolbca;                                                                      // Номер столбца
 
@@ -42,6 +42,20 @@ namespace DevList
         private void button_Otmenit_Click(object sender, EventArgs e)                           // Закрываем форму без сохранения
         {
             Close();
+        }
+
+        // Горячие клавиши ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void Izmenit_Stroku_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)                                                                    // Ctrl + Enter - кнопка Выполнить
+            {
+                button_Vipolnit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)                                                                   // Ctrl + Escape - кнопка Отменить
+            {
+                button_Otmenit_Click(sender, e);
+            }
         }
     }
 }

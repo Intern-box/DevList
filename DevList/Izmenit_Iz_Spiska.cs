@@ -13,7 +13,7 @@ namespace DevList
 {
     public partial class Izmenit_Iz_Spiska : Form
     {
-        Baza baza;                                                                                          // Переданный объект с базой
+        public Baza baza;                                                                                   // Переданный объект с базой
         Spisok pomescheniia, oborudovanie, sotrudniki;                                                      // Объекты с данными по спискам Помещений, Оборудования и Сотрудников
         Nastroiki nastroiki;                                                                                // Переданный объект с данными, хранящий адреса к нужным файлам
         int nomer_stolbca, nomer_stroki;                                                                    // Переданные номера столбца и строки
@@ -129,6 +129,8 @@ namespace DevList
 
             baza.baza[nomer_stroki][nomer_stolbca] = comboBox_Spisok_Vibora.Text;
 
+            baza.izmeneniia_v_baze = true;
+
             Close();
         }
         private void button_Otmenit_Click(object sender, EventArgs e)                                       // Закрываем форму без обработки
@@ -163,6 +165,20 @@ namespace DevList
             else if (nomer_stolbca == 6)       // Тип
             {
                 Minus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Spisok_Vibora);
+            }
+        }
+
+        // Горячие клавиши ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void Izmenit_Iz_Spiska_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)                                                                    // Ctrl + Enter - кнопка Выполнить
+            {
+                button_Vipolnit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)                                                                   // Ctrl + Escape - кнопка Отменить
+            {
+                button_Otmenit_Click(sender, e);
             }
         }
     }

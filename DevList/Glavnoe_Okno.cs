@@ -136,7 +136,10 @@ namespace DevList
 
             dobavit.ShowDialog();
 
-            baza.izmeneniia_v_baze = true;
+            if (dobavit.baza.izmeneniia_v_baze)
+            {
+                baza.izmeneniia_v_baze = true;
+            }
 
             Chtenie_Bazi(baza.baza);
         }
@@ -156,7 +159,10 @@ namespace DevList
 
                     izmenit_stroku.ShowDialog();
 
-                    baza.izmeneniia_v_baze = true;
+                    if (izmenit_stroku.baza.izmeneniia_v_baze)
+                    {
+                        baza.izmeneniia_v_baze = true;
+                    }
 
                     Chtenie_Bazi(baza.baza);
                 }
@@ -166,7 +172,10 @@ namespace DevList
 
                     izmenit_Iz_spiska.ShowDialog();
 
-                    baza.izmeneniia_v_baze = true;
+                    if (izmenit_Iz_spiska.baza.izmeneniia_v_baze)
+                    {
+                        baza.izmeneniia_v_baze = true;
+                    }
 
                     Chtenie_Bazi(baza.baza);
                 }
@@ -184,7 +193,10 @@ namespace DevList
 
                 pravka.ShowDialog();
 
-                baza.izmeneniia_v_baze = true;
+                if (pravka.baza.izmeneniia_v_baze)
+                {
+                    baza.izmeneniia_v_baze = true;
+                }
 
                 Chtenie_Bazi(baza.baza);
             }
@@ -201,10 +213,13 @@ namespace DevList
 
                 udalit.ShowDialog();
 
-                baza.izmeneniia_v_baze = true;
-            }
+                if (udalit.baza.izmeneniia_v_baze)
+                {
+                    baza.izmeneniia_v_baze = true;
+                }
 
-            Chtenie_Bazi(baza.baza);
+                Chtenie_Bazi(baza.baza);
+            }
         }
         private void ToolStripMenuItem_Context_Udalit_Click(object sender, EventArgs e)
         {
@@ -245,8 +260,6 @@ namespace DevList
 
                 poisk.ShowDialog();
 
-                baza.izmeneniia_v_baze = true;
-
                 if (poisk.zapros != null)
                 {
                     Chtenie_Bazi(poisk.zapros);
@@ -279,6 +292,32 @@ namespace DevList
             Otcheti otchet = new Otcheti(nastroiki, tip_otcheta: 1, baza);
 
             otchet.ShowDialog();
+        }
+
+        // Горячие клавиши ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void Glavnoe_Okno_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Control || e.KeyCode == Keys.S)                                       // Ctrl + S - Добавить
+            {
+                ToolStripMenuItem_Dobavit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Control || e.KeyCode == Keys.E)                                       // Ctrl + E - Править
+            {
+                ToolStripMenuItem_Pravit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Delete)                                                               // Delete - Удалить
+            {
+                ToolStripMenuItem_Udalit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Control || e.KeyCode == Keys.F)                                       // Ctrl + F - Поиск
+            {
+                ToolStripMenuItem_Poisk_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)                                                               // Ctrl + Escape - закрыть программу
+            {
+                Close();
+            }
         }
     }
 }

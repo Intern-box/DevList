@@ -16,7 +16,7 @@ namespace DevList
         Nastroiki nastroiki;                                                                                    // Переданный объект содержащий инфо об файле с настройками
         Spisok pomescheniia, oborudovanie, sotrudniki;                                                          // Объекты для списков Помещений, оборудования и Сотрудников
         ListViewHitTestInfo koordinati_mishi;                                                                   // Переданный объект с координатами мыши
-        Baza baza;                                                                                              // Переданный объект с базой
+        public Baza baza;                                                                                       // Переданный объект с базой
         byte flag;                                                                                              // Флаг, указывайщий на функционал
                                                                                                                 // (0 = добавить, 1 = правка, 2 = поиск)
         public List<string[]> zapros;                                                                           // Запрос для поиска
@@ -197,6 +197,8 @@ namespace DevList
                 }
             }
 
+            baza.izmeneniia_v_baze = true;
+
             Close();
         }
         private void button_Otmenit_Click(object sender, EventArgs e)                                           // По кнопке Отменить закрываем форму
@@ -234,6 +236,20 @@ namespace DevList
         private void button_tip_minus_Click(object sender, EventArgs e)                                         // Удаление из списка Оборудования по кнопке Минус
         {
             Minus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Tip);
+        }
+
+        // Горячие клавиши ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void Dobavit_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)                                                                        // Ctrl + Enter - кнопка Добавить
+            {
+                button_Dobavit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)                                                                       // Ctrl + Escape - кнопка Отменить
+            {
+                button_Otmenit_Click(sender, e);
+            }
         }
     }
 }
