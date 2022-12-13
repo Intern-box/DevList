@@ -54,6 +54,7 @@ namespace DevList
             this.textBox_Vivod_Informacii.Location = new System.Drawing.Point(12, 12);
             this.textBox_Vivod_Informacii.Multiline = true;
             this.textBox_Vivod_Informacii.Name = "textBox_Vivod_Informacii";
+            this.textBox_Vivod_Informacii.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_Vivod_Informacii.Size = new System.Drawing.Size(776, 397);
             this.textBox_Vivod_Informacii.TabIndex = 1;
             // 

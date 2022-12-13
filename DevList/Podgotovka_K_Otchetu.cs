@@ -13,7 +13,7 @@ namespace DevList
 {
     public partial class Podgotovka_K_Otchetu : Form
     {
-        Spisok pomescheniia, oborudovanie;
+        Spisok pomescheniia;
         Nastroiki nastroiki;
         byte tip_otcheta;
         public string rezultat;
@@ -29,17 +29,8 @@ namespace DevList
         private void Podgotovka_K_Otchetu_Load(object sender, EventArgs e)
         {
             pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
-            oborudovanie = new Spisok(nastroiki.put_do_tipov_oborudovaniia);
 
-            if (tip_otcheta == 0)
-            {
-                label_Nazvanie.Text = "Оборудование";
-
-                comboBox_Spisok_Vibora.Items.AddRange(oborudovanie.spisok);
-
-                comboBox_Spisok_Vibora.SelectedIndex = 0;
-            }
-            else if (tip_otcheta == 1)
+            if (tip_otcheta == 1)
             {
                 label_Nazvanie.Text = "Помещение";
 

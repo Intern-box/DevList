@@ -28,26 +28,41 @@ namespace DevList
         }
         private void Otcheti_Load(object sender, EventArgs e)
         {
-            Podgotovka_K_Otchetu podgotovka = new Podgotovka_K_Otchetu(nastroiki, tip_otcheta);
+            string[] zapros = new string[baza.baza[0].Length];
 
-            podgotovka.ShowDialog();
-
-            string[] stroka = new string[baza.baza[0].Length];
+            Spisok oborudovanie = new Spisok(nastroiki.put_do_tipov_oborudovaniia);
 
             if (tip_otcheta == 0)
             {
-                stroka[6] = podgotovka.rezultat;
+                foreach (string slovo in oborudovanie.spisok)
+                {
+                    zapros[6] = slovo;
+
+                    textBox_Vivod_Informacii.Text += $"{slovo} = {baza.poisk_strok(zapros).Count};\r\n";
+                }
             }
             else if (tip_otcheta == 1)
             {
-                stroka[3] = podgotovka.rezultat;
+                Podgotovka_K_Otchetu podgotovka = new Podgotovka_K_Otchetu(nastroiki, tip_otcheta);
+
+                podgotovka.ShowDialog();
+
+                zapros[3] = podgotovka.rezultat;
+
+                for (int i = 0; i < oborudovanie.spisok.Length; i++)
+                {
+                    zapros[6] = oborudovanie.spisok[i];
+
+                    if (baza.poisk_strok(zapros).Count > 0)
+                    {
+                        textBox_Vivod_Informacii.Text += $"{zapros[6]} = {baza.poisk_strok(zapros).Count};\r\n";
+                    }
+                }
             }
             else
             {
                 button_Zakrit_Click(sender, e);
             }
-
-            textBox_Vivod_Informacii.Text = $"{podgotovka.rezultat} = {baza.poisk_strok(stroka).Count};";
         }
         private void button_Zakrit_Click(object sender, EventArgs e)
         {
