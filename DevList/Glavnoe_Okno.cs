@@ -266,6 +266,14 @@ namespace DevList
 
                     menuStrip_Glavnoe_Menu.Items[5].Visible = true;
                 }
+                else
+                {
+                    baza.izmeneniia_v_baze = false;
+
+                    listView_Tablica_Vivoda_Bazi.Items.Clear();
+
+                    ToolStripMenuItem_Perechitat.Visible = true;
+                }
             }
         }
         private void ToolStripMenuItem_Context_Poisk_Click(object sender, EventArgs e)

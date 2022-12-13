@@ -70,6 +70,7 @@ namespace DevList
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Удалить элемент";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Udalit_KeyUp);
             this.ResumeLayout(false);
 
         }

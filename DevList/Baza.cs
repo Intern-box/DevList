@@ -76,30 +76,37 @@ namespace DevList
                 }
             }
 
-            byte naideno_sovpadenii = 0;
-
-            foreach (string[] stroka in baza)
+            if (skolko_nado_naiti_sovpadenii > 0)
             {
-                for (int i = 1; i < baza[0].Length; i++)
+                byte naideno_sovpadenii = 0;
+
+                foreach (string[] stroka in baza)
                 {
-                    if (zapros[i] != null && zapros[i] != "")
+                    for (int i = 1; i < baza[0].Length; i++)
                     {
-                        if (stroka[i].IndexOf(zapros[i], StringComparison.CurrentCultureIgnoreCase) != -1)
+                        if (zapros[i] != null && zapros[i] != "")
                         {
-                            naideno_sovpadenii++;
+                            if (stroka[i].IndexOf(zapros[i], StringComparison.CurrentCultureIgnoreCase) != -1)
+                            {
+                                naideno_sovpadenii++;
+                            }
                         }
                     }
+
+                    if (naideno_sovpadenii >= skolko_nado_naiti_sovpadenii)
+                    {
+                        resultat.Add(stroka);
+                    }
+
+                    naideno_sovpadenii = 0;
                 }
 
-                if (naideno_sovpadenii >= skolko_nado_naiti_sovpadenii)
-                {
-                    resultat.Add(stroka);
-                }
-
-                naideno_sovpadenii = 0;
+                return resultat;
             }
-
-            return resultat;
+            else
+            {
+                return null;
+            }
         }
     }
 }

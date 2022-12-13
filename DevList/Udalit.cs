@@ -38,5 +38,19 @@ namespace DevList
         {
             Close();
         }
+
+        // Горячие клавиши ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void Udalit_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_Udalit_Click(sender, e);                             // Enter - кнопка Удалить
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                button_Otmenit_Click(sender, e);                             // Escape - кнопка Отменить
+            }
+        }
     }
 }

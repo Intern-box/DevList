@@ -149,7 +149,7 @@ namespace DevList
                     comboBox_Izmenil.Text
                 };
 
-                zapros = baza.poisk_strok(stroka);                                                                    // Запрос для поиска
+                zapros = baza.poisk_strok(stroka);                                                              // Запрос для поиска
             }
             else
             {
