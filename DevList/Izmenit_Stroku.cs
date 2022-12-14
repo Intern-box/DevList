@@ -12,7 +12,7 @@ namespace DevList
 {
     public partial class Izmenit_Stroku : Form
     {
-        public Baza baza;                                                                              // Переданный объект с базой
+        public Baza baza;                                                                       // Переданный объект с базой
         int nomer_stroki;                                                                       // Номер строки
         int nomer_stolbca;                                                                      // Номер столбца
 

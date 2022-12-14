@@ -7,7 +7,7 @@ namespace DevList
     public partial class Nastroiki : Form
     {
         public string[] ini_fail;
-        public string put_do_papki;
+        public string put_do_papki = "";
         public string put_do_faila_nastroek = "DevList.ini";
         public string put_do_bazi = "БД\\БД.csv";
         public string put_do_pomeschenii = "БД\\Помещения.txt";
@@ -79,6 +79,87 @@ namespace DevList
 
             Ischim_Faili();
         }
+        public void Chitat()                                                            // Читаем и запоминаем адреса файлов
+        {
+            ini_fail = File.ReadAllLines(put_do_faila_nastroek);
+
+            put_do_papki = ini_fail[0];
+            put_do_bazi = ini_fail[1];
+            put_do_pomeschenii = ini_fail[2];
+            put_do_tipov_oborudovaniia = ini_fail[3];
+            put_do_sotrudnikov = ini_fail[4];
+        }
+        private void Ischim_Faili()                                                     // Ищим файлы, выводим пути в строки
+        {
+            if (File.Exists(put_do_bazi))
+            {
+                textBox__BD.Text = put_do_bazi;
+            }
+            else
+            {
+                textBox__BD.Text = "";
+            }
+
+            if (File.Exists(put_do_pomeschenii))
+            {
+                textBox_Pomescheniia.Text = put_do_pomeschenii;
+            }
+            else
+            {
+                textBox_Pomescheniia.Text = "";
+            }
+
+            if (File.Exists(put_do_tipov_oborudovaniia))
+            {
+                textBox_Oborudovanie.Text = put_do_tipov_oborudovaniia;
+            }
+            else
+            {
+                textBox_Oborudovanie.Text = "";
+            }
+
+            if (File.Exists(put_do_sotrudnikov))
+            {
+                textBox_Sotrudniki.Text = put_do_sotrudnikov;
+            }
+            else
+            {
+                textBox_Sotrudniki.Text = "";
+            }
+
+            if (textBox__BD.Text != "" && textBox_Pomescheniia.Text != "" && textBox_Oborudovanie.Text != "" && textBox_Sotrudniki.Text != "")
+            {
+                button_Zagruzit.Enabled = true;
+            }
+        }
+        private string Ischim_Fail()                                                    // Ищим и открываем файл
+        {
+            OpenFileDialog otkrit_fail = new OpenFileDialog();
+
+            otkrit_fail.ShowDialog();
+
+            return otkrit_fail.FileName;
+        }
+        private void Sohranit()                                                         // Сохраняем файл с настройками
+        {
+            File.WriteAllText
+            (
+                "DevList.ini",
+                put_do_bazi + "\r\n" +
+                put_do_pomeschenii + "\r\n" +
+                put_do_tipov_oborudovaniia + "\r\n" +
+                put_do_sotrudnikov + "\r\n"
+            );
+        }
+        private void Nastroiki_FormClosed(object sender, FormClosedEventArgs e)         // Закрытие приложения
+        {
+            Environment.Exit(0);
+
+            Close();
+        }
+
+        // Действия по кнопкам ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void button_Novaia_Baza_Click(object sender, EventArgs e)
         {
             DialogResult otvet_na_zapros =
@@ -150,85 +231,6 @@ namespace DevList
             File.WriteAllText(put_do_tipov_oborudovaniia, "");
             File.WriteAllText(put_do_sotrudnikov, "");
         }
-
-        // Читаем и запоминаем адреса файлов
-        public void Chitat()
-        {
-            ini_fail = File.ReadAllLines(put_do_faila_nastroek);
-
-            put_do_bazi = ini_fail[0];
-            put_do_pomeschenii = ini_fail[1];
-            put_do_tipov_oborudovaniia = ini_fail[2];
-            put_do_sotrudnikov = ini_fail[3];
-        }
-
-        // Ищим файлы, выводим пути в строки
-        private void Ischim_Faili()
-        {
-            if (File.Exists(put_do_bazi))
-            {
-                textBox__BD.Text = put_do_bazi;
-            }
-            else
-            {
-                textBox__BD.Text = "";
-            }
-
-            if (File.Exists(put_do_pomeschenii))
-            {
-                textBox_Pomescheniia.Text = put_do_pomeschenii;
-            }
-            else
-            {
-                textBox_Pomescheniia.Text = "";
-            }
-
-            if (File.Exists(put_do_tipov_oborudovaniia))
-            {
-                textBox_Oborudovanie.Text = put_do_tipov_oborudovaniia;
-            }
-            else
-            {
-                textBox_Oborudovanie.Text = "";
-            }
-
-            if (File.Exists(put_do_sotrudnikov))
-            {
-                textBox_Sotrudniki.Text = put_do_sotrudnikov;
-            }
-            else
-            {
-                textBox_Sotrudniki.Text = "";
-            }
-
-            if (textBox__BD.Text != "" && textBox_Pomescheniia.Text != "" && textBox_Oborudovanie.Text != "" && textBox_Sotrudniki.Text != "")
-            {
-                button_Zagruzit.Enabled = true;
-            }
-        }
-        
-        // Ищим и открываем файл
-        private string Ischim_Fail()
-        {
-            OpenFileDialog otkrit_fail = new OpenFileDialog();
-
-            otkrit_fail.ShowDialog();
-
-            return otkrit_fail.FileName;
-        }
-
-        // Сохраняем файл с настройками
-        private void Sohranit()
-        {
-            File.WriteAllText
-            (
-                "DevList.ini",
-                put_do_bazi + "\r\n" +
-                put_do_pomeschenii + "\r\n" +
-                put_do_tipov_oborudovaniia + "\r\n" +
-                put_do_sotrudnikov + "\r\n"
-            );
-        }
         private void button__BD_Click(object sender, EventArgs e)
         {
             textBox__BD.Text = put_do_bazi = Ischim_Fail();
@@ -264,12 +266,6 @@ namespace DevList
         private void button_Zagruzit_Click(object sender, EventArgs e)
         {
             Hide();
-        }
-        private void Nastroiki_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Environment.Exit(0);
-
-            Close();
         }
     }
 }
