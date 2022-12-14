@@ -145,6 +145,7 @@ namespace DevList
             File.WriteAllText
             (
                 "DevList.ini",
+                put_do_papki + "\r\n" +
                 put_do_bazi + "\r\n" +
                 put_do_pomeschenii + "\r\n" +
                 put_do_tipov_oborudovaniia + "\r\n" +
@@ -202,6 +203,7 @@ namespace DevList
                 File.WriteAllText
                 (
                     put_do_faila_nastroek,
+                    put_do_papki + "\r\n" +
                     put_do_bazi + "\r\n" +
                     put_do_pomeschenii + "\r\n" +
                     put_do_tipov_oborudovaniia + "\r\n" +
@@ -219,6 +221,7 @@ namespace DevList
                 File.WriteAllText
                 (
                     "DevList.ini",
+                    put_do_papki + "\r\n" +
                     put_do_bazi + "\r\n" +
                     put_do_pomeschenii + "\r\n" +
                     put_do_tipov_oborudovaniia + "\r\n" +
