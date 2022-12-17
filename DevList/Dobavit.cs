@@ -109,90 +109,46 @@ namespace DevList
 
         private void button_Dobavit_Click(object sender, EventArgs e)                                           // Обработка данных
         {
-            if (flag == 1)
+            string[] stroka =
             {
-                string[] stroka =
-                {
-                    (koordinati_mishi.Item.Index).ToString(),
-                    textBox_Data_Priobreteniia.Text,
-                    textBox_InvNomer.Text,
-                    comboBox_Pomeschenie.Text,
-                    comboBox_FIO.Text,
-                    textBox_Naimenovanie.Text,
-                    comboBox_Tip.Text,
-                    comboBox_Sostoianie.Text,
-                    textBox_Inventarizaciia.Text,
-                    textBox_Kommentarii.Text,
-                    textBox_Hostname.Text,
-                    textBox_IP.Text,
-                    comboBox_Izmenil.Text
-                };
+                "",
+                textBox_Data_Priobreteniia.Text,
+                textBox_InvNomer.Text,
+                comboBox_Pomeschenie.Text,
+                comboBox_FIO.Text,
+                textBox_Naimenovanie.Text,
+                comboBox_Tip.Text,
+                comboBox_Sostoianie.Text,
+                textBox_Inventarizaciia.Text,
+                textBox_Kommentarii.Text,
+                textBox_Hostname.Text,
+                textBox_IP.Text,
+                comboBox_Izmenil.Text
+            };
 
-                baza.baza[koordinati_mishi.Item.Index] = stroka;                                                // По флагу для правки изменяем данные в базе по текущему индексу
+            if (koordinati_mishi != null)
+            {
+                stroka[0] = (koordinati_mishi.Item.Index).ToString();
             }
-            else if (flag == 2)
-            {
-                string[] stroka =
-                {
-                    (koordinati_mishi.Item.Index).ToString(),
-                    textBox_Data_Priobreteniia.Text,
-                    textBox_InvNomer.Text,
-                    comboBox_Pomeschenie.Text,
-                    comboBox_FIO.Text,
-                    textBox_Naimenovanie.Text,
-                    comboBox_Tip.Text,
-                    comboBox_Sostoianie.Text,
-                    textBox_Inventarizaciia.Text,
-                    textBox_Kommentarii.Text,
-                    textBox_Hostname.Text,
-                    textBox_IP.Text,
-                    comboBox_Izmenil.Text
-                };
 
-                zapros = baza.poisk_strok(stroka);                                                              // Запрос для поиска
+            if (flag == 1)                                                                                      // По флагу для правки изменяем данные в базе по текущему индексу
+            {
+                baza.baza[koordinati_mishi.Item.Index] = stroka;
+            }
+            else if (flag == 2)                                                                                 // Запрос для поиска
+            {
+                zapros = baza.poisk_strok(stroka);
             }
             else
             {
                 if (koordinati_mishi != null)                                                                   // Без флага правки и по проверке координат мыши
                 {
-                    string[] stroka =
-                    {
-                    (koordinati_mishi.Item.Index + 1).ToString(),
-                    textBox_Data_Priobreteniia.Text,
-                    textBox_InvNomer.Text,
-                    comboBox_Pomeschenie.Text,
-                    comboBox_FIO.Text,
-                    textBox_Naimenovanie.Text,
-                    comboBox_Tip.Text,
-                    comboBox_Sostoianie.Text,
-                    textBox_Inventarizaciia.Text,
-                    textBox_Kommentarii.Text,
-                    textBox_Hostname.Text,
-                    textBox_IP.Text,
-                    comboBox_Izmenil.Text
-                    };
+                    stroka[0] = (koordinati_mishi.Item.Index + 1).ToString();
 
                     baza.baza.Insert(koordinati_mishi.Item.Index + 1, stroka);                                  // либо "встраиваем" данные в базу,
                 }
                 else
                 {
-                    string[] stroka =
-                    {
-                    (baza.baza.Count - 1).ToString(),
-                    textBox_Data_Priobreteniia.Text,
-                    textBox_InvNomer.Text,
-                    comboBox_Pomeschenie.Text,
-                    comboBox_FIO.Text,
-                    textBox_Naimenovanie.Text,
-                    comboBox_Tip.Text,
-                    comboBox_Sostoianie.Text,
-                    textBox_Inventarizaciia.Text,
-                    textBox_Kommentarii.Text,
-                    textBox_Hostname.Text,
-                    textBox_IP.Text,
-                    comboBox_Izmenil.Text
-                    };
-
                     baza.baza.Add(stroka);                                                                      // либо добавляем в конец
                 }
             }

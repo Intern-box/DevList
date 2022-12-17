@@ -47,7 +47,7 @@ namespace DevList
         {
             baza = new Baza(put);
 
-            if (baza != null && baza.baza.Count > 0)                    // Читаем, если не пусто
+            if (baza != null && baza.baza.Count > 0)                                                    // Читаем, если не пусто
             {
                 Chtenie_Bazi(baza.baza);
             }
@@ -99,10 +99,7 @@ namespace DevList
 
             nastroiki.ShowDialog();
 
-            if (baza != null)
-            {
-                Otkrit_Bazu(nastroiki.put_do_bazi);
-            }
+            Otkrit_Bazu(nastroiki.put_do_bazi);
         }
         private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)                         // Открываем проект
         {
