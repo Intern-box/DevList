@@ -54,22 +54,25 @@ namespace DevList
         }
         private void Glavnoe_Okno_FormClosed(object sender, FormClosedEventArgs e)                      // При закрытии проверка на изменения. Если были, то предлагает сохранить.
         {
-            if (baza.izmeneniia_v_baze)
+            if (baza != null)
             {
-                DialogResult resultat_vibora =
-
-                MessageBox.Show
-                (
-                    "Сохранить изменения?",
-                    "Закрытие программы",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Information,
-                    MessageBoxDefaultButton.Button1
-                );
-
-                if (resultat_vibora == DialogResult.Yes)
+                if (baza.izmeneniia_v_baze)
                 {
-                    ToolStripMenuItem_Sohranit_Click(sender, e);
+                    DialogResult resultat_vibora =
+
+                    MessageBox.Show
+                    (
+                        "Сохранить изменения?",
+                        "Закрытие программы",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1
+                    );
+
+                    if (resultat_vibora == DialogResult.Yes)
+                    {
+                        ToolStripMenuItem_Sohranit_Click(sender, e);
+                    }
                 }
             }
         }
@@ -96,7 +99,10 @@ namespace DevList
 
             nastroiki.ShowDialog();
 
-            Otkrit_Bazu(nastroiki.put_do_bazi);
+            if (baza != null)
+            {
+                Otkrit_Bazu(nastroiki.put_do_bazi);
+            }
         }
         private void ToolStripMenuItem_Otkrit_Click(object sender, EventArgs e)                         // Открываем проект
         {

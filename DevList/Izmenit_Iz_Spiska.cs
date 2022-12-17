@@ -119,7 +119,7 @@ namespace DevList
             {
                 File.AppendAllText
                 (
-                    $"{nastroiki.put_do_papki}\\История перемещений\\{comboBox_Spisok_Vibora.Text}.txt",
+                    $"История перемещений\\{comboBox_Spisok_Vibora.Text}.txt",
                     $"Из помещения: {iz}\r\n" +
                     $"переместили: {DateTime.Now}\r\n" +
                     $"{naimenovanie}\r\n" +
