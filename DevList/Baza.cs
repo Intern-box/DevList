@@ -19,8 +19,6 @@ namespace DevList
         }
         public Baza(string put_do_bazi)                                 // При создании экзепляра, передавая путь к файлу
         {                                                               // создаётся объект с базой и открывается файл
-            baza.Clear();
-
             foreach (string stroka in File.ReadAllLines(put_do_bazi))   // Преобразуем из *.csv в List<string[]>
             {
                 stroka.TrimEnd('\r');

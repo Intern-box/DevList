@@ -21,7 +21,7 @@ namespace DevList
         {
             InitializeComponent();
         }
-        public void Glavnoe_Okno_Load(object sender, EventArgs e)                                       // Начинаем загрузку базы
+        private void Glavnoe_Okno_Load(object sender, EventArgs e)                                       // Начинаем загрузку базы
         {
             ToolStripMenuItem_Sozdat_Click(sender, e);
         }
