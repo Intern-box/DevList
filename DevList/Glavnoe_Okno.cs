@@ -154,11 +154,15 @@ namespace DevList
                 {
                     if (listView_Tablica_Vivoda_Bazi.Items.Count > zapominaem_stroku)
                     {
+                        Chtenie_Bazi(baza.baza);
+
                         listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku + 1].Selected = true;
                     }
                 }
                 else
                 {
+                    Chtenie_Bazi(baza.baza);
+
                     listView_Tablica_Vivoda_Bazi.Items[baza.baza.Count - 1].Selected = true;
                 }
             }
