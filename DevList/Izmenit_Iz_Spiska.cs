@@ -57,8 +57,6 @@ namespace DevList
                     label_Nazvanie.Text = "Помещение";
 
                     comboBox_Spisok_Vibora.Items.AddRange(pomescheniia.spisok);
-
-                    comboBox_Spisok_Vibora.SelectedIndex = 0;
                 }
                 else
                 {

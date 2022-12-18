@@ -134,6 +134,8 @@ namespace DevList
             if (flag == 1)                                                                                      // По флагу для правки изменяем данные в базе по текущему индексу
             {
                 baza.baza[koordinati_mishi.Item.Index] = stroka;
+
+                baza.izmeneniia_v_baze = true;
             }
             else if (flag == 2)                                                                                 // Запрос для поиска
             {
@@ -151,9 +153,9 @@ namespace DevList
                 {
                     baza.baza.Add(stroka);                                                                      // либо добавляем в конец
                 }
-            }
 
-            baza.izmeneniia_v_baze = true;
+                baza.izmeneniia_v_baze = true;
+            }
 
             Close();
         }

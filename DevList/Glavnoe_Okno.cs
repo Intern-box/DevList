@@ -296,26 +296,15 @@ namespace DevList
         }
         private void ToolStripMenuItem_Poisk_Click(object sender, EventArgs e)                          // Поиск
         {
-            if (koordinati_mishi != null)
+            Dobavit poisk = new Dobavit(nastroiki, koordinati_mishi, baza, 2);
+
+            poisk.ShowDialog();
+
+            if (poisk.zapros != null)
             {
-                Dobavit poisk = new Dobavit(nastroiki, koordinati_mishi, baza, 2);
+                Chtenie_Bazi(poisk.zapros);
 
-                poisk.ShowDialog();
-
-                if (poisk.zapros != null)
-                {
-                    Chtenie_Bazi(poisk.zapros);
-
-                    menuStrip_Glavnoe_Menu.Items[5].Visible = true;
-                }
-                else
-                {
-                    baza.izmeneniia_v_baze = false;
-
-                    listView_Tablica_Vivoda_Bazi.Items.Clear();
-
-                    ToolStripMenuItem_Perechitat.Visible = true;
-                }
+                menuStrip_Glavnoe_Menu.Items[5].Visible = true;
             }
         }
         private void ToolStripMenuItem_Context_Poisk_Click(object sender, EventArgs e)
