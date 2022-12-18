@@ -48,12 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Baza.cs" />
-    <Compile Include="Podgotovka_K_Otchetu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Podgotovka_K_Otchetu.Designer.cs">
-      <DependentUpon>Podgotovka_K_Otchetu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Otcheti.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,9 +101,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dobavit.resx">
       <DependentUpon>Dobavit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Podgotovka_K_Otchetu.resx">
-      <DependentUpon>Podgotovka_K_Otchetu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Izmenit_Stroku.resx">
       <DependentUpon>Izmenit_Stroku.cs</DependentUpon>

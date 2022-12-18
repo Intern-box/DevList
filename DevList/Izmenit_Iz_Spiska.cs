@@ -18,8 +18,10 @@ namespace DevList
         Nastroiki nastroiki;                                                                                // Переданный объект с данными, хранящий адреса к нужным файлам
         int nomer_stolbca, nomer_stroki;                                                                    // Переданные номера столбца и строки
         string iz, inv_nomer, naimenovanie;                                                                 // Данные для Истории перемещений оборудования
+        byte tip_otcheta;                                                                                   // Флаг для выбора параметров обработки данных
+        public string rezultat;                                                                             // Результат выбора
 
-        public Izmenit_Iz_Spiska(Nastroiki nastroiki, Baza baza, ListViewHitTestInfo koordinati_mishi)      // Инициируем компоненты
+        public Izmenit_Iz_Spiska(Nastroiki nastroiki, Baza baza, ListViewHitTestInfo koordinati_mishi)
         {
             InitializeComponent();
 
@@ -31,13 +33,39 @@ namespace DevList
 
             nomer_stolbca = koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem);
         }
+
+        public Izmenit_Iz_Spiska(Nastroiki nastroiki, byte tip_otcheta)
+        {
+            InitializeComponent();
+
+            this.nastroiki = nastroiki;
+
+            this.tip_otcheta = 1;
+        }
         private void Izmenit_Iz_Spiska_Load(object sender, EventArgs e)                                     // Подготовка к обработке данных
         {
             pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
             oborudovanie = new Spisok(nastroiki.put_do_tipov_oborudovaniia);
             sotrudniki = new Spisok(nastroiki.put_do_sotrudnikov);
-                                                                                                            // Изменяем форму под каждый список в соответствии с номером столбца
-            if (nomer_stolbca == 3)                                                                         // Помещения
+
+            if (tip_otcheta == 1)                                                                           // Обработка данных для отчёта
+            {
+                pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
+
+                if (tip_otcheta == 1)
+                {
+                    label_Nazvanie.Text = "Помещение";
+
+                    comboBox_Spisok_Vibora.Items.AddRange(pomescheniia.spisok);
+
+                    comboBox_Spisok_Vibora.SelectedIndex = 0;
+                }
+                else
+                {
+                    button_Otmenit_Click(sender, e);
+                }
+            }
+            else if (nomer_stolbca == 3)                                                                    // Изменяем форму под каждый список в соответствии с номером столбца
             {
                 label_Nazvanie.Text = "Помещения";
 
@@ -49,7 +77,7 @@ namespace DevList
 
                 comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];               // Ищим в списке совпадение. Если находим, выводим
             }
-            else if (nomer_stolbca == 4)                                                                    // Сотрудники
+            else if (nomer_stolbca == 4)
             {
                 label_Nazvanie.Text = "Сотрудники";
 
@@ -57,7 +85,7 @@ namespace DevList
 
                 comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
             }
-            else if (nomer_stolbca == 6)                                                                    // Оборудование
+            else if (nomer_stolbca == 6)
             {
                 label_Nazvanie.Text = "Тип";
 
@@ -65,7 +93,7 @@ namespace DevList
 
                 comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
             }
-            else if (nomer_stolbca == 7)                                                                    // Состояние
+            else if (nomer_stolbca == 7)
             {
                 label_Nazvanie.Text = "Состояние";
 
@@ -112,24 +140,31 @@ namespace DevList
 
         private void button_Vipolnit_Click(object sender, EventArgs e)                                      // Обработка данных
         {
-            // Если изменяется Помещение, то происходит запись в папку "История перемещений"
-            // В файл с названием помещения КУДА перемещают МЦ добавляется строка
-            // с названием помещения ОТКУДА переместили и датой перемещения
-            if (nomer_stolbca == 3)
+            if (tip_otcheta == 1)
             {
-                File.AppendAllText
-                (
-                    $"История перемещений\\{comboBox_Spisok_Vibora.Text}.txt",
-                    $"Из помещения: {iz}\r\n" +
-                    $"переместили: {DateTime.Now}\r\n" +
-                    $"{naimenovanie}\r\n" +
-                    $"с инв.№: {inv_nomer}\r\n\r\n"
-                );
+                rezultat = comboBox_Spisok_Vibora.Text;
             }
+            else
+            {
+                // Если изменяется Помещение, то происходит запись в папку "История перемещений"
+                // В файл с названием помещения КУДА перемещают МЦ добавляется строка
+                // с названием помещения ОТКУДА переместили и датой перемещения
+                if (nomer_stolbca == 3)
+                {
+                    File.AppendAllText
+                    (
+                        $"История перемещений\\{comboBox_Spisok_Vibora.Text}.txt",
+                        $"Из помещения: {iz}\r\n" +
+                        $"переместили: {DateTime.Now}\r\n" +
+                        $"{naimenovanie}\r\n" +
+                        $"с инв.№: {inv_nomer}\r\n\r\n"
+                    );
+                }
 
-            baza.baza[nomer_stroki][nomer_stolbca] = comboBox_Spisok_Vibora.Text;
+                baza.baza[nomer_stroki][nomer_stolbca] = comboBox_Spisok_Vibora.Text;
 
-            baza.izmeneniia_v_baze = true;
+                baza.izmeneniia_v_baze = true;
+            }
 
             Close();
         }
