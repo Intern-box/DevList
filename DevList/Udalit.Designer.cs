@@ -36,7 +36,7 @@ namespace DevList
             // button_Otmenit
             // 
             this.button_Otmenit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Otmenit.Location = new System.Drawing.Point(168, 19);
+            this.button_Otmenit.Location = new System.Drawing.Point(133, 19);
             this.button_Otmenit.Name = "button_Otmenit";
             this.button_Otmenit.Size = new System.Drawing.Size(89, 29);
             this.button_Otmenit.TabIndex = 16;
@@ -47,7 +47,7 @@ namespace DevList
             // button_Udalit
             // 
             this.button_Udalit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Udalit.Location = new System.Drawing.Point(73, 19);
+            this.button_Udalit.Location = new System.Drawing.Point(38, 19);
             this.button_Udalit.Name = "button_Udalit";
             this.button_Udalit.Size = new System.Drawing.Size(89, 29);
             this.button_Udalit.TabIndex = 15;
@@ -60,7 +60,7 @@ namespace DevList
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(328, 65);
+            this.ClientSize = new System.Drawing.Size(261, 65);
             this.Controls.Add(this.button_Otmenit);
             this.Controls.Add(this.button_Udalit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

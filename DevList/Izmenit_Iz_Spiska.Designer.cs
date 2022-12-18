@@ -52,7 +52,7 @@ namespace DevList
             // 
             this.comboBox_Spisok_Vibora.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_Spisok_Vibora.FormattingEnabled = true;
-            this.comboBox_Spisok_Vibora.Location = new System.Drawing.Point(84, 42);
+            this.comboBox_Spisok_Vibora.Location = new System.Drawing.Point(18, 43);
             this.comboBox_Spisok_Vibora.Name = "comboBox_Spisok_Vibora";
             this.comboBox_Spisok_Vibora.Size = new System.Drawing.Size(350, 24);
             this.comboBox_Spisok_Vibora.TabIndex = 2;
@@ -60,7 +60,7 @@ namespace DevList
             // button_Otmenit
             // 
             this.button_Otmenit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Otmenit.Location = new System.Drawing.Point(345, 72);
+            this.button_Otmenit.Location = new System.Drawing.Point(279, 73);
             this.button_Otmenit.Name = "button_Otmenit";
             this.button_Otmenit.Size = new System.Drawing.Size(89, 29);
             this.button_Otmenit.TabIndex = 4;
@@ -71,7 +71,7 @@ namespace DevList
             // button_Vipolnit
             // 
             this.button_Vipolnit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Vipolnit.Location = new System.Drawing.Point(250, 72);
+            this.button_Vipolnit.Location = new System.Drawing.Point(184, 73);
             this.button_Vipolnit.Name = "button_Vipolnit";
             this.button_Vipolnit.Size = new System.Drawing.Size(89, 29);
             this.button_Vipolnit.TabIndex = 3;
@@ -92,7 +92,7 @@ namespace DevList
             // button_tip_minus
             // 
             this.button_tip_minus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_tip_minus.Location = new System.Drawing.Point(466, 41);
+            this.button_tip_minus.Location = new System.Drawing.Point(401, 42);
             this.button_tip_minus.Name = "button_tip_minus";
             this.button_tip_minus.Size = new System.Drawing.Size(21, 26);
             this.button_tip_minus.TabIndex = 60;
@@ -103,7 +103,7 @@ namespace DevList
             // button_tip_plus
             // 
             this.button_tip_plus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_tip_plus.Location = new System.Drawing.Point(440, 41);
+            this.button_tip_plus.Location = new System.Drawing.Point(374, 42);
             this.button_tip_plus.Name = "button_tip_plus";
             this.button_tip_plus.Size = new System.Drawing.Size(21, 26);
             this.button_tip_plus.TabIndex = 59;
@@ -116,7 +116,7 @@ namespace DevList
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(504, 110);
+            this.ClientSize = new System.Drawing.Size(430, 110);
             this.Controls.Add(this.button_tip_minus);
             this.Controls.Add(this.button_tip_plus);
             this.Controls.Add(this.label_Nazvanie);

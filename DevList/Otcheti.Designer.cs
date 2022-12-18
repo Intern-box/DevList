@@ -37,7 +37,7 @@ namespace DevList
             // 
             this.button_Zakrit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Zakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Zakrit.Location = new System.Drawing.Point(713, 415);
+            this.button_Zakrit.Location = new System.Drawing.Point(424, 415);
             this.button_Zakrit.Name = "button_Zakrit";
             this.button_Zakrit.Size = new System.Drawing.Size(75, 23);
             this.button_Zakrit.TabIndex = 0;
@@ -55,14 +55,14 @@ namespace DevList
             this.textBox_Vivod_Informacii.Multiline = true;
             this.textBox_Vivod_Informacii.Name = "textBox_Vivod_Informacii";
             this.textBox_Vivod_Informacii.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_Vivod_Informacii.Size = new System.Drawing.Size(776, 397);
+            this.textBox_Vivod_Informacii.Size = new System.Drawing.Size(487, 397);
             this.textBox_Vivod_Informacii.TabIndex = 1;
             // 
             // Otcheti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(511, 450);
             this.Controls.Add(this.textBox_Vivod_Informacii);
             this.Controls.Add(this.button_Zakrit);
             this.Name = "Otcheti";
