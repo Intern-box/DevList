@@ -137,7 +137,7 @@ namespace DevList
             }
             else if (flag == 2)                                                                                 // Запрос для поиска
             {
-                zapros = baza.poisk_strok(stroka);
+                zapros = baza.Poisk_Strok(stroka);
             }
             else
             {

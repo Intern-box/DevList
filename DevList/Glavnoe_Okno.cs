@@ -135,6 +135,13 @@ namespace DevList
         }
         private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)                        // Добавляем строку в базу
         {
+            int zapominaem_stroku = 0;
+
+            if (koordinati_mishi != null)
+            {
+                zapominaem_stroku = koordinati_mishi.Item.Index;
+            }
+
             Dobavit dobavit = new Dobavit(nastroiki, koordinati_mishi, baza, 0);
 
             dobavit.ShowDialog();
@@ -142,9 +149,33 @@ namespace DevList
             if (dobavit.baza.izmeneniia_v_baze)
             {
                 baza.izmeneniia_v_baze = true;
-            }
 
-            Chtenie_Bazi(baza.baza);
+                if (koordinati_mishi != null)
+                {
+                    if (listView_Tablica_Vivoda_Bazi.Items.Count > zapominaem_stroku)
+                    {
+                        listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku + 1].Selected = true;
+                    }
+                }
+                else
+                {
+                    listView_Tablica_Vivoda_Bazi.Items[baza.baza.Count - 1].Selected = true;
+                }
+            }
+            else
+            {
+                Chtenie_Bazi(baza.baza);
+
+                if (koordinati_mishi != null)
+                {
+                    if (zapominaem_stroku == -1)
+                    {
+                        zapominaem_stroku = 0;
+                    }
+
+                    listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku].Selected = true;
+                }
+            }
         }
         private void ToolStripMenuItem_Context_Dobavit_Click(object sender, EventArgs e)
         {
@@ -192,6 +223,8 @@ namespace DevList
         {
             if (koordinati_mishi != null)
             {
+                int zapominaem_stroku = koordinati_mishi.Item.Index;
+
                 Dobavit pravka = new Dobavit(nastroiki, koordinati_mishi, baza, 1);
 
                 pravka.ShowDialog();
@@ -202,6 +235,8 @@ namespace DevList
                 }
 
                 Chtenie_Bazi(baza.baza);
+
+                listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku].Selected = true;
             }
         }
         private void toolStripMenuItem_Context_Pravit_Vse_Click(object sender, EventArgs e)
@@ -287,7 +322,7 @@ namespace DevList
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Chtenie_Bazi(baza.obschii_poisk(textBox_Obschii_Poisk.Text));
+                Chtenie_Bazi(baza.Obschii_Poisk(textBox_Obschii_Poisk.Text));
 
                 menuStrip_Glavnoe_Menu.Items[5].Visible = true;
             }
@@ -304,16 +339,56 @@ namespace DevList
 
             otchet.ShowDialog();
         }
+        private void toolStripMenuItem_Vverh_Click(object sender, EventArgs e)
+        {
+            if (koordinati_mishi != null)
+            {
+                int zapominaem_stroku = koordinati_mishi.Item.Index;
+
+                if (koordinati_mishi.Item.Index > 0)
+                {
+                    baza.Pomeniat_Stroki_Mestami(zapominaem_stroku - 1, zapominaem_stroku);
+
+                    Chtenie_Bazi(baza.baza);
+
+                    listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku - 1].Selected = true;
+                }
+            }
+        }
+        private void toolStripMenuItem_Context_Vverh_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItem_Vverh_Click(sender, e);
+        }
+        private void toolStripMenuItem_Vniz_Click(object sender, EventArgs e)
+        {
+            if (koordinati_mishi != null)
+            {
+                int zapominaem_stroku = koordinati_mishi.Item.Index;
+
+                if (baza.baza.Count > zapominaem_stroku + 1)
+                {
+                    baza.Pomeniat_Stroki_Mestami(zapominaem_stroku + 1, zapominaem_stroku);
+
+                    Chtenie_Bazi(baza.baza);
+
+                    listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku + 1].Selected = true;
+                }
+            }
+        }
+        private void toolStripMenuItem_Context_Vniz_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItem_Vniz_Click(sender, e);
+        }
 
         // Горячие клавиши ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void Glavnoe_Okno_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Control || e.KeyCode == Keys.S)                                       // Ctrl + S - Добавить
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.S) == Keys.S)           // Ctrl + S - Добавить
             {
                 ToolStripMenuItem_Dobavit_Click(sender, e);
             }
-            if (e.KeyCode == Keys.Control || e.KeyCode == Keys.E)                                       // Ctrl + E - Править
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.E) == Keys.E)           // Ctrl + E - Править
             {
                 ToolStripMenuItem_Pravit_Click(sender, e);
             }
@@ -321,7 +396,7 @@ namespace DevList
             {
                 ToolStripMenuItem_Udalit_Click(sender, e);
             }
-            if (e.KeyCode == Keys.Control || e.KeyCode == Keys.F)                                       // Ctrl + F - Поиск
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.F) == Keys.F)           // Ctrl + F - Поиск
             {
                 ToolStripMenuItem_Poisk_Click(sender, e);
             }
