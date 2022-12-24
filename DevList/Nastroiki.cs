@@ -49,27 +49,39 @@ namespace DevList
 
         private void button_Sozdat_Click(object sender, EventArgs e)                        // Реакция на нажате кнопки Создать
         {
-            if (Directory.Exists("БД") == false)                                            // Проверяем есть ли нужные папки
-                Directory.CreateDirectory("БД");
+            DialogResult result =
 
-            if (Directory.Exists("История перемещений") == false)
-                Directory.CreateDirectory("История перемещений");
-
-            File.WriteAllText                                                               // Создаём необходимые файлы
+            MessageBox.Show
             (
-                "DevList.ini",
-                put_do_bazi + "\r\n" +
-                put_do_pomeschenii + "\r\n" +
-                put_do_oborudovaniia + "\r\n" +
-                put_do_sotrudnikov
+                "Данное действие может перезаписать базу!",
+                "Перезаписать файлы?",
+                MessageBoxButtons.YesNo
             );
-            
-            File.WriteAllText(put_do_bazi, "");
-            File.WriteAllText(put_do_pomeschenii, "");
-            File.WriteAllText(put_do_oborudovaniia, "");
-            File.WriteAllText(put_do_sotrudnikov, "");
 
-            Hide();
+            if (result == DialogResult.Yes)
+            {
+                if (Directory.Exists("БД") == false)                                        // Проверяем есть ли нужные папки
+                    Directory.CreateDirectory("БД");
+
+                if (Directory.Exists("История перемещений") == false)
+                    Directory.CreateDirectory("История перемещений");
+
+                File.WriteAllText                                                           // Создаём необходимые файлы
+                (
+                    "DevList.ini",
+                    put_do_bazi + "\r\n" +
+                    put_do_pomeschenii + "\r\n" +
+                    put_do_oborudovaniia + "\r\n" +
+                    put_do_sotrudnikov
+                );
+
+                File.WriteAllText(put_do_bazi, "");
+                File.WriteAllText(put_do_pomeschenii, "");
+                File.WriteAllText(put_do_oborudovaniia, "");
+                File.WriteAllText(put_do_sotrudnikov, "");
+
+                Hide();
+            }
         }
         private void button_Zagruzit_Click(object sender, EventArgs e)                      // Реакция на нажате кнопки Загрузить
         {
