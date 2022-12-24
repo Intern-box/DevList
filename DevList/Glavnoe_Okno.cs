@@ -200,6 +200,8 @@ namespace DevList
                     }
 
                     Chtenie_Bazi(baza.baza);
+
+                    listView_Tablica_Vivoda_Bazi.Columns[9].Width = 150;
                 }
                 else if (nomer_stolbca == 3 || nomer_stolbca == 4 || nomer_stolbca == 6 || nomer_stolbca == 7)
                 {
@@ -290,7 +292,7 @@ namespace DevList
         }
         private void ToolStripMenuItem_Perechitat_Click(object sender, EventArgs e)                     // Убираем фильтры
         {
-            baza.baza.Sort((x, y) => x[2].CompareTo(y[2]));
+            baza.baza.Sort((x, y) => x[3].CompareTo(y[3]));
 
             Chtenie_Bazi(baza.baza);
 

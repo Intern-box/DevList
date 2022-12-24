@@ -83,7 +83,7 @@ namespace DevList
             this.Name = "Nastroiki";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DevList";
+            this.Text = "DevList 6.0";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Nastroiki_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
