@@ -151,7 +151,7 @@ namespace DevList
                 {
                     File.AppendAllText
                     (
-                        $"{Path.GetDirectoryName(nastroiki.put_do_faila_s_nastroikami)}\\История перемещений\\{comboBox_Spisok_Vibora.Text}.txt",
+                        $"{Path.GetDirectoryName(Path.GetFullPath(nastroiki.put_do_faila_s_nastroikami))}\\История перемещений\\{comboBox_Spisok_Vibora.Text}.txt",
                         $"Из помещения: {iz}\r\n" +
                         $"переместили: {DateTime.Now}\r\n" +
                         $"{naimenovanie}\r\n" +

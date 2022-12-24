@@ -285,7 +285,8 @@ namespace DevList
             if (Directory.Exists($"{put.SelectedPath}\\DevList\\История перемещений") == false)
                 Directory.CreateDirectory($"{put.SelectedPath}\\DevList\\История перемещений");
 
-            File.Copy(nastroiki.put_do_faila_s_nastroikami, $"{put.SelectedPath}\\DevList\\БД\\БД.csv", true);
+            File.Copy(nastroiki.put_do_faila_s_nastroikami, $"{put.SelectedPath}\\DevList\\DevList.ini", true);
+            File.Copy(nastroiki.put_do_bazi, $"{put.SelectedPath}\\DevList\\БД\\БД.csv", true);
             File.Copy(nastroiki.put_do_pomeschenii, $"{put.SelectedPath}\\DevList\\БД\\Помещения.txt", true);
             File.Copy(nastroiki.put_do_oborudovaniia, $"{put.SelectedPath}\\DevList\\БД\\Оборудование.txt", true);
             File.Copy(nastroiki.put_do_sotrudnikov, $"{put.SelectedPath}\\DevList\\БД\\Сотрудники.txt", true);

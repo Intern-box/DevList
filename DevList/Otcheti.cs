@@ -59,9 +59,10 @@ namespace DevList
                     textBox_Vivod_Informacii.Text += $"{zapros[6]} = {baza.Poisk_Strok(zapros).Count};\r\n";        // Выводим каждый элемент списка и кол-во упоминаний элемента
                 }
             }
-            else
+
+            if (textBox_Vivod_Informacii.Text == "")
             {
-                button_Zakrit_Click(sender, e);
+                textBox_Vivod_Informacii.Text = "Без списка \"Оборудования\" работать не будет!";
             }
         }
         private void button_Zakrit_Click(object sender, EventArgs e)                                                // Закрываем без обработки
