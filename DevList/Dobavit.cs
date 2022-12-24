@@ -36,7 +36,7 @@ namespace DevList
         private void Dobavit_Load(object sender, EventArgs e)                                                   // Добавляем/изменяем данные в окне
         {
             pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
-            oborudovanie = new Spisok(nastroiki.put_do_tipov_oborudovaniia);
+            oborudovanie = new Spisok(nastroiki.put_do_oborudovaniia);
             sotrudniki = new Spisok(nastroiki.put_do_sotrudnikov);
             
             comboBox_Pomeschenie.Items.AddRange(pomescheniia.spisok);                                           // Заполняем поля combobox
@@ -189,11 +189,11 @@ namespace DevList
         }
         private void button_tip_plus_Click(object sender, EventArgs e)                                          // Добавление в список Оборудования по кнопке Плюс
         {
-            Plus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Tip);
+            Plus_Element(nastroiki.put_do_oborudovaniia, comboBox_Tip);
         }
         private void button_tip_minus_Click(object sender, EventArgs e)                                         // Удаление из списка Оборудования по кнопке Минус
         {
-            Minus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Tip);
+            Minus_Element(nastroiki.put_do_oborudovaniia, comboBox_Tip);
         }
 
         // Горячие клавиши ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

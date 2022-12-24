@@ -30,7 +30,7 @@ namespace DevList
         private void InitializeComponent()
         {
             this.button_Zagruzit = new System.Windows.Forms.Button();
-            this.button_Novaia_Baza = new System.Windows.Forms.Button();
+            this.button_Sozdat = new System.Windows.Forms.Button();
             this.label_Oshibka = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -45,16 +45,16 @@ namespace DevList
             this.button_Zagruzit.UseVisualStyleBackColor = true;
             this.button_Zagruzit.Click += new System.EventHandler(this.button_Zagruzit_Click);
             // 
-            // button_Novaia_Baza
+            // button_Sozdat
             // 
-            this.button_Novaia_Baza.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Novaia_Baza.Location = new System.Drawing.Point(118, 12);
-            this.button_Novaia_Baza.Name = "button_Novaia_Baza";
-            this.button_Novaia_Baza.Size = new System.Drawing.Size(100, 50);
-            this.button_Novaia_Baza.TabIndex = 17;
-            this.button_Novaia_Baza.Text = "Создать";
-            this.button_Novaia_Baza.UseVisualStyleBackColor = true;
-            this.button_Novaia_Baza.Click += new System.EventHandler(this.button_Novaia_Baza_Click);
+            this.button_Sozdat.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_Sozdat.Location = new System.Drawing.Point(118, 12);
+            this.button_Sozdat.Name = "button_Sozdat";
+            this.button_Sozdat.Size = new System.Drawing.Size(100, 50);
+            this.button_Sozdat.TabIndex = 17;
+            this.button_Sozdat.Text = "Создать";
+            this.button_Sozdat.UseVisualStyleBackColor = true;
+            this.button_Sozdat.Click += new System.EventHandler(this.button_Sozdat_Click);
             // 
             // label_Oshibka
             // 
@@ -76,7 +76,7 @@ namespace DevList
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(230, 95);
             this.Controls.Add(this.label_Oshibka);
-            this.Controls.Add(this.button_Novaia_Baza);
+            this.Controls.Add(this.button_Sozdat);
             this.Controls.Add(this.button_Zagruzit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -92,7 +92,7 @@ namespace DevList
 
         #endregion
         private System.Windows.Forms.Button button_Zagruzit;
-        private System.Windows.Forms.Button button_Novaia_Baza;
+        private System.Windows.Forms.Button button_Sozdat;
         private System.Windows.Forms.Label label_Oshibka;
     }
 }

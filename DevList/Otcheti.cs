@@ -30,7 +30,7 @@ namespace DevList
         {
             string[] zapros = new string[baza.baza[0].Length];                                                      // Запрос для получения необходимого
 
-            Spisok oborudovanie = new Spisok(nastroiki.put_do_tipov_oborudovaniia);                                 // Список оборудования как параметр для запроса
+            Spisok oborudovanie = new Spisok(nastroiki.put_do_oborudovaniia);                                 // Список оборудования как параметр для запроса
 
             if (tip_otcheta == 0)
             {

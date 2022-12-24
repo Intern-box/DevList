@@ -37,7 +37,7 @@ namespace DevList
 
             if (comboBox_Elementi.SelectedIndex == 2)
             {
-                spisok_strok_iz_faila = File.ReadAllLines(nastroiki.put_do_tipov_oborudovaniia);
+                spisok_strok_iz_faila = File.ReadAllLines(nastroiki.put_do_oborudovaniia);
             }
 
             textBox_Soderjimoe.Clear();
@@ -69,7 +69,7 @@ namespace DevList
 
                 if (comboBox_Elementi.SelectedIndex == 2)
                 {
-                    File.WriteAllText(nastroiki.put_do_tipov_oborudovaniia, textBox_Soderjimoe.Text + "\r\n");
+                    File.WriteAllText(nastroiki.put_do_oborudovaniia, textBox_Soderjimoe.Text + "\r\n");
                 }
             }
         }

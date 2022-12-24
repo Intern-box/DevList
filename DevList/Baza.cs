@@ -11,7 +11,7 @@ namespace DevList
 {
     public class Baza
     {
-        public List<string[]> baza = new List<string[]>();                         // База
+        public List<string[]> baza = new List<string[]>();                        // База
         public bool izmeneniia_v_baze = false;                                    // Флаг изменения в базе
 
         public Baza()

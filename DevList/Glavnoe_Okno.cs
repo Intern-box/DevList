@@ -21,7 +21,7 @@ namespace DevList
         {
             InitializeComponent();
         }
-        private void Glavnoe_Okno_Load(object sender, EventArgs e)                                       // Начинаем загрузку базы
+        private void Glavnoe_Okno_Load(object sender, EventArgs e)                                      // Начинаем загрузку базы
         {
             ToolStripMenuItem_Sozdat_Click(sender, e);
         }
@@ -121,16 +121,13 @@ namespace DevList
                 baza.izmeneniia_v_baze = false;
             }
 
-            FolderBrowserDialog papka_dlia_proiecta = new FolderBrowserDialog();
+            OpenFileDialog otkrit_fail = new OpenFileDialog() { Filter = "*.INI|*.ini" };
 
-            if (papka_dlia_proiecta.ShowDialog() == DialogResult.OK)
+            if (otkrit_fail.ShowDialog() == DialogResult.OK)
             {
-                if (File.Exists(papka_dlia_proiecta.SelectedPath + "\\DevList.ini"))
-                {
-                    nastroiki.Chitat();
+                nastroiki.Chitat_Pri_Otkritii(Path.GetFullPath(otkrit_fail.FileName));
 
-                    Otkrit_Bazu(nastroiki.put_do_bazi);
-                }
+                Otkrit_Bazu(nastroiki.put_do_bazi);
             }
         }
         private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)                        // Добавляем строку в базу

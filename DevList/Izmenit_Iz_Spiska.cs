@@ -45,7 +45,7 @@ namespace DevList
         private void Izmenit_Iz_Spiska_Load(object sender, EventArgs e)                                     // Подготовка к обработке данных
         {
             pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
-            oborudovanie = new Spisok(nastroiki.put_do_tipov_oborudovaniia);
+            oborudovanie = new Spisok(nastroiki.put_do_oborudovaniia);
             sotrudniki = new Spisok(nastroiki.put_do_sotrudnikov);
 
             if (tip_otcheta == 1)                                                                           // Обработка данных для отчёта
@@ -182,7 +182,7 @@ namespace DevList
             }
             else if (nomer_stolbca == 6)       // Тип
             {
-                Plus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Spisok_Vibora);
+                Plus_Element(nastroiki.put_do_oborudovaniia, comboBox_Spisok_Vibora);
             }
         }
         private void button_tip_minus_Click(object sender, EventArgs e)                                     // Удаление из списка Оборудования по кнопке Минус
@@ -197,7 +197,7 @@ namespace DevList
             }
             else if (nomer_stolbca == 6)       // Тип
             {
-                Minus_Element(nastroiki.put_do_tipov_oborudovaniia, comboBox_Spisok_Vibora);
+                Minus_Element(nastroiki.put_do_oborudovaniia, comboBox_Spisok_Vibora);
             }
         }
 
