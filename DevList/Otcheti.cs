@@ -36,9 +36,12 @@ namespace DevList
             {
                 foreach (string slovo in oborudovanie.spisok)                                                       // Выводим список и кол-во оборудования 
                 {
-                    zapros[6] = slovo;
+                    if (slovo != "")
+                    {
+                        zapros[6] = slovo;
 
-                    textBox_Vivod_Informacii.Text += $"{slovo} = {baza.Poisk_Strok(zapros).Count};\r\n";
+                        textBox_Vivod_Informacii.Text += $"{slovo} = {baza.Poisk_Strok(zapros).Count};\r\n";
+                    }
                 }
             }
             else if (tip_otcheta == 1)
@@ -53,10 +56,7 @@ namespace DevList
                 {
                     zapros[6] = oborudovanie.spisok[i];
 
-                    if (baza.Poisk_Strok(zapros).Count > 0)
-                    {
-                        textBox_Vivod_Informacii.Text += $"{zapros[6]} = {baza.Poisk_Strok(zapros).Count};\r\n";    // Выводим каждый элемент списка и кол-во упоминаний элемента
-                    }
+                    textBox_Vivod_Informacii.Text += $"{zapros[6]} = {baza.Poisk_Strok(zapros).Count};\r\n";        // Выводим каждый элемент списка и кол-во упоминаний элемента
                 }
             }
             else

@@ -31,7 +31,7 @@ namespace DevList
         {
             this.comboBox_Elementi = new System.Windows.Forms.ComboBox();
             this.label_Spisok = new System.Windows.Forms.Label();
-            this.button_Otmenit = new System.Windows.Forms.Button();
+            this.button_Zakrit = new System.Windows.Forms.Button();
             this.button_Sohranit = new System.Windows.Forms.Button();
             this.textBox_Soderjimoe = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -60,17 +60,17 @@ namespace DevList
             this.label_Spisok.TabIndex = 55;
             this.label_Spisok.Text = "Список:";
             // 
-            // button_Otmenit
+            // button_Zakrit
             // 
-            this.button_Otmenit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Otmenit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Otmenit.Location = new System.Drawing.Point(340, 325);
-            this.button_Otmenit.Name = "button_Otmenit";
-            this.button_Otmenit.Size = new System.Drawing.Size(89, 29);
-            this.button_Otmenit.TabIndex = 58;
-            this.button_Otmenit.Text = "Отменить";
-            this.button_Otmenit.UseVisualStyleBackColor = true;
-            this.button_Otmenit.Click += new System.EventHandler(this.button_Otmenit_Click);
+            this.button_Zakrit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_Zakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_Zakrit.Location = new System.Drawing.Point(340, 325);
+            this.button_Zakrit.Name = "button_Zakrit";
+            this.button_Zakrit.Size = new System.Drawing.Size(89, 29);
+            this.button_Zakrit.TabIndex = 58;
+            this.button_Zakrit.Text = "Закрыть";
+            this.button_Zakrit.UseVisualStyleBackColor = true;
+            this.button_Zakrit.Click += new System.EventHandler(this.button_Otmenit_Click);
             // 
             // button_Sohranit
             // 
@@ -103,7 +103,7 @@ namespace DevList
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 365);
             this.Controls.Add(this.textBox_Soderjimoe);
-            this.Controls.Add(this.button_Otmenit);
+            this.Controls.Add(this.button_Zakrit);
             this.Controls.Add(this.button_Sohranit);
             this.Controls.Add(this.comboBox_Elementi);
             this.Controls.Add(this.label_Spisok);
@@ -123,7 +123,7 @@ namespace DevList
 
         private System.Windows.Forms.ComboBox comboBox_Elementi;
         private System.Windows.Forms.Label label_Spisok;
-        private System.Windows.Forms.Button button_Otmenit;
+        private System.Windows.Forms.Button button_Zakrit;
         private System.Windows.Forms.Button button_Sohranit;
         private System.Windows.Forms.TextBox textBox_Soderjimoe;
     }
