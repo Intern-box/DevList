@@ -74,37 +74,30 @@ namespace DevList
                 }
             }
 
-            if (skolko_nado_naiti_sovpadenii > 0)
-            {
-                byte naideno_sovpadenii = 0;
+            byte naideno_sovpadenii = 0;
 
-                foreach (string[] stroka in baza)
+            foreach (string[] stroka in baza)
+            {
+                for (int i = 1; i < baza[0].Length; i++)
                 {
-                    for (int i = 1; i < baza[0].Length; i++)
+                    if (zapros[i] != null && zapros[i] != "")
                     {
-                        if (zapros[i] != null && zapros[i] != "")
+                        if (stroka[i].IndexOf(zapros[i], StringComparison.CurrentCultureIgnoreCase) != -1)
                         {
-                            if (stroka[i].IndexOf(zapros[i], StringComparison.CurrentCultureIgnoreCase) != -1)
-                            {
-                                naideno_sovpadenii++;
-                            }
+                            naideno_sovpadenii++;
                         }
                     }
-
-                    if (naideno_sovpadenii >= skolko_nado_naiti_sovpadenii)
-                    {
-                        resultat.Add(stroka);
-                    }
-
-                    naideno_sovpadenii = 0;
                 }
 
-                return resultat;
+                if (naideno_sovpadenii >= skolko_nado_naiti_sovpadenii)
+                {
+                    resultat.Add(stroka);
+                }
+
+                naideno_sovpadenii = 0;
             }
-            else
-            {
-                return null;
-            }
+
+            return resultat;
         }
         public void Pomeniat_Stroki_Mestami(int nomer_pervoi, int nomer_vtoroi)
         {

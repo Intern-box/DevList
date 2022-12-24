@@ -268,14 +268,25 @@ namespace DevList
         {
             baza.Zapisat(nastroiki.put_do_bazi);
         }
-        private void ToolStripMenuItem_Sohranit_Kak_Click(object sender, EventArgs e)                   // Сохраняем файл с базой
+        private void ToolStripMenuItem_Sohranit_Kak_Click(object sender, EventArgs e)                   // Сохраняем базу
         {
-            SaveFileDialog put_k_failu = new SaveFileDialog() { Filter = "*.CSV|*.csv" };
+            FolderBrowserDialog put = new FolderBrowserDialog();
 
-            if (put_k_failu.ShowDialog() == DialogResult.OK)
-            {
-                baza.Zapisat(put_k_failu.FileName);
-            }
+            put.ShowDialog();
+
+            if (Directory.Exists($"{put.SelectedPath}\\DevList") == false)
+                Directory.CreateDirectory($"{put.SelectedPath}\\DevList");
+
+            if (Directory.Exists($"{put.SelectedPath}\\DevList\\БД") == false)
+                Directory.CreateDirectory($"{put.SelectedPath}\\DevList\\БД");
+
+            if (Directory.Exists($"{put.SelectedPath}\\DevList\\История перемещений") == false)
+                Directory.CreateDirectory($"{put.SelectedPath}\\DevList\\История перемещений");
+
+            File.Copy(nastroiki.put_do_faila_s_nastroikami, $"{put.SelectedPath}\\DevList\\БД\\БД.csv", true);
+            File.Copy(nastroiki.put_do_pomeschenii, $"{put.SelectedPath}\\DevList\\БД\\Помещения.txt", true);
+            File.Copy(nastroiki.put_do_oborudovaniia, $"{put.SelectedPath}\\DevList\\БД\\Оборудование.txt", true);
+            File.Copy(nastroiki.put_do_sotrudnikov, $"{put.SelectedPath}\\DevList\\БД\\Сотрудники.txt", true);
         }
         private void ToolStripMenuItem_Perechitat_Click(object sender, EventArgs e)                     // Убираем фильтры
         {
