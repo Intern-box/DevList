@@ -358,6 +358,8 @@ namespace DevList
                     listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku - 1].Selected = true;
                 }
             }
+
+            baza.izmeneniia_v_baze = true;
         }
         private void toolStripMenuItem_Context_Vverh_Click(object sender, EventArgs e)
         {
@@ -378,6 +380,8 @@ namespace DevList
                     listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku + 1].Selected = true;
                 }
             }
+
+            baza.izmeneniia_v_baze = true;
         }
         private void toolStripMenuItem_Context_Vniz_Click(object sender, EventArgs e)
         {
