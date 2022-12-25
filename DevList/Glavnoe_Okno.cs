@@ -356,6 +356,7 @@ namespace DevList
                     Chtenie_Bazi(baza.baza);
 
                     listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku - 1].Selected = true;
+                    listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku - 1].Focused = true;
                 }
             }
 
@@ -378,6 +379,7 @@ namespace DevList
                     Chtenie_Bazi(baza.baza);
 
                     listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku + 1].Selected = true;
+                    listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku + 1].Focused = true;
                 }
             }
 
@@ -411,6 +413,14 @@ namespace DevList
             if (e.KeyCode == Keys.Escape)                                                               // Ctrl + Escape - закрыть программу
             {
                 Close();
+            }
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Up) == Keys.Up)         // Ctrl + Стрелка вверх - Перемещение выделенной строки вверх
+            {
+                toolStripMenuItem_Vverh_Click(sender, e);
+            }
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Down) == Keys.Down)     // Ctrl + Стрелка вниз - Перемещение выделенной строки вниз
+            {
+                toolStripMenuItem_Vniz_Click(sender, e);
             }
         }
     }
