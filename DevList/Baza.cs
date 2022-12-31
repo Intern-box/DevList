@@ -18,8 +18,8 @@ namespace DevList
         {
         }
         public Baza(string put_do_bazi)                                           // При создании экзепляра, передавая путь к файлу
-        {                                                               // создаётся объект с базой и открывается файл
-            foreach (string stroka in File.ReadAllLines(put_do_bazi))   // Преобразуем из *.csv в List<string[]>
+        {                                                                         // создаётся объект с базой и открывается файл
+            foreach (string stroka in File.ReadAllLines(put_do_bazi))             // Преобразуем из *.csv в List<string[]>
             {
                 stroka.TrimEnd('\r');
 
@@ -99,7 +99,7 @@ namespace DevList
 
             return resultat;
         }
-        public void Pomeniat_Stroki_Mestami(int nomer_pervoi, int nomer_vtoroi)
+        public void Pomeniat_Stroki_Mestami(int nomer_pervoi, int nomer_vtoroi)   // Меняем строки в базе местами
         {
             string[] zapominaem_pervuiu = new string[baza[nomer_pervoi].Length];
 

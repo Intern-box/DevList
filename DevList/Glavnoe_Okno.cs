@@ -132,6 +132,18 @@ namespace DevList
         }
         private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)                        // Добавляем строку в базу
         {
+            Dobavit_Pravit_Poisk okno = new Dobavit_Pravit_Poisk("DevList - Добавить");
+
+            okno.ShowDialog();
+
+            if (koordinati_mishi != null)
+            {
+                baza.baza.Add(okno.Resultat);
+
+                Chtenie_Bazi(baza.baza);
+            }
+
+            /*
             int zapominaem_stroku = 0;
 
             if (koordinati_mishi != null)
@@ -177,6 +189,7 @@ namespace DevList
                     listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku].Selected = true;
                 }
             }
+            */
         }
         private void ToolStripMenuItem_Context_Dobavit_Click(object sender, EventArgs e)
         {

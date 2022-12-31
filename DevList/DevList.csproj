@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Baza.cs" />
+    <Compile Include="Dobavit_Pravit_Poisk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dobavit_Pravit_Poisk.Designer.cs">
+      <DependentUpon>Dobavit_Pravit_Poisk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Otcheti.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dobavit_Pravit_Poisk.resx">
+      <DependentUpon>Dobavit_Pravit_Poisk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dobavit.resx">
       <DependentUpon>Dobavit.cs</DependentUpon>
     </EmbeddedResource>
