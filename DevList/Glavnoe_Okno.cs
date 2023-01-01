@@ -171,17 +171,26 @@ namespace DevList
         {
             if (koordinati_mishi != null || koordinati_mishi.Location == ListViewHitTestLocations.None)
             {
-                if
-                (
-                    koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 3 ||
+                Izmenit_Iz_Spiska izmenit_Iz_spiska = new Izmenit_Iz_Spiska(koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem), nastroiki);
+
+                izmenit_Iz_spiska.ShowDialog();
+
+                if (koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 3 ||
                     koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 4 ||
                     koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 6 ||
-                    koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 7
-                )
+                    koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 7)
                 {
-                    Izmenit_Iz_Spiska izmenit_Iz_spiska = new Izmenit_Iz_Spiska(koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem), nastroiki);
-
-                    izmenit_Iz_spiska.ShowDialog();
+                    if (koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 3)
+                    {
+                        File.AppendAllText
+                        (
+                        $"{Path.GetDirectoryName(Path.GetFullPath(nastroiki.put_do_faila_s_nastroikami))}\\История перемещений\\{izmenit_Iz_spiska.rezultat}.txt",
+                        $"Из помещения: {baza.baza[koordinati_mishi.Item.Index][koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem)]}\r\n" +
+                        $"переместили: {DateTime.Now}\r\n" +
+                        $"{baza.baza[koordinati_mishi.Item.Index][5]}\r\n" +
+                        $"с инв.№: {baza.baza[koordinati_mishi.Item.Index][2]}\r\n\r\n"
+                        );
+                    }
 
                     int zapominaem_stroku = koordinati_mishi.Item.Index;
 
@@ -190,35 +199,6 @@ namespace DevList
                     Chtenie_Bazi(baza.baza);
 
                     listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku].Selected = true;
-
-                    /*
-
-                    if (koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 3)
-                    {
-                        
-                        iz = baza.baza[nomer_stroki][nomer_stolbca];                                                // Сохраняем данные для Истории перемещений
-                        inv_nomer = baza.baza[nomer_stroki][2];
-                        naimenovanie = baza.baza[nomer_stroki][5];
-                        
-                    }
-
-                    if (koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 7)
-                    {
-                        
-                        comboBox_Spisok_Vibora.Items.Add("рабочее");
-                        comboBox_Spisok_Vibora.Items.Add("в ремонте");
-                        comboBox_Spisok_Vibora.Items.Add("сломано");
-                        comboBox_Spisok_Vibora.Items.Add("утеряно");
-
-                        comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
-                        
-                    }
-
-                    */
-
-                    //comboBox_Spisok_Vibora.Items.AddRange(sotrudniki.spisok);
-
-                    //comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
                 }
                 else
                 {
@@ -236,39 +216,6 @@ namespace DevList
 
                     listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku].Selected = true;
                 }
-
-                baza.izmeneniia_v_baze = true;
-
-                /*int nomer_stolbca = koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem);
-
-                if (nomer_stolbca == 1 || nomer_stolbca == 2 || nomer_stolbca == 5 || nomer_stolbca == 8 || nomer_stolbca == 9 || nomer_stolbca == 10 || nomer_stolbca == 11 || nomer_stolbca == 12)
-                {
-                    Izmenit_Stroku izmenit_stroku = new Izmenit_Stroku(baza, koordinati_mishi);
-
-                    izmenit_stroku.ShowDialog();
-
-                    if (izmenit_stroku.baza.izmeneniia_v_baze)
-                    {
-                        baza.izmeneniia_v_baze = true;
-                    }
-
-                    Chtenie_Bazi(baza.baza);
-
-                    listView_Tablica_Vivoda_Bazi.Columns[9].Width = 150;
-                }
-                else if (nomer_stolbca == 3 || nomer_stolbca == 4 || nomer_stolbca == 6 || nomer_stolbca == 7)
-                {
-                    Izmenit_Iz_Spiska izmenit_Iz_spiska = new Izmenit_Iz_Spiska(nastroiki, baza, koordinati_mishi);
-
-                    izmenit_Iz_spiska.ShowDialog();
-
-                    if (izmenit_Iz_spiska.baza.izmeneniia_v_baze)
-                    {
-                        baza.izmeneniia_v_baze = true;
-                    }
-
-                    Chtenie_Bazi(baza.baza);
-                }*/
             }
         }
         private void ToolStripMenuItem_Context_Pravit_Click(object sender, EventArgs e)
@@ -277,7 +224,7 @@ namespace DevList
         }
         private void toolStripMenuItem_Pravit_Vse_Click(object sender, EventArgs e)                     // Правим строку в базе
         {
-            if (koordinati_mishi != null)
+            if (koordinati_mishi != null)       // Теперь править всё надо сделать!
             {
                 int zapominaem_stroku = koordinati_mishi.Item.Index;
 
