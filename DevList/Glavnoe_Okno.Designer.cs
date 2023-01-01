@@ -111,7 +111,7 @@ namespace DevList
             this.listView_Tablica_Vivoda_Bazi.UseCompatibleStateImageBehavior = false;
             this.listView_Tablica_Vivoda_Bazi.View = System.Windows.Forms.View.Details;
             this.listView_Tablica_Vivoda_Bazi.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_Tablica_Vivoda_Bazi_ColumnClick);
-            this.listView_Tablica_Vivoda_Bazi.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView_Tablica_Vivoda_Bazi_MouseClick);
+            this.listView_Tablica_Vivoda_Bazi.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listView_Tablica_Vivoda_Bazi_MouseDown);
             // 
             // columnHeader_ID
             // 

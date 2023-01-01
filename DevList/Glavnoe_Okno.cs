@@ -89,7 +89,7 @@ namespace DevList
 
             ToolStripMenuItem_Perechitat.Visible = true;
         }
-        private void listView_Tablica_Vivoda_Bazi_MouseClick(object sender, MouseEventArgs e)           // Сохраняем положение мыши при клике
+        private void listView_Tablica_Vivoda_Bazi_MouseDown(object sender, MouseEventArgs e)            // Сохраняем положение мыши при клике
         {
             koordinati_mishi = listView_Tablica_Vivoda_Bazi.HitTest(e.X, e.Y);
         }
@@ -132,64 +132,34 @@ namespace DevList
         }
         private void ToolStripMenuItem_Dobavit_Click(object sender, EventArgs e)                        // Добавляем строку в базу
         {
+            /*
+             * Если курсор на НЕ пустой строке, то  ListViewHitTestLocations НЕ none
+             * Если курсор на ПУСТОЙ строке, то ListViewHitTestLocations равен NONE
+             * Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
+             */
+
             Dobavit_Pravit_Poisk okno = new Dobavit_Pravit_Poisk("DevList - Добавить");
 
             okno.ShowDialog();
 
-            if (koordinati_mishi != null)
+            if (koordinati_mishi == null || koordinati_mishi.Location == ListViewHitTestLocations.None)
             {
                 baza.baza.Add(okno.Resultat);
 
                 Chtenie_Bazi(baza.baza);
-            }
 
-            /*
-            int zapominaem_stroku = 0;
-
-            if (koordinati_mishi != null)
-            {
-                zapominaem_stroku = koordinati_mishi.Item.Index;
-            }
-
-            Dobavit dobavit = new Dobavit(nastroiki, koordinati_mishi, baza, 0);
-
-            dobavit.ShowDialog();
-
-            if (dobavit.baza.izmeneniia_v_baze)
-            {
-                baza.izmeneniia_v_baze = true;
-
-                if (koordinati_mishi != null)
-                {
-                    if (listView_Tablica_Vivoda_Bazi.Items.Count > zapominaem_stroku)
-                    {
-                        Chtenie_Bazi(baza.baza);
-
-                        listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku + 1].Selected = true;
-                    }
-                }
-                else
-                {
-                    Chtenie_Bazi(baza.baza);
-
-                    listView_Tablica_Vivoda_Bazi.Items[baza.baza.Count - 1].Selected = true;
-                }
+                listView_Tablica_Vivoda_Bazi.Items[baza.baza.Count - 1].Selected = true;
             }
             else
             {
+                int zapominaem_stroku = koordinati_mishi.Item.Index;
+
+                baza.baza.Insert(koordinati_mishi.Item.Index + 1, okno.Resultat);
+
                 Chtenie_Bazi(baza.baza);
 
-                if (koordinati_mishi != null)
-                {
-                    if (zapominaem_stroku == -1)
-                    {
-                        zapominaem_stroku = 0;
-                    }
-
-                    listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku].Selected = true;
-                }
+                listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku + 1].Selected = true;
             }
-            */
         }
         private void ToolStripMenuItem_Context_Dobavit_Click(object sender, EventArgs e)
         {
