@@ -13,194 +13,104 @@ namespace DevList
 {
     public partial class Izmenit_Iz_Spiska : Form
     {
-        public Baza baza;                                                                                   // Переданный объект с базой
-        Spisok pomescheniia, oborudovanie, sotrudniki;                                                      // Объекты с данными по спискам Помещений, Оборудования и Сотрудников
+        int nomer_stolbca;
         Nastroiki nastroiki;                                                                                // Переданный объект с данными, хранящий адреса к нужным файлам
-        int nomer_stolbca, nomer_stroki;                                                                    // Переданные номера столбца и строки
-        string iz, inv_nomer, naimenovanie;                                                                 // Данные для Истории перемещений оборудования
-        byte tip_otcheta;                                                                                   // Флаг для выбора параметров обработки данных
+        Spisok pomescheniia, oborudovanie, sotrudniki;
         public string rezultat;                                                                             // Результат выбора
 
-        public Izmenit_Iz_Spiska(Nastroiki nastroiki, Baza baza, ListViewHitTestInfo koordinati_mishi)
+        public Izmenit_Iz_Spiska(int nomer_stolbca, Nastroiki nastroiki)
         {
             InitializeComponent();
 
-            this.nastroiki = nastroiki;
-
-            this.baza = baza;
-
-            nomer_stroki = koordinati_mishi.Item.Index;
-
-            nomer_stolbca = koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem);
-        }
-
-        public Izmenit_Iz_Spiska(Nastroiki nastroiki, byte tip_otcheta)
-        {
-            InitializeComponent();
+            this.nomer_stolbca = nomer_stolbca;
 
             this.nastroiki = nastroiki;
-
-            this.tip_otcheta = 1;
         }
-        private void Izmenit_Iz_Spiska_Load(object sender, EventArgs e)                                     // Подготовка к обработке данных
+        private void Izmenit_Iz_Spiska_Load(object sender, EventArgs e)
         {
             pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
             oborudovanie = new Spisok(nastroiki.put_do_oborudovaniia);
             sotrudniki = new Spisok(nastroiki.put_do_sotrudnikov);
 
-            if (tip_otcheta == 1)                                                                           // Обработка данных для отчёта
+            if (nomer_stolbca == 3)
             {
-                pomescheniia = new Spisok(nastroiki.put_do_pomeschenii);
-
-                if (tip_otcheta == 1)
-                {
-                    label_Nazvanie.Text = "Помещение";
-
-                    comboBox_Spisok_Vibora.Items.AddRange(pomescheniia.spisok);
-                }
-                else
-                {
-                    button_Otmenit_Click(sender, e);
-                }
-            }
-            else if (nomer_stolbca == 3)                                                                    // Изменяем форму под каждый список в соответствии с номером столбца
-            {
-                label_Nazvanie.Text = "Помещения";
-
-                iz = baza.baza[nomer_stroki][nomer_stolbca];                                                // Сохраняем данные для Истории перемещений
-                inv_nomer = baza.baza[nomer_stroki][2];
-                naimenovanie = baza.baza[nomer_stroki][5];
-
-                comboBox_Spisok_Vibora.Items.AddRange(pomescheniia.spisok);                                 // Загружаем список
-
-                comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];               // Ищим в списке совпадение. Если находим, выводим
+                comboBox_Spisok_Vibora.Items.AddRange(pomescheniia.spisok);
             }
             else if (nomer_stolbca == 4)
             {
-                label_Nazvanie.Text = "Сотрудники";
-
                 comboBox_Spisok_Vibora.Items.AddRange(sotrudniki.spisok);
-
-                comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
             }
             else if (nomer_stolbca == 6)
             {
-                label_Nazvanie.Text = "Тип";
-
                 comboBox_Spisok_Vibora.Items.AddRange(oborudovanie.spisok);
-
-                comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
             }
             else if (nomer_stolbca == 7)
             {
-                label_Nazvanie.Text = "Состояние";
+                button_tip_plus.Enabled = false;
+                button_tip_minus.Enabled = false;
 
                 comboBox_Spisok_Vibora.Items.Add("рабочее");
                 comboBox_Spisok_Vibora.Items.Add("в ремонте");
                 comboBox_Spisok_Vibora.Items.Add("сломано");
                 comboBox_Spisok_Vibora.Items.Add("утеряно");
-
-                comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
             }
-            else
-            {
-                Close();
-            }
-        }
-        private void Plus_Element(string put, ComboBox textovaia_stroka)                                    // Добавление элементов в список
-        {
-            File.AppendAllText(put, textovaia_stroka.Text + "\r\n");
-
-            textovaia_stroka.Items.Clear();
-
-            textovaia_stroka.Items.AddRange(File.ReadAllLines(put));
-        }
-        private void Minus_Element(string put, ComboBox textovaia_stroka)                                   // Удаление элементов из списка
-        {
-            string spisok_strok = "";
-
-            foreach (string stroka in File.ReadAllLines(put))
-            {
-                if (stroka != textovaia_stroka.Text)
-                {
-                    spisok_strok += stroka + "\r\n";
-                }
-            }
-
-            File.Delete(put);
-            File.AppendAllText(put, spisok_strok.ToString());
-
-            textovaia_stroka.Items.Clear();
-            textovaia_stroka.Items.AddRange(File.ReadAllLines(put));
         }
 
         // Действия по кнопкам ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        private void button_Vipolnit_Click(object sender, EventArgs e)                                      // Обработка данных
+        private void button_Vipolnit_Click(object sender, EventArgs e)
         {
-            if (tip_otcheta == 1)
-            {
-                rezultat = comboBox_Spisok_Vibora.Text;
-            }
-            else
-            {
-                // Если изменяется Помещение, то происходит запись в папку "История перемещений"
-                // В файл с названием помещения КУДА перемещают МЦ добавляется строка
-                // с названием помещения ОТКУДА переместили и датой перемещения
-                if (nomer_stolbca == 3)
-                {
-                    File.AppendAllText
-                    (
-                        $"{Path.GetDirectoryName(Path.GetFullPath(nastroiki.put_do_faila_s_nastroikami))}\\История перемещений\\{comboBox_Spisok_Vibora.Text}.txt",
-                        $"Из помещения: {iz}\r\n" +
-                        $"переместили: {DateTime.Now}\r\n" +
-                        $"{naimenovanie}\r\n" +
-                        $"с инв.№: {inv_nomer}\r\n\r\n"
-                    );
-                }
-
-                baza.baza[nomer_stroki][nomer_stolbca] = comboBox_Spisok_Vibora.Text;
-
-                baza.izmeneniia_v_baze = true;
-            }
+            rezultat = comboBox_Spisok_Vibora.Text;
 
             Close();
+        }
+        private void button_tip_plus_Click(object sender, EventArgs e)                                      // Добавление в список Оборудования по кнопке Плюс
+        {
+            if (nomer_stolbca == 3)
+            {
+                pomescheniia.Plus_Element(comboBox_Spisok_Vibora.Text);
+
+                comboBox_Spisok_Vibora.Items.Clear();
+
+                comboBox_Spisok_Vibora.Items.AddRange(File.ReadAllLines(nastroiki.put_do_pomeschenii));
+            }
+            else if (nomer_stolbca == 4)
+            {
+                sotrudniki.Plus_Element(comboBox_Spisok_Vibora.Text);
+
+                comboBox_Spisok_Vibora.Items.Clear();
+
+                comboBox_Spisok_Vibora.Items.AddRange(File.ReadAllLines(nastroiki.put_do_sotrudnikov));
+            }
+            else if (nomer_stolbca == 6)
+            {
+                oborudovanie.Plus_Element(comboBox_Spisok_Vibora.Text);
+
+                comboBox_Spisok_Vibora.Items.Clear();
+
+                comboBox_Spisok_Vibora.Items.AddRange(File.ReadAllLines(nastroiki.put_do_oborudovaniia));
+            }
+        }
+        private void button_tip_minus_Click(object sender, EventArgs e)                                     // Удаление из списка Оборудования по кнопке Минус
+        {
+            if (nomer_stolbca == 3)
+            {
+                pomescheniia.Minus_Element(comboBox_Spisok_Vibora.Text);
+            }
+            else if (nomer_stolbca == 4)
+            {
+                sotrudniki.Minus_Element(comboBox_Spisok_Vibora.Text);
+            }
+            else if (nomer_stolbca == 6)
+            {
+                oborudovanie.Minus_Element(comboBox_Spisok_Vibora.Text);
+            }
         }
         private void button_Otmenit_Click(object sender, EventArgs e)                                       // Закрываем форму без обработки
         {
             Close();
         }
-        private void button_tip_plus_Click(object sender, EventArgs e)                                      // Добавление в список Оборудования по кнопке Плюс
-        {
-            if (nomer_stolbca == 3)            // Помещения
-            {
-                Plus_Element(nastroiki.put_do_pomeschenii, comboBox_Spisok_Vibora);
-            }
-            else if (nomer_stolbca == 4)       // Сотрудники
-            {
-                Plus_Element(nastroiki.put_do_sotrudnikov, comboBox_Spisok_Vibora);
-            }
-            else if (nomer_stolbca == 6)       // Тип
-            {
-                Plus_Element(nastroiki.put_do_oborudovaniia, comboBox_Spisok_Vibora);
-            }
-        }
-        private void button_tip_minus_Click(object sender, EventArgs e)                                     // Удаление из списка Оборудования по кнопке Минус
-        {
-            if (nomer_stolbca == 3)            // Помещения
-            {
-                Minus_Element(nastroiki.put_do_pomeschenii, comboBox_Spisok_Vibora);
-            }
-            else if (nomer_stolbca == 4)       // Сотрудники
-            {
-                Minus_Element(nastroiki.put_do_sotrudnikov, comboBox_Spisok_Vibora);
-            }
-            else if (nomer_stolbca == 6)       // Тип
-            {
-                Minus_Element(nastroiki.put_do_oborudovaniia, comboBox_Spisok_Vibora);
-            }
-        }
-
+        
         // Горячие клавиши ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void Izmenit_Iz_Spiska_KeyUp(object sender, KeyEventArgs e)

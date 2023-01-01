@@ -144,7 +144,7 @@ namespace DevList
 
             if (koordinati_mishi == null || koordinati_mishi.Location == ListViewHitTestLocations.None)
             {
-                baza.baza.Add(okno.Resultat);
+                baza.baza.Add(okno.resultat);
 
                 Chtenie_Bazi(baza.baza);
 
@@ -154,12 +154,14 @@ namespace DevList
             {
                 int zapominaem_stroku = koordinati_mishi.Item.Index;
 
-                baza.baza.Insert(koordinati_mishi.Item.Index + 1, okno.Resultat);
+                baza.baza.Insert(koordinati_mishi.Item.Index + 1, okno.resultat);
 
                 Chtenie_Bazi(baza.baza);
 
                 listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku + 1].Selected = true;
             }
+
+            baza.izmeneniia_v_baze = true;
         }
         private void ToolStripMenuItem_Context_Dobavit_Click(object sender, EventArgs e)
         {
@@ -167,9 +169,77 @@ namespace DevList
         }
         private void ToolStripMenuItem_Pravit_Click(object sender, EventArgs e)                         // Правка отдельного элемента строки в базе
         {
-            if (koordinati_mishi != null)
+            if (koordinati_mishi != null || koordinati_mishi.Location == ListViewHitTestLocations.None)
             {
-                int nomer_stolbca = koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem);
+                if
+                (
+                    koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 3 ||
+                    koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 4 ||
+                    koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 6 ||
+                    koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 7
+                )
+                {
+                    Izmenit_Iz_Spiska izmenit_Iz_spiska = new Izmenit_Iz_Spiska(koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem), nastroiki);
+
+                    izmenit_Iz_spiska.ShowDialog();
+
+                    int zapominaem_stroku = koordinati_mishi.Item.Index;
+
+                    baza.baza[koordinati_mishi.Item.Index][koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem)] = izmenit_Iz_spiska.rezultat;
+
+                    Chtenie_Bazi(baza.baza);
+
+                    listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku].Selected = true;
+
+                    /*
+
+                    if (koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 3)
+                    {
+                        
+                        iz = baza.baza[nomer_stroki][nomer_stolbca];                                                // Сохраняем данные для Истории перемещений
+                        inv_nomer = baza.baza[nomer_stroki][2];
+                        naimenovanie = baza.baza[nomer_stroki][5];
+                        
+                    }
+
+                    if (koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem) == 7)
+                    {
+                        
+                        comboBox_Spisok_Vibora.Items.Add("рабочее");
+                        comboBox_Spisok_Vibora.Items.Add("в ремонте");
+                        comboBox_Spisok_Vibora.Items.Add("сломано");
+                        comboBox_Spisok_Vibora.Items.Add("утеряно");
+
+                        comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
+                        
+                    }
+
+                    */
+
+                    //comboBox_Spisok_Vibora.Items.AddRange(sotrudniki.spisok);
+
+                    //comboBox_Spisok_Vibora.SelectedItem = baza.baza[nomer_stroki][nomer_stolbca];
+                }
+                else
+                {
+                    Izmenit_Stroku izmenit_stroku = new Izmenit_Stroku(baza.baza[koordinati_mishi.Item.Index][koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem)]);
+
+                    izmenit_stroku.ShowDialog();
+
+                    int zapominaem_stroku = koordinati_mishi.Item.Index;
+
+                    baza.baza[koordinati_mishi.Item.Index][koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem)] = izmenit_stroku.resultat;
+
+                    Chtenie_Bazi(baza.baza);
+
+                    listView_Tablica_Vivoda_Bazi.Columns[9].Width = 150;
+
+                    listView_Tablica_Vivoda_Bazi.Items[zapominaem_stroku].Selected = true;
+                }
+
+                baza.izmeneniia_v_baze = true;
+
+                /*int nomer_stolbca = koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem);
 
                 if (nomer_stolbca == 1 || nomer_stolbca == 2 || nomer_stolbca == 5 || nomer_stolbca == 8 || nomer_stolbca == 9 || nomer_stolbca == 10 || nomer_stolbca == 11 || nomer_stolbca == 12)
                 {
@@ -198,7 +268,7 @@ namespace DevList
                     }
 
                     Chtenie_Bazi(baza.baza);
-                }
+                }*/
             }
         }
         private void ToolStripMenuItem_Context_Pravit_Click(object sender, EventArgs e)

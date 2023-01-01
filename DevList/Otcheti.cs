@@ -46,7 +46,7 @@ namespace DevList
             }
             else if (tip_otcheta == 1)
             {
-                Izmenit_Iz_Spiska podgotovka = new Izmenit_Iz_Spiska(nastroiki, tip_otcheta);                       // Выбор помещения
+                Izmenit_Iz_Spiska podgotovka = new Izmenit_Iz_Spiska(1, nastroiki);                                    // Выбор помещения
 
                 podgotovka.ShowDialog();
 

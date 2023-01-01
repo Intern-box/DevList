@@ -12,34 +12,24 @@ namespace DevList
 {
     public partial class Izmenit_Stroku : Form
     {
-        public Baza baza;                                                                       // Переданный объект с базой
-        int nomer_stroki;                                                                       // Номер строки
-        int nomer_stolbca;                                                                      // Номер столбца
+        public string resultat;
 
-        public Izmenit_Stroku(Baza baza, ListViewHitTestInfo koordinati_mishi)                  // Инициируем объекты
+        public Izmenit_Stroku(string tekst)
         {
             InitializeComponent();
 
-            this.baza = baza;
-
-            nomer_stroki = koordinati_mishi.Item.Index;
-
-            nomer_stolbca = koordinati_mishi.Item.SubItems.IndexOf(koordinati_mishi.SubItem);
-        }
-        private void Izmenit_Stroku_Load(object sender, EventArgs e)                            // Выводим изначальные данные
-        {
-            textBox_Tekst.Text = baza.baza[nomer_stroki][nomer_stolbca];
+            textBox_Tekst.Text = tekst;
         }
 
         // Действия по кнопкам ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        private void button_Vipolnit_Click(object sender, EventArgs e)                          // Передаём введённые данные
+        private void button_Vipolnit_Click(object sender, EventArgs e)  // Передаём введённые данные
         {
-            baza.baza[nomer_stroki][nomer_stolbca] = textBox_Tekst.Text;
+            resultat = textBox_Tekst.Text;
 
             Close();
         }
-        private void button_Otmenit_Click(object sender, EventArgs e)                           // Закрываем форму без сохранения
+        private void button_Otmenit_Click(object sender, EventArgs e)   // Закрываем форму без сохранения
         {
             Close();
         }
@@ -48,11 +38,11 @@ namespace DevList
 
         private void Izmenit_Stroku_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)                                                                    // Ctrl + Enter - кнопка Выполнить
+            if (e.KeyCode == Keys.Enter)                                // Ctrl + Enter - кнопка Выполнить
             {
                 button_Vipolnit_Click(sender, e);
             }
-            if (e.KeyCode == Keys.Escape)                                                                   // Ctrl + Escape - кнопка Отменить
+            if (e.KeyCode == Keys.Escape)                               // Ctrl + Escape - кнопка Отменить
             {
                 button_Otmenit_Click(sender, e);
             }

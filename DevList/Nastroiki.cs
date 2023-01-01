@@ -80,7 +80,7 @@ namespace DevList
                 File.WriteAllText(put_do_oborudovaniia, "");
                 File.WriteAllText(put_do_sotrudnikov, "");
 
-                Hide();
+                Close();
             }
         }
         private void button_Zagruzit_Click(object sender, EventArgs e)                      // Реакция на нажате кнопки Загрузить

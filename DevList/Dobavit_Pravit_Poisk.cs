@@ -13,7 +13,7 @@ namespace DevList
 {
     public partial class Dobavit_Pravit_Poisk : Form
     {
-        public string[] Resultat = new string[13];
+        public string[] resultat = new string[13];
 
         public Dobavit_Pravit_Poisk(string Zagolovok)
         {
@@ -23,20 +23,20 @@ namespace DevList
         }
         private void button_Vipolnit_Click(object sender, EventArgs e)
         {
-            Resultat[1] = textBox_Data_Priobreteniia.Text;
-            Resultat[2] = textBox_InvNomer.Text;
-            Resultat[3] = comboBox_Pomeschenie.Text;
-            Resultat[4] = comboBox_FIO.Text;
-            Resultat[5] = textBox_Naimenovanie.Text;
-            Resultat[6] = comboBox_Tip.Text;
-            Resultat[7] = comboBox_Sostoianie.Text;
-            Resultat[8] = textBox_Inventarizaciia.Text;
-            Resultat[9] = textBox_Kommentarii.Text;
-            Resultat[10] = textBox_Hostname.Text;
-            Resultat[11] = textBox_IP.Text;
-            Resultat[12] = comboBox_Izmenil.Text;
+            resultat[1] = textBox_Data_Priobreteniia.Text;
+            resultat[2] = textBox_InvNomer.Text;
+            resultat[3] = comboBox_Pomeschenie.Text;
+            resultat[4] = comboBox_FIO.Text;
+            resultat[5] = textBox_Naimenovanie.Text;
+            resultat[6] = comboBox_Tip.Text;
+            resultat[7] = comboBox_Sostoianie.Text;
+            resultat[8] = textBox_Inventarizaciia.Text;
+            resultat[9] = textBox_Kommentarii.Text;
+            resultat[10] = textBox_Hostname.Text;
+            resultat[11] = textBox_IP.Text;
+            resultat[12] = comboBox_Izmenil.Text;
 
-            Hide();
+            Close();
         }
         private void button_Zakrit_Click(object sender, EventArgs e)
         {
