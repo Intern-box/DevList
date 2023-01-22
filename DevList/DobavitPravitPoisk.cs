@@ -15,6 +15,7 @@ namespace DevList
     {
         INIFail iniFail;
         public string[] rezultat = new string[13];
+        public bool KnopkaVipolnit = false;
 
         public DobavitPravitPoisk(string zagolovok, INIFail iniFail)
         {
@@ -73,6 +74,8 @@ namespace DevList
             rezultat[10] = Hostname.Text;
             rezultat[11] = IP.Text;
             rezultat[12] = Izmenil.Text;
+
+            KnopkaVipolnit = true;
 
             Close();
         }
@@ -164,6 +167,18 @@ namespace DevList
             Oborudovanie.Items.Clear();
 
             Oborudovanie.Items.AddRange(File.ReadAllLines(spisok.Adres));
+        }
+
+        private void DobavitPravitPoisk_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ButtonVipolnit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                ButtonZakrit_Click(sender, e);
+            }
         }
     }
 }

@@ -74,5 +74,13 @@ namespace DevList
         {
             Close();
         }
+
+        private void Otcheti_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                ButtonZakrit_Click(sender, e);
+            }
+        }
     }
 }

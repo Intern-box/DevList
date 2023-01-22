@@ -77,5 +77,17 @@ namespace DevList
         {
             Close();
         }
+
+        private void RedaktirovanieSpiskov_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ButtonSohranit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                ButtonZakrit_Click(sender, e);
+            }
+        }
     }
 }

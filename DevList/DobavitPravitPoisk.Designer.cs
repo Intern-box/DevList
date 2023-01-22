@@ -450,6 +450,7 @@ namespace DevList
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.DobavitPravitPoisk_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DobavitPravitPoisk_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

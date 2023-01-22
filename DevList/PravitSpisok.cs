@@ -163,5 +163,17 @@ namespace DevList
                 ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
             }
         }
+
+        private void PravitSpisok_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ButtonVipolnit_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                ButtonZakrit_Click(sender, e);
+            }
+        }
     }
 }

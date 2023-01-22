@@ -54,8 +54,21 @@ namespace DevList
             Tablica.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
+        private void Tablica_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            Tablica.Items.Clear();
+
+            baza.Tablica.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
+
+            VivodVTablicu(baza.Tablica);
+
+            UbratFiltri.Visible = true;
+        }
+
         private void Sozdat_Click(object sender, EventArgs e)
         {
+            ProverkaNaIzmenenieBazi();
+
             FolderBrowserDialog putKNovoiBaze = new FolderBrowserDialog();
 
             putKNovoiBaze.ShowDialog();
@@ -72,6 +85,8 @@ namespace DevList
 
         private void Otkrit_Click(object sender, EventArgs e)
         {
+            ProverkaNaIzmenenieBazi();
+
             OpenFileDialog otkrit_fail = new OpenFileDialog() { Filter = "*.INI|*.ini" };
 
             if (otkrit_fail.ShowDialog() == DialogResult.OK)
@@ -126,6 +141,8 @@ namespace DevList
                     VivodVTablicu(baza.Tablica);
 
                     Tablica.Items[baza.Tablica.Count - 1].Selected = true;
+
+                    baza.Izmenenie = true;
                 }
             }
             else
@@ -139,6 +156,8 @@ namespace DevList
                     VivodVTablicu(baza.Tablica);
 
                     Tablica.Items[zapominaemStroku + 1].Selected = true;
+
+                    baza.Izmenenie = true;
                 }
             }
         }
@@ -183,6 +202,8 @@ namespace DevList
                         VivodVTablicu(baza.Tablica);
 
                         Tablica.Items[zapominaemStroku].Selected = true;
+
+                        baza.Izmenenie = true;
                     }
                 }
                 else if(koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 0)
@@ -204,6 +225,8 @@ namespace DevList
                         Tablica.Columns[9].Width = 150;
 
                         Tablica.Items[zapominaemStroku].Selected = true;
+
+                        baza.Izmenenie = true;
                     }
                 }
             }
@@ -232,6 +255,8 @@ namespace DevList
                     baza.Tablica[zapominaemStroku] = okno.rezultat;
 
                     VivodVTablicu(baza.Tablica);
+
+                    baza.Izmenenie = true;
                 }
             }
         }
@@ -255,6 +280,8 @@ namespace DevList
 
                     Tablica.Items[zapominaemStroku - 1].Selected = true;
                     Tablica.Items[zapominaemStroku - 1].Focused = true;
+
+                    baza.Izmenenie = true;
                 }
             }
         }
@@ -278,6 +305,8 @@ namespace DevList
 
                     Tablica.Items[zapominaemStroku + 1].Selected = true;
                     Tablica.Items[zapominaemStroku + 1].Focused = true;
+
+                    baza.Izmenenie = true;
                 }
             }
         }
@@ -296,6 +325,8 @@ namespace DevList
                 udalit.ShowDialog();
 
                 VivodVTablicu(baza.Tablica);
+
+                baza.Izmenenie = true;
             }
         }
 
@@ -314,11 +345,31 @@ namespace DevList
 
                 poisk.ShowDialog();
 
-                if (poisk.rezultat != null)
+                if (poisk.KnopkaVipolnit)
                 {
-                    VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
+                    if (poisk.rezultat != null)
+                    {
+                        bool proverkaNaPustieStroki = false;
 
-                    GlavnoeMenu.Items[5].Visible = true;
+                        foreach (string slovo in poisk.rezultat)
+                        {
+                            if (slovo != "")
+                            {
+                                proverkaNaPustieStroki = true;
+                            }
+                        }
+
+                        if (proverkaNaPustieStroki)
+                        {
+                            VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
+                        }
+                        else
+                        {
+                            Tablica.Items.Clear();
+                        }
+
+                        UbratFiltri.Visible = true;
+                    }
                 }
             }
         }
@@ -334,7 +385,7 @@ namespace DevList
             {
                 VivodVTablicu(baza.Obschii_Poisk(TextBoxObschiiPoisk.Text));
 
-                GlavnoeMenu.Items[5].Visible = true;
+                UbratFiltri.Visible = true;
             }
         }
 
@@ -365,7 +416,185 @@ namespace DevList
 
             VivodVTablicu(baza.Tablica);
 
-            GlavnoeMenu.Items[5].Visible = false;
+            UbratFiltri.Visible = false;
+        }
+
+        private void ProverkaNaIzmenenieBazi()
+        {
+            if (baza.Izmenenie)
+            {
+                DialogResult resultat_vibora =
+
+                MessageBox.Show
+                (
+                    "Сохранить изменения?",
+                    "Открытие файла",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1
+                );
+
+                if (resultat_vibora == DialogResult.Yes) { baza.Zapisat(); }
+
+                baza.Izmenenie = false;
+            }
+        }
+
+        private void OsnovnaiaForma_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ProverkaNaIzmenenieBazi();
+        }
+
+        private void OsnovnaiaForma_KeyUp(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.S) == Keys.S)
+            {
+                Dobavit_Click(sender, e);
+            }
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.E) == Keys.E)
+            {
+                PravitVse_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Delete)
+            {
+                Udalit_Click(sender, e);
+            }
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.F) == Keys.F)
+            {
+                Poisk_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                ProverkaNaIzmenenieBazi();
+
+                Close();
+            }
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Up) == Keys.Up)
+            {
+                Vverh_Click(sender, e);
+            }
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Down) == Keys.Down)
+            {
+                Vniz_Click(sender, e);
+            }
+        }
+
+        private void Kolonki_Click(object sender, EventArgs e)
+        {
+            Kolonki kolonki = new Kolonki();
+
+            kolonki.ShowDialog();
+
+            if (kolonki.KnopkaVipolnit)
+            {
+                if (kolonki.rezultat[0])
+                {
+                    Tablica.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[1].Width = 0;
+                }
+
+                if (kolonki.rezultat[1])
+                {
+                    Tablica.Columns[2].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[2].Width = 0;
+                }
+
+                if (kolonki.rezultat[2])
+                {
+                    Tablica.Columns[3].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[3].Width = 0;
+                }
+
+                if (kolonki.rezultat[3])
+                {
+                    Tablica.Columns[4].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[4].Width = 0;
+                }
+
+                if (kolonki.rezultat[4])
+                {
+                    Tablica.Columns[5].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[5].Width = 0;
+                }
+
+                if (kolonki.rezultat[5])
+                {
+                    Tablica.Columns[6].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[6].Width = 0;
+                }
+
+                if (kolonki.rezultat[6])
+                {
+                    Tablica.Columns[7].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[7].Width = 0;
+                }
+
+                if (kolonki.rezultat[7])
+                {
+                    Tablica.Columns[8].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[8].Width = 0;
+                }
+
+                if (kolonki.rezultat[8])
+                {
+                    Tablica.Columns[9].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[9].Width = 0;
+                }
+
+                if (kolonki.rezultat[9])
+                {
+                    Tablica.Columns[10].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[10].Width = 0;
+                }
+
+                if (kolonki.rezultat[10])
+                {
+                    Tablica.Columns[11].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[11].Width = 0;
+                }
+
+                if (kolonki.rezultat[11])
+                {
+                    Tablica.Columns[12].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[12].Width = 0;
+                }
+            }
         }
     }
 }

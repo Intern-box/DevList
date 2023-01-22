@@ -64,5 +64,13 @@ namespace DevList
 
             osnovnaiaForma.ShowDialog();
         }
+
+        private void FormaZapuska_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Zagruzit_Click(sender, e);
+            }
+        }
     }
 }

@@ -73,6 +73,8 @@ namespace DevList
             this.UbratFiltri = new System.Windows.Forms.ToolStripMenuItem();
             this.TextBoxObschiiPoisk = new System.Windows.Forms.TextBox();
             this.LabelObschiiPoisk = new System.Windows.Forms.Label();
+            this.Vid = new System.Windows.Forms.ToolStripMenuItem();
+            this.Kolonki = new System.Windows.Forms.ToolStripMenuItem();
             this.KontekstnoeMenu.SuspendLayout();
             this.GlavnoeMenu.SuspendLayout();
             this.SuspendLayout();
@@ -110,6 +112,7 @@ namespace DevList
             this.Tablica.TabIndex = 1;
             this.Tablica.UseCompatibleStateImageBehavior = false;
             this.Tablica.View = System.Windows.Forms.View.Details;
+            this.Tablica.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.Tablica_ColumnClick);
             this.Tablica.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Tablica_MouseDown);
             // 
             // columnHeader_ID
@@ -244,6 +247,7 @@ namespace DevList
             this.GlavnoeMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Fail,
             this.Pravka,
+            this.Vid,
             this.Poisk,
             this.RedaktirovanieSpiskov,
             this.Otcheti,
@@ -415,6 +419,21 @@ namespace DevList
             this.LabelObschiiPoisk.TabIndex = 4;
             this.LabelObschiiPoisk.Text = "Общий поиск:";
             // 
+            // Vid
+            // 
+            this.Vid.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Kolonki});
+            this.Vid.Name = "Vid";
+            this.Vid.Size = new System.Drawing.Size(41, 21);
+            this.Vid.Text = "Вид";
+            // 
+            // Kolonki
+            // 
+            this.Kolonki.Name = "Kolonki";
+            this.Kolonki.Size = new System.Drawing.Size(181, 22);
+            this.Kolonki.Text = "Колонки таблицы";
+            this.Kolonki.Click += new System.EventHandler(this.Kolonki_Click);
+            // 
             // OsnovnaiaForma
             // 
             this.AllowDrop = true;
@@ -431,7 +450,9 @@ namespace DevList
             this.Name = "OsnovnaiaForma";
             this.ShowIcon = false;
             this.Text = "DevList 6.3";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OsnovnaiaForma_FormClosed);
             this.Load += new System.EventHandler(this.OsnovnaiaForma_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OsnovnaiaForma_KeyUp);
             this.KontekstnoeMenu.ResumeLayout(false);
             this.GlavnoeMenu.ResumeLayout(false);
             this.GlavnoeMenu.PerformLayout();
@@ -484,6 +505,8 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem KVniz;
         private System.Windows.Forms.ToolStripMenuItem Vverh;
         private System.Windows.Forms.ToolStripMenuItem Vniz;
+        private System.Windows.Forms.ToolStripMenuItem Vid;
+        private System.Windows.Forms.ToolStripMenuItem Kolonki;
     }
 }
 
