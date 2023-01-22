@@ -167,9 +167,12 @@ namespace DevList
             Dobavit_Click(sender, e);
         }
 
+        // Если курсор на НЕ пустой строке, то  ListViewHitTestLocations НЕ none
+        // Если курсор на ПУСТОЙ строке, то ListViewHitTestLocations равен NONE
+        // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
         private void Pravit_Click(object sender, EventArgs e)
         {
-            if (koordinati != null || koordinati.Location == ListViewHitTestLocations.None)
+            if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
             {
                 int zapominaemStroku = koordinati.Item.Index;
 
