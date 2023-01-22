@@ -16,7 +16,7 @@ namespace DevList
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Glavnoe_Okno());
+            Application.Run(new FormaZapuska());
         }
     }
 }

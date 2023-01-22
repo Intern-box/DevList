@@ -29,21 +29,21 @@ namespace DevList
         /// </summary>
         private void InitializeComponent()
         {
-            this.button_Zakrit = new System.Windows.Forms.Button();
+            this.ButtonZakrit = new System.Windows.Forms.Button();
             this.textBox_Vivod_Informacii = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button_Zakrit
+            // ButtonZakrit
             // 
-            this.button_Zakrit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Zakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Zakrit.Location = new System.Drawing.Point(424, 415);
-            this.button_Zakrit.Name = "button_Zakrit";
-            this.button_Zakrit.Size = new System.Drawing.Size(75, 23);
-            this.button_Zakrit.TabIndex = 0;
-            this.button_Zakrit.Text = "Закрыть";
-            this.button_Zakrit.UseVisualStyleBackColor = true;
-            this.button_Zakrit.Click += new System.EventHandler(this.button_Zakrit_Click);
+            this.ButtonZakrit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonZakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonZakrit.Location = new System.Drawing.Point(424, 415);
+            this.ButtonZakrit.Name = "ButtonZakrit";
+            this.ButtonZakrit.Size = new System.Drawing.Size(75, 23);
+            this.ButtonZakrit.TabIndex = 0;
+            this.ButtonZakrit.Text = "Закрыть";
+            this.ButtonZakrit.UseVisualStyleBackColor = true;
+            this.ButtonZakrit.Click += new System.EventHandler(this.ButtonZakrit_Click);
             // 
             // textBox_Vivod_Informacii
             // 
@@ -64,11 +64,10 @@ namespace DevList
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(511, 450);
             this.Controls.Add(this.textBox_Vivod_Informacii);
-            this.Controls.Add(this.button_Zakrit);
+            this.Controls.Add(this.ButtonZakrit);
             this.Name = "Otcheti";
             this.Text = "DevList - Отчёт";
             this.Load += new System.EventHandler(this.Otcheti_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Otcheti_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -76,7 +75,7 @@ namespace DevList
 
         #endregion
 
-        private System.Windows.Forms.Button button_Zakrit;
+        private System.Windows.Forms.Button ButtonZakrit;
         private System.Windows.Forms.TextBox textBox_Vivod_Informacii;
     }
 }

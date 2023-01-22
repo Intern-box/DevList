@@ -9,33 +9,35 @@ namespace DevList
 {
     public class Spisok
     {
-        public string[] spisok;
-        string put_do_spiska;
+        public string[] Elementi;
+        public string Adres;
 
-        public Spisok(string put_do_spiska)
+        public Spisok(string adres)
         {
-            this.put_do_spiska = put_do_spiska;
+            Adres = adres;
 
-            spisok = File.ReadAllLines(this.put_do_spiska);
+            Elementi = File.ReadAllLines(Adres);
         }
-        public void Plus_Element(string tekst)
-        {
-            File.AppendAllText(put_do_spiska, tekst + "\r\n");
-        }
-        public void Minus_Element(string tekst)
-        {
-            string spisok_strok = "";
 
-            foreach (string stroka in File.ReadAllLines(put_do_spiska))
+        public void Dobavit(string tekst)
+        {
+            File.AppendAllText(Adres, tekst + "\r\n");
+        }
+        public void Udalit(string tekst)
+        {
+            string stroki = "";
+
+            foreach (string stroka in File.ReadAllLines(Adres))
             {
                 if (stroka != tekst)
                 {
-                    spisok_strok += stroka + "\r\n";
+                    stroki += stroka + "\r\n";
                 }
             }
 
-            File.Delete(put_do_spiska);
-            File.AppendAllText(put_do_spiska, spisok_strok);
+            File.Delete(Adres);
+
+            File.AppendAllText(Adres, stroki.ToString());
         }
     }
 }

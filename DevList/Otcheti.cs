@@ -12,29 +12,31 @@ namespace DevList
 {
     public partial class Otcheti : Form
     {
-        Nastroiki nastroiki;                                                                                        // Объект файла настроек. Хранит пути до необходимого
-        byte tip_otcheta;                                                                                           // Флаг для выбора параметров обработки данных
-        Baza baza;                                                                                                  // Объект для работы с базой
+        INIFail iniFail;
+        byte tipOtcheta;
+        Baza baza;
 
-        public Otcheti(Nastroiki nastroiki, byte tip_otcheta, Baza baza)                                            // Инициализация переменных
+        public Otcheti(INIFail iniFail, Baza baza, byte tipOtcheta)
         {
             InitializeComponent();
 
-            this.nastroiki = nastroiki;
-
-            this.tip_otcheta = tip_otcheta;
+            this.iniFail = iniFail;
 
             this.baza = baza;
+
+            this.tipOtcheta = tipOtcheta;
         }
-        private void Otcheti_Load(object sender, EventArgs e)                                                       // Обработка и вывод данных
+
+        private void Otcheti_Load(object sender, EventArgs e)
         {
-            string[] zapros = new string[baza.baza[0].Length];                                                      // Запрос для получения необходимого
+            string[] zapros = new string[baza.Tablica[0].Length];
 
-            Spisok oborudovanie = new Spisok(nastroiki.put_do_oborudovaniia);                                       // Список оборудования как параметр для запроса
+            Spisok oborudovanie = new Spisok(iniFail.Oborudovanie);
 
-            if (tip_otcheta == 0)
+            // Выводим список и кол-во оборудования 
+            if (tipOtcheta == 0)
             {
-                foreach (string slovo in oborudovanie.spisok)                                                       // Выводим список и кол-во оборудования 
+                foreach (string slovo in oborudovanie.Elementi)
                 {
                     if (slovo != "")
                     {
@@ -44,19 +46,21 @@ namespace DevList
                     }
                 }
             }
-            else if (tip_otcheta == 1)
+
+            if (tipOtcheta == 1)
             {
-                Izmenit_Iz_Spiska podgotovka = new Izmenit_Iz_Spiska(1, nastroiki);                                    // Выбор помещения
+                // Выбор помещения
+                PravitSpisok podgotovka = new PravitSpisok(3, iniFail);
 
                 podgotovka.ShowDialog();
 
                 zapros[3] = podgotovka.rezultat;
 
-                for (int i = 0; i < oborudovanie.spisok.Length; i++)                                                // Перебираем список оборудования
+                for (int i = 0; i < oborudovanie.Elementi.Length; i++)
                 {
-                    zapros[6] = oborudovanie.spisok[i];
+                    zapros[6] = oborudovanie.Elementi[i];
 
-                    textBox_Vivod_Informacii.Text += $"{zapros[6]} = {baza.Poisk_Strok(zapros).Count};\r\n";        // Выводим каждый элемент списка и кол-во упоминаний элемента
+                    textBox_Vivod_Informacii.Text += $"{zapros[6]} = {baza.Poisk_Strok(zapros).Count};\r\n";
                 }
             }
 
@@ -65,19 +69,10 @@ namespace DevList
                 textBox_Vivod_Informacii.Text = "Без списка \"Оборудования\" работать не будет!";
             }
         }
-        private void button_Zakrit_Click(object sender, EventArgs e)                                                // Закрываем без обработки
+
+        private void ButtonZakrit_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        // Горячие клавиши ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        private void Otcheti_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)                                                                           // Ctrl + Escape - кнопка Закрыть
-            {
-                button_Zakrit_Click(sender, e);
-            }
         }
     }
 }

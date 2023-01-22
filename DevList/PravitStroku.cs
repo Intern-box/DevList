@@ -10,23 +10,26 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class Udalit : Form
+    public partial class PravitStroku : Form
     {
-        Baza baza;
-        ListViewHitTestInfo koordinati;
+        string tekst;
+        public string rezultat;
 
-        public Udalit(Baza baza, ListViewHitTestInfo koordinati)
+        public PravitStroku(string tekst)
         {
             InitializeComponent();
 
-            this.baza = baza;
-
-            this.koordinati = koordinati;
+            this.tekst = tekst;
         }
 
-        private void ButtonUdalit_Click(object sender, EventArgs e)
+        private void PravitStroku_Load(object sender, EventArgs e)
         {
-            baza.Tablica.RemoveAt(koordinati.Item.Index);
+            Tekst.Text = tekst;
+        }
+
+        private void ButtonVipolnit_Click(object sender, EventArgs e)
+        {
+            rezultat = Tekst.Text;
 
             Close();
         }

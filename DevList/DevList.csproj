@@ -48,86 +48,78 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Baza.cs" />
-    <Compile Include="Dobavit_Pravit_Poisk.cs">
+    <Compile Include="DobavitPravitPoisk.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dobavit_Pravit_Poisk.Designer.cs">
-      <DependentUpon>Dobavit_Pravit_Poisk.cs</DependentUpon>
+    <Compile Include="DobavitPravitPoisk.Designer.cs">
+      <DependentUpon>DobavitPravitPoisk.cs</DependentUpon>
     </Compile>
+    <Compile Include="INIFail.cs" />
     <Compile Include="Otcheti.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Otcheti.Designer.cs">
       <DependentUpon>Otcheti.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nastroiki.cs">
+    <Compile Include="FormaZapuska.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Nastroiki.Designer.cs">
-      <DependentUpon>Nastroiki.cs</DependentUpon>
+    <Compile Include="FormaZapuska.Designer.cs">
+      <DependentUpon>FormaZapuska.cs</DependentUpon>
     </Compile>
     <Compile Include="Spisok.cs" />
-    <Compile Include="Dobavit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dobavit.Designer.cs">
-      <DependentUpon>Dobavit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Udalit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Udalit.Designer.cs">
       <DependentUpon>Udalit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Izmenit_Stroku.cs">
+    <Compile Include="PravitStroku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Izmenit_Stroku.Designer.cs">
-      <DependentUpon>Izmenit_Stroku.cs</DependentUpon>
+    <Compile Include="PravitStroku.Designer.cs">
+      <DependentUpon>PravitStroku.cs</DependentUpon>
     </Compile>
-    <Compile Include="Izmenit_Iz_Spiska.cs">
+    <Compile Include="PravitSpisok.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Izmenit_Iz_Spiska.Designer.cs">
-      <DependentUpon>Izmenit_Iz_Spiska.cs</DependentUpon>
+    <Compile Include="PravitSpisok.Designer.cs">
+      <DependentUpon>PravitSpisok.cs</DependentUpon>
     </Compile>
-    <Compile Include="Redaktirovanie_Spiskov.cs">
+    <Compile Include="RedaktirovanieSpiskov.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Redaktirovanie_Spiskov.Designer.cs">
-      <DependentUpon>Redaktirovanie_Spiskov.cs</DependentUpon>
+    <Compile Include="RedaktirovanieSpiskov.Designer.cs">
+      <DependentUpon>RedaktirovanieSpiskov.cs</DependentUpon>
     </Compile>
-    <Compile Include="Glavnoe_Okno.cs">
+    <Compile Include="OsnovnaiaForma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Glavnoe_Okno.Designer.cs">
-      <DependentUpon>Glavnoe_Okno.cs</DependentUpon>
+    <Compile Include="OsnovnaiaForma.Designer.cs">
+      <DependentUpon>OsnovnaiaForma.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Dobavit_Pravit_Poisk.resx">
-      <DependentUpon>Dobavit_Pravit_Poisk.cs</DependentUpon>
+    <EmbeddedResource Include="DobavitPravitPoisk.resx">
+      <DependentUpon>DobavitPravitPoisk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dobavit.resx">
-      <DependentUpon>Dobavit.cs</DependentUpon>
+    <EmbeddedResource Include="PravitStroku.resx">
+      <DependentUpon>PravitStroku.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Izmenit_Stroku.resx">
-      <DependentUpon>Izmenit_Stroku.cs</DependentUpon>
+    <EmbeddedResource Include="PravitSpisok.resx">
+      <DependentUpon>PravitSpisok.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Izmenit_Iz_Spiska.resx">
-      <DependentUpon>Izmenit_Iz_Spiska.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Nastroiki.resx">
-      <DependentUpon>Nastroiki.cs</DependentUpon>
+    <EmbeddedResource Include="FormaZapuska.resx">
+      <DependentUpon>FormaZapuska.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Otcheti.resx">
       <DependentUpon>Otcheti.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Redaktirovanie_Spiskov.resx">
-      <DependentUpon>Redaktirovanie_Spiskov.cs</DependentUpon>
+    <EmbeddedResource Include="RedaktirovanieSpiskov.resx">
+      <DependentUpon>RedaktirovanieSpiskov.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Glavnoe_Okno.resx">
-      <DependentUpon>Glavnoe_Okno.cs</DependentUpon>
+    <EmbeddedResource Include="OsnovnaiaForma.resx">
+      <DependentUpon>OsnovnaiaForma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

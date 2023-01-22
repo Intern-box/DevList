@@ -11,56 +11,55 @@ namespace DevList
 {
     public class Baza
     {
-        public List<string[]> baza = new List<string[]>();                        // База
-        public bool izmeneniia_v_baze = false;                                    // Флаг изменения в базе
+        public string Adres;
+        public List<string[]> Tablica = new List<string[]>();
+        public bool Izmenenie = false;
 
-        public Baza()
+        public Baza(string adres)
         {
-        }
-        public Baza(string put_do_bazi)                                           // При создании экзепляра, передавая путь к файлу
-        {                                                                         // создаётся объект с базой и открывается файл
-            foreach (string stroka in File.ReadAllLines(put_do_bazi))             // Преобразуем из *.csv в List<string[]>
+            Adres = adres;
+
+            foreach (string stroka in File.ReadAllLines(adres))
             {
                 stroka.TrimEnd('\r');
 
                 stroka.TrimEnd('\n');
 
-                baza.Add(stroka.Split(','));
+                Tablica.Add(stroka.Split(','));
             }
         }
-        public void Zapisat(string put_do_bazi)                                   // Запись базы в файл
-        {
-            File.WriteAllLines(put_do_bazi, baza.Select(x => string.Join(",", x)));
 
-            izmeneniia_v_baze = false;
+        public void Zapisat()
+        {
+            File.WriteAllLines(Adres, Tablica.Select(x => string.Join(",", x)));
         }
-        public List<string[]> Obschii_Poisk(string zapros)                        // Общий поиск в форме
+
+        public void Zapisat(string adres)
         {
-            List<string[]> resultat = new List<string[]>();
+            File.WriteAllLines(adres, Tablica.Select(x => string.Join(",", x)));
+        }
 
-            bool sovpadenie = false;
+        public void PeremeschenieStroki(int nomer_pervoi, int nomer_vtoroi)
+        {
+            string[] zapominaem_pervuiu = new string[Tablica[nomer_pervoi].Length];
 
-            foreach (string[] stroka in baza)
+            for (int i = 0; i < Tablica[nomer_pervoi].Length; i++)
             {
-                for (int i = 1; i < baza[0].Length; i++)
-                {
-                    if (stroka[i].IndexOf(zapros, StringComparison.CurrentCultureIgnoreCase) != -1)
-                    {
-                        sovpadenie = true;
-                    }
-                }
-
-                if (sovpadenie)
-                {
-                    resultat.Add(stroka);
-                }
-
-                sovpadenie = false;
+                zapominaem_pervuiu[i] = Tablica[nomer_pervoi][i];
             }
 
-            return resultat;
+            for (int i = 0; i < Tablica[nomer_pervoi].Length; i++)
+            {
+                Tablica[nomer_pervoi][i] = Tablica[nomer_vtoroi][i];
+            }
+
+            for (int i = 0; i < Tablica[nomer_pervoi].Length; i++)
+            {
+                Tablica[nomer_vtoroi][i] = zapominaem_pervuiu[i];
+            }
         }
-        public List<string[]> Poisk_Strok(string[] zapros)                        // Поиск среди столбцов
+
+        public List<string[]> Poisk_Strok(string[] zapros)
         {
             List<string[]> resultat = new List<string[]>();
 
@@ -76,9 +75,9 @@ namespace DevList
 
             byte naideno_sovpadenii = 0;
 
-            foreach (string[] stroka in baza)
+            foreach (string[] stroka in Tablica)
             {
-                for (int i = 1; i < baza[0].Length; i++)
+                for (int i = 1; i < Tablica[0].Length; i++)
                 {
                     if (zapros[i] != null && zapros[i] != "")
                     {
@@ -99,24 +98,32 @@ namespace DevList
 
             return resultat;
         }
-        public void Pomeniat_Stroki_Mestami(int nomer_pervoi, int nomer_vtoroi)   // Меняем строки в базе местами
+
+        public List<string[]> Obschii_Poisk(string zapros)
         {
-            string[] zapominaem_pervuiu = new string[baza[nomer_pervoi].Length];
+            List<string[]> resultat = new List<string[]>();
 
-            for (int i = 0; i < baza[nomer_pervoi].Length; i++)
+            bool sovpadenie = false;
+
+            foreach (string[] stroka in Tablica)
             {
-                zapominaem_pervuiu[i] = baza[nomer_pervoi][i];
+                for (int i = 1; i < Tablica[0].Length; i++)
+                {
+                    if (stroka[i].IndexOf(zapros, StringComparison.CurrentCultureIgnoreCase) != -1)
+                    {
+                        sovpadenie = true;
+                    }
+                }
+
+                if (sovpadenie)
+                {
+                    resultat.Add(stroka);
+                }
+
+                sovpadenie = false;
             }
 
-            for (int i = 0; i < baza[nomer_pervoi].Length; i++)
-            {
-                baza[nomer_pervoi][i] = baza[nomer_vtoroi][i];
-            }
-
-            for (int i = 0; i < baza[nomer_pervoi].Length; i++)
-            {
-                baza[nomer_vtoroi][i] = zapominaem_pervuiu[i];
-            }
+            return resultat;
         }
     }
 }
