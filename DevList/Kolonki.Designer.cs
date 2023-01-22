@@ -204,7 +204,7 @@ namespace DevList
             // ButtonZakrit
             // 
             this.ButtonZakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonZakrit.Location = new System.Drawing.Point(93, 331);
+            this.ButtonZakrit.Location = new System.Drawing.Point(110, 331);
             this.ButtonZakrit.Name = "ButtonZakrit";
             this.ButtonZakrit.Size = new System.Drawing.Size(75, 23);
             this.ButtonZakrit.TabIndex = 12;
@@ -217,7 +217,7 @@ namespace DevList
             this.ButtonVipolnit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButtonVipolnit.Location = new System.Drawing.Point(12, 331);
             this.ButtonVipolnit.Name = "ButtonVipolnit";
-            this.ButtonVipolnit.Size = new System.Drawing.Size(75, 23);
+            this.ButtonVipolnit.Size = new System.Drawing.Size(92, 23);
             this.ButtonVipolnit.TabIndex = 13;
             this.ButtonVipolnit.Text = "Выполнить";
             this.ButtonVipolnit.UseVisualStyleBackColor = true;
