@@ -112,19 +112,22 @@ namespace DevList
 
             adresDliaSohraneniia.ShowDialog();
 
-            if (!Directory.Exists($"{adresDliaSohraneniia.SelectedPath}\\БД"))
-                Directory.CreateDirectory($"{adresDliaSohraneniia.SelectedPath}\\БД");
+            if (adresDliaSohraneniia.SelectedPath != "")
+            {
+                if (!Directory.Exists($"{adresDliaSohraneniia.SelectedPath}\\БД"))
+                    Directory.CreateDirectory($"{adresDliaSohraneniia.SelectedPath}\\БД");
 
-            if (!Directory.Exists($"{adresDliaSohraneniia.SelectedPath}\\История перемещений"))
-                Directory.CreateDirectory($"{adresDliaSohraneniia.SelectedPath}\\История перемещений");
+                if (!Directory.Exists($"{adresDliaSohraneniia.SelectedPath}\\История перемещений"))
+                    Directory.CreateDirectory($"{adresDliaSohraneniia.SelectedPath}\\История перемещений");
 
-            File.Copy(iniFail.Adres, Path.Combine(adresDliaSohraneniia.SelectedPath, Path.GetFileName(iniFail.Adres)), true);
-            File.Copy(iniFail.Baza, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Baza)), true);
-            File.Copy(iniFail.Pomescheniia, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Pomescheniia)), true);
-            File.Copy(iniFail.Oborudovanie, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Oborudovanie)), true);
-            File.Copy(iniFail.Sotrudniki, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Sotrudniki)), true);
+                File.Copy(iniFail.Adres, Path.Combine(adresDliaSohraneniia.SelectedPath, Path.GetFileName(iniFail.Adres)), true);
+                File.Copy(iniFail.Baza, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Baza)), true);
+                File.Copy(iniFail.Pomescheniia, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Pomescheniia)), true);
+                File.Copy(iniFail.Oborudovanie, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Oborudovanie)), true);
+                File.Copy(iniFail.Sotrudniki, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Sotrudniki)), true);
 
-            baza.Izmenenie = false;
+                baza.Izmenenie = false;
+            }
         }
 
         // Если курсор на НЕ пустой строке, то  ListViewHitTestLocations НЕ none
@@ -348,34 +351,37 @@ namespace DevList
             {
                 int zapominaemStroku = koordinati.Item.Index;
 
-                DobavitPravitPoisk poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
-
-                poisk.ShowDialog();
-
-                if (poisk.KnopkaVipolnit)
+                if (zapominaemStroku > 0)
                 {
-                    if (poisk.rezultat != null)
+                    DobavitPravitPoisk poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
+
+                    poisk.ShowDialog();
+
+                    if (poisk.KnopkaVipolnit)
                     {
-                        bool proverkaNaPustieStroki = false;
-
-                        foreach (string slovo in poisk.rezultat)
+                        if (poisk.rezultat != null)
                         {
-                            if (slovo != "")
+                            bool proverkaNaPustieStroki = false;
+
+                            foreach (string slovo in poisk.rezultat)
                             {
-                                proverkaNaPustieStroki = true;
+                                if (slovo != "")
+                                {
+                                    proverkaNaPustieStroki = true;
+                                }
                             }
-                        }
 
-                        if (proverkaNaPustieStroki)
-                        {
-                            VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
-                        }
-                        else
-                        {
-                            Tablica.Items.Clear();
-                        }
+                            if (proverkaNaPustieStroki)
+                            {
+                                VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
+                            }
+                            else
+                            {
+                                Tablica.Items.Clear();
+                            }
 
-                        UbratFiltri.Visible = true;
+                            UbratFiltri.Visible = true;
+                        }
                     }
                 }
             }
