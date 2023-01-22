@@ -65,6 +65,8 @@ namespace DevList
             this.Vverh = new System.Windows.Forms.ToolStripMenuItem();
             this.Vniz = new System.Windows.Forms.ToolStripMenuItem();
             this.Udalit = new System.Windows.Forms.ToolStripMenuItem();
+            this.Vid = new System.Windows.Forms.ToolStripMenuItem();
+            this.Kolonki = new System.Windows.Forms.ToolStripMenuItem();
             this.Poisk = new System.Windows.Forms.ToolStripMenuItem();
             this.RedaktirovanieSpiskov = new System.Windows.Forms.ToolStripMenuItem();
             this.Otcheti = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,8 +75,7 @@ namespace DevList
             this.UbratFiltri = new System.Windows.Forms.ToolStripMenuItem();
             this.TextBoxObschiiPoisk = new System.Windows.Forms.TextBox();
             this.LabelObschiiPoisk = new System.Windows.Forms.Label();
-            this.Vid = new System.Windows.Forms.ToolStripMenuItem();
-            this.Kolonki = new System.Windows.Forms.ToolStripMenuItem();
+            this.Istoria = new System.Windows.Forms.ToolStripMenuItem();
             this.KontekstnoeMenu.SuspendLayout();
             this.GlavnoeMenu.SuspendLayout();
             this.SuspendLayout();
@@ -251,6 +252,7 @@ namespace DevList
             this.Poisk,
             this.RedaktirovanieSpiskov,
             this.Otcheti,
+            this.Istoria,
             this.UbratFiltri});
             this.GlavnoeMenu.Location = new System.Drawing.Point(0, 0);
             this.GlavnoeMenu.Name = "GlavnoeMenu";
@@ -351,6 +353,21 @@ namespace DevList
             this.Udalit.Text = "Удалить";
             this.Udalit.Click += new System.EventHandler(this.Udalit_Click);
             // 
+            // Vid
+            // 
+            this.Vid.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Kolonki});
+            this.Vid.Name = "Vid";
+            this.Vid.Size = new System.Drawing.Size(41, 21);
+            this.Vid.Text = "Вид";
+            // 
+            // Kolonki
+            // 
+            this.Kolonki.Name = "Kolonki";
+            this.Kolonki.Size = new System.Drawing.Size(181, 22);
+            this.Kolonki.Text = "Колонки таблицы";
+            this.Kolonki.Click += new System.EventHandler(this.Kolonki_Click);
+            // 
             // Poisk
             // 
             this.Poisk.Name = "Poisk";
@@ -419,20 +436,12 @@ namespace DevList
             this.LabelObschiiPoisk.TabIndex = 4;
             this.LabelObschiiPoisk.Text = "Общий поиск:";
             // 
-            // Vid
+            // Istoria
             // 
-            this.Vid.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Kolonki});
-            this.Vid.Name = "Vid";
-            this.Vid.Size = new System.Drawing.Size(41, 21);
-            this.Vid.Text = "Вид";
-            // 
-            // Kolonki
-            // 
-            this.Kolonki.Name = "Kolonki";
-            this.Kolonki.Size = new System.Drawing.Size(181, 22);
-            this.Kolonki.Text = "Колонки таблицы";
-            this.Kolonki.Click += new System.EventHandler(this.Kolonki_Click);
+            this.Istoria.Name = "Istoria";
+            this.Istoria.Size = new System.Drawing.Size(71, 21);
+            this.Istoria.Text = "История";
+            this.Istoria.Click += new System.EventHandler(this.Istoria_Click);
             // 
             // OsnovnaiaForma
             // 
@@ -507,6 +516,7 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem Vniz;
         private System.Windows.Forms.ToolStripMenuItem Vid;
         private System.Windows.Forms.ToolStripMenuItem Kolonki;
+        private System.Windows.Forms.ToolStripMenuItem Istoria;
     }
 }
 

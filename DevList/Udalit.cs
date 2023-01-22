@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace DevList
 {
@@ -14,18 +15,27 @@ namespace DevList
     {
         Baza baza;
         ListViewHitTestInfo koordinati;
+        INIFail iniFail;
 
-        public Udalit(Baza baza, ListViewHitTestInfo koordinati)
+        public Udalit(Baza baza, ListViewHitTestInfo koordinati, INIFail iniFail)
         {
             InitializeComponent();
 
             this.baza = baza;
 
             this.koordinati = koordinati;
+
+            this.iniFail = iniFail;
         }
 
         private void ButtonUdalit_Click(object sender, EventArgs e)
         {
+            Baza istoria = new Baza(iniFail.Istoriia);
+
+            istoria.Tablica.Add(baza.Tablica[koordinati.Item.Index]);
+
+            istoria.Zapisat();
+
             baza.Tablica.RemoveAt(koordinati.Item.Index);
 
             Close();

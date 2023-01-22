@@ -102,6 +102,8 @@ namespace DevList
         private void Sohranit_Click(object sender, EventArgs e)
         {
             baza.Zapisat();
+
+            baza.Izmenenie = false;
         }
 
         private void Sohranit_Kak_Click(object sender, EventArgs e)
@@ -121,6 +123,8 @@ namespace DevList
             File.Copy(iniFail.Pomescheniia, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Pomescheniia)), true);
             File.Copy(iniFail.Oborudovanie, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Oborudovanie)), true);
             File.Copy(iniFail.Sotrudniki, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Sotrudniki)), true);
+
+            baza.Izmenenie = false;
         }
 
         // Если курсор на НЕ пустой строке, то  ListViewHitTestLocations НЕ none
@@ -323,7 +327,7 @@ namespace DevList
         {
             if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
             {
-                Udalit udalit = new Udalit(baza, koordinati);
+                Udalit udalit = new Udalit(baza, koordinati, iniFail);
 
                 udalit.ShowDialog();
 
@@ -598,6 +602,25 @@ namespace DevList
                     Tablica.Columns[12].Width = 0;
                 }
             }
+        }
+
+        private void Istoria_Click(object sender, EventArgs e)
+        {
+            Baza istoriaBaza = new Baza(iniFail.Istoriia);
+
+            OsnovnaiaForma istoria = new OsnovnaiaForma(iniFail, istoriaBaza);
+
+            istoria.GlavnoeMenu.Visible = false;
+
+            istoria.KontekstnoeMenu.Enabled = false;
+
+            istoria.TextBoxObschiiPoisk.Visible = false;
+
+            istoria.LabelObschiiPoisk.Visible = false;
+
+            istoria.Text = "DevList - История";
+
+            istoria.ShowDialog();
         }
     }
 }
