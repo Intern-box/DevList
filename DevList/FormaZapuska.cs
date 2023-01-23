@@ -27,7 +27,7 @@ namespace DevList
 
         private void Sozdat_Click(object sender, EventArgs e)
         {
-            DialogResult resultat =
+            DialogResult rezultat =
 
             MessageBox.Show
             (
@@ -36,7 +36,7 @@ namespace DevList
                 MessageBoxButtons.YesNo
             );
 
-            if (resultat == DialogResult.Yes)
+            if (rezultat == DialogResult.Yes)
             {
                 INIFail iniFail = new INIFail(Application.StartupPath);
 

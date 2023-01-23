@@ -74,12 +74,7 @@
       <DependentUpon>FormaZapuska.cs</DependentUpon>
     </Compile>
     <Compile Include="Spisok.cs" />
-    <Compile Include="Udalit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Udalit.Designer.cs">
-      <DependentUpon>Udalit.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Udalit.cs" />
     <Compile Include="PravitStroku.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,9 +134,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Udalit.resx">
-      <DependentUpon>Udalit.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

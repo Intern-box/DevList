@@ -165,6 +165,8 @@ namespace DevList
                     Tablica.Items[zapominaemStroku + 1].Selected = true;
 
                     baza.Izmenenie = true;
+
+
                 }
             }
         }
@@ -330,9 +332,23 @@ namespace DevList
         {
             if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
             {
-                Udalit udalit = new Udalit(baza, koordinati, iniFail);
+                DialogResult resultat =
 
-                udalit.ShowDialog();
+                MessageBox.Show
+                (
+                    "Удалить полностью?",
+                    "Удаление МЦ?",
+                    MessageBoxButtons.YesNo
+                );
+
+                if (resultat == DialogResult.Yes)
+                {
+                    Udalit udalit = new Udalit(baza, koordinati, iniFail, false);
+                }
+                else
+                {
+                    Udalit udalit = new Udalit(baza, koordinati, iniFail, true);
+                }
 
                 VivodVTablicu(baza.Tablica);
 
@@ -625,8 +641,6 @@ namespace DevList
             istoria.KVverh.Visible = false;
 
             istoria.KVniz.Visible = false;
-
-            istoria.KUdalit.Visible = false;
 
             istoria.Text = "DevList - История";
 
