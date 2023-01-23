@@ -616,13 +616,17 @@ namespace DevList
 
             OsnovnaiaForma istoria = new OsnovnaiaForma(iniFail, istoriaBaza);
 
-            istoria.GlavnoeMenu.Visible = false;
+            istoria.GlavnoeMenu.Items.Clear();
 
-            istoria.KontekstnoeMenu.Enabled = false;
+            istoria.KontekstnoeMenu.Items[0].Visible = false;
 
-            istoria.TextBoxObschiiPoisk.Visible = false;
+            istoria.KontekstnoeMenu.Items[2].Visible = false;
 
-            istoria.LabelObschiiPoisk.Visible = false;
+            istoria.KontekstnoeMenu.Items[3].Visible = false;
+
+            istoria.KontekstnoeMenu.Items[4].Visible = false;
+
+            istoria.KontekstnoeMenu.Items[5].Visible = false;
 
             istoria.Text = "DevList - История";
 
