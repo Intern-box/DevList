@@ -16,12 +16,14 @@ namespace DevList
         INIFail iniFail;
         Baza baza;
         ListViewHitTestInfo koordinati;
+        bool kolonki = false;
 
         public OsnovnaiaForma(INIFail iniFail, Baza baza)
         {
             InitializeComponent();
 
             this.iniFail = iniFail;
+
             this.baza = baza;
         }
 
@@ -58,7 +60,18 @@ namespace DevList
         {
             Tablica.Items.Clear();
 
-            baza.Tablica.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
+            if (kolonki)
+            {
+                baza.Tablica.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
+
+                kolonki = false;
+            }
+            else
+            {
+                baza.Tablica.Sort((y, x) => x[e.Column].CompareTo(y[e.Column]));
+
+                kolonki = true;
+            }
 
             VivodVTablicu(baza.Tablica);
 
@@ -454,7 +467,7 @@ namespace DevList
 
         private void UbratFiltri_Click(object sender, EventArgs e)
         {
-            baza.Tablica.Sort((x, y) => x[3].CompareTo(y[3]));
+            baza = new Baza(iniFail.Baza);
 
             VivodVTablicu(baza.Tablica);
 
