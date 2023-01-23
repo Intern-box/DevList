@@ -351,7 +351,7 @@ namespace DevList
             {
                 int zapominaemStroku = koordinati.Item.Index;
 
-                if (zapominaemStroku > 0)
+                if (zapominaemStroku >= 0)
                 {
                     DobavitPravitPoisk poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
 
@@ -618,15 +618,15 @@ namespace DevList
 
             istoria.GlavnoeMenu.Items.Clear();
 
-            istoria.KontekstnoeMenu.Items[0].Visible = false;
+            istoria.KDobavit.Visible = false;
 
-            istoria.KontekstnoeMenu.Items[2].Visible = false;
+            istoria.KPravitVse.Visible = false;
 
-            istoria.KontekstnoeMenu.Items[3].Visible = false;
+            istoria.KVverh.Visible = false;
 
-            istoria.KontekstnoeMenu.Items[4].Visible = false;
+            istoria.KVniz.Visible = false;
 
-            istoria.KontekstnoeMenu.Items[5].Visible = false;
+            istoria.KUdalit.Visible = false;
 
             istoria.Text = "DevList - История";
 
