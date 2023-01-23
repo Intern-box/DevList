@@ -11,6 +11,16 @@ namespace DevList
     {
         public Udalit(Baza baza, ListViewHitTestInfo koordinati, INIFail iniFail, bool udalenie)
         {
+            Udalenie(baza, koordinati, iniFail, udalenie);
+        }
+
+        public Udalit(Baza baza, ListViewHitTestInfo koordinati)
+        {
+            Udalenie(baza, koordinati);
+        }
+
+        void Udalenie(Baza baza, ListViewHitTestInfo koordinati, INIFail iniFail, bool udalenie)
+        {
             if (udalenie)
             {
                 Baza istoria = new Baza(iniFail.Istoriia);
@@ -20,6 +30,11 @@ namespace DevList
                 istoria.Zapisat();
             }
 
+            baza.Tablica.RemoveAt(koordinati.Item.Index);
+        }
+
+        void Udalenie(Baza baza, ListViewHitTestInfo koordinati)
+        {
             baza.Tablica.RemoveAt(koordinati.Item.Index);
         }
     }

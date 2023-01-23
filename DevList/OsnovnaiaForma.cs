@@ -338,27 +338,40 @@ namespace DevList
                 (
                     "Удалить полностью?",
                     "Удаление МЦ?",
-                    MessageBoxButtons.YesNo
+                    MessageBoxButtons.YesNoCancel
                 );
 
                 if (resultat == DialogResult.Yes)
                 {
                     Udalit udalit = new Udalit(baza, koordinati, iniFail, false);
                 }
-                else
+                if (resultat == DialogResult.No)
                 {
                     Udalit udalit = new Udalit(baza, koordinati, iniFail, true);
                 }
+                if (resultat != DialogResult.Cancel)
+                {
+                    VivodVTablicu(baza.Tablica);
 
-                VivodVTablicu(baza.Tablica);
-
-                baza.Izmenenie = true;
+                    baza.Izmenenie = true;
+                }
             }
         }
 
         private void KUdalit_Click(object sender, EventArgs e)
         {
-            Udalit_Click(sender, e);
+            if (GlavnoeMenu.Items.Count == 0)
+            {
+                Udalit udalit = new Udalit(baza, koordinati);
+
+                VivodVTablicu(baza.Tablica);
+
+                baza.Izmenenie = true;
+            }
+            else
+            {
+                Udalit_Click(sender, e);
+            }
         }
 
         private void Poisk_Click(object sender, EventArgs e)
