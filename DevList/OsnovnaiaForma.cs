@@ -502,44 +502,63 @@ namespace DevList
 
         private void Poisk_Click(object sender, EventArgs e)
         {
-            if (koordinati == null)
+            DobavitPravitPoisk poisk;
+
+            int zapominaemStroku = 0;
+
+            if (koordinati == null || koordinati.Item == null)
             {
                 koordinati = Tablica.HitTest(0, 0);
+
+                string[] stroka = new string[13];
+
+                for (int i = 0; i < stroka.Length; i++)
+                {
+                    stroka[i] = string.Empty;
+                }
+
+                poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, stroka);
+            }
+            else
+            {
+                zapominaemStroku = koordinati.Item == null ? 0 : koordinati.Item.Index;
+
+                if (zapominaemStroku >= 0)
+                {
+                    poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
+                }
+                else
+                {
+                    poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[0]);
+                }
             }
 
-            int zapominaemStroku = koordinati.Item == null ? 0 : koordinati.Item.Index;
+            poisk.ShowDialog();
 
-            if (zapominaemStroku >= 0)
+            if (poisk.KnopkaVipolnit)
             {
-                DobavitPravitPoisk poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
-
-                poisk.ShowDialog();
-
-                if (poisk.KnopkaVipolnit)
+                if (poisk.rezultat != null)
                 {
-                    if (poisk.rezultat != null)
+                    bool proverkaNaPustieStroki = false;
+
+                    foreach (string slovo in poisk.rezultat)
                     {
-                        bool proverkaNaPustieStroki = false;
-
-                        foreach (string slovo in poisk.rezultat)
+                        if (slovo != "")
                         {
-                            if (slovo != "")
-                            {
-                                proverkaNaPustieStroki = true;
-                            }
+                            proverkaNaPustieStroki = true;
                         }
-
-                        if (proverkaNaPustieStroki)
-                        {
-                            VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
-                        }
-                        else
-                        {
-                            Tablica.Items.Clear();
-                        }
-
-                        UbratFiltri.Visible = true;
                     }
+
+                    if (proverkaNaPustieStroki)
+                    {
+                        VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
+                    }
+                    else
+                    {
+                        Tablica.Items.Clear();
+                    }
+
+                    UbratFiltri.Visible = true;
                 }
             }
         }
