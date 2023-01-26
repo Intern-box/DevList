@@ -502,6 +502,11 @@ namespace DevList
 
         private void Poisk_Click(object sender, EventArgs e)
         {
+            if (koordinati == null)
+            {
+                koordinati = Tablica.HitTest(0, 0);
+            }
+
             int zapominaemStroku = koordinati.Item == null ? 0 : koordinati.Item.Index;
 
             if (zapominaemStroku >= 0)
@@ -664,7 +669,17 @@ namespace DevList
 
             OsnovnaiaForma istoria = new OsnovnaiaForma(iniFail, istoriaBaza);
 
-            istoria.GlavnoeMenu.Items.Clear();
+            istoria.Fail.Visible = false;
+
+            istoria.Pravka.Visible = false;
+
+            istoria.RedaktirovanieSpiskov.Visible = false;
+
+            istoria.Otcheti.Visible = false;
+
+            istoria.Istoria.Visible = false;
+
+
 
             istoria.KDobavit.Visible = false;
 
