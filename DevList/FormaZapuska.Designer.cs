@@ -96,7 +96,7 @@ namespace DevList
             this.Name = "FormaZapuska";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DevList 6.3";
+            this.Text = "DevList 6.4";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormaZapuska_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -16,7 +16,8 @@ namespace DevList
         INIFail iniFail;
         Baza baza;
         ListViewHitTestInfo koordinati;
-        bool kolonki = false;
+        bool sortirovkaVKolonkah = false;
+        public bool[] vidKolonok = { true, true, true, true, true, true, true, true, true, true, true, true };
 
         public OsnovnaiaForma(INIFail iniFail, Baza baza)
         {
@@ -53,24 +54,130 @@ namespace DevList
                 Tablica.Items.Add(stroka);
             }
 
-            Tablica.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            if (vidKolonok[0])
+            {
+                Tablica.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                Tablica.Columns[1].Width = 0;
+            }
+
+            if (vidKolonok[1])
+            {
+                Tablica.Columns[2].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                Tablica.Columns[2].Width = 0;
+            }
+
+            if (vidKolonok[2])
+            {
+                Tablica.Columns[3].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                Tablica.Columns[3].Width = 0;
+            }
+
+            if (vidKolonok[3])
+            {
+                Tablica.Columns[4].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                Tablica.Columns[4].Width = 0;
+            }
+
+            if (vidKolonok[4])
+            {
+                Tablica.Columns[5].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                Tablica.Columns[5].Width = 0;
+            }
+
+            if (vidKolonok[5])
+            {
+                Tablica.Columns[6].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                Tablica.Columns[6].Width = 0;
+            }
+
+            if (vidKolonok[6])
+            {
+                Tablica.Columns[7].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                Tablica.Columns[7].Width = 0;
+            }
+
+            if (vidKolonok[7])
+            {
+                Tablica.Columns[8].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                Tablica.Columns[8].Width = 0;
+            }
+
+            if (vidKolonok[8])
+            {
+                Tablica.Columns[9].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                Tablica.Columns[9].Width = 0;
+            }
+
+            if (vidKolonok[9])
+            {
+                Tablica.Columns[10].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                Tablica.Columns[10].Width = 0;
+            }
+
+            if (vidKolonok[10])
+            {
+                Tablica.Columns[11].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                Tablica.Columns[11].Width = 0;
+            }
+
+            if (vidKolonok[11])
+            {
+                Tablica.Columns[12].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                Tablica.Columns[12].Width = 0;
+            }
         }
 
         private void Tablica_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             Tablica.Items.Clear();
 
-            if (kolonki)
+            if (sortirovkaVKolonkah)
             {
                 baza.Tablica.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
 
-                kolonki = false;
+                sortirovkaVKolonkah = false;
             }
             else
             {
                 baza.Tablica.Sort((y, x) => x[e.Column].CompareTo(y[e.Column]));
 
-                kolonki = true;
+                sortirovkaVKolonkah = true;
             }
 
             VivodVTablicu(baza.Tablica);
@@ -345,25 +452,19 @@ namespace DevList
         {
             if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
             {
-                DialogResult resultat =
+                DialogResult rezultat =
 
                 MessageBox.Show
                 (
-                    "Удалить полностью?",
-                    "Удаление МЦ?",
-                    MessageBoxButtons.YesNoCancel
+                    "Удалить МЦ?\r\n\r\nМЦ будет перемещена в Историю!",
+                    "Удаление МЦ",
+                    MessageBoxButtons.YesNo
                 );
 
-                if (resultat == DialogResult.Yes)
-                {
-                    Udalit udalit = new Udalit(baza, koordinati, iniFail, false);
-                }
-                if (resultat == DialogResult.No)
+                if (rezultat == DialogResult.Yes)
                 {
                     Udalit udalit = new Udalit(baza, koordinati, iniFail, true);
-                }
-                if (resultat != DialogResult.Cancel)
-                {
+
                     VivodVTablicu(baza.Tablica);
 
                     baza.Izmenenie = true;
@@ -375,11 +476,23 @@ namespace DevList
         {
             if (GlavnoeMenu.Items.Count == 0)
             {
-                Udalit udalit = new Udalit(baza, koordinati);
+                DialogResult rezultat =
 
-                VivodVTablicu(baza.Tablica);
+                MessageBox.Show
+                (
+                    "Удалить полностью?",
+                    "Удаление МЦ",
+                    MessageBoxButtons.YesNo
+                );
 
-                baza.Izmenenie = true;
+                if (rezultat == DialogResult.Yes)
+                {
+                    Udalit udalit = new Udalit(baza, koordinati);
+
+                    VivodVTablicu(baza.Tablica);
+
+                    baza.Izmenenie = true;
+                }
             }
             else
             {
@@ -389,41 +502,38 @@ namespace DevList
 
         private void Poisk_Click(object sender, EventArgs e)
         {
-            if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
+            int zapominaemStroku = koordinati.Item == null ? 0 : koordinati.Item.Index;
+
+            if (zapominaemStroku >= 0)
             {
-                int zapominaemStroku = koordinati.Item.Index;
+                DobavitPravitPoisk poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
 
-                if (zapominaemStroku >= 0)
+                poisk.ShowDialog();
+
+                if (poisk.KnopkaVipolnit)
                 {
-                    DobavitPravitPoisk poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
-
-                    poisk.ShowDialog();
-
-                    if (poisk.KnopkaVipolnit)
+                    if (poisk.rezultat != null)
                     {
-                        if (poisk.rezultat != null)
+                        bool proverkaNaPustieStroki = false;
+
+                        foreach (string slovo in poisk.rezultat)
                         {
-                            bool proverkaNaPustieStroki = false;
-
-                            foreach (string slovo in poisk.rezultat)
+                            if (slovo != "")
                             {
-                                if (slovo != "")
-                                {
-                                    proverkaNaPustieStroki = true;
-                                }
+                                proverkaNaPustieStroki = true;
                             }
-
-                            if (proverkaNaPustieStroki)
-                            {
-                                VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
-                            }
-                            else
-                            {
-                                Tablica.Items.Clear();
-                            }
-
-                            UbratFiltri.Visible = true;
                         }
+
+                        if (proverkaNaPustieStroki)
+                        {
+                            VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
+                        }
+                        else
+                        {
+                            Tablica.Items.Clear();
+                        }
+
+                        UbratFiltri.Visible = true;
                     }
                 }
             }
@@ -540,115 +650,11 @@ namespace DevList
 
             kolonki.ShowDialog();
 
+            vidKolonok = kolonki.rezultat;
+
             if (kolonki.KnopkaVipolnit)
             {
-                if (kolonki.rezultat[0])
-                {
-                    Tablica.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[1].Width = 0;
-                }
-
-                if (kolonki.rezultat[1])
-                {
-                    Tablica.Columns[2].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[2].Width = 0;
-                }
-
-                if (kolonki.rezultat[2])
-                {
-                    Tablica.Columns[3].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[3].Width = 0;
-                }
-
-                if (kolonki.rezultat[3])
-                {
-                    Tablica.Columns[4].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[4].Width = 0;
-                }
-
-                if (kolonki.rezultat[4])
-                {
-                    Tablica.Columns[5].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[5].Width = 0;
-                }
-
-                if (kolonki.rezultat[5])
-                {
-                    Tablica.Columns[6].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[6].Width = 0;
-                }
-
-                if (kolonki.rezultat[6])
-                {
-                    Tablica.Columns[7].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[7].Width = 0;
-                }
-
-                if (kolonki.rezultat[7])
-                {
-                    Tablica.Columns[8].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[8].Width = 0;
-                }
-
-                if (kolonki.rezultat[8])
-                {
-                    Tablica.Columns[9].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[9].Width = 0;
-                }
-
-                if (kolonki.rezultat[9])
-                {
-                    Tablica.Columns[10].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[10].Width = 0;
-                }
-
-                if (kolonki.rezultat[10])
-                {
-                    Tablica.Columns[11].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[11].Width = 0;
-                }
-
-                if (kolonki.rezultat[11])
-                {
-                    Tablica.Columns[12].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[12].Width = 0;
-                }
+                VivodVTablicu(baza.Tablica);
             }
         }
 
@@ -671,6 +677,11 @@ namespace DevList
             istoria.Text = "DevList - История";
 
             istoria.ShowDialog();
+        }
+
+        private void Tablica_DoubleClick(object sender, EventArgs e)
+        {
+            Pravit_Click(sender, e);
         }
     }
 }

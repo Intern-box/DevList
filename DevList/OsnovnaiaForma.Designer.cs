@@ -72,10 +72,10 @@ namespace DevList
             this.Otcheti = new System.Windows.Forms.ToolStripMenuItem();
             this.KolVoPoTipam = new System.Windows.Forms.ToolStripMenuItem();
             this.KolVoVPomeschenii = new System.Windows.Forms.ToolStripMenuItem();
+            this.Istoria = new System.Windows.Forms.ToolStripMenuItem();
             this.UbratFiltri = new System.Windows.Forms.ToolStripMenuItem();
             this.TextBoxObschiiPoisk = new System.Windows.Forms.TextBox();
             this.LabelObschiiPoisk = new System.Windows.Forms.Label();
-            this.Istoria = new System.Windows.Forms.ToolStripMenuItem();
             this.KontekstnoeMenu.SuspendLayout();
             this.GlavnoeMenu.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +114,7 @@ namespace DevList
             this.Tablica.UseCompatibleStateImageBehavior = false;
             this.Tablica.View = System.Windows.Forms.View.Details;
             this.Tablica.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.Tablica_ColumnClick);
+            this.Tablica.DoubleClick += new System.EventHandler(this.Tablica_DoubleClick);
             this.Tablica.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Tablica_MouseDown);
             // 
             // columnHeader_ID
@@ -405,6 +406,13 @@ namespace DevList
             this.KolVoVPomeschenii.Text = "Кол-во МЦ в помещении";
             this.KolVoVPomeschenii.Click += new System.EventHandler(this.KolVoVPomeschenii_Click);
             // 
+            // Istoria
+            // 
+            this.Istoria.Name = "Istoria";
+            this.Istoria.Size = new System.Drawing.Size(71, 21);
+            this.Istoria.Text = "История";
+            this.Istoria.Click += new System.EventHandler(this.Istoria_Click);
+            // 
             // UbratFiltri
             // 
             this.UbratFiltri.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -436,13 +444,6 @@ namespace DevList
             this.LabelObschiiPoisk.TabIndex = 4;
             this.LabelObschiiPoisk.Text = "Общий поиск:";
             // 
-            // Istoria
-            // 
-            this.Istoria.Name = "Istoria";
-            this.Istoria.Size = new System.Drawing.Size(71, 21);
-            this.Istoria.Text = "История";
-            this.Istoria.Click += new System.EventHandler(this.Istoria_Click);
-            // 
             // OsnovnaiaForma
             // 
             this.AllowDrop = true;
@@ -458,7 +459,7 @@ namespace DevList
             this.KeyPreview = true;
             this.Name = "OsnovnaiaForma";
             this.ShowIcon = false;
-            this.Text = "DevList 6.3";
+            this.Text = "DevList 6.4";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OsnovnaiaForma_FormClosed);
             this.Load += new System.EventHandler(this.OsnovnaiaForma_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OsnovnaiaForma_KeyUp);

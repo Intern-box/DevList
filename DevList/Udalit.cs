@@ -27,6 +27,8 @@ namespace DevList
 
                 istoria.Tablica.Add(baza.Tablica[koordinati.Item.Index]);
 
+                baza.Tablica[koordinati.Item.Index][9] = $"Удалено {DateTime.Now.Date.ToString().Substring(0, DateTime.Now.Date.ToString().IndexOf(" "))}";
+
                 istoria.Zapisat();
             }
 
