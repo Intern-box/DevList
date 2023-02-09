@@ -17,6 +17,7 @@ namespace DevList
         public string Oborudovanie = "БД\\Оборудование.txt";
         public string Sotrudniki = "БД\\Сотрудники.txt";
         public string Istoriia = "БД\\История.csv";
+        public string Komplekt = "БД\\Комплект.csv";
 
         public INIFail()
         {
@@ -56,6 +57,7 @@ namespace DevList
                 File.WriteAllText($"{Papka}\\{Oborudovanie}", "");
                 File.WriteAllText($"{Papka}\\{Sotrudniki}", "");
                 File.WriteAllText($"{Papka}\\{Istoriia}", "");
+                File.WriteAllText($"{Papka}\\{Komplekt}", "");
             }
             else
             {
@@ -70,6 +72,7 @@ namespace DevList
             Oborudovanie = $"{Papka}\\{ini_fail[2]}";
             Sotrudniki = $"{Papka}\\{ini_fail[3]}";
             Istoriia = $"{Papka}\\{ini_fail[4]}";
+            Komplekt = $"{Papka}\\{ini_fail[5]}";
         }
     }
 }

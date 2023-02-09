@@ -52,6 +52,7 @@ namespace DevList
             this.KVniz = new System.Windows.Forms.ToolStripMenuItem();
             this.KUdalit = new System.Windows.Forms.ToolStripMenuItem();
             this.KPoisk = new System.Windows.Forms.ToolStripMenuItem();
+            this.KKomplekt = new System.Windows.Forms.ToolStripMenuItem();
             this.GlavnoeMenu = new System.Windows.Forms.MenuStrip();
             this.Fail = new System.Windows.Forms.ToolStripMenuItem();
             this.Sozdat = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,6 +74,7 @@ namespace DevList
             this.KolVoPoTipam = new System.Windows.Forms.ToolStripMenuItem();
             this.KolVoVPomeschenii = new System.Windows.Forms.ToolStripMenuItem();
             this.Istoria = new System.Windows.Forms.ToolStripMenuItem();
+            this.Komplekt = new System.Windows.Forms.ToolStripMenuItem();
             this.UbratFiltri = new System.Windows.Forms.ToolStripMenuItem();
             this.TextBoxObschiiPoisk = new System.Windows.Forms.TextBox();
             this.LabelObschiiPoisk = new System.Windows.Forms.Label();
@@ -190,9 +192,10 @@ namespace DevList
             this.KVverh,
             this.KVniz,
             this.KUdalit,
-            this.KPoisk});
+            this.KPoisk,
+            this.KKomplekt});
             this.KontekstnoeMenu.Name = "contextMenuStrip_Vsplivauschee_Menu";
-            this.KontekstnoeMenu.Size = new System.Drawing.Size(142, 158);
+            this.KontekstnoeMenu.Size = new System.Drawing.Size(142, 180);
             // 
             // KDobavit
             // 
@@ -243,6 +246,13 @@ namespace DevList
             this.KPoisk.Text = "Поиск";
             this.KPoisk.Click += new System.EventHandler(this.KPoisk_Click);
             // 
+            // KKomplekt
+            // 
+            this.KKomplekt.Name = "KKomplekt";
+            this.KKomplekt.Size = new System.Drawing.Size(141, 22);
+            this.KKomplekt.Text = "Комплект";
+            this.KKomplekt.Click += new System.EventHandler(this.KKomplekt_Click);
+            // 
             // GlavnoeMenu
             // 
             this.GlavnoeMenu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -254,6 +264,7 @@ namespace DevList
             this.RedaktirovanieSpiskov,
             this.Otcheti,
             this.Istoria,
+            this.Komplekt,
             this.UbratFiltri});
             this.GlavnoeMenu.Location = new System.Drawing.Point(0, 0);
             this.GlavnoeMenu.Name = "GlavnoeMenu";
@@ -413,6 +424,13 @@ namespace DevList
             this.Istoria.Text = "История";
             this.Istoria.Click += new System.EventHandler(this.Istoria_Click);
             // 
+            // Komplekt
+            // 
+            this.Komplekt.Name = "Komplekt";
+            this.Komplekt.Size = new System.Drawing.Size(77, 21);
+            this.Komplekt.Text = "Комплект";
+            this.Komplekt.Click += new System.EventHandler(this.Komplekt_Click);
+            // 
             // UbratFiltri
             // 
             this.UbratFiltri.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -518,6 +536,8 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem Vid;
         private System.Windows.Forms.ToolStripMenuItem Kolonki;
         private System.Windows.Forms.ToolStripMenuItem Istoria;
+        private System.Windows.Forms.ToolStripMenuItem KKomplekt;
+        private System.Windows.Forms.ToolStripMenuItem Komplekt;
     }
 }
 

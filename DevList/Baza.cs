@@ -107,9 +107,9 @@ namespace DevList
 
             foreach (string[] stroka in Tablica)
             {
-                for (int i = 1; i < Tablica[0].Length; i++)
+                foreach (string slovo in stroka)
                 {
-                    if (stroka[i].IndexOf(zapros, StringComparison.CurrentCultureIgnoreCase) != -1)
+                    if (slovo.IndexOf(zapros, StringComparison.CurrentCultureIgnoreCase) != -1)
                     {
                         sovpadenie = true;
                     }

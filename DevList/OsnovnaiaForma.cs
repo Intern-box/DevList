@@ -26,11 +26,31 @@ namespace DevList
             this.iniFail = iniFail;
 
             this.baza = baza;
+
+            Komplekt.Visible = false;
+
+            KKomplekt.Visible = false;
         }
 
         private void Tablica_MouseDown(object sender, MouseEventArgs e)
         {
             koordinati = Tablica.HitTest(e.X, e.Y);
+
+            if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
+            {
+                if (baza.Tablica[koordinati.Item.Index][6] == "Системный блок")
+                {
+                    Komplekt.Visible = true;
+
+                    KKomplekt.Visible = true;
+                }
+                else
+                {
+                    Komplekt.Visible = false;
+
+                    KKomplekt.Visible = false;
+                }
+            }
         }
 
         private void OsnovnaiaForma_Load(object sender, EventArgs e)
@@ -342,6 +362,14 @@ namespace DevList
                 {
                     // Столбец ID нельзя изменить!
                 }
+                ////else if(koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 1)
+                ////{
+                ////    DateTimePicker dateTimePicker = new DateTimePicker();
+
+                ////    dateTimePicker.Width = 200;
+
+                ////    Controls.Add(dateTimePicker);
+                ////}
                 else
                 {
                     PravitStroku pravitStroku = new PravitStroku(baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]);
@@ -502,9 +530,50 @@ namespace DevList
 
         private void Poisk_Click(object sender, EventArgs e)
         {
+            string[] stroka = new string[13];
+
+            for (int i = 0; i < stroka.Length; i++)
+            {
+                stroka[i] = string.Empty;
+            }
+
+            DobavitPravitPoisk poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, stroka);
+
+            poisk.ShowDialog();
+
+            if (poisk.KnopkaVipolnit)
+            {
+                if (poisk.rezultat != null)
+                {
+                    bool proverkaNaPustieStroki = false;
+
+                    foreach (string slovo in poisk.rezultat)
+                    {
+                        if (slovo != "")
+                        {
+                            proverkaNaPustieStroki = true;
+                        }
+                    }
+
+                    if (proverkaNaPustieStroki)
+                    {
+                        VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
+                    }
+                    else
+                    {
+                        Tablica.Items.Clear();
+                    }
+
+                    UbratFiltri.Visible = true;
+                }
+            }
+        }
+
+        private void KPoisk_Click(object sender, EventArgs e)
+        {
             DobavitPravitPoisk poisk;
 
-            int zapominaemStroku = 0;
+            int zapominaemStroku;
 
             if (koordinati == null || koordinati.Item == null)
             {
@@ -561,11 +630,6 @@ namespace DevList
                     UbratFiltri.Visible = true;
                 }
             }
-        }
-
-        private void KPoisk_Click(object sender, EventArgs e)
-        {
-            Poisk_Click(sender, e);
         }
 
         private void TextBoxObschiiPoisk_KeyDown(object sender, KeyEventArgs e)
@@ -708,6 +772,8 @@ namespace DevList
 
             istoria.KVniz.Visible = false;
 
+
+
             istoria.Text = "DevList - История";
 
             istoria.ShowDialog();
@@ -716,6 +782,18 @@ namespace DevList
         private void Tablica_DoubleClick(object sender, EventArgs e)
         {
             Pravit_Click(sender, e);
+        }
+
+        private void Komplekt_Click(object sender, EventArgs e)
+        {
+            RabotaSKomplektom komplekt = new RabotaSKomplektom();
+
+            komplekt.ShowDialog();
+        }
+
+        private void KKomplekt_Click(object sender, EventArgs e)
+        {
+            Komplekt_Click(sender, e);
         }
     }
 }
