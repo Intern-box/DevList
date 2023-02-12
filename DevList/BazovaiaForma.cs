@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class OsnovnaiaForma : Form
+    public partial class BazovaiaForma : Form
     {
         public INIFail iniFail;
         public Baza baza;
@@ -19,7 +19,7 @@ namespace DevList
         public bool sortirovkaVKolonkah = false;
         public bool[] vidKolonok = { true, true, true, true, true, true, true, true, true, true, true, true };
 
-        public OsnovnaiaForma(INIFail iniFail, Baza baza)
+        public BazovaiaForma(INIFail iniFail, Baza baza)
         {
             InitializeComponent();
 
@@ -752,7 +752,7 @@ namespace DevList
         {
             Baza istoriaBaza = new Baza(iniFail.Istoriia);
 
-            OsnovnaiaForma istoria = new OsnovnaiaForma(iniFail, istoriaBaza);
+            BazovaiaForma istoria = new BazovaiaForma(iniFail, istoriaBaza);
 
             istoria.Fail.Visible = false;
 

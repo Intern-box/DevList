@@ -54,15 +54,18 @@
     <Compile Include="DobavitPravitPoisk.Designer.cs">
       <DependentUpon>DobavitPravitPoisk.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormenniiFunkcional.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="INIFail.cs" />
     <Compile Include="Kolonki.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Kolonki.Designer.cs">
       <DependentUpon>Kolonki.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OsnovnaiaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OsnovnaiaForma.Designer.cs">
+      <DependentUpon>OsnovnaiaForma.cs</DependentUpon>
     </Compile>
     <Compile Include="Otcheti.cs">
       <SubType>Form</SubType>
@@ -102,22 +105,22 @@
     <Compile Include="RedaktirovanieSpiskov.Designer.cs">
       <DependentUpon>RedaktirovanieSpiskov.cs</DependentUpon>
     </Compile>
-    <Compile Include="OsnovnaiaForma.cs">
+    <Compile Include="BazovaiaForma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OsnovnaiaForma.Designer.cs">
-      <DependentUpon>OsnovnaiaForma.cs</DependentUpon>
+    <Compile Include="BazovaiaForma.Designer.cs">
+      <DependentUpon>BazovaiaForma.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DobavitPravitPoisk.resx">
       <DependentUpon>DobavitPravitPoisk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormenniiFunkcional.resx">
-      <DependentUpon>FormenniiFunkcional.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Kolonki.resx">
       <DependentUpon>Kolonki.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OsnovnaiaForma.resx">
+      <DependentUpon>OsnovnaiaForma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PravitStroku.resx">
       <DependentUpon>PravitStroku.cs</DependentUpon>
@@ -137,8 +140,8 @@
     <EmbeddedResource Include="RedaktirovanieSpiskov.resx">
       <DependentUpon>RedaktirovanieSpiskov.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OsnovnaiaForma.resx">
-      <DependentUpon>OsnovnaiaForma.cs</DependentUpon>
+    <EmbeddedResource Include="BazovaiaForma.resx">
+      <DependentUpon>BazovaiaForma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
