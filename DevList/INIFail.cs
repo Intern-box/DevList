@@ -50,7 +50,7 @@ namespace DevList
                 if (!Directory.Exists($"{Papka}\\История перемещений"))
                     Directory.CreateDirectory($"{Papka}\\История перемещений");
 
-                File.WriteAllText($"{Papka}\\{Adres}", $"{Baza}\r\n{Pomescheniia}\r\n{Oborudovanie}\r\n{Sotrudniki}\r\n{Istoriia}");
+                File.WriteAllText($"{Papka}\\{Adres}", $"{Baza}\r\n{Pomescheniia}\r\n{Oborudovanie}\r\n{Sotrudniki}\r\n{Istoriia}\r\n{Komplekt}\r\n");
 
                 File.WriteAllText($"{Papka}\\{Baza}", "");
                 File.WriteAllText($"{Papka}\\{Pomescheniia}", "");

@@ -25,7 +25,19 @@ namespace DevList
 
                 stroka.TrimEnd('\n');
 
-                Tablica.Add(stroka.Split(','));
+                string[] shablonStroki = new string[13];
+
+                for (int i = 0; i < shablonStroki.Length; i++)
+                {
+                    shablonStroki[i] = "";
+                }
+
+                for (int i = 0; i < stroka.Split(',').Length; i++)
+                {
+                    shablonStroki[i] = stroka.Split(',')[i];
+                }
+
+                Tablica.Add(shablonStroki);
             }
         }
 
