@@ -113,6 +113,9 @@
     <EmbeddedResource Include="DobavitPravitPoisk.resx">
       <DependentUpon>DobavitPravitPoisk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormenniiFunkcional.resx">
+      <DependentUpon>FormenniiFunkcional.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Kolonki.resx">
       <DependentUpon>Kolonki.cs</DependentUpon>
     </EmbeddedResource>
