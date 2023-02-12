@@ -11,14 +11,8 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class OsnovnaiaForma : Form
+    public partial class OsnovnaiaForma : FormenniiFunkcional
     {
-        INIFail iniFail;
-        Baza baza;
-        ListViewHitTestInfo koordinati;
-        bool sortirovkaVKolonkah = false;
-        public bool[] vidKolonok = { true, true, true, true, true, true, true, true, true, true, true, true };
-
         public OsnovnaiaForma(INIFail iniFail, Baza baza)
         {
             InitializeComponent();

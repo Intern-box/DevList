@@ -54,6 +54,9 @@
     <Compile Include="DobavitPravitPoisk.Designer.cs">
       <DependentUpon>DobavitPravitPoisk.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormenniiFunkcional.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="INIFail.cs" />
     <Compile Include="Kolonki.cs">
       <SubType>Form</SubType>
