@@ -30,45 +30,25 @@ namespace DevList
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Tablica = new System.Windows.Forms.ListView();
             this.KMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Menu = new System.Windows.Forms.MenuStrip();
+            this.GMenu = new System.Windows.Forms.MenuStrip();
             this.TextBoxObschiiPoisk = new System.Windows.Forms.TextBox();
             this.LabelObschiiPoisk = new System.Windows.Forms.Label();
+            this.Tablica = new System.Windows.Forms.ListView();
             this.SuspendLayout();
-            // 
-            // Tablica
-            // 
-            this.Tablica.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.Tablica.AllowColumnReorder = true;
-            this.Tablica.AllowDrop = true;
-            this.Tablica.AutoArrange = false;
-            this.Tablica.ContextMenuStrip = this.KMenu;
-            this.Tablica.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Tablica.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Tablica.FullRowSelect = true;
-            this.Tablica.GridLines = true;
-            this.Tablica.HideSelection = false;
-            this.Tablica.Location = new System.Drawing.Point(0, 24);
-            this.Tablica.Name = "Tablica";
-            this.Tablica.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Tablica.Size = new System.Drawing.Size(1251, 537);
-            this.Tablica.TabIndex = 1;
-            this.Tablica.UseCompatibleStateImageBehavior = false;
-            this.Tablica.View = System.Windows.Forms.View.Details;
             // 
             // KMenu
             // 
-            this.KMenu.Name = "contextMenuStrip_Vsplivauschee_Menu";
+            this.KMenu.Name = "KMenu";
             this.KMenu.Size = new System.Drawing.Size(61, 4);
             // 
-            // Menu
+            // GMenu
             // 
-            this.Menu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Menu.Location = new System.Drawing.Point(0, 0);
-            this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(1251, 24);
-            this.Menu.TabIndex = 2;
+            this.GMenu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GMenu.Location = new System.Drawing.Point(0, 0);
+            this.GMenu.Name = "GMenu";
+            this.GMenu.Size = new System.Drawing.Size(1251, 24);
+            this.GMenu.TabIndex = 2;
             // 
             // TextBoxObschiiPoisk
             // 
@@ -90,6 +70,26 @@ namespace DevList
             this.LabelObschiiPoisk.TabIndex = 4;
             this.LabelObschiiPoisk.Text = "Общий поиск:";
             // 
+            // Tablica
+            // 
+            this.Tablica.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.Tablica.AllowColumnReorder = true;
+            this.Tablica.AllowDrop = true;
+            this.Tablica.AutoArrange = false;
+            this.Tablica.ContextMenuStrip = this.KMenu;
+            this.Tablica.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Tablica.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Tablica.FullRowSelect = true;
+            this.Tablica.GridLines = true;
+            this.Tablica.HideSelection = false;
+            this.Tablica.Location = new System.Drawing.Point(0, 24);
+            this.Tablica.Name = "Tablica";
+            this.Tablica.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Tablica.Size = new System.Drawing.Size(1251, 537);
+            this.Tablica.TabIndex = 5;
+            this.Tablica.UseCompatibleStateImageBehavior = false;
+            this.Tablica.View = System.Windows.Forms.View.Details;
+            // 
             // BazovaiaForma
             // 
             this.AllowDrop = true;
@@ -98,10 +98,10 @@ namespace DevList
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1251, 561);
+            this.Controls.Add(this.Tablica);
             this.Controls.Add(this.LabelObschiiPoisk);
             this.Controls.Add(this.TextBoxObschiiPoisk);
-            this.Controls.Add(this.Tablica);
-            this.Controls.Add(this.Menu);
+            this.Controls.Add(this.GMenu);
             this.KeyPreview = true;
             this.Name = "BazovaiaForma";
             this.ShowIcon = false;
@@ -111,11 +111,11 @@ namespace DevList
         }
 
         #endregion
-        private System.Windows.Forms.MenuStrip Menu;
-        private System.Windows.Forms.ContextMenuStrip KMenu;
-        private System.Windows.Forms.ListView Tablica;
         private System.Windows.Forms.TextBox TextBoxObschiiPoisk;
         private System.Windows.Forms.Label LabelObschiiPoisk;
+        public System.Windows.Forms.MenuStrip GMenu;
+        public System.Windows.Forms.ContextMenuStrip KMenu;
+        private System.Windows.Forms.ListView Tablica;
     }
 }
 
