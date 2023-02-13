@@ -60,9 +60,15 @@ namespace DevList
         {
             Hide();
 
-            OsnovnaiaForma osnovnaiaForma = new OsnovnaiaForma(iniFail, new Baza(iniFail.Baza));
+            BazovaiaForma glavnoeOkno = new BazovaiaForma(iniFail, new Baza(iniFail.Baza));
 
-            osnovnaiaForma.ShowDialog();
+            glavnoeOkno.Text = "DevList 6.5 - Главное окно";
+
+            glavnoeOkno.ShowDialog();
+
+            //OsnovnaiaForma osnovnaiaForma = new OsnovnaiaForma(iniFail, new Baza(iniFail.Baza));
+
+            //osnovnaiaForma.ShowDialog();
         }
 
         private void FormaZapuska_KeyUp(object sender, KeyEventArgs e)
