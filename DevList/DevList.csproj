@@ -99,11 +99,11 @@
     <Compile Include="PravitSpisok.Designer.cs">
       <DependentUpon>PravitSpisok.cs</DependentUpon>
     </Compile>
-    <Compile Include="RedaktirovanieSpiskov.cs">
+    <Compile Include="Spiski.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RedaktirovanieSpiskov.Designer.cs">
-      <DependentUpon>RedaktirovanieSpiskov.cs</DependentUpon>
+    <Compile Include="Spiski.Designer.cs">
+      <DependentUpon>Spiski.cs</DependentUpon>
     </Compile>
     <Compile Include="BazovaiaForma.cs">
       <SubType>Form</SubType>
@@ -137,8 +137,8 @@
     <EmbeddedResource Include="RabotaSKomplektom.resx">
       <DependentUpon>RabotaSKomplektom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RedaktirovanieSpiskov.resx">
-      <DependentUpon>RedaktirovanieSpiskov.cs</DependentUpon>
+    <EmbeddedResource Include="Spiski.resx">
+      <DependentUpon>Spiski.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BazovaiaForma.resx">
       <DependentUpon>BazovaiaForma.cs</DependentUpon>

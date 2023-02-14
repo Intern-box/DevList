@@ -685,7 +685,7 @@ namespace DevList
 
         private void Spiski_Click(object sender, EventArgs e)
         {
-            RedaktirovanieSpiskov redaktirovanie_spiskov = new RedaktirovanieSpiskov(iniFail);
+            Spiski redaktirovanie_spiskov = new Spiski(iniFail);
 
             redaktirovanie_spiskov.ShowDialog();
         }

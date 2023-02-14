@@ -1,7 +1,7 @@
 ﻿
 namespace DevList
 {
-    partial class RedaktirovanieSpiskov
+    partial class Spiski
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,7 @@ namespace DevList
             this.VibranniiSpisok.Items.AddRange(new object[] {
             "Помещения",
             "Сотрудники",
+            "Наименования",
             "Оборудование"});
             this.VibranniiSpisok.Location = new System.Drawing.Point(78, 12);
             this.VibranniiSpisok.Name = "VibranniiSpisok";
@@ -97,7 +98,7 @@ namespace DevList
             this.SoderjimoeSpiska.Size = new System.Drawing.Size(416, 277);
             this.SoderjimoeSpiska.TabIndex = 60;
             // 
-            // RedaktirovanieSpiskov
+            // Spiski
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -109,7 +110,7 @@ namespace DevList
             this.Controls.Add(this.LabelSpisok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
-            this.Name = "RedaktirovanieSpiskov";
+            this.Name = "Spiski";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Редактирование списков";

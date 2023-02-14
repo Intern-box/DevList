@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class RedaktirovanieSpiskov : Form
+    public partial class Spiski : Form
     {
         INIFail iniFail;
 
-        public RedaktirovanieSpiskov(INIFail iniFail)
+        public Spiski(INIFail iniFail)
         {
             InitializeComponent();
 
@@ -37,6 +37,11 @@ namespace DevList
             }
 
             if (VibranniiSpisok.SelectedIndex == 2)
+            {
+                spisok_strok_iz_faila = File.ReadAllLines(iniFail.Naimenovaniia);
+            }
+
+            if (VibranniiSpisok.SelectedIndex == 3)
             {
                 spisok_strok_iz_faila = File.ReadAllLines(iniFail.Oborudovanie);
             }
@@ -67,6 +72,11 @@ namespace DevList
                 }
 
                 if (VibranniiSpisok.SelectedIndex == 2)
+                {
+                    File.WriteAllText(iniFail.Naimenovaniia, SoderjimoeSpiska.Text + "\r\n");
+                }
+
+                if (VibranniiSpisok.SelectedIndex == 3)
                 {
                     File.WriteAllText(iniFail.Oborudovanie, SoderjimoeSpiska.Text + "\r\n");
                 }
