@@ -19,7 +19,7 @@ namespace DevList
 
         public ListViewHitTestInfo koordinati;
 
-        public bool sortirovkaVKolonkah = false;
+        public bool sortirovkaVKolonkah = true;
 
         public bool[] vidKolonok = new bool[13];
 
@@ -189,8 +189,6 @@ namespace DevList
 
         private void Tablica_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            Tablica.Items.Clear();
-
             if (sortirovkaVKolonkah)
             {
                 baza.Tablica.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
@@ -203,6 +201,8 @@ namespace DevList
 
                 sortirovkaVKolonkah = true;
             }
+
+            Tablica.Items.Clear();
 
             VivodVTablicu(baza.Tablica);
 
@@ -748,7 +748,7 @@ namespace DevList
 
         private void Filtr_Click(object sender, EventArgs e)
         {
-            baza = new Baza(iniFail.Baza);
+            baza = new Baza(baza.Adres);
 
             VivodVTablicu(baza.Tablica);
 
