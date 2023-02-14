@@ -42,13 +42,13 @@ namespace DevList
             this.ElementSpiska.FormattingEnabled = true;
             this.ElementSpiska.Location = new System.Drawing.Point(11, 11);
             this.ElementSpiska.Name = "ElementSpiska";
-            this.ElementSpiska.Size = new System.Drawing.Size(293, 24);
+            this.ElementSpiska.Size = new System.Drawing.Size(400, 24);
             this.ElementSpiska.TabIndex = 2;
             // 
             // ButtonZakrit
             // 
             this.ButtonZakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonZakrit.Location = new System.Drawing.Point(215, 41);
+            this.ButtonZakrit.Location = new System.Drawing.Point(322, 41);
             this.ButtonZakrit.Name = "ButtonZakrit";
             this.ButtonZakrit.Size = new System.Drawing.Size(89, 29);
             this.ButtonZakrit.TabIndex = 4;
@@ -59,7 +59,7 @@ namespace DevList
             // ButtonVipolnit
             // 
             this.ButtonVipolnit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonVipolnit.Location = new System.Drawing.Point(120, 41);
+            this.ButtonVipolnit.Location = new System.Drawing.Point(227, 41);
             this.ButtonVipolnit.Name = "ButtonVipolnit";
             this.ButtonVipolnit.Size = new System.Drawing.Size(89, 29);
             this.ButtonVipolnit.TabIndex = 3;
@@ -70,7 +70,7 @@ namespace DevList
             // ButtonUdalenieElementa
             // 
             this.ButtonUdalenieElementa.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonUdalenieElementa.Location = new System.Drawing.Point(339, 10);
+            this.ButtonUdalenieElementa.Location = new System.Drawing.Point(444, 9);
             this.ButtonUdalenieElementa.Name = "ButtonUdalenieElementa";
             this.ButtonUdalenieElementa.Size = new System.Drawing.Size(21, 26);
             this.ButtonUdalenieElementa.TabIndex = 60;
@@ -81,7 +81,7 @@ namespace DevList
             // ButtonDobavlenieElementa
             // 
             this.ButtonDobavlenieElementa.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonDobavlenieElementa.Location = new System.Drawing.Point(312, 10);
+            this.ButtonDobavlenieElementa.Location = new System.Drawing.Point(417, 9);
             this.ButtonDobavlenieElementa.Name = "ButtonDobavlenieElementa";
             this.ButtonDobavlenieElementa.Size = new System.Drawing.Size(21, 26);
             this.ButtonDobavlenieElementa.TabIndex = 59;
@@ -94,13 +94,13 @@ namespace DevList
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(371, 77);
+            this.ClientSize = new System.Drawing.Size(477, 82);
             this.Controls.Add(this.ButtonUdalenieElementa);
             this.Controls.Add(this.ButtonDobavlenieElementa);
             this.Controls.Add(this.ButtonZakrit);
             this.Controls.Add(this.ButtonVipolnit);
             this.Controls.Add(this.ElementSpiska);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "PravitSpisok";

@@ -37,17 +37,17 @@ namespace DevList
             // Tekst
             // 
             this.Tekst.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Tekst.Location = new System.Drawing.Point(17, 17);
+            this.Tekst.Location = new System.Drawing.Point(12, 12);
             this.Tekst.Multiline = true;
             this.Tekst.Name = "Tekst";
             this.Tekst.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Tekst.Size = new System.Drawing.Size(355, 106);
+            this.Tekst.Size = new System.Drawing.Size(460, 88);
             this.Tekst.TabIndex = 5;
             // 
             // ButtonZakrit
             // 
             this.ButtonZakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonZakrit.Location = new System.Drawing.Point(283, 129);
+            this.ButtonZakrit.Location = new System.Drawing.Point(383, 106);
             this.ButtonZakrit.Name = "ButtonZakrit";
             this.ButtonZakrit.Size = new System.Drawing.Size(89, 29);
             this.ButtonZakrit.TabIndex = 7;
@@ -58,7 +58,7 @@ namespace DevList
             // ButtonVipolnit
             // 
             this.ButtonVipolnit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonVipolnit.Location = new System.Drawing.Point(188, 129);
+            this.ButtonVipolnit.Location = new System.Drawing.Point(288, 106);
             this.ButtonVipolnit.Name = "ButtonVipolnit";
             this.ButtonVipolnit.Size = new System.Drawing.Size(89, 29);
             this.ButtonVipolnit.TabIndex = 6;
@@ -71,11 +71,11 @@ namespace DevList
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(391, 170);
+            this.ClientSize = new System.Drawing.Size(484, 143);
             this.Controls.Add(this.ButtonZakrit);
             this.Controls.Add(this.ButtonVipolnit);
             this.Controls.Add(this.Tekst);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "PravitStroku";

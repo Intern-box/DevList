@@ -47,7 +47,7 @@ namespace DevList
             "Оборудование"});
             this.VibranniiSpisok.Location = new System.Drawing.Point(78, 12);
             this.VibranniiSpisok.Name = "VibranniiSpisok";
-            this.VibranniiSpisok.Size = new System.Drawing.Size(350, 24);
+            this.VibranniiSpisok.Size = new System.Drawing.Size(356, 24);
             this.VibranniiSpisok.TabIndex = 56;
             this.VibranniiSpisok.SelectionChangeCommitted += new System.EventHandler(this.VibranniiSpisok_SelectionChangeCommitted);
             // 
@@ -65,7 +65,7 @@ namespace DevList
             // 
             this.ButtonZakrit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonZakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonZakrit.Location = new System.Drawing.Point(340, 325);
+            this.ButtonZakrit.Location = new System.Drawing.Point(345, 325);
             this.ButtonZakrit.Name = "ButtonZakrit";
             this.ButtonZakrit.Size = new System.Drawing.Size(89, 29);
             this.ButtonZakrit.TabIndex = 58;
@@ -77,7 +77,7 @@ namespace DevList
             // 
             this.ButtonSohranit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonSohranit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonSohranit.Location = new System.Drawing.Point(245, 325);
+            this.ButtonSohranit.Location = new System.Drawing.Point(250, 325);
             this.ButtonSohranit.Name = "ButtonSohranit";
             this.ButtonSohranit.Size = new System.Drawing.Size(89, 29);
             this.ButtonSohranit.TabIndex = 57;
@@ -95,7 +95,7 @@ namespace DevList
             this.SoderjimoeSpiska.Multiline = true;
             this.SoderjimoeSpiska.Name = "SoderjimoeSpiska";
             this.SoderjimoeSpiska.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SoderjimoeSpiska.Size = new System.Drawing.Size(416, 277);
+            this.SoderjimoeSpiska.Size = new System.Drawing.Size(422, 277);
             this.SoderjimoeSpiska.TabIndex = 60;
             // 
             // Spiski
