@@ -78,112 +78,16 @@ namespace DevList
 
             Tablica.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
-            if (vidKolonok[0])
+            for (int i = 0; i < vidKolonok.Length; i++)
             {
-                Tablica.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-            else
-            {
-                Tablica.Columns[1].Width = 0;
-            }
-
-            if (vidKolonok[1])
-            {
-                Tablica.Columns[2].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-            else
-            {
-                Tablica.Columns[2].Width = 0;
-            }
-
-            if (vidKolonok[2])
-            {
-                Tablica.Columns[3].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-            else
-            {
-                Tablica.Columns[3].Width = 0;
-            }
-
-            if (vidKolonok[3])
-            {
-                Tablica.Columns[4].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-            else
-            {
-                Tablica.Columns[4].Width = 0;
-            }
-
-            if (vidKolonok[4])
-            {
-                Tablica.Columns[5].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-            else
-            {
-                Tablica.Columns[5].Width = 0;
-            }
-
-            if (vidKolonok[5])
-            {
-                Tablica.Columns[6].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-            else
-            {
-                Tablica.Columns[6].Width = 0;
-            }
-
-            if (vidKolonok[6])
-            {
-                Tablica.Columns[7].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-            else
-            {
-                Tablica.Columns[7].Width = 0;
-            }
-
-            if (vidKolonok[7])
-            {
-                Tablica.Columns[8].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-            else
-            {
-                Tablica.Columns[8].Width = 0;
-            }
-
-            if (vidKolonok[8])
-            {
-                Tablica.Columns[9].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-            else
-            {
-                Tablica.Columns[9].Width = 0;
-            }
-
-            if (vidKolonok[9])
-            {
-                Tablica.Columns[10].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-            else
-            {
-                Tablica.Columns[10].Width = 0;
-            }
-
-            if (vidKolonok[10])
-            {
-                Tablica.Columns[11].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-            else
-            {
-                Tablica.Columns[11].Width = 0;
-            }
-
-            if (vidKolonok[11])
-            {
-                Tablica.Columns[12].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }
-            else
-            {
-                Tablica.Columns[12].Width = 0;
+                if (vidKolonok[i])
+                {
+                    Tablica.Columns[i].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    Tablica.Columns[i].Width = 0;
+                }
             }
         }
 
@@ -737,7 +641,45 @@ namespace DevList
 
         private void Komplekt_Click(object sender, EventArgs e)
         {
-            RabotaSKomplektom komplekt = new RabotaSKomplektom();
+            Baza komplektBaza = new Baza(iniFail.Komplekt);
+
+            BazovaiaForma komplekt = new BazovaiaForma(iniFail, komplektBaza);
+
+            komplekt.Sozdat.Visible = false;
+
+            komplekt.Otkrit.Visible = false;
+
+            komplekt.Vid.Visible = false;
+
+            komplekt.Spiski.Visible = false;
+
+            komplekt.Otcheti.Visible = false;
+
+            komplekt.Istoria.Visible = false;
+
+            komplekt.Komplekt.Visible = false;
+
+            komplekt.Tablica.Columns.Clear();
+
+            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "InvNomer", Text = "Инв. №", TextAlign = HorizontalAlignment.Center });
+
+            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "CPU", Text = "Процессор", TextAlign = HorizontalAlignment.Center });
+
+            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Mainboard", Text = "Мат. плата", TextAlign = HorizontalAlignment.Center });
+
+            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "RAM", Text = "ОЗУ", TextAlign = HorizontalAlignment.Center });
+
+            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Disk", Text = "Накопитель", TextAlign = HorizontalAlignment.Center });
+
+            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Videocard", Text = "Видеокарта", TextAlign = HorizontalAlignment.Center });
+
+            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Power", Text = "Блок питания", TextAlign = HorizontalAlignment.Center });
+
+            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Case", Text = "Корпус", TextAlign = HorizontalAlignment.Center });
+
+            Array.Resize<bool>(ref komplekt.vidKolonok, 8);
+
+            komplekt.Text = "DevList - Комплект";
 
             komplekt.ShowDialog();
         }

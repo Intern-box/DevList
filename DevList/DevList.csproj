@@ -73,12 +73,6 @@
     <Compile Include="FormaZapuska.Designer.cs">
       <DependentUpon>FormaZapuska.cs</DependentUpon>
     </Compile>
-    <Compile Include="RabotaSKomplektom.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RabotaSKomplektom.Designer.cs">
-      <DependentUpon>RabotaSKomplektom.cs</DependentUpon>
-    </Compile>
     <Compile Include="Spisok.cs" />
     <Compile Include="Udalit.cs" />
     <Compile Include="PravitStroku.cs">
@@ -124,9 +118,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Otcheti.resx">
       <DependentUpon>Otcheti.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RabotaSKomplektom.resx">
-      <DependentUpon>RabotaSKomplektom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Spiski.resx">
       <DependentUpon>Spiski.cs</DependentUpon>
