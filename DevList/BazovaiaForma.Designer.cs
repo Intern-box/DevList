@@ -98,7 +98,7 @@ namespace DevList
             // KKomplekt
             // 
             this.KKomplekt.Name = "KKomplekt";
-            this.KKomplekt.Size = new System.Drawing.Size(180, 22);
+            this.KKomplekt.Size = new System.Drawing.Size(141, 22);
             this.KKomplekt.Text = "Комплект";
             this.KKomplekt.Visible = false;
             this.KKomplekt.Click += new System.EventHandler(this.KKomplekt_Click);
@@ -106,49 +106,49 @@ namespace DevList
             // KPoisk
             // 
             this.KPoisk.Name = "KPoisk";
-            this.KPoisk.Size = new System.Drawing.Size(180, 22);
+            this.KPoisk.Size = new System.Drawing.Size(141, 22);
             this.KPoisk.Text = "Поиск";
             this.KPoisk.Click += new System.EventHandler(this.KPoisk_Click);
             // 
             // KDobavit
             // 
             this.KDobavit.Name = "KDobavit";
-            this.KDobavit.Size = new System.Drawing.Size(180, 22);
+            this.KDobavit.Size = new System.Drawing.Size(141, 22);
             this.KDobavit.Text = "Добавить";
             this.KDobavit.Click += new System.EventHandler(this.KDobavit_Click);
             // 
             // KPravit
             // 
             this.KPravit.Name = "KPravit";
-            this.KPravit.Size = new System.Drawing.Size(180, 22);
+            this.KPravit.Size = new System.Drawing.Size(141, 22);
             this.KPravit.Text = "Править";
             this.KPravit.Click += new System.EventHandler(this.KPravit_Click);
             // 
             // KPravitVse
             // 
             this.KPravitVse.Name = "KPravitVse";
-            this.KPravitVse.Size = new System.Drawing.Size(180, 22);
+            this.KPravitVse.Size = new System.Drawing.Size(141, 22);
             this.KPravitVse.Text = "Править всё";
             this.KPravitVse.Click += new System.EventHandler(this.KPravitVse_Click);
             // 
             // KVverh
             // 
             this.KVverh.Name = "KVverh";
-            this.KVverh.Size = new System.Drawing.Size(180, 22);
+            this.KVverh.Size = new System.Drawing.Size(141, 22);
             this.KVverh.Text = "Вверх";
             this.KVverh.Click += new System.EventHandler(this.KVverh_Click);
             // 
             // KVniz
             // 
             this.KVniz.Name = "KVniz";
-            this.KVniz.Size = new System.Drawing.Size(180, 22);
+            this.KVniz.Size = new System.Drawing.Size(141, 22);
             this.KVniz.Text = "Вниз";
             this.KVniz.Click += new System.EventHandler(this.KVniz_Click);
             // 
             // KUdalit
             // 
             this.KUdalit.Name = "KUdalit";
-            this.KUdalit.Size = new System.Drawing.Size(180, 22);
+            this.KUdalit.Size = new System.Drawing.Size(141, 22);
             this.KUdalit.Text = "Удалить";
             this.KUdalit.Click += new System.EventHandler(this.KUdalit_Click);
             // 
@@ -184,28 +184,28 @@ namespace DevList
             // Sozdat
             // 
             this.Sozdat.Name = "Sozdat";
-            this.Sozdat.Size = new System.Drawing.Size(180, 22);
+            this.Sozdat.Size = new System.Drawing.Size(162, 22);
             this.Sozdat.Text = "Создать";
             this.Sozdat.Click += new System.EventHandler(this.Sozdat_Click);
             // 
             // Otkrit
             // 
             this.Otkrit.Name = "Otkrit";
-            this.Otkrit.Size = new System.Drawing.Size(180, 22);
+            this.Otkrit.Size = new System.Drawing.Size(162, 22);
             this.Otkrit.Text = "Открыть";
             this.Otkrit.Click += new System.EventHandler(this.Otkrit_Click);
             // 
             // Sohranit
             // 
             this.Sohranit.Name = "Sohranit";
-            this.Sohranit.Size = new System.Drawing.Size(180, 22);
+            this.Sohranit.Size = new System.Drawing.Size(162, 22);
             this.Sohranit.Text = "Сохранить";
             this.Sohranit.Click += new System.EventHandler(this.Sohranit_Click);
             // 
             // SohranitKak
             // 
             this.SohranitKak.Name = "SohranitKak";
-            this.SohranitKak.Size = new System.Drawing.Size(180, 22);
+            this.SohranitKak.Size = new System.Drawing.Size(162, 22);
             this.SohranitKak.Text = "Сохранить как";
             this.SohranitKak.Click += new System.EventHandler(this.SohranitKak_Click);
             // 
@@ -225,42 +225,42 @@ namespace DevList
             // Dobavit
             // 
             this.Dobavit.Name = "Dobavit";
-            this.Dobavit.Size = new System.Drawing.Size(180, 22);
+            this.Dobavit.Size = new System.Drawing.Size(150, 22);
             this.Dobavit.Text = "Добавить";
             this.Dobavit.Click += new System.EventHandler(this.Dobavit_Click);
             // 
             // Pravit
             // 
             this.Pravit.Name = "Pravit";
-            this.Pravit.Size = new System.Drawing.Size(180, 22);
+            this.Pravit.Size = new System.Drawing.Size(150, 22);
             this.Pravit.Text = "Править";
             this.Pravit.Click += new System.EventHandler(this.Pravit_Click);
             // 
             // PravitVse
             // 
             this.PravitVse.Name = "PravitVse";
-            this.PravitVse.Size = new System.Drawing.Size(180, 22);
+            this.PravitVse.Size = new System.Drawing.Size(150, 22);
             this.PravitVse.Text = "Править всё";
             this.PravitVse.Click += new System.EventHandler(this.PravitVse_Click);
             // 
             // Vverh
             // 
             this.Vverh.Name = "Vverh";
-            this.Vverh.Size = new System.Drawing.Size(180, 22);
+            this.Vverh.Size = new System.Drawing.Size(150, 22);
             this.Vverh.Text = "Вверх";
             this.Vverh.Click += new System.EventHandler(this.Vverh_Click);
             // 
             // Vniz
             // 
             this.Vniz.Name = "Vniz";
-            this.Vniz.Size = new System.Drawing.Size(180, 22);
+            this.Vniz.Size = new System.Drawing.Size(150, 22);
             this.Vniz.Text = "Вниз";
             this.Vniz.Click += new System.EventHandler(this.Vniz_Click);
             // 
             // Udalit
             // 
             this.Udalit.Name = "Udalit";
-            this.Udalit.Size = new System.Drawing.Size(180, 22);
+            this.Udalit.Size = new System.Drawing.Size(150, 22);
             this.Udalit.Text = "Удалить";
             this.Udalit.Click += new System.EventHandler(this.Udalit_Click);
             // 
@@ -469,6 +469,7 @@ namespace DevList
             this.KeyPreview = true;
             this.Name = "BazovaiaForma";
             this.ShowIcon = false;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BazovaiaForma_FormClosed);
             this.Load += new System.EventHandler(this.BazovaiaForma_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BazovaiaForma_KeyUp);

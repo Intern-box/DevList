@@ -477,7 +477,7 @@ namespace DevList
 
         private void Vid_Click(object sender, EventArgs e)
         {
-            Kolonki kolonki = new Kolonki();
+            Kolonki kolonki = new Kolonki(vidKolonok);
 
             kolonki.ShowDialog();
 
@@ -491,7 +491,7 @@ namespace DevList
 
         private void Poisk_Click(object sender, EventArgs e)
         {
-            if (Text == "DevList 6.5 - Главное окно")
+            if (Text == "DevList 6.5 - Главное окно" || Text == "DevList - История")
             {
                 string[] stroka = new string[13];
 
@@ -541,7 +541,7 @@ namespace DevList
 
         private void KPoisk_Click(object sender, EventArgs e)
         {
-            if (Text == "DevList 6.5 - Главное окно")
+            if (Text == "DevList 6.5 - Главное окно" || Text == "DevList - История")
             {
                 DobavitPravitPoisk poisk;
 
@@ -665,7 +665,6 @@ namespace DevList
 
             istoria.Istoria.Visible = false;
 
-
             istoria.KDobavit.Visible = false;
 
             istoria.KPravitVse.Visible = false;
@@ -674,6 +673,7 @@ namespace DevList
 
             istoria.KVniz.Visible = false;
 
+            istoria.KUdalit.Visible = false;
 
             istoria.Text = "DevList - История";
 

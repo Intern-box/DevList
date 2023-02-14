@@ -92,9 +92,9 @@ namespace DevList
             this.CheckBoxFIO.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxFIO.Location = new System.Drawing.Point(12, 90);
             this.CheckBoxFIO.Name = "CheckBoxFIO";
-            this.CheckBoxFIO.Size = new System.Drawing.Size(127, 20);
+            this.CheckBoxFIO.Size = new System.Drawing.Size(107, 20);
             this.CheckBoxFIO.TabIndex = 3;
-            this.CheckBoxFIO.Text = "Закреплено за";
+            this.CheckBoxFIO.Text = "Закреплено";
             this.CheckBoxFIO.UseVisualStyleBackColor = true;
             // 
             // CheckBoxNaimenovanie
