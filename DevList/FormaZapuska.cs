@@ -62,20 +62,9 @@ namespace DevList
 
             BazovaiaForma glavnoeOkno = new BazovaiaForma(iniFail, new Baza(iniFail.Baza));
 
-            ToolStripMenuItem m1 = new ToolStripMenuItem();
-            m1.Name = "m1"; m1.Text = "m1";
-            glavnoeOkno.GMenu.Items.Add(m1);
-            ToolStripMenuItem m2 = new ToolStripMenuItem();
-            m2.Name = "m2"; m2.Text = "m2";
-            glavnoeOkno.GMenu.Items.Add(m2);
-            ToolStripMenuItem m11 = new ToolStripMenuItem();
-            m11.Name = "m11"; m11.Text = "m11";
-            m1.DropDownItems.Add(m11);
+            glavnoeOkno.Text = "DevList 6.5 - Главное окно";
+
             glavnoeOkno.ShowDialog();
-
-            //OsnovnaiaForma osnovnaiaForma = new OsnovnaiaForma(iniFail, new Baza(iniFail.Baza));
-
-            //osnovnaiaForma.ShowDialog();
         }
 
         private void FormaZapuska_KeyUp(object sender, KeyEventArgs e)
