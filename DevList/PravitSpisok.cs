@@ -40,6 +40,12 @@ namespace DevList
 
                 ElementSpiska.Items.AddRange(spisok.Elementi);
             }
+            if (nomerStolbca == 5)  // Наименование
+            {
+                Spisok spisok = new Spisok(iniFail.Naimenovaniia);
+
+                ElementSpiska.Items.AddRange(spisok.Elementi);
+            }
             if (nomerStolbca == 6)  // Оборудование
             {
                 Spisok spisok = new Spisok(iniFail.Oborudovanie);
@@ -98,6 +104,16 @@ namespace DevList
 
                 ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
             }
+            if (nomerStolbca == 5)  // Наименования
+            {
+                Spisok spisok = new Spisok(iniFail.Naimenovaniia);
+
+                spisok.Dobavit(ElementSpiska.Text);
+
+                ElementSpiska.Items.Clear();
+
+                ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
+            }
             if (nomerStolbca == 6)  // Оборудование
             {
                 Spisok spisok = new Spisok(iniFail.Oborudovanie);
@@ -135,6 +151,16 @@ namespace DevList
             if (nomerStolbca == 4)  // Закреплено за
             {
                 Spisok spisok = new Spisok(iniFail.Sotrudniki);
+
+                spisok.Udalit(ElementSpiska.Text);
+
+                ElementSpiska.Items.Clear();
+
+                ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
+            }
+            if (nomerStolbca == 5)  // Наименование
+            {
+                Spisok spisok = new Spisok(iniFail.Naimenovaniia);
 
                 spisok.Udalit(ElementSpiska.Text);
 
