@@ -38,6 +38,8 @@ namespace DevList
             // 
             // ElementSpiska
             // 
+            this.ElementSpiska.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ElementSpiska.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ElementSpiska.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ElementSpiska.FormattingEnabled = true;
             this.ElementSpiska.Location = new System.Drawing.Point(11, 11);
