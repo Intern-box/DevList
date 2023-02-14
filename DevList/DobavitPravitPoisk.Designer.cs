@@ -136,8 +136,9 @@ namespace DevList
             // 
             // Oborudovanie
             // 
+            this.Oborudovanie.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Oborudovanie.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Oborudovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Oborudovanie.FormattingEnabled = true;
             this.Oborudovanie.Location = new System.Drawing.Point(165, 161);
             this.Oborudovanie.Name = "Oborudovanie";
             this.Oborudovanie.Size = new System.Drawing.Size(350, 24);
@@ -167,8 +168,9 @@ namespace DevList
             // 
             // Pomeschenie
             // 
+            this.Pomeschenie.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Pomeschenie.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Pomeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Pomeschenie.FormattingEnabled = true;
             this.Pomeschenie.Location = new System.Drawing.Point(165, 72);
             this.Pomeschenie.Name = "Pomeschenie";
             this.Pomeschenie.Size = new System.Drawing.Size(350, 24);
@@ -186,8 +188,9 @@ namespace DevList
             // 
             // Sotrudniki
             // 
+            this.Sotrudniki.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Sotrudniki.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Sotrudniki.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Sotrudniki.FormattingEnabled = true;
             this.Sotrudniki.Location = new System.Drawing.Point(165, 102);
             this.Sotrudniki.Name = "Sotrudniki";
             this.Sotrudniki.Size = new System.Drawing.Size(350, 24);
@@ -279,8 +282,9 @@ namespace DevList
             // 
             // Sostoianie
             // 
+            this.Sostoianie.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Sostoianie.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Sostoianie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Sostoianie.FormattingEnabled = true;
             this.Sostoianie.Items.AddRange(new object[] {
             "рабочее",
             "в ремонте",
@@ -379,8 +383,9 @@ namespace DevList
             // 
             // Izmenil
             // 
+            this.Izmenil.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Izmenil.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Izmenil.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Izmenil.FormattingEnabled = true;
             this.Izmenil.Location = new System.Drawing.Point(165, 337);
             this.Izmenil.Name = "Izmenil";
             this.Izmenil.Size = new System.Drawing.Size(350, 24);
@@ -398,8 +403,9 @@ namespace DevList
             // 
             // Naimenovanie
             // 
+            this.Naimenovanie.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Naimenovanie.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Naimenovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Naimenovanie.FormattingEnabled = true;
             this.Naimenovanie.Location = new System.Drawing.Point(165, 131);
             this.Naimenovanie.Name = "Naimenovanie";
             this.Naimenovanie.Size = new System.Drawing.Size(350, 24);

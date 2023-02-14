@@ -97,8 +97,9 @@ namespace DevList
             // 
             // Disk
             // 
+            this.Disk.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Disk.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Disk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Disk.FormattingEnabled = true;
             this.Disk.Location = new System.Drawing.Point(165, 131);
             this.Disk.Name = "Disk";
             this.Disk.Size = new System.Drawing.Size(350, 24);
@@ -128,8 +129,9 @@ namespace DevList
             // 
             // CPU
             // 
+            this.CPU.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.CPU.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CPU.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CPU.FormattingEnabled = true;
             this.CPU.Location = new System.Drawing.Point(165, 42);
             this.CPU.Name = "CPU";
             this.CPU.Size = new System.Drawing.Size(350, 24);
@@ -147,8 +149,9 @@ namespace DevList
             // 
             // Mainboard
             // 
+            this.Mainboard.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Mainboard.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Mainboard.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Mainboard.FormattingEnabled = true;
             this.Mainboard.Location = new System.Drawing.Point(165, 72);
             this.Mainboard.Name = "Mainboard";
             this.Mainboard.Size = new System.Drawing.Size(350, 24);
@@ -262,8 +265,9 @@ namespace DevList
             // 
             // Videocard
             // 
+            this.Videocard.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Videocard.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Videocard.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Videocard.FormattingEnabled = true;
             this.Videocard.Location = new System.Drawing.Point(165, 161);
             this.Videocard.Name = "Videocard";
             this.Videocard.Size = new System.Drawing.Size(350, 24);
@@ -281,8 +285,9 @@ namespace DevList
             // 
             // RAM
             // 
+            this.RAM.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.RAM.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.RAM.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RAM.FormattingEnabled = true;
             this.RAM.Location = new System.Drawing.Point(165, 101);
             this.RAM.Name = "RAM";
             this.RAM.Size = new System.Drawing.Size(350, 24);
@@ -332,8 +337,9 @@ namespace DevList
             // 
             // Power
             // 
+            this.Power.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Power.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Power.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Power.FormattingEnabled = true;
             this.Power.Location = new System.Drawing.Point(165, 191);
             this.Power.Name = "Power";
             this.Power.Size = new System.Drawing.Size(350, 24);
@@ -371,8 +377,9 @@ namespace DevList
             // 
             // Case
             // 
+            this.Case.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Case.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Case.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Case.FormattingEnabled = true;
             this.Case.Location = new System.Drawing.Point(165, 221);
             this.Case.Name = "Case";
             this.Case.Size = new System.Drawing.Size(350, 24);

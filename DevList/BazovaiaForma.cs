@@ -275,14 +275,17 @@ namespace DevList
                     {
                         if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 3)
                         {
-                            File.AppendAllText
-                            (
-                            $"{Path.GetDirectoryName(Path.GetFullPath(iniFail.Adres))}\\История перемещений\\{pravitSpisok.rezultat}.txt",
-                            $"Из помещения: {baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]}\r\n" +
-                            $"переместили: {DateTime.Now}\r\n" +
-                            $"{baza.Tablica[koordinati.Item.Index][5]}\r\n" +
-                            $"с инв.№: {baza.Tablica[koordinati.Item.Index][2]}\r\n\r\n"
-                            );
+                            if (pravitSpisok.rezultat != baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)])
+                            {
+                                File.AppendAllText
+                                (
+                                $"{Path.GetDirectoryName(Path.GetFullPath(iniFail.Adres))}\\История перемещений\\{pravitSpisok.rezultat}.txt",
+                                $"Из помещения: {baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]}\r\n" +
+                                $"переместили: {DateTime.Now}\r\n" +
+                                $"{baza.Tablica[koordinati.Item.Index][5]}\r\n" +
+                                $"с инв.№: {baza.Tablica[koordinati.Item.Index][2]}\r\n\r\n"
+                                );
+                            }
                         }
 
                         baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)] = pravitSpisok.rezultat;
