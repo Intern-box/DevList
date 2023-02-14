@@ -137,6 +137,28 @@ namespace DevList
             Izmenil.Items.AddRange(File.ReadAllLines(spisok.Adres));
         }
 
+        private void ButtonNaimenovaniePlus_Click(object sender, EventArgs e)
+        {
+            Spisok spisok = new Spisok(iniFail.Naimenovaniia);
+
+            spisok.Dobavit(Naimenovanie.Text);
+
+            Naimenovanie.Items.Clear();
+
+            Naimenovanie.Items.AddRange(File.ReadAllLines(spisok.Adres));
+        }
+
+        private void ButtonNaimenovanieMinus_Click(object sender, EventArgs e)
+        {
+            Spisok spisok = new Spisok(iniFail.Naimenovaniia);
+
+            spisok.Udalit(Naimenovanie.Text);
+
+            Naimenovanie.Items.Clear();
+
+            Naimenovanie.Items.AddRange(File.ReadAllLines(spisok.Adres));
+        }
+
         private void ButtonIzmenilPlus_Click(object sender, EventArgs e)
         {
             ButtonFIOPlus_Click(sender, e);

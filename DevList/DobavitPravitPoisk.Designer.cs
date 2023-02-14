@@ -35,7 +35,6 @@ namespace DevList
             this.LabelOborudovanie = new System.Windows.Forms.Label();
             this.LabelKommentarii = new System.Windows.Forms.Label();
             this.InvNomer = new System.Windows.Forms.TextBox();
-            this.Naimenovanie = new System.Windows.Forms.TextBox();
             this.Kommentarii = new System.Windows.Forms.TextBox();
             this.Oborudovanie = new System.Windows.Forms.ComboBox();
             this.ButtonVipolnit = new System.Windows.Forms.Button();
@@ -63,6 +62,9 @@ namespace DevList
             this.ButtonIzmenilPlus = new System.Windows.Forms.Button();
             this.Izmenil = new System.Windows.Forms.ComboBox();
             this.LabelIzmenil = new System.Windows.Forms.Label();
+            this.Naimenovanie = new System.Windows.Forms.ComboBox();
+            this.ButtonNaimenovanieMinus = new System.Windows.Forms.Button();
+            this.ButtonNaimenovaniePlus = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LabelInvNomer
@@ -122,14 +124,6 @@ namespace DevList
             this.InvNomer.Name = "InvNomer";
             this.InvNomer.Size = new System.Drawing.Size(350, 23);
             this.InvNomer.TabIndex = 2;
-            // 
-            // Naimenovanie
-            // 
-            this.Naimenovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Naimenovanie.Location = new System.Drawing.Point(165, 132);
-            this.Naimenovanie.Name = "Naimenovanie";
-            this.Naimenovanie.Size = new System.Drawing.Size(350, 23);
-            this.Naimenovanie.TabIndex = 5;
             // 
             // Kommentarii
             // 
@@ -402,12 +396,46 @@ namespace DevList
             this.LabelIzmenil.TabIndex = 70;
             this.LabelIzmenil.Text = "Изменил ФИО:";
             // 
+            // Naimenovanie
+            // 
+            this.Naimenovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Naimenovanie.FormattingEnabled = true;
+            this.Naimenovanie.Location = new System.Drawing.Point(165, 131);
+            this.Naimenovanie.Name = "Naimenovanie";
+            this.Naimenovanie.Size = new System.Drawing.Size(350, 24);
+            this.Naimenovanie.TabIndex = 71;
+            // 
+            // ButtonNaimenovanieMinus
+            // 
+            this.ButtonNaimenovanieMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonNaimenovanieMinus.Location = new System.Drawing.Point(546, 130);
+            this.ButtonNaimenovanieMinus.Name = "ButtonNaimenovanieMinus";
+            this.ButtonNaimenovanieMinus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonNaimenovanieMinus.TabIndex = 73;
+            this.ButtonNaimenovanieMinus.Text = "-";
+            this.ButtonNaimenovanieMinus.UseVisualStyleBackColor = true;
+            this.ButtonNaimenovanieMinus.Click += new System.EventHandler(this.ButtonNaimenovanieMinus_Click);
+            // 
+            // ButtonNaimenovaniePlus
+            // 
+            this.ButtonNaimenovaniePlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonNaimenovaniePlus.Location = new System.Drawing.Point(521, 130);
+            this.ButtonNaimenovaniePlus.Name = "ButtonNaimenovaniePlus";
+            this.ButtonNaimenovaniePlus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonNaimenovaniePlus.TabIndex = 72;
+            this.ButtonNaimenovaniePlus.Text = "+";
+            this.ButtonNaimenovaniePlus.UseVisualStyleBackColor = true;
+            this.ButtonNaimenovaniePlus.Click += new System.EventHandler(this.ButtonNaimenovaniePlus_Click);
+            // 
             // DobavitPravitPoisk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(583, 409);
+            this.Controls.Add(this.ButtonNaimenovanieMinus);
+            this.Controls.Add(this.ButtonNaimenovaniePlus);
+            this.Controls.Add(this.Naimenovanie);
             this.Controls.Add(this.ButtonIzmenilMinus);
             this.Controls.Add(this.ButtonIzmenilPlus);
             this.Controls.Add(this.Izmenil);
@@ -435,7 +463,6 @@ namespace DevList
             this.Controls.Add(this.ButtonVipolnit);
             this.Controls.Add(this.Oborudovanie);
             this.Controls.Add(this.Kommentarii);
-            this.Controls.Add(this.Naimenovanie);
             this.Controls.Add(this.InvNomer);
             this.Controls.Add(this.LabelKommentarii);
             this.Controls.Add(this.LabelOborudovanie);
@@ -463,7 +490,6 @@ namespace DevList
         private System.Windows.Forms.Label LabelOborudovanie;
         private System.Windows.Forms.Label LabelKommentarii;
         private System.Windows.Forms.TextBox InvNomer;
-        private System.Windows.Forms.TextBox Naimenovanie;
         private System.Windows.Forms.TextBox Kommentarii;
         private System.Windows.Forms.ComboBox Oborudovanie;
         private System.Windows.Forms.Button ButtonVipolnit;
@@ -491,5 +517,8 @@ namespace DevList
         private System.Windows.Forms.Button ButtonIzmenilPlus;
         private System.Windows.Forms.ComboBox Izmenil;
         private System.Windows.Forms.Label LabelIzmenil;
+        private System.Windows.Forms.ComboBox Naimenovanie;
+        private System.Windows.Forms.Button ButtonNaimenovanieMinus;
+        private System.Windows.Forms.Button ButtonNaimenovaniePlus;
     }
 }

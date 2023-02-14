@@ -351,6 +351,7 @@ namespace DevList
 
                 if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 3 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 4 ||
+                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 5 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 6 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 7 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 12)
@@ -729,7 +730,7 @@ namespace DevList
             istoria.KVniz.Visible = false;
 
 
-            istoria.Text = "DevList 6.5 - История";
+            istoria.Text = "DevList - История";
 
             istoria.ShowDialog();
         }

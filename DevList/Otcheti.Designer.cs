@@ -66,7 +66,7 @@ namespace DevList
             this.Controls.Add(this.textBox_Vivod_Informacii);
             this.Controls.Add(this.ButtonZakrit);
             this.Name = "Otcheti";
-            this.Text = "DevList 6.5 - Отчёт";
+            this.Text = "DevList - Отчёт";
             this.Load += new System.EventHandler(this.Otcheti_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Otcheti_KeyUp);
             this.ResumeLayout(false);

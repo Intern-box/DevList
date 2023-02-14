@@ -16,6 +16,7 @@ namespace DevList
         public string Pomescheniia = "БД\\Помещения.txt";
         public string Oborudovanie = "БД\\Оборудование.txt";
         public string Sotrudniki = "БД\\Сотрудники.txt";
+        public string Naimenovaniia = "БД\\Наименования.txt";
         public string Istoriia = "БД\\История.csv";
         public string Komplekt = "БД\\Комплект.csv";
 
@@ -50,12 +51,13 @@ namespace DevList
                 if (!Directory.Exists($"{Papka}\\История перемещений"))
                     Directory.CreateDirectory($"{Papka}\\История перемещений");
 
-                File.WriteAllText($"{Papka}\\{Adres}", $"{Baza}\r\n{Pomescheniia}\r\n{Oborudovanie}\r\n{Sotrudniki}\r\n{Istoriia}\r\n{Komplekt}\r\n");
+                File.WriteAllText($"{Papka}\\{Adres}", $"{Baza}\r\n{Pomescheniia}\r\n{Oborudovanie}\r\n{Sotrudniki}\r\n{Naimenovaniia}\r\n{Istoriia}\r\n{Komplekt}\r\n");
 
                 File.WriteAllText($"{Papka}\\{Baza}", "");
                 File.WriteAllText($"{Papka}\\{Pomescheniia}", "");
                 File.WriteAllText($"{Papka}\\{Oborudovanie}", "");
                 File.WriteAllText($"{Papka}\\{Sotrudniki}", "");
+                File.WriteAllText($"{Papka}\\{Naimenovaniia}", "");
                 File.WriteAllText($"{Papka}\\{Istoriia}", "");
                 File.WriteAllText($"{Papka}\\{Komplekt}", "");
             }
@@ -71,8 +73,9 @@ namespace DevList
             Pomescheniia = $"{Papka}\\{ini_fail[1]}";
             Oborudovanie = $"{Papka}\\{ini_fail[2]}";
             Sotrudniki = $"{Papka}\\{ini_fail[3]}";
-            Istoriia = $"{Papka}\\{ini_fail[4]}";
-            Komplekt = $"{Papka}\\{ini_fail[5]}";
+            Naimenovaniia = $"{Papka}\\{ini_fail[4]}";
+            Istoriia = $"{Papka}\\{ini_fail[5]}";
+            Komplekt = $"{Papka}\\{ini_fail[6]}";
         }
     }
 }
