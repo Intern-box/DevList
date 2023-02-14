@@ -13,7 +13,9 @@ namespace DevList
     public partial class Otcheti : Form
     {
         INIFail iniFail;
+
         byte tipOtcheta;
+
         Baza baza;
 
         public Otcheti(INIFail iniFail, Baza baza, byte tipOtcheta)
@@ -42,17 +44,19 @@ namespace DevList
                     {
                         zapros[6] = slovo;
 
-                        textBox_Vivod_Informacii.Text += $"{slovo} = {baza.Poisk_Strok(zapros).Count};\r\n";
+                        Vivod.Text += $"{slovo} = {baza.Poisk_Strok(zapros).Count};\r\n";
                     }
                 }
             }
 
+            // Выбор помещения
             if (tipOtcheta == 1)
             {
-                // Выбор помещения
                 PravitSpisok podgotovka = new PravitSpisok(3, iniFail);
 
                 podgotovka.ShowDialog();
+
+                if (podgotovka.rezultat == null) { Close(); }
 
                 zapros[3] = podgotovka.rezultat;
 
@@ -60,13 +64,13 @@ namespace DevList
                 {
                     zapros[6] = oborudovanie.Elementi[i];
 
-                    textBox_Vivod_Informacii.Text += $"{zapros[6]} = {baza.Poisk_Strok(zapros).Count};\r\n";
+                    Vivod.Text += $"{zapros[6]} = {baza.Poisk_Strok(zapros).Count};\r\n";
                 }
             }
 
-            if (textBox_Vivod_Informacii.Text == "")
+            if (Vivod.Text == "")
             {
-                textBox_Vivod_Informacii.Text = "Без списка \"Оборудования\" работать не будет!";
+                Vivod.Text = "Без списка \"Оборудования\" работать не будет!";
             }
         }
 
@@ -79,7 +83,7 @@ namespace DevList
         {
             if (e.KeyCode == Keys.Escape)
             {
-                ButtonZakrit_Click(sender, e);
+                Close();
             }
         }
     }
