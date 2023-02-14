@@ -206,39 +206,46 @@ namespace DevList
         // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
         private void Dobavit_Click(object sender, EventArgs e)
         {
-            DobavitPravitPoisk okno = new DobavitPravitPoisk("DevList - Добавить", iniFail);
-
-            okno.ShowDialog();
-
-            if (koordinati == null || koordinati.Location == ListViewHitTestLocations.None)
+            if (Text == "DevList 6.5 - Главное окно")
             {
-                if (okno.rezultat[1] != null)
+                DobavitPravitPoisk okno = new DobavitPravitPoisk("DevList - Добавить", iniFail);
+
+                okno.ShowDialog();
+
+                if (koordinati == null || koordinati.Location == ListViewHitTestLocations.None)
                 {
-                    baza.Tablica.Add(okno.rezultat);
+                    if (okno.rezultat[1] != null)
+                    {
+                        baza.Tablica.Add(okno.rezultat);
 
-                    VivodVTablicu(baza.Tablica);
+                        VivodVTablicu(baza.Tablica);
 
-                    Tablica.Items[baza.Tablica.Count - 1].Selected = true;
+                        Tablica.Items[baza.Tablica.Count - 1].Selected = true;
 
-                    baza.Izmenenie = true;
+                        baza.Izmenenie = true;
+                    }
+                }
+                else
+                {
+                    int zapominaemStroku = koordinati.Item.Index;
+
+                    if (okno.rezultat[1] != null)
+                    {
+                        baza.Tablica.Insert(koordinati.Item.Index + 1, okno.rezultat);
+
+                        VivodVTablicu(baza.Tablica);
+
+                        Tablica.Items[zapominaemStroku + 1].Selected = true;
+
+                        baza.Izmenenie = true;
+                    }
                 }
             }
-            else
+            if (Text == "DevList - Комплект")
             {
-                int zapominaemStroku = koordinati.Item.Index;
+                KDobavitPravitPoisk okno = new KDobavitPravitPoisk("DevList - Добавить", iniFail);
 
-                if (okno.rezultat[1] != null)
-                {
-                    baza.Tablica.Insert(koordinati.Item.Index + 1, okno.rezultat);
-
-                    VivodVTablicu(baza.Tablica);
-
-                    Tablica.Items[zapominaemStroku + 1].Selected = true;
-
-                    baza.Izmenenie = true;
-
-
-                }
+                okno.ShowDialog();
             }
         }
 
@@ -661,7 +668,11 @@ namespace DevList
 
             komplekt.Tablica.Columns.Clear();
 
-            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "InvNomer", Text = "Инв. №", TextAlign = HorizontalAlignment.Center });
+            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "ID", Text = "ID", TextAlign = HorizontalAlignment.Center });
+
+            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "InvNomer", Text = "Системный блок Инв. №", TextAlign = HorizontalAlignment.Center });
+
+            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Data", Text = "Приобретено", TextAlign = HorizontalAlignment.Center });
 
             komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "CPU", Text = "Процессор", TextAlign = HorizontalAlignment.Center });
 
@@ -677,7 +688,9 @@ namespace DevList
 
             komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Case", Text = "Корпус", TextAlign = HorizontalAlignment.Center });
 
-            Array.Resize<bool>(ref komplekt.vidKolonok, 8);
+            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "GvCPU", Text = "Год выпуска процессора", TextAlign = HorizontalAlignment.Center });
+
+            Array.Resize<bool>(ref komplekt.vidKolonok, 11);
 
             komplekt.Text = "DevList - Комплект";
 
