@@ -883,6 +883,8 @@ namespace DevList
 
             komplekt.WindowState = FormWindowState.Normal;
 
+            
+
             komplekt.ShowDialog();
         }
 
