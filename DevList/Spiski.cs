@@ -46,6 +46,11 @@ namespace DevList
                 spisok_strok_iz_faila = File.ReadAllLines(iniFail.Oborudovanie);
             }
 
+            if (VibranniiSpisok.SelectedIndex == 4)
+            {
+                spisok_strok_iz_faila = File.ReadAllLines(iniFail.Komplektuiuschie);
+            }
+
             SoderjimoeSpiska.Clear();
 
             if (spisok_strok_iz_faila != null)
@@ -79,6 +84,11 @@ namespace DevList
                 if (VibranniiSpisok.SelectedIndex == 3)
                 {
                     File.WriteAllText(iniFail.Oborudovanie, SoderjimoeSpiska.Text + "\r\n");
+                }
+
+                if (VibranniiSpisok.SelectedIndex == 4)
+                {
+                    File.WriteAllText(iniFail.Komplektuiuschie, SoderjimoeSpiska.Text + "\r\n");
                 }
             }
         }

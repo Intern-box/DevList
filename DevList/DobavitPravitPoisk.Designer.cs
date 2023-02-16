@@ -150,7 +150,7 @@ namespace DevList
             this.ButtonVipolnit.Location = new System.Drawing.Point(331, 367);
             this.ButtonVipolnit.Name = "ButtonVipolnit";
             this.ButtonVipolnit.Size = new System.Drawing.Size(89, 29);
-            this.ButtonVipolnit.TabIndex = 13;
+            this.ButtonVipolnit.TabIndex = 23;
             this.ButtonVipolnit.Text = "Выполнить";
             this.ButtonVipolnit.UseVisualStyleBackColor = true;
             this.ButtonVipolnit.Click += new System.EventHandler(this.ButtonVipolnit_Click);
@@ -161,7 +161,7 @@ namespace DevList
             this.ButtonZakrit.Location = new System.Drawing.Point(426, 367);
             this.ButtonZakrit.Name = "ButtonZakrit";
             this.ButtonZakrit.Size = new System.Drawing.Size(89, 29);
-            this.ButtonZakrit.TabIndex = 14;
+            this.ButtonZakrit.TabIndex = 24;
             this.ButtonZakrit.Text = "Закрыть";
             this.ButtonZakrit.UseVisualStyleBackColor = true;
             this.ButtonZakrit.Click += new System.EventHandler(this.ButtonZakrit_Click);
@@ -224,7 +224,7 @@ namespace DevList
             this.ButtonFIOMinus.Location = new System.Drawing.Point(546, 101);
             this.ButtonFIOMinus.Name = "ButtonFIOMinus";
             this.ButtonFIOMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonFIOMinus.TabIndex = 18;
+            this.ButtonFIOMinus.TabIndex = 16;
             this.ButtonFIOMinus.Text = "-";
             this.ButtonFIOMinus.UseVisualStyleBackColor = true;
             this.ButtonFIOMinus.Click += new System.EventHandler(this.ButtonFIOMinus_Click);
@@ -235,7 +235,7 @@ namespace DevList
             this.ButtonFIOPlus.Location = new System.Drawing.Point(521, 101);
             this.ButtonFIOPlus.Name = "ButtonFIOPlus";
             this.ButtonFIOPlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonFIOPlus.TabIndex = 17;
+            this.ButtonFIOPlus.TabIndex = 15;
             this.ButtonFIOPlus.Text = "+";
             this.ButtonFIOPlus.UseVisualStyleBackColor = true;
             this.ButtonFIOPlus.Click += new System.EventHandler(this.ButtonFIOPlus_Click);
@@ -246,7 +246,7 @@ namespace DevList
             this.ButtonPomeschenieMinus.Location = new System.Drawing.Point(546, 71);
             this.ButtonPomeschenieMinus.Name = "ButtonPomeschenieMinus";
             this.ButtonPomeschenieMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonPomeschenieMinus.TabIndex = 16;
+            this.ButtonPomeschenieMinus.TabIndex = 14;
             this.ButtonPomeschenieMinus.Text = "-";
             this.ButtonPomeschenieMinus.UseVisualStyleBackColor = true;
             this.ButtonPomeschenieMinus.Click += new System.EventHandler(this.ButtonPomeschenieMinus_Click);
@@ -257,7 +257,7 @@ namespace DevList
             this.ButtonPomescheniePlus.Location = new System.Drawing.Point(521, 71);
             this.ButtonPomescheniePlus.Name = "ButtonPomescheniePlus";
             this.ButtonPomescheniePlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonPomescheniePlus.TabIndex = 15;
+            this.ButtonPomescheniePlus.TabIndex = 13;
             this.ButtonPomescheniePlus.Text = "+";
             this.ButtonPomescheniePlus.UseVisualStyleBackColor = true;
             this.ButtonPomescheniePlus.Click += new System.EventHandler(this.ButtonPomescheniePlus_Click);
@@ -409,7 +409,7 @@ namespace DevList
             this.Naimenovanie.Location = new System.Drawing.Point(165, 131);
             this.Naimenovanie.Name = "Naimenovanie";
             this.Naimenovanie.Size = new System.Drawing.Size(350, 24);
-            this.Naimenovanie.TabIndex = 71;
+            this.Naimenovanie.TabIndex = 5;
             // 
             // ButtonNaimenovanieMinus
             // 
@@ -417,7 +417,7 @@ namespace DevList
             this.ButtonNaimenovanieMinus.Location = new System.Drawing.Point(546, 130);
             this.ButtonNaimenovanieMinus.Name = "ButtonNaimenovanieMinus";
             this.ButtonNaimenovanieMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonNaimenovanieMinus.TabIndex = 73;
+            this.ButtonNaimenovanieMinus.TabIndex = 18;
             this.ButtonNaimenovanieMinus.Text = "-";
             this.ButtonNaimenovanieMinus.UseVisualStyleBackColor = true;
             this.ButtonNaimenovanieMinus.Click += new System.EventHandler(this.ButtonNaimenovanieMinus_Click);
@@ -428,7 +428,7 @@ namespace DevList
             this.ButtonNaimenovaniePlus.Location = new System.Drawing.Point(521, 130);
             this.ButtonNaimenovaniePlus.Name = "ButtonNaimenovaniePlus";
             this.ButtonNaimenovaniePlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonNaimenovaniePlus.TabIndex = 72;
+            this.ButtonNaimenovaniePlus.TabIndex = 17;
             this.ButtonNaimenovaniePlus.Text = "+";
             this.ButtonNaimenovaniePlus.UseVisualStyleBackColor = true;
             this.ButtonNaimenovaniePlus.Click += new System.EventHandler(this.ButtonNaimenovaniePlus_Click);

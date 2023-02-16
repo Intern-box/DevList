@@ -14,7 +14,9 @@ namespace DevList
     public partial class KDobavitPravitPoisk : Form
     {
         INIFail iniFail;
+
         public string[] rezultat = new string[13];
+
         public bool KnopkaVipolnit = false;
 
         public KDobavitPravitPoisk(string zagolovok, INIFail iniFail)
@@ -34,46 +36,46 @@ namespace DevList
 
             this.iniFail = iniFail;
 
-            //DataPriobreteniia.Text = stroka[1];
-            //InvNomer.Text = stroka[2];
-            //Pomeschenie.Text = stroka[3];
-            //Sotrudniki.Text = stroka[4];
-            //Naimenovanie.Text = stroka[5];
-            //Oborudovanie.Text = stroka[6];
-            //Sostoianie.Text = stroka[7];
-            //Inventarizaciia.Text = stroka[8];
-            //Kommentarii.Text = stroka[9];
-            //Hostname.Text = stroka[10];
-            //IP.Text = stroka[11];
-            //Izmenil.Text = stroka[12];
+            InvNomer.Text = stroka[1];
+            DataPriobreteniia.Text = stroka[2];
+            CPU.Text = stroka[3];
+            Mainboard.Text = stroka[4];
+            RAM.Text = stroka[5];
+            Disk.Text = stroka[6];
+            Videocard.Text = stroka[7];
+            Power.Text = stroka[8];
+            Case.Text = stroka[9];
+            God.Text = stroka[10];
         }
 
         private void DobavitPravitPoisk_Load(object sender, EventArgs e)
         {
-            Spisok pomeschenie = new Spisok(iniFail.Pomescheniia);
-            Spisok oborudovanie = new Spisok(iniFail.Oborudovanie);
-            Spisok sotrudniki = new Spisok(iniFail.Sotrudniki);
+            Spisok komplektuiuschie = new Spisok(iniFail.Komplektuiuschie);
 
-            CPU.Items.AddRange(File.ReadAllLines(pomeschenie.Adres));
-            Disk.Items.AddRange(File.ReadAllLines(oborudovanie.Adres));
-            Mainboard.Items.AddRange(File.ReadAllLines(sotrudniki.Adres));
+            CPU.Items.AddRange(File.ReadAllLines(komplektuiuschie.Adres));
+            Mainboard.Items.AddRange(File.ReadAllLines(komplektuiuschie.Adres));
+            RAM.Items.AddRange(File.ReadAllLines(komplektuiuschie.Adres));
+            Disk.Items.AddRange(File.ReadAllLines(komplektuiuschie.Adres));
+            Videocard.Items.AddRange(File.ReadAllLines(komplektuiuschie.Adres));
+            Power.Items.AddRange(File.ReadAllLines(komplektuiuschie.Adres));
+            Case.Items.AddRange(File.ReadAllLines(komplektuiuschie.Adres));
         }
 
         private void ButtonVipolnit_Click(object sender, EventArgs e)
         {
-            //rezultat[0] = "";
-            //rezultat[1] = DataPriobreteniia.Text;
-            //rezultat[2] = InvNomer.Text;
-            //rezultat[3] = Pomeschenie.Text;
-            //rezultat[4] = Sotrudniki.Text;
-            //rezultat[5] = Naimenovanie.Text;
-            //rezultat[6] = Oborudovanie.Text;
-            //rezultat[7] = Sostoianie.Text;
-            //rezultat[8] = Inventarizaciia.Text;
-            //rezultat[9] = Kommentarii.Text;
-            //rezultat[10] = Hostname.Text;
-            //rezultat[11] = IP.Text;
-            //rezultat[12] = Izmenil.Text;
+            rezultat[0] = "";
+            rezultat[1] = InvNomer.Text;
+            rezultat[2] = DataPriobreteniia.Text;
+            rezultat[3] = CPU.Text;
+            rezultat[4] = Mainboard.Text;
+            rezultat[5] = RAM.Text;
+            rezultat[6] = Disk.Text;
+            rezultat[7] = Videocard.Text;
+            rezultat[8] = Power.Text;
+            rezultat[9] = Case.Text;
+            rezultat[10] = God.Text;
+            rezultat[11] = "";
+            rezultat[12] = "";
 
             KnopkaVipolnit = true;
 
@@ -85,9 +87,9 @@ namespace DevList
             Close();
         }
 
-        private void ButtonPomescheniePlus_Click(object sender, EventArgs e)
+        private void ButtonCPUPlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Pomescheniia);
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
 
             spisok.Dobavit(CPU.Text);
 
@@ -96,9 +98,9 @@ namespace DevList
             CPU.Items.AddRange(File.ReadAllLines(spisok.Adres));
         }
 
-        private void ButtonPomeschenieMinus_Click(object sender, EventArgs e)
+        private void ButtonCPUMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Pomescheniia);
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
 
             spisok.Udalit(CPU.Text);
 
@@ -107,39 +109,31 @@ namespace DevList
             CPU.Items.AddRange(File.ReadAllLines(spisok.Adres));
         }
 
-        private void ButtonFIOPlus_Click(object sender, EventArgs e)
+        private void ButtonMainboardPlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Sotrudniki);
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
 
             spisok.Dobavit(Mainboard.Text);
 
             Mainboard.Items.Clear();
 
             Mainboard.Items.AddRange(File.ReadAllLines(spisok.Adres));
-
-            Videocard.Items.Clear();
-
-            Videocard.Items.AddRange(File.ReadAllLines(spisok.Adres));
         }
 
-        private void ButtonFIOMinus_Click(object sender, EventArgs e)
+        private void ButtonMainboardMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Sotrudniki);
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
 
             spisok.Udalit(Mainboard.Text);
 
             Mainboard.Items.Clear();
 
             Mainboard.Items.AddRange(File.ReadAllLines(spisok.Adres));
-
-            Videocard.Items.Clear();
-
-            Videocard.Items.AddRange(File.ReadAllLines(spisok.Adres));
         }
 
-        private void ButtonNaimenovaniePlus_Click(object sender, EventArgs e)
+        private void ButtonRAMPlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Naimenovaniia);
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
 
             spisok.Dobavit(RAM.Text);
 
@@ -148,9 +142,9 @@ namespace DevList
             RAM.Items.AddRange(File.ReadAllLines(spisok.Adres));
         }
 
-        private void ButtonNaimenovanieMinus_Click(object sender, EventArgs e)
+        private void ButtonRAMMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Naimenovaniia);
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
 
             spisok.Udalit(RAM.Text);
 
@@ -159,19 +153,9 @@ namespace DevList
             RAM.Items.AddRange(File.ReadAllLines(spisok.Adres));
         }
 
-        private void ButtonIzmenilPlus_Click(object sender, EventArgs e)
+        private void ButtonDiskPlus_Click(object sender, EventArgs e)
         {
-            ButtonFIOPlus_Click(sender, e);
-        }
-
-        private void ButtonIzmenilMinus_Click(object sender, EventArgs e)
-        {
-            ButtonFIOMinus_Click(sender, e);
-        }
-
-        private void ButtonOborudovaniePlus_Click(object sender, EventArgs e)
-        {
-            Spisok spisok = new Spisok(iniFail.Oborudovanie);
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
 
             spisok.Dobavit(Disk.Text);
 
@@ -180,9 +164,9 @@ namespace DevList
             Disk.Items.AddRange(File.ReadAllLines(spisok.Adres));
         }
 
-        private void ButtonOborudovanieMinus_Click(object sender, EventArgs e)
+        private void ButtonDiskMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Oborudovanie);
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
 
             spisok.Udalit(Disk.Text);
 
@@ -191,7 +175,73 @@ namespace DevList
             Disk.Items.AddRange(File.ReadAllLines(spisok.Adres));
         }
 
-        private void DobavitPravitPoisk_KeyUp(object sender, KeyEventArgs e)
+        private void ButtonVideocardPlus_Click(object sender, EventArgs e)
+        {
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+
+            spisok.Dobavit(Videocard.Text);
+
+            Videocard.Items.Clear();
+
+            Videocard.Items.AddRange(File.ReadAllLines(spisok.Adres));
+        }
+
+        private void ButtonVideocardMinus_Click(object sender, EventArgs e)
+        {
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+
+            spisok.Udalit(Videocard.Text);
+
+            Videocard.Items.Clear();
+
+            Videocard.Items.AddRange(File.ReadAllLines(spisok.Adres));
+        }
+
+        private void ButtonPowerPlus_Click(object sender, EventArgs e)
+        {
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+
+            spisok.Dobavit(Power.Text);
+
+            Power.Items.Clear();
+
+            Power.Items.AddRange(File.ReadAllLines(spisok.Adres));
+        }
+
+        private void ButtonPowerMinus_Click(object sender, EventArgs e)
+        {
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+
+            spisok.Udalit(Power.Text);
+
+            Power.Items.Clear();
+
+            Power.Items.AddRange(File.ReadAllLines(spisok.Adres));
+        }
+
+        private void ButtonCasePlus_Click(object sender, EventArgs e)
+        {
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+
+            spisok.Dobavit(Case.Text);
+
+            Case.Items.Clear();
+
+            Case.Items.AddRange(File.ReadAllLines(spisok.Adres));
+        }
+
+        private void ButtonCaseMinus_Click(object sender, EventArgs e)
+        {
+            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+
+            spisok.Udalit(Case.Text);
+
+            Case.Items.Clear();
+
+            Case.Items.AddRange(File.ReadAllLines(spisok.Adres));
+        }
+
+        private void KDobavitPravitPoisk_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {

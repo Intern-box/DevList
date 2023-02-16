@@ -52,7 +52,7 @@ namespace DevList
             // Выбор помещения
             if (tipOtcheta == 1)
             {
-                PravitSpisok podgotovka = new PravitSpisok(3, iniFail);
+                PravitSpisok podgotovka = new PravitSpisok("DevList - Правка", 3, iniFail);
 
                 podgotovka.ShowDialog();
 

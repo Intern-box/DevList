@@ -14,57 +14,70 @@ namespace DevList
     public partial class PravitSpisok : Form
     {
         int nomerStolbca;
+
         INIFail iniFail;
+
         public string rezultat;
 
-        public PravitSpisok(int nomerStolbca, INIFail iniFail)
+        public PravitSpisok(string zagolovok, int nomerStolbca, INIFail iniFail)
         {
             InitializeComponent();
 
             this.nomerStolbca = nomerStolbca;
 
             this.iniFail = iniFail;
+
+            Text = zagolovok;
         }
 
         private void PravitSpisok_Load(object sender, EventArgs e)
         {
-            if (nomerStolbca == 3)  // Помещение
+            if (Text == "DevList - Правка")
             {
-                Spisok spisok = new Spisok(iniFail.Pomescheniia);
+                if (nomerStolbca == 3)  // Помещение
+                {
+                    Spisok spisok = new Spisok(iniFail.Pomescheniia);
 
-                ElementSpiska.Items.AddRange(spisok.Elementi);
-            }
-            if (nomerStolbca == 4)  // Закреплено за
-            {
-                Spisok spisok = new Spisok(iniFail.Sotrudniki);
+                    ElementSpiska.Items.AddRange(spisok.Elementi);
+                }
+                if (nomerStolbca == 4)  // Закреплено за
+                {
+                    Spisok spisok = new Spisok(iniFail.Sotrudniki);
 
-                ElementSpiska.Items.AddRange(spisok.Elementi);
-            }
-            if (nomerStolbca == 5)  // Наименование
-            {
-                Spisok spisok = new Spisok(iniFail.Naimenovaniia);
+                    ElementSpiska.Items.AddRange(spisok.Elementi);
+                }
+                if (nomerStolbca == 5)  // Наименование
+                {
+                    Spisok spisok = new Spisok(iniFail.Naimenovaniia);
 
-                ElementSpiska.Items.AddRange(spisok.Elementi);
-            }
-            if (nomerStolbca == 6)  // Оборудование
-            {
-                Spisok spisok = new Spisok(iniFail.Oborudovanie);
+                    ElementSpiska.Items.AddRange(spisok.Elementi);
+                }
+                if (nomerStolbca == 6)  // Оборудование
+                {
+                    Spisok spisok = new Spisok(iniFail.Oborudovanie);
 
-                ElementSpiska.Items.AddRange(spisok.Elementi);
-            }
-            if (nomerStolbca == 7)  // Состояние
-            {
-                ButtonDobavlenieElementa.Enabled = false;
-                ButtonUdalenieElementa.Enabled = false;
+                    ElementSpiska.Items.AddRange(spisok.Elementi);
+                }
+                if (nomerStolbca == 7)  // Состояние
+                {
+                    ButtonDobavlenieElementa.Enabled = false;
+                    ButtonUdalenieElementa.Enabled = false;
 
-                ElementSpiska.Items.Add("рабочее");
-                ElementSpiska.Items.Add("в ремонте");
-                ElementSpiska.Items.Add("сломано");
-                ElementSpiska.Items.Add("утеряно");
+                    ElementSpiska.Items.Add("рабочее");
+                    ElementSpiska.Items.Add("в ремонте");
+                    ElementSpiska.Items.Add("сломано");
+                    ElementSpiska.Items.Add("утеряно");
+                }
+                if (nomerStolbca == 12) // Изменил
+                {
+                    Spisok spisok = new Spisok(iniFail.Sotrudniki);
+
+                    ElementSpiska.Items.AddRange(spisok.Elementi);
+                }
             }
-            if (nomerStolbca == 12) // Изменил
+            if (Text == "DevList - Комплект правка")
             {
-                Spisok spisok = new Spisok(iniFail.Sotrudniki);
+                Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
 
                 ElementSpiska.Items.AddRange(spisok.Elementi);
             }

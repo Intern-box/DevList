@@ -13,13 +13,16 @@ namespace DevList
     public partial class PravitStroku : Form
     {
         string tekst;
+
         public string rezultat;
 
-        public PravitStroku(string tekst)
+        public PravitStroku(string zagolovok, string tekst)
         {
             InitializeComponent();
 
             this.tekst = tekst;
+            
+            Text = zagolovok;
         }
 
         private void PravitStroku_Load(object sender, EventArgs e)

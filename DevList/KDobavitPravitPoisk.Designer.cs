@@ -57,19 +57,21 @@ namespace DevList
             this.ButtonPowerPlus = new System.Windows.Forms.Button();
             this.Power = new System.Windows.Forms.ComboBox();
             this.LabelPower = new System.Windows.Forms.Label();
-            this.ButtonGodMinus = new System.Windows.Forms.Button();
-            this.ButtonGodPlus = new System.Windows.Forms.Button();
+            this.ButtonCaseMinus = new System.Windows.Forms.Button();
+            this.ButtonCasePlus = new System.Windows.Forms.Button();
             this.Case = new System.Windows.Forms.ComboBox();
             this.LabelCase = new System.Windows.Forms.Label();
             this.God = new System.Windows.Forms.TextBox();
             this.LabelGod = new System.Windows.Forms.Label();
+            this.InvNomer = new System.Windows.Forms.TextBox();
+            this.LabelSBInvNomer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LabelCPU
             // 
             this.LabelCPU.AutoSize = true;
             this.LabelCPU.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelCPU.Location = new System.Drawing.Point(71, 46);
+            this.LabelCPU.Location = new System.Drawing.Point(103, 77);
             this.LabelCPU.Name = "LabelCPU";
             this.LabelCPU.Size = new System.Drawing.Size(88, 16);
             this.LabelCPU.TabIndex = 2;
@@ -79,7 +81,7 @@ namespace DevList
             // 
             this.LabelRAM.AutoSize = true;
             this.LabelRAM.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelRAM.Location = new System.Drawing.Point(117, 105);
+            this.LabelRAM.Location = new System.Drawing.Point(149, 136);
             this.LabelRAM.Name = "LabelRAM";
             this.LabelRAM.Size = new System.Drawing.Size(41, 16);
             this.LabelRAM.TabIndex = 3;
@@ -89,7 +91,7 @@ namespace DevList
             // 
             this.LabelDisk.AutoSize = true;
             this.LabelDisk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelDisk.Location = new System.Drawing.Point(65, 134);
+            this.LabelDisk.Location = new System.Drawing.Point(97, 165);
             this.LabelDisk.Name = "LabelDisk";
             this.LabelDisk.Size = new System.Drawing.Size(93, 16);
             this.LabelDisk.TabIndex = 4;
@@ -100,18 +102,18 @@ namespace DevList
             this.Disk.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.Disk.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Disk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Disk.Location = new System.Drawing.Point(165, 131);
+            this.Disk.Location = new System.Drawing.Point(195, 162);
             this.Disk.Name = "Disk";
             this.Disk.Size = new System.Drawing.Size(350, 24);
-            this.Disk.TabIndex = 6;
+            this.Disk.TabIndex = 5;
             // 
             // ButtonVipolnit
             // 
             this.ButtonVipolnit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonVipolnit.Location = new System.Drawing.Point(331, 282);
+            this.ButtonVipolnit.Location = new System.Drawing.Point(361, 313);
             this.ButtonVipolnit.Name = "ButtonVipolnit";
             this.ButtonVipolnit.Size = new System.Drawing.Size(89, 29);
-            this.ButtonVipolnit.TabIndex = 13;
+            this.ButtonVipolnit.TabIndex = 10;
             this.ButtonVipolnit.Text = "Выполнить";
             this.ButtonVipolnit.UseVisualStyleBackColor = true;
             this.ButtonVipolnit.Click += new System.EventHandler(this.ButtonVipolnit_Click);
@@ -119,10 +121,10 @@ namespace DevList
             // ButtonZakrit
             // 
             this.ButtonZakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonZakrit.Location = new System.Drawing.Point(426, 282);
+            this.ButtonZakrit.Location = new System.Drawing.Point(456, 313);
             this.ButtonZakrit.Name = "ButtonZakrit";
             this.ButtonZakrit.Size = new System.Drawing.Size(89, 29);
-            this.ButtonZakrit.TabIndex = 14;
+            this.ButtonZakrit.TabIndex = 11;
             this.ButtonZakrit.Text = "Закрыть";
             this.ButtonZakrit.UseVisualStyleBackColor = true;
             this.ButtonZakrit.Click += new System.EventHandler(this.ButtonZakrit_Click);
@@ -132,16 +134,16 @@ namespace DevList
             this.CPU.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.CPU.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CPU.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CPU.Location = new System.Drawing.Point(165, 42);
+            this.CPU.Location = new System.Drawing.Point(195, 73);
             this.CPU.Name = "CPU";
             this.CPU.Size = new System.Drawing.Size(350, 24);
-            this.CPU.TabIndex = 3;
+            this.CPU.TabIndex = 2;
             // 
             // LabelMainboard
             // 
             this.LabelMainboard.AutoSize = true;
             this.LabelMainboard.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelMainboard.Location = new System.Drawing.Point(70, 76);
+            this.LabelMainboard.Location = new System.Drawing.Point(102, 107);
             this.LabelMainboard.Name = "LabelMainboard";
             this.LabelMainboard.Size = new System.Drawing.Size(89, 16);
             this.LabelMainboard.TabIndex = 15;
@@ -152,81 +154,81 @@ namespace DevList
             this.Mainboard.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.Mainboard.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Mainboard.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Mainboard.Location = new System.Drawing.Point(165, 72);
+            this.Mainboard.Location = new System.Drawing.Point(195, 103);
             this.Mainboard.Name = "Mainboard";
             this.Mainboard.Size = new System.Drawing.Size(350, 24);
-            this.Mainboard.TabIndex = 4;
+            this.Mainboard.TabIndex = 3;
             // 
             // ButtonDiskMinus
             // 
             this.ButtonDiskMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonDiskMinus.Location = new System.Drawing.Point(546, 130);
+            this.ButtonDiskMinus.Location = new System.Drawing.Point(576, 161);
             this.ButtonDiskMinus.Name = "ButtonDiskMinus";
             this.ButtonDiskMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonDiskMinus.TabIndex = 20;
+            this.ButtonDiskMinus.TabIndex = 19;
             this.ButtonDiskMinus.Text = "-";
             this.ButtonDiskMinus.UseVisualStyleBackColor = true;
-            this.ButtonDiskMinus.Click += new System.EventHandler(this.ButtonOborudovanieMinus_Click);
+            this.ButtonDiskMinus.Click += new System.EventHandler(this.ButtonDiskMinus_Click);
             // 
             // ButtonDiskPlus
             // 
             this.ButtonDiskPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonDiskPlus.Location = new System.Drawing.Point(521, 130);
+            this.ButtonDiskPlus.Location = new System.Drawing.Point(551, 161);
             this.ButtonDiskPlus.Name = "ButtonDiskPlus";
             this.ButtonDiskPlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonDiskPlus.TabIndex = 19;
+            this.ButtonDiskPlus.TabIndex = 18;
             this.ButtonDiskPlus.Text = "+";
             this.ButtonDiskPlus.UseVisualStyleBackColor = true;
-            this.ButtonDiskPlus.Click += new System.EventHandler(this.ButtonOborudovaniePlus_Click);
+            this.ButtonDiskPlus.Click += new System.EventHandler(this.ButtonDiskPlus_Click);
             // 
             // ButtonMainboardMinus
             // 
             this.ButtonMainboardMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonMainboardMinus.Location = new System.Drawing.Point(546, 71);
+            this.ButtonMainboardMinus.Location = new System.Drawing.Point(576, 102);
             this.ButtonMainboardMinus.Name = "ButtonMainboardMinus";
             this.ButtonMainboardMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonMainboardMinus.TabIndex = 18;
+            this.ButtonMainboardMinus.TabIndex = 15;
             this.ButtonMainboardMinus.Text = "-";
             this.ButtonMainboardMinus.UseVisualStyleBackColor = true;
-            this.ButtonMainboardMinus.Click += new System.EventHandler(this.ButtonFIOMinus_Click);
+            this.ButtonMainboardMinus.Click += new System.EventHandler(this.ButtonMainboardMinus_Click);
             // 
             // ButtonMainboardPlus
             // 
             this.ButtonMainboardPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonMainboardPlus.Location = new System.Drawing.Point(521, 71);
+            this.ButtonMainboardPlus.Location = new System.Drawing.Point(551, 102);
             this.ButtonMainboardPlus.Name = "ButtonMainboardPlus";
             this.ButtonMainboardPlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonMainboardPlus.TabIndex = 17;
+            this.ButtonMainboardPlus.TabIndex = 14;
             this.ButtonMainboardPlus.Text = "+";
             this.ButtonMainboardPlus.UseVisualStyleBackColor = true;
-            this.ButtonMainboardPlus.Click += new System.EventHandler(this.ButtonFIOPlus_Click);
+            this.ButtonMainboardPlus.Click += new System.EventHandler(this.ButtonMainboardPlus_Click);
             // 
             // ButtonCPUMinus
             // 
             this.ButtonCPUMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonCPUMinus.Location = new System.Drawing.Point(546, 41);
+            this.ButtonCPUMinus.Location = new System.Drawing.Point(576, 72);
             this.ButtonCPUMinus.Name = "ButtonCPUMinus";
             this.ButtonCPUMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonCPUMinus.TabIndex = 16;
+            this.ButtonCPUMinus.TabIndex = 13;
             this.ButtonCPUMinus.Text = "-";
             this.ButtonCPUMinus.UseVisualStyleBackColor = true;
-            this.ButtonCPUMinus.Click += new System.EventHandler(this.ButtonPomeschenieMinus_Click);
+            this.ButtonCPUMinus.Click += new System.EventHandler(this.ButtonCPUMinus_Click);
             // 
             // ButtonCPUPlus
             // 
             this.ButtonCPUPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonCPUPlus.Location = new System.Drawing.Point(521, 41);
+            this.ButtonCPUPlus.Location = new System.Drawing.Point(551, 72);
             this.ButtonCPUPlus.Name = "ButtonCPUPlus";
             this.ButtonCPUPlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonCPUPlus.TabIndex = 15;
+            this.ButtonCPUPlus.TabIndex = 12;
             this.ButtonCPUPlus.Text = "+";
             this.ButtonCPUPlus.UseVisualStyleBackColor = true;
-            this.ButtonCPUPlus.Click += new System.EventHandler(this.ButtonPomescheniePlus_Click);
+            this.ButtonCPUPlus.Click += new System.EventHandler(this.ButtonCPUPlus_Click);
             // 
             // DataPriobreteniia
             // 
             this.DataPriobreteniia.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DataPriobreteniia.Location = new System.Drawing.Point(165, 14);
+            this.DataPriobreteniia.Location = new System.Drawing.Point(195, 45);
             this.DataPriobreteniia.Name = "DataPriobreteniia";
             this.DataPriobreteniia.Size = new System.Drawing.Size(350, 23);
             this.DataPriobreteniia.TabIndex = 1;
@@ -235,7 +237,7 @@ namespace DevList
             // 
             this.LabelDataPriobreteniia.AutoSize = true;
             this.LabelDataPriobreteniia.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelDataPriobreteniia.Location = new System.Drawing.Point(12, 17);
+            this.LabelDataPriobreteniia.Location = new System.Drawing.Point(44, 48);
             this.LabelDataPriobreteniia.Name = "LabelDataPriobreteniia";
             this.LabelDataPriobreteniia.Size = new System.Drawing.Size(147, 16);
             this.LabelDataPriobreteniia.TabIndex = 59;
@@ -244,40 +246,40 @@ namespace DevList
             // ButtonVideocardMinus
             // 
             this.ButtonVideocardMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonVideocardMinus.Location = new System.Drawing.Point(546, 160);
+            this.ButtonVideocardMinus.Location = new System.Drawing.Point(576, 191);
             this.ButtonVideocardMinus.Name = "ButtonVideocardMinus";
             this.ButtonVideocardMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonVideocardMinus.TabIndex = 22;
+            this.ButtonVideocardMinus.TabIndex = 21;
             this.ButtonVideocardMinus.Text = "-";
             this.ButtonVideocardMinus.UseVisualStyleBackColor = true;
-            this.ButtonVideocardMinus.Click += new System.EventHandler(this.ButtonIzmenilMinus_Click);
+            this.ButtonVideocardMinus.Click += new System.EventHandler(this.ButtonVideocardMinus_Click);
             // 
             // ButtonVideocardPlus
             // 
             this.ButtonVideocardPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonVideocardPlus.Location = new System.Drawing.Point(521, 160);
+            this.ButtonVideocardPlus.Location = new System.Drawing.Point(551, 191);
             this.ButtonVideocardPlus.Name = "ButtonVideocardPlus";
             this.ButtonVideocardPlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonVideocardPlus.TabIndex = 21;
+            this.ButtonVideocardPlus.TabIndex = 20;
             this.ButtonVideocardPlus.Text = "+";
             this.ButtonVideocardPlus.UseVisualStyleBackColor = true;
-            this.ButtonVideocardPlus.Click += new System.EventHandler(this.ButtonIzmenilPlus_Click);
+            this.ButtonVideocardPlus.Click += new System.EventHandler(this.ButtonVideocardPlus_Click);
             // 
             // Videocard
             // 
             this.Videocard.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.Videocard.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Videocard.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Videocard.Location = new System.Drawing.Point(165, 161);
+            this.Videocard.Location = new System.Drawing.Point(195, 192);
             this.Videocard.Name = "Videocard";
             this.Videocard.Size = new System.Drawing.Size(350, 24);
-            this.Videocard.TabIndex = 12;
+            this.Videocard.TabIndex = 6;
             // 
             // LabelVideocard
             // 
             this.LabelVideocard.AutoSize = true;
             this.LabelVideocard.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelVideocard.Location = new System.Drawing.Point(65, 164);
+            this.LabelVideocard.Location = new System.Drawing.Point(97, 195);
             this.LabelVideocard.Name = "LabelVideocard";
             this.LabelVideocard.Size = new System.Drawing.Size(93, 16);
             this.LabelVideocard.TabIndex = 70;
@@ -288,108 +290,112 @@ namespace DevList
             this.RAM.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.RAM.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.RAM.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RAM.Location = new System.Drawing.Point(165, 101);
+            this.RAM.Location = new System.Drawing.Point(195, 132);
             this.RAM.Name = "RAM";
             this.RAM.Size = new System.Drawing.Size(350, 24);
-            this.RAM.TabIndex = 71;
+            this.RAM.TabIndex = 4;
             // 
             // ButtonRAMMinus
             // 
             this.ButtonRAMMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonRAMMinus.Location = new System.Drawing.Point(546, 100);
+            this.ButtonRAMMinus.Location = new System.Drawing.Point(576, 131);
             this.ButtonRAMMinus.Name = "ButtonRAMMinus";
             this.ButtonRAMMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonRAMMinus.TabIndex = 73;
+            this.ButtonRAMMinus.TabIndex = 17;
             this.ButtonRAMMinus.Text = "-";
             this.ButtonRAMMinus.UseVisualStyleBackColor = true;
-            this.ButtonRAMMinus.Click += new System.EventHandler(this.ButtonNaimenovanieMinus_Click);
+            this.ButtonRAMMinus.Click += new System.EventHandler(this.ButtonRAMMinus_Click);
             // 
             // ButtonRAMPlus
             // 
             this.ButtonRAMPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonRAMPlus.Location = new System.Drawing.Point(521, 100);
+            this.ButtonRAMPlus.Location = new System.Drawing.Point(551, 131);
             this.ButtonRAMPlus.Name = "ButtonRAMPlus";
             this.ButtonRAMPlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonRAMPlus.TabIndex = 72;
+            this.ButtonRAMPlus.TabIndex = 16;
             this.ButtonRAMPlus.Text = "+";
             this.ButtonRAMPlus.UseVisualStyleBackColor = true;
-            this.ButtonRAMPlus.Click += new System.EventHandler(this.ButtonNaimenovaniePlus_Click);
+            this.ButtonRAMPlus.Click += new System.EventHandler(this.ButtonRAMPlus_Click);
             // 
             // ButtonPowerMinus
             // 
             this.ButtonPowerMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonPowerMinus.Location = new System.Drawing.Point(546, 190);
+            this.ButtonPowerMinus.Location = new System.Drawing.Point(576, 221);
             this.ButtonPowerMinus.Name = "ButtonPowerMinus";
             this.ButtonPowerMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonPowerMinus.TabIndex = 76;
+            this.ButtonPowerMinus.TabIndex = 23;
             this.ButtonPowerMinus.Text = "-";
             this.ButtonPowerMinus.UseVisualStyleBackColor = true;
+            this.ButtonPowerMinus.Click += new System.EventHandler(this.ButtonPowerMinus_Click);
             // 
             // ButtonPowerPlus
             // 
             this.ButtonPowerPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonPowerPlus.Location = new System.Drawing.Point(521, 190);
+            this.ButtonPowerPlus.Location = new System.Drawing.Point(551, 221);
             this.ButtonPowerPlus.Name = "ButtonPowerPlus";
             this.ButtonPowerPlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonPowerPlus.TabIndex = 75;
+            this.ButtonPowerPlus.TabIndex = 22;
             this.ButtonPowerPlus.Text = "+";
             this.ButtonPowerPlus.UseVisualStyleBackColor = true;
+            this.ButtonPowerPlus.Click += new System.EventHandler(this.ButtonPowerPlus_Click);
             // 
             // Power
             // 
             this.Power.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.Power.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Power.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Power.Location = new System.Drawing.Point(165, 191);
+            this.Power.Location = new System.Drawing.Point(195, 222);
             this.Power.Name = "Power";
             this.Power.Size = new System.Drawing.Size(350, 24);
-            this.Power.TabIndex = 74;
+            this.Power.TabIndex = 7;
             // 
             // LabelPower
             // 
             this.LabelPower.AutoSize = true;
             this.LabelPower.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelPower.Location = new System.Drawing.Point(52, 194);
+            this.LabelPower.Location = new System.Drawing.Point(84, 225);
             this.LabelPower.Name = "LabelPower";
             this.LabelPower.Size = new System.Drawing.Size(106, 16);
             this.LabelPower.TabIndex = 77;
             this.LabelPower.Text = "Блок питания:";
             // 
-            // ButtonGodMinus
+            // ButtonCaseMinus
             // 
-            this.ButtonGodMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonGodMinus.Location = new System.Drawing.Point(546, 220);
-            this.ButtonGodMinus.Name = "ButtonGodMinus";
-            this.ButtonGodMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonGodMinus.TabIndex = 80;
-            this.ButtonGodMinus.Text = "-";
-            this.ButtonGodMinus.UseVisualStyleBackColor = true;
+            this.ButtonCaseMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonCaseMinus.Location = new System.Drawing.Point(576, 251);
+            this.ButtonCaseMinus.Name = "ButtonCaseMinus";
+            this.ButtonCaseMinus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonCaseMinus.TabIndex = 25;
+            this.ButtonCaseMinus.Text = "-";
+            this.ButtonCaseMinus.UseVisualStyleBackColor = true;
+            this.ButtonCaseMinus.Click += new System.EventHandler(this.ButtonCaseMinus_Click);
             // 
-            // ButtonGodPlus
+            // ButtonCasePlus
             // 
-            this.ButtonGodPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonGodPlus.Location = new System.Drawing.Point(521, 220);
-            this.ButtonGodPlus.Name = "ButtonGodPlus";
-            this.ButtonGodPlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonGodPlus.TabIndex = 79;
-            this.ButtonGodPlus.Text = "+";
-            this.ButtonGodPlus.UseVisualStyleBackColor = true;
+            this.ButtonCasePlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonCasePlus.Location = new System.Drawing.Point(551, 251);
+            this.ButtonCasePlus.Name = "ButtonCasePlus";
+            this.ButtonCasePlus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonCasePlus.TabIndex = 24;
+            this.ButtonCasePlus.Text = "+";
+            this.ButtonCasePlus.UseVisualStyleBackColor = true;
+            this.ButtonCasePlus.Click += new System.EventHandler(this.ButtonCasePlus_Click);
             // 
             // Case
             // 
             this.Case.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.Case.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Case.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Case.Location = new System.Drawing.Point(165, 221);
+            this.Case.Location = new System.Drawing.Point(195, 252);
             this.Case.Name = "Case";
             this.Case.Size = new System.Drawing.Size(350, 24);
-            this.Case.TabIndex = 78;
+            this.Case.TabIndex = 8;
             // 
             // LabelCase
             // 
             this.LabelCase.AutoSize = true;
             this.LabelCase.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelCase.Location = new System.Drawing.Point(96, 224);
+            this.LabelCase.Location = new System.Drawing.Point(128, 255);
             this.LabelCase.Name = "LabelCase";
             this.LabelCase.Size = new System.Drawing.Size(62, 16);
             this.LabelCase.TabIndex = 81;
@@ -398,31 +404,51 @@ namespace DevList
             // God
             // 
             this.God.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.God.Location = new System.Drawing.Point(165, 251);
+            this.God.Location = new System.Drawing.Point(195, 282);
             this.God.Name = "God";
             this.God.Size = new System.Drawing.Size(350, 23);
-            this.God.TabIndex = 82;
+            this.God.TabIndex = 9;
             // 
             // LabelGod
             // 
             this.LabelGod.AutoSize = true;
             this.LabelGod.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelGod.Location = new System.Drawing.Point(121, 254);
+            this.LabelGod.Location = new System.Drawing.Point(153, 285);
             this.LabelGod.Name = "LabelGod";
             this.LabelGod.Size = new System.Drawing.Size(37, 16);
             this.LabelGod.TabIndex = 83;
             this.LabelGod.Text = "Год:";
+            // 
+            // InvNomer
+            // 
+            this.InvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InvNomer.Location = new System.Drawing.Point(195, 17);
+            this.InvNomer.Name = "InvNomer";
+            this.InvNomer.Size = new System.Drawing.Size(350, 23);
+            this.InvNomer.TabIndex = 0;
+            // 
+            // LabelSBInvNomer
+            // 
+            this.LabelSBInvNomer.AutoSize = true;
+            this.LabelSBInvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelSBInvNomer.Location = new System.Drawing.Point(12, 20);
+            this.LabelSBInvNomer.Name = "LabelSBInvNomer";
+            this.LabelSBInvNomer.Size = new System.Drawing.Size(180, 16);
+            this.LabelSBInvNomer.TabIndex = 85;
+            this.LabelSBInvNomer.Text = "Системный блок Инв. №:";
             // 
             // KDobavitPravitPoisk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(583, 321);
+            this.ClientSize = new System.Drawing.Size(613, 351);
+            this.Controls.Add(this.InvNomer);
+            this.Controls.Add(this.LabelSBInvNomer);
             this.Controls.Add(this.God);
             this.Controls.Add(this.LabelGod);
-            this.Controls.Add(this.ButtonGodMinus);
-            this.Controls.Add(this.ButtonGodPlus);
+            this.Controls.Add(this.ButtonCaseMinus);
+            this.Controls.Add(this.ButtonCasePlus);
             this.Controls.Add(this.Case);
             this.Controls.Add(this.LabelCase);
             this.Controls.Add(this.ButtonPowerMinus);
@@ -461,7 +487,7 @@ namespace DevList
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.DobavitPravitPoisk_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DobavitPravitPoisk_KeyUp);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KDobavitPravitPoisk_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,11 +522,13 @@ namespace DevList
         private System.Windows.Forms.Button ButtonPowerPlus;
         private System.Windows.Forms.ComboBox Power;
         private System.Windows.Forms.Label LabelPower;
-        private System.Windows.Forms.Button ButtonGodMinus;
-        private System.Windows.Forms.Button ButtonGodPlus;
+        private System.Windows.Forms.Button ButtonCaseMinus;
+        private System.Windows.Forms.Button ButtonCasePlus;
         private System.Windows.Forms.ComboBox Case;
         private System.Windows.Forms.Label LabelCase;
         private System.Windows.Forms.TextBox God;
         private System.Windows.Forms.Label LabelGod;
+        private System.Windows.Forms.TextBox InvNomer;
+        private System.Windows.Forms.Label LabelSBInvNomer;
     }
 }

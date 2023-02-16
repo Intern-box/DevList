@@ -37,22 +37,6 @@ namespace DevList
         private void Tablica_MouseDown(object sender, MouseEventArgs e)
         {
             koordinati = Tablica.HitTest(e.X, e.Y);
-
-            if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
-            {
-                if (baza.Tablica[koordinati.Item.Index][6] == "Системный блок")
-                {
-                    Komplekt.Visible = true;
-
-                    KKomplekt.Visible = true;
-                }
-                else
-                {
-                    Komplekt.Visible = false;
-
-                    KKomplekt.Visible = false;
-                }
-            }
         }
 
         private void BazovaiaForma_Load(object sender, EventArgs e)
@@ -206,7 +190,7 @@ namespace DevList
         // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
         private void Dobavit_Click(object sender, EventArgs e)
         {
-            if (Text == "DevList 6.5 - Главное окно")
+            if (Text == "DevList 6.6 - Главное окно")
             {
                 DobavitPravitPoisk okno = new DobavitPravitPoisk("DevList - Добавить", iniFail);
 
@@ -246,6 +230,35 @@ namespace DevList
                 KDobavitPravitPoisk okno = new KDobavitPravitPoisk("DevList - Добавить", iniFail);
 
                 okno.ShowDialog();
+
+                if (koordinati == null || koordinati.Location == ListViewHitTestLocations.None)
+                {
+                    if (okno.rezultat[2] != null)
+                    {
+                        baza.Tablica.Add(okno.rezultat);
+
+                        VivodVTablicu(baza.Tablica);
+
+                        Tablica.Items[baza.Tablica.Count - 1].Selected = true;
+
+                        baza.Izmenenie = true;
+                    }
+                }
+                else
+                {
+                    int zapominaemStroku = koordinati.Item.Index;
+
+                    if (okno.rezultat[2] != null)
+                    {
+                        baza.Tablica.Insert(koordinati.Item.Index + 1, okno.rezultat);
+
+                        VivodVTablicu(baza.Tablica);
+
+                        Tablica.Items[zapominaemStroku + 1].Selected = true;
+
+                        baza.Izmenenie = true;
+                    }
+                }
             }
         }
 
@@ -260,72 +273,114 @@ namespace DevList
             {
                 int zapominaemStroku = koordinati.Item.Index;
 
-                if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 3 ||
+                if (Text == "DevList 6.6 - Главное окно")
+                {
+                    if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 3 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 4 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 5 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 6 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 7 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 12)
-                {
-                    PravitSpisok pravitSpisok = new PravitSpisok(koordinati.Item.SubItems.IndexOf(koordinati.SubItem), iniFail);
-
-                    pravitSpisok.ShowDialog();
-
-                    if (pravitSpisok.rezultat != null)
                     {
-                        if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 3)
+                        PravitSpisok pravitSpisok = new PravitSpisok("DevList - Правка", koordinati.Item.SubItems.IndexOf(koordinati.SubItem), iniFail);
+
+                        pravitSpisok.ShowDialog();
+
+                        if (pravitSpisok.rezultat != null)
                         {
-                            if (pravitSpisok.rezultat != baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)])
+                            if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 3)
                             {
-                                File.AppendAllText
-                                (
-                                $"{Path.GetDirectoryName(Path.GetFullPath(iniFail.Adres))}\\История перемещений\\{pravitSpisok.rezultat}.txt",
-                                $"Из помещения: {baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]}\r\n" +
-                                $"переместили: {DateTime.Now}\r\n" +
-                                $"{baza.Tablica[koordinati.Item.Index][5]}\r\n" +
-                                $"с инв.№: {baza.Tablica[koordinati.Item.Index][2]}\r\n\r\n"
-                                );
+                                if (pravitSpisok.rezultat != baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)])
+                                {
+                                    File.AppendAllText
+                                    (
+                                    $"{Path.GetDirectoryName(Path.GetFullPath(iniFail.Adres))}\\История перемещений\\{pravitSpisok.rezultat}.txt",
+                                    $"Из помещения: {baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]}\r\n" +
+                                    $"переместили: {DateTime.Now}\r\n" +
+                                    $"{baza.Tablica[koordinati.Item.Index][5]}\r\n" +
+                                    $"с инв.№: {baza.Tablica[koordinati.Item.Index][2]}\r\n\r\n"
+                                    );
+                                }
                             }
+
+                            baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)] = pravitSpisok.rezultat;
+
+                            VivodVTablicu(baza.Tablica);
+
+                            Tablica.Items[zapominaemStroku].Selected = true;
+
+                            baza.Izmenenie = true;
                         }
+                    }
+                    else if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 0)
+                    {
+                        // Столбец ID нельзя изменить!
+                    }
+                    else
+                    {
+                        PravitStroku pravitStroku = new PravitStroku("DevList - Правка комплект", baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]);
 
-                        baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)] = pravitSpisok.rezultat;
+                        pravitStroku.ShowDialog();
 
-                        VivodVTablicu(baza.Tablica);
+                        if (pravitStroku.rezultat != null)
+                        {
+                            baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)] = pravitStroku.rezultat;
 
-                        Tablica.Items[zapominaemStroku].Selected = true;
+                            VivodVTablicu(baza.Tablica);
 
-                        baza.Izmenenie = true;
+                            Tablica.Columns[9].Width = 150;
+
+                            Tablica.Items[zapominaemStroku].Selected = true;
+
+                            baza.Izmenenie = true;
+                        }
                     }
                 }
-                else if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 0)
+                if (Text == "DevList - Комплект")
                 {
-                    // Столбец ID нельзя изменить!
-                }
-                ////else if(koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 1)
-                ////{
-                ////    DateTimePicker dateTimePicker = new DateTimePicker();
-
-                ////    dateTimePicker.Width = 200;
-
-                ////    Controls.Add(dateTimePicker);
-                ////}
-                else
-                {
-                    PravitStroku pravitStroku = new PravitStroku(baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]);
-
-                    pravitStroku.ShowDialog();
-
-                    if (pravitStroku.rezultat != null)
+                    if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 3 ||
+                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 4 ||
+                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 5 ||
+                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 6 ||
+                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 7 ||
+                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 8 ||
+                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 9)
                     {
-                        baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)] = pravitStroku.rezultat;
+                        PravitSpisok pravitSpisok = new PravitSpisok("DevList - Комплект правка", koordinati.Item.SubItems.IndexOf(koordinati.SubItem), iniFail);
 
-                        VivodVTablicu(baza.Tablica);
+                        pravitSpisok.ShowDialog();
 
-                        Tablica.Columns[9].Width = 150;
+                        if (pravitSpisok.rezultat != null)
+                        {
+                            baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)] = pravitSpisok.rezultat;
 
-                        Tablica.Items[zapominaemStroku].Selected = true;
+                            VivodVTablicu(baza.Tablica);
 
-                        baza.Izmenenie = true;
+                            Tablica.Items[zapominaemStroku].Selected = true;
+
+                            baza.Izmenenie = true;
+                        }
+                    }
+                    else if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 0)
+                    {
+                        // Столбец ID нельзя изменить!
+                    }
+                    else
+                    {
+                        PravitStroku pravitStroku = new PravitStroku("DevList - Правка", baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]);
+
+                        pravitStroku.ShowDialog();
+
+                        if (pravitStroku.rezultat != null)
+                        {
+                            baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)] = pravitStroku.rezultat;
+
+                            VivodVTablicu(baza.Tablica);
+
+                            Tablica.Items[zapominaemStroku].Selected = true;
+
+                            baza.Izmenenie = true;
+                        }
                     }
                 }
             }
@@ -343,7 +398,7 @@ namespace DevList
 
         private void PravitVse_Click(object sender, EventArgs e)
         {
-            if (Text == "DevList 6.5 - Главное окно")
+            if (Text == "DevList 6.6 - Главное окно")
             {
                 if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
                 {
@@ -365,9 +420,23 @@ namespace DevList
             }
             if (Text == "DevList - Комплект")
             {
-                KDobavitPravitPoisk okno = new KDobavitPravitPoisk("DevList - Править всё", iniFail);
+                if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
+                {
+                    int zapominaemStroku = koordinati.Item.Index;
 
-                okno.ShowDialog();
+                    KDobavitPravitPoisk okno = new KDobavitPravitPoisk("DevList - Править всё", iniFail, baza.Tablica[zapominaemStroku]);
+
+                    okno.ShowDialog();
+
+                    if (okno.rezultat[2] != null)
+                    {
+                        baza.Tablica[zapominaemStroku] = okno.rezultat;
+
+                        VivodVTablicu(baza.Tablica);
+
+                        baza.Izmenenie = true;
+                    }
+                }
             }
         }
 
@@ -494,7 +563,7 @@ namespace DevList
 
         private void Poisk_Click(object sender, EventArgs e)
         {
-            if (Text == "DevList 6.5 - Главное окно" || Text == "DevList - История")
+            if (Text == "DevList 6.6 - Главное окно" || Text == "DevList - История")
             {
                 string[] stroka = new string[13];
 
@@ -536,15 +605,49 @@ namespace DevList
             }
             if (Text == "DevList - Комплект")
             {
-                KDobavitPravitPoisk okno = new KDobavitPravitPoisk("DevList - Поиск", iniFail);
+                string[] stroka = new string[11];
 
-                okno.ShowDialog();
+                for (int i = 0; i < stroka.Length; i++)
+                {
+                    stroka[i] = string.Empty;
+                }
+
+                KDobavitPravitPoisk poisk = new KDobavitPravitPoisk("DevList - Поиск", iniFail, stroka);
+
+                poisk.ShowDialog();
+
+                if (poisk.KnopkaVipolnit)
+                {
+                    if (poisk.rezultat != null)
+                    {
+                        bool proverkaNaPustieStroki = false;
+
+                        foreach (string slovo in poisk.rezultat)
+                        {
+                            if (slovo != "")
+                            {
+                                proverkaNaPustieStroki = true;
+                            }
+                        }
+
+                        if (proverkaNaPustieStroki)
+                        {
+                            VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
+                        }
+                        else
+                        {
+                            Tablica.Items.Clear();
+                        }
+
+                        Filtr.Visible = true;
+                    }
+                }
             }
         }
 
         private void KPoisk_Click(object sender, EventArgs e)
         {
-            if (Text == "DevList 6.5 - Главное окно" || Text == "DevList - История")
+            if (Text == "DevList 6.6 - Главное окно" || Text == "DevList - История")
             {
                 DobavitPravitPoisk poisk;
 
@@ -608,9 +711,65 @@ namespace DevList
             }
             if (Text == "DevList - Комплект")
             {
-                KDobavitPravitPoisk okno = new KDobavitPravitPoisk("DevList - Поиск", iniFail);
+                KDobavitPravitPoisk poisk = new KDobavitPravitPoisk("DevList - Поиск", iniFail);
 
-                okno.ShowDialog();
+                int zapominaemStroku;
+
+                if (koordinati == null || koordinati.Item == null)
+                {
+                    koordinati = Tablica.HitTest(0, 0);
+
+                    string[] stroka = new string[13];
+
+                    for (int i = 0; i < stroka.Length; i++)
+                    {
+                        stroka[i] = string.Empty;
+                    }
+
+                    poisk = new KDobavitPravitPoisk("DevList - Поиск", iniFail, stroka);
+                }
+                else
+                {
+                    zapominaemStroku = koordinati.Item == null ? 0 : koordinati.Item.Index;
+
+                    if (zapominaemStroku >= 0)
+                    {
+                        poisk = new KDobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
+                    }
+                    else
+                    {
+                        poisk = new KDobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[0]);
+                    }
+                }
+
+                poisk.ShowDialog();
+
+                if (poisk.KnopkaVipolnit)
+                {
+                    if (poisk.rezultat != null)
+                    {
+                        bool proverkaNaPustieStroki = false;
+
+                        foreach (string slovo in poisk.rezultat)
+                        {
+                            if (slovo != "")
+                            {
+                                proverkaNaPustieStroki = true;
+                            }
+                        }
+
+                        if (proverkaNaPustieStroki)
+                        {
+                            VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
+                        }
+                        else
+                        {
+                            Tablica.Items.Clear();
+                        }
+
+                        Filtr.Visible = true;
+                    }
+                }
             }
         }
 
@@ -626,16 +785,9 @@ namespace DevList
 
         private void Spiski_Click(object sender, EventArgs e)
         {
-            if (Text == "DevList 6.5 - Главное окно")
-            {
-                Spiski redaktirovanie_spiskov = new Spiski(iniFail);
+            Spiski redaktirovanie_spiskov = new Spiski(iniFail);
 
-                redaktirovanie_spiskov.ShowDialog();
-            }
-            if (Text == "DevList - Комплект")
-            {
-
-            }
+            redaktirovanie_spiskov.ShowDialog();
         }
 
         private void PoTipam_Click(object sender, EventArgs e)
@@ -729,12 +881,9 @@ namespace DevList
 
             komplekt.Text = "DevList - Комплект";
 
-            komplekt.ShowDialog();
-        }
+            komplekt.WindowState = FormWindowState.Normal;
 
-        private void KKomplekt_Click(object sender, EventArgs e)
-        {
-            Komplekt_Click(sender, e);
+            komplekt.ShowDialog();
         }
 
         private void Filtr_Click(object sender, EventArgs e)

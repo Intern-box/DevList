@@ -81,7 +81,6 @@ namespace DevList
             this.Name = "PravitStroku";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "DevList - Правка строки";
             this.Load += new System.EventHandler(this.PravitStroku_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PravitStroku_KeyUp);
             this.ResumeLayout(false);

@@ -51,23 +51,23 @@ namespace DevList
             File.WriteAllLines(adres, Tablica.Select(x => string.Join(",", x)));
         }
 
-        public void PeremeschenieStroki(int nomer_pervoi, int nomer_vtoroi)
+        public void PeremeschenieStroki(int nomerPervoi, int nomerVtoroi)
         {
-            string[] zapominaem_pervuiu = new string[Tablica[nomer_pervoi].Length];
+            string[] zapominaem_pervuiu = new string[Tablica[nomerPervoi].Length];
 
-            for (int i = 0; i < Tablica[nomer_pervoi].Length; i++)
+            for (int i = 0; i < Tablica[nomerPervoi].Length; i++)
             {
-                zapominaem_pervuiu[i] = Tablica[nomer_pervoi][i];
+                zapominaem_pervuiu[i] = Tablica[nomerPervoi][i];
             }
 
-            for (int i = 0; i < Tablica[nomer_pervoi].Length; i++)
+            for (int i = 0; i < Tablica[nomerPervoi].Length; i++)
             {
-                Tablica[nomer_pervoi][i] = Tablica[nomer_vtoroi][i];
+                Tablica[nomerPervoi][i] = Tablica[nomerVtoroi][i];
             }
 
-            for (int i = 0; i < Tablica[nomer_pervoi].Length; i++)
+            for (int i = 0; i < Tablica[nomerPervoi].Length; i++)
             {
-                Tablica[nomer_vtoroi][i] = zapominaem_pervuiu[i];
+                Tablica[nomerVtoroi][i] = zapominaem_pervuiu[i];
             }
         }
 

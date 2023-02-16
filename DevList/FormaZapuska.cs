@@ -62,7 +62,7 @@ namespace DevList
 
             BazovaiaForma glavnoeOkno = new BazovaiaForma(iniFail, new Baza(iniFail.Baza));
 
-            glavnoeOkno.Text = "DevList 6.5 - Главное окно";
+            glavnoeOkno.Text = "DevList 6.6 - Главное окно";
 
             glavnoeOkno.ShowDialog();
         }

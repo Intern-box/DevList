@@ -14,7 +14,9 @@ namespace DevList
     public partial class DobavitPravitPoisk : Form
     {
         INIFail iniFail;
+
         public string[] rezultat = new string[13];
+
         public bool KnopkaVipolnit = false;
 
         public DobavitPravitPoisk(string zagolovok, INIFail iniFail)

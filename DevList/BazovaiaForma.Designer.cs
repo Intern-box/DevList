@@ -31,7 +31,6 @@ namespace DevList
         {
             this.components = new System.ComponentModel.Container();
             this.KMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.KKomplekt = new System.Windows.Forms.ToolStripMenuItem();
             this.KPoisk = new System.Windows.Forms.ToolStripMenuItem();
             this.KDobavit = new System.Windows.Forms.ToolStripMenuItem();
             this.KPravit = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +83,6 @@ namespace DevList
             // KMenu
             // 
             this.KMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.KKomplekt,
             this.KPoisk,
             this.KDobavit,
             this.KPravit,
@@ -93,62 +91,54 @@ namespace DevList
             this.KVniz,
             this.KUdalit});
             this.KMenu.Name = "KMenu";
-            this.KMenu.Size = new System.Drawing.Size(142, 180);
-            // 
-            // KKomplekt
-            // 
-            this.KKomplekt.Name = "KKomplekt";
-            this.KKomplekt.Size = new System.Drawing.Size(141, 22);
-            this.KKomplekt.Text = "Комплект";
-            this.KKomplekt.Visible = false;
-            this.KKomplekt.Click += new System.EventHandler(this.KKomplekt_Click);
+            this.KMenu.Size = new System.Drawing.Size(181, 180);
             // 
             // KPoisk
             // 
             this.KPoisk.Name = "KPoisk";
-            this.KPoisk.Size = new System.Drawing.Size(141, 22);
+            this.KPoisk.Size = new System.Drawing.Size(180, 22);
             this.KPoisk.Text = "Поиск";
             this.KPoisk.Click += new System.EventHandler(this.KPoisk_Click);
             // 
             // KDobavit
             // 
             this.KDobavit.Name = "KDobavit";
-            this.KDobavit.Size = new System.Drawing.Size(141, 22);
+            this.KDobavit.Size = new System.Drawing.Size(180, 22);
             this.KDobavit.Text = "Добавить";
             this.KDobavit.Click += new System.EventHandler(this.KDobavit_Click);
             // 
             // KPravit
             // 
             this.KPravit.Name = "KPravit";
-            this.KPravit.Size = new System.Drawing.Size(141, 22);
+            this.KPravit.Size = new System.Drawing.Size(180, 22);
             this.KPravit.Text = "Править";
             this.KPravit.Click += new System.EventHandler(this.KPravit_Click);
             // 
             // KPravitVse
             // 
             this.KPravitVse.Name = "KPravitVse";
-            this.KPravitVse.Size = new System.Drawing.Size(141, 22);
+            this.KPravitVse.Size = new System.Drawing.Size(180, 22);
             this.KPravitVse.Text = "Править всё";
             this.KPravitVse.Click += new System.EventHandler(this.KPravitVse_Click);
             // 
             // KVverh
             // 
             this.KVverh.Name = "KVverh";
-            this.KVverh.Size = new System.Drawing.Size(141, 22);
+            this.KVverh.Size = new System.Drawing.Size(180, 22);
             this.KVverh.Text = "Вверх";
             this.KVverh.Click += new System.EventHandler(this.KVverh_Click);
             // 
             // KVniz
             // 
             this.KVniz.Name = "KVniz";
-            this.KVniz.Size = new System.Drawing.Size(141, 22);
+            this.KVniz.Size = new System.Drawing.Size(180, 22);
             this.KVniz.Text = "Вниз";
             this.KVniz.Click += new System.EventHandler(this.KVniz_Click);
             // 
             // KUdalit
             // 
             this.KUdalit.Name = "KUdalit";
-            this.KUdalit.Size = new System.Drawing.Size(141, 22);
+            this.KUdalit.Size = new System.Drawing.Size(180, 22);
             this.KUdalit.Text = "Удалить";
             this.KUdalit.Click += new System.EventHandler(this.KUdalit_Click);
             // 
@@ -320,7 +310,6 @@ namespace DevList
             this.Komplekt.Name = "Komplekt";
             this.Komplekt.Size = new System.Drawing.Size(77, 21);
             this.Komplekt.Text = "Комплект";
-            this.Komplekt.Visible = false;
             this.Komplekt.Click += new System.EventHandler(this.Komplekt_Click);
             // 
             // Filtr
@@ -528,7 +517,6 @@ namespace DevList
         private System.Windows.Forms.ColumnHeader Hostname;
         private System.Windows.Forms.ColumnHeader IP;
         private System.Windows.Forms.ColumnHeader Izmenil;
-        private System.Windows.Forms.ToolStripMenuItem KKomplekt;
     }
 }
 

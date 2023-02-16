@@ -44,7 +44,8 @@ namespace DevList
             "Помещения",
             "Сотрудники",
             "Наименования",
-            "Оборудование"});
+            "Оборудование",
+            "Комплектующие"});
             this.VibranniiSpisok.Location = new System.Drawing.Point(78, 12);
             this.VibranniiSpisok.Name = "VibranniiSpisok";
             this.VibranniiSpisok.Size = new System.Drawing.Size(356, 24);
