@@ -15,7 +15,7 @@ namespace DevList
 
         public bool sortirovkaVKolonkah = true;
 
-        public bool[] vidKolonok = new bool[13];
+        public bool[] vidKolonok;
 
         string zagolovok = "DevList 6.6 - Главное окно";
 
@@ -26,6 +26,8 @@ namespace DevList
             this.iniFail = iniFail;
 
             this.baza = baza;
+
+            vidKolonok = new bool[Tablica.Columns.Count];
 
             for (int i = 0; i < vidKolonok.Length; i++) { vidKolonok[i] = true; }
         }
@@ -388,7 +390,7 @@ namespace DevList
 
                     okno.ShowDialog();
 
-                    if (okno.rezultat[1] != null)
+                    if (okno.rezultat[2] != null)
                     {
                         baza.Tablica[zapominaemStroku] = okno.rezultat;
 
@@ -545,7 +547,7 @@ namespace DevList
         {
             if (Text == zagolovok || Text == "DevList - История")
             {
-                string[] stroka = new string[13];
+                string[] stroka = new string[Tablica.Columns.Count];
 
                 for (int i = 0; i < stroka.Length; i++)
                 {
@@ -585,7 +587,7 @@ namespace DevList
             }
             if (Text == "DevList - Комплект")
             {
-                string[] stroka = new string[11];
+                string[] stroka = new string[Tablica.Columns.Count];
 
                 for (int i = 0; i < stroka.Length; i++)
                 {
@@ -856,8 +858,6 @@ namespace DevList
             komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Case", Text = "Корпус", TextAlign = HorizontalAlignment.Center });
 
             komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "GvCPU", Text = "Год выпуска процессора", TextAlign = HorizontalAlignment.Center });
-
-            Array.Resize<bool>(ref komplekt.vidKolonok, 11);
 
             komplekt.Text = "DevList - Комплект";
 
