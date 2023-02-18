@@ -172,75 +172,26 @@ namespace DevList
         // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
         private void Dobavit_Click(object sender, EventArgs e)
         {
-            if (Text == zagolovok)
+            ADobavitPravitPoisk okno = Text == zagolovok ? (ADobavitPravitPoisk)new DobavitPravitPoisk("DevList - Добавить", iniFail) : new KDobavitPravitPoisk("DevList - Добавить", iniFail);
+
+            okno.ShowDialog();
+
+            if (okno.rezultat != null)
             {
-                DobavitPravitPoisk okno = new DobavitPravitPoisk("DevList - Добавить", iniFail);
-
-                okno.ShowDialog();
-
                 if (koordinati == null || koordinati.Location == ListViewHitTestLocations.None)
                 {
-                    if (okno.rezultat[2] != null)
-                    {
-                        baza.Tablica.Add(okno.rezultat);
-
-                        VivodVTablicu(baza.Tablica);
-
-                        Tablica.Items[baza.Tablica.Count - 1].Selected = true;
-
-                        baza.Izmenenie = true;
-                    }
+                    baza.Tablica.Add(okno.rezultat);
                 }
                 else
                 {
-                    int zapominaemStroku = koordinati.Item.Index;
-
-                    if (okno.rezultat[2] != null)
-                    {
-                        baza.Tablica.Insert(koordinati.Item.Index + 1, okno.rezultat);
-
-                        VivodVTablicu(baza.Tablica);
-
-                        Tablica.Items[zapominaemStroku + 1].Selected = true;
-
-                        baza.Izmenenie = true;
-                    }
+                    baza.Tablica.Insert(koordinati.Item.Index + 1, okno.rezultat);
                 }
-            }
-            else
-            {
-                KDobavitPravitPoisk okno = new KDobavitPravitPoisk("DevList - Добавить", iniFail);
 
-                okno.ShowDialog();
+                VivodVTablicu(baza.Tablica);
 
-                if (koordinati == null || koordinati.Location == ListViewHitTestLocations.None)
-                {
-                    if (okno.rezultat[2] != null)
-                    {
-                        baza.Tablica.Add(okno.rezultat);
+                Tablica.Items[baza.Tablica.Count - 1].Selected = true;
 
-                        VivodVTablicu(baza.Tablica);
-
-                        Tablica.Items[baza.Tablica.Count - 1].Selected = true;
-
-                        baza.Izmenenie = true;
-                    }
-                }
-                else
-                {
-                    int zapominaemStroku = koordinati.Item.Index;
-
-                    if (okno.rezultat[2] != null)
-                    {
-                        baza.Tablica.Insert(koordinati.Item.Index + 1, okno.rezultat);
-
-                        VivodVTablicu(baza.Tablica);
-
-                        Tablica.Items[zapominaemStroku + 1].Selected = true;
-
-                        baza.Izmenenie = true;
-                    }
-                }   
+                baza.Izmenenie = true;
             }
         }
 
@@ -380,44 +331,27 @@ namespace DevList
 
         private void PravitVse_Click(object sender, EventArgs e)
         {
-            if (Text == zagolovok)
+            if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
             {
-                if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
+                int zapominaemStroku = koordinati.Item.Index;
+
+                ADobavitPravitPoisk okno =
+                    
+                    Text == zagolovok ? (ADobavitPravitPoisk)
+                    
+                    new DobavitPravitPoisk("DevList - Править всё", iniFail, baza.Tablica[zapominaemStroku]) :
+                    
+                    new KDobavitPravitPoisk("DevList - Править всё", iniFail, baza.Tablica[zapominaemStroku]);
+
+                okno.ShowDialog();
+
+                if (okno.rezultat[2] != null)
                 {
-                    int zapominaemStroku = koordinati.Item.Index;
+                    baza.Tablica[zapominaemStroku] = okno.rezultat;
 
-                    DobavitPravitPoisk okno = new DobavitPravitPoisk("DevList - Править всё", iniFail, baza.Tablica[zapominaemStroku]);
+                    VivodVTablicu(baza.Tablica);
 
-                    okno.ShowDialog();
-
-                    if (okno.rezultat[2] != null)
-                    {
-                        baza.Tablica[zapominaemStroku] = okno.rezultat;
-
-                        VivodVTablicu(baza.Tablica);
-
-                        baza.Izmenenie = true;
-                    }
-                }
-            }
-            if (Text == "DevList - Комплект")
-            {
-                if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
-                {
-                    int zapominaemStroku = koordinati.Item.Index;
-
-                    KDobavitPravitPoisk okno = new KDobavitPravitPoisk("DevList - Править всё", iniFail, baza.Tablica[zapominaemStroku]);
-
-                    okno.ShowDialog();
-
-                    if (okno.rezultat[2] != null)
-                    {
-                        baza.Tablica[zapominaemStroku] = okno.rezultat;
-
-                        VivodVTablicu(baza.Tablica);
-
-                        baza.Izmenenie = true;
-                    }
+                    baza.Izmenenie = true;
                 }
             }
         }
@@ -545,212 +479,103 @@ namespace DevList
 
         private void Poisk_Click(object sender, EventArgs e)
         {
-            if (Text == zagolovok || Text == "DevList - История")
+            string[] stroka = new string[Tablica.Columns.Count];
+
+            for (int i = 0; i < stroka.Length; i++)
             {
-                string[] stroka = new string[Tablica.Columns.Count];
-
-                for (int i = 0; i < stroka.Length; i++)
-                {
-                    stroka[i] = string.Empty;
-                }
-
-                DobavitPravitPoisk poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, stroka);
-
-                poisk.ShowDialog();
-
-                if (poisk.KnopkaVipolnit)
-                {
-                    if (poisk.rezultat != null)
-                    {
-                        bool proverkaNaPustieStroki = false;
-
-                        foreach (string slovo in poisk.rezultat)
-                        {
-                            if (slovo != "")
-                            {
-                                proverkaNaPustieStroki = true;
-                            }
-                        }
-
-                        if (proverkaNaPustieStroki)
-                        {
-                            VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
-                        }
-                        else
-                        {
-                            Tablica.Items.Clear();
-                        }
-
-                        Filtr.Visible = true;
-                    }
-                }
+                stroka[i] = string.Empty;
             }
-            if (Text == "DevList - Комплект")
+
+            ADobavitPravitPoisk poisk = Text == zagolovok ? (ADobavitPravitPoisk)new DobavitPravitPoisk("DevList - Добавить", iniFail) : new KDobavitPravitPoisk("DevList - Добавить", iniFail);
+
+            poisk.ShowDialog();
+
+            if (poisk.KnopkaVipolnit)
             {
-                string[] stroka = new string[Tablica.Columns.Count];
-
-                for (int i = 0; i < stroka.Length; i++)
+                if (poisk.rezultat != null)
                 {
-                    stroka[i] = string.Empty;
-                }
+                    bool proverkaNaPustieStroki = false;
 
-                KDobavitPravitPoisk poisk = new KDobavitPravitPoisk("DevList - Поиск", iniFail, stroka);
-
-                poisk.ShowDialog();
-
-                if (poisk.KnopkaVipolnit)
-                {
-                    if (poisk.rezultat != null)
+                    foreach (string slovo in poisk.rezultat)
                     {
-                        bool proverkaNaPustieStroki = false;
-
-                        foreach (string slovo in poisk.rezultat)
+                        if (slovo != "")
                         {
-                            if (slovo != "")
-                            {
-                                proverkaNaPustieStroki = true;
-                            }
+                            proverkaNaPustieStroki = true;
                         }
-
-                        if (proverkaNaPustieStroki)
-                        {
-                            VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
-                        }
-                        else
-                        {
-                            Tablica.Items.Clear();
-                        }
-
-                        Filtr.Visible = true;
                     }
+
+                    if (proverkaNaPustieStroki)
+                    {
+                        VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
+                    }
+                    else
+                    {
+                        Tablica.Items.Clear();
+                    }
+
+                    Filtr.Visible = true;
                 }
             }
         }
 
         private void KPoisk_Click(object sender, EventArgs e)
         {
-            if (Text == zagolovok || Text == "DevList - История")
+            ADobavitPravitPoisk poisk;
+
+            int zapominaemStroku;
+
+            if (koordinati == null || koordinati.Item == null)
             {
-                DobavitPravitPoisk poisk;
+                koordinati = Tablica.HitTest(0, 0);
 
-                int zapominaemStroku;
+                string[] stroka = new string[13];
 
-                if (koordinati == null || koordinati.Item == null)
+                for (int i = 0; i < stroka.Length; i++) { stroka[i] = string.Empty; }
+
+                poisk = Text == zagolovok ? (ADobavitPravitPoisk)new DobavitPravitPoisk("DevList - Добавить", iniFail) : new KDobavitPravitPoisk("DevList - Добавить", iniFail);
+            }
+            else
+            {
+                zapominaemStroku = koordinati.Item == null ? 0 : koordinati.Item.Index;
+
+                if (zapominaemStroku >= 0)
                 {
-                    koordinati = Tablica.HitTest(0, 0);
+                    poisk = Text == zagolovok ? (ADobavitPravitPoisk)
 
-                    string[] stroka = new string[13];
+                        new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]) :
 
-                    for (int i = 0; i < stroka.Length; i++)
-                    {
-                        stroka[i] = string.Empty;
-                    }
-
-                    poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, stroka);
+                        new KDobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
                 }
                 else
                 {
-                    zapominaemStroku = koordinati.Item == null ? 0 : koordinati.Item.Index;
+                    poisk = Text == zagolovok ? (ADobavitPravitPoisk)
+                        
+                        new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[0]) :
 
-                    if (zapominaemStroku >= 0)
-                    {
-                        poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
-                    }
-                    else
-                    {
-                        poisk = new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[0]);
-                    }
-                }
-
-                poisk.ShowDialog();
-
-                if (poisk.KnopkaVipolnit)
-                {
-                    if (poisk.rezultat != null)
-                    {
-                        bool proverkaNaPustieStroki = false;
-
-                        foreach (string slovo in poisk.rezultat)
-                        {
-                            if (slovo != "")
-                            {
-                                proverkaNaPustieStroki = true;
-                            }
-                        }
-
-                        if (proverkaNaPustieStroki)
-                        {
-                            VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
-                        }
-                        else
-                        {
-                            Tablica.Items.Clear();
-                        }
-
-                        Filtr.Visible = true;
-                    }
+                        new KDobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[0]);
                 }
             }
-            if (Text == "DevList - Комплект")
+
+            poisk.ShowDialog();
+
+            if (poisk.KnopkaVipolnit)
             {
-                KDobavitPravitPoisk poisk = new KDobavitPravitPoisk("DevList - Поиск", iniFail);
-
-                int zapominaemStroku;
-
-                if (koordinati == null || koordinati.Item == null)
+                if (poisk.rezultat != null)
                 {
-                    koordinati = Tablica.HitTest(0, 0);
+                    bool proverkaNaPustieStroki = false;
 
-                    string[] stroka = new string[13];
+                    foreach (string slovo in poisk.rezultat) { if (slovo != string.Empty) { proverkaNaPustieStroki = true; } }
 
-                    for (int i = 0; i < stroka.Length; i++)
+                    if (proverkaNaPustieStroki)
                     {
-                        stroka[i] = string.Empty;
-                    }
-
-                    poisk = new KDobavitPravitPoisk("DevList - Поиск", iniFail, stroka);
-                }
-                else
-                {
-                    zapominaemStroku = koordinati.Item == null ? 0 : koordinati.Item.Index;
-
-                    if (zapominaemStroku >= 0)
-                    {
-                        poisk = new KDobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
+                        VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
                     }
                     else
                     {
-                        poisk = new KDobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[0]);
+                        Tablica.Items.Clear();
                     }
-                }
 
-                poisk.ShowDialog();
-
-                if (poisk.KnopkaVipolnit)
-                {
-                    if (poisk.rezultat != null)
-                    {
-                        bool proverkaNaPustieStroki = false;
-
-                        foreach (string slovo in poisk.rezultat)
-                        {
-                            if (slovo != "")
-                            {
-                                proverkaNaPustieStroki = true;
-                            }
-                        }
-
-                        if (proverkaNaPustieStroki)
-                        {
-                            VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
-                        }
-                        else
-                        {
-                            Tablica.Items.Clear();
-                        }
-
-                        Filtr.Visible = true;
-                    }
+                    Filtr.Visible = true;
                 }
             }
         }

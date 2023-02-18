@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADobavitPravitPoisk.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Baza.cs" />
     <Compile Include="KDobavitPravitPoisk.cs">
       <SubType>Form</SubType>

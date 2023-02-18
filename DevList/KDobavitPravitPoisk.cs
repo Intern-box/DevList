@@ -1,23 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class KDobavitPravitPoisk : Form
+    public partial class KDobavitPravitPoisk : ADobavitPravitPoisk
     {
         INIFail iniFail;
-
-        public string[] rezultat = new string[13];
-
-        public bool KnopkaVipolnit = false;
 
         public KDobavitPravitPoisk(string zagolovok, INIFail iniFail)
         {

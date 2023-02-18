@@ -4,13 +4,9 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class DobavitPravitPoisk : Form
+    public partial class DobavitPravitPoisk : ADobavitPravitPoisk
     {
         INIFail iniFail;
-
-        public string[] rezultat = new string[13];
-
-        public bool KnopkaVipolnit = false;
 
         public DobavitPravitPoisk(string zagolovok, INIFail iniFail)
         {
