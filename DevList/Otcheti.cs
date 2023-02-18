@@ -14,11 +14,11 @@ namespace DevList
     {
         INIFail iniFail;
 
-        byte tipOtcheta;
+        string tipOtcheta;
 
         Baza baza;
 
-        public Otcheti(INIFail iniFail, Baza baza, byte tipOtcheta)
+        public Otcheti(INIFail iniFail, Baza baza, string tipOtcheta)
         {
             InitializeComponent();
 
@@ -36,11 +36,11 @@ namespace DevList
             Spisok oborudovanie = new Spisok(iniFail.Oborudovanie);
 
             // Выводим список и кол-во оборудования 
-            if (tipOtcheta == 0)
+            if (tipOtcheta == "PoTipam")
             {
                 foreach (string slovo in oborudovanie.Elementi)
                 {
-                    if (slovo != "")
+                    if (slovo != string.Empty)
                     {
                         zapros[6] = slovo;
 
@@ -50,7 +50,7 @@ namespace DevList
             }
 
             // Выбор помещения
-            if (tipOtcheta == 1)
+            if (tipOtcheta == "VPomeschenii")
             {
                 PravitSpisok podgotovka = new PravitSpisok("DevList - Правка", 3, iniFail);
 
@@ -68,7 +68,7 @@ namespace DevList
                 }
             }
 
-            if (Vivod.Text == "")
+            if (Vivod.Text == string.Empty)
             {
                 Vivod.Text = "Без списка \"Оборудования\" работать не будет!";
             }

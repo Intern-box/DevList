@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DevList
@@ -22,6 +16,8 @@ namespace DevList
         public bool sortirovkaVKolonkah = true;
 
         public bool[] vidKolonok = new bool[13];
+
+        string zagolovok = "DevList 6.6 - Главное окно";
 
         public BazovaiaForma(INIFail iniFail, Baza baza)
         {
@@ -48,31 +44,13 @@ namespace DevList
         {
             Tablica.Items.Clear();
 
-            for (int i = 0; i < tablica.Count; i++)
-            {
-                tablica[i][0] = (i + 1).ToString();
-            }
+            for (int i = 0; i < tablica.Count; i++) { tablica[i][0] = (i + 1).ToString(); }
 
-            for (int i = 0; i < tablica.Count; i++)
-            {
-                ListViewItem stroka = new ListViewItem(tablica[i]);
-
-                Tablica.Items.Add(stroka);
-            }
+            for (int i = 0; i < tablica.Count; i++) { ListViewItem stroka = new ListViewItem(tablica[i]); Tablica.Items.Add(stroka); }
 
             Tablica.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
-            for (int i = 0; i < vidKolonok.Length; i++)
-            {
-                if (vidKolonok[i])
-                {
-                    Tablica.Columns[i].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-                else
-                {
-                    Tablica.Columns[i].Width = 0;
-                }
-            }
+            for (int i = 0; i < vidKolonok.Length; i++) { if (!vidKolonok[i]) { Tablica.Columns[i].Width = 0; } }
         }
 
         private void Tablica_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -94,7 +72,7 @@ namespace DevList
 
             VivodVTablicu(baza.Tablica);
 
-            GMenu.Items[8].Visible = true;
+            Filtr.Visible = true;
         }
 
         private void Sozdat_Click(object sender, EventArgs e)
@@ -105,7 +83,7 @@ namespace DevList
 
             putKNovoiBaze.ShowDialog();
 
-            if (putKNovoiBaze.SelectedPath != "")
+            if (putKNovoiBaze.SelectedPath != string.Empty)
             {
                 iniFail = new INIFail(putKNovoiBaze.SelectedPath);
 
@@ -165,7 +143,7 @@ namespace DevList
 
             adresDliaSohraneniia.ShowDialog();
 
-            if (adresDliaSohraneniia.SelectedPath != "")
+            if (adresDliaSohraneniia.SelectedPath != string.Empty)
             {
                 if (!Directory.Exists($"{adresDliaSohraneniia.SelectedPath}\\БД"))
                     Directory.CreateDirectory($"{adresDliaSohraneniia.SelectedPath}\\БД");
@@ -180,6 +158,7 @@ namespace DevList
                 File.Copy(iniFail.Sotrudniki, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Sotrudniki)), true);
                 File.Copy(iniFail.Istoriia, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Istoriia)), true);
                 File.Copy(iniFail.Komplekt, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Komplekt)), true);
+                File.Copy(iniFail.Komplektuiuschie, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Komplektuiuschie)), true);
 
                 baza.Izmenenie = false;
             }
@@ -190,7 +169,7 @@ namespace DevList
         // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
         private void Dobavit_Click(object sender, EventArgs e)
         {
-            if (Text == "DevList 6.6 - Главное окно")
+            if (Text == zagolovok)
             {
                 DobavitPravitPoisk okno = new DobavitPravitPoisk("DevList - Добавить", iniFail);
 
@@ -198,7 +177,7 @@ namespace DevList
 
                 if (koordinati == null || koordinati.Location == ListViewHitTestLocations.None)
                 {
-                    if (okno.rezultat[1] != null)
+                    if (okno.rezultat[2] != null)
                     {
                         baza.Tablica.Add(okno.rezultat);
 
@@ -213,7 +192,7 @@ namespace DevList
                 {
                     int zapominaemStroku = koordinati.Item.Index;
 
-                    if (okno.rezultat[1] != null)
+                    if (okno.rezultat[2] != null)
                     {
                         baza.Tablica.Insert(koordinati.Item.Index + 1, okno.rezultat);
 
@@ -225,7 +204,7 @@ namespace DevList
                     }
                 }
             }
-            if (Text == "DevList - Комплект")
+            else
             {
                 KDobavitPravitPoisk okno = new KDobavitPravitPoisk("DevList - Добавить", iniFail);
 
@@ -258,7 +237,7 @@ namespace DevList
 
                         baza.Izmenenie = true;
                     }
-                }
+                }   
             }
         }
 
@@ -273,7 +252,7 @@ namespace DevList
             {
                 int zapominaemStroku = koordinati.Item.Index;
 
-                if (Text == "DevList 6.6 - Главное окно")
+                if (Text == zagolovok || Text == "DevList - История")
                 {
                     if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 3 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 4 ||
@@ -336,7 +315,7 @@ namespace DevList
                         }
                     }
                 }
-                if (Text == "DevList - Комплект")
+                else
                 {
                     if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 3 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 4 ||
@@ -398,7 +377,7 @@ namespace DevList
 
         private void PravitVse_Click(object sender, EventArgs e)
         {
-            if (Text == "DevList 6.6 - Главное окно")
+            if (Text == zagolovok)
             {
                 if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
                 {
@@ -563,7 +542,7 @@ namespace DevList
 
         private void Poisk_Click(object sender, EventArgs e)
         {
-            if (Text == "DevList 6.6 - Главное окно" || Text == "DevList - История")
+            if (Text == zagolovok || Text == "DevList - История")
             {
                 string[] stroka = new string[13];
 
@@ -647,7 +626,7 @@ namespace DevList
 
         private void KPoisk_Click(object sender, EventArgs e)
         {
-            if (Text == "DevList 6.6 - Главное окно" || Text == "DevList - История")
+            if (Text == zagolovok || Text == "DevList - История")
             {
                 DobavitPravitPoisk poisk;
 
@@ -785,21 +764,21 @@ namespace DevList
 
         private void Spiski_Click(object sender, EventArgs e)
         {
-            Spiski redaktirovanie_spiskov = new Spiski(iniFail);
+            Spiski spiski = new Spiski(iniFail);
 
-            redaktirovanie_spiskov.ShowDialog();
+            spiski.ShowDialog();
         }
 
         private void PoTipam_Click(object sender, EventArgs e)
         {
-            Otcheti otchet = new Otcheti(iniFail, baza, tipOtcheta: 0);
+            Otcheti otchet = new Otcheti(iniFail, baza, tipOtcheta: "PoTipam");
 
             otchet.ShowDialog();
         }
 
         private void VPomeschenii_Click(object sender, EventArgs e)
         {
-            Otcheti otchet = new Otcheti(iniFail, baza, tipOtcheta: 1);
+            Otcheti otchet = new Otcheti(iniFail, baza, tipOtcheta: "VPomeschenii");
 
             otchet.ShowDialog();
         }
@@ -882,8 +861,6 @@ namespace DevList
             komplekt.Text = "DevList - Комплект";
 
             komplekt.WindowState = FormWindowState.Normal;
-
-            
 
             komplekt.ShowDialog();
         }
