@@ -33,8 +33,8 @@ namespace DevList
             this.LabelRAM = new System.Windows.Forms.Label();
             this.LabelDisk = new System.Windows.Forms.Label();
             this.Disk = new System.Windows.Forms.ComboBox();
-            this.ButtonVipolnit = new System.Windows.Forms.Button();
-            this.ButtonZakrit = new System.Windows.Forms.Button();
+            this.ButtonExecute = new System.Windows.Forms.Button();
+            this.ButtonClose = new System.Windows.Forms.Button();
             this.CPU = new System.Windows.Forms.ComboBox();
             this.LabelMainboard = new System.Windows.Forms.Label();
             this.Mainboard = new System.Windows.Forms.ComboBox();
@@ -44,8 +44,8 @@ namespace DevList
             this.ButtonMainboardPlus = new System.Windows.Forms.Button();
             this.ButtonCPUMinus = new System.Windows.Forms.Button();
             this.ButtonCPUPlus = new System.Windows.Forms.Button();
-            this.DataPriobreteniia = new System.Windows.Forms.TextBox();
-            this.LabelDataPriobreteniia = new System.Windows.Forms.Label();
+            this.Date = new System.Windows.Forms.TextBox();
+            this.LabelDate = new System.Windows.Forms.Label();
             this.ButtonVideocardMinus = new System.Windows.Forms.Button();
             this.ButtonVideocardPlus = new System.Windows.Forms.Button();
             this.Videocard = new System.Windows.Forms.ComboBox();
@@ -61,10 +61,10 @@ namespace DevList
             this.ButtonCasePlus = new System.Windows.Forms.Button();
             this.Case = new System.Windows.Forms.ComboBox();
             this.LabelCase = new System.Windows.Forms.Label();
-            this.God = new System.Windows.Forms.TextBox();
-            this.LabelGod = new System.Windows.Forms.Label();
-            this.InvNomer = new System.Windows.Forms.TextBox();
-            this.LabelSBInvNomer = new System.Windows.Forms.Label();
+            this.Year = new System.Windows.Forms.TextBox();
+            this.LabelYear = new System.Windows.Forms.Label();
+            this.Number = new System.Windows.Forms.TextBox();
+            this.LabelNumber = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LabelCPU
@@ -107,27 +107,27 @@ namespace DevList
             this.Disk.Size = new System.Drawing.Size(350, 24);
             this.Disk.TabIndex = 5;
             // 
-            // ButtonVipolnit
+            // ButtonExecute
             // 
-            this.ButtonVipolnit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonVipolnit.Location = new System.Drawing.Point(361, 313);
-            this.ButtonVipolnit.Name = "ButtonVipolnit";
-            this.ButtonVipolnit.Size = new System.Drawing.Size(89, 29);
-            this.ButtonVipolnit.TabIndex = 10;
-            this.ButtonVipolnit.Text = "Выполнить";
-            this.ButtonVipolnit.UseVisualStyleBackColor = true;
-            this.ButtonVipolnit.Click += new System.EventHandler(this.ButtonVipolnit_Click);
+            this.ButtonExecute.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonExecute.Location = new System.Drawing.Point(361, 313);
+            this.ButtonExecute.Name = "ButtonExecute";
+            this.ButtonExecute.Size = new System.Drawing.Size(89, 29);
+            this.ButtonExecute.TabIndex = 10;
+            this.ButtonExecute.Text = "Выполнить";
+            this.ButtonExecute.UseVisualStyleBackColor = true;
+            this.ButtonExecute.Click += new System.EventHandler(this.Execute_Click);
             // 
-            // ButtonZakrit
+            // ButtonClose
             // 
-            this.ButtonZakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonZakrit.Location = new System.Drawing.Point(456, 313);
-            this.ButtonZakrit.Name = "ButtonZakrit";
-            this.ButtonZakrit.Size = new System.Drawing.Size(89, 29);
-            this.ButtonZakrit.TabIndex = 11;
-            this.ButtonZakrit.Text = "Закрыть";
-            this.ButtonZakrit.UseVisualStyleBackColor = true;
-            this.ButtonZakrit.Click += new System.EventHandler(this.ButtonZakrit_Click);
+            this.ButtonClose.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonClose.Location = new System.Drawing.Point(456, 313);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.Size = new System.Drawing.Size(89, 29);
+            this.ButtonClose.TabIndex = 11;
+            this.ButtonClose.Text = "Закрыть";
+            this.ButtonClose.UseVisualStyleBackColor = true;
+            this.ButtonClose.Click += new System.EventHandler(this.Close_Click);
             // 
             // CPU
             // 
@@ -225,23 +225,23 @@ namespace DevList
             this.ButtonCPUPlus.UseVisualStyleBackColor = true;
             this.ButtonCPUPlus.Click += new System.EventHandler(this.ButtonCPUPlus_Click);
             // 
-            // DataPriobreteniia
+            // Date
             // 
-            this.DataPriobreteniia.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DataPriobreteniia.Location = new System.Drawing.Point(195, 45);
-            this.DataPriobreteniia.Name = "DataPriobreteniia";
-            this.DataPriobreteniia.Size = new System.Drawing.Size(350, 23);
-            this.DataPriobreteniia.TabIndex = 1;
+            this.Date.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Date.Location = new System.Drawing.Point(195, 45);
+            this.Date.Name = "Date";
+            this.Date.Size = new System.Drawing.Size(350, 23);
+            this.Date.TabIndex = 1;
             // 
-            // LabelDataPriobreteniia
+            // LabelDate
             // 
-            this.LabelDataPriobreteniia.AutoSize = true;
-            this.LabelDataPriobreteniia.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelDataPriobreteniia.Location = new System.Drawing.Point(44, 48);
-            this.LabelDataPriobreteniia.Name = "LabelDataPriobreteniia";
-            this.LabelDataPriobreteniia.Size = new System.Drawing.Size(147, 16);
-            this.LabelDataPriobreteniia.TabIndex = 59;
-            this.LabelDataPriobreteniia.Text = "Дата приобретения:";
+            this.LabelDate.AutoSize = true;
+            this.LabelDate.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelDate.Location = new System.Drawing.Point(44, 48);
+            this.LabelDate.Name = "LabelDate";
+            this.LabelDate.Size = new System.Drawing.Size(147, 16);
+            this.LabelDate.TabIndex = 59;
+            this.LabelDate.Text = "Дата приобретения:";
             // 
             // ButtonVideocardMinus
             // 
@@ -401,52 +401,52 @@ namespace DevList
             this.LabelCase.TabIndex = 81;
             this.LabelCase.Text = "Корпус:";
             // 
-            // God
+            // Year
             // 
-            this.God.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.God.Location = new System.Drawing.Point(195, 282);
-            this.God.Name = "God";
-            this.God.Size = new System.Drawing.Size(350, 23);
-            this.God.TabIndex = 9;
+            this.Year.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Year.Location = new System.Drawing.Point(195, 282);
+            this.Year.Name = "Year";
+            this.Year.Size = new System.Drawing.Size(350, 23);
+            this.Year.TabIndex = 9;
             // 
-            // LabelGod
+            // LabelYear
             // 
-            this.LabelGod.AutoSize = true;
-            this.LabelGod.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelGod.Location = new System.Drawing.Point(153, 285);
-            this.LabelGod.Name = "LabelGod";
-            this.LabelGod.Size = new System.Drawing.Size(37, 16);
-            this.LabelGod.TabIndex = 83;
-            this.LabelGod.Text = "Год:";
+            this.LabelYear.AutoSize = true;
+            this.LabelYear.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelYear.Location = new System.Drawing.Point(153, 285);
+            this.LabelYear.Name = "LabelYear";
+            this.LabelYear.Size = new System.Drawing.Size(37, 16);
+            this.LabelYear.TabIndex = 83;
+            this.LabelYear.Text = "Год:";
             // 
-            // InvNomer
+            // Number
             // 
-            this.InvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InvNomer.Location = new System.Drawing.Point(195, 17);
-            this.InvNomer.Name = "InvNomer";
-            this.InvNomer.Size = new System.Drawing.Size(350, 23);
-            this.InvNomer.TabIndex = 0;
+            this.Number.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Number.Location = new System.Drawing.Point(195, 17);
+            this.Number.Name = "Number";
+            this.Number.Size = new System.Drawing.Size(350, 23);
+            this.Number.TabIndex = 0;
             // 
-            // LabelSBInvNomer
+            // LabelNumber
             // 
-            this.LabelSBInvNomer.AutoSize = true;
-            this.LabelSBInvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelSBInvNomer.Location = new System.Drawing.Point(12, 20);
-            this.LabelSBInvNomer.Name = "LabelSBInvNomer";
-            this.LabelSBInvNomer.Size = new System.Drawing.Size(180, 16);
-            this.LabelSBInvNomer.TabIndex = 85;
-            this.LabelSBInvNomer.Text = "Системный блок Инв. №:";
+            this.LabelNumber.AutoSize = true;
+            this.LabelNumber.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelNumber.Location = new System.Drawing.Point(12, 20);
+            this.LabelNumber.Name = "LabelNumber";
+            this.LabelNumber.Size = new System.Drawing.Size(180, 16);
+            this.LabelNumber.TabIndex = 85;
+            this.LabelNumber.Text = "Системный блок Инв. №:";
             // 
-            // KDobavitPravitPoisk
+            // ContextSearchEditWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(613, 351);
-            this.Controls.Add(this.InvNomer);
-            this.Controls.Add(this.LabelSBInvNomer);
-            this.Controls.Add(this.God);
-            this.Controls.Add(this.LabelGod);
+            this.Controls.Add(this.Number);
+            this.Controls.Add(this.LabelNumber);
+            this.Controls.Add(this.Year);
+            this.Controls.Add(this.LabelYear);
             this.Controls.Add(this.ButtonCaseMinus);
             this.Controls.Add(this.ButtonCasePlus);
             this.Controls.Add(this.Case);
@@ -462,8 +462,8 @@ namespace DevList
             this.Controls.Add(this.ButtonVideocardPlus);
             this.Controls.Add(this.Videocard);
             this.Controls.Add(this.LabelVideocard);
-            this.Controls.Add(this.DataPriobreteniia);
-            this.Controls.Add(this.LabelDataPriobreteniia);
+            this.Controls.Add(this.Date);
+            this.Controls.Add(this.LabelDate);
             this.Controls.Add(this.ButtonDiskMinus);
             this.Controls.Add(this.ButtonDiskPlus);
             this.Controls.Add(this.ButtonMainboardMinus);
@@ -473,8 +473,8 @@ namespace DevList
             this.Controls.Add(this.Mainboard);
             this.Controls.Add(this.LabelMainboard);
             this.Controls.Add(this.CPU);
-            this.Controls.Add(this.ButtonZakrit);
-            this.Controls.Add(this.ButtonVipolnit);
+            this.Controls.Add(this.ButtonClose);
+            this.Controls.Add(this.ButtonExecute);
             this.Controls.Add(this.Disk);
             this.Controls.Add(this.LabelDisk);
             this.Controls.Add(this.LabelRAM);
@@ -483,11 +483,11 @@ namespace DevList
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "KDobavitPravitPoisk";
+            this.Name = "ContextSearchEditWindow";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Load += new System.EventHandler(this.DobavitPravitPoisk_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KDobavitPravitPoisk_KeyUp);
+            this.Load += new System.EventHandler(this.ContextSearchEditWindow_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ContextSearchEditWindow_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -498,8 +498,8 @@ namespace DevList
         private System.Windows.Forms.Label LabelRAM;
         private System.Windows.Forms.Label LabelDisk;
         private System.Windows.Forms.ComboBox Disk;
-        private System.Windows.Forms.Button ButtonVipolnit;
-        private System.Windows.Forms.Button ButtonZakrit;
+        private System.Windows.Forms.Button ButtonExecute;
+        private System.Windows.Forms.Button ButtonClose;
         private System.Windows.Forms.ComboBox CPU;
         private System.Windows.Forms.Label LabelMainboard;
         private System.Windows.Forms.ComboBox Mainboard;
@@ -509,8 +509,8 @@ namespace DevList
         private System.Windows.Forms.Button ButtonMainboardPlus;
         private System.Windows.Forms.Button ButtonCPUMinus;
         private System.Windows.Forms.Button ButtonCPUPlus;
-        private System.Windows.Forms.TextBox DataPriobreteniia;
-        private System.Windows.Forms.Label LabelDataPriobreteniia;
+        private System.Windows.Forms.TextBox Date;
+        private System.Windows.Forms.Label LabelDate;
         private System.Windows.Forms.Button ButtonVideocardMinus;
         private System.Windows.Forms.Button ButtonVideocardPlus;
         private System.Windows.Forms.ComboBox Videocard;
@@ -526,9 +526,9 @@ namespace DevList
         private System.Windows.Forms.Button ButtonCasePlus;
         private System.Windows.Forms.ComboBox Case;
         private System.Windows.Forms.Label LabelCase;
-        private System.Windows.Forms.TextBox God;
-        private System.Windows.Forms.Label LabelGod;
-        private System.Windows.Forms.TextBox InvNomer;
-        private System.Windows.Forms.Label LabelSBInvNomer;
+        private System.Windows.Forms.TextBox Year;
+        private System.Windows.Forms.Label LabelYear;
+        private System.Windows.Forms.TextBox Number;
+        private System.Windows.Forms.Label LabelNumber;
     }
 }

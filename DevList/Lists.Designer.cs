@@ -31,9 +31,9 @@ namespace DevList
         {
             this.ListsBox = new System.Windows.Forms.ComboBox();
             this.LabelSpisok = new System.Windows.Forms.Label();
-            this.ButtonZakrit = new System.Windows.Forms.Button();
-            this.ButtonSohranit = new System.Windows.Forms.Button();
-            this.SoderjimoeSpiska = new System.Windows.Forms.TextBox();
+            this.ButtonClose = new System.Windows.Forms.Button();
+            this.ButtonSave = new System.Windows.Forms.Button();
+            this.Content = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // ListsBox
@@ -62,51 +62,51 @@ namespace DevList
             this.LabelSpisok.TabIndex = 55;
             this.LabelSpisok.Text = "Список:";
             // 
-            // ButtonZakrit
+            // ButtonClose
             // 
-            this.ButtonZakrit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonZakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonZakrit.Location = new System.Drawing.Point(345, 325);
-            this.ButtonZakrit.Name = "ButtonZakrit";
-            this.ButtonZakrit.Size = new System.Drawing.Size(89, 29);
-            this.ButtonZakrit.TabIndex = 58;
-            this.ButtonZakrit.Text = "Закрыть";
-            this.ButtonZakrit.UseVisualStyleBackColor = true;
-            this.ButtonZakrit.Click += new System.EventHandler(this.Close_Click);
+            this.ButtonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonClose.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonClose.Location = new System.Drawing.Point(345, 325);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.Size = new System.Drawing.Size(89, 29);
+            this.ButtonClose.TabIndex = 58;
+            this.ButtonClose.Text = "Закрыть";
+            this.ButtonClose.UseVisualStyleBackColor = true;
+            this.ButtonClose.Click += new System.EventHandler(this.Close_Click);
             // 
-            // ButtonSohranit
+            // ButtonSave
             // 
-            this.ButtonSohranit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonSohranit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonSohranit.Location = new System.Drawing.Point(250, 325);
-            this.ButtonSohranit.Name = "ButtonSohranit";
-            this.ButtonSohranit.Size = new System.Drawing.Size(89, 29);
-            this.ButtonSohranit.TabIndex = 57;
-            this.ButtonSohranit.Text = "Сохранить";
-            this.ButtonSohranit.UseVisualStyleBackColor = true;
-            this.ButtonSohranit.Click += new System.EventHandler(this.SaveButton_Click);
+            this.ButtonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonSave.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonSave.Location = new System.Drawing.Point(250, 325);
+            this.ButtonSave.Name = "ButtonSave";
+            this.ButtonSave.Size = new System.Drawing.Size(89, 29);
+            this.ButtonSave.TabIndex = 57;
+            this.ButtonSave.Text = "Сохранить";
+            this.ButtonSave.UseVisualStyleBackColor = true;
+            this.ButtonSave.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // SoderjimoeSpiska
+            // Content
             // 
-            this.SoderjimoeSpiska.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Content.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SoderjimoeSpiska.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SoderjimoeSpiska.Location = new System.Drawing.Point(12, 42);
-            this.SoderjimoeSpiska.Multiline = true;
-            this.SoderjimoeSpiska.Name = "SoderjimoeSpiska";
-            this.SoderjimoeSpiska.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SoderjimoeSpiska.Size = new System.Drawing.Size(422, 277);
-            this.SoderjimoeSpiska.TabIndex = 60;
+            this.Content.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Content.Location = new System.Drawing.Point(12, 42);
+            this.Content.Multiline = true;
+            this.Content.Name = "Content";
+            this.Content.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Content.Size = new System.Drawing.Size(422, 277);
+            this.Content.TabIndex = 60;
             // 
             // Lists
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 365);
-            this.Controls.Add(this.SoderjimoeSpiska);
-            this.Controls.Add(this.ButtonZakrit);
-            this.Controls.Add(this.ButtonSohranit);
+            this.Controls.Add(this.Content);
+            this.Controls.Add(this.ButtonClose);
+            this.Controls.Add(this.ButtonSave);
             this.Controls.Add(this.ListsBox);
             this.Controls.Add(this.LabelSpisok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -125,8 +125,8 @@ namespace DevList
 
         private System.Windows.Forms.ComboBox ListsBox;
         private System.Windows.Forms.Label LabelSpisok;
-        private System.Windows.Forms.Button ButtonZakrit;
-        private System.Windows.Forms.Button ButtonSohranit;
-        private System.Windows.Forms.TextBox SoderjimoeSpiska;
+        private System.Windows.Forms.Button ButtonClose;
+        private System.Windows.Forms.Button ButtonSave;
+        private System.Windows.Forms.TextBox Content;
     }
 }

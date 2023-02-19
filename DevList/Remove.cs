@@ -9,33 +9,33 @@ namespace DevList
 {
     public class Remove
     {
-        public Remove(DataBase baza, ListViewHitTestInfo koordinati, INIFile iniFail, bool udalenie)
+        public Remove(DataBase dataBase, ListViewHitTestInfo coordinates, INIFile iniFile, bool remove)
         {
-            Udalenie(baza, koordinati, iniFail, udalenie);
+            RemoveThat(dataBase, coordinates, iniFile, remove);
         }
 
-        public Remove(DataBase baza, ListViewHitTestInfo koordinati)
+        public Remove(DataBase dataBase, ListViewHitTestInfo coordinates)
         {
-            Udalenie(baza, koordinati);
+            RemoveThat(dataBase, coordinates);
         }
 
-        void Udalenie(DataBase baza, ListViewHitTestInfo koordinati, INIFile iniFail, bool udalenie)
+        void RemoveThat(DataBase dataBase, ListViewHitTestInfo coordinates, INIFile iniFile, bool remove)
         {
-            if (udalenie)
+            if (remove)
             {
-                DataBase istoria = new DataBase(iniFail.History);
+                DataBase history = new DataBase(iniFile.History);
 
-                istoria.Table.Add(baza.Table[koordinati.Item.Index]);
+                history.Table.Add(dataBase.Table[coordinates.Item.Index]);
 
-                baza.Table[koordinati.Item.Index][9] = $"Удалено {DateTime.Now.Date.ToString().Substring(0, DateTime.Now.Date.ToString().IndexOf(" "))}";
+                dataBase.Table[coordinates.Item.Index][9] = $"Удалено {DateTime.Now.Date.ToString().Substring(0, DateTime.Now.Date.ToString().IndexOf(" "))}";
 
-                istoria.Save();
+                history.Save();
             }
 
-            baza.Table.RemoveAt(koordinati.Item.Index);
+            dataBase.Table.RemoveAt(coordinates.Item.Index);
         }
 
-        void Udalenie(DataBase baza, ListViewHitTestInfo koordinati)
+        void RemoveThat(DataBase baza, ListViewHitTestInfo koordinati)
         {
             baza.Table.RemoveAt(koordinati.Item.Index);
         }

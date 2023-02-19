@@ -469,9 +469,9 @@ namespace DevList
 
             columns.ShowDialog();
 
-            visibleColumns = columns.rezultat;
+            visibleColumns = columns.Result;
 
-            if (columns.KnopkaVipolnit) { TableOutput(dataBase.Table); }
+            if (columns.Execute) { TableOutput(dataBase.Table); }
         }
 
         private void Search_Click(object sender, EventArgs e)

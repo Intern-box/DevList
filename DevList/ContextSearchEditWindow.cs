@@ -6,40 +6,40 @@ namespace DevList
 {
     public partial class ContextSearchEditWindow : BaseSearchEdit
     {
-        INIFile iniFail;
+        INIFile iniFile;
 
-        public ContextSearchEditWindow(string zagolovok, INIFile iniFail)
+        public ContextSearchEditWindow(string head, INIFile iniFile)
         {
             InitializeComponent();
 
-            Text = zagolovok;
+            Text = head;
 
-            this.iniFail = iniFail;
+            this.iniFile = iniFile;
         }
 
-        public ContextSearchEditWindow(string zagolovok, INIFile iniFail, string[] stroka)
+        public ContextSearchEditWindow(string head, INIFile iniFile, string[] input)
         {
             InitializeComponent();
 
-            Text = zagolovok;
+            Text = head;
 
-            this.iniFail = iniFail;
+            this.iniFile = iniFile;
 
-            InvNomer.Text = stroka[1];
-            DataPriobreteniia.Text = stroka[2];
-            CPU.Text = stroka[3];
-            Mainboard.Text = stroka[4];
-            RAM.Text = stroka[5];
-            Disk.Text = stroka[6];
-            Videocard.Text = stroka[7];
-            Power.Text = stroka[8];
-            Case.Text = stroka[9];
-            God.Text = stroka[10];
+            Number.Text = input[1];
+            Date.Text = input[2];
+            CPU.Text = input[3];
+            Mainboard.Text = input[4];
+            RAM.Text = input[5];
+            Disk.Text = input[6];
+            Videocard.Text = input[7];
+            Power.Text = input[8];
+            Case.Text = input[9];
+            Year.Text = input[10];
         }
 
-        private void DobavitPravitPoisk_Load(object sender, EventArgs e)
+        private void ContextSearchEditWindow_Load(object sender, EventArgs e)
         {
-            List komplektuiuschie = new List(iniFail.Parts);
+            List komplektuiuschie = new List(iniFile.Parts);
 
             CPU.Items.AddRange(File.ReadAllLines(komplektuiuschie.Path));
             Mainboard.Items.AddRange(File.ReadAllLines(komplektuiuschie.Path));
@@ -50,11 +50,11 @@ namespace DevList
             Case.Items.AddRange(File.ReadAllLines(komplektuiuschie.Path));
         }
 
-        private void ButtonVipolnit_Click(object sender, EventArgs e)
+        private void Execute_Click(object sender, EventArgs e)
         {
-            Result[0] = "";
-            Result[1] = InvNomer.Text;
-            Result[2] = DataPriobreteniia.Text;
+            Result[0] = string.Empty;
+            Result[1] = Number.Text;
+            Result[2] = Date.Text;
             Result[3] = CPU.Text;
             Result[4] = Mainboard.Text;
             Result[5] = RAM.Text;
@@ -62,183 +62,183 @@ namespace DevList
             Result[7] = Videocard.Text;
             Result[8] = Power.Text;
             Result[9] = Case.Text;
-            Result[10] = God.Text;
-            Result[11] = "";
-            Result[12] = "";
+            Result[10] = Year.Text;
+            Result[11] = string.Empty;
+            Result[12] = string.Empty;
 
             Execute = true;
 
             Close();
         }
 
-        private void ButtonZakrit_Click(object sender, EventArgs e)
+        private void Close_Click(object sender, EventArgs e)
         {
             Close();
         }
 
         private void ButtonCPUPlus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Add(CPU.Text);
+            list.Add(CPU.Text);
 
             CPU.Items.Clear();
 
-            CPU.Items.AddRange(File.ReadAllLines(spisok.Path));
+            CPU.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonCPUMinus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Remove(CPU.Text);
+            list.Remove(CPU.Text);
 
             CPU.Items.Clear();
 
-            CPU.Items.AddRange(File.ReadAllLines(spisok.Path));
+            CPU.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonMainboardPlus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Add(Mainboard.Text);
+            list.Add(Mainboard.Text);
 
             Mainboard.Items.Clear();
 
-            Mainboard.Items.AddRange(File.ReadAllLines(spisok.Path));
+            Mainboard.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonMainboardMinus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Remove(Mainboard.Text);
+            list.Remove(Mainboard.Text);
 
             Mainboard.Items.Clear();
 
-            Mainboard.Items.AddRange(File.ReadAllLines(spisok.Path));
+            Mainboard.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonRAMPlus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Add(RAM.Text);
+            list.Add(RAM.Text);
 
             RAM.Items.Clear();
 
-            RAM.Items.AddRange(File.ReadAllLines(spisok.Path));
+            RAM.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonRAMMinus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Remove(RAM.Text);
+            list.Remove(RAM.Text);
 
             RAM.Items.Clear();
 
-            RAM.Items.AddRange(File.ReadAllLines(spisok.Path));
+            RAM.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonDiskPlus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Add(Disk.Text);
+            list.Add(Disk.Text);
 
             Disk.Items.Clear();
 
-            Disk.Items.AddRange(File.ReadAllLines(spisok.Path));
+            Disk.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonDiskMinus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Remove(Disk.Text);
+            list.Remove(Disk.Text);
 
             Disk.Items.Clear();
 
-            Disk.Items.AddRange(File.ReadAllLines(spisok.Path));
+            Disk.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonVideocardPlus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Add(Videocard.Text);
+            list.Add(Videocard.Text);
 
             Videocard.Items.Clear();
 
-            Videocard.Items.AddRange(File.ReadAllLines(spisok.Path));
+            Videocard.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonVideocardMinus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Remove(Videocard.Text);
+            list.Remove(Videocard.Text);
 
             Videocard.Items.Clear();
 
-            Videocard.Items.AddRange(File.ReadAllLines(spisok.Path));
+            Videocard.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonPowerPlus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Add(Power.Text);
+            list.Add(Power.Text);
 
             Power.Items.Clear();
 
-            Power.Items.AddRange(File.ReadAllLines(spisok.Path));
+            Power.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonPowerMinus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Remove(Power.Text);
+            list.Remove(Power.Text);
 
             Power.Items.Clear();
 
-            Power.Items.AddRange(File.ReadAllLines(spisok.Path));
+            Power.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonCasePlus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Add(Case.Text);
+            list.Add(Case.Text);
 
             Case.Items.Clear();
 
-            Case.Items.AddRange(File.ReadAllLines(spisok.Path));
+            Case.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
         private void ButtonCaseMinus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Parts);
+            List list = new List(iniFile.Parts);
 
-            spisok.Remove(Case.Text);
+            list.Remove(Case.Text);
 
             Case.Items.Clear();
 
-            Case.Items.AddRange(File.ReadAllLines(spisok.Path));
+            Case.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void KDobavitPravitPoisk_KeyUp(object sender, KeyEventArgs e)
+        private void ContextSearchEditWindow_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                ButtonVipolnit_Click(sender, e);
+                Execute_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                ButtonZakrit_Click(sender, e);
+                Close_Click(sender, e);
             }
         }
     }

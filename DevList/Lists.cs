@@ -44,44 +44,44 @@ namespace DevList
                 fileStrings = File.ReadAllLines(iniFile.Parts);
             }
 
-            SoderjimoeSpiska.Clear();
+            Content.Clear();
 
             if (fileStrings != null)
             {
                 foreach (string str in fileStrings)
                 {
-                    SoderjimoeSpiska.Text += str + "\r\n";
+                    Content.Text += str + "\r\n";
                 }
             }
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (SoderjimoeSpiska.Text != string.Empty)
+            if (Content.Text != string.Empty)
             {
                 if (ListsBox.SelectedIndex == 0)
                 {
-                    File.WriteAllText(iniFile.Rooms, SoderjimoeSpiska.Text + "\r\n");
+                    File.WriteAllText(iniFile.Rooms, Content.Text + "\r\n");
                 }
 
                 if (ListsBox.SelectedIndex == 1)
                 {
-                    File.WriteAllText(iniFile.Employees, SoderjimoeSpiska.Text + "\r\n");
+                    File.WriteAllText(iniFile.Employees, Content.Text + "\r\n");
                 }
 
                 if (ListsBox.SelectedIndex == 2)
                 {
-                    File.WriteAllText(iniFile.Names, SoderjimoeSpiska.Text + "\r\n");
+                    File.WriteAllText(iniFile.Names, Content.Text + "\r\n");
                 }
 
                 if (ListsBox.SelectedIndex == 3)
                 {
-                    File.WriteAllText(iniFile.Devices, SoderjimoeSpiska.Text + "\r\n");
+                    File.WriteAllText(iniFile.Devices, Content.Text + "\r\n");
                 }
 
                 if (ListsBox.SelectedIndex == 4)
                 {
-                    File.WriteAllText(iniFile.Parts, SoderjimoeSpiska.Text + "\r\n");
+                    File.WriteAllText(iniFile.Parts, Content.Text + "\r\n");
                 }
             }
         }

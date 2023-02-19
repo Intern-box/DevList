@@ -29,112 +29,112 @@ namespace DevList
         /// </summary>
         private void InitializeComponent()
         {
-            this.CheckBoxDataPriobretenia = new System.Windows.Forms.CheckBox();
-            this.CheckBoxInvNomer = new System.Windows.Forms.CheckBox();
-            this.CheckBoxPomeschenie = new System.Windows.Forms.CheckBox();
-            this.CheckBoxFIO = new System.Windows.Forms.CheckBox();
-            this.CheckBoxNaimenovanie = new System.Windows.Forms.CheckBox();
-            this.CheckBoxOborudovanie = new System.Windows.Forms.CheckBox();
-            this.CheckBoxIzmenil = new System.Windows.Forms.CheckBox();
+            this.CheckBoxDate = new System.Windows.Forms.CheckBox();
+            this.CheckBoxNumber = new System.Windows.Forms.CheckBox();
+            this.CheckBoxRooms = new System.Windows.Forms.CheckBox();
+            this.CheckBoxPerson = new System.Windows.Forms.CheckBox();
+            this.CheckBoxNames = new System.Windows.Forms.CheckBox();
+            this.CheckBoxDevices = new System.Windows.Forms.CheckBox();
+            this.CheckBoxChangeMan = new System.Windows.Forms.CheckBox();
             this.CheckBoxIP = new System.Windows.Forms.CheckBox();
             this.CheckBoxHostname = new System.Windows.Forms.CheckBox();
-            this.CheckBoxKommentarii = new System.Windows.Forms.CheckBox();
-            this.CheckBoxInventarizaciia = new System.Windows.Forms.CheckBox();
-            this.CheckBoxSostoianie = new System.Windows.Forms.CheckBox();
-            this.ButtonZakrit = new System.Windows.Forms.Button();
-            this.ButtonVipolnit = new System.Windows.Forms.Button();
+            this.CheckBoxComments = new System.Windows.Forms.CheckBox();
+            this.CheckBoxInventory = new System.Windows.Forms.CheckBox();
+            this.CheckBoxStatus = new System.Windows.Forms.CheckBox();
+            this.ButtonClose = new System.Windows.Forms.Button();
+            this.ButtonExecute = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // CheckBoxDataPriobretenia
+            // CheckBoxDate
             // 
-            this.CheckBoxDataPriobretenia.AutoSize = true;
-            this.CheckBoxDataPriobretenia.Checked = true;
-            this.CheckBoxDataPriobretenia.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxDataPriobretenia.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CheckBoxDataPriobretenia.Location = new System.Drawing.Point(12, 12);
-            this.CheckBoxDataPriobretenia.Name = "CheckBoxDataPriobretenia";
-            this.CheckBoxDataPriobretenia.Size = new System.Drawing.Size(160, 20);
-            this.CheckBoxDataPriobretenia.TabIndex = 0;
-            this.CheckBoxDataPriobretenia.Text = "Дата приобретения";
-            this.CheckBoxDataPriobretenia.UseVisualStyleBackColor = true;
+            this.CheckBoxDate.AutoSize = true;
+            this.CheckBoxDate.Checked = true;
+            this.CheckBoxDate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxDate.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxDate.Location = new System.Drawing.Point(12, 12);
+            this.CheckBoxDate.Name = "CheckBoxDate";
+            this.CheckBoxDate.Size = new System.Drawing.Size(160, 20);
+            this.CheckBoxDate.TabIndex = 0;
+            this.CheckBoxDate.Text = "Дата приобретения";
+            this.CheckBoxDate.UseVisualStyleBackColor = true;
             // 
-            // CheckBoxInvNomer
+            // CheckBoxNumber
             // 
-            this.CheckBoxInvNomer.AutoSize = true;
-            this.CheckBoxInvNomer.Checked = true;
-            this.CheckBoxInvNomer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxInvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CheckBoxInvNomer.Location = new System.Drawing.Point(12, 38);
-            this.CheckBoxInvNomer.Name = "CheckBoxInvNomer";
-            this.CheckBoxInvNomer.Size = new System.Drawing.Size(77, 20);
-            this.CheckBoxInvNomer.TabIndex = 1;
-            this.CheckBoxInvNomer.Text = "Инв. №";
-            this.CheckBoxInvNomer.UseVisualStyleBackColor = true;
+            this.CheckBoxNumber.AutoSize = true;
+            this.CheckBoxNumber.Checked = true;
+            this.CheckBoxNumber.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxNumber.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxNumber.Location = new System.Drawing.Point(12, 38);
+            this.CheckBoxNumber.Name = "CheckBoxNumber";
+            this.CheckBoxNumber.Size = new System.Drawing.Size(77, 20);
+            this.CheckBoxNumber.TabIndex = 1;
+            this.CheckBoxNumber.Text = "Инв. №";
+            this.CheckBoxNumber.UseVisualStyleBackColor = true;
             // 
-            // CheckBoxPomeschenie
+            // CheckBoxRooms
             // 
-            this.CheckBoxPomeschenie.AutoSize = true;
-            this.CheckBoxPomeschenie.Checked = true;
-            this.CheckBoxPomeschenie.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxPomeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CheckBoxPomeschenie.Location = new System.Drawing.Point(12, 64);
-            this.CheckBoxPomeschenie.Name = "CheckBoxPomeschenie";
-            this.CheckBoxPomeschenie.Size = new System.Drawing.Size(105, 20);
-            this.CheckBoxPomeschenie.TabIndex = 2;
-            this.CheckBoxPomeschenie.Text = "Помещение";
-            this.CheckBoxPomeschenie.UseVisualStyleBackColor = true;
+            this.CheckBoxRooms.AutoSize = true;
+            this.CheckBoxRooms.Checked = true;
+            this.CheckBoxRooms.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxRooms.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxRooms.Location = new System.Drawing.Point(12, 64);
+            this.CheckBoxRooms.Name = "CheckBoxRooms";
+            this.CheckBoxRooms.Size = new System.Drawing.Size(105, 20);
+            this.CheckBoxRooms.TabIndex = 2;
+            this.CheckBoxRooms.Text = "Помещение";
+            this.CheckBoxRooms.UseVisualStyleBackColor = true;
             // 
-            // CheckBoxFIO
+            // CheckBoxPerson
             // 
-            this.CheckBoxFIO.AutoSize = true;
-            this.CheckBoxFIO.Checked = true;
-            this.CheckBoxFIO.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxFIO.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CheckBoxFIO.Location = new System.Drawing.Point(12, 90);
-            this.CheckBoxFIO.Name = "CheckBoxFIO";
-            this.CheckBoxFIO.Size = new System.Drawing.Size(107, 20);
-            this.CheckBoxFIO.TabIndex = 3;
-            this.CheckBoxFIO.Text = "Закреплено";
-            this.CheckBoxFIO.UseVisualStyleBackColor = true;
+            this.CheckBoxPerson.AutoSize = true;
+            this.CheckBoxPerson.Checked = true;
+            this.CheckBoxPerson.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxPerson.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxPerson.Location = new System.Drawing.Point(12, 90);
+            this.CheckBoxPerson.Name = "CheckBoxPerson";
+            this.CheckBoxPerson.Size = new System.Drawing.Size(107, 20);
+            this.CheckBoxPerson.TabIndex = 3;
+            this.CheckBoxPerson.Text = "Закреплено";
+            this.CheckBoxPerson.UseVisualStyleBackColor = true;
             // 
-            // CheckBoxNaimenovanie
+            // CheckBoxNames
             // 
-            this.CheckBoxNaimenovanie.AutoSize = true;
-            this.CheckBoxNaimenovanie.Checked = true;
-            this.CheckBoxNaimenovanie.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxNaimenovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CheckBoxNaimenovanie.Location = new System.Drawing.Point(12, 116);
-            this.CheckBoxNaimenovanie.Name = "CheckBoxNaimenovanie";
-            this.CheckBoxNaimenovanie.Size = new System.Drawing.Size(125, 20);
-            this.CheckBoxNaimenovanie.TabIndex = 4;
-            this.CheckBoxNaimenovanie.Text = "Наименование";
-            this.CheckBoxNaimenovanie.UseVisualStyleBackColor = true;
+            this.CheckBoxNames.AutoSize = true;
+            this.CheckBoxNames.Checked = true;
+            this.CheckBoxNames.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxNames.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxNames.Location = new System.Drawing.Point(12, 116);
+            this.CheckBoxNames.Name = "CheckBoxNames";
+            this.CheckBoxNames.Size = new System.Drawing.Size(125, 20);
+            this.CheckBoxNames.TabIndex = 4;
+            this.CheckBoxNames.Text = "Наименование";
+            this.CheckBoxNames.UseVisualStyleBackColor = true;
             // 
-            // CheckBoxOborudovanie
+            // CheckBoxDevices
             // 
-            this.CheckBoxOborudovanie.AutoSize = true;
-            this.CheckBoxOborudovanie.Checked = true;
-            this.CheckBoxOborudovanie.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxOborudovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CheckBoxOborudovanie.Location = new System.Drawing.Point(12, 142);
-            this.CheckBoxOborudovanie.Name = "CheckBoxOborudovanie";
-            this.CheckBoxOborudovanie.Size = new System.Drawing.Size(125, 20);
-            this.CheckBoxOborudovanie.TabIndex = 5;
-            this.CheckBoxOborudovanie.Text = "Оборудование";
-            this.CheckBoxOborudovanie.UseVisualStyleBackColor = true;
+            this.CheckBoxDevices.AutoSize = true;
+            this.CheckBoxDevices.Checked = true;
+            this.CheckBoxDevices.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxDevices.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxDevices.Location = new System.Drawing.Point(12, 142);
+            this.CheckBoxDevices.Name = "CheckBoxDevices";
+            this.CheckBoxDevices.Size = new System.Drawing.Size(125, 20);
+            this.CheckBoxDevices.TabIndex = 5;
+            this.CheckBoxDevices.Text = "Оборудование";
+            this.CheckBoxDevices.UseVisualStyleBackColor = true;
             // 
-            // CheckBoxIzmenil
+            // CheckBoxChangeMan
             // 
-            this.CheckBoxIzmenil.AutoSize = true;
-            this.CheckBoxIzmenil.Checked = true;
-            this.CheckBoxIzmenil.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxIzmenil.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CheckBoxIzmenil.Location = new System.Drawing.Point(12, 296);
-            this.CheckBoxIzmenil.Name = "CheckBoxIzmenil";
-            this.CheckBoxIzmenil.Size = new System.Drawing.Size(84, 20);
-            this.CheckBoxIzmenil.TabIndex = 11;
-            this.CheckBoxIzmenil.Text = "Изменил";
-            this.CheckBoxIzmenil.UseVisualStyleBackColor = true;
+            this.CheckBoxChangeMan.AutoSize = true;
+            this.CheckBoxChangeMan.Checked = true;
+            this.CheckBoxChangeMan.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxChangeMan.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxChangeMan.Location = new System.Drawing.Point(12, 296);
+            this.CheckBoxChangeMan.Name = "CheckBoxChangeMan";
+            this.CheckBoxChangeMan.Size = new System.Drawing.Size(84, 20);
+            this.CheckBoxChangeMan.TabIndex = 11;
+            this.CheckBoxChangeMan.Text = "Изменил";
+            this.CheckBoxChangeMan.UseVisualStyleBackColor = true;
             // 
             // CheckBoxIP
             // 
@@ -162,91 +162,91 @@ namespace DevList
             this.CheckBoxHostname.Text = "Hostname";
             this.CheckBoxHostname.UseVisualStyleBackColor = true;
             // 
-            // CheckBoxKommentarii
+            // CheckBoxComments
             // 
-            this.CheckBoxKommentarii.AutoSize = true;
-            this.CheckBoxKommentarii.Checked = true;
-            this.CheckBoxKommentarii.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxKommentarii.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CheckBoxKommentarii.Location = new System.Drawing.Point(12, 218);
-            this.CheckBoxKommentarii.Name = "CheckBoxKommentarii";
-            this.CheckBoxKommentarii.Size = new System.Drawing.Size(116, 20);
-            this.CheckBoxKommentarii.TabIndex = 8;
-            this.CheckBoxKommentarii.Text = "Комментарий";
-            this.CheckBoxKommentarii.UseVisualStyleBackColor = true;
+            this.CheckBoxComments.AutoSize = true;
+            this.CheckBoxComments.Checked = true;
+            this.CheckBoxComments.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxComments.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxComments.Location = new System.Drawing.Point(12, 218);
+            this.CheckBoxComments.Name = "CheckBoxComments";
+            this.CheckBoxComments.Size = new System.Drawing.Size(116, 20);
+            this.CheckBoxComments.TabIndex = 8;
+            this.CheckBoxComments.Text = "Комментарий";
+            this.CheckBoxComments.UseVisualStyleBackColor = true;
             // 
-            // CheckBoxInventarizaciia
+            // CheckBoxInventory
             // 
-            this.CheckBoxInventarizaciia.AutoSize = true;
-            this.CheckBoxInventarizaciia.Checked = true;
-            this.CheckBoxInventarizaciia.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxInventarizaciia.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CheckBoxInventarizaciia.Location = new System.Drawing.Point(12, 192);
-            this.CheckBoxInventarizaciia.Name = "CheckBoxInventarizaciia";
-            this.CheckBoxInventarizaciia.Size = new System.Drawing.Size(139, 20);
-            this.CheckBoxInventarizaciia.TabIndex = 7;
-            this.CheckBoxInventarizaciia.Text = "Инвентаризация";
-            this.CheckBoxInventarizaciia.UseVisualStyleBackColor = true;
+            this.CheckBoxInventory.AutoSize = true;
+            this.CheckBoxInventory.Checked = true;
+            this.CheckBoxInventory.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxInventory.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxInventory.Location = new System.Drawing.Point(12, 192);
+            this.CheckBoxInventory.Name = "CheckBoxInventory";
+            this.CheckBoxInventory.Size = new System.Drawing.Size(139, 20);
+            this.CheckBoxInventory.TabIndex = 7;
+            this.CheckBoxInventory.Text = "Инвентаризация";
+            this.CheckBoxInventory.UseVisualStyleBackColor = true;
             // 
-            // CheckBoxSostoianie
+            // CheckBoxStatus
             // 
-            this.CheckBoxSostoianie.AutoSize = true;
-            this.CheckBoxSostoianie.Checked = true;
-            this.CheckBoxSostoianie.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxSostoianie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CheckBoxSostoianie.Location = new System.Drawing.Point(12, 166);
-            this.CheckBoxSostoianie.Name = "CheckBoxSostoianie";
-            this.CheckBoxSostoianie.Size = new System.Drawing.Size(99, 20);
-            this.CheckBoxSostoianie.TabIndex = 6;
-            this.CheckBoxSostoianie.Text = "Состояние";
-            this.CheckBoxSostoianie.UseVisualStyleBackColor = true;
+            this.CheckBoxStatus.AutoSize = true;
+            this.CheckBoxStatus.Checked = true;
+            this.CheckBoxStatus.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxStatus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckBoxStatus.Location = new System.Drawing.Point(12, 166);
+            this.CheckBoxStatus.Name = "CheckBoxStatus";
+            this.CheckBoxStatus.Size = new System.Drawing.Size(99, 20);
+            this.CheckBoxStatus.TabIndex = 6;
+            this.CheckBoxStatus.Text = "Состояние";
+            this.CheckBoxStatus.UseVisualStyleBackColor = true;
             // 
-            // ButtonZakrit
+            // ButtonClose
             // 
-            this.ButtonZakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonZakrit.Location = new System.Drawing.Point(110, 331);
-            this.ButtonZakrit.Name = "ButtonZakrit";
-            this.ButtonZakrit.Size = new System.Drawing.Size(75, 37);
-            this.ButtonZakrit.TabIndex = 12;
-            this.ButtonZakrit.Text = "Закрыть";
-            this.ButtonZakrit.UseVisualStyleBackColor = true;
-            this.ButtonZakrit.Click += new System.EventHandler(this.ButtonZakrit_Click);
+            this.ButtonClose.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonClose.Location = new System.Drawing.Point(110, 331);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.Size = new System.Drawing.Size(75, 37);
+            this.ButtonClose.TabIndex = 12;
+            this.ButtonClose.Text = "Закрыть";
+            this.ButtonClose.UseVisualStyleBackColor = true;
+            this.ButtonClose.Click += new System.EventHandler(this.Close_Click);
             // 
-            // ButtonVipolnit
+            // ButtonExecute
             // 
-            this.ButtonVipolnit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonVipolnit.Location = new System.Drawing.Point(12, 331);
-            this.ButtonVipolnit.Name = "ButtonVipolnit";
-            this.ButtonVipolnit.Size = new System.Drawing.Size(92, 37);
-            this.ButtonVipolnit.TabIndex = 13;
-            this.ButtonVipolnit.Text = "Выполнить";
-            this.ButtonVipolnit.UseVisualStyleBackColor = true;
-            this.ButtonVipolnit.Click += new System.EventHandler(this.ButtonVipolnit_Click);
+            this.ButtonExecute.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonExecute.Location = new System.Drawing.Point(12, 331);
+            this.ButtonExecute.Name = "ButtonExecute";
+            this.ButtonExecute.Size = new System.Drawing.Size(92, 37);
+            this.ButtonExecute.TabIndex = 13;
+            this.ButtonExecute.Text = "Выполнить";
+            this.ButtonExecute.UseVisualStyleBackColor = true;
+            this.ButtonExecute.Click += new System.EventHandler(this.Execute_Click);
             // 
-            // Kolonki
+            // Columns
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(218, 381);
-            this.Controls.Add(this.ButtonVipolnit);
-            this.Controls.Add(this.ButtonZakrit);
-            this.Controls.Add(this.CheckBoxIzmenil);
+            this.Controls.Add(this.ButtonExecute);
+            this.Controls.Add(this.ButtonClose);
+            this.Controls.Add(this.CheckBoxChangeMan);
             this.Controls.Add(this.CheckBoxIP);
             this.Controls.Add(this.CheckBoxHostname);
-            this.Controls.Add(this.CheckBoxKommentarii);
-            this.Controls.Add(this.CheckBoxInventarizaciia);
-            this.Controls.Add(this.CheckBoxSostoianie);
-            this.Controls.Add(this.CheckBoxOborudovanie);
-            this.Controls.Add(this.CheckBoxNaimenovanie);
-            this.Controls.Add(this.CheckBoxFIO);
-            this.Controls.Add(this.CheckBoxPomeschenie);
-            this.Controls.Add(this.CheckBoxInvNomer);
-            this.Controls.Add(this.CheckBoxDataPriobretenia);
+            this.Controls.Add(this.CheckBoxComments);
+            this.Controls.Add(this.CheckBoxInventory);
+            this.Controls.Add(this.CheckBoxStatus);
+            this.Controls.Add(this.CheckBoxDevices);
+            this.Controls.Add(this.CheckBoxNames);
+            this.Controls.Add(this.CheckBoxPerson);
+            this.Controls.Add(this.CheckBoxRooms);
+            this.Controls.Add(this.CheckBoxNumber);
+            this.Controls.Add(this.CheckBoxDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Kolonki";
+            this.Name = "Columns";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Колонки таблицы";
@@ -257,19 +257,19 @@ namespace DevList
 
         #endregion
 
-        private System.Windows.Forms.CheckBox CheckBoxDataPriobretenia;
-        private System.Windows.Forms.CheckBox CheckBoxInvNomer;
-        private System.Windows.Forms.CheckBox CheckBoxPomeschenie;
-        private System.Windows.Forms.CheckBox CheckBoxFIO;
-        private System.Windows.Forms.CheckBox CheckBoxNaimenovanie;
-        private System.Windows.Forms.CheckBox CheckBoxOborudovanie;
-        private System.Windows.Forms.CheckBox CheckBoxIzmenil;
+        private System.Windows.Forms.CheckBox CheckBoxDate;
+        private System.Windows.Forms.CheckBox CheckBoxNumber;
+        private System.Windows.Forms.CheckBox CheckBoxRooms;
+        private System.Windows.Forms.CheckBox CheckBoxPerson;
+        private System.Windows.Forms.CheckBox CheckBoxNames;
+        private System.Windows.Forms.CheckBox CheckBoxDevices;
+        private System.Windows.Forms.CheckBox CheckBoxChangeMan;
         private System.Windows.Forms.CheckBox CheckBoxIP;
         private System.Windows.Forms.CheckBox CheckBoxHostname;
-        private System.Windows.Forms.CheckBox CheckBoxKommentarii;
-        private System.Windows.Forms.CheckBox CheckBoxInventarizaciia;
-        private System.Windows.Forms.CheckBox CheckBoxSostoianie;
-        private System.Windows.Forms.Button ButtonZakrit;
-        private System.Windows.Forms.Button ButtonVipolnit;
+        private System.Windows.Forms.CheckBox CheckBoxComments;
+        private System.Windows.Forms.CheckBox CheckBoxInventory;
+        private System.Windows.Forms.CheckBox CheckBoxStatus;
+        private System.Windows.Forms.Button ButtonClose;
+        private System.Windows.Forms.Button ButtonExecute;
     }
 }
