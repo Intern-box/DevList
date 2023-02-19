@@ -29,299 +29,299 @@ namespace DevList
         /// </summary>
         private void InitializeComponent()
         {
-            this.LabelInvNomer = new System.Windows.Forms.Label();
-            this.LabelPomeschenie = new System.Windows.Forms.Label();
-            this.LabelNaimenovanie = new System.Windows.Forms.Label();
-            this.LabelOborudovanie = new System.Windows.Forms.Label();
-            this.LabelKommentarii = new System.Windows.Forms.Label();
-            this.InvNomer = new System.Windows.Forms.TextBox();
-            this.Kommentarii = new System.Windows.Forms.TextBox();
-            this.Oborudovanie = new System.Windows.Forms.ComboBox();
-            this.ButtonVipolnit = new System.Windows.Forms.Button();
-            this.ButtonZakrit = new System.Windows.Forms.Button();
-            this.Pomeschenie = new System.Windows.Forms.ComboBox();
-            this.LabelZakrepleno = new System.Windows.Forms.Label();
-            this.Sotrudniki = new System.Windows.Forms.ComboBox();
-            this.ButtonOborudovanieMinus = new System.Windows.Forms.Button();
-            this.ButtonOborudovaniePlus = new System.Windows.Forms.Button();
-            this.ButtonFIOMinus = new System.Windows.Forms.Button();
-            this.ButtonFIOPlus = new System.Windows.Forms.Button();
-            this.ButtonPomeschenieMinus = new System.Windows.Forms.Button();
-            this.ButtonPomescheniePlus = new System.Windows.Forms.Button();
-            this.DataPriobreteniia = new System.Windows.Forms.TextBox();
-            this.LabelDataPriobreteniia = new System.Windows.Forms.Label();
-            this.Sostoianie = new System.Windows.Forms.ComboBox();
-            this.LabelSostoianie = new System.Windows.Forms.Label();
-            this.Inventarizaciia = new System.Windows.Forms.TextBox();
-            this.LabelInventarizaciia = new System.Windows.Forms.Label();
+            this.LabelNumber = new System.Windows.Forms.Label();
+            this.LabelRoom = new System.Windows.Forms.Label();
+            this.LabelNames = new System.Windows.Forms.Label();
+            this.LabelDevices = new System.Windows.Forms.Label();
+            this.LabelComment = new System.Windows.Forms.Label();
+            this.Number = new System.Windows.Forms.TextBox();
+            this.Comment = new System.Windows.Forms.TextBox();
+            this.Devices = new System.Windows.Forms.ComboBox();
+            this.ButtonExecute = new System.Windows.Forms.Button();
+            this.ButtonClose = new System.Windows.Forms.Button();
+            this.Rooms = new System.Windows.Forms.ComboBox();
+            this.LabelEmployees = new System.Windows.Forms.Label();
+            this.Employees = new System.Windows.Forms.ComboBox();
+            this.ButtonDevicesMinus = new System.Windows.Forms.Button();
+            this.ButtonDevicesPlus = new System.Windows.Forms.Button();
+            this.ButtonEmployeesMinus = new System.Windows.Forms.Button();
+            this.ButtonEmployeesPlus = new System.Windows.Forms.Button();
+            this.ButtonRoomsMinus = new System.Windows.Forms.Button();
+            this.ButtonRoomsPlus = new System.Windows.Forms.Button();
+            this.Date = new System.Windows.Forms.TextBox();
+            this.LabelDate = new System.Windows.Forms.Label();
+            this.Status = new System.Windows.Forms.ComboBox();
+            this.LabelStatus = new System.Windows.Forms.Label();
+            this.Inventory = new System.Windows.Forms.TextBox();
+            this.LabelInventory = new System.Windows.Forms.Label();
             this.Hostname = new System.Windows.Forms.TextBox();
             this.LabelHostname = new System.Windows.Forms.Label();
             this.IP = new System.Windows.Forms.TextBox();
             this.LabelIP = new System.Windows.Forms.Label();
-            this.ButtonIzmenilMinus = new System.Windows.Forms.Button();
-            this.ButtonIzmenilPlus = new System.Windows.Forms.Button();
-            this.Izmenil = new System.Windows.Forms.ComboBox();
-            this.LabelIzmenil = new System.Windows.Forms.Label();
-            this.Naimenovanie = new System.Windows.Forms.ComboBox();
-            this.ButtonNaimenovanieMinus = new System.Windows.Forms.Button();
-            this.ButtonNaimenovaniePlus = new System.Windows.Forms.Button();
+            this.ButtonChangeManMinus = new System.Windows.Forms.Button();
+            this.ButtonChangeManPlus = new System.Windows.Forms.Button();
+            this.ChangeMan = new System.Windows.Forms.ComboBox();
+            this.LabelChangeMan = new System.Windows.Forms.Label();
+            this.Names = new System.Windows.Forms.ComboBox();
+            this.ButtonNamesMinus = new System.Windows.Forms.Button();
+            this.ButtonNamesPlus = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // LabelInvNomer
+            // LabelNumber
             // 
-            this.LabelInvNomer.AutoSize = true;
-            this.LabelInvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelInvNomer.Location = new System.Drawing.Point(95, 46);
-            this.LabelInvNomer.Name = "LabelInvNomer";
-            this.LabelInvNomer.Size = new System.Drawing.Size(64, 16);
-            this.LabelInvNomer.TabIndex = 1;
-            this.LabelInvNomer.Text = "Инв. №:";
+            this.LabelNumber.AutoSize = true;
+            this.LabelNumber.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelNumber.Location = new System.Drawing.Point(95, 46);
+            this.LabelNumber.Name = "LabelNumber";
+            this.LabelNumber.Size = new System.Drawing.Size(64, 16);
+            this.LabelNumber.TabIndex = 1;
+            this.LabelNumber.Text = "Инв. №:";
             // 
-            // LabelPomeschenie
+            // LabelRoom
             // 
-            this.LabelPomeschenie.AutoSize = true;
-            this.LabelPomeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelPomeschenie.Location = new System.Drawing.Point(67, 76);
-            this.LabelPomeschenie.Name = "LabelPomeschenie";
-            this.LabelPomeschenie.Size = new System.Drawing.Size(92, 16);
-            this.LabelPomeschenie.TabIndex = 2;
-            this.LabelPomeschenie.Text = "Помещение:";
+            this.LabelRoom.AutoSize = true;
+            this.LabelRoom.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelRoom.Location = new System.Drawing.Point(67, 76);
+            this.LabelRoom.Name = "LabelRoom";
+            this.LabelRoom.Size = new System.Drawing.Size(92, 16);
+            this.LabelRoom.TabIndex = 2;
+            this.LabelRoom.Text = "Помещение:";
             // 
-            // LabelNaimenovanie
+            // LabelNames
             // 
-            this.LabelNaimenovanie.AutoSize = true;
-            this.LabelNaimenovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelNaimenovanie.Location = new System.Drawing.Point(47, 135);
-            this.LabelNaimenovanie.Name = "LabelNaimenovanie";
-            this.LabelNaimenovanie.Size = new System.Drawing.Size(112, 16);
-            this.LabelNaimenovanie.TabIndex = 3;
-            this.LabelNaimenovanie.Text = "Наименование:";
+            this.LabelNames.AutoSize = true;
+            this.LabelNames.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelNames.Location = new System.Drawing.Point(47, 135);
+            this.LabelNames.Name = "LabelNames";
+            this.LabelNames.Size = new System.Drawing.Size(112, 16);
+            this.LabelNames.TabIndex = 3;
+            this.LabelNames.Text = "Наименование:";
             // 
-            // LabelOborudovanie
+            // LabelDevices
             // 
-            this.LabelOborudovanie.AutoSize = true;
-            this.LabelOborudovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelOborudovanie.Location = new System.Drawing.Point(47, 164);
-            this.LabelOborudovanie.Name = "LabelOborudovanie";
-            this.LabelOborudovanie.Size = new System.Drawing.Size(112, 16);
-            this.LabelOborudovanie.TabIndex = 4;
-            this.LabelOborudovanie.Text = "Оборудование:";
+            this.LabelDevices.AutoSize = true;
+            this.LabelDevices.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelDevices.Location = new System.Drawing.Point(47, 164);
+            this.LabelDevices.Name = "LabelDevices";
+            this.LabelDevices.Size = new System.Drawing.Size(112, 16);
+            this.LabelDevices.TabIndex = 4;
+            this.LabelDevices.Text = "Оборудование:";
             // 
-            // LabelKommentarii
+            // LabelComment
             // 
-            this.LabelKommentarii.AutoSize = true;
-            this.LabelKommentarii.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelKommentarii.Location = new System.Drawing.Point(56, 253);
-            this.LabelKommentarii.Name = "LabelKommentarii";
-            this.LabelKommentarii.Size = new System.Drawing.Size(103, 16);
-            this.LabelKommentarii.TabIndex = 5;
-            this.LabelKommentarii.Text = "Комментарий:";
+            this.LabelComment.AutoSize = true;
+            this.LabelComment.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelComment.Location = new System.Drawing.Point(56, 253);
+            this.LabelComment.Name = "LabelComment";
+            this.LabelComment.Size = new System.Drawing.Size(103, 16);
+            this.LabelComment.TabIndex = 5;
+            this.LabelComment.Text = "Комментарий:";
             // 
-            // InvNomer
+            // Number
             // 
-            this.InvNomer.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InvNomer.Location = new System.Drawing.Point(165, 43);
-            this.InvNomer.Name = "InvNomer";
-            this.InvNomer.Size = new System.Drawing.Size(350, 23);
-            this.InvNomer.TabIndex = 2;
+            this.Number.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Number.Location = new System.Drawing.Point(165, 43);
+            this.Number.Name = "Number";
+            this.Number.Size = new System.Drawing.Size(350, 23);
+            this.Number.TabIndex = 2;
             // 
-            // Kommentarii
+            // Comment
             // 
-            this.Kommentarii.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Kommentarii.Location = new System.Drawing.Point(165, 250);
-            this.Kommentarii.Name = "Kommentarii";
-            this.Kommentarii.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.Kommentarii.Size = new System.Drawing.Size(350, 23);
-            this.Kommentarii.TabIndex = 9;
+            this.Comment.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Comment.Location = new System.Drawing.Point(165, 250);
+            this.Comment.Name = "Comment";
+            this.Comment.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.Comment.Size = new System.Drawing.Size(350, 23);
+            this.Comment.TabIndex = 9;
             // 
-            // Oborudovanie
+            // Devices
             // 
-            this.Oborudovanie.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.Oborudovanie.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Oborudovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Oborudovanie.Location = new System.Drawing.Point(165, 161);
-            this.Oborudovanie.Name = "Oborudovanie";
-            this.Oborudovanie.Size = new System.Drawing.Size(350, 24);
-            this.Oborudovanie.TabIndex = 6;
+            this.Devices.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Devices.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Devices.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Devices.Location = new System.Drawing.Point(165, 161);
+            this.Devices.Name = "Devices";
+            this.Devices.Size = new System.Drawing.Size(350, 24);
+            this.Devices.TabIndex = 6;
             // 
-            // ButtonVipolnit
+            // ButtonExecute
             // 
-            this.ButtonVipolnit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonVipolnit.Location = new System.Drawing.Point(331, 367);
-            this.ButtonVipolnit.Name = "ButtonVipolnit";
-            this.ButtonVipolnit.Size = new System.Drawing.Size(89, 29);
-            this.ButtonVipolnit.TabIndex = 23;
-            this.ButtonVipolnit.Text = "Выполнить";
-            this.ButtonVipolnit.UseVisualStyleBackColor = true;
-            this.ButtonVipolnit.Click += new System.EventHandler(this.ButtonVipolnit_Click);
+            this.ButtonExecute.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonExecute.Location = new System.Drawing.Point(331, 367);
+            this.ButtonExecute.Name = "ButtonExecute";
+            this.ButtonExecute.Size = new System.Drawing.Size(89, 29);
+            this.ButtonExecute.TabIndex = 23;
+            this.ButtonExecute.Text = "Выполнить";
+            this.ButtonExecute.UseVisualStyleBackColor = true;
+            this.ButtonExecute.Click += new System.EventHandler(this.ButtonVipolnit_Click);
             // 
-            // ButtonZakrit
+            // ButtonClose
             // 
-            this.ButtonZakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonZakrit.Location = new System.Drawing.Point(426, 367);
-            this.ButtonZakrit.Name = "ButtonZakrit";
-            this.ButtonZakrit.Size = new System.Drawing.Size(89, 29);
-            this.ButtonZakrit.TabIndex = 24;
-            this.ButtonZakrit.Text = "Закрыть";
-            this.ButtonZakrit.UseVisualStyleBackColor = true;
-            this.ButtonZakrit.Click += new System.EventHandler(this.ButtonZakrit_Click);
+            this.ButtonClose.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonClose.Location = new System.Drawing.Point(426, 367);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.Size = new System.Drawing.Size(89, 29);
+            this.ButtonClose.TabIndex = 24;
+            this.ButtonClose.Text = "Закрыть";
+            this.ButtonClose.UseVisualStyleBackColor = true;
+            this.ButtonClose.Click += new System.EventHandler(this.ButtonZakrit_Click);
             // 
-            // Pomeschenie
+            // Rooms
             // 
-            this.Pomeschenie.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.Pomeschenie.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Pomeschenie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Pomeschenie.Location = new System.Drawing.Point(165, 72);
-            this.Pomeschenie.Name = "Pomeschenie";
-            this.Pomeschenie.Size = new System.Drawing.Size(350, 24);
-            this.Pomeschenie.TabIndex = 3;
+            this.Rooms.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Rooms.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Rooms.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Rooms.Location = new System.Drawing.Point(165, 72);
+            this.Rooms.Name = "Rooms";
+            this.Rooms.Size = new System.Drawing.Size(350, 24);
+            this.Rooms.TabIndex = 3;
             // 
-            // LabelZakrepleno
+            // LabelEmployees
             // 
-            this.LabelZakrepleno.AutoSize = true;
-            this.LabelZakrepleno.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelZakrepleno.Location = new System.Drawing.Point(10, 106);
-            this.LabelZakrepleno.Name = "LabelZakrepleno";
-            this.LabelZakrepleno.Size = new System.Drawing.Size(149, 16);
-            this.LabelZakrepleno.TabIndex = 15;
-            this.LabelZakrepleno.Text = "Закреплено за ФИО:";
+            this.LabelEmployees.AutoSize = true;
+            this.LabelEmployees.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelEmployees.Location = new System.Drawing.Point(10, 106);
+            this.LabelEmployees.Name = "LabelEmployees";
+            this.LabelEmployees.Size = new System.Drawing.Size(149, 16);
+            this.LabelEmployees.TabIndex = 15;
+            this.LabelEmployees.Text = "Закреплено за ФИО:";
             // 
-            // Sotrudniki
+            // Employees
             // 
-            this.Sotrudniki.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.Sotrudniki.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Sotrudniki.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Sotrudniki.Location = new System.Drawing.Point(165, 102);
-            this.Sotrudniki.Name = "Sotrudniki";
-            this.Sotrudniki.Size = new System.Drawing.Size(350, 24);
-            this.Sotrudniki.TabIndex = 4;
+            this.Employees.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Employees.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Employees.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Employees.Location = new System.Drawing.Point(165, 102);
+            this.Employees.Name = "Employees";
+            this.Employees.Size = new System.Drawing.Size(350, 24);
+            this.Employees.TabIndex = 4;
             // 
-            // ButtonOborudovanieMinus
+            // ButtonDevicesMinus
             // 
-            this.ButtonOborudovanieMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonOborudovanieMinus.Location = new System.Drawing.Point(546, 160);
-            this.ButtonOborudovanieMinus.Name = "ButtonOborudovanieMinus";
-            this.ButtonOborudovanieMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonOborudovanieMinus.TabIndex = 20;
-            this.ButtonOborudovanieMinus.Text = "-";
-            this.ButtonOborudovanieMinus.UseVisualStyleBackColor = true;
-            this.ButtonOborudovanieMinus.Click += new System.EventHandler(this.ButtonOborudovanieMinus_Click);
+            this.ButtonDevicesMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonDevicesMinus.Location = new System.Drawing.Point(546, 160);
+            this.ButtonDevicesMinus.Name = "ButtonDevicesMinus";
+            this.ButtonDevicesMinus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonDevicesMinus.TabIndex = 20;
+            this.ButtonDevicesMinus.Text = "-";
+            this.ButtonDevicesMinus.UseVisualStyleBackColor = true;
+            this.ButtonDevicesMinus.Click += new System.EventHandler(this.ButtonOborudovanieMinus_Click);
             // 
-            // ButtonOborudovaniePlus
+            // ButtonDevicesPlus
             // 
-            this.ButtonOborudovaniePlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonOborudovaniePlus.Location = new System.Drawing.Point(521, 160);
-            this.ButtonOborudovaniePlus.Name = "ButtonOborudovaniePlus";
-            this.ButtonOborudovaniePlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonOborudovaniePlus.TabIndex = 19;
-            this.ButtonOborudovaniePlus.Text = "+";
-            this.ButtonOborudovaniePlus.UseVisualStyleBackColor = true;
-            this.ButtonOborudovaniePlus.Click += new System.EventHandler(this.ButtonOborudovaniePlus_Click);
+            this.ButtonDevicesPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonDevicesPlus.Location = new System.Drawing.Point(521, 160);
+            this.ButtonDevicesPlus.Name = "ButtonDevicesPlus";
+            this.ButtonDevicesPlus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonDevicesPlus.TabIndex = 19;
+            this.ButtonDevicesPlus.Text = "+";
+            this.ButtonDevicesPlus.UseVisualStyleBackColor = true;
+            this.ButtonDevicesPlus.Click += new System.EventHandler(this.ButtonOborudovaniePlus_Click);
             // 
-            // ButtonFIOMinus
+            // ButtonEmployeesMinus
             // 
-            this.ButtonFIOMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonFIOMinus.Location = new System.Drawing.Point(546, 101);
-            this.ButtonFIOMinus.Name = "ButtonFIOMinus";
-            this.ButtonFIOMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonFIOMinus.TabIndex = 16;
-            this.ButtonFIOMinus.Text = "-";
-            this.ButtonFIOMinus.UseVisualStyleBackColor = true;
-            this.ButtonFIOMinus.Click += new System.EventHandler(this.ButtonFIOMinus_Click);
+            this.ButtonEmployeesMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonEmployeesMinus.Location = new System.Drawing.Point(546, 101);
+            this.ButtonEmployeesMinus.Name = "ButtonEmployeesMinus";
+            this.ButtonEmployeesMinus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonEmployeesMinus.TabIndex = 16;
+            this.ButtonEmployeesMinus.Text = "-";
+            this.ButtonEmployeesMinus.UseVisualStyleBackColor = true;
+            this.ButtonEmployeesMinus.Click += new System.EventHandler(this.ButtonFIOMinus_Click);
             // 
-            // ButtonFIOPlus
+            // ButtonEmployeesPlus
             // 
-            this.ButtonFIOPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonFIOPlus.Location = new System.Drawing.Point(521, 101);
-            this.ButtonFIOPlus.Name = "ButtonFIOPlus";
-            this.ButtonFIOPlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonFIOPlus.TabIndex = 15;
-            this.ButtonFIOPlus.Text = "+";
-            this.ButtonFIOPlus.UseVisualStyleBackColor = true;
-            this.ButtonFIOPlus.Click += new System.EventHandler(this.ButtonFIOPlus_Click);
+            this.ButtonEmployeesPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonEmployeesPlus.Location = new System.Drawing.Point(521, 101);
+            this.ButtonEmployeesPlus.Name = "ButtonEmployeesPlus";
+            this.ButtonEmployeesPlus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonEmployeesPlus.TabIndex = 15;
+            this.ButtonEmployeesPlus.Text = "+";
+            this.ButtonEmployeesPlus.UseVisualStyleBackColor = true;
+            this.ButtonEmployeesPlus.Click += new System.EventHandler(this.ButtonFIOPlus_Click);
             // 
-            // ButtonPomeschenieMinus
+            // ButtonRoomsMinus
             // 
-            this.ButtonPomeschenieMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonPomeschenieMinus.Location = new System.Drawing.Point(546, 71);
-            this.ButtonPomeschenieMinus.Name = "ButtonPomeschenieMinus";
-            this.ButtonPomeschenieMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonPomeschenieMinus.TabIndex = 14;
-            this.ButtonPomeschenieMinus.Text = "-";
-            this.ButtonPomeschenieMinus.UseVisualStyleBackColor = true;
-            this.ButtonPomeschenieMinus.Click += new System.EventHandler(this.ButtonPomeschenieMinus_Click);
+            this.ButtonRoomsMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonRoomsMinus.Location = new System.Drawing.Point(546, 71);
+            this.ButtonRoomsMinus.Name = "ButtonRoomsMinus";
+            this.ButtonRoomsMinus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonRoomsMinus.TabIndex = 14;
+            this.ButtonRoomsMinus.Text = "-";
+            this.ButtonRoomsMinus.UseVisualStyleBackColor = true;
+            this.ButtonRoomsMinus.Click += new System.EventHandler(this.ButtonPomeschenieMinus_Click);
             // 
-            // ButtonPomescheniePlus
+            // ButtonRoomsPlus
             // 
-            this.ButtonPomescheniePlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonPomescheniePlus.Location = new System.Drawing.Point(521, 71);
-            this.ButtonPomescheniePlus.Name = "ButtonPomescheniePlus";
-            this.ButtonPomescheniePlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonPomescheniePlus.TabIndex = 13;
-            this.ButtonPomescheniePlus.Text = "+";
-            this.ButtonPomescheniePlus.UseVisualStyleBackColor = true;
-            this.ButtonPomescheniePlus.Click += new System.EventHandler(this.ButtonPomescheniePlus_Click);
+            this.ButtonRoomsPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonRoomsPlus.Location = new System.Drawing.Point(521, 71);
+            this.ButtonRoomsPlus.Name = "ButtonRoomsPlus";
+            this.ButtonRoomsPlus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonRoomsPlus.TabIndex = 13;
+            this.ButtonRoomsPlus.Text = "+";
+            this.ButtonRoomsPlus.UseVisualStyleBackColor = true;
+            this.ButtonRoomsPlus.Click += new System.EventHandler(this.ButtonPomescheniePlus_Click);
             // 
-            // DataPriobreteniia
+            // Date
             // 
-            this.DataPriobreteniia.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DataPriobreteniia.Location = new System.Drawing.Point(165, 14);
-            this.DataPriobreteniia.Name = "DataPriobreteniia";
-            this.DataPriobreteniia.Size = new System.Drawing.Size(350, 23);
-            this.DataPriobreteniia.TabIndex = 1;
+            this.Date.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Date.Location = new System.Drawing.Point(165, 14);
+            this.Date.Name = "Date";
+            this.Date.Size = new System.Drawing.Size(350, 23);
+            this.Date.TabIndex = 1;
             // 
-            // LabelDataPriobreteniia
+            // LabelDate
             // 
-            this.LabelDataPriobreteniia.AutoSize = true;
-            this.LabelDataPriobreteniia.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelDataPriobreteniia.Location = new System.Drawing.Point(12, 17);
-            this.LabelDataPriobreteniia.Name = "LabelDataPriobreteniia";
-            this.LabelDataPriobreteniia.Size = new System.Drawing.Size(147, 16);
-            this.LabelDataPriobreteniia.TabIndex = 59;
-            this.LabelDataPriobreteniia.Text = "Дата приобретения:";
+            this.LabelDate.AutoSize = true;
+            this.LabelDate.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelDate.Location = new System.Drawing.Point(12, 17);
+            this.LabelDate.Name = "LabelDate";
+            this.LabelDate.Size = new System.Drawing.Size(147, 16);
+            this.LabelDate.TabIndex = 59;
+            this.LabelDate.Text = "Дата приобретения:";
             // 
-            // Sostoianie
+            // Status
             // 
-            this.Sostoianie.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.Sostoianie.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Sostoianie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Sostoianie.Items.AddRange(new object[] {
+            this.Status.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Status.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Status.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Status.Items.AddRange(new object[] {
             "рабочее",
             "в ремонте",
             "сломано",
             "утеряно"});
-            this.Sostoianie.Location = new System.Drawing.Point(165, 191);
-            this.Sostoianie.Name = "Sostoianie";
-            this.Sostoianie.Size = new System.Drawing.Size(350, 24);
-            this.Sostoianie.TabIndex = 7;
+            this.Status.Location = new System.Drawing.Point(165, 191);
+            this.Status.Name = "Status";
+            this.Status.Size = new System.Drawing.Size(350, 24);
+            this.Status.TabIndex = 7;
             // 
-            // LabelSostoianie
+            // LabelStatus
             // 
-            this.LabelSostoianie.AutoSize = true;
-            this.LabelSostoianie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelSostoianie.Location = new System.Drawing.Point(73, 194);
-            this.LabelSostoianie.Name = "LabelSostoianie";
-            this.LabelSostoianie.Size = new System.Drawing.Size(86, 16);
-            this.LabelSostoianie.TabIndex = 61;
-            this.LabelSostoianie.Text = "Состояние:";
+            this.LabelStatus.AutoSize = true;
+            this.LabelStatus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelStatus.Location = new System.Drawing.Point(73, 194);
+            this.LabelStatus.Name = "LabelStatus";
+            this.LabelStatus.Size = new System.Drawing.Size(86, 16);
+            this.LabelStatus.TabIndex = 61;
+            this.LabelStatus.Text = "Состояние:";
             // 
-            // Inventarizaciia
+            // Inventory
             // 
-            this.Inventarizaciia.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Inventarizaciia.Location = new System.Drawing.Point(165, 221);
-            this.Inventarizaciia.Name = "Inventarizaciia";
-            this.Inventarizaciia.Size = new System.Drawing.Size(350, 23);
-            this.Inventarizaciia.TabIndex = 8;
+            this.Inventory.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Inventory.Location = new System.Drawing.Point(165, 221);
+            this.Inventory.Name = "Inventory";
+            this.Inventory.Size = new System.Drawing.Size(350, 23);
+            this.Inventory.TabIndex = 8;
             // 
-            // LabelInventarizaciia
+            // LabelInventory
             // 
-            this.LabelInventarizaciia.AutoSize = true;
-            this.LabelInventarizaciia.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelInventarizaciia.Location = new System.Drawing.Point(41, 224);
-            this.LabelInventarizaciia.Name = "LabelInventarizaciia";
-            this.LabelInventarizaciia.Size = new System.Drawing.Size(118, 16);
-            this.LabelInventarizaciia.TabIndex = 63;
-            this.LabelInventarizaciia.Text = "Инветаризация:";
+            this.LabelInventory.AutoSize = true;
+            this.LabelInventory.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelInventory.Location = new System.Drawing.Point(41, 224);
+            this.LabelInventory.Name = "LabelInventory";
+            this.LabelInventory.Size = new System.Drawing.Size(118, 16);
+            this.LabelInventory.TabIndex = 63;
+            this.LabelInventory.Text = "Инветаризация:";
             // 
             // Hostname
             // 
@@ -359,127 +359,127 @@ namespace DevList
             this.LabelIP.TabIndex = 67;
             this.LabelIP.Text = "IP:";
             // 
-            // ButtonIzmenilMinus
+            // ButtonChangeManMinus
             // 
-            this.ButtonIzmenilMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonIzmenilMinus.Location = new System.Drawing.Point(546, 336);
-            this.ButtonIzmenilMinus.Name = "ButtonIzmenilMinus";
-            this.ButtonIzmenilMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonIzmenilMinus.TabIndex = 22;
-            this.ButtonIzmenilMinus.Text = "-";
-            this.ButtonIzmenilMinus.UseVisualStyleBackColor = true;
-            this.ButtonIzmenilMinus.Click += new System.EventHandler(this.ButtonIzmenilMinus_Click);
+            this.ButtonChangeManMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonChangeManMinus.Location = new System.Drawing.Point(546, 336);
+            this.ButtonChangeManMinus.Name = "ButtonChangeManMinus";
+            this.ButtonChangeManMinus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonChangeManMinus.TabIndex = 22;
+            this.ButtonChangeManMinus.Text = "-";
+            this.ButtonChangeManMinus.UseVisualStyleBackColor = true;
+            this.ButtonChangeManMinus.Click += new System.EventHandler(this.ButtonIzmenilMinus_Click);
             // 
-            // ButtonIzmenilPlus
+            // ButtonChangeManPlus
             // 
-            this.ButtonIzmenilPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonIzmenilPlus.Location = new System.Drawing.Point(521, 336);
-            this.ButtonIzmenilPlus.Name = "ButtonIzmenilPlus";
-            this.ButtonIzmenilPlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonIzmenilPlus.TabIndex = 21;
-            this.ButtonIzmenilPlus.Text = "+";
-            this.ButtonIzmenilPlus.UseVisualStyleBackColor = true;
-            this.ButtonIzmenilPlus.Click += new System.EventHandler(this.ButtonIzmenilPlus_Click);
+            this.ButtonChangeManPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonChangeManPlus.Location = new System.Drawing.Point(521, 336);
+            this.ButtonChangeManPlus.Name = "ButtonChangeManPlus";
+            this.ButtonChangeManPlus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonChangeManPlus.TabIndex = 21;
+            this.ButtonChangeManPlus.Text = "+";
+            this.ButtonChangeManPlus.UseVisualStyleBackColor = true;
+            this.ButtonChangeManPlus.Click += new System.EventHandler(this.ButtonIzmenilPlus_Click);
             // 
-            // Izmenil
+            // ChangeMan
             // 
-            this.Izmenil.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.Izmenil.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Izmenil.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Izmenil.Location = new System.Drawing.Point(165, 337);
-            this.Izmenil.Name = "Izmenil";
-            this.Izmenil.Size = new System.Drawing.Size(350, 24);
-            this.Izmenil.TabIndex = 12;
+            this.ChangeMan.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.ChangeMan.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ChangeMan.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChangeMan.Location = new System.Drawing.Point(165, 337);
+            this.ChangeMan.Name = "ChangeMan";
+            this.ChangeMan.Size = new System.Drawing.Size(350, 24);
+            this.ChangeMan.TabIndex = 12;
             // 
-            // LabelIzmenil
+            // LabelChangeMan
             // 
-            this.LabelIzmenil.AutoSize = true;
-            this.LabelIzmenil.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelIzmenil.Location = new System.Drawing.Point(53, 340);
-            this.LabelIzmenil.Name = "LabelIzmenil";
-            this.LabelIzmenil.Size = new System.Drawing.Size(106, 16);
-            this.LabelIzmenil.TabIndex = 70;
-            this.LabelIzmenil.Text = "Изменил ФИО:";
+            this.LabelChangeMan.AutoSize = true;
+            this.LabelChangeMan.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelChangeMan.Location = new System.Drawing.Point(53, 340);
+            this.LabelChangeMan.Name = "LabelChangeMan";
+            this.LabelChangeMan.Size = new System.Drawing.Size(106, 16);
+            this.LabelChangeMan.TabIndex = 70;
+            this.LabelChangeMan.Text = "Изменил ФИО:";
             // 
-            // Naimenovanie
+            // Names
             // 
-            this.Naimenovanie.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.Naimenovanie.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Naimenovanie.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Naimenovanie.Location = new System.Drawing.Point(165, 131);
-            this.Naimenovanie.Name = "Naimenovanie";
-            this.Naimenovanie.Size = new System.Drawing.Size(350, 24);
-            this.Naimenovanie.TabIndex = 5;
+            this.Names.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.Names.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Names.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Names.Location = new System.Drawing.Point(165, 131);
+            this.Names.Name = "Names";
+            this.Names.Size = new System.Drawing.Size(350, 24);
+            this.Names.TabIndex = 5;
             // 
-            // ButtonNaimenovanieMinus
+            // ButtonNamesMinus
             // 
-            this.ButtonNaimenovanieMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonNaimenovanieMinus.Location = new System.Drawing.Point(546, 130);
-            this.ButtonNaimenovanieMinus.Name = "ButtonNaimenovanieMinus";
-            this.ButtonNaimenovanieMinus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonNaimenovanieMinus.TabIndex = 18;
-            this.ButtonNaimenovanieMinus.Text = "-";
-            this.ButtonNaimenovanieMinus.UseVisualStyleBackColor = true;
-            this.ButtonNaimenovanieMinus.Click += new System.EventHandler(this.ButtonNaimenovanieMinus_Click);
+            this.ButtonNamesMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonNamesMinus.Location = new System.Drawing.Point(546, 130);
+            this.ButtonNamesMinus.Name = "ButtonNamesMinus";
+            this.ButtonNamesMinus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonNamesMinus.TabIndex = 18;
+            this.ButtonNamesMinus.Text = "-";
+            this.ButtonNamesMinus.UseVisualStyleBackColor = true;
+            this.ButtonNamesMinus.Click += new System.EventHandler(this.ButtonNaimenovanieMinus_Click);
             // 
-            // ButtonNaimenovaniePlus
+            // ButtonNamesPlus
             // 
-            this.ButtonNaimenovaniePlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonNaimenovaniePlus.Location = new System.Drawing.Point(521, 130);
-            this.ButtonNaimenovaniePlus.Name = "ButtonNaimenovaniePlus";
-            this.ButtonNaimenovaniePlus.Size = new System.Drawing.Size(21, 26);
-            this.ButtonNaimenovaniePlus.TabIndex = 17;
-            this.ButtonNaimenovaniePlus.Text = "+";
-            this.ButtonNaimenovaniePlus.UseVisualStyleBackColor = true;
-            this.ButtonNaimenovaniePlus.Click += new System.EventHandler(this.ButtonNaimenovaniePlus_Click);
+            this.ButtonNamesPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonNamesPlus.Location = new System.Drawing.Point(521, 130);
+            this.ButtonNamesPlus.Name = "ButtonNamesPlus";
+            this.ButtonNamesPlus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonNamesPlus.TabIndex = 17;
+            this.ButtonNamesPlus.Text = "+";
+            this.ButtonNamesPlus.UseVisualStyleBackColor = true;
+            this.ButtonNamesPlus.Click += new System.EventHandler(this.ButtonNaimenovaniePlus_Click);
             // 
-            // DobavitPravitPoisk
+            // BaseSearchEditWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(583, 409);
-            this.Controls.Add(this.ButtonNaimenovanieMinus);
-            this.Controls.Add(this.ButtonNaimenovaniePlus);
-            this.Controls.Add(this.Naimenovanie);
-            this.Controls.Add(this.ButtonIzmenilMinus);
-            this.Controls.Add(this.ButtonIzmenilPlus);
-            this.Controls.Add(this.Izmenil);
-            this.Controls.Add(this.LabelIzmenil);
+            this.Controls.Add(this.ButtonNamesMinus);
+            this.Controls.Add(this.ButtonNamesPlus);
+            this.Controls.Add(this.Names);
+            this.Controls.Add(this.ButtonChangeManMinus);
+            this.Controls.Add(this.ButtonChangeManPlus);
+            this.Controls.Add(this.ChangeMan);
+            this.Controls.Add(this.LabelChangeMan);
             this.Controls.Add(this.IP);
             this.Controls.Add(this.LabelIP);
             this.Controls.Add(this.Hostname);
             this.Controls.Add(this.LabelHostname);
-            this.Controls.Add(this.Inventarizaciia);
-            this.Controls.Add(this.LabelInventarizaciia);
-            this.Controls.Add(this.Sostoianie);
-            this.Controls.Add(this.LabelSostoianie);
-            this.Controls.Add(this.DataPriobreteniia);
-            this.Controls.Add(this.LabelDataPriobreteniia);
-            this.Controls.Add(this.ButtonOborudovanieMinus);
-            this.Controls.Add(this.ButtonOborudovaniePlus);
-            this.Controls.Add(this.ButtonFIOMinus);
-            this.Controls.Add(this.ButtonFIOPlus);
-            this.Controls.Add(this.ButtonPomeschenieMinus);
-            this.Controls.Add(this.ButtonPomescheniePlus);
-            this.Controls.Add(this.Sotrudniki);
-            this.Controls.Add(this.LabelZakrepleno);
-            this.Controls.Add(this.Pomeschenie);
-            this.Controls.Add(this.ButtonZakrit);
-            this.Controls.Add(this.ButtonVipolnit);
-            this.Controls.Add(this.Oborudovanie);
-            this.Controls.Add(this.Kommentarii);
-            this.Controls.Add(this.InvNomer);
-            this.Controls.Add(this.LabelKommentarii);
-            this.Controls.Add(this.LabelOborudovanie);
-            this.Controls.Add(this.LabelNaimenovanie);
-            this.Controls.Add(this.LabelPomeschenie);
-            this.Controls.Add(this.LabelInvNomer);
+            this.Controls.Add(this.Inventory);
+            this.Controls.Add(this.LabelInventory);
+            this.Controls.Add(this.Status);
+            this.Controls.Add(this.LabelStatus);
+            this.Controls.Add(this.Date);
+            this.Controls.Add(this.LabelDate);
+            this.Controls.Add(this.ButtonDevicesMinus);
+            this.Controls.Add(this.ButtonDevicesPlus);
+            this.Controls.Add(this.ButtonEmployeesMinus);
+            this.Controls.Add(this.ButtonEmployeesPlus);
+            this.Controls.Add(this.ButtonRoomsMinus);
+            this.Controls.Add(this.ButtonRoomsPlus);
+            this.Controls.Add(this.Employees);
+            this.Controls.Add(this.LabelEmployees);
+            this.Controls.Add(this.Rooms);
+            this.Controls.Add(this.ButtonClose);
+            this.Controls.Add(this.ButtonExecute);
+            this.Controls.Add(this.Devices);
+            this.Controls.Add(this.Comment);
+            this.Controls.Add(this.Number);
+            this.Controls.Add(this.LabelComment);
+            this.Controls.Add(this.LabelDevices);
+            this.Controls.Add(this.LabelNames);
+            this.Controls.Add(this.LabelRoom);
+            this.Controls.Add(this.LabelNumber);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "DobavitPravitPoisk";
+            this.Name = "BaseSearchEditWindow";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.DobavitPravitPoisk_Load);
@@ -490,41 +490,41 @@ namespace DevList
         }
 
         #endregion
-        private System.Windows.Forms.Label LabelInvNomer;
-        private System.Windows.Forms.Label LabelPomeschenie;
-        private System.Windows.Forms.Label LabelNaimenovanie;
-        private System.Windows.Forms.Label LabelOborudovanie;
-        private System.Windows.Forms.Label LabelKommentarii;
-        private System.Windows.Forms.TextBox InvNomer;
-        private System.Windows.Forms.TextBox Kommentarii;
-        private System.Windows.Forms.ComboBox Oborudovanie;
-        private System.Windows.Forms.Button ButtonVipolnit;
-        private System.Windows.Forms.Button ButtonZakrit;
-        private System.Windows.Forms.ComboBox Pomeschenie;
-        private System.Windows.Forms.Label LabelZakrepleno;
-        private System.Windows.Forms.ComboBox Sotrudniki;
-        private System.Windows.Forms.Button ButtonOborudovanieMinus;
-        private System.Windows.Forms.Button ButtonOborudovaniePlus;
-        private System.Windows.Forms.Button ButtonFIOMinus;
-        private System.Windows.Forms.Button ButtonFIOPlus;
-        private System.Windows.Forms.Button ButtonPomeschenieMinus;
-        private System.Windows.Forms.Button ButtonPomescheniePlus;
-        private System.Windows.Forms.TextBox DataPriobreteniia;
-        private System.Windows.Forms.Label LabelDataPriobreteniia;
-        private System.Windows.Forms.ComboBox Sostoianie;
-        private System.Windows.Forms.Label LabelSostoianie;
-        private System.Windows.Forms.TextBox Inventarizaciia;
-        private System.Windows.Forms.Label LabelInventarizaciia;
+        private System.Windows.Forms.Label LabelNumber;
+        private System.Windows.Forms.Label LabelRoom;
+        private System.Windows.Forms.Label LabelNames;
+        private System.Windows.Forms.Label LabelDevices;
+        private System.Windows.Forms.Label LabelComment;
+        private System.Windows.Forms.TextBox Number;
+        private System.Windows.Forms.TextBox Comment;
+        private System.Windows.Forms.ComboBox Devices;
+        private System.Windows.Forms.Button ButtonExecute;
+        private System.Windows.Forms.Button ButtonClose;
+        private System.Windows.Forms.ComboBox Rooms;
+        private System.Windows.Forms.Label LabelEmployees;
+        private System.Windows.Forms.ComboBox Employees;
+        private System.Windows.Forms.Button ButtonDevicesMinus;
+        private System.Windows.Forms.Button ButtonDevicesPlus;
+        private System.Windows.Forms.Button ButtonEmployeesMinus;
+        private System.Windows.Forms.Button ButtonEmployeesPlus;
+        private System.Windows.Forms.Button ButtonRoomsMinus;
+        private System.Windows.Forms.Button ButtonRoomsPlus;
+        private System.Windows.Forms.TextBox Date;
+        private System.Windows.Forms.Label LabelDate;
+        private System.Windows.Forms.ComboBox Status;
+        private System.Windows.Forms.Label LabelStatus;
+        private System.Windows.Forms.TextBox Inventory;
+        private System.Windows.Forms.Label LabelInventory;
         private System.Windows.Forms.TextBox Hostname;
         private System.Windows.Forms.Label LabelHostname;
         private System.Windows.Forms.TextBox IP;
         private System.Windows.Forms.Label LabelIP;
-        private System.Windows.Forms.Button ButtonIzmenilMinus;
-        private System.Windows.Forms.Button ButtonIzmenilPlus;
-        private System.Windows.Forms.ComboBox Izmenil;
-        private System.Windows.Forms.Label LabelIzmenil;
-        private System.Windows.Forms.ComboBox Naimenovanie;
-        private System.Windows.Forms.Button ButtonNaimenovanieMinus;
-        private System.Windows.Forms.Button ButtonNaimenovaniePlus;
+        private System.Windows.Forms.Button ButtonChangeManMinus;
+        private System.Windows.Forms.Button ButtonChangeManPlus;
+        private System.Windows.Forms.ComboBox ChangeMan;
+        private System.Windows.Forms.Label LabelChangeMan;
+        private System.Windows.Forms.ComboBox Names;
+        private System.Windows.Forms.Button ButtonNamesMinus;
+        private System.Windows.Forms.Button ButtonNamesPlus;
     }
 }
