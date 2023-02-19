@@ -11,15 +11,15 @@ using System.IO;
 
 namespace DevList
 {
-    public partial class PravitSpisok : Form
+    public partial class EditLists : Form
     {
         int nomerStolbca;
 
-        INIFail iniFail;
+        INIFile iniFail;
 
         public string rezultat;
 
-        public PravitSpisok(string zagolovok, int nomerStolbca, INIFail iniFail)
+        public EditLists(string zagolovok, int nomerStolbca, INIFile iniFail)
         {
             InitializeComponent();
 
@@ -36,25 +36,25 @@ namespace DevList
             {
                 if (nomerStolbca == 3)  // Помещение
                 {
-                    Spisok spisok = new Spisok(iniFail.Pomescheniia);
+                    List spisok = new List(iniFail.Pomescheniia);
 
                     ElementSpiska.Items.AddRange(spisok.Elementi);
                 }
                 if (nomerStolbca == 4)  // Закреплено за
                 {
-                    Spisok spisok = new Spisok(iniFail.Sotrudniki);
+                    List spisok = new List(iniFail.Sotrudniki);
 
                     ElementSpiska.Items.AddRange(spisok.Elementi);
                 }
                 if (nomerStolbca == 5)  // Наименование
                 {
-                    Spisok spisok = new Spisok(iniFail.Naimenovaniia);
+                    List spisok = new List(iniFail.Naimenovaniia);
 
                     ElementSpiska.Items.AddRange(spisok.Elementi);
                 }
                 if (nomerStolbca == 6)  // Оборудование
                 {
-                    Spisok spisok = new Spisok(iniFail.Oborudovanie);
+                    List spisok = new List(iniFail.Oborudovanie);
 
                     ElementSpiska.Items.AddRange(spisok.Elementi);
                 }
@@ -70,14 +70,14 @@ namespace DevList
                 }
                 if (nomerStolbca == 12) // Изменил
                 {
-                    Spisok spisok = new Spisok(iniFail.Sotrudniki);
+                    List spisok = new List(iniFail.Sotrudniki);
 
                     ElementSpiska.Items.AddRange(spisok.Elementi);
                 }
             }
             if (Text == "DevList - Комплект правка")
             {
-                Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+                List spisok = new List(iniFail.Komplektuiuschie);
 
                 ElementSpiska.Items.AddRange(spisok.Elementi);
             }
@@ -99,7 +99,7 @@ namespace DevList
         {
             if (nomerStolbca == 3)  // Помещение
             {
-                Spisok spisok = new Spisok(iniFail.Pomescheniia);
+                List spisok = new List(iniFail.Pomescheniia);
 
                 spisok.Dobavit(ElementSpiska.Text);
 
@@ -109,7 +109,7 @@ namespace DevList
             }
             if (nomerStolbca == 4)  // Закреплено за
             {
-                Spisok spisok = new Spisok(iniFail.Sotrudniki);
+                List spisok = new List(iniFail.Sotrudniki);
 
                 spisok.Dobavit(ElementSpiska.Text);
 
@@ -119,7 +119,7 @@ namespace DevList
             }
             if (nomerStolbca == 5)  // Наименования
             {
-                Spisok spisok = new Spisok(iniFail.Naimenovaniia);
+                List spisok = new List(iniFail.Naimenovaniia);
 
                 spisok.Dobavit(ElementSpiska.Text);
 
@@ -129,7 +129,7 @@ namespace DevList
             }
             if (nomerStolbca == 6)  // Оборудование
             {
-                Spisok spisok = new Spisok(iniFail.Oborudovanie);
+                List spisok = new List(iniFail.Oborudovanie);
 
                 spisok.Dobavit(ElementSpiska.Text);
 
@@ -139,7 +139,7 @@ namespace DevList
             }
             if (nomerStolbca == 12) // Изменил
             {
-                Spisok spisok = new Spisok(iniFail.Sotrudniki);
+                List spisok = new List(iniFail.Sotrudniki);
 
                 spisok.Dobavit(ElementSpiska.Text);
 
@@ -153,7 +153,7 @@ namespace DevList
         {
             if (nomerStolbca == 3)  // Помещение
             {
-                Spisok spisok = new Spisok(iniFail.Pomescheniia);
+                List spisok = new List(iniFail.Pomescheniia);
 
                 spisok.Udalit(ElementSpiska.Text);
 
@@ -163,7 +163,7 @@ namespace DevList
             }
             if (nomerStolbca == 4)  // Закреплено за
             {
-                Spisok spisok = new Spisok(iniFail.Sotrudniki);
+                List spisok = new List(iniFail.Sotrudniki);
 
                 spisok.Udalit(ElementSpiska.Text);
 
@@ -173,7 +173,7 @@ namespace DevList
             }
             if (nomerStolbca == 5)  // Наименование
             {
-                Spisok spisok = new Spisok(iniFail.Naimenovaniia);
+                List spisok = new List(iniFail.Naimenovaniia);
 
                 spisok.Udalit(ElementSpiska.Text);
 
@@ -183,7 +183,7 @@ namespace DevList
             }
             if (nomerStolbca == 6)  // Оборудование
             {
-                Spisok spisok = new Spisok(iniFail.Oborudovanie);
+                List spisok = new List(iniFail.Oborudovanie);
 
                 spisok.Udalit(ElementSpiska.Text);
 
@@ -193,7 +193,7 @@ namespace DevList
             }
             if (nomerStolbca == 12) // Изменил
             {
-                Spisok spisok = new Spisok(iniFail.Sotrudniki);
+                List spisok = new List(iniFail.Sotrudniki);
 
                 spisok.Udalit(ElementSpiska.Text);
 

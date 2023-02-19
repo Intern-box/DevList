@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class Otcheti : Form
+    public partial class Reports : Form
     {
-        INIFail iniFail;
+        INIFile iniFail;
 
         string tipOtcheta;
 
-        Baza baza;
+        DataBase baza;
 
-        public Otcheti(INIFail iniFail, Baza baza, string tipOtcheta)
+        public Reports(INIFile iniFail, DataBase baza, string tipOtcheta)
         {
             InitializeComponent();
 
@@ -33,7 +33,7 @@ namespace DevList
         {
             string[] zapros = new string[baza.Tablica[0].Length];
 
-            Spisok oborudovanie = new Spisok(iniFail.Oborudovanie);
+            List oborudovanie = new List(iniFail.Oborudovanie);
 
             // Выводим список и кол-во оборудования 
             if (tipOtcheta == "PoTipam")
@@ -52,7 +52,7 @@ namespace DevList
             // Выбор помещения
             if (tipOtcheta == "VPomeschenii")
             {
-                PravitSpisok podgotovka = new PravitSpisok("DevList - Правка", 3, iniFail);
+                EditLists podgotovka = new EditLists("DevList - Правка", 3, iniFail);
 
                 podgotovka.ShowDialog();
 

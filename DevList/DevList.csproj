@@ -47,95 +47,95 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ADobavitPravitPoisk.cs">
+    <Compile Include="BaseSearchEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Baza.cs" />
-    <Compile Include="KDobavitPravitPoisk.cs">
+    <Compile Include="DataBase.cs" />
+    <Compile Include="ContextSearchEditWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KDobavitPravitPoisk.Designer.cs">
-      <DependentUpon>KDobavitPravitPoisk.cs</DependentUpon>
+    <Compile Include="ContextSearchEditWindow.Designer.cs">
+      <DependentUpon>ContextSearchEditWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="DobavitPravitPoisk.cs">
+    <Compile Include="BaseSearchEditWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DobavitPravitPoisk.Designer.cs">
-      <DependentUpon>DobavitPravitPoisk.cs</DependentUpon>
+    <Compile Include="BaseSearchEditWindow.Designer.cs">
+      <DependentUpon>BaseSearchEditWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="INIFail.cs" />
-    <Compile Include="Kolonki.cs">
+    <Compile Include="INIFile.cs" />
+    <Compile Include="Columns.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Kolonki.Designer.cs">
-      <DependentUpon>Kolonki.cs</DependentUpon>
+    <Compile Include="Columns.Designer.cs">
+      <DependentUpon>Columns.cs</DependentUpon>
     </Compile>
-    <Compile Include="Otcheti.cs">
+    <Compile Include="Reports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Otcheti.Designer.cs">
-      <DependentUpon>Otcheti.cs</DependentUpon>
+    <Compile Include="Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormaZapuska.cs">
+    <Compile Include="LaunchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormaZapuska.Designer.cs">
-      <DependentUpon>FormaZapuska.cs</DependentUpon>
+    <Compile Include="LaunchForm.Designer.cs">
+      <DependentUpon>LaunchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Spisok.cs" />
-    <Compile Include="Udalit.cs" />
-    <Compile Include="PravitStroku.cs">
+    <Compile Include="List.cs" />
+    <Compile Include="Remove.cs" />
+    <Compile Include="EditLines.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PravitStroku.Designer.cs">
-      <DependentUpon>PravitStroku.cs</DependentUpon>
+    <Compile Include="EditLines.Designer.cs">
+      <DependentUpon>EditLines.cs</DependentUpon>
     </Compile>
-    <Compile Include="PravitSpisok.cs">
+    <Compile Include="EditLists.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PravitSpisok.Designer.cs">
-      <DependentUpon>PravitSpisok.cs</DependentUpon>
+    <Compile Include="EditLists.Designer.cs">
+      <DependentUpon>EditLists.cs</DependentUpon>
     </Compile>
-    <Compile Include="Spiski.cs">
+    <Compile Include="Lists.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Spiski.Designer.cs">
-      <DependentUpon>Spiski.cs</DependentUpon>
+    <Compile Include="Lists.Designer.cs">
+      <DependentUpon>Lists.cs</DependentUpon>
     </Compile>
-    <Compile Include="BazovaiaForma.cs">
+    <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BazovaiaForma.Designer.cs">
-      <DependentUpon>BazovaiaForma.cs</DependentUpon>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="KDobavitPravitPoisk.resx">
-      <DependentUpon>KDobavitPravitPoisk.cs</DependentUpon>
+    <EmbeddedResource Include="ContextSearchEditWindow.resx">
+      <DependentUpon>ContextSearchEditWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DobavitPravitPoisk.resx">
-      <DependentUpon>DobavitPravitPoisk.cs</DependentUpon>
+    <EmbeddedResource Include="BaseSearchEditWindow.resx">
+      <DependentUpon>BaseSearchEditWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Kolonki.resx">
-      <DependentUpon>Kolonki.cs</DependentUpon>
+    <EmbeddedResource Include="Columns.resx">
+      <DependentUpon>Columns.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PravitStroku.resx">
-      <DependentUpon>PravitStroku.cs</DependentUpon>
+    <EmbeddedResource Include="EditLines.resx">
+      <DependentUpon>EditLines.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PravitSpisok.resx">
-      <DependentUpon>PravitSpisok.cs</DependentUpon>
+    <EmbeddedResource Include="EditLists.resx">
+      <DependentUpon>EditLists.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormaZapuska.resx">
-      <DependentUpon>FormaZapuska.cs</DependentUpon>
+    <EmbeddedResource Include="LaunchForm.resx">
+      <DependentUpon>LaunchForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Otcheti.resx">
-      <DependentUpon>Otcheti.cs</DependentUpon>
+    <EmbeddedResource Include="Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Spiski.resx">
-      <DependentUpon>Spiski.cs</DependentUpon>
+    <EmbeddedResource Include="Lists.resx">
+      <DependentUpon>Lists.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BazovaiaForma.resx">
-      <DependentUpon>BazovaiaForma.cs</DependentUpon>
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

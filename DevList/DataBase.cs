@@ -9,13 +9,13 @@ using System.IO;
 
 namespace DevList
 {
-    public class Baza
+    public class DataBase
     {
         public string Adres;
         public List<string[]> Tablica = new List<string[]>();
         public bool Izmenenie = false;
 
-        public Baza(string adres)
+        public DataBase(string adres)
         {
             Adres = adres;
 

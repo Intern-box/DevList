@@ -7,23 +7,23 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public class Udalit
+    public class Remove
     {
-        public Udalit(Baza baza, ListViewHitTestInfo koordinati, INIFail iniFail, bool udalenie)
+        public Remove(DataBase baza, ListViewHitTestInfo koordinati, INIFile iniFail, bool udalenie)
         {
             Udalenie(baza, koordinati, iniFail, udalenie);
         }
 
-        public Udalit(Baza baza, ListViewHitTestInfo koordinati)
+        public Remove(DataBase baza, ListViewHitTestInfo koordinati)
         {
             Udalenie(baza, koordinati);
         }
 
-        void Udalenie(Baza baza, ListViewHitTestInfo koordinati, INIFail iniFail, bool udalenie)
+        void Udalenie(DataBase baza, ListViewHitTestInfo koordinati, INIFile iniFail, bool udalenie)
         {
             if (udalenie)
             {
-                Baza istoria = new Baza(iniFail.Istoriia);
+                DataBase istoria = new DataBase(iniFail.Istoriia);
 
                 istoria.Tablica.Add(baza.Tablica[koordinati.Item.Index]);
 
@@ -35,7 +35,7 @@ namespace DevList
             baza.Tablica.RemoveAt(koordinati.Item.Index);
         }
 
-        void Udalenie(Baza baza, ListViewHitTestInfo koordinati)
+        void Udalenie(DataBase baza, ListViewHitTestInfo koordinati)
         {
             baza.Tablica.RemoveAt(koordinati.Item.Index);
         }

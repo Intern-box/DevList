@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public class INIFail
+    public class INIFile
     {
         public string Papka;
         public string Adres = "DevList.ini";
@@ -21,11 +21,11 @@ namespace DevList
         public string Komplekt = "БД\\Комплект.csv";
         public string Komplektuiuschie = "БД\\Комплектующие.txt";
 
-        public INIFail()
+        public INIFile()
         {
         }
 
-        public INIFail(string adres)
+        public INIFile(string adres)
         {
             if (!File.Exists(adres))
             {

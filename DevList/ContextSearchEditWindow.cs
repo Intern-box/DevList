@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class KDobavitPravitPoisk : ADobavitPravitPoisk
+    public partial class ContextSearchEditWindow : BaseSearchEdit
     {
-        INIFail iniFail;
+        INIFile iniFail;
 
-        public KDobavitPravitPoisk(string zagolovok, INIFail iniFail)
+        public ContextSearchEditWindow(string zagolovok, INIFile iniFail)
         {
             InitializeComponent();
 
@@ -17,7 +17,7 @@ namespace DevList
             this.iniFail = iniFail;
         }
 
-        public KDobavitPravitPoisk(string zagolovok, INIFail iniFail, string[] stroka)
+        public ContextSearchEditWindow(string zagolovok, INIFile iniFail, string[] stroka)
         {
             InitializeComponent();
 
@@ -39,7 +39,7 @@ namespace DevList
 
         private void DobavitPravitPoisk_Load(object sender, EventArgs e)
         {
-            Spisok komplektuiuschie = new Spisok(iniFail.Komplektuiuschie);
+            List komplektuiuschie = new List(iniFail.Komplektuiuschie);
 
             CPU.Items.AddRange(File.ReadAllLines(komplektuiuschie.Adres));
             Mainboard.Items.AddRange(File.ReadAllLines(komplektuiuschie.Adres));
@@ -78,7 +78,7 @@ namespace DevList
 
         private void ButtonCPUPlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Dobavit(CPU.Text);
 
@@ -89,7 +89,7 @@ namespace DevList
 
         private void ButtonCPUMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Udalit(CPU.Text);
 
@@ -100,7 +100,7 @@ namespace DevList
 
         private void ButtonMainboardPlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Dobavit(Mainboard.Text);
 
@@ -111,7 +111,7 @@ namespace DevList
 
         private void ButtonMainboardMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Udalit(Mainboard.Text);
 
@@ -122,7 +122,7 @@ namespace DevList
 
         private void ButtonRAMPlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Dobavit(RAM.Text);
 
@@ -133,7 +133,7 @@ namespace DevList
 
         private void ButtonRAMMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Udalit(RAM.Text);
 
@@ -144,7 +144,7 @@ namespace DevList
 
         private void ButtonDiskPlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Dobavit(Disk.Text);
 
@@ -155,7 +155,7 @@ namespace DevList
 
         private void ButtonDiskMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Udalit(Disk.Text);
 
@@ -166,7 +166,7 @@ namespace DevList
 
         private void ButtonVideocardPlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Dobavit(Videocard.Text);
 
@@ -177,7 +177,7 @@ namespace DevList
 
         private void ButtonVideocardMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Udalit(Videocard.Text);
 
@@ -188,7 +188,7 @@ namespace DevList
 
         private void ButtonPowerPlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Dobavit(Power.Text);
 
@@ -199,7 +199,7 @@ namespace DevList
 
         private void ButtonPowerMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Udalit(Power.Text);
 
@@ -210,7 +210,7 @@ namespace DevList
 
         private void ButtonCasePlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Dobavit(Case.Text);
 
@@ -221,7 +221,7 @@ namespace DevList
 
         private void ButtonCaseMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Komplektuiuschie);
+            List spisok = new List(iniFail.Komplektuiuschie);
 
             spisok.Udalit(Case.Text);
 

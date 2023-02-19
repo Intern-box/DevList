@@ -1,7 +1,7 @@
 ﻿
 namespace DevList
 {
-    partial class BazovaiaForma
+    partial class BaseForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.

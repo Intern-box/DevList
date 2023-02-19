@@ -4,16 +4,16 @@ using System.IO;
 
 namespace DevList
 {
-    public partial class FormaZapuska : Form
+    public partial class LaunchForm : Form
     {
-        public FormaZapuska()
+        public LaunchForm()
         {
             InitializeComponent();
         }
 
         private void Zagruzit_Click(object sender, EventArgs e)
         {
-            INIFail iniFail = new INIFail();
+            INIFile iniFail = new INIFile();
 
             if (File.Exists(iniFail.Adres))
             {
@@ -38,7 +38,7 @@ namespace DevList
 
             if (rezultat == DialogResult.Yes)
             {
-                INIFail iniFail = new INIFail(Application.StartupPath);
+                INIFile iniFail = new INIFile(Application.StartupPath);
 
                 Zapusk(iniFail); Close();
             }
@@ -50,17 +50,17 @@ namespace DevList
 
             if (otkrit_fail.ShowDialog() == DialogResult.OK)
             {
-                INIFail iniFail = new INIFail(otkrit_fail.FileName);
+                INIFile iniFail = new INIFile(otkrit_fail.FileName);
 
                 Zapusk(iniFail); Close();
             }
         }
 
-        private void Zapusk(INIFail iniFail)
+        private void Zapusk(INIFile iniFail)
         {
             Hide();
 
-            BazovaiaForma glavnoeOkno = new BazovaiaForma(iniFail, new Baza(iniFail.Baza));
+            BaseForm glavnoeOkno = new BaseForm(iniFail, new DataBase(iniFail.Baza));
 
             glavnoeOkno.Text = "DevList 6.6 - Главное окно";
 

@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class Kolonki : Form
+    public partial class Columns : Form
     {
         public bool[] rezultat = new bool[13];
 
         public bool KnopkaVipolnit = false;
 
-        public Kolonki(bool[] vidKolonok)
+        public Columns(bool[] vidKolonok)
         {
             InitializeComponent();
 

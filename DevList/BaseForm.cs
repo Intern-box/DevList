@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class BazovaiaForma : Form
+    public partial class BaseForm : Form
     {
-        public INIFail iniFail;
+        public INIFile iniFail;
 
-        public Baza baza;
+        public DataBase baza;
 
         public ListViewHitTestInfo koordinati;
 
@@ -19,7 +19,7 @@ namespace DevList
 
         string zagolovok = "DevList 6.6 - Главное окно";
 
-        public BazovaiaForma(INIFail iniFail, Baza baza)
+        public BaseForm(INIFile iniFail, DataBase baza)
         {
             InitializeComponent();
 
@@ -87,9 +87,9 @@ namespace DevList
 
             if (putKNovoiBaze.SelectedPath != string.Empty)
             {
-                iniFail = new INIFail(putKNovoiBaze.SelectedPath);
+                iniFail = new INIFile(putKNovoiBaze.SelectedPath);
 
-                baza = new Baza(iniFail.Baza);
+                baza = new DataBase(iniFail.Baza);
 
                 VivodVTablicu(baza.Tablica);
             }
@@ -124,9 +124,9 @@ namespace DevList
 
             if (otkrit_fail.ShowDialog() == DialogResult.OK)
             {
-                iniFail = new INIFail(otkrit_fail.FileName);
+                iniFail = new INIFile(otkrit_fail.FileName);
 
-                baza = new Baza(iniFail.Baza);
+                baza = new DataBase(iniFail.Baza);
 
                 VivodVTablicu(baza.Tablica);
             }
@@ -172,7 +172,7 @@ namespace DevList
         // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
         private void Dobavit_Click(object sender, EventArgs e)
         {
-            ADobavitPravitPoisk okno = Text == zagolovok ? (ADobavitPravitPoisk)new DobavitPravitPoisk("DevList - Добавить", iniFail) : new KDobavitPravitPoisk("DevList - Добавить", iniFail);
+            BaseSearchEdit okno = Text == zagolovok ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFail) : new ContextSearchEditWindow("DevList - Добавить", iniFail);
 
             okno.ShowDialog();
 
@@ -215,7 +215,7 @@ namespace DevList
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 7 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 12)
                     {
-                        PravitSpisok pravitSpisok = new PravitSpisok("DevList - Правка", koordinati.Item.SubItems.IndexOf(koordinati.SubItem), iniFail);
+                        EditLists pravitSpisok = new EditLists("DevList - Правка", koordinati.Item.SubItems.IndexOf(koordinati.SubItem), iniFail);
 
                         pravitSpisok.ShowDialog();
 
@@ -251,7 +251,7 @@ namespace DevList
                     }
                     else
                     {
-                        PravitStroku pravitStroku = new PravitStroku("DevList - Правка комплект", baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]);
+                        EditLines pravitStroku = new EditLines("DevList - Правка комплект", baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]);
 
                         pravitStroku.ShowDialog();
 
@@ -279,7 +279,7 @@ namespace DevList
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 8 ||
                     koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 9)
                     {
-                        PravitSpisok pravitSpisok = new PravitSpisok("DevList - Комплект правка", koordinati.Item.SubItems.IndexOf(koordinati.SubItem), iniFail);
+                        EditLists pravitSpisok = new EditLists("DevList - Комплект правка", koordinati.Item.SubItems.IndexOf(koordinati.SubItem), iniFail);
 
                         pravitSpisok.ShowDialog();
 
@@ -300,7 +300,7 @@ namespace DevList
                     }
                     else
                     {
-                        PravitStroku pravitStroku = new PravitStroku("DevList - Правка", baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]);
+                        EditLines pravitStroku = new EditLines("DevList - Правка", baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]);
 
                         pravitStroku.ShowDialog();
 
@@ -335,13 +335,13 @@ namespace DevList
             {
                 int zapominaemStroku = koordinati.Item.Index;
 
-                ADobavitPravitPoisk okno =
+                BaseSearchEdit okno =
                     
-                    Text == zagolovok ? (ADobavitPravitPoisk)
+                    Text == zagolovok ? (BaseSearchEdit)
                     
-                    new DobavitPravitPoisk("DevList - Править всё", iniFail, baza.Tablica[zapominaemStroku]) :
+                    new BaseSearchEditWindow("DevList - Править всё", iniFail, baza.Tablica[zapominaemStroku]) :
                     
-                    new KDobavitPravitPoisk("DevList - Править всё", iniFail, baza.Tablica[zapominaemStroku]);
+                    new ContextSearchEditWindow("DevList - Править всё", iniFail, baza.Tablica[zapominaemStroku]);
 
                 okno.ShowDialog();
 
@@ -426,7 +426,7 @@ namespace DevList
 
                 if (rezultat == DialogResult.Yes)
                 {
-                    Udalit udalit = new Udalit(baza, koordinati, iniFail, true);
+                    Remove udalit = new Remove(baza, koordinati, iniFail, true);
 
                     VivodVTablicu(baza.Tablica);
 
@@ -450,7 +450,7 @@ namespace DevList
 
                 if (rezultat == DialogResult.Yes)
                 {
-                    Udalit udalit = new Udalit(baza, koordinati);
+                    Remove udalit = new Remove(baza, koordinati);
 
                     VivodVTablicu(baza.Tablica);
 
@@ -465,7 +465,7 @@ namespace DevList
 
         private void Vid_Click(object sender, EventArgs e)
         {
-            Kolonki kolonki = new Kolonki(vidKolonok);
+            Columns kolonki = new Columns(vidKolonok);
 
             kolonki.ShowDialog();
 
@@ -486,7 +486,7 @@ namespace DevList
                 stroka[i] = string.Empty;
             }
 
-            ADobavitPravitPoisk poisk = Text == zagolovok ? (ADobavitPravitPoisk)new DobavitPravitPoisk("DevList - Добавить", iniFail) : new KDobavitPravitPoisk("DevList - Добавить", iniFail);
+            BaseSearchEdit poisk = Text == zagolovok ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFail) : new ContextSearchEditWindow("DevList - Добавить", iniFail);
 
             poisk.ShowDialog();
 
@@ -520,7 +520,7 @@ namespace DevList
 
         private void KPoisk_Click(object sender, EventArgs e)
         {
-            ADobavitPravitPoisk poisk;
+            BaseSearchEdit poisk;
 
             int zapominaemStroku;
 
@@ -532,7 +532,7 @@ namespace DevList
 
                 for (int i = 0; i < stroka.Length; i++) { stroka[i] = string.Empty; }
 
-                poisk = Text == zagolovok ? (ADobavitPravitPoisk)new DobavitPravitPoisk("DevList - Добавить", iniFail) : new KDobavitPravitPoisk("DevList - Добавить", iniFail);
+                poisk = Text == zagolovok ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFail) : new ContextSearchEditWindow("DevList - Добавить", iniFail);
             }
             else
             {
@@ -540,19 +540,19 @@ namespace DevList
 
                 if (zapominaemStroku >= 0)
                 {
-                    poisk = Text == zagolovok ? (ADobavitPravitPoisk)
+                    poisk = Text == zagolovok ? (BaseSearchEdit)
 
-                        new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]) :
+                        new BaseSearchEditWindow("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]) :
 
-                        new KDobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
+                        new ContextSearchEditWindow("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
                 }
                 else
                 {
-                    poisk = Text == zagolovok ? (ADobavitPravitPoisk)
+                    poisk = Text == zagolovok ? (BaseSearchEdit)
                         
-                        new DobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[0]) :
+                        new BaseSearchEditWindow("DevList - Поиск", iniFail, baza.Tablica[0]) :
 
-                        new KDobavitPravitPoisk("DevList - Поиск", iniFail, baza.Tablica[0]);
+                        new ContextSearchEditWindow("DevList - Поиск", iniFail, baza.Tablica[0]);
                 }
             }
 
@@ -592,30 +592,30 @@ namespace DevList
 
         private void Spiski_Click(object sender, EventArgs e)
         {
-            Spiski spiski = new Spiski(iniFail);
+            Lists spiski = new Lists(iniFail);
 
             spiski.ShowDialog();
         }
 
         private void PoTipam_Click(object sender, EventArgs e)
         {
-            Otcheti otchet = new Otcheti(iniFail, baza, tipOtcheta: "PoTipam");
+            Reports otchet = new Reports(iniFail, baza, tipOtcheta: "PoTipam");
 
             otchet.ShowDialog();
         }
 
         private void VPomeschenii_Click(object sender, EventArgs e)
         {
-            Otcheti otchet = new Otcheti(iniFail, baza, tipOtcheta: "VPomeschenii");
+            Reports otchet = new Reports(iniFail, baza, tipOtcheta: "VPomeschenii");
 
             otchet.ShowDialog();
         }
 
         private void Istoria_Click(object sender, EventArgs e)
         {
-            Baza istoriaBaza = new Baza(iniFail.Istoriia);
+            DataBase istoriaBaza = new DataBase(iniFail.Istoriia);
 
-            BazovaiaForma istoria = new BazovaiaForma(iniFail, istoriaBaza);
+            BaseForm istoria = new BaseForm(iniFail, istoriaBaza);
 
             istoria.Fail.Visible = false;
 
@@ -644,9 +644,9 @@ namespace DevList
 
         private void Komplekt_Click(object sender, EventArgs e)
         {
-            Baza komplektBaza = new Baza(iniFail.Komplekt);
+            DataBase komplektBaza = new DataBase(iniFail.Komplekt);
 
-            BazovaiaForma komplekt = new BazovaiaForma(iniFail, komplektBaza);
+            BaseForm komplekt = new BaseForm(iniFail, komplektBaza);
 
             komplekt.Sozdat.Visible = false;
 
@@ -693,7 +693,7 @@ namespace DevList
 
         private void Filtr_Click(object sender, EventArgs e)
         {
-            baza = new Baza(baza.Adres);
+            baza = new DataBase(baza.Adres);
 
             VivodVTablicu(baza.Tablica);
 

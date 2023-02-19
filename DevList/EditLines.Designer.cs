@@ -1,7 +1,7 @@
 ﻿
 namespace DevList
 {
-    partial class PravitStroku
+    partial class EditLines
     {
         /// <summary>
         /// Required designer variable.

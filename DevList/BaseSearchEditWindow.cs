@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class DobavitPravitPoisk : ADobavitPravitPoisk
+    public partial class BaseSearchEditWindow : BaseSearchEdit
     {
-        INIFail iniFail;
+        INIFile iniFail;
 
-        public DobavitPravitPoisk(string zagolovok, INIFail iniFail)
+        public BaseSearchEditWindow(string zagolovok, INIFile iniFail)
         {
             InitializeComponent();
 
@@ -17,7 +17,7 @@ namespace DevList
             this.iniFail = iniFail;
         }
 
-        public DobavitPravitPoisk(string zagolovok, INIFail iniFail, string[] stroka)
+        public BaseSearchEditWindow(string zagolovok, INIFile iniFail, string[] stroka)
         {
             InitializeComponent();
 
@@ -41,9 +41,9 @@ namespace DevList
 
         private void DobavitPravitPoisk_Load(object sender, EventArgs e)
         {
-            Spisok pomeschenie = new Spisok(iniFail.Pomescheniia);
-            Spisok oborudovanie = new Spisok(iniFail.Oborudovanie);
-            Spisok sotrudniki = new Spisok(iniFail.Sotrudniki);
+            List pomeschenie = new List(iniFail.Pomescheniia);
+            List oborudovanie = new List(iniFail.Oborudovanie);
+            List sotrudniki = new List(iniFail.Sotrudniki);
 
             Pomeschenie.Items.AddRange(File.ReadAllLines(pomeschenie.Adres));
             Oborudovanie.Items.AddRange(File.ReadAllLines(oborudovanie.Adres));
@@ -78,7 +78,7 @@ namespace DevList
 
         private void ButtonPomescheniePlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Pomescheniia);
+            List spisok = new List(iniFail.Pomescheniia);
 
             spisok.Dobavit(Pomeschenie.Text);
 
@@ -89,7 +89,7 @@ namespace DevList
 
         private void ButtonPomeschenieMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Pomescheniia);
+            List spisok = new List(iniFail.Pomescheniia);
 
             spisok.Udalit(Pomeschenie.Text);
 
@@ -100,7 +100,7 @@ namespace DevList
 
         private void ButtonFIOPlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Sotrudniki);
+            List spisok = new List(iniFail.Sotrudniki);
 
             spisok.Dobavit(Sotrudniki.Text);
 
@@ -115,7 +115,7 @@ namespace DevList
 
         private void ButtonFIOMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Sotrudniki);
+            List spisok = new List(iniFail.Sotrudniki);
 
             spisok.Udalit(Sotrudniki.Text);
 
@@ -130,7 +130,7 @@ namespace DevList
 
         private void ButtonNaimenovaniePlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Naimenovaniia);
+            List spisok = new List(iniFail.Naimenovaniia);
 
             spisok.Dobavit(Naimenovanie.Text);
 
@@ -141,7 +141,7 @@ namespace DevList
 
         private void ButtonNaimenovanieMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Naimenovaniia);
+            List spisok = new List(iniFail.Naimenovaniia);
 
             spisok.Udalit(Naimenovanie.Text);
 
@@ -162,7 +162,7 @@ namespace DevList
 
         private void ButtonOborudovaniePlus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Oborudovanie);
+            List spisok = new List(iniFail.Oborudovanie);
 
             spisok.Dobavit(Oborudovanie.Text);
 
@@ -173,7 +173,7 @@ namespace DevList
 
         private void ButtonOborudovanieMinus_Click(object sender, EventArgs e)
         {
-            Spisok spisok = new Spisok(iniFail.Oborudovanie);
+            List spisok = new List(iniFail.Oborudovanie);
 
             spisok.Udalit(Oborudovanie.Text);
 

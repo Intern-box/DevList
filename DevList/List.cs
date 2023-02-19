@@ -7,12 +7,12 @@ using System.IO;
 
 namespace DevList
 {
-    public class Spisok
+    public class List
     {
         public string[] Elementi;
         public string Adres;
 
-        public Spisok(string adres)
+        public List(string adres)
         {
             Adres = adres;
 

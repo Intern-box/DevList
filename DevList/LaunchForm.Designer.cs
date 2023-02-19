@@ -1,7 +1,7 @@
 ﻿
 namespace DevList
 {
-    partial class FormaZapuska
+    partial class LaunchForm
     {
         /// <summary>
         /// Required designer variable.

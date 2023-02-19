@@ -2,7 +2,7 @@
 
 namespace DevList
 {
-    public abstract class ADobavitPravitPoisk : Form
+    public abstract class BaseSearchEdit : Form
     {
         public string[] rezultat = new string[13];
 

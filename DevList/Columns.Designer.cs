@@ -1,7 +1,7 @@
 ﻿
 namespace DevList
 {
-    partial class Kolonki
+    partial class Columns
     {
         /// <summary>
         /// Required designer variable.

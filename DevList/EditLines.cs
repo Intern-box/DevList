@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class PravitStroku : Form
+    public partial class EditLines : Form
     {
         string tekst;
 
         public string rezultat;
 
-        public PravitStroku(string zagolovok, string tekst)
+        public EditLines(string zagolovok, string tekst)
         {
             InitializeComponent();
 

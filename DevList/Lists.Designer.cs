@@ -1,7 +1,7 @@
 ﻿
 namespace DevList
 {
-    partial class Spiski
+    partial class Lists
     {
         /// <summary>
         /// Required designer variable.

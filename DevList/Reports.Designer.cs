@@ -1,7 +1,7 @@
 ﻿
 namespace DevList
 {
-    partial class Otcheti
+    partial class Reports
     {
         /// <summary>
         /// Required designer variable.

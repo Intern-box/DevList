@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class Spiski : Form
+    public partial class Lists : Form
     {
-        INIFail iniFail;
+        INIFile iniFail;
 
-        public Spiski(INIFail iniFail)
+        public Lists(INIFile iniFail)
         {
             InitializeComponent();
 

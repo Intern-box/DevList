@@ -1,7 +1,7 @@
 ﻿
 namespace DevList
 {
-    partial class DobavitPravitPoisk
+    partial class BaseSearchEditWindow
     {
         /// <summary>
         /// Required designer variable.

@@ -1,7 +1,7 @@
 ﻿
 namespace DevList
 {
-    partial class PravitSpisok
+    partial class EditLists
     {
         /// <summary>
         /// Required designer variable.

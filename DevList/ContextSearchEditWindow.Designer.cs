@@ -1,7 +1,7 @@
 ﻿
 namespace DevList
 {
-    partial class KDobavitPravitPoisk
+    partial class ContextSearchEditWindow
     {
         /// <summary>
         /// Required designer variable.
