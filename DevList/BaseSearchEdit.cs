@@ -2,7 +2,7 @@
 
 namespace DevList
 {
-    public abstract class BaseSearchEdit : Form
+    public class BaseSearchEdit : Form
     {
         public string[] Result = new string[13];
 

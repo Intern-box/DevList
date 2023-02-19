@@ -30,38 +30,38 @@ namespace DevList
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.KMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.KPoisk = new System.Windows.Forms.ToolStripMenuItem();
-            this.KDobavit = new System.Windows.Forms.ToolStripMenuItem();
-            this.KPravit = new System.Windows.Forms.ToolStripMenuItem();
-            this.KPravitVse = new System.Windows.Forms.ToolStripMenuItem();
-            this.KVverh = new System.Windows.Forms.ToolStripMenuItem();
-            this.KVniz = new System.Windows.Forms.ToolStripMenuItem();
-            this.KUdalit = new System.Windows.Forms.ToolStripMenuItem();
-            this.GMenu = new System.Windows.Forms.MenuStrip();
-            this.Fail = new System.Windows.Forms.ToolStripMenuItem();
-            this.Sozdat = new System.Windows.Forms.ToolStripMenuItem();
-            this.Otkrit = new System.Windows.Forms.ToolStripMenuItem();
-            this.Sohranit = new System.Windows.Forms.ToolStripMenuItem();
-            this.SohranitKak = new System.Windows.Forms.ToolStripMenuItem();
-            this.Pravka = new System.Windows.Forms.ToolStripMenuItem();
-            this.Dobavit = new System.Windows.Forms.ToolStripMenuItem();
-            this.Pravit = new System.Windows.Forms.ToolStripMenuItem();
-            this.PravitVse = new System.Windows.Forms.ToolStripMenuItem();
-            this.Vverh = new System.Windows.Forms.ToolStripMenuItem();
-            this.Vniz = new System.Windows.Forms.ToolStripMenuItem();
-            this.Udalit = new System.Windows.Forms.ToolStripMenuItem();
-            this.Vid = new System.Windows.Forms.ToolStripMenuItem();
-            this.Poisk = new System.Windows.Forms.ToolStripMenuItem();
-            this.Spiski = new System.Windows.Forms.ToolStripMenuItem();
-            this.Otcheti = new System.Windows.Forms.ToolStripMenuItem();
-            this.PoTipam = new System.Windows.Forms.ToolStripMenuItem();
-            this.VPomeschenii = new System.Windows.Forms.ToolStripMenuItem();
-            this.Istoria = new System.Windows.Forms.ToolStripMenuItem();
-            this.Komplekt = new System.Windows.Forms.ToolStripMenuItem();
-            this.Filtr = new System.Windows.Forms.ToolStripMenuItem();
-            this.TextBoxObschiiPoisk = new System.Windows.Forms.TextBox();
-            this.LabelObschiiPoisk = new System.Windows.Forms.Label();
+            this.CMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.CAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.CEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.CEditAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.CUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.CDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.CRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.MMenu = new System.Windows.Forms.MenuStrip();
+            this.File = new System.Windows.Forms.ToolStripMenuItem();
+            this.Create = new System.Windows.Forms.ToolStripMenuItem();
+            this.Open = new System.Windows.Forms.ToolStripMenuItem();
+            this.Save = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.Edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.Add = new System.Windows.Forms.ToolStripMenuItem();
+            this.MEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MEditAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.Up = new System.Windows.Forms.ToolStripMenuItem();
+            this.Down = new System.Windows.Forms.ToolStripMenuItem();
+            this.Remove = new System.Windows.Forms.ToolStripMenuItem();
+            this.View = new System.Windows.Forms.ToolStripMenuItem();
+            this.Search = new System.Windows.Forms.ToolStripMenuItem();
+            this.Lists = new System.Windows.Forms.ToolStripMenuItem();
+            this.Reports = new System.Windows.Forms.ToolStripMenuItem();
+            this.ButtonSortByTypes = new System.Windows.Forms.ToolStripMenuItem();
+            this.ButtonButtonSortByRooms = new System.Windows.Forms.ToolStripMenuItem();
+            this.History = new System.Windows.Forms.ToolStripMenuItem();
+            this.Set = new System.Windows.Forms.ToolStripMenuItem();
+            this.Filter = new System.Windows.Forms.ToolStripMenuItem();
+            this.SearchAllBox = new System.Windows.Forms.TextBox();
+            this.LabelSearchAll = new System.Windows.Forms.Label();
             this.Table = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Data = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -76,271 +76,271 @@ namespace DevList
             this.Hostname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Izmenil = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.KMenu.SuspendLayout();
-            this.GMenu.SuspendLayout();
+            this.CMenu.SuspendLayout();
+            this.MMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // KMenu
+            // CMenu
             // 
-            this.KMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.KPoisk,
-            this.KDobavit,
-            this.KPravit,
-            this.KPravitVse,
-            this.KVverh,
-            this.KVniz,
-            this.KUdalit});
-            this.KMenu.Name = "KMenu";
-            this.KMenu.Size = new System.Drawing.Size(142, 158);
+            this.CMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CSearch,
+            this.CAdd,
+            this.CEdit,
+            this.CEditAll,
+            this.CUp,
+            this.CDown,
+            this.CRemove});
+            this.CMenu.Name = "KMenu";
+            this.CMenu.Size = new System.Drawing.Size(142, 158);
             // 
-            // KPoisk
+            // CSearch
             // 
-            this.KPoisk.Name = "KPoisk";
-            this.KPoisk.Size = new System.Drawing.Size(141, 22);
-            this.KPoisk.Text = "Поиск";
-            this.KPoisk.Click += new System.EventHandler(this.ContextSearch_Click);
+            this.CSearch.Name = "CSearch";
+            this.CSearch.Size = new System.Drawing.Size(141, 22);
+            this.CSearch.Text = "Поиск";
+            this.CSearch.Click += new System.EventHandler(this.ContextSearch_Click);
             // 
-            // KDobavit
+            // CAdd
             // 
-            this.KDobavit.Name = "KDobavit";
-            this.KDobavit.Size = new System.Drawing.Size(141, 22);
-            this.KDobavit.Text = "Добавить";
-            this.KDobavit.Click += new System.EventHandler(this.ContextAdd_Click);
+            this.CAdd.Name = "CAdd";
+            this.CAdd.Size = new System.Drawing.Size(141, 22);
+            this.CAdd.Text = "Добавить";
+            this.CAdd.Click += new System.EventHandler(this.ContextAdd_Click);
             // 
-            // KPravit
+            // CEdit
             // 
-            this.KPravit.Name = "KPravit";
-            this.KPravit.Size = new System.Drawing.Size(141, 22);
-            this.KPravit.Text = "Править";
-            this.KPravit.Click += new System.EventHandler(this.ContextEdit_Click);
+            this.CEdit.Name = "CEdit";
+            this.CEdit.Size = new System.Drawing.Size(141, 22);
+            this.CEdit.Text = "Править";
+            this.CEdit.Click += new System.EventHandler(this.ContextEdit_Click);
             // 
-            // KPravitVse
+            // CEditAll
             // 
-            this.KPravitVse.Name = "KPravitVse";
-            this.KPravitVse.Size = new System.Drawing.Size(141, 22);
-            this.KPravitVse.Text = "Править всё";
-            this.KPravitVse.Click += new System.EventHandler(this.ContextEditAll_Click);
+            this.CEditAll.Name = "CEditAll";
+            this.CEditAll.Size = new System.Drawing.Size(141, 22);
+            this.CEditAll.Text = "Править всё";
+            this.CEditAll.Click += new System.EventHandler(this.ContextEditAll_Click);
             // 
-            // KVverh
+            // CUp
             // 
-            this.KVverh.Name = "KVverh";
-            this.KVverh.Size = new System.Drawing.Size(141, 22);
-            this.KVverh.Text = "Вверх";
-            this.KVverh.Click += new System.EventHandler(this.ContextUp_Click);
+            this.CUp.Name = "CUp";
+            this.CUp.Size = new System.Drawing.Size(141, 22);
+            this.CUp.Text = "Вверх";
+            this.CUp.Click += new System.EventHandler(this.ContextUp_Click);
             // 
-            // KVniz
+            // CDown
             // 
-            this.KVniz.Name = "KVniz";
-            this.KVniz.Size = new System.Drawing.Size(141, 22);
-            this.KVniz.Text = "Вниз";
-            this.KVniz.Click += new System.EventHandler(this.ContextDown_Click);
+            this.CDown.Name = "CDown";
+            this.CDown.Size = new System.Drawing.Size(141, 22);
+            this.CDown.Text = "Вниз";
+            this.CDown.Click += new System.EventHandler(this.ContextDown_Click);
             // 
-            // KUdalit
+            // CRemove
             // 
-            this.KUdalit.Name = "KUdalit";
-            this.KUdalit.Size = new System.Drawing.Size(141, 22);
-            this.KUdalit.Text = "Удалить";
-            this.KUdalit.Click += new System.EventHandler(this.ContextRemove_Click);
+            this.CRemove.Name = "CRemove";
+            this.CRemove.Size = new System.Drawing.Size(141, 22);
+            this.CRemove.Text = "Удалить";
+            this.CRemove.Click += new System.EventHandler(this.ContextRemove_Click);
             // 
-            // GMenu
+            // MMenu
             // 
-            this.GMenu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.GMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Fail,
-            this.Pravka,
-            this.Vid,
-            this.Poisk,
-            this.Spiski,
-            this.Otcheti,
-            this.Istoria,
-            this.Komplekt,
-            this.Filtr});
-            this.GMenu.Location = new System.Drawing.Point(0, 0);
-            this.GMenu.Name = "GMenu";
-            this.GMenu.Size = new System.Drawing.Size(1251, 25);
-            this.GMenu.TabIndex = 2;
+            this.MMenu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.File,
+            this.Edit,
+            this.View,
+            this.Search,
+            this.Lists,
+            this.Reports,
+            this.History,
+            this.Set,
+            this.Filter});
+            this.MMenu.Location = new System.Drawing.Point(0, 0);
+            this.MMenu.Name = "MMenu";
+            this.MMenu.Size = new System.Drawing.Size(1251, 25);
+            this.MMenu.TabIndex = 2;
             // 
-            // Fail
+            // File
             // 
-            this.Fail.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Sozdat,
-            this.Otkrit,
-            this.Sohranit,
-            this.SohranitKak});
-            this.Fail.Name = "Fail";
-            this.Fail.Size = new System.Drawing.Size(50, 21);
-            this.Fail.Text = "Файл";
+            this.File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Create,
+            this.Open,
+            this.Save,
+            this.SaveAs});
+            this.File.Name = "File";
+            this.File.Size = new System.Drawing.Size(50, 21);
+            this.File.Text = "Файл";
             // 
-            // Sozdat
+            // Create
             // 
-            this.Sozdat.Name = "Sozdat";
-            this.Sozdat.Size = new System.Drawing.Size(162, 22);
-            this.Sozdat.Text = "Создать";
-            this.Sozdat.Click += new System.EventHandler(this.Create_Click);
+            this.Create.Name = "Create";
+            this.Create.Size = new System.Drawing.Size(162, 22);
+            this.Create.Text = "Создать";
+            this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
-            // Otkrit
+            // Open
             // 
-            this.Otkrit.Name = "Otkrit";
-            this.Otkrit.Size = new System.Drawing.Size(162, 22);
-            this.Otkrit.Text = "Открыть";
-            this.Otkrit.Click += new System.EventHandler(this.Open_Click);
+            this.Open.Name = "Open";
+            this.Open.Size = new System.Drawing.Size(162, 22);
+            this.Open.Text = "Открыть";
+            this.Open.Click += new System.EventHandler(this.Open_Click);
             // 
-            // Sohranit
+            // Save
             // 
-            this.Sohranit.Name = "Sohranit";
-            this.Sohranit.Size = new System.Drawing.Size(162, 22);
-            this.Sohranit.Text = "Сохранить";
-            this.Sohranit.Click += new System.EventHandler(this.Save_Click);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(162, 22);
+            this.Save.Text = "Сохранить";
+            this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
-            // SohranitKak
+            // SaveAs
             // 
-            this.SohranitKak.Name = "SohranitKak";
-            this.SohranitKak.Size = new System.Drawing.Size(162, 22);
-            this.SohranitKak.Text = "Сохранить как";
-            this.SohranitKak.Click += new System.EventHandler(this.SaveAs_Click);
+            this.SaveAs.Name = "SaveAs";
+            this.SaveAs.Size = new System.Drawing.Size(162, 22);
+            this.SaveAs.Text = "Сохранить как";
+            this.SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
             // 
-            // Pravka
+            // Edit
             // 
-            this.Pravka.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Dobavit,
-            this.Pravit,
-            this.PravitVse,
-            this.Vverh,
-            this.Vniz,
-            this.Udalit});
-            this.Pravka.Name = "Pravka";
-            this.Pravka.Size = new System.Drawing.Size(64, 21);
-            this.Pravka.Text = "Правка";
+            this.Edit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Add,
+            this.MEdit,
+            this.MEditAll,
+            this.Up,
+            this.Down,
+            this.Remove});
+            this.Edit.Name = "Edit";
+            this.Edit.Size = new System.Drawing.Size(64, 21);
+            this.Edit.Text = "Правка";
             // 
-            // Dobavit
+            // Add
             // 
-            this.Dobavit.Name = "Dobavit";
-            this.Dobavit.Size = new System.Drawing.Size(150, 22);
-            this.Dobavit.Text = "Добавить";
-            this.Dobavit.Click += new System.EventHandler(this.Add_Click);
+            this.Add.Name = "Add";
+            this.Add.Size = new System.Drawing.Size(150, 22);
+            this.Add.Text = "Добавить";
+            this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
-            // Pravit
+            // MEdit
             // 
-            this.Pravit.Name = "Pravit";
-            this.Pravit.Size = new System.Drawing.Size(150, 22);
-            this.Pravit.Text = "Править";
-            this.Pravit.Click += new System.EventHandler(this.Edit_Click);
+            this.MEdit.Name = "MEdit";
+            this.MEdit.Size = new System.Drawing.Size(150, 22);
+            this.MEdit.Text = "Править";
+            this.MEdit.Click += new System.EventHandler(this.Edit_Click);
             // 
-            // PravitVse
+            // MEditAll
             // 
-            this.PravitVse.Name = "PravitVse";
-            this.PravitVse.Size = new System.Drawing.Size(150, 22);
-            this.PravitVse.Text = "Править всё";
-            this.PravitVse.Click += new System.EventHandler(this.EditAll_Click);
+            this.MEditAll.Name = "MEditAll";
+            this.MEditAll.Size = new System.Drawing.Size(150, 22);
+            this.MEditAll.Text = "Править всё";
+            this.MEditAll.Click += new System.EventHandler(this.EditAll_Click);
             // 
-            // Vverh
+            // Up
             // 
-            this.Vverh.Name = "Vverh";
-            this.Vverh.Size = new System.Drawing.Size(150, 22);
-            this.Vverh.Text = "Вверх";
-            this.Vverh.Click += new System.EventHandler(this.Up_Click);
+            this.Up.Name = "Up";
+            this.Up.Size = new System.Drawing.Size(150, 22);
+            this.Up.Text = "Вверх";
+            this.Up.Click += new System.EventHandler(this.Up_Click);
             // 
-            // Vniz
+            // Down
             // 
-            this.Vniz.Name = "Vniz";
-            this.Vniz.Size = new System.Drawing.Size(150, 22);
-            this.Vniz.Text = "Вниз";
-            this.Vniz.Click += new System.EventHandler(this.Down_Click);
+            this.Down.Name = "Down";
+            this.Down.Size = new System.Drawing.Size(150, 22);
+            this.Down.Text = "Вниз";
+            this.Down.Click += new System.EventHandler(this.Down_Click);
             // 
-            // Udalit
+            // Remove
             // 
-            this.Udalit.Name = "Udalit";
-            this.Udalit.Size = new System.Drawing.Size(150, 22);
-            this.Udalit.Text = "Удалить";
-            this.Udalit.Click += new System.EventHandler(this.Remove_Click);
+            this.Remove.Name = "Remove";
+            this.Remove.Size = new System.Drawing.Size(150, 22);
+            this.Remove.Text = "Удалить";
+            this.Remove.Click += new System.EventHandler(this.Remove_Click);
             // 
-            // Vid
+            // View
             // 
-            this.Vid.Name = "Vid";
-            this.Vid.Size = new System.Drawing.Size(41, 21);
-            this.Vid.Text = "Вид";
-            this.Vid.Click += new System.EventHandler(this.View_Click);
+            this.View.Name = "View";
+            this.View.Size = new System.Drawing.Size(41, 21);
+            this.View.Text = "Вид";
+            this.View.Click += new System.EventHandler(this.View_Click);
             // 
-            // Poisk
+            // Search
             // 
-            this.Poisk.Name = "Poisk";
-            this.Poisk.Size = new System.Drawing.Size(56, 21);
-            this.Poisk.Text = "Поиск";
-            this.Poisk.Click += new System.EventHandler(this.Search_Click);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(56, 21);
+            this.Search.Text = "Поиск";
+            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
-            // Spiski
+            // Lists
             // 
-            this.Spiski.Name = "Spiski";
-            this.Spiski.Size = new System.Drawing.Size(61, 21);
-            this.Spiski.Text = "Списки";
-            this.Spiski.Click += new System.EventHandler(this.Lists_Click);
+            this.Lists.Name = "Lists";
+            this.Lists.Size = new System.Drawing.Size(61, 21);
+            this.Lists.Text = "Списки";
+            this.Lists.Click += new System.EventHandler(this.Lists_Click);
             // 
-            // Otcheti
+            // Reports
             // 
-            this.Otcheti.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.PoTipam,
-            this.VPomeschenii});
-            this.Otcheti.Name = "Otcheti";
-            this.Otcheti.Size = new System.Drawing.Size(63, 21);
-            this.Otcheti.Text = "Отчёты";
+            this.Reports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ButtonSortByTypes,
+            this.ButtonButtonSortByRooms});
+            this.Reports.Name = "Reports";
+            this.Reports.Size = new System.Drawing.Size(63, 21);
+            this.Reports.Text = "Отчёты";
             // 
-            // PoTipam
+            // ButtonSortByTypes
             // 
-            this.PoTipam.Name = "PoTipam";
-            this.PoTipam.Size = new System.Drawing.Size(183, 22);
-            this.PoTipam.Text = "МЦ по типам";
-            this.PoTipam.Click += new System.EventHandler(this.SortByTypes_Click);
+            this.ButtonSortByTypes.Name = "ButtonSortByTypes";
+            this.ButtonSortByTypes.Size = new System.Drawing.Size(183, 22);
+            this.ButtonSortByTypes.Text = "МЦ по типам";
+            this.ButtonSortByTypes.Click += new System.EventHandler(this.SortByTypes_Click);
             // 
-            // VPomeschenii
+            // ButtonButtonSortByRooms
             // 
-            this.VPomeschenii.Name = "VPomeschenii";
-            this.VPomeschenii.Size = new System.Drawing.Size(183, 22);
-            this.VPomeschenii.Text = "МЦ в помещении";
-            this.VPomeschenii.Click += new System.EventHandler(this.SortByRooms_Click);
+            this.ButtonButtonSortByRooms.Name = "ButtonButtonSortByRooms";
+            this.ButtonButtonSortByRooms.Size = new System.Drawing.Size(183, 22);
+            this.ButtonButtonSortByRooms.Text = "МЦ в помещении";
+            this.ButtonButtonSortByRooms.Click += new System.EventHandler(this.SortByRooms_Click);
             // 
-            // Istoria
+            // History
             // 
-            this.Istoria.Name = "Istoria";
-            this.Istoria.Size = new System.Drawing.Size(71, 21);
-            this.Istoria.Text = "История";
-            this.Istoria.Click += new System.EventHandler(this.History_Click);
+            this.History.Name = "History";
+            this.History.Size = new System.Drawing.Size(71, 21);
+            this.History.Text = "История";
+            this.History.Click += new System.EventHandler(this.History_Click);
             // 
-            // Komplekt
+            // Set
             // 
-            this.Komplekt.Name = "Komplekt";
-            this.Komplekt.Size = new System.Drawing.Size(77, 21);
-            this.Komplekt.Text = "Комплект";
-            this.Komplekt.Click += new System.EventHandler(this.Set_Click);
+            this.Set.Name = "Set";
+            this.Set.Size = new System.Drawing.Size(77, 21);
+            this.Set.Text = "Комплект";
+            this.Set.Click += new System.EventHandler(this.Set_Click);
             // 
-            // Filtr
+            // Filter
             // 
-            this.Filtr.ForeColor = System.Drawing.Color.Red;
-            this.Filtr.Name = "Filtr";
-            this.Filtr.Size = new System.Drawing.Size(109, 21);
-            this.Filtr.Text = "Убрать фильтр";
-            this.Filtr.Visible = false;
-            this.Filtr.Click += new System.EventHandler(this.Filtr_Click);
+            this.Filter.ForeColor = System.Drawing.Color.Red;
+            this.Filter.Name = "Filter";
+            this.Filter.Size = new System.Drawing.Size(109, 21);
+            this.Filter.Text = "Убрать фильтр";
+            this.Filter.Visible = false;
+            this.Filter.Click += new System.EventHandler(this.Filtr_Click);
             // 
-            // TextBoxObschiiPoisk
+            // SearchAllBox
             // 
-            this.TextBoxObschiiPoisk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextBoxObschiiPoisk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxObschiiPoisk.Location = new System.Drawing.Point(940, 1);
-            this.TextBoxObschiiPoisk.Name = "TextBoxObschiiPoisk";
-            this.TextBoxObschiiPoisk.Size = new System.Drawing.Size(310, 23);
-            this.TextBoxObschiiPoisk.TabIndex = 3;
-            this.TextBoxObschiiPoisk.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchAll_KeyDown);
+            this.SearchAllBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchAllBox.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SearchAllBox.Location = new System.Drawing.Point(940, 1);
+            this.SearchAllBox.Name = "SearchAllBox";
+            this.SearchAllBox.Size = new System.Drawing.Size(310, 23);
+            this.SearchAllBox.TabIndex = 3;
+            this.SearchAllBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchAll_KeyDown);
             // 
-            // LabelObschiiPoisk
+            // LabelSearchAll
             // 
-            this.LabelObschiiPoisk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelObschiiPoisk.AutoSize = true;
-            this.LabelObschiiPoisk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelObschiiPoisk.Location = new System.Drawing.Point(829, 4);
-            this.LabelObschiiPoisk.Name = "LabelObschiiPoisk";
-            this.LabelObschiiPoisk.Size = new System.Drawing.Size(105, 16);
-            this.LabelObschiiPoisk.TabIndex = 4;
-            this.LabelObschiiPoisk.Text = "Общий поиск:";
+            this.LabelSearchAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabelSearchAll.AutoSize = true;
+            this.LabelSearchAll.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelSearchAll.Location = new System.Drawing.Point(829, 4);
+            this.LabelSearchAll.Name = "LabelSearchAll";
+            this.LabelSearchAll.Size = new System.Drawing.Size(105, 16);
+            this.LabelSearchAll.TabIndex = 4;
+            this.LabelSearchAll.Text = "Общий поиск:";
             // 
             // Table
             // 
@@ -362,7 +362,7 @@ namespace DevList
             this.Hostname,
             this.IP,
             this.Izmenil});
-            this.Table.ContextMenuStrip = this.KMenu;
+            this.Table.ContextMenuStrip = this.CMenu;
             this.Table.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Table.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Table.FullRowSelect = true;
@@ -452,9 +452,9 @@ namespace DevList
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1251, 561);
             this.Controls.Add(this.Table);
-            this.Controls.Add(this.LabelObschiiPoisk);
-            this.Controls.Add(this.TextBoxObschiiPoisk);
-            this.Controls.Add(this.GMenu);
+            this.Controls.Add(this.LabelSearchAll);
+            this.Controls.Add(this.SearchAllBox);
+            this.Controls.Add(this.MMenu);
             this.KeyPreview = true;
             this.Name = "BaseForm";
             this.ShowIcon = false;
@@ -462,48 +462,48 @@ namespace DevList
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BaseForm_FormClosed);
             this.Load += new System.EventHandler(this.BaseForm_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BaseForm_KeyUp);
-            this.KMenu.ResumeLayout(false);
-            this.GMenu.ResumeLayout(false);
-            this.GMenu.PerformLayout();
+            this.CMenu.ResumeLayout(false);
+            this.MMenu.ResumeLayout(false);
+            this.MMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox TextBoxObschiiPoisk;
-        private System.Windows.Forms.Label LabelObschiiPoisk;
-        public System.Windows.Forms.ContextMenuStrip KMenu;
+        private System.Windows.Forms.TextBox SearchAllBox;
+        private System.Windows.Forms.Label LabelSearchAll;
+        public System.Windows.Forms.ContextMenuStrip CMenu;
         public System.Windows.Forms.ListView Table;
-        private System.Windows.Forms.ToolStripMenuItem Fail;
-        private System.Windows.Forms.ToolStripMenuItem Pravka;
-        private System.Windows.Forms.ToolStripMenuItem Vid;
-        private System.Windows.Forms.ToolStripMenuItem Poisk;
-        private System.Windows.Forms.ToolStripMenuItem Spiski;
-        private System.Windows.Forms.ToolStripMenuItem Otcheti;
-        private System.Windows.Forms.ToolStripMenuItem Istoria;
-        private System.Windows.Forms.ToolStripMenuItem Komplekt;
-        private System.Windows.Forms.ToolStripMenuItem Filtr;
-        private System.Windows.Forms.ToolStripMenuItem Sozdat;
-        private System.Windows.Forms.ToolStripMenuItem Otkrit;
-        private System.Windows.Forms.ToolStripMenuItem Sohranit;
-        private System.Windows.Forms.ToolStripMenuItem SohranitKak;
-        private System.Windows.Forms.MenuStrip GMenu;
-        private System.Windows.Forms.ToolStripMenuItem Dobavit;
-        private System.Windows.Forms.ToolStripMenuItem Pravit;
-        private System.Windows.Forms.ToolStripMenuItem PravitVse;
-        private System.Windows.Forms.ToolStripMenuItem Vverh;
-        private System.Windows.Forms.ToolStripMenuItem Vniz;
-        private System.Windows.Forms.ToolStripMenuItem Udalit;
-        private System.Windows.Forms.ToolStripMenuItem PoTipam;
-        private System.Windows.Forms.ToolStripMenuItem VPomeschenii;
-        private System.Windows.Forms.ToolStripMenuItem KPoisk;
-        private System.Windows.Forms.ToolStripMenuItem KDobavit;
-        private System.Windows.Forms.ToolStripMenuItem KPravit;
-        private System.Windows.Forms.ToolStripMenuItem KPravitVse;
-        private System.Windows.Forms.ToolStripMenuItem KVverh;
-        private System.Windows.Forms.ToolStripMenuItem KVniz;
-        private System.Windows.Forms.ToolStripMenuItem KUdalit;
+        private System.Windows.Forms.ToolStripMenuItem File;
+        private System.Windows.Forms.ToolStripMenuItem Edit;
+        private System.Windows.Forms.ToolStripMenuItem View;
+        private System.Windows.Forms.ToolStripMenuItem Search;
+        private System.Windows.Forms.ToolStripMenuItem Lists;
+        private System.Windows.Forms.ToolStripMenuItem Reports;
+        private System.Windows.Forms.ToolStripMenuItem History;
+        private System.Windows.Forms.ToolStripMenuItem Set;
+        private System.Windows.Forms.ToolStripMenuItem Filter;
+        private System.Windows.Forms.ToolStripMenuItem Create;
+        private System.Windows.Forms.ToolStripMenuItem Open;
+        private System.Windows.Forms.ToolStripMenuItem Save;
+        private System.Windows.Forms.ToolStripMenuItem SaveAs;
+        private System.Windows.Forms.MenuStrip MMenu;
+        private System.Windows.Forms.ToolStripMenuItem Add;
+        private System.Windows.Forms.ToolStripMenuItem MEdit;
+        private System.Windows.Forms.ToolStripMenuItem MEditAll;
+        private System.Windows.Forms.ToolStripMenuItem Up;
+        private System.Windows.Forms.ToolStripMenuItem Down;
+        private System.Windows.Forms.ToolStripMenuItem Remove;
+        private System.Windows.Forms.ToolStripMenuItem ButtonSortByTypes;
+        private System.Windows.Forms.ToolStripMenuItem ButtonButtonSortByRooms;
+        private System.Windows.Forms.ToolStripMenuItem CSearch;
+        private System.Windows.Forms.ToolStripMenuItem CAdd;
+        private System.Windows.Forms.ToolStripMenuItem CEdit;
+        private System.Windows.Forms.ToolStripMenuItem CEditAll;
+        private System.Windows.Forms.ToolStripMenuItem CUp;
+        private System.Windows.Forms.ToolStripMenuItem CDown;
+        private System.Windows.Forms.ToolStripMenuItem CRemove;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Data;
         private System.Windows.Forms.ColumnHeader InvNomer;

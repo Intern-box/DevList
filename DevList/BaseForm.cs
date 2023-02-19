@@ -74,7 +74,7 @@ namespace DevList
 
             TableOutput(dataBase.Table);
 
-            Filtr.Visible = true;
+            Filter.Visible = true;
         }
 
         private void Create_Click(object sender, EventArgs e)
@@ -153,15 +153,15 @@ namespace DevList
                 if (!Directory.Exists($"{savePath.SelectedPath}\\История перемещений"))
                     Directory.CreateDirectory($"{savePath.SelectedPath}\\История перемещений");
 
-                File.Copy(iniFile.Path, Path.Combine(savePath.SelectedPath, Path.GetFileName(iniFile.Path)), true);
-                File.Copy(iniFile.Base, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Base)), true);
-                File.Copy(iniFile.Rooms, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Rooms)), true);
-                File.Copy(iniFile.Devices, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Devices)), true);
-                File.Copy(iniFile.Employees, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Employees)), true);
-                File.Copy(iniFile.Names, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Names)), true);
-                File.Copy(iniFile.History, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.History)), true);
-                File.Copy(iniFile.Set, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Set)), true);
-                File.Copy(iniFile.Parts, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Parts)), true);
+                System.IO.File.Copy(iniFile.Path, Path.Combine(savePath.SelectedPath, Path.GetFileName(iniFile.Path)), true);
+                System.IO.File.Copy(iniFile.Base, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Base)), true);
+                System.IO.File.Copy(iniFile.Rooms, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Rooms)), true);
+                System.IO.File.Copy(iniFile.Devices, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Devices)), true);
+                System.IO.File.Copy(iniFile.Employees, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Employees)), true);
+                System.IO.File.Copy(iniFile.Names, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Names)), true);
+                System.IO.File.Copy(iniFile.History, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.History)), true);
+                System.IO.File.Copy(iniFile.Set, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Set)), true);
+                System.IO.File.Copy(iniFile.Parts, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Parts)), true);
 
                 dataBase.Change = false;
             }
@@ -225,7 +225,7 @@ namespace DevList
                             {
                                 if (editLists.Result != dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)])
                                 {
-                                    File.AppendAllText
+                                    System.IO.File.AppendAllText
                                     (
                                     $"{Path.GetDirectoryName(Path.GetFullPath(iniFile.Path))}\\История перемещений\\{editLists.Result}.txt",
                                     $"Из помещения: {dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]}\r\n" +
@@ -437,7 +437,7 @@ namespace DevList
 
         private void ContextRemove_Click(object sender, EventArgs e)
         {
-            if (GMenu.Items.Count == 0)
+            if (MMenu.Items.Count == 0)
             {
                 DialogResult result =
 
@@ -500,7 +500,7 @@ namespace DevList
                         Table.Items.Clear();
                     }
 
-                    Filtr.Visible = true;
+                    Filter.Visible = true;
                 }
             }
         }
@@ -558,7 +558,7 @@ namespace DevList
                         Table.Items.Clear();
                     }
 
-                    Filtr.Visible = true;
+                    Filter.Visible = true;
                 }
             }
         }
@@ -567,9 +567,9 @@ namespace DevList
         {
             if (e.KeyCode == Keys.Enter)
             {
-                TableOutput(dataBase.FindAll(TextBoxObschiiPoisk.Text));
+                TableOutput(dataBase.FindAll(SearchAllBox.Text));
 
-                Filtr.Visible = true;
+                Filter.Visible = true;
             }
         }
 
@@ -600,25 +600,25 @@ namespace DevList
 
             BaseForm history = new BaseForm(iniFile, historyBase);
 
-            history.Fail.Visible = false;
+            history.File.Visible = false;
 
-            history.Pravka.Visible = false;
+            history.Edit.Visible = false;
 
-            history.Spiski.Visible = false;
+            history.Lists.Visible = false;
 
-            history.Otcheti.Visible = false;
+            history.Reports.Visible = false;
 
-            history.Istoria.Visible = false;
+            history.History.Visible = false;
 
-            history.KDobavit.Visible = false;
+            history.CAdd.Visible = false;
 
-            history.KPravitVse.Visible = false;
+            history.CEditAll.Visible = false;
 
-            history.KVverh.Visible = false;
+            history.CUp.Visible = false;
 
-            history.KVniz.Visible = false;
+            history.CDown.Visible = false;
 
-            history.KUdalit.Visible = false;
+            history.CRemove.Visible = false;
 
             history.Text = "DevList - История";
 
@@ -631,17 +631,17 @@ namespace DevList
 
             BaseForm set = new BaseForm(iniFile, setBase);
 
-            set.Sozdat.Visible = false;
+            set.Create.Visible = false;
 
-            set.Otkrit.Visible = false;
+            set.Open.Visible = false;
 
-            set.Vid.Visible = false;
+            set.View.Visible = false;
 
-            set.Otcheti.Visible = false;
+            set.Reports.Visible = false;
 
-            set.Istoria.Visible = false;
+            set.History.Visible = false;
 
-            set.Komplekt.Visible = false;
+            set.Set.Visible = false;
 
             set.Table.Columns.Clear();
 
@@ -680,7 +680,7 @@ namespace DevList
 
             TableOutput(dataBase.Table);
 
-            Filtr.Visible = false;
+            Filter.Visible = false;
         }
 
         private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)
