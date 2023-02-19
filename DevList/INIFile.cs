@@ -1,96 +1,99 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Windows.Forms;
 
 namespace DevList
 {
     public class INIFile
     {
-        public string Papka;
-        public string Adres = "DevList.ini";
-        public string Baza = "БД\\БД.csv";
-        public string Pomescheniia = "БД\\Помещения.txt";
-        public string Oborudovanie = "БД\\Оборудование.txt";
-        public string Sotrudniki = "БД\\Сотрудники.txt";
-        public string Naimenovaniia = "БД\\Наименования.txt";
-        public string Istoriia = "БД\\История.csv";
-        public string Komplekt = "БД\\Комплект.csv";
-        public string Komplektuiuschie = "БД\\Комплектующие.txt";
+        public string Folder;
 
-        public INIFile()
-        {
-        }
+        public string Path = "DevList.ini";
 
-        public INIFile(string adres)
+        public string Base = "БД\\БД.csv";
+
+        public string Rooms = "БД\\Помещения.txt";
+
+        public string Devices = "БД\\Оборудование.txt";
+
+        public string Employees = "БД\\Сотрудники.txt";
+
+        public string Names = "БД\\Наименования.txt";
+
+        public string History = "БД\\История.csv";
+
+        public string Set = "БД\\Комплект.csv";
+
+        public string Parts = "БД\\Комплектующие.txt";
+
+        public INIFile() { }
+
+        public INIFile(string path)
         {
-            if (!File.Exists(adres))
+            if (!File.Exists(path))
             {
                 try
                 {
-                    File.WriteAllText(adres, "");
+                    File.WriteAllText(path, string.Empty);
 
-                    Adres = adres;
-                    Papka = Path.GetDirectoryName(Adres);
+                    Path = path;
+                    Folder = System.IO.Path.GetDirectoryName(Path);
                 }
                 catch (Exception)
                 {
-                    if (!File.Exists($"{adres}\\{Adres}"))
+                    if (!File.Exists($"{path}\\{Path}"))
                     {
-                        File.WriteAllText($"{adres}\\{Adres}", "");
+                        File.WriteAllText($"{path}\\{Path}", string.Empty);
                     }
 
-                    Papka = adres;
+                    Folder = path;
                 }
 
-                if (!Directory.Exists($"{Papka}\\БД"))
-                    Directory.CreateDirectory($"{Papka}\\БД");
+                if (!Directory.Exists($"{Folder}\\БД"))
+                    Directory.CreateDirectory($"{Folder}\\БД");
 
-                if (!Directory.Exists($"{Papka}\\История перемещений"))
-                    Directory.CreateDirectory($"{Papka}\\История перемещений");
+                if (!Directory.Exists($"{Folder}\\История перемещений"))
+                    Directory.CreateDirectory($"{Folder}\\История перемещений");
 
                 File.WriteAllText
                 (
-                    $"{Papka}\\{Adres}",
+                    $"{Folder}\\{Path}",
                     
-                    $"{Baza}\r\n" +
-                    $"{Pomescheniia}\r\n" +
-                    $"{Oborudovanie}\r\n" +
-                    $"{Sotrudniki}\r\n" +
-                    $"{Naimenovaniia}\r\n" +
-                    $"{Istoriia}\r\n" +
-                    $"{Komplekt}\r\n" +
-                    $"{Komplektuiuschie}\r\n"
+                    $"{Base}\r\n" +
+                    $"{Rooms}\r\n" +
+                    $"{Devices}\r\n" +
+                    $"{Employees}\r\n" +
+                    $"{Names}\r\n" +
+                    $"{History}\r\n" +
+                    $"{Set}\r\n" +
+                    $"{Parts}\r\n"
                 );
 
-                File.WriteAllText($"{Papka}\\{Baza}", "");
-                File.WriteAllText($"{Papka}\\{Pomescheniia}", "");
-                File.WriteAllText($"{Papka}\\{Oborudovanie}", "");
-                File.WriteAllText($"{Papka}\\{Sotrudniki}", "");
-                File.WriteAllText($"{Papka}\\{Naimenovaniia}", "");
-                File.WriteAllText($"{Papka}\\{Istoriia}", "");
-                File.WriteAllText($"{Papka}\\{Komplekt}", "");
-                File.WriteAllText($"{Papka}\\{Komplektuiuschie}", "");
+                File.WriteAllText($"{Folder}\\{Base}", string.Empty);
+                File.WriteAllText($"{Folder}\\{Rooms}", string.Empty);
+                File.WriteAllText($"{Folder}\\{Devices}", string.Empty);
+                File.WriteAllText($"{Folder}\\{Employees}", string.Empty);
+                File.WriteAllText($"{Folder}\\{Names}", string.Empty);
+                File.WriteAllText($"{Folder}\\{History}", string.Empty);
+                File.WriteAllText($"{Folder}\\{Set}", string.Empty);
+                File.WriteAllText($"{Folder}\\{Parts}", string.Empty);
             }
             else
             {
-                Adres = adres;
-                Papka = Path.GetDirectoryName(Adres);
+                Path = path;
+
+                Folder = System.IO.Path.GetDirectoryName(Path);
             }
 
-            string[] ini_fail = File.ReadAllLines(Adres);
+            string[] ini_fail = File.ReadAllLines(Path);
 
-            Baza = $"{Papka}\\{ini_fail[0]}";
-            Pomescheniia = $"{Papka}\\{ini_fail[1]}";
-            Oborudovanie = $"{Papka}\\{ini_fail[2]}";
-            Sotrudniki = $"{Papka}\\{ini_fail[3]}";
-            Naimenovaniia = $"{Papka}\\{ini_fail[4]}";
-            Istoriia = $"{Papka}\\{ini_fail[5]}";
-            Komplekt = $"{Papka}\\{ini_fail[6]}";
-            Komplektuiuschie = $"{Papka}\\{ini_fail[7]}";
+            Base = $"{Folder}\\{ini_fail[0]}";
+            Rooms = $"{Folder}\\{ini_fail[1]}";
+            Devices = $"{Folder}\\{ini_fail[2]}";
+            Employees = $"{Folder}\\{ini_fail[3]}";
+            Names = $"{Folder}\\{ini_fail[4]}";
+            History = $"{Folder}\\{ini_fail[5]}";
+            Set = $"{Folder}\\{ini_fail[6]}";
+            Parts = $"{Folder}\\{ini_fail[7]}";
         }
     }
 }

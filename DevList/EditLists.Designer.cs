@@ -29,95 +29,95 @@ namespace DevList
         /// </summary>
         private void InitializeComponent()
         {
-            this.ElementSpiska = new System.Windows.Forms.ComboBox();
-            this.ButtonZakrit = new System.Windows.Forms.Button();
-            this.ButtonVipolnit = new System.Windows.Forms.Button();
-            this.ButtonUdalenieElementa = new System.Windows.Forms.Button();
-            this.ButtonDobavlenieElementa = new System.Windows.Forms.Button();
+            this.ListsBox = new System.Windows.Forms.ComboBox();
+            this.ButtonClose = new System.Windows.Forms.Button();
+            this.ButtonExecute = new System.Windows.Forms.Button();
+            this.ButtonMinus = new System.Windows.Forms.Button();
+            this.ButtonPlus = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // ElementSpiska
+            // ListsBox
             // 
-            this.ElementSpiska.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.ElementSpiska.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.ElementSpiska.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ElementSpiska.Location = new System.Drawing.Point(11, 11);
-            this.ElementSpiska.Name = "ElementSpiska";
-            this.ElementSpiska.Size = new System.Drawing.Size(400, 24);
-            this.ElementSpiska.TabIndex = 2;
+            this.ListsBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.ListsBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ListsBox.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ListsBox.Location = new System.Drawing.Point(11, 11);
+            this.ListsBox.Name = "ListsBox";
+            this.ListsBox.Size = new System.Drawing.Size(400, 24);
+            this.ListsBox.TabIndex = 2;
             // 
-            // ButtonZakrit
+            // ButtonClose
             // 
-            this.ButtonZakrit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonZakrit.Location = new System.Drawing.Point(322, 41);
-            this.ButtonZakrit.Name = "ButtonZakrit";
-            this.ButtonZakrit.Size = new System.Drawing.Size(89, 29);
-            this.ButtonZakrit.TabIndex = 4;
-            this.ButtonZakrit.Text = "Закрыть";
-            this.ButtonZakrit.UseVisualStyleBackColor = true;
-            this.ButtonZakrit.Click += new System.EventHandler(this.ButtonZakrit_Click);
+            this.ButtonClose.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonClose.Location = new System.Drawing.Point(322, 41);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.Size = new System.Drawing.Size(89, 29);
+            this.ButtonClose.TabIndex = 4;
+            this.ButtonClose.Text = "Закрыть";
+            this.ButtonClose.UseVisualStyleBackColor = true;
+            this.ButtonClose.Click += new System.EventHandler(this.Close_Click);
             // 
-            // ButtonVipolnit
+            // ButtonExecute
             // 
-            this.ButtonVipolnit.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonVipolnit.Location = new System.Drawing.Point(227, 41);
-            this.ButtonVipolnit.Name = "ButtonVipolnit";
-            this.ButtonVipolnit.Size = new System.Drawing.Size(89, 29);
-            this.ButtonVipolnit.TabIndex = 3;
-            this.ButtonVipolnit.Text = "Выполнить";
-            this.ButtonVipolnit.UseVisualStyleBackColor = true;
-            this.ButtonVipolnit.Click += new System.EventHandler(this.ButtonVipolnit_Click);
+            this.ButtonExecute.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonExecute.Location = new System.Drawing.Point(227, 41);
+            this.ButtonExecute.Name = "ButtonExecute";
+            this.ButtonExecute.Size = new System.Drawing.Size(89, 29);
+            this.ButtonExecute.TabIndex = 3;
+            this.ButtonExecute.Text = "Выполнить";
+            this.ButtonExecute.UseVisualStyleBackColor = true;
+            this.ButtonExecute.Click += new System.EventHandler(this.Execute_Click);
             // 
-            // ButtonUdalenieElementa
+            // ButtonMinus
             // 
-            this.ButtonUdalenieElementa.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonUdalenieElementa.Location = new System.Drawing.Point(444, 9);
-            this.ButtonUdalenieElementa.Name = "ButtonUdalenieElementa";
-            this.ButtonUdalenieElementa.Size = new System.Drawing.Size(21, 26);
-            this.ButtonUdalenieElementa.TabIndex = 60;
-            this.ButtonUdalenieElementa.Text = "-";
-            this.ButtonUdalenieElementa.UseVisualStyleBackColor = true;
-            this.ButtonUdalenieElementa.Click += new System.EventHandler(this.ButtonUdalenieElementa_Click);
+            this.ButtonMinus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonMinus.Location = new System.Drawing.Point(444, 9);
+            this.ButtonMinus.Name = "ButtonMinus";
+            this.ButtonMinus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonMinus.TabIndex = 60;
+            this.ButtonMinus.Text = "-";
+            this.ButtonMinus.UseVisualStyleBackColor = true;
+            this.ButtonMinus.Click += new System.EventHandler(this.ButtonMinus_Click);
             // 
-            // ButtonDobavlenieElementa
+            // ButtonPlus
             // 
-            this.ButtonDobavlenieElementa.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonDobavlenieElementa.Location = new System.Drawing.Point(417, 9);
-            this.ButtonDobavlenieElementa.Name = "ButtonDobavlenieElementa";
-            this.ButtonDobavlenieElementa.Size = new System.Drawing.Size(21, 26);
-            this.ButtonDobavlenieElementa.TabIndex = 59;
-            this.ButtonDobavlenieElementa.Text = "+";
-            this.ButtonDobavlenieElementa.UseVisualStyleBackColor = true;
-            this.ButtonDobavlenieElementa.Click += new System.EventHandler(this.ButtonDobavlenieElementa_Click);
+            this.ButtonPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonPlus.Location = new System.Drawing.Point(417, 9);
+            this.ButtonPlus.Name = "ButtonPlus";
+            this.ButtonPlus.Size = new System.Drawing.Size(21, 26);
+            this.ButtonPlus.TabIndex = 59;
+            this.ButtonPlus.Text = "+";
+            this.ButtonPlus.UseVisualStyleBackColor = true;
+            this.ButtonPlus.Click += new System.EventHandler(this.ButtonPlus_Click);
             // 
-            // PravitSpisok
+            // EditLists
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(477, 82);
-            this.Controls.Add(this.ButtonUdalenieElementa);
-            this.Controls.Add(this.ButtonDobavlenieElementa);
-            this.Controls.Add(this.ButtonZakrit);
-            this.Controls.Add(this.ButtonVipolnit);
-            this.Controls.Add(this.ElementSpiska);
+            this.Controls.Add(this.ButtonMinus);
+            this.Controls.Add(this.ButtonPlus);
+            this.Controls.Add(this.ButtonClose);
+            this.Controls.Add(this.ButtonExecute);
+            this.Controls.Add(this.ListsBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.Name = "PravitSpisok";
+            this.Name = "EditLists";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Load += new System.EventHandler(this.PravitSpisok_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PravitSpisok_KeyUp);
+            this.Load += new System.EventHandler(this.EditLists_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.EditLists_KeyUp);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox ElementSpiska;
-        private System.Windows.Forms.Button ButtonZakrit;
-        private System.Windows.Forms.Button ButtonVipolnit;
-        private System.Windows.Forms.Button ButtonUdalenieElementa;
-        private System.Windows.Forms.Button ButtonDobavlenieElementa;
+        private System.Windows.Forms.ComboBox ListsBox;
+        private System.Windows.Forms.Button ButtonClose;
+        private System.Windows.Forms.Button ButtonExecute;
+        private System.Windows.Forms.Button ButtonMinus;
+        private System.Windows.Forms.Button ButtonPlus;
     }
 }

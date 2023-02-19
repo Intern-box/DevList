@@ -7,99 +7,99 @@ namespace DevList
 {
     public partial class BaseForm : Form
     {
-        public INIFile iniFail;
+        public INIFile iniFile;
 
-        public DataBase baza;
+        public DataBase dataBase;
 
-        public ListViewHitTestInfo koordinati;
+        public ListViewHitTestInfo coordinates;
 
-        public bool sortirovkaVKolonkah = true;
+        public bool sortingColumns = true;
 
-        public bool[] vidKolonok;
+        public bool[] visibleColumns;
 
-        string zagolovok = "DevList 6.6 - Главное окно";
+        string head = "DevList 6.6 - Главное окно";
 
-        public BaseForm(INIFile iniFail, DataBase baza)
+        public BaseForm(INIFile iniFile, DataBase dataBase)
         {
             InitializeComponent();
 
-            this.iniFail = iniFail;
+            this.iniFile = iniFile;
 
-            this.baza = baza;
+            this.dataBase = dataBase;
 
-            vidKolonok = new bool[Tablica.Columns.Count];
+            visibleColumns = new bool[Table.Columns.Count];
 
-            for (int i = 0; i < vidKolonok.Length; i++) { vidKolonok[i] = true; }
+            for (int i = 0; i < visibleColumns.Length; i++) { visibleColumns[i] = true; }
         }
 
-        private void Tablica_MouseDown(object sender, MouseEventArgs e)
+        private void Table_MouseDown(object sender, MouseEventArgs e)
         {
-            koordinati = Tablica.HitTest(e.X, e.Y);
+            coordinates = Table.HitTest(e.X, e.Y);
         }
 
-        private void BazovaiaForma_Load(object sender, EventArgs e)
+        private void BaseForm_Load(object sender, EventArgs e)
         {
-            VivodVTablicu(baza.Tablica);
+            TableOutput(dataBase.Table);
         }
 
-        private void VivodVTablicu(List<string[]> tablica)
+        private void TableOutput(List<string[]> table)
         {
-            Tablica.Items.Clear();
+            Table.Items.Clear();
 
-            for (int i = 0; i < tablica.Count; i++) { tablica[i][0] = (i + 1).ToString(); }
+            for (int i = 0; i < table.Count; i++) { table[i][0] = (i + 1).ToString(); }
 
-            for (int i = 0; i < tablica.Count; i++) { ListViewItem stroka = new ListViewItem(tablica[i]); Tablica.Items.Add(stroka); }
+            for (int i = 0; i < table.Count; i++) { ListViewItem str = new ListViewItem(table[i]); Table.Items.Add(str); }
 
-            Tablica.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            Table.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
-            for (int i = 0; i < vidKolonok.Length; i++) { if (!vidKolonok[i]) { Tablica.Columns[i].Width = 0; } }
+            for (int i = 0; i < visibleColumns.Length; i++) { if (!visibleColumns[i]) { Table.Columns[i].Width = 0; } }
         }
 
-        private void Tablica_ColumnClick(object sender, ColumnClickEventArgs e)
+        private void Table_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            if (sortirovkaVKolonkah)
+            if (sortingColumns)
             {
-                baza.Tablica.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
+                dataBase.Table.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
 
-                sortirovkaVKolonkah = false;
+                sortingColumns = false;
             }
             else
             {
-                baza.Tablica.Sort((y, x) => x[e.Column].CompareTo(y[e.Column]));
+                dataBase.Table.Sort((y, x) => x[e.Column].CompareTo(y[e.Column]));
 
-                sortirovkaVKolonkah = true;
+                sortingColumns = true;
             }
 
-            Tablica.Items.Clear();
+            Table.Items.Clear();
 
-            VivodVTablicu(baza.Tablica);
+            TableOutput(dataBase.Table);
 
             Filtr.Visible = true;
         }
 
-        private void Sozdat_Click(object sender, EventArgs e)
+        private void Create_Click(object sender, EventArgs e)
         {
-            ProverkaNaIzmenenieBazi();
+            DataBaseChanges();
 
-            FolderBrowserDialog putKNovoiBaze = new FolderBrowserDialog();
+            FolderBrowserDialog pathNewBase = new FolderBrowserDialog();
 
-            putKNovoiBaze.ShowDialog();
+            pathNewBase.ShowDialog();
 
-            if (putKNovoiBaze.SelectedPath != string.Empty)
+            if (pathNewBase.SelectedPath != string.Empty)
             {
-                iniFail = new INIFile(putKNovoiBaze.SelectedPath);
+                iniFile = new INIFile(pathNewBase.SelectedPath);
 
-                baza = new DataBase(iniFail.Baza);
+                dataBase = new DataBase(iniFile.Base);
 
-                VivodVTablicu(baza.Tablica);
+                TableOutput(dataBase.Table);
             }
         }
 
-        private void ProverkaNaIzmenenieBazi()
+        private void DataBaseChanges()
         {
-            if (baza.Izmenenie)
+            if (dataBase.Change)
             {
-                DialogResult resultat_vibora =
+                DialogResult result =
 
                 MessageBox.Show
                 (
@@ -110,312 +110,312 @@ namespace DevList
                     MessageBoxDefaultButton.Button1
                 );
 
-                if (resultat_vibora == DialogResult.Yes) { baza.Zapisat(); }
+                if (result == DialogResult.Yes) { dataBase.Save(); }
 
-                baza.Izmenenie = false;
+                dataBase.Change = false;
             }
         }
 
-        private void Otkrit_Click(object sender, EventArgs e)
+        private void Open_Click(object sender, EventArgs e)
         {
-            ProverkaNaIzmenenieBazi();
+            DataBaseChanges();
 
-            OpenFileDialog otkrit_fail = new OpenFileDialog() { Filter = "*.INI|*.ini" };
+            OpenFileDialog openFileWindow = new OpenFileDialog() { Filter = "*.INI|*.ini" };
 
-            if (otkrit_fail.ShowDialog() == DialogResult.OK)
+            if (openFileWindow.ShowDialog() == DialogResult.OK)
             {
-                iniFail = new INIFile(otkrit_fail.FileName);
+                iniFile = new INIFile(openFileWindow.FileName);
 
-                baza = new DataBase(iniFail.Baza);
+                dataBase = new DataBase(iniFile.Base);
 
-                VivodVTablicu(baza.Tablica);
+                TableOutput(dataBase.Table);
             }
         }
 
-        private void Sohranit_Click(object sender, EventArgs e)
+        private void Save_Click(object sender, EventArgs e)
         {
-            baza.Zapisat();
+            dataBase.Save();
 
-            baza.Izmenenie = false;
+            dataBase.Change = false;
         }
 
-        private void SohranitKak_Click(object sender, EventArgs e)
+        private void SaveAs_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog adresDliaSohraneniia = new FolderBrowserDialog();
+            FolderBrowserDialog savePath = new FolderBrowserDialog();
 
-            adresDliaSohraneniia.ShowDialog();
+            savePath.ShowDialog();
 
-            if (adresDliaSohraneniia.SelectedPath != string.Empty)
+            if (savePath.SelectedPath != string.Empty)
             {
-                if (!Directory.Exists($"{adresDliaSohraneniia.SelectedPath}\\БД"))
-                    Directory.CreateDirectory($"{adresDliaSohraneniia.SelectedPath}\\БД");
+                if (!Directory.Exists($"{savePath.SelectedPath}\\БД"))
+                    Directory.CreateDirectory($"{savePath.SelectedPath}\\БД");
 
-                if (!Directory.Exists($"{adresDliaSohraneniia.SelectedPath}\\История перемещений"))
-                    Directory.CreateDirectory($"{adresDliaSohraneniia.SelectedPath}\\История перемещений");
+                if (!Directory.Exists($"{savePath.SelectedPath}\\История перемещений"))
+                    Directory.CreateDirectory($"{savePath.SelectedPath}\\История перемещений");
 
-                File.Copy(iniFail.Adres, Path.Combine(adresDliaSohraneniia.SelectedPath, Path.GetFileName(iniFail.Adres)), true);
-                File.Copy(iniFail.Baza, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Baza)), true);
-                File.Copy(iniFail.Pomescheniia, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Pomescheniia)), true);
-                File.Copy(iniFail.Oborudovanie, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Oborudovanie)), true);
-                File.Copy(iniFail.Sotrudniki, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Sotrudniki)), true);
-                File.Copy(iniFail.Naimenovaniia, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Naimenovaniia)), true);
-                File.Copy(iniFail.Istoriia, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Istoriia)), true);
-                File.Copy(iniFail.Komplekt, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Komplekt)), true);
-                File.Copy(iniFail.Komplektuiuschie, Path.Combine($"{adresDliaSohraneniia.SelectedPath}\\БД", Path.GetFileName(iniFail.Komplektuiuschie)), true);
+                File.Copy(iniFile.Path, Path.Combine(savePath.SelectedPath, Path.GetFileName(iniFile.Path)), true);
+                File.Copy(iniFile.Base, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Base)), true);
+                File.Copy(iniFile.Rooms, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Rooms)), true);
+                File.Copy(iniFile.Devices, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Devices)), true);
+                File.Copy(iniFile.Employees, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Employees)), true);
+                File.Copy(iniFile.Names, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Names)), true);
+                File.Copy(iniFile.History, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.History)), true);
+                File.Copy(iniFile.Set, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Set)), true);
+                File.Copy(iniFile.Parts, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Parts)), true);
 
-                baza.Izmenenie = false;
+                dataBase.Change = false;
             }
         }
 
         // Если курсор на НЕ пустой строке, то  ListViewHitTestLocations НЕ none
         // Если курсор на ПУСТОЙ строке, то ListViewHitTestLocations равен NONE
         // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
-        private void Dobavit_Click(object sender, EventArgs e)
+        private void Add_Click(object sender, EventArgs e)
         {
-            BaseSearchEdit okno = Text == zagolovok ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFail) : new ContextSearchEditWindow("DevList - Добавить", iniFail);
+            BaseSearchEdit window = Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile) : new ContextSearchEditWindow("DevList - Добавить", iniFile);
 
-            okno.ShowDialog();
+            window.ShowDialog();
 
-            if (okno.rezultat != null)
+            if (window.Result != null)
             {
-                if (koordinati == null || koordinati.Location == ListViewHitTestLocations.None)
+                if (coordinates == null || coordinates.Location == ListViewHitTestLocations.None)
                 {
-                    baza.Tablica.Add(okno.rezultat);
+                    dataBase.Table.Add(window.Result);
                 }
                 else
                 {
-                    baza.Tablica.Insert(koordinati.Item.Index + 1, okno.rezultat);
+                    dataBase.Table.Insert(coordinates.Item.Index + 1, window.Result);
                 }
 
-                VivodVTablicu(baza.Tablica);
+                TableOutput(dataBase.Table);
 
-                Tablica.Items[baza.Tablica.Count - 1].Selected = true;
+                Table.Items[dataBase.Table.Count - 1].Selected = true;
 
-                baza.Izmenenie = true;
+                dataBase.Change = true;
             }
         }
 
-        private void KDobavit_Click(object sender, EventArgs e)
+        private void ContextAdd_Click(object sender, EventArgs e)
         {
-            Dobavit_Click(sender, e);
+            Add_Click(sender, e);
         }
 
-        private void Pravit_Click(object sender, EventArgs e)
+        private void Edit_Click(object sender, EventArgs e)
         {
-            if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
+            if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
             {
-                int zapominaemStroku = koordinati.Item.Index;
+                int saveCoordinates = coordinates.Item.Index;
 
-                if (Text == zagolovok || Text == "DevList - История")
+                if (Text == head || Text == "DevList - История")
                 {
-                    if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 3 ||
-                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 4 ||
-                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 5 ||
-                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 6 ||
-                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 7 ||
-                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 12)
+                    if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 3 ||
+                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 4 ||
+                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 5 ||
+                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 6 ||
+                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 7 ||
+                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 12)
                     {
-                        EditLists pravitSpisok = new EditLists("DevList - Правка", koordinati.Item.SubItems.IndexOf(koordinati.SubItem), iniFail);
+                        EditLists editLists = new EditLists("DevList - Правка", coordinates.Item.SubItems.IndexOf(coordinates.SubItem), iniFile);
 
-                        pravitSpisok.ShowDialog();
+                        editLists.ShowDialog();
 
-                        if (pravitSpisok.rezultat != null)
+                        if (editLists.Result != null)
                         {
-                            if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 3)
+                            if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 3)
                             {
-                                if (pravitSpisok.rezultat != baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)])
+                                if (editLists.Result != dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)])
                                 {
                                     File.AppendAllText
                                     (
-                                    $"{Path.GetDirectoryName(Path.GetFullPath(iniFail.Adres))}\\История перемещений\\{pravitSpisok.rezultat}.txt",
-                                    $"Из помещения: {baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]}\r\n" +
+                                    $"{Path.GetDirectoryName(Path.GetFullPath(iniFile.Path))}\\История перемещений\\{editLists.Result}.txt",
+                                    $"Из помещения: {dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]}\r\n" +
                                     $"переместили: {DateTime.Now}\r\n" +
-                                    $"{baza.Tablica[koordinati.Item.Index][5]}\r\n" +
-                                    $"с инв.№: {baza.Tablica[koordinati.Item.Index][2]}\r\n\r\n"
+                                    $"{dataBase.Table[coordinates.Item.Index][5]}\r\n" +
+                                    $"с инв.№: {dataBase.Table[coordinates.Item.Index][2]}\r\n\r\n"
                                     );
                                 }
                             }
 
-                            baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)] = pravitSpisok.rezultat;
+                            dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLists.Result;
 
-                            VivodVTablicu(baza.Tablica);
+                            TableOutput(dataBase.Table);
 
-                            Tablica.Items[zapominaemStroku].Selected = true;
+                            Table.Items[saveCoordinates].Selected = true;
 
-                            baza.Izmenenie = true;
+                            dataBase.Change = true;
                         }
                     }
-                    else if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 0)
+                    else if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 0)
                     {
                         // Столбец ID нельзя изменить!
                     }
                     else
                     {
-                        EditLines pravitStroku = new EditLines("DevList - Правка комплект", baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]);
+                        EditLines editLines = new EditLines("DevList - Правка комплект", dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]);
 
-                        pravitStroku.ShowDialog();
+                        editLines.ShowDialog();
 
-                        if (pravitStroku.rezultat != null)
+                        if (editLines.Result != null)
                         {
-                            baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)] = pravitStroku.rezultat;
+                            dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLines.Result;
 
-                            VivodVTablicu(baza.Tablica);
+                            TableOutput(dataBase.Table);
 
-                            Tablica.Columns[9].Width = 150;
+                            Table.Columns[9].Width = 150;
 
-                            Tablica.Items[zapominaemStroku].Selected = true;
+                            Table.Items[saveCoordinates].Selected = true;
 
-                            baza.Izmenenie = true;
+                            dataBase.Change = true;
                         }
                     }
                 }
                 else
                 {
-                    if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 3 ||
-                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 4 ||
-                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 5 ||
-                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 6 ||
-                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 7 ||
-                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 8 ||
-                    koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 9)
+                    if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 3 ||
+                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 4 ||
+                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 5 ||
+                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 6 ||
+                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 7 ||
+                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 8 ||
+                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 9)
                     {
-                        EditLists pravitSpisok = new EditLists("DevList - Комплект правка", koordinati.Item.SubItems.IndexOf(koordinati.SubItem), iniFail);
+                        EditLists editLists = new EditLists("DevList - Комплект правка", coordinates.Item.SubItems.IndexOf(coordinates.SubItem), iniFile);
 
-                        pravitSpisok.ShowDialog();
+                        editLists.ShowDialog();
 
-                        if (pravitSpisok.rezultat != null)
+                        if (editLists.Result != null)
                         {
-                            baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)] = pravitSpisok.rezultat;
+                            dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLists.Result;
 
-                            VivodVTablicu(baza.Tablica);
+                            TableOutput(dataBase.Table);
 
-                            Tablica.Items[zapominaemStroku].Selected = true;
+                            Table.Items[saveCoordinates].Selected = true;
 
-                            baza.Izmenenie = true;
+                            dataBase.Change = true;
                         }
                     }
-                    else if (koordinati.Item.SubItems.IndexOf(koordinati.SubItem) == 0)
+                    else if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 0)
                     {
                         // Столбец ID нельзя изменить!
                     }
                     else
                     {
-                        EditLines pravitStroku = new EditLines("DevList - Правка", baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)]);
+                        EditLines editLines = new EditLines("DevList - Правка", dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]);
 
-                        pravitStroku.ShowDialog();
+                        editLines.ShowDialog();
 
-                        if (pravitStroku.rezultat != null)
+                        if (editLines.Result != null)
                         {
-                            baza.Tablica[koordinati.Item.Index][koordinati.Item.SubItems.IndexOf(koordinati.SubItem)] = pravitStroku.rezultat;
+                            dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLines.Result;
 
-                            VivodVTablicu(baza.Tablica);
+                            TableOutput(dataBase.Table);
 
-                            Tablica.Items[zapominaemStroku].Selected = true;
+                            Table.Items[saveCoordinates].Selected = true;
 
-                            baza.Izmenenie = true;
+                            dataBase.Change = true;
                         }
                     }
                 }
             }
         }
 
-        private void KPravit_Click(object sender, EventArgs e)
+        private void ContextEdit_Click(object sender, EventArgs e)
         {
-            Pravit_Click(sender, e);
+            Edit_Click(sender, e);
         }
 
         private void Tablica_DoubleClick(object sender, EventArgs e)
         {
-            Pravit_Click(sender, e);
+            Edit_Click(sender, e);
         }
 
-        private void PravitVse_Click(object sender, EventArgs e)
+        private void EditAll_Click(object sender, EventArgs e)
         {
-            if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
+            if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
             {
-                int zapominaemStroku = koordinati.Item.Index;
+                int saveCoordinates = coordinates.Item.Index;
 
-                BaseSearchEdit okno =
+                BaseSearchEdit window =
                     
-                    Text == zagolovok ? (BaseSearchEdit)
+                    Text == head ? (BaseSearchEdit)
                     
-                    new BaseSearchEditWindow("DevList - Править всё", iniFail, baza.Tablica[zapominaemStroku]) :
+                    new BaseSearchEditWindow("DevList - Править всё", iniFile, dataBase.Table[saveCoordinates]) :
                     
-                    new ContextSearchEditWindow("DevList - Править всё", iniFail, baza.Tablica[zapominaemStroku]);
+                    new ContextSearchEditWindow("DevList - Править всё", iniFile, dataBase.Table[saveCoordinates]);
 
-                okno.ShowDialog();
+                window.ShowDialog();
 
-                if (okno.rezultat[2] != null)
+                if (window.Result[2] != null)
                 {
-                    baza.Tablica[zapominaemStroku] = okno.rezultat;
+                    dataBase.Table[saveCoordinates] = window.Result;
 
-                    VivodVTablicu(baza.Tablica);
+                    TableOutput(dataBase.Table);
 
-                    baza.Izmenenie = true;
+                    dataBase.Change = true;
                 }
             }
         }
 
-        private void KPravitVse_Click(object sender, EventArgs e)
+        private void ContextEditAll_Click(object sender, EventArgs e)
         {
-            PravitVse_Click(sender, e);
+            EditAll_Click(sender, e);
         }
 
-        private void Vverh_Click(object sender, EventArgs e)
+        private void Up_Click(object sender, EventArgs e)
         {
-            if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
+            if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
             {
-                if (koordinati.Item.Index > 0)
+                if (coordinates.Item.Index > 0)
                 {
-                    int zapominaemStroku = koordinati.Item.Index;
+                    int saveCoordinates = coordinates.Item.Index;
 
-                    baza.PeremeschenieStroki(zapominaemStroku - 1, zapominaemStroku);
+                    dataBase.MoveLine(saveCoordinates - 1, saveCoordinates);
 
-                    VivodVTablicu(baza.Tablica);
+                    TableOutput(dataBase.Table);
 
-                    Tablica.Items[zapominaemStroku - 1].Selected = true;
-                    Tablica.Items[zapominaemStroku - 1].Focused = true;
+                    Table.Items[saveCoordinates - 1].Selected = true;
+                    Table.Items[saveCoordinates - 1].Focused = true;
 
-                    baza.Izmenenie = true;
+                    dataBase.Change = true;
                 }
             }
         }
 
-        private void KVverh_Click(object sender, EventArgs e)
+        private void ContextUp_Click(object sender, EventArgs e)
         {
-            Vverh_Click(sender, e);
+            Up_Click(sender, e);
         }
 
-        private void Vniz_Click(object sender, EventArgs e)
+        private void Down_Click(object sender, EventArgs e)
         {
-            if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
+            if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
             {
-                int zapominaemStroku = koordinati.Item.Index;
+                int saveCoordinates = coordinates.Item.Index;
 
-                if (baza.Tablica.Count > zapominaemStroku + 1)
+                if (dataBase.Table.Count > saveCoordinates + 1)
                 {
-                    baza.PeremeschenieStroki(zapominaemStroku + 1, zapominaemStroku);
+                    dataBase.MoveLine(saveCoordinates + 1, saveCoordinates);
 
-                    VivodVTablicu(baza.Tablica);
+                    TableOutput(dataBase.Table);
 
-                    Tablica.Items[zapominaemStroku + 1].Selected = true;
-                    Tablica.Items[zapominaemStroku + 1].Focused = true;
+                    Table.Items[saveCoordinates + 1].Selected = true;
+                    Table.Items[saveCoordinates + 1].Focused = true;
 
-                    baza.Izmenenie = true;
+                    dataBase.Change = true;
                 }
             }
         }
 
-        private void KVniz_Click(object sender, EventArgs e)
+        private void ContextDown_Click(object sender, EventArgs e)
         {
-            Vniz_Click(sender, e);
+            Down_Click(sender, e);
         }
 
-        private void Udalit_Click(object sender, EventArgs e)
+        private void Remove_Click(object sender, EventArgs e)
         {
-            if (koordinati != null && koordinati.Location != ListViewHitTestLocations.None)
+            if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
             {
-                DialogResult rezultat =
+                DialogResult result =
 
                 MessageBox.Show
                 (
@@ -424,22 +424,22 @@ namespace DevList
                     MessageBoxButtons.YesNo
                 );
 
-                if (rezultat == DialogResult.Yes)
+                if (result == DialogResult.Yes)
                 {
-                    Remove udalit = new Remove(baza, koordinati, iniFail, true);
+                    Remove remove = new Remove(dataBase, coordinates, iniFile, true);
 
-                    VivodVTablicu(baza.Tablica);
+                    TableOutput(dataBase.Table);
 
-                    baza.Izmenenie = true;
+                    dataBase.Change = true;
                 }
             }
         }
 
-        private void KUdalit_Click(object sender, EventArgs e)
+        private void ContextRemove_Click(object sender, EventArgs e)
         {
             if (GMenu.Items.Count == 0)
             {
-                DialogResult rezultat =
+                DialogResult result =
 
                 MessageBox.Show
                 (
@@ -448,69 +448,56 @@ namespace DevList
                     MessageBoxButtons.YesNo
                 );
 
-                if (rezultat == DialogResult.Yes)
+                if (result == DialogResult.Yes)
                 {
-                    Remove udalit = new Remove(baza, koordinati);
+                    Remove remove = new Remove(dataBase, coordinates);
 
-                    VivodVTablicu(baza.Tablica);
+                    TableOutput(dataBase.Table);
 
-                    baza.Izmenenie = true;
+                    dataBase.Change = true;
                 }
             }
             else
             {
-                Udalit_Click(sender, e);
+                Remove_Click(sender, e);
             }
         }
 
-        private void Vid_Click(object sender, EventArgs e)
+        private void View_Click(object sender, EventArgs e)
         {
-            Columns kolonki = new Columns(vidKolonok);
+            Columns columns = new Columns(visibleColumns);
 
-            kolonki.ShowDialog();
+            columns.ShowDialog();
 
-            vidKolonok = kolonki.rezultat;
+            visibleColumns = columns.rezultat;
 
-            if (kolonki.KnopkaVipolnit)
-            {
-                VivodVTablicu(baza.Tablica);
-            }
+            if (columns.KnopkaVipolnit) { TableOutput(dataBase.Table); }
         }
 
-        private void Poisk_Click(object sender, EventArgs e)
+        private void Search_Click(object sender, EventArgs e)
         {
-            string[] stroka = new string[Tablica.Columns.Count];
+            BaseSearchEdit search = Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile) : new ContextSearchEditWindow("DevList - Добавить", iniFile);
 
-            for (int i = 0; i < stroka.Length; i++)
+            search.ShowDialog();
+
+            if (search.Execute)
             {
-                stroka[i] = string.Empty;
-            }
-
-            BaseSearchEdit poisk = Text == zagolovok ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFail) : new ContextSearchEditWindow("DevList - Добавить", iniFail);
-
-            poisk.ShowDialog();
-
-            if (poisk.KnopkaVipolnit)
-            {
-                if (poisk.rezultat != null)
+                if (search.Result != null)
                 {
-                    bool proverkaNaPustieStroki = false;
+                    bool stringEmptyCheck = false;
 
-                    foreach (string slovo in poisk.rezultat)
+                    foreach (string word in search.Result)
                     {
-                        if (slovo != "")
-                        {
-                            proverkaNaPustieStroki = true;
-                        }
+                        if (word != string.Empty) { stringEmptyCheck = true; }
                     }
 
-                    if (proverkaNaPustieStroki)
+                    if (stringEmptyCheck)
                     {
-                        VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
+                        TableOutput(dataBase.StringSearch(search.Result));
                     }
                     else
                     {
-                        Tablica.Items.Clear();
+                        Table.Items.Clear();
                     }
 
                     Filtr.Visible = true;
@@ -518,61 +505,57 @@ namespace DevList
             }
         }
 
-        private void KPoisk_Click(object sender, EventArgs e)
+        private void ContextSearch_Click(object sender, EventArgs e)
         {
-            BaseSearchEdit poisk;
+            BaseSearchEdit search;
 
-            int zapominaemStroku;
+            int saveCoordinates;
 
-            if (koordinati == null || koordinati.Item == null)
+            if (coordinates == null || coordinates.Item == null)
             {
-                koordinati = Tablica.HitTest(0, 0);
+                coordinates = Table.HitTest(0, 0);
 
-                string[] stroka = new string[13];
-
-                for (int i = 0; i < stroka.Length; i++) { stroka[i] = string.Empty; }
-
-                poisk = Text == zagolovok ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFail) : new ContextSearchEditWindow("DevList - Добавить", iniFail);
+                search = Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile) : new ContextSearchEditWindow("DevList - Добавить", iniFile);
             }
             else
             {
-                zapominaemStroku = koordinati.Item == null ? 0 : koordinati.Item.Index;
+                saveCoordinates = coordinates.Item == null ? 0 : coordinates.Item.Index;
 
-                if (zapominaemStroku >= 0)
+                if (saveCoordinates >= 0)
                 {
-                    poisk = Text == zagolovok ? (BaseSearchEdit)
+                    search = Text == head ? (BaseSearchEdit)
 
-                        new BaseSearchEditWindow("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]) :
+                        new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]) :
 
-                        new ContextSearchEditWindow("DevList - Поиск", iniFail, baza.Tablica[zapominaemStroku]);
+                        new ContextSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]);
                 }
                 else
                 {
-                    poisk = Text == zagolovok ? (BaseSearchEdit)
+                    search = Text == head ? (BaseSearchEdit)
                         
-                        new BaseSearchEditWindow("DevList - Поиск", iniFail, baza.Tablica[0]) :
+                        new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]) :
 
-                        new ContextSearchEditWindow("DevList - Поиск", iniFail, baza.Tablica[0]);
+                        new ContextSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]);
                 }
             }
 
-            poisk.ShowDialog();
+            search.ShowDialog();
 
-            if (poisk.KnopkaVipolnit)
+            if (search.Execute)
             {
-                if (poisk.rezultat != null)
+                if (search.Result != null)
                 {
-                    bool proverkaNaPustieStroki = false;
+                    bool stringEmptyCheck = false;
 
-                    foreach (string slovo in poisk.rezultat) { if (slovo != string.Empty) { proverkaNaPustieStroki = true; } }
+                    foreach (string word in search.Result) { if (word != string.Empty) { stringEmptyCheck = true; } }
 
-                    if (proverkaNaPustieStroki)
+                    if (stringEmptyCheck)
                     {
-                        VivodVTablicu(baza.Poisk_Strok(poisk.rezultat));
+                        TableOutput(dataBase.StringSearch(search.Result));
                     }
                     else
                     {
-                        Tablica.Items.Clear();
+                        Table.Items.Clear();
                     }
 
                     Filtr.Visible = true;
@@ -580,162 +563,162 @@ namespace DevList
             }
         }
 
-        private void TextBoxObschiiPoisk_KeyDown(object sender, KeyEventArgs e)
+        private void SearchAll_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                VivodVTablicu(baza.Obschii_Poisk(TextBoxObschiiPoisk.Text));
+                TableOutput(dataBase.FindAll(TextBoxObschiiPoisk.Text));
 
                 Filtr.Visible = true;
             }
         }
 
-        private void Spiski_Click(object sender, EventArgs e)
+        private void Lists_Click(object sender, EventArgs e)
         {
-            Lists spiski = new Lists(iniFail);
+            Lists lists = new Lists(iniFile);
 
-            spiski.ShowDialog();
+            lists.ShowDialog();
         }
 
-        private void PoTipam_Click(object sender, EventArgs e)
+        private void SortByTypes_Click(object sender, EventArgs e)
         {
-            Reports otchet = new Reports(iniFail, baza, tipOtcheta: "PoTipam");
+            Reports report = new Reports(iniFile, dataBase, tipOtcheta: "PoTipam");
 
-            otchet.ShowDialog();
+            report.ShowDialog();
         }
 
-        private void VPomeschenii_Click(object sender, EventArgs e)
+        private void SortByRooms_Click(object sender, EventArgs e)
         {
-            Reports otchet = new Reports(iniFail, baza, tipOtcheta: "VPomeschenii");
+            Reports report = new Reports(iniFile, dataBase, tipOtcheta: "VPomeschenii");
 
-            otchet.ShowDialog();
+            report.ShowDialog();
         }
 
-        private void Istoria_Click(object sender, EventArgs e)
+        private void History_Click(object sender, EventArgs e)
         {
-            DataBase istoriaBaza = new DataBase(iniFail.Istoriia);
+            DataBase historyBase = new DataBase(iniFile.History);
 
-            BaseForm istoria = new BaseForm(iniFail, istoriaBaza);
+            BaseForm history = new BaseForm(iniFile, historyBase);
 
-            istoria.Fail.Visible = false;
+            history.Fail.Visible = false;
 
-            istoria.Pravka.Visible = false;
+            history.Pravka.Visible = false;
 
-            istoria.Spiski.Visible = false;
+            history.Spiski.Visible = false;
 
-            istoria.Otcheti.Visible = false;
+            history.Otcheti.Visible = false;
 
-            istoria.Istoria.Visible = false;
+            history.Istoria.Visible = false;
 
-            istoria.KDobavit.Visible = false;
+            history.KDobavit.Visible = false;
 
-            istoria.KPravitVse.Visible = false;
+            history.KPravitVse.Visible = false;
 
-            istoria.KVverh.Visible = false;
+            history.KVverh.Visible = false;
 
-            istoria.KVniz.Visible = false;
+            history.KVniz.Visible = false;
 
-            istoria.KUdalit.Visible = false;
+            history.KUdalit.Visible = false;
 
-            istoria.Text = "DevList - История";
+            history.Text = "DevList - История";
 
-            istoria.ShowDialog();
+            history.ShowDialog();
         }
 
-        private void Komplekt_Click(object sender, EventArgs e)
+        private void Set_Click(object sender, EventArgs e)
         {
-            DataBase komplektBaza = new DataBase(iniFail.Komplekt);
+            DataBase setBase = new DataBase(iniFile.Set);
 
-            BaseForm komplekt = new BaseForm(iniFail, komplektBaza);
+            BaseForm set = new BaseForm(iniFile, setBase);
 
-            komplekt.Sozdat.Visible = false;
+            set.Sozdat.Visible = false;
 
-            komplekt.Otkrit.Visible = false;
+            set.Otkrit.Visible = false;
 
-            komplekt.Vid.Visible = false;
+            set.Vid.Visible = false;
 
-            komplekt.Otcheti.Visible = false;
+            set.Otcheti.Visible = false;
 
-            komplekt.Istoria.Visible = false;
+            set.Istoria.Visible = false;
 
-            komplekt.Komplekt.Visible = false;
+            set.Komplekt.Visible = false;
 
-            komplekt.Tablica.Columns.Clear();
+            set.Table.Columns.Clear();
 
-            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "ID", Text = "ID", TextAlign = HorizontalAlignment.Center });
+            set.Table.Columns.Add(new ColumnHeader() { Name = "ID", Text = "ID", TextAlign = HorizontalAlignment.Center });
 
-            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "InvNomer", Text = "Системный блок Инв. №", TextAlign = HorizontalAlignment.Center });
+            set.Table.Columns.Add(new ColumnHeader() { Name = "InvNomer", Text = "Системный блок Инв. №", TextAlign = HorizontalAlignment.Center });
 
-            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Data", Text = "Приобретено", TextAlign = HorizontalAlignment.Center });
+            set.Table.Columns.Add(new ColumnHeader() { Name = "Data", Text = "Приобретено", TextAlign = HorizontalAlignment.Center });
 
-            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "CPU", Text = "Процессор", TextAlign = HorizontalAlignment.Center });
+            set.Table.Columns.Add(new ColumnHeader() { Name = "CPU", Text = "Процессор", TextAlign = HorizontalAlignment.Center });
 
-            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Mainboard", Text = "Мат. плата", TextAlign = HorizontalAlignment.Center });
+            set.Table.Columns.Add(new ColumnHeader() { Name = "Mainboard", Text = "Мат. плата", TextAlign = HorizontalAlignment.Center });
 
-            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "RAM", Text = "ОЗУ", TextAlign = HorizontalAlignment.Center });
+            set.Table.Columns.Add(new ColumnHeader() { Name = "RAM", Text = "ОЗУ", TextAlign = HorizontalAlignment.Center });
 
-            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Disk", Text = "Накопитель", TextAlign = HorizontalAlignment.Center });
+            set.Table.Columns.Add(new ColumnHeader() { Name = "Disk", Text = "Накопитель", TextAlign = HorizontalAlignment.Center });
 
-            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Videocard", Text = "Видеокарта", TextAlign = HorizontalAlignment.Center });
+            set.Table.Columns.Add(new ColumnHeader() { Name = "Videocard", Text = "Видеокарта", TextAlign = HorizontalAlignment.Center });
 
-            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Power", Text = "Блок питания", TextAlign = HorizontalAlignment.Center });
+            set.Table.Columns.Add(new ColumnHeader() { Name = "Power", Text = "Блок питания", TextAlign = HorizontalAlignment.Center });
 
-            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "Case", Text = "Корпус", TextAlign = HorizontalAlignment.Center });
+            set.Table.Columns.Add(new ColumnHeader() { Name = "Case", Text = "Корпус", TextAlign = HorizontalAlignment.Center });
 
-            komplekt.Tablica.Columns.Add(new ColumnHeader() { Name = "GvCPU", Text = "Год выпуска процессора", TextAlign = HorizontalAlignment.Center });
+            set.Table.Columns.Add(new ColumnHeader() { Name = "GvCPU", Text = "Год выпуска процессора", TextAlign = HorizontalAlignment.Center });
 
-            komplekt.Text = "DevList - Комплект";
+            set.Text = "DevList - Комплект";
 
-            komplekt.WindowState = FormWindowState.Normal;
+            set.WindowState = FormWindowState.Normal;
 
-            komplekt.ShowDialog();
+            set.ShowDialog();
         }
 
         private void Filtr_Click(object sender, EventArgs e)
         {
-            baza = new DataBase(baza.Adres);
+            dataBase = new DataBase(dataBase.Path);
 
-            VivodVTablicu(baza.Tablica);
+            TableOutput(dataBase.Table);
 
             Filtr.Visible = false;
         }
 
-        private void BazovaiaForma_FormClosed(object sender, FormClosedEventArgs e)
+        private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ProverkaNaIzmenenieBazi();
+            DataBaseChanges();
         }
 
-        private void BazovaiaForma_KeyUp(object sender, KeyEventArgs e)
+        private void BaseForm_KeyUp(object sender, KeyEventArgs e)
         {
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.S) == Keys.S)
             {
-                Dobavit_Click(sender, e);
+                Add_Click(sender, e);
             }
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.E) == Keys.E)
             {
-                PravitVse_Click(sender, e);
+                EditAll_Click(sender, e);
             }
             if (e.KeyCode == Keys.Delete)
             {
-                Udalit_Click(sender, e);
+                Remove_Click(sender, e);
             }
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.F) == Keys.F)
             {
-                Poisk_Click(sender, e);
+                Search_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                ProverkaNaIzmenenieBazi();
+                DataBaseChanges();
 
                 Close();
             }
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Up) == Keys.Up)
             {
-                Vverh_Click(sender, e);
+                Up_Click(sender, e);
             }
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Down) == Keys.Down)
             {
-                Vniz_Click(sender, e);
+                Down_Click(sender, e);
             }
         }
     }

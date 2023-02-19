@@ -41,32 +41,32 @@ namespace DevList
 
         private void DobavitPravitPoisk_Load(object sender, EventArgs e)
         {
-            List pomeschenie = new List(iniFail.Pomescheniia);
-            List oborudovanie = new List(iniFail.Oborudovanie);
-            List sotrudniki = new List(iniFail.Sotrudniki);
+            List pomeschenie = new List(iniFail.Rooms);
+            List oborudovanie = new List(iniFail.Devices);
+            List sotrudniki = new List(iniFail.Employees);
 
-            Pomeschenie.Items.AddRange(File.ReadAllLines(pomeschenie.Adres));
-            Oborudovanie.Items.AddRange(File.ReadAllLines(oborudovanie.Adres));
-            Sotrudniki.Items.AddRange(File.ReadAllLines(sotrudniki.Adres));
+            Pomeschenie.Items.AddRange(File.ReadAllLines(pomeschenie.Path));
+            Oborudovanie.Items.AddRange(File.ReadAllLines(oborudovanie.Path));
+            Sotrudniki.Items.AddRange(File.ReadAllLines(sotrudniki.Path));
         }
 
         private void ButtonVipolnit_Click(object sender, EventArgs e)
         {
-            rezultat[0] = "";
-            rezultat[1] = DataPriobreteniia.Text;
-            rezultat[2] = InvNomer.Text;
-            rezultat[3] = Pomeschenie.Text;
-            rezultat[4] = Sotrudniki.Text;
-            rezultat[5] = Naimenovanie.Text;
-            rezultat[6] = Oborudovanie.Text;
-            rezultat[7] = Sostoianie.Text;
-            rezultat[8] = Inventarizaciia.Text;
-            rezultat[9] = Kommentarii.Text;
-            rezultat[10] = Hostname.Text;
-            rezultat[11] = IP.Text;
-            rezultat[12] = Izmenil.Text;
+            Result[0] = "";
+            Result[1] = DataPriobreteniia.Text;
+            Result[2] = InvNomer.Text;
+            Result[3] = Pomeschenie.Text;
+            Result[4] = Sotrudniki.Text;
+            Result[5] = Naimenovanie.Text;
+            Result[6] = Oborudovanie.Text;
+            Result[7] = Sostoianie.Text;
+            Result[8] = Inventarizaciia.Text;
+            Result[9] = Kommentarii.Text;
+            Result[10] = Hostname.Text;
+            Result[11] = IP.Text;
+            Result[12] = Izmenil.Text;
 
-            KnopkaVipolnit = true;
+            Execute = true;
 
             Close();
         }
@@ -78,76 +78,76 @@ namespace DevList
 
         private void ButtonPomescheniePlus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Pomescheniia);
+            List spisok = new List(iniFail.Rooms);
 
-            spisok.Dobavit(Pomeschenie.Text);
+            spisok.Add(Pomeschenie.Text);
 
             Pomeschenie.Items.Clear();
 
-            Pomeschenie.Items.AddRange(File.ReadAllLines(spisok.Adres));
+            Pomeschenie.Items.AddRange(File.ReadAllLines(spisok.Path));
         }
 
         private void ButtonPomeschenieMinus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Pomescheniia);
+            List spisok = new List(iniFail.Rooms);
 
-            spisok.Udalit(Pomeschenie.Text);
+            spisok.Remove(Pomeschenie.Text);
 
             Pomeschenie.Items.Clear();
 
-            Pomeschenie.Items.AddRange(File.ReadAllLines(spisok.Adres));
+            Pomeschenie.Items.AddRange(File.ReadAllLines(spisok.Path));
         }
 
         private void ButtonFIOPlus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Sotrudniki);
+            List spisok = new List(iniFail.Employees);
 
-            spisok.Dobavit(Sotrudniki.Text);
+            spisok.Add(Sotrudniki.Text);
 
             Sotrudniki.Items.Clear();
 
-            Sotrudniki.Items.AddRange(File.ReadAllLines(spisok.Adres));
+            Sotrudniki.Items.AddRange(File.ReadAllLines(spisok.Path));
 
             Izmenil.Items.Clear();
 
-            Izmenil.Items.AddRange(File.ReadAllLines(spisok.Adres));
+            Izmenil.Items.AddRange(File.ReadAllLines(spisok.Path));
         }
 
         private void ButtonFIOMinus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Sotrudniki);
+            List spisok = new List(iniFail.Employees);
 
-            spisok.Udalit(Sotrudniki.Text);
+            spisok.Remove(Sotrudniki.Text);
 
             Sotrudniki.Items.Clear();
 
-            Sotrudniki.Items.AddRange(File.ReadAllLines(spisok.Adres));
+            Sotrudniki.Items.AddRange(File.ReadAllLines(spisok.Path));
 
             Izmenil.Items.Clear();
 
-            Izmenil.Items.AddRange(File.ReadAllLines(spisok.Adres));
+            Izmenil.Items.AddRange(File.ReadAllLines(spisok.Path));
         }
 
         private void ButtonNaimenovaniePlus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Naimenovaniia);
+            List spisok = new List(iniFail.Names);
 
-            spisok.Dobavit(Naimenovanie.Text);
+            spisok.Add(Naimenovanie.Text);
 
             Naimenovanie.Items.Clear();
 
-            Naimenovanie.Items.AddRange(File.ReadAllLines(spisok.Adres));
+            Naimenovanie.Items.AddRange(File.ReadAllLines(spisok.Path));
         }
 
         private void ButtonNaimenovanieMinus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Naimenovaniia);
+            List spisok = new List(iniFail.Names);
 
-            spisok.Udalit(Naimenovanie.Text);
+            spisok.Remove(Naimenovanie.Text);
 
             Naimenovanie.Items.Clear();
 
-            Naimenovanie.Items.AddRange(File.ReadAllLines(spisok.Adres));
+            Naimenovanie.Items.AddRange(File.ReadAllLines(spisok.Path));
         }
 
         private void ButtonIzmenilPlus_Click(object sender, EventArgs e)
@@ -162,24 +162,24 @@ namespace DevList
 
         private void ButtonOborudovaniePlus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Oborudovanie);
+            List spisok = new List(iniFail.Devices);
 
-            spisok.Dobavit(Oborudovanie.Text);
+            spisok.Add(Oborudovanie.Text);
 
             Oborudovanie.Items.Clear();
 
-            Oborudovanie.Items.AddRange(File.ReadAllLines(spisok.Adres));
+            Oborudovanie.Items.AddRange(File.ReadAllLines(spisok.Path));
         }
 
         private void ButtonOborudovanieMinus_Click(object sender, EventArgs e)
         {
-            List spisok = new List(iniFail.Oborudovanie);
+            List spisok = new List(iniFail.Devices);
 
-            spisok.Udalit(Oborudovanie.Text);
+            spisok.Remove(Oborudovanie.Text);
 
             Oborudovanie.Items.Clear();
 
-            Oborudovanie.Items.AddRange(File.ReadAllLines(spisok.Adres));
+            Oborudovanie.Items.AddRange(File.ReadAllLines(spisok.Path));
         }
 
         private void DobavitPravitPoisk_KeyUp(object sender, KeyEventArgs e)

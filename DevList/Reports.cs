@@ -31,20 +31,20 @@ namespace DevList
 
         private void Otcheti_Load(object sender, EventArgs e)
         {
-            string[] zapros = new string[baza.Tablica[0].Length];
+            string[] zapros = new string[baza.Table[0].Length];
 
-            List oborudovanie = new List(iniFail.Oborudovanie);
+            List oborudovanie = new List(iniFail.Devices);
 
             // Выводим список и кол-во оборудования 
             if (tipOtcheta == "PoTipam")
             {
-                foreach (string slovo in oborudovanie.Elementi)
+                foreach (string slovo in oborudovanie.Content)
                 {
                     if (slovo != string.Empty)
                     {
                         zapros[6] = slovo;
 
-                        Vivod.Text += $"{slovo} = {baza.Poisk_Strok(zapros).Count};\r\n";
+                        Vivod.Text += $"{slovo} = {baza.StringSearch(zapros).Count};\r\n";
                     }
                 }
             }
@@ -56,15 +56,15 @@ namespace DevList
 
                 podgotovka.ShowDialog();
 
-                if (podgotovka.rezultat == null) { Close(); }
+                if (podgotovka.Result == null) { Close(); }
 
-                zapros[3] = podgotovka.rezultat;
+                zapros[3] = podgotovka.Result;
 
-                for (int i = 0; i < oborudovanie.Elementi.Length; i++)
+                for (int i = 0; i < oborudovanie.Content.Length; i++)
                 {
-                    zapros[6] = oborudovanie.Elementi[i];
+                    zapros[6] = oborudovanie.Content[i];
 
-                    Vivod.Text += $"{zapros[6]} = {baza.Poisk_Strok(zapros).Count};\r\n";
+                    Vivod.Text += $"{zapros[6]} = {baza.StringSearch(zapros).Count};\r\n";
                 }
             }
 

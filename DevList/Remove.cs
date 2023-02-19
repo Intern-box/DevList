@@ -23,21 +23,21 @@ namespace DevList
         {
             if (udalenie)
             {
-                DataBase istoria = new DataBase(iniFail.Istoriia);
+                DataBase istoria = new DataBase(iniFail.History);
 
-                istoria.Tablica.Add(baza.Tablica[koordinati.Item.Index]);
+                istoria.Table.Add(baza.Table[koordinati.Item.Index]);
 
-                baza.Tablica[koordinati.Item.Index][9] = $"Удалено {DateTime.Now.Date.ToString().Substring(0, DateTime.Now.Date.ToString().IndexOf(" "))}";
+                baza.Table[koordinati.Item.Index][9] = $"Удалено {DateTime.Now.Date.ToString().Substring(0, DateTime.Now.Date.ToString().IndexOf(" "))}";
 
-                istoria.Zapisat();
+                istoria.Save();
             }
 
-            baza.Tablica.RemoveAt(koordinati.Item.Index);
+            baza.Table.RemoveAt(koordinati.Item.Index);
         }
 
         void Udalenie(DataBase baza, ListViewHitTestInfo koordinati)
         {
-            baza.Tablica.RemoveAt(koordinati.Item.Index);
+            baza.Table.RemoveAt(koordinati.Item.Index);
         }
     }
 }

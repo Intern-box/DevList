@@ -4,8 +4,8 @@ namespace DevList
 {
     public abstract class BaseSearchEdit : Form
     {
-        public string[] rezultat = new string[13];
+        public string[] Result = new string[13];
 
-        public bool KnopkaVipolnit = false;
+        public bool Execute = false;
     }
 }

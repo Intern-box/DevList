@@ -29,28 +29,28 @@ namespace DevList
         /// </summary>
         private void InitializeComponent()
         {
-            this.VibranniiSpisok = new System.Windows.Forms.ComboBox();
+            this.ListsBox = new System.Windows.Forms.ComboBox();
             this.LabelSpisok = new System.Windows.Forms.Label();
             this.ButtonZakrit = new System.Windows.Forms.Button();
             this.ButtonSohranit = new System.Windows.Forms.Button();
             this.SoderjimoeSpiska = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // VibranniiSpisok
+            // ListsBox
             // 
-            this.VibranniiSpisok.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.VibranniiSpisok.FormattingEnabled = true;
-            this.VibranniiSpisok.Items.AddRange(new object[] {
+            this.ListsBox.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ListsBox.FormattingEnabled = true;
+            this.ListsBox.Items.AddRange(new object[] {
             "Помещения",
             "Сотрудники",
             "Наименования",
             "Оборудование",
             "Комплектующие"});
-            this.VibranniiSpisok.Location = new System.Drawing.Point(78, 12);
-            this.VibranniiSpisok.Name = "VibranniiSpisok";
-            this.VibranniiSpisok.Size = new System.Drawing.Size(356, 24);
-            this.VibranniiSpisok.TabIndex = 56;
-            this.VibranniiSpisok.SelectionChangeCommitted += new System.EventHandler(this.VibranniiSpisok_SelectionChangeCommitted);
+            this.ListsBox.Location = new System.Drawing.Point(78, 12);
+            this.ListsBox.Name = "ListsBox";
+            this.ListsBox.Size = new System.Drawing.Size(356, 24);
+            this.ListsBox.TabIndex = 56;
+            this.ListsBox.SelectionChangeCommitted += new System.EventHandler(this.ListsBox_SelectionChangeCommitted);
             // 
             // LabelSpisok
             // 
@@ -72,7 +72,7 @@ namespace DevList
             this.ButtonZakrit.TabIndex = 58;
             this.ButtonZakrit.Text = "Закрыть";
             this.ButtonZakrit.UseVisualStyleBackColor = true;
-            this.ButtonZakrit.Click += new System.EventHandler(this.ButtonZakrit_Click);
+            this.ButtonZakrit.Click += new System.EventHandler(this.Close_Click);
             // 
             // ButtonSohranit
             // 
@@ -84,7 +84,7 @@ namespace DevList
             this.ButtonSohranit.TabIndex = 57;
             this.ButtonSohranit.Text = "Сохранить";
             this.ButtonSohranit.UseVisualStyleBackColor = true;
-            this.ButtonSohranit.Click += new System.EventHandler(this.ButtonSohranit_Click);
+            this.ButtonSohranit.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // SoderjimoeSpiska
             // 
@@ -99,7 +99,7 @@ namespace DevList
             this.SoderjimoeSpiska.Size = new System.Drawing.Size(422, 277);
             this.SoderjimoeSpiska.TabIndex = 60;
             // 
-            // Spiski
+            // Lists
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -107,15 +107,15 @@ namespace DevList
             this.Controls.Add(this.SoderjimoeSpiska);
             this.Controls.Add(this.ButtonZakrit);
             this.Controls.Add(this.ButtonSohranit);
-            this.Controls.Add(this.VibranniiSpisok);
+            this.Controls.Add(this.ListsBox);
             this.Controls.Add(this.LabelSpisok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
-            this.Name = "Spiski";
+            this.Name = "Lists";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Редактирование списков";
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RedaktirovanieSpiskov_KeyUp);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Lists_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,7 +123,7 @@ namespace DevList
 
         #endregion
 
-        private System.Windows.Forms.ComboBox VibranniiSpisok;
+        private System.Windows.Forms.ComboBox ListsBox;
         private System.Windows.Forms.Label LabelSpisok;
         private System.Windows.Forms.Button ButtonZakrit;
         private System.Windows.Forms.Button ButtonSohranit;

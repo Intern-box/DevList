@@ -1,112 +1,105 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DevList
 {
     public partial class Lists : Form
     {
-        INIFile iniFail;
+        INIFile iniFile;
 
-        public Lists(INIFile iniFail)
+        public Lists(INIFile iniFile)
         {
             InitializeComponent();
 
-            this.iniFail = iniFail;
+            this.iniFile = iniFile;
         }
 
-        private void VibranniiSpisok_SelectionChangeCommitted(object sender, EventArgs e)
+        private void ListsBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            string[] spisok_strok_iz_faila = null;
+            string[] fileStrings = null;
 
-            if (VibranniiSpisok.SelectedIndex == 0)
+            if (ListsBox.SelectedIndex == 0)
             {
-                spisok_strok_iz_faila = File.ReadAllLines(iniFail.Pomescheniia);
+                fileStrings = File.ReadAllLines(iniFile.Rooms);
             }
 
-            if (VibranniiSpisok.SelectedIndex == 1)
+            if (ListsBox.SelectedIndex == 1)
             {
-                spisok_strok_iz_faila = File.ReadAllLines(iniFail.Sotrudniki);
+                fileStrings = File.ReadAllLines(iniFile.Employees);
             }
 
-            if (VibranniiSpisok.SelectedIndex == 2)
+            if (ListsBox.SelectedIndex == 2)
             {
-                spisok_strok_iz_faila = File.ReadAllLines(iniFail.Naimenovaniia);
+                fileStrings = File.ReadAllLines(iniFile.Names);
             }
 
-            if (VibranniiSpisok.SelectedIndex == 3)
+            if (ListsBox.SelectedIndex == 3)
             {
-                spisok_strok_iz_faila = File.ReadAllLines(iniFail.Oborudovanie);
+                fileStrings = File.ReadAllLines(iniFile.Devices);
             }
 
-            if (VibranniiSpisok.SelectedIndex == 4)
+            if (ListsBox.SelectedIndex == 4)
             {
-                spisok_strok_iz_faila = File.ReadAllLines(iniFail.Komplektuiuschie);
+                fileStrings = File.ReadAllLines(iniFile.Parts);
             }
 
             SoderjimoeSpiska.Clear();
 
-            if (spisok_strok_iz_faila != null)
+            if (fileStrings != null)
             {
-                foreach (string stroka in spisok_strok_iz_faila)
+                foreach (string str in fileStrings)
                 {
-                    SoderjimoeSpiska.Text += stroka + "\r\n";
+                    SoderjimoeSpiska.Text += str + "\r\n";
                 }
             }
         }
 
-        private void ButtonSohranit_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (SoderjimoeSpiska.Text != "")
+            if (SoderjimoeSpiska.Text != string.Empty)
             {
-                if (VibranniiSpisok.SelectedIndex == 0)
+                if (ListsBox.SelectedIndex == 0)
                 {
-                    File.WriteAllText(iniFail.Pomescheniia, SoderjimoeSpiska.Text + "\r\n");
+                    File.WriteAllText(iniFile.Rooms, SoderjimoeSpiska.Text + "\r\n");
                 }
 
-                if (VibranniiSpisok.SelectedIndex == 1)
+                if (ListsBox.SelectedIndex == 1)
                 {
-                    File.WriteAllText(iniFail.Sotrudniki, SoderjimoeSpiska.Text + "\r\n");
+                    File.WriteAllText(iniFile.Employees, SoderjimoeSpiska.Text + "\r\n");
                 }
 
-                if (VibranniiSpisok.SelectedIndex == 2)
+                if (ListsBox.SelectedIndex == 2)
                 {
-                    File.WriteAllText(iniFail.Naimenovaniia, SoderjimoeSpiska.Text + "\r\n");
+                    File.WriteAllText(iniFile.Names, SoderjimoeSpiska.Text + "\r\n");
                 }
 
-                if (VibranniiSpisok.SelectedIndex == 3)
+                if (ListsBox.SelectedIndex == 3)
                 {
-                    File.WriteAllText(iniFail.Oborudovanie, SoderjimoeSpiska.Text + "\r\n");
+                    File.WriteAllText(iniFile.Devices, SoderjimoeSpiska.Text + "\r\n");
                 }
 
-                if (VibranniiSpisok.SelectedIndex == 4)
+                if (ListsBox.SelectedIndex == 4)
                 {
-                    File.WriteAllText(iniFail.Komplektuiuschie, SoderjimoeSpiska.Text + "\r\n");
+                    File.WriteAllText(iniFile.Parts, SoderjimoeSpiska.Text + "\r\n");
                 }
             }
         }
 
-        private void ButtonZakrit_Click(object sender, EventArgs e)
+        private void Close_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void RedaktirovanieSpiskov_KeyUp(object sender, KeyEventArgs e)
+        private void Lists_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                ButtonSohranit_Click(sender, e);
+                SaveButton_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                ButtonZakrit_Click(sender, e);
+                Close_Click(sender, e);
             }
         }
     }

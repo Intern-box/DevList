@@ -15,7 +15,7 @@ namespace DevList
         {
             INIFile iniFail = new INIFile();
 
-            if (File.Exists(iniFail.Adres))
+            if (File.Exists(iniFail.Path))
             {
                 Zapusk(iniFail); Close();
             }
@@ -60,7 +60,7 @@ namespace DevList
         {
             Hide();
 
-            BaseForm glavnoeOkno = new BaseForm(iniFail, new DataBase(iniFail.Baza));
+            BaseForm glavnoeOkno = new BaseForm(iniFail, new DataBase(iniFail.Base));
 
             glavnoeOkno.Text = "DevList 6.6 - Главное окно";
 

@@ -62,7 +62,7 @@ namespace DevList
             this.Filtr = new System.Windows.Forms.ToolStripMenuItem();
             this.TextBoxObschiiPoisk = new System.Windows.Forms.TextBox();
             this.LabelObschiiPoisk = new System.Windows.Forms.Label();
-            this.Tablica = new System.Windows.Forms.ListView();
+            this.Table = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Data = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.InvNomer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -91,56 +91,56 @@ namespace DevList
             this.KVniz,
             this.KUdalit});
             this.KMenu.Name = "KMenu";
-            this.KMenu.Size = new System.Drawing.Size(181, 180);
+            this.KMenu.Size = new System.Drawing.Size(142, 158);
             // 
             // KPoisk
             // 
             this.KPoisk.Name = "KPoisk";
-            this.KPoisk.Size = new System.Drawing.Size(180, 22);
+            this.KPoisk.Size = new System.Drawing.Size(141, 22);
             this.KPoisk.Text = "Поиск";
-            this.KPoisk.Click += new System.EventHandler(this.KPoisk_Click);
+            this.KPoisk.Click += new System.EventHandler(this.ContextSearch_Click);
             // 
             // KDobavit
             // 
             this.KDobavit.Name = "KDobavit";
-            this.KDobavit.Size = new System.Drawing.Size(180, 22);
+            this.KDobavit.Size = new System.Drawing.Size(141, 22);
             this.KDobavit.Text = "Добавить";
-            this.KDobavit.Click += new System.EventHandler(this.KDobavit_Click);
+            this.KDobavit.Click += new System.EventHandler(this.ContextAdd_Click);
             // 
             // KPravit
             // 
             this.KPravit.Name = "KPravit";
-            this.KPravit.Size = new System.Drawing.Size(180, 22);
+            this.KPravit.Size = new System.Drawing.Size(141, 22);
             this.KPravit.Text = "Править";
-            this.KPravit.Click += new System.EventHandler(this.KPravit_Click);
+            this.KPravit.Click += new System.EventHandler(this.ContextEdit_Click);
             // 
             // KPravitVse
             // 
             this.KPravitVse.Name = "KPravitVse";
-            this.KPravitVse.Size = new System.Drawing.Size(180, 22);
+            this.KPravitVse.Size = new System.Drawing.Size(141, 22);
             this.KPravitVse.Text = "Править всё";
-            this.KPravitVse.Click += new System.EventHandler(this.KPravitVse_Click);
+            this.KPravitVse.Click += new System.EventHandler(this.ContextEditAll_Click);
             // 
             // KVverh
             // 
             this.KVverh.Name = "KVverh";
-            this.KVverh.Size = new System.Drawing.Size(180, 22);
+            this.KVverh.Size = new System.Drawing.Size(141, 22);
             this.KVverh.Text = "Вверх";
-            this.KVverh.Click += new System.EventHandler(this.KVverh_Click);
+            this.KVverh.Click += new System.EventHandler(this.ContextUp_Click);
             // 
             // KVniz
             // 
             this.KVniz.Name = "KVniz";
-            this.KVniz.Size = new System.Drawing.Size(180, 22);
+            this.KVniz.Size = new System.Drawing.Size(141, 22);
             this.KVniz.Text = "Вниз";
-            this.KVniz.Click += new System.EventHandler(this.KVniz_Click);
+            this.KVniz.Click += new System.EventHandler(this.ContextDown_Click);
             // 
             // KUdalit
             // 
             this.KUdalit.Name = "KUdalit";
-            this.KUdalit.Size = new System.Drawing.Size(180, 22);
+            this.KUdalit.Size = new System.Drawing.Size(141, 22);
             this.KUdalit.Text = "Удалить";
-            this.KUdalit.Click += new System.EventHandler(this.KUdalit_Click);
+            this.KUdalit.Click += new System.EventHandler(this.ContextRemove_Click);
             // 
             // GMenu
             // 
@@ -176,28 +176,28 @@ namespace DevList
             this.Sozdat.Name = "Sozdat";
             this.Sozdat.Size = new System.Drawing.Size(162, 22);
             this.Sozdat.Text = "Создать";
-            this.Sozdat.Click += new System.EventHandler(this.Sozdat_Click);
+            this.Sozdat.Click += new System.EventHandler(this.Create_Click);
             // 
             // Otkrit
             // 
             this.Otkrit.Name = "Otkrit";
             this.Otkrit.Size = new System.Drawing.Size(162, 22);
             this.Otkrit.Text = "Открыть";
-            this.Otkrit.Click += new System.EventHandler(this.Otkrit_Click);
+            this.Otkrit.Click += new System.EventHandler(this.Open_Click);
             // 
             // Sohranit
             // 
             this.Sohranit.Name = "Sohranit";
             this.Sohranit.Size = new System.Drawing.Size(162, 22);
             this.Sohranit.Text = "Сохранить";
-            this.Sohranit.Click += new System.EventHandler(this.Sohranit_Click);
+            this.Sohranit.Click += new System.EventHandler(this.Save_Click);
             // 
             // SohranitKak
             // 
             this.SohranitKak.Name = "SohranitKak";
             this.SohranitKak.Size = new System.Drawing.Size(162, 22);
             this.SohranitKak.Text = "Сохранить как";
-            this.SohranitKak.Click += new System.EventHandler(this.SohranitKak_Click);
+            this.SohranitKak.Click += new System.EventHandler(this.SaveAs_Click);
             // 
             // Pravka
             // 
@@ -217,63 +217,63 @@ namespace DevList
             this.Dobavit.Name = "Dobavit";
             this.Dobavit.Size = new System.Drawing.Size(150, 22);
             this.Dobavit.Text = "Добавить";
-            this.Dobavit.Click += new System.EventHandler(this.Dobavit_Click);
+            this.Dobavit.Click += new System.EventHandler(this.Add_Click);
             // 
             // Pravit
             // 
             this.Pravit.Name = "Pravit";
             this.Pravit.Size = new System.Drawing.Size(150, 22);
             this.Pravit.Text = "Править";
-            this.Pravit.Click += new System.EventHandler(this.Pravit_Click);
+            this.Pravit.Click += new System.EventHandler(this.Edit_Click);
             // 
             // PravitVse
             // 
             this.PravitVse.Name = "PravitVse";
             this.PravitVse.Size = new System.Drawing.Size(150, 22);
             this.PravitVse.Text = "Править всё";
-            this.PravitVse.Click += new System.EventHandler(this.PravitVse_Click);
+            this.PravitVse.Click += new System.EventHandler(this.EditAll_Click);
             // 
             // Vverh
             // 
             this.Vverh.Name = "Vverh";
             this.Vverh.Size = new System.Drawing.Size(150, 22);
             this.Vverh.Text = "Вверх";
-            this.Vverh.Click += new System.EventHandler(this.Vverh_Click);
+            this.Vverh.Click += new System.EventHandler(this.Up_Click);
             // 
             // Vniz
             // 
             this.Vniz.Name = "Vniz";
             this.Vniz.Size = new System.Drawing.Size(150, 22);
             this.Vniz.Text = "Вниз";
-            this.Vniz.Click += new System.EventHandler(this.Vniz_Click);
+            this.Vniz.Click += new System.EventHandler(this.Down_Click);
             // 
             // Udalit
             // 
             this.Udalit.Name = "Udalit";
             this.Udalit.Size = new System.Drawing.Size(150, 22);
             this.Udalit.Text = "Удалить";
-            this.Udalit.Click += new System.EventHandler(this.Udalit_Click);
+            this.Udalit.Click += new System.EventHandler(this.Remove_Click);
             // 
             // Vid
             // 
             this.Vid.Name = "Vid";
             this.Vid.Size = new System.Drawing.Size(41, 21);
             this.Vid.Text = "Вид";
-            this.Vid.Click += new System.EventHandler(this.Vid_Click);
+            this.Vid.Click += new System.EventHandler(this.View_Click);
             // 
             // Poisk
             // 
             this.Poisk.Name = "Poisk";
             this.Poisk.Size = new System.Drawing.Size(56, 21);
             this.Poisk.Text = "Поиск";
-            this.Poisk.Click += new System.EventHandler(this.Poisk_Click);
+            this.Poisk.Click += new System.EventHandler(this.Search_Click);
             // 
             // Spiski
             // 
             this.Spiski.Name = "Spiski";
             this.Spiski.Size = new System.Drawing.Size(61, 21);
             this.Spiski.Text = "Списки";
-            this.Spiski.Click += new System.EventHandler(this.Spiski_Click);
+            this.Spiski.Click += new System.EventHandler(this.Lists_Click);
             // 
             // Otcheti
             // 
@@ -289,28 +289,28 @@ namespace DevList
             this.PoTipam.Name = "PoTipam";
             this.PoTipam.Size = new System.Drawing.Size(183, 22);
             this.PoTipam.Text = "МЦ по типам";
-            this.PoTipam.Click += new System.EventHandler(this.PoTipam_Click);
+            this.PoTipam.Click += new System.EventHandler(this.SortByTypes_Click);
             // 
             // VPomeschenii
             // 
             this.VPomeschenii.Name = "VPomeschenii";
             this.VPomeschenii.Size = new System.Drawing.Size(183, 22);
             this.VPomeschenii.Text = "МЦ в помещении";
-            this.VPomeschenii.Click += new System.EventHandler(this.VPomeschenii_Click);
+            this.VPomeschenii.Click += new System.EventHandler(this.SortByRooms_Click);
             // 
             // Istoria
             // 
             this.Istoria.Name = "Istoria";
             this.Istoria.Size = new System.Drawing.Size(71, 21);
             this.Istoria.Text = "История";
-            this.Istoria.Click += new System.EventHandler(this.Istoria_Click);
+            this.Istoria.Click += new System.EventHandler(this.History_Click);
             // 
             // Komplekt
             // 
             this.Komplekt.Name = "Komplekt";
             this.Komplekt.Size = new System.Drawing.Size(77, 21);
             this.Komplekt.Text = "Комплект";
-            this.Komplekt.Click += new System.EventHandler(this.Komplekt_Click);
+            this.Komplekt.Click += new System.EventHandler(this.Set_Click);
             // 
             // Filtr
             // 
@@ -329,7 +329,7 @@ namespace DevList
             this.TextBoxObschiiPoisk.Name = "TextBoxObschiiPoisk";
             this.TextBoxObschiiPoisk.Size = new System.Drawing.Size(310, 23);
             this.TextBoxObschiiPoisk.TabIndex = 3;
-            this.TextBoxObschiiPoisk.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxObschiiPoisk_KeyDown);
+            this.TextBoxObschiiPoisk.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchAll_KeyDown);
             // 
             // LabelObschiiPoisk
             // 
@@ -342,13 +342,13 @@ namespace DevList
             this.LabelObschiiPoisk.TabIndex = 4;
             this.LabelObschiiPoisk.Text = "Общий поиск:";
             // 
-            // Tablica
+            // Table
             // 
-            this.Tablica.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.Tablica.AllowColumnReorder = true;
-            this.Tablica.AllowDrop = true;
-            this.Tablica.AutoArrange = false;
-            this.Tablica.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Table.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.Table.AllowColumnReorder = true;
+            this.Table.AllowDrop = true;
+            this.Table.AutoArrange = false;
+            this.Table.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
             this.Data,
             this.InvNomer,
@@ -362,22 +362,22 @@ namespace DevList
             this.Hostname,
             this.IP,
             this.Izmenil});
-            this.Tablica.ContextMenuStrip = this.KMenu;
-            this.Tablica.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Tablica.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Tablica.FullRowSelect = true;
-            this.Tablica.GridLines = true;
-            this.Tablica.HideSelection = false;
-            this.Tablica.Location = new System.Drawing.Point(0, 25);
-            this.Tablica.Name = "Tablica";
-            this.Tablica.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Tablica.Size = new System.Drawing.Size(1251, 536);
-            this.Tablica.TabIndex = 5;
-            this.Tablica.UseCompatibleStateImageBehavior = false;
-            this.Tablica.View = System.Windows.Forms.View.Details;
-            this.Tablica.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.Tablica_ColumnClick);
-            this.Tablica.DoubleClick += new System.EventHandler(this.Tablica_DoubleClick);
-            this.Tablica.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Tablica_MouseDown);
+            this.Table.ContextMenuStrip = this.KMenu;
+            this.Table.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Table.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Table.FullRowSelect = true;
+            this.Table.GridLines = true;
+            this.Table.HideSelection = false;
+            this.Table.Location = new System.Drawing.Point(0, 25);
+            this.Table.Name = "Table";
+            this.Table.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Table.Size = new System.Drawing.Size(1251, 536);
+            this.Table.TabIndex = 5;
+            this.Table.UseCompatibleStateImageBehavior = false;
+            this.Table.View = System.Windows.Forms.View.Details;
+            this.Table.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.Table_ColumnClick);
+            this.Table.DoubleClick += new System.EventHandler(this.Tablica_DoubleClick);
+            this.Table.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Table_MouseDown);
             // 
             // ID
             // 
@@ -443,7 +443,7 @@ namespace DevList
             this.Izmenil.Text = "Изменил";
             this.Izmenil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // BazovaiaForma
+            // BaseForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,17 +451,17 @@ namespace DevList
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1251, 561);
-            this.Controls.Add(this.Tablica);
+            this.Controls.Add(this.Table);
             this.Controls.Add(this.LabelObschiiPoisk);
             this.Controls.Add(this.TextBoxObschiiPoisk);
             this.Controls.Add(this.GMenu);
             this.KeyPreview = true;
-            this.Name = "BazovaiaForma";
+            this.Name = "BaseForm";
             this.ShowIcon = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BazovaiaForma_FormClosed);
-            this.Load += new System.EventHandler(this.BazovaiaForma_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BazovaiaForma_KeyUp);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BaseForm_FormClosed);
+            this.Load += new System.EventHandler(this.BaseForm_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BaseForm_KeyUp);
             this.KMenu.ResumeLayout(false);
             this.GMenu.ResumeLayout(false);
             this.GMenu.PerformLayout();
@@ -474,7 +474,7 @@ namespace DevList
         private System.Windows.Forms.TextBox TextBoxObschiiPoisk;
         private System.Windows.Forms.Label LabelObschiiPoisk;
         public System.Windows.Forms.ContextMenuStrip KMenu;
-        public System.Windows.Forms.ListView Tablica;
+        public System.Windows.Forms.ListView Table;
         private System.Windows.Forms.ToolStripMenuItem Fail;
         private System.Windows.Forms.ToolStripMenuItem Pravka;
         private System.Windows.Forms.ToolStripMenuItem Vid;

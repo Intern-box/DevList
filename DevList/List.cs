@@ -1,43 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.IO;
 
 namespace DevList
 {
     public class List
     {
-        public string[] Elementi;
-        public string Adres;
+        public string[] Content;
+
+        public string Path;
 
         public List(string adres)
         {
-            Adres = adres;
+            Path = adres;
 
-            Elementi = File.ReadAllLines(Adres);
+            Content = File.ReadAllLines(Path);
         }
 
-        public void Dobavit(string tekst)
+        public void Add(string str)
         {
-            File.AppendAllText(Adres, tekst + "\r\n");
+            File.AppendAllText(Path, str + "\r\n");
         }
-        public void Udalit(string tekst)
+        public void Remove(string str)
         {
-            string stroki = "";
+            string strings = string.Empty;
 
-            foreach (string stroka in File.ReadAllLines(Adres))
+            foreach (string tStr in File.ReadAllLines(Path))
             {
-                if (stroka != tekst)
+                if (tStr != str)
                 {
-                    stroki += stroka + "\r\n";
+                    strings += tStr + "\r\n";
                 }
             }
 
-            File.Delete(Adres);
+            File.Delete(Path);
 
-            File.AppendAllText(Adres, stroki.ToString());
+            File.AppendAllText(Path, strings.ToString());
         }
     }
 }

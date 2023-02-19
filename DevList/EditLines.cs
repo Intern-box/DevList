@@ -1,56 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DevList
 {
     public partial class EditLines : Form
     {
-        string tekst;
+        string input;
 
-        public string rezultat;
+        public string Result;
 
-        public EditLines(string zagolovok, string tekst)
+        public EditLines(string head, string input)
         {
             InitializeComponent();
 
-            this.tekst = tekst;
+            this.input = input;
             
-            Text = zagolovok;
+            base.Text = head;
         }
 
-        private void PravitStroku_Load(object sender, EventArgs e)
+        private void EditLines_Load(object sender, EventArgs e)
         {
-            Tekst.Text = tekst;
+            Text.Text = input;
         }
 
-        private void ButtonVipolnit_Click(object sender, EventArgs e)
+        private void Execute_Click(object sender, EventArgs e)
         {
-            rezultat = Tekst.Text;
+            Result = Text.Text;
 
             Close();
         }
 
-        private void ButtonZakrit_Click(object sender, EventArgs e)
+        private void Close_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void PravitStroku_KeyUp(object sender, KeyEventArgs e)
+        private void EditLines_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                ButtonVipolnit_Click(sender, e);
+                Execute_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                ButtonZakrit_Click(sender, e);
+                Close_Click(sender, e);
             }
         }
     }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.IO;
 
@@ -11,131 +9,133 @@ namespace DevList
 {
     public class DataBase
     {
-        public string Adres;
-        public List<string[]> Tablica = new List<string[]>();
-        public bool Izmenenie = false;
+        public string Path;
 
-        public DataBase(string adres)
+        public List<string[]> Table = new List<string[]>();
+
+        public bool Change = false;
+
+        public DataBase(string path)
         {
-            Adres = adres;
+            Path = path;
 
-            foreach (string stroka in File.ReadAllLines(adres))
+            foreach (string str in File.ReadAllLines(path))
             {
-                stroka.TrimEnd('\r');
+                str.TrimEnd('\r');
 
-                stroka.TrimEnd('\n');
+                str.TrimEnd('\n');
 
-                string[] shablonStroki = new string[13];
+                string[] patternString = new string[13];
 
-                for (int i = 0; i < shablonStroki.Length; i++)
+                for (int i = 0; i < patternString.Length; i++)
                 {
-                    shablonStroki[i] = "";
+                    patternString[i] = string.Empty;
                 }
 
-                for (int i = 0; i < stroka.Split(',').Length; i++)
+                for (int i = 0; i < str.Split(',').Length; i++)
                 {
-                    shablonStroki[i] = stroka.Split(',')[i];
+                    patternString[i] = str.Split(',')[i];
                 }
 
-                Tablica.Add(shablonStroki);
+                Table.Add(patternString);
             }
         }
 
-        public void Zapisat()
+        public void Save()
         {
-            File.WriteAllLines(Adres, Tablica.Select(x => string.Join(",", x)));
+            File.WriteAllLines(Path, Table.Select(x => string.Join(",", x)));
         }
 
-        public void Zapisat(string adres)
+        public void Save(string path)
         {
-            File.WriteAllLines(adres, Tablica.Select(x => string.Join(",", x)));
+            File.WriteAllLines(path, Table.Select(x => string.Join(",", x)));
         }
 
-        public void PeremeschenieStroki(int nomerPervoi, int nomerVtoroi)
+        public void MoveLine(int firstLine, int secondLine)
         {
-            string[] zapominaem_pervuiu = new string[Tablica[nomerPervoi].Length];
+            string[] temp = new string[Table[firstLine].Length];
 
-            for (int i = 0; i < Tablica[nomerPervoi].Length; i++)
+            for (int i = 0; i < Table[firstLine].Length; i++)
             {
-                zapominaem_pervuiu[i] = Tablica[nomerPervoi][i];
+                temp[i] = Table[firstLine][i];
             }
 
-            for (int i = 0; i < Tablica[nomerPervoi].Length; i++)
+            for (int i = 0; i < Table[firstLine].Length; i++)
             {
-                Tablica[nomerPervoi][i] = Tablica[nomerVtoroi][i];
+                Table[firstLine][i] = Table[secondLine][i];
             }
 
-            for (int i = 0; i < Tablica[nomerPervoi].Length; i++)
+            for (int i = 0; i < Table[firstLine].Length; i++)
             {
-                Tablica[nomerVtoroi][i] = zapominaem_pervuiu[i];
+                Table[secondLine][i] = temp[i];
             }
         }
 
-        public List<string[]> Poisk_Strok(string[] zapros)
+        public List<string[]> StringSearch(string[] request)
         {
-            List<string[]> resultat = new List<string[]>();
+            List<string[]> result = new List<string[]>();
 
-            byte skolko_nado_naiti_sovpadenii = 0;
+            byte needFind = 0;
 
-            for (int i = 1; i < zapros.Length; i++)
+            for (int i = 1; i < request.Length; i++)
             {
-                if (zapros[i] != null && zapros[i] != "")
+                if (request[i] != null && request[i] != string.Empty)
                 {
-                    skolko_nado_naiti_sovpadenii++;
+                    needFind++;
                 }
             }
 
-            byte naideno_sovpadenii = 0;
+            byte found = 0;
 
-            foreach (string[] stroka in Tablica)
+            foreach (string[] str in Table)
             {
-                for (int i = 1; i < Tablica[0].Length; i++)
+                for (int i = 1; i < Table[0].Length; i++)
                 {
-                    if (zapros[i] != null && zapros[i] != "")
+                    if (request[i] != null && request[i] != string.Empty)
                     {
-                        if (stroka[i].IndexOf(zapros[i], StringComparison.CurrentCultureIgnoreCase) != -1)
+                        if (str[i].IndexOf(request[i], StringComparison.CurrentCultureIgnoreCase) != -1)
                         {
-                            naideno_sovpadenii++;
+                            found++;
                         }
                     }
                 }
 
-                if (naideno_sovpadenii >= skolko_nado_naiti_sovpadenii)
+                if (found >= needFind)
                 {
-                    resultat.Add(stroka);
+                    result.Add(str);
                 }
 
-                naideno_sovpadenii = 0;
+                found = 0;
             }
 
-            return resultat;
+            return result;
         }
 
-        public List<string[]> Obschii_Poisk(string zapros)
+        public List<string[]> FindAll(string request)
         {
-            List<string[]> resultat = new List<string[]>();
+            List<string[]> result = new List<string[]>();
 
-            bool sovpadenie = false;
+            bool matchFound = false;
 
-            foreach (string[] stroka in Tablica)
+            foreach (string[] stroka in Table)
             {
                 foreach (string slovo in stroka)
                 {
-                    if (slovo.IndexOf(zapros, StringComparison.CurrentCultureIgnoreCase) != -1)
+                    if (slovo.IndexOf(request, StringComparison.CurrentCultureIgnoreCase) != -1)
                     {
-                        sovpadenie = true;
+                        matchFound = true;
                     }
                 }
 
-                if (sovpadenie)
+                if (matchFound)
                 {
-                    resultat.Add(stroka);
+                    result.Add(stroka);
                 }
 
-                sovpadenie = false;
+                matchFound = false;
             }
 
-            return resultat;
+            return result;
         }
     }
 }

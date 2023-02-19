@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -13,205 +6,205 @@ namespace DevList
 {
     public partial class EditLists : Form
     {
-        int nomerStolbca;
+        int nomberColumn;
 
-        INIFile iniFail;
+        INIFile iniFile;
 
-        public string rezultat;
+        public string Result;
 
-        public EditLists(string zagolovok, int nomerStolbca, INIFile iniFail)
+        public EditLists(string head, int nomberColumn, INIFile iniFile)
         {
             InitializeComponent();
 
-            this.nomerStolbca = nomerStolbca;
+            this.nomberColumn = nomberColumn;
 
-            this.iniFail = iniFail;
+            this.iniFile = iniFile;
 
-            Text = zagolovok;
+            Text = head;
         }
 
-        private void PravitSpisok_Load(object sender, EventArgs e)
+        private void EditLists_Load(object sender, EventArgs e)
         {
             if (Text == "DevList - Правка")
             {
-                if (nomerStolbca == 3)  // Помещение
+                if (nomberColumn == 3)  // Помещение
                 {
-                    List spisok = new List(iniFail.Pomescheniia);
+                    List list = new List(iniFile.Rooms);
 
-                    ElementSpiska.Items.AddRange(spisok.Elementi);
+                    ListsBox.Items.AddRange(list.Content);
                 }
-                if (nomerStolbca == 4)  // Закреплено за
+                if (nomberColumn == 4)  // Закреплено за
                 {
-                    List spisok = new List(iniFail.Sotrudniki);
+                    List list = new List(iniFile.Employees);
 
-                    ElementSpiska.Items.AddRange(spisok.Elementi);
+                    ListsBox.Items.AddRange(list.Content);
                 }
-                if (nomerStolbca == 5)  // Наименование
+                if (nomberColumn == 5)  // Наименование
                 {
-                    List spisok = new List(iniFail.Naimenovaniia);
+                    List list = new List(iniFile.Names);
 
-                    ElementSpiska.Items.AddRange(spisok.Elementi);
+                    ListsBox.Items.AddRange(list.Content);
                 }
-                if (nomerStolbca == 6)  // Оборудование
+                if (nomberColumn == 6)  // Оборудование
                 {
-                    List spisok = new List(iniFail.Oborudovanie);
+                    List list = new List(iniFile.Devices);
 
-                    ElementSpiska.Items.AddRange(spisok.Elementi);
+                    ListsBox.Items.AddRange(list.Content);
                 }
-                if (nomerStolbca == 7)  // Состояние
+                if (nomberColumn == 7)  // Состояние
                 {
-                    ButtonDobavlenieElementa.Enabled = false;
-                    ButtonUdalenieElementa.Enabled = false;
+                    ButtonPlus.Enabled = false;
+                    ButtonMinus.Enabled = false;
 
-                    ElementSpiska.Items.Add("рабочее");
-                    ElementSpiska.Items.Add("в ремонте");
-                    ElementSpiska.Items.Add("сломано");
-                    ElementSpiska.Items.Add("утеряно");
+                    ListsBox.Items.Add("рабочее");
+                    ListsBox.Items.Add("в ремонте");
+                    ListsBox.Items.Add("сломано");
+                    ListsBox.Items.Add("утеряно");
                 }
-                if (nomerStolbca == 12) // Изменил
+                if (nomberColumn == 12) // Изменил
                 {
-                    List spisok = new List(iniFail.Sotrudniki);
+                    List list = new List(iniFile.Employees);
 
-                    ElementSpiska.Items.AddRange(spisok.Elementi);
+                    ListsBox.Items.AddRange(list.Content);
                 }
             }
             if (Text == "DevList - Комплект правка")
             {
-                List spisok = new List(iniFail.Komplektuiuschie);
+                List list = new List(iniFile.Parts);
 
-                ElementSpiska.Items.AddRange(spisok.Elementi);
+                ListsBox.Items.AddRange(list.Content);
             }
         }
 
-        private void ButtonVipolnit_Click(object sender, EventArgs e)
+        private void Execute_Click(object sender, EventArgs e)
         {
-            rezultat = ElementSpiska.Text;
+            Result = ListsBox.Text;
 
             Close();
         }
 
-        private void ButtonZakrit_Click(object sender, EventArgs e)
+        private void Close_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void ButtonDobavlenieElementa_Click(object sender, EventArgs e)
+        private void ButtonPlus_Click(object sender, EventArgs e)
         {
-            if (nomerStolbca == 3)  // Помещение
+            if (nomberColumn == 3)  // Помещение
             {
-                List spisok = new List(iniFail.Pomescheniia);
+                List list = new List(iniFile.Rooms);
 
-                spisok.Dobavit(ElementSpiska.Text);
+                list.Add(ListsBox.Text);
 
-                ElementSpiska.Items.Clear();
+                ListsBox.Items.Clear();
 
-                ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
+                ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomerStolbca == 4)  // Закреплено за
+            if (nomberColumn == 4)  // Закреплено за
             {
-                List spisok = new List(iniFail.Sotrudniki);
+                List list = new List(iniFile.Employees);
 
-                spisok.Dobavit(ElementSpiska.Text);
+                list.Add(ListsBox.Text);
 
-                ElementSpiska.Items.Clear();
+                ListsBox.Items.Clear();
 
-                ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
+                ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomerStolbca == 5)  // Наименования
+            if (nomberColumn == 5)  // Наименования
             {
-                List spisok = new List(iniFail.Naimenovaniia);
+                List list = new List(iniFile.Names);
 
-                spisok.Dobavit(ElementSpiska.Text);
+                list.Add(ListsBox.Text);
 
-                ElementSpiska.Items.Clear();
+                ListsBox.Items.Clear();
 
-                ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
+                ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomerStolbca == 6)  // Оборудование
+            if (nomberColumn == 6)  // Оборудование
             {
-                List spisok = new List(iniFail.Oborudovanie);
+                List list = new List(iniFile.Devices);
 
-                spisok.Dobavit(ElementSpiska.Text);
+                list.Add(ListsBox.Text);
 
-                ElementSpiska.Items.Clear();
+                ListsBox.Items.Clear();
 
-                ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
+                ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomerStolbca == 12) // Изменил
+            if (nomberColumn == 12) // Изменил
             {
-                List spisok = new List(iniFail.Sotrudniki);
+                List list = new List(iniFile.Employees);
 
-                spisok.Dobavit(ElementSpiska.Text);
+                list.Add(ListsBox.Text);
 
-                ElementSpiska.Items.Clear();
+                ListsBox.Items.Clear();
 
-                ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
+                ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
         }
 
-        private void ButtonUdalenieElementa_Click(object sender, EventArgs e)
+        private void ButtonMinus_Click(object sender, EventArgs e)
         {
-            if (nomerStolbca == 3)  // Помещение
+            if (nomberColumn == 3)  // Помещение
             {
-                List spisok = new List(iniFail.Pomescheniia);
+                List list = new List(iniFile.Rooms);
 
-                spisok.Udalit(ElementSpiska.Text);
+                list.Remove(ListsBox.Text);
 
-                ElementSpiska.Items.Clear();
+                ListsBox.Items.Clear();
 
-                ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
+                ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomerStolbca == 4)  // Закреплено за
+            if (nomberColumn == 4)  // Закреплено за
             {
-                List spisok = new List(iniFail.Sotrudniki);
+                List list = new List(iniFile.Employees);
 
-                spisok.Udalit(ElementSpiska.Text);
+                list.Remove(ListsBox.Text);
 
-                ElementSpiska.Items.Clear();
+                ListsBox.Items.Clear();
 
-                ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
+                ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomerStolbca == 5)  // Наименование
+            if (nomberColumn == 5)  // Наименование
             {
-                List spisok = new List(iniFail.Naimenovaniia);
+                List list = new List(iniFile.Names);
 
-                spisok.Udalit(ElementSpiska.Text);
+                list.Remove(ListsBox.Text);
 
-                ElementSpiska.Items.Clear();
+                ListsBox.Items.Clear();
 
-                ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
+                ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomerStolbca == 6)  // Оборудование
+            if (nomberColumn == 6)  // Оборудование
             {
-                List spisok = new List(iniFail.Oborudovanie);
+                List list = new List(iniFile.Devices);
 
-                spisok.Udalit(ElementSpiska.Text);
+                list.Remove(ListsBox.Text);
 
-                ElementSpiska.Items.Clear();
+                ListsBox.Items.Clear();
 
-                ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
+                ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomerStolbca == 12) // Изменил
+            if (nomberColumn == 12) // Изменил
             {
-                List spisok = new List(iniFail.Sotrudniki);
+                List list = new List(iniFile.Employees);
 
-                spisok.Udalit(ElementSpiska.Text);
+                list.Remove(ListsBox.Text);
 
-                ElementSpiska.Items.Clear();
+                ListsBox.Items.Clear();
 
-                ElementSpiska.Items.AddRange(File.ReadAllLines(spisok.Adres));
+                ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
         }
 
-        private void PravitSpisok_KeyUp(object sender, KeyEventArgs e)
+        private void EditLists_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                ButtonVipolnit_Click(sender, e);
+                Execute_Click(sender, e);
             }
             if (e.KeyCode == Keys.Escape)
             {
-                ButtonZakrit_Click(sender, e);
+                Close_Click(sender, e);
             }
         }
     }
