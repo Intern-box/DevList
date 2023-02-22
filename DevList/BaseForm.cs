@@ -215,7 +215,7 @@ namespace DevList
                     coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 7 ||
                     coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 12)
                     {
-                        EditLists editLists = new EditLists("DevList - Правка", coordinates.Item.SubItems.IndexOf(coordinates.SubItem), iniFile);
+                        EditLists editLists = new EditLists("DevList - Правка", coordinates, iniFile);
 
                         editLists.ShowDialog();
 
@@ -279,7 +279,7 @@ namespace DevList
                     coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 8 ||
                     coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 9)
                     {
-                        EditLists editLists = new EditLists("DevList - Комплект правка", coordinates.Item.SubItems.IndexOf(coordinates.SubItem), iniFile);
+                        EditLists editLists = new EditLists("DevList - Комплект правка", coordinates, iniFile);
 
                         editLists.ShowDialog();
 

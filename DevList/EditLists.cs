@@ -6,19 +6,34 @@ namespace DevList
 {
     public partial class EditLists : Form
     {
-        int nomberColumn;
+        ListViewHitTestInfo coordinates;
 
         INIFile iniFile;
 
         public string Result;
 
+        int nomberColumn;
+
+        public EditLists(string head, ListViewHitTestInfo coordinates, INIFile iniFile)
+        {
+            InitializeComponent();
+
+            this.coordinates = coordinates;
+
+            this.iniFile = iniFile;
+
+            nomberColumn = coordinates.Item.SubItems.IndexOf(coordinates.SubItem);
+
+            Text = head;
+        }
+
         public EditLists(string head, int nomberColumn, INIFile iniFile)
         {
             InitializeComponent();
 
-            this.nomberColumn = nomberColumn;
-
             this.iniFile = iniFile;
+
+            this.nomberColumn = nomberColumn;
 
             Text = head;
         }
@@ -73,6 +88,13 @@ namespace DevList
                 List list = new List(iniFile.Parts);
 
                 ListsBox.Items.AddRange(list.Content);
+            }
+
+            DataBase dataBase = new DataBase(iniFile.Base);
+
+            if (coordinates != null)
+            {
+                ListsBox.Text = dataBase.Table[coordinates.Item.Index][nomberColumn];
             }
         }
 
