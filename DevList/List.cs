@@ -8,9 +8,9 @@ namespace DevList
 
         public string Path;
 
-        public List(string adres)
+        public List(string path)
         {
-            Path = adres;
+            Path = path;
 
             Content = File.ReadAllLines(Path);
         }
@@ -19,6 +19,7 @@ namespace DevList
         {
             File.AppendAllText(Path, str + "\r\n");
         }
+
         public void Remove(string str)
         {
             string strings = string.Empty;

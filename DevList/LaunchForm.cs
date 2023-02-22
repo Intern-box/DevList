@@ -11,23 +11,23 @@ namespace DevList
             InitializeComponent();
         }
 
-        private void Zagruzit_Click(object sender, EventArgs e)
+        private void Launch_Click(object sender, EventArgs e)
         {
-            INIFile iniFail = new INIFile();
+            INIFile iniFile = new INIFile();
 
-            if (File.Exists(iniFail.Path))
+            if (File.Exists(iniFile.Path))
             {
-                Zapusk(iniFail); Close();
+                Start(iniFile); Close();
             }
             else
             {
-                Oshibka.Visible = true;
+                Error.Visible = true;
             }
         }
 
-        private void Sozdat_Click(object sender, EventArgs e)
+        private void Create_Click(object sender, EventArgs e)
         {
-            DialogResult rezultat =
+            DialogResult result =
 
             MessageBox.Show
             (
@@ -36,42 +36,42 @@ namespace DevList
                 MessageBoxButtons.YesNo
             );
 
-            if (rezultat == DialogResult.Yes)
+            if (result == DialogResult.Yes)
             {
-                INIFile iniFail = new INIFile(Application.StartupPath);
+                INIFile iniFile = new INIFile(Application.StartupPath);
 
-                Zapusk(iniFail); Close();
+                Start(iniFile); Close();
             }
         }
 
-        private void Otkrit_Click(object sender, EventArgs e)
+        private void Open_Click(object sender, EventArgs e)
         {
-            OpenFileDialog otkrit_fail = new OpenFileDialog() { Filter = "*.INI|*.ini" };
+            OpenFileDialog openFile = new OpenFileDialog() { Filter = "*.INI|*.ini" };
 
-            if (otkrit_fail.ShowDialog() == DialogResult.OK)
+            if (openFile.ShowDialog() == DialogResult.OK)
             {
-                INIFile iniFail = new INIFile(otkrit_fail.FileName);
+                INIFile iniFile = new INIFile(openFile.FileName);
 
-                Zapusk(iniFail); Close();
+                Start(iniFile); Close();
             }
         }
 
-        private void Zapusk(INIFile iniFail)
+        private void Start(INIFile iniFile)
         {
             Hide();
 
-            BaseForm glavnoeOkno = new BaseForm(iniFail, new DataBase(iniFail.Base));
+            BaseForm baseForm = new BaseForm(iniFile, new DataBase(iniFile.Base));
 
-            glavnoeOkno.Text = "DevList 6.6 - Главное окно";
+            baseForm.Text = "DevList 6.6 - Главное окно";
 
-            glavnoeOkno.ShowDialog();
+            baseForm.ShowDialog();
         }
 
         private void FormaZapuska_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Zagruzit_Click(sender, e);
+                Launch_Click(sender, e);
             }
         }
     }

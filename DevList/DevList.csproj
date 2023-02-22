@@ -51,11 +51,11 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataBase.cs" />
-    <Compile Include="ContextSearchEditWindow.cs">
+    <Compile Include="PartsSearchEditWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ContextSearchEditWindow.Designer.cs">
-      <DependentUpon>ContextSearchEditWindow.cs</DependentUpon>
+    <Compile Include="PartsSearchEditWindow.Designer.cs">
+      <DependentUpon>PartsSearchEditWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseSearchEditWindow.cs">
       <SubType>Form</SubType>
@@ -110,8 +110,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ContextSearchEditWindow.resx">
-      <DependentUpon>ContextSearchEditWindow.cs</DependentUpon>
+    <EmbeddedResource Include="PartsSearchEditWindow.resx">
+      <DependentUpon>PartsSearchEditWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BaseSearchEditWindow.resx">
       <DependentUpon>BaseSearchEditWindow.cs</DependentUpon>

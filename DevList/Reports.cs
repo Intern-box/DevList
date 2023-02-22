@@ -1,82 +1,70 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DevList
 {
     public partial class Reports : Form
     {
-        INIFile iniFail;
+        INIFile iniFile;
 
-        string tipOtcheta;
+        string reportType;
 
-        DataBase baza;
+        DataBase dataBase;
 
-        public Reports(INIFile iniFail, DataBase baza, string tipOtcheta)
+        public Reports(INIFile iniFile, DataBase dataBase, string reportType)
         {
             InitializeComponent();
 
-            this.iniFail = iniFail;
+            this.iniFile = iniFile;
 
-            this.baza = baza;
+            this.dataBase = dataBase;
 
-            this.tipOtcheta = tipOtcheta;
+            this.reportType = reportType;
         }
 
-        private void Otcheti_Load(object sender, EventArgs e)
+        private void Reports_Load(object sender, EventArgs e)
         {
-            string[] zapros = new string[baza.Table[0].Length];
+            string[] request = new string[dataBase.Table[0].Length];
 
-            List oborudovanie = new List(iniFail.Devices);
+            List devices = new List(iniFile.Devices);
 
             // Выводим список и кол-во оборудования 
-            if (tipOtcheta == "PoTipam")
+            if (reportType == "SortByTypes")
             {
-                foreach (string slovo in oborudovanie.Content)
+                foreach (string word in devices.Content)
                 {
-                    if (slovo != string.Empty)
+                    if (word != string.Empty)
                     {
-                        zapros[6] = slovo;
+                        request[6] = word;
 
-                        Vivod.Text += $"{slovo} = {baza.StringSearch(zapros).Count};\r\n";
+                        Output.Text += $"{word} = {dataBase.StringSearch(request).Count};\r\n";
                     }
                 }
             }
 
             // Выбор помещения
-            if (tipOtcheta == "VPomeschenii")
+            if (reportType == "SortByRooms")
             {
-                EditLists podgotovka = new EditLists("DevList - Правка", 3, iniFail);
+                EditLists editLists = new EditLists("DevList - Правка", 3, iniFile);
 
-                podgotovka.ShowDialog();
+                editLists.ShowDialog();
 
-                if (podgotovka.Result == null) { Close(); }
+                if (editLists.Result == null) { Close(); }
 
-                zapros[3] = podgotovka.Result;
+                request[3] = editLists.Result;
 
-                for (int i = 0; i < oborudovanie.Content.Length; i++)
+                for (int i = 0; i < devices.Content.Length; i++)
                 {
-                    zapros[6] = oborudovanie.Content[i];
+                    request[6] = devices.Content[i];
 
-                    Vivod.Text += $"{zapros[6]} = {baza.StringSearch(zapros).Count};\r\n";
+                    Output.Text += $"{request[6]} = {dataBase.StringSearch(request).Count};\r\n";
                 }
             }
 
-            if (Vivod.Text == string.Empty)
+            if (Output.Text == string.Empty)
             {
-                Vivod.Text = "Без списка \"Оборудования\" работать не будет!";
+                Output.Text = "Без списка \"Оборудования\" работать не будет!";
             }
-        }
-
-        private void ButtonZakrit_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void Otcheti_KeyUp(object sender, KeyEventArgs e)

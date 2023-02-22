@@ -36,6 +36,7 @@ namespace DevList
                     File.WriteAllText(path, string.Empty);
 
                     Path = path;
+
                     Folder = System.IO.Path.GetDirectoryName(Path);
                 }
                 catch (Exception)
@@ -57,7 +58,6 @@ namespace DevList
                 File.WriteAllText
                 (
                     $"{Folder}\\{Path}",
-                    
                     $"{Base}\r\n" +
                     $"{Rooms}\r\n" +
                     $"{Devices}\r\n" +

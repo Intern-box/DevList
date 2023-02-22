@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    public partial class ContextSearchEditWindow : BaseSearchEdit
+    public partial class PartsSearchEditWindow : BaseSearchEdit
     {
         INIFile iniFile;
 
-        public ContextSearchEditWindow(string head, INIFile iniFile)
+        public PartsSearchEditWindow(string head, INIFile iniFile)
         {
             InitializeComponent();
 
@@ -17,7 +17,7 @@ namespace DevList
             this.iniFile = iniFile;
         }
 
-        public ContextSearchEditWindow(string head, INIFile iniFile, string[] input)
+        public PartsSearchEditWindow(string head, INIFile iniFile, string[] input)
         {
             InitializeComponent();
 

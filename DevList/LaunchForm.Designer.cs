@@ -29,71 +29,71 @@ namespace DevList
         /// </summary>
         private void InitializeComponent()
         {
-            this.Zagruzit = new System.Windows.Forms.Button();
-            this.Sozdat = new System.Windows.Forms.Button();
-            this.Oshibka = new System.Windows.Forms.Label();
-            this.Otkrit = new System.Windows.Forms.Button();
+            this.Launch = new System.Windows.Forms.Button();
+            this.Create = new System.Windows.Forms.Button();
+            this.Error = new System.Windows.Forms.Label();
+            this.Open = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Zagruzit
+            // Launch
             // 
-            this.Zagruzit.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Zagruzit.Location = new System.Drawing.Point(12, 12);
-            this.Zagruzit.Name = "Zagruzit";
-            this.Zagruzit.Size = new System.Drawing.Size(100, 50);
-            this.Zagruzit.TabIndex = 9;
-            this.Zagruzit.Text = "Загрузить";
-            this.Zagruzit.UseVisualStyleBackColor = true;
-            this.Zagruzit.Click += new System.EventHandler(this.Zagruzit_Click);
+            this.Launch.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Launch.Location = new System.Drawing.Point(12, 12);
+            this.Launch.Name = "Launch";
+            this.Launch.Size = new System.Drawing.Size(100, 50);
+            this.Launch.TabIndex = 9;
+            this.Launch.Text = "Загрузить";
+            this.Launch.UseVisualStyleBackColor = true;
+            this.Launch.Click += new System.EventHandler(this.Launch_Click);
             // 
-            // Sozdat
+            // Create
             // 
-            this.Sozdat.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Sozdat.Location = new System.Drawing.Point(118, 12);
-            this.Sozdat.Name = "Sozdat";
-            this.Sozdat.Size = new System.Drawing.Size(100, 50);
-            this.Sozdat.TabIndex = 17;
-            this.Sozdat.Text = "Создать";
-            this.Sozdat.UseVisualStyleBackColor = true;
-            this.Sozdat.Click += new System.EventHandler(this.Sozdat_Click);
+            this.Create.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Create.Location = new System.Drawing.Point(118, 12);
+            this.Create.Name = "Create";
+            this.Create.Size = new System.Drawing.Size(100, 50);
+            this.Create.TabIndex = 17;
+            this.Create.Text = "Создать";
+            this.Create.UseVisualStyleBackColor = true;
+            this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
-            // Oshibka
+            // Error
             // 
-            this.Oshibka.AutoSize = true;
-            this.Oshibka.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Oshibka.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Oshibka.ForeColor = System.Drawing.Color.Red;
-            this.Oshibka.Location = new System.Drawing.Point(86, 70);
-            this.Oshibka.Name = "Oshibka";
-            this.Oshibka.Size = new System.Drawing.Size(166, 16);
-            this.Oshibka.TabIndex = 18;
-            this.Oshibka.Text = "Отсутствует DevList.ini";
-            this.Oshibka.Visible = false;
+            this.Error.AutoSize = true;
+            this.Error.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Error.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Error.ForeColor = System.Drawing.Color.Red;
+            this.Error.Location = new System.Drawing.Point(86, 70);
+            this.Error.Name = "Error";
+            this.Error.Size = new System.Drawing.Size(166, 16);
+            this.Error.TabIndex = 18;
+            this.Error.Text = "Отсутствует DevList.ini";
+            this.Error.Visible = false;
             // 
-            // Otkrit
+            // Open
             // 
-            this.Otkrit.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Otkrit.Location = new System.Drawing.Point(224, 12);
-            this.Otkrit.Name = "Otkrit";
-            this.Otkrit.Size = new System.Drawing.Size(100, 50);
-            this.Otkrit.TabIndex = 19;
-            this.Otkrit.Text = "Открыть";
-            this.Otkrit.UseVisualStyleBackColor = true;
-            this.Otkrit.Click += new System.EventHandler(this.Otkrit_Click);
+            this.Open.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Open.Location = new System.Drawing.Point(224, 12);
+            this.Open.Name = "Open";
+            this.Open.Size = new System.Drawing.Size(100, 50);
+            this.Open.TabIndex = 19;
+            this.Open.Text = "Открыть";
+            this.Open.UseVisualStyleBackColor = true;
+            this.Open.Click += new System.EventHandler(this.Open_Click);
             // 
-            // FormaZapuska
+            // LaunchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(337, 95);
-            this.Controls.Add(this.Otkrit);
-            this.Controls.Add(this.Oshibka);
-            this.Controls.Add(this.Sozdat);
-            this.Controls.Add(this.Zagruzit);
+            this.Controls.Add(this.Open);
+            this.Controls.Add(this.Error);
+            this.Controls.Add(this.Create);
+            this.Controls.Add(this.Launch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "FormaZapuska";
+            this.Name = "LaunchForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DevList 6.6 - Загрузчик";
@@ -104,9 +104,9 @@ namespace DevList
         }
 
         #endregion
-        private System.Windows.Forms.Button Zagruzit;
-        private System.Windows.Forms.Button Sozdat;
-        private System.Windows.Forms.Label Oshibka;
-        private System.Windows.Forms.Button Otkrit;
+        private System.Windows.Forms.Button Launch;
+        private System.Windows.Forms.Button Create;
+        private System.Windows.Forms.Label Error;
+        private System.Windows.Forms.Button Open;
     }
 }

@@ -1,22 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DevList
 {
     public class Remove
     {
+        public Remove(DataBase dataBase, ListViewHitTestInfo coordinates)
+        {
+            RemoveThat(dataBase, coordinates);
+        }
+
         public Remove(DataBase dataBase, ListViewHitTestInfo coordinates, INIFile iniFile, bool remove)
         {
             RemoveThat(dataBase, coordinates, iniFile, remove);
         }
 
-        public Remove(DataBase dataBase, ListViewHitTestInfo coordinates)
+        void RemoveThat(DataBase dataBase, ListViewHitTestInfo coordinates)
         {
-            RemoveThat(dataBase, coordinates);
+            dataBase.Table.RemoveAt(coordinates.Item.Index);
         }
 
         void RemoveThat(DataBase dataBase, ListViewHitTestInfo coordinates, INIFile iniFile, bool remove)
@@ -33,11 +34,6 @@ namespace DevList
             }
 
             dataBase.Table.RemoveAt(coordinates.Item.Index);
-        }
-
-        void RemoveThat(DataBase baza, ListViewHitTestInfo koordinati)
-        {
-            baza.Table.RemoveAt(koordinati.Item.Index);
         }
     }
 }

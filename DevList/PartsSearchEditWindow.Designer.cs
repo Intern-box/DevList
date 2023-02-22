@@ -1,7 +1,7 @@
 ﻿
 namespace DevList
 {
-    partial class ContextSearchEditWindow
+    partial class PartsSearchEditWindow
     {
         /// <summary>
         /// Required designer variable.

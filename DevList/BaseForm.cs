@@ -172,7 +172,7 @@ namespace DevList
         // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
         private void Add_Click(object sender, EventArgs e)
         {
-            BaseSearchEdit window = Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile) : new ContextSearchEditWindow("DevList - Добавить", iniFile);
+            BaseSearchEdit window = Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile) : new PartsSearchEditWindow("DevList - Добавить", iniFile);
 
             window.ShowDialog();
 
@@ -341,7 +341,7 @@ namespace DevList
                     
                     new BaseSearchEditWindow("DevList - Править всё", iniFile, dataBase.Table[saveCoordinates]) :
                     
-                    new ContextSearchEditWindow("DevList - Править всё", iniFile, dataBase.Table[saveCoordinates]);
+                    new PartsSearchEditWindow("DevList - Править всё", iniFile, dataBase.Table[saveCoordinates]);
 
                 window.ShowDialog();
 
@@ -415,52 +415,52 @@ namespace DevList
         {
             if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
             {
-                DialogResult result =
-
-                MessageBox.Show
-                (
-                    "Удалить МЦ?\r\n\r\nМЦ будет перемещена в Историю!",
-                    "Удаление МЦ",
-                    MessageBoxButtons.YesNo
-                );
-
-                if (result == DialogResult.Yes)
+                if (Text == "DevList - История")
                 {
-                    Remove remove = new Remove(dataBase, coordinates, iniFile, true);
+                    DialogResult result =
 
-                    TableOutput(dataBase.Table);
+                    MessageBox.Show
+                    (
+                        "Удалить полностью?",
+                        "Удаление МЦ",
+                        MessageBoxButtons.YesNo
+                    );
 
-                    dataBase.Change = true;
+                    if (result == DialogResult.Yes)
+                    {
+                        Remove remove = new Remove(dataBase, coordinates);
+
+                        TableOutput(dataBase.Table);
+
+                        dataBase.Change = true;
+                    }
+                }
+                else
+                {
+                    DialogResult result =
+
+                    MessageBox.Show
+                    (
+                        "Удалить МЦ?\r\n\r\nМЦ будет перемещена в Историю!",
+                        "Удаление МЦ",
+                        MessageBoxButtons.YesNo
+                    );
+
+                    if (result == DialogResult.Yes)
+                    {
+                        Remove remove = new Remove(dataBase, coordinates, iniFile, true);
+
+                        TableOutput(dataBase.Table);
+
+                        dataBase.Change = true;
+                    }
                 }
             }
         }
 
         private void ContextRemove_Click(object sender, EventArgs e)
         {
-            if (MMenu.Items.Count == 0)
-            {
-                DialogResult result =
-
-                MessageBox.Show
-                (
-                    "Удалить полностью?",
-                    "Удаление МЦ",
-                    MessageBoxButtons.YesNo
-                );
-
-                if (result == DialogResult.Yes)
-                {
-                    Remove remove = new Remove(dataBase, coordinates);
-
-                    TableOutput(dataBase.Table);
-
-                    dataBase.Change = true;
-                }
-            }
-            else
-            {
-                Remove_Click(sender, e);
-            }
+            Remove_Click(sender, e);
         }
 
         private void View_Click(object sender, EventArgs e)
@@ -476,7 +476,7 @@ namespace DevList
 
         private void Search_Click(object sender, EventArgs e)
         {
-            BaseSearchEdit search = Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile) : new ContextSearchEditWindow("DevList - Добавить", iniFile);
+            BaseSearchEdit search = Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile) : new PartsSearchEditWindow("DevList - Добавить", iniFile);
 
             search.ShowDialog();
 
@@ -515,7 +515,7 @@ namespace DevList
             {
                 coordinates = Table.HitTest(0, 0);
 
-                search = Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile) : new ContextSearchEditWindow("DevList - Добавить", iniFile);
+                search = Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile) : new PartsSearchEditWindow("DevList - Добавить", iniFile);
             }
             else
             {
@@ -527,7 +527,7 @@ namespace DevList
 
                         new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]) :
 
-                        new ContextSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]);
+                        new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]);
                 }
                 else
                 {
@@ -535,7 +535,7 @@ namespace DevList
                         
                         new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]) :
 
-                        new ContextSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]);
+                        new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]);
                 }
             }
 
@@ -582,14 +582,14 @@ namespace DevList
 
         private void SortByTypes_Click(object sender, EventArgs e)
         {
-            Reports report = new Reports(iniFile, dataBase, tipOtcheta: "PoTipam");
+            Reports report = new Reports(iniFile, dataBase, reportType: "SortByTypes");
 
             report.ShowDialog();
         }
 
         private void SortByRooms_Click(object sender, EventArgs e)
         {
-            Reports report = new Reports(iniFile, dataBase, tipOtcheta: "VPomeschenii");
+            Reports report = new Reports(iniFile, dataBase, reportType: "SortByRooms");
 
             report.ShowDialog();
         }
@@ -617,8 +617,6 @@ namespace DevList
             history.CUp.Visible = false;
 
             history.CDown.Visible = false;
-
-            history.CRemove.Visible = false;
 
             history.Text = "DevList - История";
 

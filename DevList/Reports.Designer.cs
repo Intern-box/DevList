@@ -29,30 +29,30 @@ namespace DevList
         /// </summary>
         private void InitializeComponent()
         {
-            this.Vivod = new System.Windows.Forms.TextBox();
+            this.Output = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // Vivod
+            // Output
             // 
-            this.Vivod.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Vivod.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Vivod.Location = new System.Drawing.Point(0, 0);
-            this.Vivod.Multiline = true;
-            this.Vivod.Name = "Vivod";
-            this.Vivod.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Vivod.Size = new System.Drawing.Size(511, 450);
-            this.Vivod.TabIndex = 4;
-            this.Vivod.TabStop = false;
+            this.Output.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Output.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Output.Location = new System.Drawing.Point(0, 0);
+            this.Output.Multiline = true;
+            this.Output.Name = "Output";
+            this.Output.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Output.Size = new System.Drawing.Size(511, 450);
+            this.Output.TabIndex = 4;
+            this.Output.TabStop = false;
             // 
-            // Otcheti
+            // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(511, 450);
-            this.Controls.Add(this.Vivod);
-            this.Name = "Otcheti";
+            this.Controls.Add(this.Output);
+            this.Name = "Reports";
             this.Text = "DevList - Отчёт";
-            this.Load += new System.EventHandler(this.Otcheti_Load);
+            this.Load += new System.EventHandler(this.Reports_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Otcheti_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -61,6 +61,6 @@ namespace DevList
 
         #endregion
 
-        private System.Windows.Forms.TextBox Vivod;
+        private System.Windows.Forms.TextBox Output;
     }
 }
