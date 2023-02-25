@@ -15,10 +15,7 @@ namespace DevList
             RemoveThat(dataBase, coordinates, iniFile, remove);
         }
 
-        void RemoveThat(DataBase dataBase, ListViewHitTestInfo coordinates)
-        {
-            dataBase.Table.RemoveAt(coordinates.Item.Index);
-        }
+        void RemoveThat(DataBase dataBase, ListViewHitTestInfo coordinates) { dataBase.Table.RemoveAt(coordinates.Item.Index); }
 
         void RemoveThat(DataBase dataBase, ListViewHitTestInfo coordinates, INIFile iniFile, bool remove)
         {

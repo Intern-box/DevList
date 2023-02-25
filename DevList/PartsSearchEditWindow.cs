@@ -37,17 +37,17 @@ namespace DevList
             Year.Text = input[10];
         }
 
-        private void ContextSearchEditWindow_Load(object sender, EventArgs e)
+        private void PartsSearchEditWindow_Load(object sender, EventArgs e)
         {
-            List komplektuiuschie = new List(iniFile.Parts);
+            List parts = new List(iniFile.Parts);
 
-            CPU.Items.AddRange(File.ReadAllLines(komplektuiuschie.Path));
-            Mainboard.Items.AddRange(File.ReadAllLines(komplektuiuschie.Path));
-            RAM.Items.AddRange(File.ReadAllLines(komplektuiuschie.Path));
-            Disk.Items.AddRange(File.ReadAllLines(komplektuiuschie.Path));
-            Videocard.Items.AddRange(File.ReadAllLines(komplektuiuschie.Path));
-            Power.Items.AddRange(File.ReadAllLines(komplektuiuschie.Path));
-            Case.Items.AddRange(File.ReadAllLines(komplektuiuschie.Path));
+            CPU.Items.AddRange(File.ReadAllLines(parts.Path));
+            Mainboard.Items.AddRange(File.ReadAllLines(parts.Path));
+            RAM.Items.AddRange(File.ReadAllLines(parts.Path));
+            Disk.Items.AddRange(File.ReadAllLines(parts.Path));
+            Videocard.Items.AddRange(File.ReadAllLines(parts.Path));
+            Power.Items.AddRange(File.ReadAllLines(parts.Path));
+            Case.Items.AddRange(File.ReadAllLines(parts.Path));
         }
 
         private void Execute_Click(object sender, EventArgs e)
@@ -227,7 +227,7 @@ namespace DevList
             Case.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ContextSearchEditWindow_KeyUp(object sender, KeyEventArgs e)
+        private void PartsSearchEditWindow_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) { Execute_Click(sender, e); }
 

@@ -12,45 +12,21 @@ namespace DevList
         {
             INIFile iniFile = new INIFile();
 
-            if (File.Exists(iniFile.Path))
-            {
-                Start(iniFile); Close();
-            }
-            else
-            {
-                Error.Visible = true;
-            }
+            if (File.Exists(iniFile.Path)) { Start(iniFile); Close(); } else { Error.Visible = true; }
         }
 
         private void Create_Click(object sender, EventArgs e)
         {
-            DialogResult result =
+            DialogResult result = MessageBox.Show("Данное действие может перезаписать базу!", "Перезаписать файлы?", MessageBoxButtons.YesNo);
 
-            MessageBox.Show
-            (
-                "Данное действие может перезаписать базу!",
-                "Перезаписать файлы?",
-                MessageBoxButtons.YesNo
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                INIFile iniFile = new INIFile(Application.StartupPath);
-
-                Start(iniFile); Close();
-            }
+            if (result == DialogResult.Yes) { INIFile iniFile = new INIFile(Application.StartupPath); Start(iniFile); Close(); }
         }
 
         private void Open_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog() { Filter = "*.INI|*.ini" };
 
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {
-                INIFile iniFile = new INIFile(openFile.FileName);
-
-                Start(iniFile); Close();
-            }
+            if (openFile.ShowDialog() == DialogResult.OK) { INIFile iniFile = new INIFile(openFile.FileName); Start(iniFile); Close(); }
         }
 
         private void Start(INIFile iniFile)
@@ -64,9 +40,6 @@ namespace DevList
             baseForm.ShowDialog();
         }
 
-        private void FormaZapuska_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) { Launch_Click(sender, e); }
-        }
+        private void FormaZapuska_KeyUp(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Enter) { Launch_Click(sender, e); } }
     }
 }

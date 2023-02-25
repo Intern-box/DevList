@@ -52,7 +52,7 @@ namespace DevList
 
         private void Execute_Click(object sender, EventArgs e)
         {
-            Result[0] = "";
+            Result[0] = string.Empty;
             Result[1] = Date.Text;
             Result[2] = Number.Text;
             Result[3] = Rooms.Text;

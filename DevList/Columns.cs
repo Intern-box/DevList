@@ -5,7 +5,7 @@ namespace DevList
 {
     public partial class Columns : Form
     {
-        public bool[] Result = new bool[13];
+        public bool[] Result;
 
         public bool Execute = false;
 
@@ -25,6 +25,8 @@ namespace DevList
             if (visibleColumns[10] == false) { CheckBoxHostname.Checked = false; }
             if (visibleColumns[11] == false) { CheckBoxIP.Checked = false; }
             if (visibleColumns[12] == false) { CheckBoxChangeMan.Checked = false; }
+
+            Result = new bool[visibleColumns.Length];
         }
 
         private void Execute_Click(object sender, EventArgs e)

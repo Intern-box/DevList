@@ -37,7 +37,7 @@ namespace DevList
                     {
                         request[6] = word;
 
-                        Output.Text += $"{word} = {dataBase.StringSearch(request).Count};\r\n";
+                        if (dataBase.StringSearch(request).Count > 0) { Output.Text += $"{word} = {dataBase.StringSearch(request).Count};\r\n"; }
                     }
                 }
             }
@@ -57,16 +57,13 @@ namespace DevList
                 {
                     request[6] = devices.Content[i];
 
-                    Output.Text += $"{request[6]} = {dataBase.StringSearch(request).Count};\r\n";
+                    if (dataBase.StringSearch(request).Count > 0) { Output.Text += $"{request[6]} = {dataBase.StringSearch(request).Count};\r\n"; }
                 }
             }
 
             if (Output.Text == string.Empty) { Output.Text = "Без списка \"Оборудования\" работать не будет!"; }
         }
 
-        private void Otcheti_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape) { Close(); }
-        }
+        private void Otcheti_KeyUp(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Escape) { Close(); } }
     }
 }

@@ -486,8 +486,8 @@ namespace DevList
             this.Name = "PartsSearchEditWindow";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Load += new System.EventHandler(this.ContextSearchEditWindow_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ContextSearchEditWindow_KeyUp);
+            this.Load += new System.EventHandler(this.PartsSearchEditWindow_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PartsSearchEditWindow_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
