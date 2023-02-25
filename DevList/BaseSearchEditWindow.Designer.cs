@@ -153,7 +153,7 @@ namespace DevList
             this.ButtonExecute.TabIndex = 23;
             this.ButtonExecute.Text = "Выполнить";
             this.ButtonExecute.UseVisualStyleBackColor = true;
-            this.ButtonExecute.Click += new System.EventHandler(this.ButtonVipolnit_Click);
+            this.ButtonExecute.Click += new System.EventHandler(this.Execute_Click);
             // 
             // ButtonClose
             // 
@@ -164,7 +164,7 @@ namespace DevList
             this.ButtonClose.TabIndex = 24;
             this.ButtonClose.Text = "Закрыть";
             this.ButtonClose.UseVisualStyleBackColor = true;
-            this.ButtonClose.Click += new System.EventHandler(this.ButtonZakrit_Click);
+            this.ButtonClose.Click += new System.EventHandler(this.Close_Click);
             // 
             // Rooms
             // 
@@ -205,7 +205,7 @@ namespace DevList
             this.ButtonDevicesMinus.TabIndex = 20;
             this.ButtonDevicesMinus.Text = "-";
             this.ButtonDevicesMinus.UseVisualStyleBackColor = true;
-            this.ButtonDevicesMinus.Click += new System.EventHandler(this.ButtonOborudovanieMinus_Click);
+            this.ButtonDevicesMinus.Click += new System.EventHandler(this.DevicesMinus_Click);
             // 
             // ButtonDevicesPlus
             // 
@@ -216,7 +216,7 @@ namespace DevList
             this.ButtonDevicesPlus.TabIndex = 19;
             this.ButtonDevicesPlus.Text = "+";
             this.ButtonDevicesPlus.UseVisualStyleBackColor = true;
-            this.ButtonDevicesPlus.Click += new System.EventHandler(this.ButtonOborudovaniePlus_Click);
+            this.ButtonDevicesPlus.Click += new System.EventHandler(this.DevicesPlus_Click);
             // 
             // ButtonEmployeesMinus
             // 
@@ -227,7 +227,7 @@ namespace DevList
             this.ButtonEmployeesMinus.TabIndex = 16;
             this.ButtonEmployeesMinus.Text = "-";
             this.ButtonEmployeesMinus.UseVisualStyleBackColor = true;
-            this.ButtonEmployeesMinus.Click += new System.EventHandler(this.ButtonFIOMinus_Click);
+            this.ButtonEmployeesMinus.Click += new System.EventHandler(this.EmployeesMinus_Click);
             // 
             // ButtonEmployeesPlus
             // 
@@ -238,7 +238,7 @@ namespace DevList
             this.ButtonEmployeesPlus.TabIndex = 15;
             this.ButtonEmployeesPlus.Text = "+";
             this.ButtonEmployeesPlus.UseVisualStyleBackColor = true;
-            this.ButtonEmployeesPlus.Click += new System.EventHandler(this.ButtonFIOPlus_Click);
+            this.ButtonEmployeesPlus.Click += new System.EventHandler(this.EmployeesPlus_Click);
             // 
             // ButtonRoomsMinus
             // 
@@ -249,7 +249,7 @@ namespace DevList
             this.ButtonRoomsMinus.TabIndex = 14;
             this.ButtonRoomsMinus.Text = "-";
             this.ButtonRoomsMinus.UseVisualStyleBackColor = true;
-            this.ButtonRoomsMinus.Click += new System.EventHandler(this.ButtonPomeschenieMinus_Click);
+            this.ButtonRoomsMinus.Click += new System.EventHandler(this.RoomsMinus_Click);
             // 
             // ButtonRoomsPlus
             // 
@@ -260,7 +260,7 @@ namespace DevList
             this.ButtonRoomsPlus.TabIndex = 13;
             this.ButtonRoomsPlus.Text = "+";
             this.ButtonRoomsPlus.UseVisualStyleBackColor = true;
-            this.ButtonRoomsPlus.Click += new System.EventHandler(this.ButtonPomescheniePlus_Click);
+            this.ButtonRoomsPlus.Click += new System.EventHandler(this.RoomsPlus_Click);
             // 
             // Date
             // 
@@ -368,7 +368,7 @@ namespace DevList
             this.ButtonChangeManMinus.TabIndex = 22;
             this.ButtonChangeManMinus.Text = "-";
             this.ButtonChangeManMinus.UseVisualStyleBackColor = true;
-            this.ButtonChangeManMinus.Click += new System.EventHandler(this.ButtonIzmenilMinus_Click);
+            this.ButtonChangeManMinus.Click += new System.EventHandler(this.ChangeManMinus_Click);
             // 
             // ButtonChangeManPlus
             // 
@@ -379,7 +379,7 @@ namespace DevList
             this.ButtonChangeManPlus.TabIndex = 21;
             this.ButtonChangeManPlus.Text = "+";
             this.ButtonChangeManPlus.UseVisualStyleBackColor = true;
-            this.ButtonChangeManPlus.Click += new System.EventHandler(this.ButtonIzmenilPlus_Click);
+            this.ButtonChangeManPlus.Click += new System.EventHandler(this.ChangeManPlus_Click);
             // 
             // ChangeMan
             // 
@@ -420,7 +420,7 @@ namespace DevList
             this.ButtonNamesMinus.TabIndex = 18;
             this.ButtonNamesMinus.Text = "-";
             this.ButtonNamesMinus.UseVisualStyleBackColor = true;
-            this.ButtonNamesMinus.Click += new System.EventHandler(this.ButtonNaimenovanieMinus_Click);
+            this.ButtonNamesMinus.Click += new System.EventHandler(this.NamesMinus_Click);
             // 
             // ButtonNamesPlus
             // 
@@ -431,7 +431,7 @@ namespace DevList
             this.ButtonNamesPlus.TabIndex = 17;
             this.ButtonNamesPlus.Text = "+";
             this.ButtonNamesPlus.UseVisualStyleBackColor = true;
-            this.ButtonNamesPlus.Click += new System.EventHandler(this.ButtonNaimenovaniePlus_Click);
+            this.ButtonNamesPlus.Click += new System.EventHandler(this.NamesPlus_Click);
             // 
             // BaseSearchEditWindow
             // 
@@ -482,8 +482,8 @@ namespace DevList
             this.Name = "BaseSearchEditWindow";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Load += new System.EventHandler(this.DobavitPravitPoisk_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DobavitPravitPoisk_KeyUp);
+            this.Load += new System.EventHandler(this.BaseSearchEditWindow_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BaseSearchEditWindow_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
