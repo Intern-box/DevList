@@ -305,11 +305,11 @@ namespace DevList
 
                 BaseSearchEdit window =
                     
-                    Text == head ? (BaseSearchEdit)
+                Text == head ? (BaseSearchEdit)
                     
-                    new BaseSearchEditWindow("DevList - Править всё", iniFile, dataBase.Table[saveCoordinates]) :
-                    
-                    new PartsSearchEditWindow("DevList - Править всё", iniFile, dataBase.Table[saveCoordinates]);
+                new BaseSearchEditWindow("DevList - Править всё", iniFile, dataBase.Table[saveCoordinates]) :
+                
+                new PartsSearchEditWindow("DevList - Править всё", iniFile, dataBase.Table[saveCoordinates]);
 
                 window.ShowDialog();
 
@@ -420,9 +420,11 @@ namespace DevList
 
         private void Search_Click(object sender, EventArgs e)
         {
-            BaseSearchEdit search =
+            BaseSearchEdit search = Text == head || Text == "DevList - История" ?
             
-            Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile) : new PartsSearchEditWindow("DevList - Добавить", iniFile);
+            (BaseSearchEdit)new BaseSearchEditWindow("DevList - Поиск", iniFile)
+            
+            : new PartsSearchEditWindow("DevList - Поиск", iniFile);
 
             search.ShowDialog();
 
@@ -451,7 +453,11 @@ namespace DevList
             {
                 coordinates = Table.HitTest(0, 0);
 
-                search = Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile) : new PartsSearchEditWindow("DevList - Добавить", iniFile);
+                search = Text == head || Text == "DevList - История" ?
+
+                (BaseSearchEdit)new BaseSearchEditWindow("DevList - Поиск", iniFile)
+
+                : new PartsSearchEditWindow("DevList - Поиск", iniFile);
             }
             else
             {
@@ -459,17 +465,17 @@ namespace DevList
 
                 if (saveCoordinates >= 0)
                 {
-                    search = Text == head ? (BaseSearchEdit)
+                    search = Text == head || Text == "DevList - История" ?
 
-                    new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]) :
+                    (BaseSearchEdit) new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]) :
 
                     new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]);
                 }
                 else
                 {
-                    search = Text == head ? (BaseSearchEdit)
-                        
-                    new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]) :
+                    search = Text == head || Text == "DevList - История" ?
+
+                    (BaseSearchEdit) new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]) :
 
                     new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]);
                 }
