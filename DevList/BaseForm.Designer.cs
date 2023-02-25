@@ -76,6 +76,7 @@ namespace DevList
             this.Hostname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Izmenil = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Print = new System.Windows.Forms.ToolStripMenuItem();
             this.CMenu.SuspendLayout();
             this.MMenu.SuspendLayout();
             this.SuspendLayout();
@@ -166,7 +167,8 @@ namespace DevList
             this.Create,
             this.Open,
             this.Save,
-            this.SaveAs});
+            this.SaveAs,
+            this.Print});
             this.File.Name = "File";
             this.File.Size = new System.Drawing.Size(50, 21);
             this.File.Text = "Файл";
@@ -174,28 +176,28 @@ namespace DevList
             // Create
             // 
             this.Create.Name = "Create";
-            this.Create.Size = new System.Drawing.Size(162, 22);
+            this.Create.Size = new System.Drawing.Size(180, 22);
             this.Create.Text = "Создать";
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
             // Open
             // 
             this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(162, 22);
+            this.Open.Size = new System.Drawing.Size(180, 22);
             this.Open.Text = "Открыть";
             this.Open.Click += new System.EventHandler(this.Open_Click);
             // 
             // Save
             // 
             this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(162, 22);
+            this.Save.Size = new System.Drawing.Size(180, 22);
             this.Save.Text = "Сохранить";
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // SaveAs
             // 
             this.SaveAs.Name = "SaveAs";
-            this.SaveAs.Size = new System.Drawing.Size(162, 22);
+            this.SaveAs.Size = new System.Drawing.Size(180, 22);
             this.SaveAs.Text = "Сохранить как";
             this.SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
             // 
@@ -443,6 +445,13 @@ namespace DevList
             this.Izmenil.Text = "Изменил";
             this.Izmenil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // Print
+            // 
+            this.Print.Name = "Print";
+            this.Print.Size = new System.Drawing.Size(180, 22);
+            this.Print.Text = "Печать";
+            this.Print.Click += new System.EventHandler(this.Print_Click);
+            // 
             // BaseForm
             // 
             this.AllowDrop = true;
@@ -517,6 +526,7 @@ namespace DevList
         private System.Windows.Forms.ColumnHeader Hostname;
         private System.Windows.Forms.ColumnHeader IP;
         private System.Windows.Forms.ColumnHeader Izmenil;
+        private System.Windows.Forms.ToolStripMenuItem Print;
     }
 }
 

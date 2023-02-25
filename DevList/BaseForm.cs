@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Printing;
 
 namespace DevList
 {
@@ -17,7 +19,7 @@ namespace DevList
 
         public bool[] visibleColumns;
 
-        string head = "DevList 6.6 - Главное окно";
+        string head = "DevList 6.7 - Главное окно";
 
         public BaseForm(INIFile iniFile, DataBase dataBase)
         {
@@ -717,6 +719,47 @@ namespace DevList
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Down) == Keys.Down)
             {
                 Down_Click(sender, e);
+            }
+        }
+
+        private void Print_Click(object sender, EventArgs e)
+        {
+            PrintDocument printDocument = new PrintDocument();
+
+            printDocument.PrintPage += PrintPageEvent;
+
+            PrintDialog printDialog = new PrintDialog();
+
+            printDialog.Document = printDocument;
+
+            PrintPreviewDialog printPreview = new PrintPreviewDialog();
+
+            printPreview.Document = printDocument;
+
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printPreview.ShowDialog();
+
+                DialogResult result = MessageBox.Show("Продолжить печать?", "Печать", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes) { printDocument.Print(); }
+            }
+        }
+
+        private void PrintPageEvent(object sender, PrintPageEventArgs e)
+        {
+            Font font = new Font("Verdana", 10);
+
+            float offset = e.MarginBounds.Top;
+
+            foreach (ListViewItem Item in Table.Items)
+            {
+                // The 5.0f is to add a small space between lines
+                offset += (font.GetHeight() + 5.0f);
+
+                PointF location = new System.Drawing.PointF(e.MarginBounds.Left, offset);
+
+                e.Graphics.DrawString(Item.Text, font, Brushes.Black, location);
             }
         }
     }

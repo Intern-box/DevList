@@ -65,7 +65,7 @@ namespace DevList
             this.Error.ForeColor = System.Drawing.Color.Red;
             this.Error.Location = new System.Drawing.Point(86, 70);
             this.Error.Name = "Error";
-            this.Error.Size = new System.Drawing.Size(166, 16);
+            this.Error.Size = new System.Drawing.Size(165, 16);
             this.Error.TabIndex = 18;
             this.Error.Text = "Отсутствует DevList.ini";
             this.Error.Visible = false;
@@ -96,7 +96,7 @@ namespace DevList
             this.Name = "LaunchForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DevList 6.6 - Загрузчик";
+            this.Text = "DevList 6.7 - Загрузчик";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormaZapuska_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -62,7 +62,7 @@ namespace DevList
 
             BaseForm baseForm = new BaseForm(iniFile, new DataBase(iniFile.Base));
 
-            baseForm.Text = "DevList 6.6 - Главное окно";
+            baseForm.Text = "DevList 6.7 - Главное окно";
 
             baseForm.ShowDialog();
         }
