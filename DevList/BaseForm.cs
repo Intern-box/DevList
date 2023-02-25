@@ -602,7 +602,13 @@ namespace DevList
 
             BaseForm history = new BaseForm(iniFile, historyBase);
 
-            history.File.Visible = false;
+            history.Create.Visible = false;
+
+            history.Open.Visible = false;
+
+            history.Save.Visible = false;
+
+            history.SaveAs.Visible = false;
 
             history.Edit.Visible = false;
 
