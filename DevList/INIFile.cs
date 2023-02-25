@@ -31,6 +31,8 @@ namespace DevList
         {
             if (!File.Exists(path))
             {
+                Log.ErrorHandler("[ x ] DevList.ini не существует. Создание структуры папок и файлов");
+
                 try
                 {
                     File.WriteAllText(path, string.Empty);
@@ -74,21 +76,25 @@ namespace DevList
             }
             else
             {
+                Log.ErrorHandler("DevList.ini существует. Открываю");
+
                 Path = path;
 
                 Folder = System.IO.Path.GetDirectoryName(Path);
             }
 
-            string[] ini_fail = File.ReadAllLines(Path);
+            string[] iniFile = File.ReadAllLines(Path);
 
-            try { Base = $"{Folder}\\{ini_fail[0]}"; } catch (Exception) { Base = string.Empty; };
-            try { Rooms = $"{Folder}\\{ini_fail[1]}"; } catch (Exception) { Rooms = string.Empty; };
-            try { Devices = $"{Folder}\\{ini_fail[2]}"; } catch (Exception) { Devices = string.Empty; };
-            try { Employees = $"{Folder}\\{ini_fail[3]}"; } catch (Exception) { Employees = string.Empty; };
-            try { Names = $"{Folder}\\{ini_fail[4]}"; } catch (Exception) { Names = string.Empty; };
-            try { History = $"{Folder}\\{ini_fail[5]}"; } catch (Exception) { History = string.Empty; };
-            try { Set = $"{Folder}\\{ini_fail[6]}"; } catch (Exception) { Set = string.Empty; };
-            try { Parts = $"{Folder}\\{ini_fail[7]}"; } catch (Exception) { Parts = string.Empty; };
+            try { Base = $"{Folder}\\{iniFile[0]}"; } catch (Exception) { Base = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
+            try { Rooms = $"{Folder}\\{iniFile[1]}"; } catch (Exception) { Rooms = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
+            try { Devices = $"{Folder}\\{iniFile[2]}"; } catch (Exception) { Devices = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
+            try { Employees = $"{Folder}\\{iniFile[3]}"; } catch (Exception) { Employees = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
+            try { Names = $"{Folder}\\{iniFile[4]}"; } catch (Exception) { Names = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
+            try { History = $"{Folder}\\{iniFile[5]}"; } catch (Exception) { History = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
+            try { Set = $"{Folder}\\{iniFile[6]}"; } catch (Exception) { Set = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
+
+            try { Parts = $"{Folder}\\{iniFile[7]}"; Log.ErrorHandler("Похоже DevList.ini заполнен корректно!"); }
+            catch (Exception) { Parts = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
         }
     }
 }

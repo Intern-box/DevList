@@ -14,15 +14,15 @@ namespace DevList
         {
             string[] fileStrings = null;
 
-            if (ListsBox.SelectedIndex == 0) { fileStrings = File.ReadAllLines(iniFile.Rooms); }
+            if (ListsBox.SelectedIndex == 0) { fileStrings = CheckFileExist(iniFile.Rooms); }
 
-            if (ListsBox.SelectedIndex == 1) { fileStrings = File.ReadAllLines(iniFile.Employees); }
+            if (ListsBox.SelectedIndex == 1) { fileStrings = CheckFileExist(iniFile.Employees); }
 
-            if (ListsBox.SelectedIndex == 2) { fileStrings = File.ReadAllLines(iniFile.Names); }
+            if (ListsBox.SelectedIndex == 2) { fileStrings = CheckFileExist(iniFile.Names); }
 
-            if (ListsBox.SelectedIndex == 3) { fileStrings = File.ReadAllLines(iniFile.Devices); }
+            if (ListsBox.SelectedIndex == 3) { fileStrings = CheckFileExist(iniFile.Devices); }
 
-            if (ListsBox.SelectedIndex == 4) { fileStrings = File.ReadAllLines(iniFile.Parts); }
+            if (ListsBox.SelectedIndex == 4) { fileStrings = CheckFileExist(iniFile.Parts); }
 
             Content.Clear();
 
@@ -50,6 +50,22 @@ namespace DevList
             if (e.KeyCode == Keys.Enter) { SaveButton_Click(sender, e); }
 
             if (e.KeyCode == Keys.Escape) { Close(); }
+        }
+
+        private string[] CheckFileExist(string path)
+        {
+            try
+            {
+                return File.ReadAllLines(path);
+            }
+            catch (Exception)
+            {
+                Log.ErrorHandler($"[ x ] DevList.ini - отсутствует файл {path} или неправильный путь!");
+
+                MessageBox.Show("Отсутствует файл или неверный путь!", "Не вижу файл!", MessageBoxButtons.OK);
+
+                return null;
+            }
         }
     }
 }
