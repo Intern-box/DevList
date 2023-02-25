@@ -6,10 +6,7 @@ namespace DevList
 {
     public partial class LaunchForm : Form
     {
-        public LaunchForm()
-        {
-            InitializeComponent();
-        }
+        public LaunchForm() { InitializeComponent(); }
 
         private void Launch_Click(object sender, EventArgs e)
         {
@@ -69,10 +66,7 @@ namespace DevList
 
         private void FormaZapuska_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Launch_Click(sender, e);
-            }
+            if (e.KeyCode == Keys.Enter) { Launch_Click(sender, e); }
         }
     }
 }

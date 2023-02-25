@@ -61,18 +61,12 @@ namespace DevList
                 }
             }
 
-            if (Output.Text == string.Empty)
-            {
-                Output.Text = "Без списка \"Оборудования\" работать не будет!";
-            }
+            if (Output.Text == string.Empty) { Output.Text = "Без списка \"Оборудования\" работать не будет!"; }
         }
 
         private void Otcheti_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close();
-            }
+            if (e.KeyCode == Keys.Escape) { Close(); }
         }
     }
 }

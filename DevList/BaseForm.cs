@@ -696,36 +696,19 @@ namespace DevList
 
         private void BaseForm_KeyUp(object sender, KeyEventArgs e)
         {
-            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.S) == Keys.S)
-            {
-                Add_Click(sender, e);
-            }
-            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.E) == Keys.E)
-            {
-                EditAll_Click(sender, e);
-            }
-            if (e.KeyCode == Keys.Delete)
-            {
-                Remove_Click(sender, e);
-            }
-            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.F) == Keys.F)
-            {
-                Search_Click(sender, e);
-            }
-            if (e.KeyCode == Keys.Escape)
-            {
-                DataBaseChanges();
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.S) == Keys.S) { Add_Click(sender, e); }
 
-                Close();
-            }
-            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Up) == Keys.Up)
-            {
-                Up_Click(sender, e);
-            }
-            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Down) == Keys.Down)
-            {
-                Down_Click(sender, e);
-            }
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.E) == Keys.E) { EditAll_Click(sender, e); }
+
+            if (e.KeyCode == Keys.Delete) { Remove_Click(sender, e); }
+
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.F) == Keys.F) { Search_Click(sender, e); }
+
+            if (e.KeyCode == Keys.Escape) { DataBaseChanges(); Close(); }
+
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Up) == Keys.Up) { Up_Click(sender, e); }
+
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Down) == Keys.Down) { Down_Click(sender, e); }
         }
 
         private void Print_Click(object sender, EventArgs e)

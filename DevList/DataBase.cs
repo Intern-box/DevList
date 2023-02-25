@@ -20,54 +20,31 @@ namespace DevList
 
             foreach (string str in File.ReadAllLines(path))
             {
-                str.TrimEnd('\r');
-
-                str.TrimEnd('\n');
+                str.TrimEnd('\r'); str.TrimEnd('\n');
 
                 string[] patternString = new string[13];
 
-                for (int i = 0; i < patternString.Length; i++)
-                {
-                    patternString[i] = string.Empty;
-                }
+                for (int i = 0; i < patternString.Length; i++) { patternString[i] = string.Empty; }
 
-                for (int i = 0; i < str.Split(',').Length; i++)
-                {
-                    patternString[i] = str.Split(',')[i];
-                }
+                for (int i = 0; i < str.Split(',').Length; i++) { patternString[i] = str.Split(',')[i]; }
 
                 Table.Add(patternString);
             }
         }
 
-        public void Save()
-        {
-            File.WriteAllLines(Path, Table.Select(x => string.Join(",", x)));
-        }
+        public void Save() { File.WriteAllLines(Path, Table.Select(x => string.Join(",", x))); }
 
-        public void Save(string path)
-        {
-            File.WriteAllLines(path, Table.Select(x => string.Join(",", x)));
-        }
+        public void Save(string path) { File.WriteAllLines(path, Table.Select(x => string.Join(",", x))); }
 
         public void MoveLine(int firstLine, int secondLine)
         {
             string[] temp = new string[Table[firstLine].Length];
 
-            for (int i = 0; i < Table[firstLine].Length; i++)
-            {
-                temp[i] = Table[firstLine][i];
-            }
+            for (int i = 0; i < Table[firstLine].Length; i++) { temp[i] = Table[firstLine][i]; }
 
-            for (int i = 0; i < Table[firstLine].Length; i++)
-            {
-                Table[firstLine][i] = Table[secondLine][i];
-            }
+            for (int i = 0; i < Table[firstLine].Length; i++) { Table[firstLine][i] = Table[secondLine][i]; }
 
-            for (int i = 0; i < Table[firstLine].Length; i++)
-            {
-                Table[secondLine][i] = temp[i];
-            }
+            for (int i = 0; i < Table[firstLine].Length; i++) { Table[secondLine][i] = temp[i]; }
         }
 
         public List<string[]> StringSearch(string[] request)
@@ -76,13 +53,7 @@ namespace DevList
 
             byte needFind = 0;
 
-            for (int i = 1; i < request.Length; i++)
-            {
-                if (request[i] != null && request[i] != string.Empty)
-                {
-                    needFind++;
-                }
-            }
+            for (int i = 1; i < request.Length; i++) { if (request[i] != null && request[i] != string.Empty) { needFind++; } }
 
             byte found = 0;
 
@@ -99,10 +70,7 @@ namespace DevList
                     }
                 }
 
-                if (found >= needFind)
-                {
-                    result.Add(str);
-                }
+                if (found >= needFind) { result.Add(str); }
 
                 found = 0;
             }
@@ -126,10 +94,7 @@ namespace DevList
                     }
                 }
 
-                if (matchFound)
-                {
-                    result.Add(stroka);
-                }
+                if (matchFound) { result.Add(stroka); }
 
                 matchFound = false;
             }

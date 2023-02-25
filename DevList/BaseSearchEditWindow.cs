@@ -184,14 +184,9 @@ namespace DevList
 
         private void BaseSearchEditWindow_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Execute_Click(sender, e);
-            }
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close_Click(sender, e);
-            }
+            if (e.KeyCode == Keys.Enter) { Execute_Click(sender, e); }
+
+            if (e.KeyCode == Keys.Escape) { Close_Click(sender, e); }
         }
     }
 }

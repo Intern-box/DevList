@@ -18,33 +18,17 @@ namespace DevList
             base.Text = head;
         }
 
-        private void EditLines_Load(object sender, EventArgs e)
-        {
-            Text.Text = input;
-        }
+        private void EditLines_Load(object sender, EventArgs e) { Text.Text = input; }
 
-        private void Execute_Click(object sender, EventArgs e)
-        {
-            Result = Text.Text;
+        private void Execute_Click(object sender, EventArgs e) { Result = Text.Text; Close(); }
 
-            Close();
-        }
-
-        private void Close_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void Close_Click(object sender, EventArgs e) { Close(); }
 
         private void EditLines_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Execute_Click(sender, e);
-            }
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close_Click(sender, e);
-            }
+            if (e.KeyCode == Keys.Enter) { Execute_Click(sender, e); }
+
+            if (e.KeyCode == Keys.Escape) { Close_Click(sender, e); }
         }
     }
 }

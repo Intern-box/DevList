@@ -8,12 +8,7 @@ namespace DevList
     {
         INIFile iniFile;
 
-        public Lists(INIFile iniFile)
-        {
-            InitializeComponent();
-
-            this.iniFile = iniFile;
-        }
+        public Lists(INIFile iniFile) { InitializeComponent(); this.iniFile = iniFile; }
 
         private void ListsBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -86,21 +81,11 @@ namespace DevList
             }
         }
 
-        private void Close_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void Lists_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                SaveButton_Click(sender, e);
-            }
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close_Click(sender, e);
-            }
+            if (e.KeyCode == Keys.Enter) { SaveButton_Click(sender, e); }
+
+            if (e.KeyCode == Keys.Escape) { Close(); }
         }
     }
 }

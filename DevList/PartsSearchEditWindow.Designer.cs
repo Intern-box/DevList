@@ -34,7 +34,6 @@ namespace DevList
             this.LabelDisk = new System.Windows.Forms.Label();
             this.Disk = new System.Windows.Forms.ComboBox();
             this.ButtonExecute = new System.Windows.Forms.Button();
-            this.ButtonClose = new System.Windows.Forms.Button();
             this.CPU = new System.Windows.Forms.ComboBox();
             this.LabelMainboard = new System.Windows.Forms.Label();
             this.Mainboard = new System.Windows.Forms.ComboBox();
@@ -65,6 +64,7 @@ namespace DevList
             this.LabelYear = new System.Windows.Forms.Label();
             this.Number = new System.Windows.Forms.TextBox();
             this.LabelNumber = new System.Windows.Forms.Label();
+            this.ButtonClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LabelCPU
@@ -73,7 +73,7 @@ namespace DevList
             this.LabelCPU.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelCPU.Location = new System.Drawing.Point(103, 77);
             this.LabelCPU.Name = "LabelCPU";
-            this.LabelCPU.Size = new System.Drawing.Size(88, 16);
+            this.LabelCPU.Size = new System.Drawing.Size(87, 16);
             this.LabelCPU.TabIndex = 2;
             this.LabelCPU.Text = "Процессор:";
             // 
@@ -83,7 +83,7 @@ namespace DevList
             this.LabelRAM.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelRAM.Location = new System.Drawing.Point(149, 136);
             this.LabelRAM.Name = "LabelRAM";
-            this.LabelRAM.Size = new System.Drawing.Size(41, 16);
+            this.LabelRAM.Size = new System.Drawing.Size(40, 16);
             this.LabelRAM.TabIndex = 3;
             this.LabelRAM.Text = "ОЗУ:";
             // 
@@ -93,7 +93,7 @@ namespace DevList
             this.LabelDisk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelDisk.Location = new System.Drawing.Point(97, 165);
             this.LabelDisk.Name = "LabelDisk";
-            this.LabelDisk.Size = new System.Drawing.Size(93, 16);
+            this.LabelDisk.Size = new System.Drawing.Size(92, 16);
             this.LabelDisk.TabIndex = 4;
             this.LabelDisk.Text = "Накопитель:";
             // 
@@ -118,17 +118,6 @@ namespace DevList
             this.ButtonExecute.UseVisualStyleBackColor = true;
             this.ButtonExecute.Click += new System.EventHandler(this.Execute_Click);
             // 
-            // ButtonClose
-            // 
-            this.ButtonClose.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonClose.Location = new System.Drawing.Point(456, 313);
-            this.ButtonClose.Name = "ButtonClose";
-            this.ButtonClose.Size = new System.Drawing.Size(89, 29);
-            this.ButtonClose.TabIndex = 11;
-            this.ButtonClose.Text = "Закрыть";
-            this.ButtonClose.UseVisualStyleBackColor = true;
-            this.ButtonClose.Click += new System.EventHandler(this.Close_Click);
-            // 
             // CPU
             // 
             this.CPU.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
@@ -145,7 +134,7 @@ namespace DevList
             this.LabelMainboard.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelMainboard.Location = new System.Drawing.Point(102, 107);
             this.LabelMainboard.Name = "LabelMainboard";
-            this.LabelMainboard.Size = new System.Drawing.Size(89, 16);
+            this.LabelMainboard.Size = new System.Drawing.Size(88, 16);
             this.LabelMainboard.TabIndex = 15;
             this.LabelMainboard.Text = "Мат. плата:";
             // 
@@ -239,7 +228,7 @@ namespace DevList
             this.LabelDate.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelDate.Location = new System.Drawing.Point(44, 48);
             this.LabelDate.Name = "LabelDate";
-            this.LabelDate.Size = new System.Drawing.Size(147, 16);
+            this.LabelDate.Size = new System.Drawing.Size(146, 16);
             this.LabelDate.TabIndex = 59;
             this.LabelDate.Text = "Дата приобретения:";
             // 
@@ -281,7 +270,7 @@ namespace DevList
             this.LabelVideocard.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelVideocard.Location = new System.Drawing.Point(97, 195);
             this.LabelVideocard.Name = "LabelVideocard";
-            this.LabelVideocard.Size = new System.Drawing.Size(93, 16);
+            this.LabelVideocard.Size = new System.Drawing.Size(92, 16);
             this.LabelVideocard.TabIndex = 70;
             this.LabelVideocard.Text = "Видеокарта:";
             // 
@@ -355,7 +344,7 @@ namespace DevList
             this.LabelPower.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelPower.Location = new System.Drawing.Point(84, 225);
             this.LabelPower.Name = "LabelPower";
-            this.LabelPower.Size = new System.Drawing.Size(106, 16);
+            this.LabelPower.Size = new System.Drawing.Size(105, 16);
             this.LabelPower.TabIndex = 77;
             this.LabelPower.Text = "Блок питания:";
             // 
@@ -397,7 +386,7 @@ namespace DevList
             this.LabelCase.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelCase.Location = new System.Drawing.Point(128, 255);
             this.LabelCase.Name = "LabelCase";
-            this.LabelCase.Size = new System.Drawing.Size(62, 16);
+            this.LabelCase.Size = new System.Drawing.Size(61, 16);
             this.LabelCase.TabIndex = 81;
             this.LabelCase.Text = "Корпус:";
             // 
@@ -415,7 +404,7 @@ namespace DevList
             this.LabelYear.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelYear.Location = new System.Drawing.Point(153, 285);
             this.LabelYear.Name = "LabelYear";
-            this.LabelYear.Size = new System.Drawing.Size(37, 16);
+            this.LabelYear.Size = new System.Drawing.Size(36, 16);
             this.LabelYear.TabIndex = 83;
             this.LabelYear.Text = "Год:";
             // 
@@ -433,11 +422,22 @@ namespace DevList
             this.LabelNumber.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelNumber.Location = new System.Drawing.Point(12, 20);
             this.LabelNumber.Name = "LabelNumber";
-            this.LabelNumber.Size = new System.Drawing.Size(180, 16);
+            this.LabelNumber.Size = new System.Drawing.Size(179, 16);
             this.LabelNumber.TabIndex = 85;
             this.LabelNumber.Text = "Системный блок Инв. №:";
             // 
-            // ContextSearchEditWindow
+            // ButtonClose
+            // 
+            this.ButtonClose.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonClose.Location = new System.Drawing.Point(456, 313);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.Size = new System.Drawing.Size(89, 29);
+            this.ButtonClose.TabIndex = 11;
+            this.ButtonClose.Text = "Закрыть";
+            this.ButtonClose.UseVisualStyleBackColor = true;
+            this.ButtonClose.Click += new System.EventHandler(this.Close_Click);
+            // 
+            // PartsSearchEditWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -483,7 +483,7 @@ namespace DevList
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ContextSearchEditWindow";
+            this.Name = "PartsSearchEditWindow";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.ContextSearchEditWindow_Load);
@@ -499,7 +499,6 @@ namespace DevList
         private System.Windows.Forms.Label LabelDisk;
         private System.Windows.Forms.ComboBox Disk;
         private System.Windows.Forms.Button ButtonExecute;
-        private System.Windows.Forms.Button ButtonClose;
         private System.Windows.Forms.ComboBox CPU;
         private System.Windows.Forms.Label LabelMainboard;
         private System.Windows.Forms.ComboBox Mainboard;
@@ -530,5 +529,6 @@ namespace DevList
         private System.Windows.Forms.Label LabelYear;
         private System.Windows.Forms.TextBox Number;
         private System.Windows.Forms.Label LabelNumber;
+        private System.Windows.Forms.Button ButtonClose;
     }
 }

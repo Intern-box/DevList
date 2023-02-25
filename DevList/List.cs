@@ -8,17 +8,9 @@ namespace DevList
 
         public string Path;
 
-        public List(string path)
-        {
-            Path = path;
+        public List(string path) { Path = path; Content = File.ReadAllLines(Path); }
 
-            Content = File.ReadAllLines(Path);
-        }
-
-        public void Add(string str)
-        {
-            File.AppendAllText(Path, str + "\r\n");
-        }
+        public void Add(string str) { File.AppendAllText(Path, str + "\r\n"); }
 
         public void Remove(string str)
         {

@@ -41,19 +41,14 @@ namespace DevList
                 }
                 catch (Exception)
                 {
-                    if (!File.Exists($"{path}\\{Path}"))
-                    {
-                        File.WriteAllText($"{path}\\{Path}", string.Empty);
-                    }
+                    if (!File.Exists($"{path}\\{Path}")) { File.WriteAllText($"{path}\\{Path}", string.Empty); }
 
                     Folder = path;
                 }
 
-                if (!Directory.Exists($"{Folder}\\БД"))
-                    Directory.CreateDirectory($"{Folder}\\БД");
+                if (!Directory.Exists($"{Folder}\\БД")) { Directory.CreateDirectory($"{Folder}\\БД"); }
 
-                if (!Directory.Exists($"{Folder}\\История перемещений"))
-                    Directory.CreateDirectory($"{Folder}\\История перемещений");
+                if (!Directory.Exists($"{Folder}\\История перемещений")) { Directory.CreateDirectory($"{Folder}\\История перемещений"); }
 
                 File.WriteAllText
                 (

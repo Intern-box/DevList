@@ -71,10 +71,7 @@ namespace DevList
             Close();
         }
 
-        private void Close_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void Close_Click(object sender, EventArgs e) { Close(); }
 
         private void ButtonCPUPlus_Click(object sender, EventArgs e)
         {
@@ -232,14 +229,9 @@ namespace DevList
 
         private void ContextSearchEditWindow_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Execute_Click(sender, e);
-            }
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close_Click(sender, e);
-            }
+            if (e.KeyCode == Keys.Enter) { Execute_Click(sender, e); }
+
+            if (e.KeyCode == Keys.Escape) { Close_Click(sender, e); }
         }
     }
 }

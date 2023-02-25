@@ -41,7 +41,6 @@ namespace DevList
             this.CheckBoxComments = new System.Windows.Forms.CheckBox();
             this.CheckBoxInventory = new System.Windows.Forms.CheckBox();
             this.CheckBoxStatus = new System.Windows.Forms.CheckBox();
-            this.ButtonClose = new System.Windows.Forms.Button();
             this.ButtonExecute = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -53,7 +52,7 @@ namespace DevList
             this.CheckBoxDate.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxDate.Location = new System.Drawing.Point(12, 12);
             this.CheckBoxDate.Name = "CheckBoxDate";
-            this.CheckBoxDate.Size = new System.Drawing.Size(160, 20);
+            this.CheckBoxDate.Size = new System.Drawing.Size(159, 20);
             this.CheckBoxDate.TabIndex = 0;
             this.CheckBoxDate.Text = "Дата приобретения";
             this.CheckBoxDate.UseVisualStyleBackColor = true;
@@ -66,7 +65,7 @@ namespace DevList
             this.CheckBoxNumber.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxNumber.Location = new System.Drawing.Point(12, 38);
             this.CheckBoxNumber.Name = "CheckBoxNumber";
-            this.CheckBoxNumber.Size = new System.Drawing.Size(77, 20);
+            this.CheckBoxNumber.Size = new System.Drawing.Size(76, 20);
             this.CheckBoxNumber.TabIndex = 1;
             this.CheckBoxNumber.Text = "Инв. №";
             this.CheckBoxNumber.UseVisualStyleBackColor = true;
@@ -79,7 +78,7 @@ namespace DevList
             this.CheckBoxRooms.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxRooms.Location = new System.Drawing.Point(12, 64);
             this.CheckBoxRooms.Name = "CheckBoxRooms";
-            this.CheckBoxRooms.Size = new System.Drawing.Size(105, 20);
+            this.CheckBoxRooms.Size = new System.Drawing.Size(104, 20);
             this.CheckBoxRooms.TabIndex = 2;
             this.CheckBoxRooms.Text = "Помещение";
             this.CheckBoxRooms.UseVisualStyleBackColor = true;
@@ -92,7 +91,7 @@ namespace DevList
             this.CheckBoxPerson.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxPerson.Location = new System.Drawing.Point(12, 90);
             this.CheckBoxPerson.Name = "CheckBoxPerson";
-            this.CheckBoxPerson.Size = new System.Drawing.Size(107, 20);
+            this.CheckBoxPerson.Size = new System.Drawing.Size(106, 20);
             this.CheckBoxPerson.TabIndex = 3;
             this.CheckBoxPerson.Text = "Закреплено";
             this.CheckBoxPerson.UseVisualStyleBackColor = true;
@@ -105,7 +104,7 @@ namespace DevList
             this.CheckBoxNames.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxNames.Location = new System.Drawing.Point(12, 116);
             this.CheckBoxNames.Name = "CheckBoxNames";
-            this.CheckBoxNames.Size = new System.Drawing.Size(125, 20);
+            this.CheckBoxNames.Size = new System.Drawing.Size(124, 20);
             this.CheckBoxNames.TabIndex = 4;
             this.CheckBoxNames.Text = "Наименование";
             this.CheckBoxNames.UseVisualStyleBackColor = true;
@@ -118,7 +117,7 @@ namespace DevList
             this.CheckBoxDevices.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxDevices.Location = new System.Drawing.Point(12, 142);
             this.CheckBoxDevices.Name = "CheckBoxDevices";
-            this.CheckBoxDevices.Size = new System.Drawing.Size(125, 20);
+            this.CheckBoxDevices.Size = new System.Drawing.Size(124, 20);
             this.CheckBoxDevices.TabIndex = 5;
             this.CheckBoxDevices.Text = "Оборудование";
             this.CheckBoxDevices.UseVisualStyleBackColor = true;
@@ -131,7 +130,7 @@ namespace DevList
             this.CheckBoxChangeMan.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxChangeMan.Location = new System.Drawing.Point(12, 296);
             this.CheckBoxChangeMan.Name = "CheckBoxChangeMan";
-            this.CheckBoxChangeMan.Size = new System.Drawing.Size(84, 20);
+            this.CheckBoxChangeMan.Size = new System.Drawing.Size(83, 20);
             this.CheckBoxChangeMan.TabIndex = 11;
             this.CheckBoxChangeMan.Text = "Изменил";
             this.CheckBoxChangeMan.UseVisualStyleBackColor = true;
@@ -144,7 +143,7 @@ namespace DevList
             this.CheckBoxIP.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxIP.Location = new System.Drawing.Point(12, 270);
             this.CheckBoxIP.Name = "CheckBoxIP";
-            this.CheckBoxIP.Size = new System.Drawing.Size(40, 20);
+            this.CheckBoxIP.Size = new System.Drawing.Size(39, 20);
             this.CheckBoxIP.TabIndex = 10;
             this.CheckBoxIP.Text = "IP";
             this.CheckBoxIP.UseVisualStyleBackColor = true;
@@ -157,7 +156,7 @@ namespace DevList
             this.CheckBoxHostname.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxHostname.Location = new System.Drawing.Point(12, 244);
             this.CheckBoxHostname.Name = "CheckBoxHostname";
-            this.CheckBoxHostname.Size = new System.Drawing.Size(92, 20);
+            this.CheckBoxHostname.Size = new System.Drawing.Size(91, 20);
             this.CheckBoxHostname.TabIndex = 9;
             this.CheckBoxHostname.Text = "Hostname";
             this.CheckBoxHostname.UseVisualStyleBackColor = true;
@@ -170,7 +169,7 @@ namespace DevList
             this.CheckBoxComments.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxComments.Location = new System.Drawing.Point(12, 218);
             this.CheckBoxComments.Name = "CheckBoxComments";
-            this.CheckBoxComments.Size = new System.Drawing.Size(116, 20);
+            this.CheckBoxComments.Size = new System.Drawing.Size(115, 20);
             this.CheckBoxComments.TabIndex = 8;
             this.CheckBoxComments.Text = "Комментарий";
             this.CheckBoxComments.UseVisualStyleBackColor = true;
@@ -183,7 +182,7 @@ namespace DevList
             this.CheckBoxInventory.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxInventory.Location = new System.Drawing.Point(12, 192);
             this.CheckBoxInventory.Name = "CheckBoxInventory";
-            this.CheckBoxInventory.Size = new System.Drawing.Size(139, 20);
+            this.CheckBoxInventory.Size = new System.Drawing.Size(138, 20);
             this.CheckBoxInventory.TabIndex = 7;
             this.CheckBoxInventory.Text = "Инвентаризация";
             this.CheckBoxInventory.UseVisualStyleBackColor = true;
@@ -196,21 +195,10 @@ namespace DevList
             this.CheckBoxStatus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CheckBoxStatus.Location = new System.Drawing.Point(12, 166);
             this.CheckBoxStatus.Name = "CheckBoxStatus";
-            this.CheckBoxStatus.Size = new System.Drawing.Size(99, 20);
+            this.CheckBoxStatus.Size = new System.Drawing.Size(98, 20);
             this.CheckBoxStatus.TabIndex = 6;
             this.CheckBoxStatus.Text = "Состояние";
             this.CheckBoxStatus.UseVisualStyleBackColor = true;
-            // 
-            // ButtonClose
-            // 
-            this.ButtonClose.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonClose.Location = new System.Drawing.Point(110, 331);
-            this.ButtonClose.Name = "ButtonClose";
-            this.ButtonClose.Size = new System.Drawing.Size(75, 37);
-            this.ButtonClose.TabIndex = 12;
-            this.ButtonClose.Text = "Закрыть";
-            this.ButtonClose.UseVisualStyleBackColor = true;
-            this.ButtonClose.Click += new System.EventHandler(this.Close_Click);
             // 
             // ButtonExecute
             // 
@@ -230,7 +218,6 @@ namespace DevList
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(218, 381);
             this.Controls.Add(this.ButtonExecute);
-            this.Controls.Add(this.ButtonClose);
             this.Controls.Add(this.CheckBoxChangeMan);
             this.Controls.Add(this.CheckBoxIP);
             this.Controls.Add(this.CheckBoxHostname);
@@ -269,7 +256,6 @@ namespace DevList
         private System.Windows.Forms.CheckBox CheckBoxComments;
         private System.Windows.Forms.CheckBox CheckBoxInventory;
         private System.Windows.Forms.CheckBox CheckBoxStatus;
-        private System.Windows.Forms.Button ButtonClose;
         private System.Windows.Forms.Button ButtonExecute;
     }
 }

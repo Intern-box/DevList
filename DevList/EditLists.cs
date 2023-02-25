@@ -92,23 +92,12 @@ namespace DevList
 
             DataBase dataBase = new DataBase(iniFile.Base);
 
-            if (coordinates != null)
-            {
-                ListsBox.Text = dataBase.Table[coordinates.Item.Index][nomberColumn];
-            }
+            if (coordinates != null) { ListsBox.Text = dataBase.Table[coordinates.Item.Index][nomberColumn]; }
         }
 
-        private void Execute_Click(object sender, EventArgs e)
-        {
-            Result = ListsBox.Text;
+        private void Execute_Click(object sender, EventArgs e) { Result = ListsBox.Text; Close(); }
 
-            Close();
-        }
-
-        private void Close_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void Close_Click(object sender, EventArgs e) { Close(); }
 
         private void ButtonPlus_Click(object sender, EventArgs e)
         {
@@ -220,14 +209,9 @@ namespace DevList
 
         private void EditLists_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Execute_Click(sender, e);
-            }
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close_Click(sender, e);
-            }
+            if (e.KeyCode == Keys.Enter) { Execute_Click(sender, e); }
+
+            if (e.KeyCode == Keys.Escape) { Close_Click(sender, e); }
         }
     }
 }
