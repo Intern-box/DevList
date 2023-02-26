@@ -420,31 +420,6 @@ namespace DevList
 
         private void Search_Click(object sender, EventArgs e)
         {
-            BaseSearchEdit search = Text == head || Text == "DevList - История" ?
-            
-            (BaseSearchEdit)new BaseSearchEditWindow("DevList - Поиск", iniFile)
-            
-            : new PartsSearchEditWindow("DevList - Поиск", iniFile);
-
-            search.ShowDialog();
-
-            if (search.Execute)
-            {
-                if (search.Result != null)
-                {
-                    bool stringEmptyCheck = false;
-
-                    foreach (string word in search.Result) { if (word != string.Empty) { stringEmptyCheck = true; } }
-
-                    if (stringEmptyCheck) { TableOutput(dataBase.StringSearch(search.Result)); } else { Table.Items.Clear(); }
-
-                    Filter.Visible = true;
-                }
-            }
-        }
-
-        private void ContextSearch_Click(object sender, EventArgs e)
-        {
             BaseSearchEdit search;
 
             int saveCoordinates;
@@ -467,7 +442,7 @@ namespace DevList
                 {
                     search = Text == head || Text == "DevList - История" ?
 
-                    (BaseSearchEdit) new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]) :
+                    (BaseSearchEdit)new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]) :
 
                     new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]);
                 }
@@ -475,7 +450,7 @@ namespace DevList
                 {
                     search = Text == head || Text == "DevList - История" ?
 
-                    (BaseSearchEdit) new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]) :
+                    (BaseSearchEdit)new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]) :
 
                     new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]);
                 }
@@ -496,6 +471,11 @@ namespace DevList
                     Filter.Visible = true;
                 }
             }
+        }
+
+        private void ContextSearch_Click(object sender, EventArgs e)
+        {
+            Search_Click(sender, e);
         }
 
         private void SearchAll_KeyDown(object sender, KeyEventArgs e)
