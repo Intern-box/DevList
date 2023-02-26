@@ -76,7 +76,7 @@ namespace DevList
             }
             else
             {
-                Log.ErrorHandler("DevList.ini существует. Открываю");
+                Log.ErrorHandler("[   ] DevList.ini существует. Открываю");
 
                 Path = path;
 
@@ -93,7 +93,7 @@ namespace DevList
             try { History = $"{Folder}\\{iniFile[5]}"; } catch (Exception) { History = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
             try { Set = $"{Folder}\\{iniFile[6]}"; } catch (Exception) { Set = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
 
-            try { Parts = $"{Folder}\\{iniFile[7]}"; Log.ErrorHandler("Похоже DevList.ini заполнен корректно!"); }
+            try { Parts = $"{Folder}\\{iniFile[7]}"; Log.ErrorHandler("[   ] Похоже DevList.ini заполнен корректно!"); }
             catch (Exception) { Parts = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
         }
     }

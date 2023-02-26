@@ -10,13 +10,13 @@ namespace DevList
 
         private void Launch_Click(object sender, EventArgs e)
         {
-            Log.ErrorHandler("Загрузчик - нажата кнопка Загрузить");
+            Log.ErrorHandler("[   ] Загрузчик - нажата кнопка Загрузить");
 
             INIFile iniFile = new INIFile();
 
             if (File.Exists(iniFile.Path))
             {
-                Log.ErrorHandler("DevList.ini существует. Открываю");
+                Log.ErrorHandler("[   ] DevList.ini существует. Открываю");
 
                 Log.ErrorHandler("[ ! ] Проверка путей к файлам в DevList.ini не проводилась!");
 
@@ -32,7 +32,7 @@ namespace DevList
 
         private void Create_Click(object sender, EventArgs e)
         {
-            Log.ErrorHandler("Загрузчик - нажата кнопка Создать");
+            Log.ErrorHandler("[   ] Загрузчик - нажата кнопка Создать");
 
             DialogResult result = MessageBox.Show("Данное действие может перезаписать базу!", "Перезаписать файлы?", MessageBoxButtons.YesNo);
 
@@ -41,7 +41,7 @@ namespace DevList
 
         private void Open_Click(object sender, EventArgs e)
         {
-            Log.ErrorHandler("Загрузчик - нажата кнопка Открыть");
+            Log.ErrorHandler("[   ] Загрузчик - нажата кнопка Открыть");
 
             OpenFileDialog openFile = new OpenFileDialog() { Filter = "*.INI|*.ini" };
 
@@ -50,7 +50,7 @@ namespace DevList
 
         private void Start(INIFile iniFile)
         {
-            Log.ErrorHandler("Загрузчик - передача управления Главному окну");
+            Log.ErrorHandler("[   ] Загрузчик - передача управления Главному окну");
 
             Hide();
 
@@ -61,6 +61,11 @@ namespace DevList
             baseForm.ShowDialog();
         }
 
-        private void FormaZapuska_KeyUp(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Enter) { Launch_Click(sender, e); } }
+        private void FormaZapuska_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { Launch_Click(sender, e); }
+
+            if (e.KeyCode == Keys.Escape) { Close(); }
+        }
     }
 }

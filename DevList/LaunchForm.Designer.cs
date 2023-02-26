@@ -42,6 +42,7 @@ namespace DevList
             this.Launch.Name = "Launch";
             this.Launch.Size = new System.Drawing.Size(100, 50);
             this.Launch.TabIndex = 9;
+            this.Launch.TabStop = false;
             this.Launch.Text = "Загрузить";
             this.Launch.UseVisualStyleBackColor = true;
             this.Launch.Click += new System.EventHandler(this.Launch_Click);
@@ -53,6 +54,7 @@ namespace DevList
             this.Create.Name = "Create";
             this.Create.Size = new System.Drawing.Size(100, 50);
             this.Create.TabIndex = 17;
+            this.Create.TabStop = false;
             this.Create.Text = "Создать";
             this.Create.UseVisualStyleBackColor = true;
             this.Create.Click += new System.EventHandler(this.Create_Click);
@@ -77,6 +79,7 @@ namespace DevList
             this.Open.Name = "Open";
             this.Open.Size = new System.Drawing.Size(100, 50);
             this.Open.TabIndex = 19;
+            this.Open.TabStop = false;
             this.Open.Text = "Открыть";
             this.Open.UseVisualStyleBackColor = true;
             this.Open.Click += new System.EventHandler(this.Open_Click);
