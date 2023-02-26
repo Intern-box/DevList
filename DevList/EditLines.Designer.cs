@@ -43,6 +43,7 @@ namespace DevList
             this.Text.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Text.Size = new System.Drawing.Size(460, 88);
             this.Text.TabIndex = 5;
+            this.Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Text_KeyDown);
             // 
             // ButtonClose
             // 

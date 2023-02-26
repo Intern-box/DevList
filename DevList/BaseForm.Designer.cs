@@ -44,6 +44,7 @@ namespace DevList
             this.Open = new System.Windows.Forms.ToolStripMenuItem();
             this.Save = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.Print = new System.Windows.Forms.ToolStripMenuItem();
             this.Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.Add = new System.Windows.Forms.ToolStripMenuItem();
             this.MEdit = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,19 +65,18 @@ namespace DevList
             this.LabelSearchAll = new System.Windows.Forms.Label();
             this.Table = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Data = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.InvNomer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Pomeschenie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Zakrepleno = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Naimenovanie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Oborudovanie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Sostoianie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Inventarizaciia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Komment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Rooms = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Employees = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Names = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Devices = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Inventory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Comment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Hostname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Izmenil = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Print = new System.Windows.Forms.ToolStripMenuItem();
+            this.ChangeMan = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CMenu.SuspendLayout();
             this.MMenu.SuspendLayout();
             this.SuspendLayout();
@@ -176,30 +176,37 @@ namespace DevList
             // Create
             // 
             this.Create.Name = "Create";
-            this.Create.Size = new System.Drawing.Size(180, 22);
+            this.Create.Size = new System.Drawing.Size(162, 22);
             this.Create.Text = "Создать";
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
             // Open
             // 
             this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(180, 22);
+            this.Open.Size = new System.Drawing.Size(162, 22);
             this.Open.Text = "Открыть";
             this.Open.Click += new System.EventHandler(this.Open_Click);
             // 
             // Save
             // 
             this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(180, 22);
+            this.Save.Size = new System.Drawing.Size(162, 22);
             this.Save.Text = "Сохранить";
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // SaveAs
             // 
             this.SaveAs.Name = "SaveAs";
-            this.SaveAs.Size = new System.Drawing.Size(180, 22);
+            this.SaveAs.Size = new System.Drawing.Size(162, 22);
             this.SaveAs.Text = "Сохранить как";
             this.SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
+            // 
+            // Print
+            // 
+            this.Print.Name = "Print";
+            this.Print.Size = new System.Drawing.Size(162, 22);
+            this.Print.Text = "Печать";
+            this.Print.Click += new System.EventHandler(this.Print_Click);
             // 
             // Edit
             // 
@@ -340,7 +347,7 @@ namespace DevList
             this.LabelSearchAll.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelSearchAll.Location = new System.Drawing.Point(829, 4);
             this.LabelSearchAll.Name = "LabelSearchAll";
-            this.LabelSearchAll.Size = new System.Drawing.Size(105, 16);
+            this.LabelSearchAll.Size = new System.Drawing.Size(104, 16);
             this.LabelSearchAll.TabIndex = 4;
             this.LabelSearchAll.Text = "Общий поиск:";
             // 
@@ -352,18 +359,18 @@ namespace DevList
             this.Table.AutoArrange = false;
             this.Table.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
-            this.Data,
-            this.InvNomer,
-            this.Pomeschenie,
-            this.Zakrepleno,
-            this.Naimenovanie,
-            this.Oborudovanie,
-            this.Sostoianie,
-            this.Inventarizaciia,
-            this.Komment,
+            this.Date,
+            this.Number,
+            this.Rooms,
+            this.Employees,
+            this.Names,
+            this.Devices,
+            this.Status,
+            this.Inventory,
+            this.Comment,
             this.Hostname,
             this.IP,
-            this.Izmenil});
+            this.ChangeMan});
             this.Table.ContextMenuStrip = this.CMenu;
             this.Table.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Table.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -385,50 +392,50 @@ namespace DevList
             // 
             this.ID.Text = "ID";
             // 
-            // Data
+            // Date
             // 
-            this.Data.Text = "Приобретено";
-            this.Data.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Date.Text = "Приобретено";
+            this.Date.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // InvNomer
+            // Number
             // 
-            this.InvNomer.Text = "Инв. №";
-            this.InvNomer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Number.Text = "Инв. №";
+            this.Number.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Pomeschenie
+            // Rooms
             // 
-            this.Pomeschenie.Text = "Помещение";
-            this.Pomeschenie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Rooms.Text = "Помещение";
+            this.Rooms.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Zakrepleno
+            // Employees
             // 
-            this.Zakrepleno.Text = "Закреплено";
-            this.Zakrepleno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Employees.Text = "Закреплено";
+            this.Employees.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Naimenovanie
+            // Names
             // 
-            this.Naimenovanie.Text = "Наименование";
-            this.Naimenovanie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Names.Text = "Наименование";
+            this.Names.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Oborudovanie
+            // Devices
             // 
-            this.Oborudovanie.Text = "Оборудование";
-            this.Oborudovanie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Devices.Text = "Оборудование";
+            this.Devices.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Sostoianie
+            // Status
             // 
-            this.Sostoianie.Text = "Состояние";
-            this.Sostoianie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Status.Text = "Состояние";
+            this.Status.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Inventarizaciia
+            // Inventory
             // 
-            this.Inventarizaciia.Text = "Инвентаризация";
-            this.Inventarizaciia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Inventory.Text = "Инвентаризация";
+            this.Inventory.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Komment
+            // Comment
             // 
-            this.Komment.Text = "Комментарий";
-            this.Komment.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Comment.Text = "Комментарий";
+            this.Comment.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Hostname
             // 
@@ -440,17 +447,10 @@ namespace DevList
             this.IP.Text = "IP";
             this.IP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Izmenil
+            // ChangeMan
             // 
-            this.Izmenil.Text = "Изменил";
-            this.Izmenil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // Print
-            // 
-            this.Print.Name = "Print";
-            this.Print.Size = new System.Drawing.Size(180, 22);
-            this.Print.Text = "Печать";
-            this.Print.Click += new System.EventHandler(this.Print_Click);
+            this.ChangeMan.Text = "Изменил";
+            this.ChangeMan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // BaseForm
             // 
@@ -514,18 +514,18 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem CDown;
         private System.Windows.Forms.ToolStripMenuItem CRemove;
         private System.Windows.Forms.ColumnHeader ID;
-        private System.Windows.Forms.ColumnHeader Data;
-        private System.Windows.Forms.ColumnHeader InvNomer;
-        private System.Windows.Forms.ColumnHeader Pomeschenie;
-        private System.Windows.Forms.ColumnHeader Zakrepleno;
-        private System.Windows.Forms.ColumnHeader Naimenovanie;
-        private System.Windows.Forms.ColumnHeader Oborudovanie;
-        private System.Windows.Forms.ColumnHeader Sostoianie;
-        private System.Windows.Forms.ColumnHeader Inventarizaciia;
-        private System.Windows.Forms.ColumnHeader Komment;
+        private System.Windows.Forms.ColumnHeader Date;
+        private System.Windows.Forms.ColumnHeader Number;
+        private System.Windows.Forms.ColumnHeader Rooms;
+        private System.Windows.Forms.ColumnHeader Employees;
+        private System.Windows.Forms.ColumnHeader Names;
+        private System.Windows.Forms.ColumnHeader Devices;
+        private System.Windows.Forms.ColumnHeader Status;
+        private System.Windows.Forms.ColumnHeader Inventory;
+        private System.Windows.Forms.ColumnHeader Comment;
         private System.Windows.Forms.ColumnHeader Hostname;
         private System.Windows.Forms.ColumnHeader IP;
-        private System.Windows.Forms.ColumnHeader Izmenil;
+        private System.Windows.Forms.ColumnHeader ChangeMan;
         private System.Windows.Forms.ToolStripMenuItem Print;
     }
 }

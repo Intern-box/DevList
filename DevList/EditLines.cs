@@ -30,5 +30,10 @@ namespace DevList
 
             if (e.KeyCode == Keys.Escape) { Close_Click(sender, e); }
         }
+
+        private void Text_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { Execute_Click(sender, e); }
+        }
     }
 }

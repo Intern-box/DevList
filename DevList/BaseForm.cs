@@ -178,117 +178,95 @@ namespace DevList
         {
             if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
             {
-                int saveCoordinates = coordinates.Item.Index;
-
-                if (Text == head || Text == "DevList - История")
+                if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) != 0)
                 {
-                    if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 3 ||
-                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 4 ||
-                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 5 ||
-                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 6 ||
-                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 7 ||
-                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 12)
+                    int saveCoordinates = coordinates.Item.Index;
+
+                    EditLists editLists; EditLines editLines;
+
+                    if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 3)
                     {
-                        EditLists editLists = new EditLists("DevList - Правка", coordinates, iniFile);
+                        editLists = new EditLists("DevList - Правка", coordinates, iniFile);
 
                         editLists.ShowDialog();
 
                         if (editLists.Result != null)
                         {
-                            if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 3)
+                            if (editLists.Result != dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)])
                             {
-                                if (editLists.Result != dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)])
-                                {
-                                    System.IO.File.AppendAllText
-                                    (
-                                    $"{Path.GetDirectoryName(Path.GetFullPath(iniFile.Path))}\\История перемещений\\{editLists.Result}.txt",
-                                    $"Из помещения: {dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]}\r\n" +
-                                    $"переместили: {DateTime.Now}\r\n" +
-                                    $"{dataBase.Table[coordinates.Item.Index][5]}\r\n" +
-                                    $"с инв.№: {dataBase.Table[coordinates.Item.Index][2]}\r\n\r\n"
-                                    );
-                                }
+                                System.IO.File.AppendAllText
+                                (
+                                $"{Path.GetDirectoryName(Path.GetFullPath(iniFile.Path))}\\История перемещений\\{editLists.Result}.txt",
+                                $"Из помещения: {dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]}\r\n" +
+                                $"переместили: {DateTime.Now}\r\n" +
+                                $"{dataBase.Table[coordinates.Item.Index][5]}\r\n" +
+                                $"с инв.№: {dataBase.Table[coordinates.Item.Index][2]}\r\n\r\n"
+                                );
                             }
 
                             dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLists.Result;
 
-                            TableOutput(dataBase.Table);
-
-                            Table.Items[saveCoordinates].Selected = true;
-
                             dataBase.Change = true;
                         }
-                    }
-                    else if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 0)
-                    {
-                        // Столбец ID нельзя изменить!
                     }
                     else
                     {
-                        EditLines editLines = new EditLines("DevList - Правка комплект", dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]);
-
-                        editLines.ShowDialog();
-
-                        if (editLines.Result != null)
+                        if (Text == head || Text == "DevList - История")
                         {
-                            dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLines.Result;
+                            if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 4 ||
+                                coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 5 ||
+                                coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 6 ||
+                                coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 7 ||
+                                coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 8 ||
+                                coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 9 ||
+                                coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 12)
+                            {
+                                editLists = new EditLists("DevList - Правка", coordinates, iniFile);
 
-                            TableOutput(dataBase.Table);
+                                editLists.ShowDialog();
 
-                            Table.Columns[9].Width = 150;
+                                if (editLists.Result != null)
+                                {
+                                    dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLists.Result;
 
-                            Table.Items[saveCoordinates].Selected = true;
+                                    dataBase.Change = true;
+                                }
+                            }
+                            else
+                            {
+                                editLines = new EditLines("DevList - Правка", dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]);
 
-                            dataBase.Change = true;
+                                editLines.ShowDialog();
+
+                                if (editLines.Result != null)
+                                {
+                                    dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLines.Result;
+
+                                    dataBase.Change = true;
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            editLines = new EditLines("DevList - Правка комплект", dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]);
+
+                            editLines.ShowDialog();
+
+                            if (editLines.Result != null)
+                            {
+                                dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLines.Result;
+
+                                dataBase.Change = true;
+                            }
                         }
                     }
-                }
-                else
-                {
-                    if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 3 ||
-                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 4 ||
-                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 5 ||
-                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 6 ||
-                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 7 ||
-                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 8 ||
-                    coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 9)
-                    {
-                        EditLists editLists = new EditLists("DevList - Комплект правка", coordinates, iniFile);
 
-                        editLists.ShowDialog();
+                    TableOutput(dataBase.Table);
 
-                        if (editLists.Result != null)
-                        {
-                            dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLists.Result;
+                    Comment.Width = 150;
 
-                            TableOutput(dataBase.Table);
-
-                            Table.Items[saveCoordinates].Selected = true;
-
-                            dataBase.Change = true;
-                        }
-                    }
-                    else if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 0)
-                    {
-                        // Столбец ID нельзя изменить!
-                    }
-                    else
-                    {
-                        EditLines editLines = new EditLines("DevList - Правка", dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]);
-
-                        editLines.ShowDialog();
-
-                        if (editLines.Result != null)
-                        {
-                            dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLines.Result;
-
-                            TableOutput(dataBase.Table);
-
-                            Table.Items[saveCoordinates].Selected = true;
-
-                            dataBase.Change = true;
-                        }
-                    }
+                    Table.Items[saveCoordinates].Selected = true;
                 }
             }
         }
