@@ -451,10 +451,7 @@ namespace DevList
             }
         }
 
-        private void ContextSearch_Click(object sender, EventArgs e)
-        {
-            Search_Click(sender, e);
-        }
+        private void ContextSearch_Click(object sender, EventArgs e) { Search_Click(sender, e); }
 
         private void SearchAll_KeyDown(object sender, KeyEventArgs e)
         {

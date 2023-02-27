@@ -71,10 +71,7 @@ namespace DevList
             Close();
         }
 
-        private void Close_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void Close_Click(object sender, EventArgs e) { Close(); }
 
         private void RoomsPlus_Click(object sender, EventArgs e)
         {
