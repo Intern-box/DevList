@@ -704,45 +704,6 @@ namespace DevList
                 ImageList imgList = new ImageList { ImageSize = new Size(1, size > 255 ? (int)widthSymbol : size) };
 
                 Table.SmallImageList = imgList;
-
-                //float pattern = Table.Items[0].SubItems[0].Font.Size;
-
-                //float standardWidth = pattern;
-
-                //for (int i = 0; i < Table.Columns.Count; i++)
-                //{
-                //    for (int j = 0; j < Table.Items.Count; j++)
-                //    {
-                //        if (TextRenderer.MeasureText(Table.Items[j].SubItems[i].Text, new Font("Verdana", 9, FontStyle.Regular)).Width > Table.Columns[i].Width)
-                //        {
-                //            standardWidth = standardWidth + pattern;
-
-                //            string[] tmp = new string[Table.Items[j].SubItems[i].Text.Length];
-
-                //            for (int k = 0; k < Table.Items[j].SubItems[i].Text.Length; k++) { tmp[k] = Table.Items[j].SubItems[i].Text[k].ToString(); }
-
-                //            for (int l = tmp.Length - 1; l > 0; l--)
-                //            {
-                //                if (tmp[l] == " ")
-                //                {
-                //                    tmp[l] = "\r\n";
-
-                //                    ImageList imgList = new ImageList { ImageSize = new Size(1, (int)standardWidth > 255 ? (int)pattern : (int)standardWidth) };
-
-                //                    Table.SmallImageList = imgList;
-
-                //                    break;
-                //                }
-                //            }
-
-                //            string result = string.Empty;
-
-                //            foreach (string item in tmp) { result += item; }
-
-                //            Table.Items[j].SubItems[i].Text = result;
-                //        }
-                //    }
-                //}
             }
         }
     }
