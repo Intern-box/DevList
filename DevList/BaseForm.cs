@@ -690,13 +690,7 @@ namespace DevList
                     {
                         if (maxStringWidth > Table.Columns[i].Width)
                         {
-                            foreach (char item in Table.Items[j].SubItems[i].Text)
-                            {
-                                if (item == ' ')
-                                {
-                                    spaceCount++;
-                                }
-                            }
+                            foreach (char item in Table.Items[j].SubItems[i].Text) { if (item == ' ') { spaceCount++; } }
 
                             if (multiplier < spaceCount) { multiplier = spaceCount; }
 
