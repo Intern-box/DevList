@@ -385,9 +385,15 @@ namespace DevList
 
         private void LineBreak_Click(object sender, EventArgs e)
         {
+            coordinates = coordinates == null ? Table.HitTest(0, 0) : coordinates;
+
+            int columnIndex = coordinates.Item == null ? 0 : coordinates.Item.SubItems.IndexOf(coordinates.SubItem);
+
             if (LineBreak.Checked) { LineBreak.Checked = Table.LabelWrap = false; } else { LineBreak.Checked = Table.LabelWrap = true; }
 
-            //TableOutput(dataBase.Table);
+            ColumnWidthChangedEventArgs columnWidthChangedEventArgs = new ColumnWidthChangedEventArgs(columnIndex);
+
+            Table_ColumnWidthChanged(sender, columnWidthChangedEventArgs);
         }
 
         private void Columns_Click(object sender, EventArgs e)
@@ -646,13 +652,16 @@ namespace DevList
 
         private void Table_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
         {
-            for (int i = 0; i < Table.Columns.Count; i++)
+            if (LineBreak.Checked)
             {
-                for (int j = 1; j < Table.Items.Count; j++)
+                for (int i = 0; i < Table.Columns.Count; i++)
                 {
-                    if (TextRenderer.MeasureText(Table.Items[j].SubItems[i].Text, new Font("Verdana", 9, FontStyle.Regular)).Width > Table.Columns[i].Width)
+                    for (int j = 0; j < Table.Items.Count; j++)
                     {
-                        Table.Items[j].SubItems[i].Text = "!";
+                        if (TextRenderer.MeasureText(Table.Items[j].SubItems[i].Text, new Font("Verdana", 9, FontStyle.Regular)).Width > Table.Columns[i].Width)
+                        {
+                            Table.Items[j].SubItems[i].Text = "!";
+                        }
                     }
                 }
             }
