@@ -421,6 +421,7 @@ namespace DevList
             this.Table.UseCompatibleStateImageBehavior = false;
             this.Table.View = System.Windows.Forms.View.Details;
             this.Table.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.Table_ColumnClick);
+            this.Table.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.Table_ColumnWidthChanged);
             this.Table.DoubleClick += new System.EventHandler(this.Tablica_DoubleClick);
             this.Table.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Table_MouseDown);
             // 

@@ -643,5 +643,19 @@ namespace DevList
 
             printPreview.ShowDialog();
         }
+
+        private void Table_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
+        {
+            for (int i = 0; i < Table.Columns.Count; i++)
+            {
+                for (int j = 1; j < Table.Items.Count; j++)
+                {
+                    if (TextRenderer.MeasureText(Table.Items[j].SubItems[i].Text, new Font("Verdana", 9, FontStyle.Regular)).Width > Table.Columns[i].Width)
+                    {
+                        Table.Items[j].SubItems[i].Text = "!";
+                    }
+                }
+            }
+        }
     }
 }
