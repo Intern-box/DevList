@@ -385,7 +385,14 @@ namespace DevList
 
         private void ContextRemove_Click(object sender, EventArgs e) { Remove_Click(sender, e); }
 
-        private void View_Click(object sender, EventArgs e)
+        private void LineBreak_Click(object sender, EventArgs e)
+        {
+            if (LineBreak.Checked) { LineBreak.Checked = Table.LabelWrap = false; } else { LineBreak.Checked = Table.LabelWrap = true; }
+
+            //TableOutput(dataBase.Table);
+        }
+
+        private void Columns_Click(object sender, EventArgs e)
         {
             Columns columns = new Columns(visibleColumns);
 
@@ -586,45 +593,57 @@ namespace DevList
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Down) == Keys.Down) { Down_Click(sender, e); }
         }
 
-        private void Print_Click(object sender, EventArgs e)
+        private void PrintPageEvent(object sender, PrintPageEventArgs e)
+        {
+            Bitmap bitmap = new Bitmap(Table.Width, Table.Height);
+            Table.DrawToBitmap(bitmap, Table.ClientRectangle);
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.Image = bitmap;
+            e.Graphics.DrawImage(pictureBox.Image, 0, 0);
+
+            //Font font = new Font("Verdana", 10);
+
+            //float offset = e.MarginBounds.Top;
+
+            //foreach (ListViewItem Item in Table.Items)
+            //{
+            //    // The 5.0f is to add a small space between lines
+            //    offset += (font.GetHeight() + 5.0f);
+
+            //    PointF location = new System.Drawing.PointF(e.MarginBounds.Left, offset);
+
+            //    e.Graphics.DrawString(Item.Text, font, Brushes.Black, location);
+            //}
+        }
+
+        private void StartPrint_Click(object sender, EventArgs e)
         {
             PrintDocument printDocument = new PrintDocument();
 
             printDocument.PrintPage += PrintPageEvent;
 
-            PrintDialog printDialog = new PrintDialog();
+            DialogResult result = MessageBox.Show("Продолжить печать?", "Печать", MessageBoxButtons.YesNo);
 
-            printDialog.Document = printDocument;
+            if (result == DialogResult.Yes) { printDocument.Print(); }
+        }
+
+        private void Preview_Click(object sender, EventArgs e)
+        {
+            PrintDocument printDocument = new PrintDocument();
+
+            printDocument.PrintPage += PrintPageEvent;
 
             PrintPreviewDialog printPreview = new PrintPreviewDialog();
 
             printPreview.Document = printDocument;
 
-            if (printDialog.ShowDialog() == DialogResult.OK)
-            {
-                printPreview.ShowDialog();
+            PrintDialog printDialog = new PrintDialog();
 
-                DialogResult result = MessageBox.Show("Продолжить печать?", "Печать", MessageBoxButtons.YesNo);
+            printDialog.Document = printDocument;
 
-                if (result == DialogResult.Yes) { printDocument.Print(); }
-            }
-        }
+            printDialog.ShowDialog();
 
-        private void PrintPageEvent(object sender, PrintPageEventArgs e)
-        {
-            Font font = new Font("Verdana", 10);
-
-            float offset = e.MarginBounds.Top;
-
-            foreach (ListViewItem Item in Table.Items)
-            {
-                // The 5.0f is to add a small space between lines
-                offset += (font.GetHeight() + 5.0f);
-
-                PointF location = new System.Drawing.PointF(e.MarginBounds.Left, offset);
-
-                e.Graphics.DrawString(Item.Text, font, Brushes.Black, location);
-            }
+            printPreview.ShowDialog();
         }
     }
 }

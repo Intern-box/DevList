@@ -45,6 +45,8 @@ namespace DevList
             this.Save = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.Print = new System.Windows.Forms.ToolStripMenuItem();
+            this.StartPrint = new System.Windows.Forms.ToolStripMenuItem();
+            this.Preview = new System.Windows.Forms.ToolStripMenuItem();
             this.Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.Add = new System.Windows.Forms.ToolStripMenuItem();
             this.MEdit = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +55,8 @@ namespace DevList
             this.Down = new System.Windows.Forms.ToolStripMenuItem();
             this.Remove = new System.Windows.Forms.ToolStripMenuItem();
             this.View = new System.Windows.Forms.ToolStripMenuItem();
+            this.LineBreak = new System.Windows.Forms.ToolStripMenuItem();
+            this.Columns = new System.Windows.Forms.ToolStripMenuItem();
             this.Search = new System.Windows.Forms.ToolStripMenuItem();
             this.Lists = new System.Windows.Forms.ToolStripMenuItem();
             this.Reports = new System.Windows.Forms.ToolStripMenuItem();
@@ -203,10 +207,26 @@ namespace DevList
             // 
             // Print
             // 
+            this.Print.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StartPrint,
+            this.Preview});
             this.Print.Name = "Print";
             this.Print.Size = new System.Drawing.Size(162, 22);
             this.Print.Text = "Печать";
-            this.Print.Click += new System.EventHandler(this.Print_Click);
+            // 
+            // StartPrint
+            // 
+            this.StartPrint.Name = "StartPrint";
+            this.StartPrint.Size = new System.Drawing.Size(166, 22);
+            this.StartPrint.Text = "Печать";
+            this.StartPrint.Click += new System.EventHandler(this.StartPrint_Click);
+            // 
+            // Preview
+            // 
+            this.Preview.Name = "Preview";
+            this.Preview.Size = new System.Drawing.Size(166, 22);
+            this.Preview.Text = "Предпросмотр";
+            this.Preview.Click += new System.EventHandler(this.Preview_Click);
             // 
             // Edit
             // 
@@ -265,10 +285,26 @@ namespace DevList
             // 
             // View
             // 
+            this.View.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LineBreak,
+            this.Columns});
             this.View.Name = "View";
             this.View.Size = new System.Drawing.Size(41, 21);
             this.View.Text = "Вид";
-            this.View.Click += new System.EventHandler(this.View_Click);
+            // 
+            // LineBreak
+            // 
+            this.LineBreak.Name = "LineBreak";
+            this.LineBreak.Size = new System.Drawing.Size(128, 22);
+            this.LineBreak.Text = "Перенос";
+            this.LineBreak.Click += new System.EventHandler(this.LineBreak_Click);
+            // 
+            // Columns
+            // 
+            this.Columns.Name = "Columns";
+            this.Columns.Size = new System.Drawing.Size(128, 22);
+            this.Columns.Text = "Колонки";
+            this.Columns.Click += new System.EventHandler(this.Columns_Click);
             // 
             // Search
             // 
@@ -373,7 +409,7 @@ namespace DevList
             this.ChangeMan});
             this.Table.ContextMenuStrip = this.CMenu;
             this.Table.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Table.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Table.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Table.FullRowSelect = true;
             this.Table.GridLines = true;
             this.Table.HideSelection = false;
@@ -527,6 +563,10 @@ namespace DevList
         private System.Windows.Forms.ColumnHeader IP;
         private System.Windows.Forms.ColumnHeader ChangeMan;
         private System.Windows.Forms.ToolStripMenuItem Print;
+        private System.Windows.Forms.ToolStripMenuItem StartPrint;
+        private System.Windows.Forms.ToolStripMenuItem Preview;
+        private System.Windows.Forms.ToolStripMenuItem LineBreak;
+        private System.Windows.Forms.ToolStripMenuItem Columns;
     }
 }
 
