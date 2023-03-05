@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Printing;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DevList
 {
@@ -660,7 +661,25 @@ namespace DevList
                     {
                         if (TextRenderer.MeasureText(Table.Items[j].SubItems[i].Text, new Font("Verdana", 9, FontStyle.Regular)).Width > Table.Columns[i].Width)
                         {
-                            Table.Items[j].SubItems[i].Text = "!";
+                            string tmp = string.Empty;
+
+                            foreach (char item in Table.Items[j].SubItems[i].Text)
+                            {
+                                if (item == ' ')
+                                {
+                                    tmp += "\r\n";
+
+                                    ImageList imgList = new ImageList();
+                                    imgList.ImageSize = new Size(1, 40);
+                                    Table.SmallImageList = imgList;
+
+                                    break;
+                                }
+                                
+                                tmp += item;
+                            }
+
+                            Table.Items[j].SubItems[i].Text = tmp;
                         }
                     }
                 }
