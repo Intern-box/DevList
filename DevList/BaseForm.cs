@@ -217,8 +217,6 @@ namespace DevList
                                 coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 5 ||
                                 coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 6 ||
                                 coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 7 ||
-                                coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 8 ||
-                                coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 9 ||
                                 coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 12)
                             {
                                 editLists = new EditLists("DevList - Правка", coordinates, iniFile);

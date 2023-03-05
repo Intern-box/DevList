@@ -92,7 +92,7 @@ namespace DevList
 
             DataBase dataBase = new DataBase(iniFile.Base);
 
-            if (coordinates != null) { ListsBox.Text = dataBase.Table[coordinates.Item.Index][nomberColumn]; }
+            if(dataBase.Table.Count > 0) { ListsBox.Text = dataBase.Table[coordinates.Item.Index][nomberColumn]; }
         }
 
         private void Execute_Click(object sender, EventArgs e) { Result = ListsBox.Text; Close(); }
