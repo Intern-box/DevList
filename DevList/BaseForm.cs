@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Printing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace DevList
 {
@@ -390,7 +391,22 @@ namespace DevList
 
             int columnIndex = coordinates.Item == null ? 0 : coordinates.Item.SubItems.IndexOf(coordinates.SubItem);
 
-            if (LineBreak.Checked) { LineBreak.Checked = Table.LabelWrap = false; } else { LineBreak.Checked = Table.LabelWrap = true; }
+            if (LineBreak.Checked)
+            {
+                LineBreak.Checked =  false;
+
+                byte size = (byte)(TextRenderer.MeasureText(Table.Items[0].SubItems[0].Text, new Font("Verdana", 9, FontStyle.Regular)).Width);
+
+                ImageList imgList = new ImageList { ImageSize = new Size(1, size) };
+
+                Table.SmallImageList = imgList;
+
+                TableOutput(dataBase.Table);
+            }
+            else
+            {
+                LineBreak.Checked = true;
+            }
 
             ColumnWidthChangedEventArgs columnWidthChangedEventArgs = new ColumnWidthChangedEventArgs(columnIndex);
 
@@ -638,51 +654,101 @@ namespace DevList
 
             printDocument.PrintPage += PrintPageEvent;
 
-            PrintPreviewDialog printPreview = new PrintPreviewDialog();
+            PrintPreviewDialog printPreview = new PrintPreviewDialog { Document = printDocument };
 
-            printPreview.Document = printDocument;
+            PrintDialog printDialog = new PrintDialog { Document = printDocument };
 
-            PrintDialog printDialog = new PrintDialog();
-
-            printDialog.Document = printDocument;
-
-            printDialog.ShowDialog();
-
-            printPreview.ShowDialog();
+            printDialog.ShowDialog(); printPreview.ShowDialog();
         }
 
         private void Table_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
         {
             if (LineBreak.Checked)
             {
+                float maxStringWidth = 0;
+
+                float multiplier = 0;
+
+                float spaceCount = 0;
+
+                float widthSymbol = Table.Items[0].SubItems[0].Font.Size;
+
                 for (int i = 0; i < Table.Columns.Count; i++)
                 {
                     for (int j = 0; j < Table.Items.Count; j++)
                     {
-                        if (TextRenderer.MeasureText(Table.Items[j].SubItems[i].Text, new Font("Verdana", 9, FontStyle.Regular)).Width > Table.Columns[i].Width)
+                        if (maxStringWidth < TextRenderer.MeasureText(Table.Items[j].SubItems[i].Text, new Font("Verdana", 9, FontStyle.Regular)).Width)
                         {
-                            string tmp = string.Empty;
+                            maxStringWidth = TextRenderer.MeasureText(Table.Items[j].SubItems[i].Text, new Font("Verdana", 9, FontStyle.Regular)).Width;
+                        }
+                    }
+                }
 
+                for (int i = 0; i < Table.Columns.Count; i++)
+                {
+                    for (int j = 0; j < Table.Items.Count; j++)
+                    {
+                        if (maxStringWidth > Table.Columns[i].Width)
+                        {
                             foreach (char item in Table.Items[j].SubItems[i].Text)
                             {
                                 if (item == ' ')
                                 {
-                                    tmp += "\r\n";
-
-                                    ImageList imgList = new ImageList();
-                                    imgList.ImageSize = new Size(1, 40);
-                                    Table.SmallImageList = imgList;
-
-                                    break;
+                                    spaceCount++;
                                 }
-                                
-                                tmp += item;
                             }
 
-                            Table.Items[j].SubItems[i].Text = tmp;
+                            if (multiplier < spaceCount) { multiplier = spaceCount; }
+
+                            spaceCount = 0;
                         }
                     }
                 }
+
+                int size = (int)(widthSymbol * multiplier);
+
+                ImageList imgList = new ImageList { ImageSize = new Size(1, size > 255 ? (int)widthSymbol : size) };
+
+                Table.SmallImageList = imgList;
+
+                //float pattern = Table.Items[0].SubItems[0].Font.Size;
+
+                //float standardWidth = pattern;
+
+                //for (int i = 0; i < Table.Columns.Count; i++)
+                //{
+                //    for (int j = 0; j < Table.Items.Count; j++)
+                //    {
+                //        if (TextRenderer.MeasureText(Table.Items[j].SubItems[i].Text, new Font("Verdana", 9, FontStyle.Regular)).Width > Table.Columns[i].Width)
+                //        {
+                //            standardWidth = standardWidth + pattern;
+
+                //            string[] tmp = new string[Table.Items[j].SubItems[i].Text.Length];
+
+                //            for (int k = 0; k < Table.Items[j].SubItems[i].Text.Length; k++) { tmp[k] = Table.Items[j].SubItems[i].Text[k].ToString(); }
+
+                //            for (int l = tmp.Length - 1; l > 0; l--)
+                //            {
+                //                if (tmp[l] == " ")
+                //                {
+                //                    tmp[l] = "\r\n";
+
+                //                    ImageList imgList = new ImageList { ImageSize = new Size(1, (int)standardWidth > 255 ? (int)pattern : (int)standardWidth) };
+
+                //                    Table.SmallImageList = imgList;
+
+                //                    break;
+                //                }
+                //            }
+
+                //            string result = string.Empty;
+
+                //            foreach (string item in tmp) { result += item; }
+
+                //            Table.Items[j].SubItems[i].Text = result;
+                //        }
+                //    }
+                //}
             }
         }
     }
