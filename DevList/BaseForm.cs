@@ -36,7 +36,7 @@ namespace DevList
 
         private void Table_MouseDown(object sender, MouseEventArgs e) { coordinates = Table.HitTest(e.X, e.Y); }
 
-        private void BaseForm_Load(object sender, EventArgs e) { TableOutput(dataBase.Table); Log.ErrorHandler($"[   ] {Text} - База загружена"); }
+        private void BaseForm_Load(object sender, EventArgs e) { TableOutput(dataBase.Table); Log.ErrorHandler($"[   ] {Text} - База загружена\r\n\r\n"); }
 
         private void TableOutput(List<string[]> table)
         {
