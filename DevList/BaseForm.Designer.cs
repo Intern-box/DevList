@@ -44,9 +44,6 @@ namespace DevList
             this.Open = new System.Windows.Forms.ToolStripMenuItem();
             this.Save = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.Print = new System.Windows.Forms.ToolStripMenuItem();
-            this.StartPrint = new System.Windows.Forms.ToolStripMenuItem();
-            this.Preview = new System.Windows.Forms.ToolStripMenuItem();
             this.Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.Add = new System.Windows.Forms.ToolStripMenuItem();
             this.MEdit = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,13 +52,13 @@ namespace DevList
             this.Down = new System.Windows.Forms.ToolStripMenuItem();
             this.Remove = new System.Windows.Forms.ToolStripMenuItem();
             this.View = new System.Windows.Forms.ToolStripMenuItem();
-            this.LineBreak = new System.Windows.Forms.ToolStripMenuItem();
             this.Columns = new System.Windows.Forms.ToolStripMenuItem();
             this.Search = new System.Windows.Forms.ToolStripMenuItem();
             this.Lists = new System.Windows.Forms.ToolStripMenuItem();
             this.Reports = new System.Windows.Forms.ToolStripMenuItem();
             this.ButtonSortByTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.ButtonButtonSortByRooms = new System.Windows.Forms.ToolStripMenuItem();
+            this.CommonReport = new System.Windows.Forms.ToolStripMenuItem();
             this.History = new System.Windows.Forms.ToolStripMenuItem();
             this.Set = new System.Windows.Forms.ToolStripMenuItem();
             this.Filter = new System.Windows.Forms.ToolStripMenuItem();
@@ -171,8 +168,7 @@ namespace DevList
             this.Create,
             this.Open,
             this.Save,
-            this.SaveAs,
-            this.Print});
+            this.SaveAs});
             this.File.Name = "File";
             this.File.Size = new System.Drawing.Size(50, 21);
             this.File.Text = "Файл";
@@ -204,29 +200,6 @@ namespace DevList
             this.SaveAs.Size = new System.Drawing.Size(162, 22);
             this.SaveAs.Text = "Сохранить как";
             this.SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
-            // 
-            // Print
-            // 
-            this.Print.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StartPrint,
-            this.Preview});
-            this.Print.Name = "Print";
-            this.Print.Size = new System.Drawing.Size(162, 22);
-            this.Print.Text = "Печать";
-            // 
-            // StartPrint
-            // 
-            this.StartPrint.Name = "StartPrint";
-            this.StartPrint.Size = new System.Drawing.Size(166, 22);
-            this.StartPrint.Text = "Печать";
-            this.StartPrint.Click += new System.EventHandler(this.StartPrint_Click);
-            // 
-            // Preview
-            // 
-            this.Preview.Name = "Preview";
-            this.Preview.Size = new System.Drawing.Size(166, 22);
-            this.Preview.Text = "Предпросмотр";
-            this.Preview.Click += new System.EventHandler(this.Preview_Click);
             // 
             // Edit
             // 
@@ -286,23 +259,15 @@ namespace DevList
             // View
             // 
             this.View.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LineBreak,
             this.Columns});
             this.View.Name = "View";
             this.View.Size = new System.Drawing.Size(41, 21);
             this.View.Text = "Вид";
             // 
-            // LineBreak
-            // 
-            this.LineBreak.Name = "LineBreak";
-            this.LineBreak.Size = new System.Drawing.Size(128, 22);
-            this.LineBreak.Text = "Перенос";
-            this.LineBreak.Click += new System.EventHandler(this.LineBreak_Click);
-            // 
             // Columns
             // 
             this.Columns.Name = "Columns";
-            this.Columns.Size = new System.Drawing.Size(128, 22);
+            this.Columns.Size = new System.Drawing.Size(180, 22);
             this.Columns.Text = "Колонки";
             this.Columns.Click += new System.EventHandler(this.Columns_Click);
             // 
@@ -324,7 +289,8 @@ namespace DevList
             // 
             this.Reports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ButtonSortByTypes,
-            this.ButtonButtonSortByRooms});
+            this.ButtonButtonSortByRooms,
+            this.CommonReport});
             this.Reports.Name = "Reports";
             this.Reports.Size = new System.Drawing.Size(63, 21);
             this.Reports.Text = "Отчёты";
@@ -342,6 +308,13 @@ namespace DevList
             this.ButtonButtonSortByRooms.Size = new System.Drawing.Size(183, 22);
             this.ButtonButtonSortByRooms.Text = "МЦ в помещении";
             this.ButtonButtonSortByRooms.Click += new System.EventHandler(this.SortByRooms_Click);
+            // 
+            // CommonReport
+            // 
+            this.CommonReport.Name = "CommonReport";
+            this.CommonReport.Size = new System.Drawing.Size(183, 22);
+            this.CommonReport.Text = "Общий отчёт";
+            this.CommonReport.Click += new System.EventHandler(this.CommonReport_Click);
             // 
             // History
             // 
@@ -421,7 +394,6 @@ namespace DevList
             this.Table.UseCompatibleStateImageBehavior = false;
             this.Table.View = System.Windows.Forms.View.Details;
             this.Table.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.Table_ColumnClick);
-            this.Table.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.Table_ColumnWidthChanged);
             this.Table.DoubleClick += new System.EventHandler(this.Tablica_DoubleClick);
             this.Table.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Table_MouseDown);
             // 
@@ -563,11 +535,8 @@ namespace DevList
         private System.Windows.Forms.ColumnHeader Hostname;
         private System.Windows.Forms.ColumnHeader IP;
         private System.Windows.Forms.ColumnHeader ChangeMan;
-        private System.Windows.Forms.ToolStripMenuItem Print;
-        private System.Windows.Forms.ToolStripMenuItem StartPrint;
-        private System.Windows.Forms.ToolStripMenuItem Preview;
-        private System.Windows.Forms.ToolStripMenuItem LineBreak;
         private System.Windows.Forms.ToolStripMenuItem Columns;
+        private System.Windows.Forms.ToolStripMenuItem CommonReport;
     }
 }
 

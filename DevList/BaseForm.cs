@@ -4,8 +4,6 @@ using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Printing;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace DevList
 {
@@ -21,7 +19,7 @@ namespace DevList
 
         public bool[] visibleColumns;
 
-        string head = "DevList 6.7 - Главное окно";
+        string head = "DevList 6.8 - Главное окно";
 
         public BaseForm(INIFile iniFile, DataBase dataBase)
         {
@@ -48,9 +46,9 @@ namespace DevList
 
             for (int i = 0; i < table.Count; i++) { ListViewItem str = new ListViewItem(table[i]); Table.Items.Add(str); }
 
-            Table.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
             for (int i = 0; i < visibleColumns.Length; i++) { if (!visibleColumns[i]) { Table.Columns[i].Width = 0; } }
+
+            Table.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         private void Table_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -385,34 +383,6 @@ namespace DevList
 
         private void ContextRemove_Click(object sender, EventArgs e) { Remove_Click(sender, e); }
 
-        private void LineBreak_Click(object sender, EventArgs e)
-        {
-            coordinates = coordinates == null ? Table.HitTest(0, 0) : coordinates;
-
-            int columnIndex = coordinates.Item == null ? 0 : coordinates.Item.SubItems.IndexOf(coordinates.SubItem);
-
-            if (LineBreak.Checked)
-            {
-                LineBreak.Checked =  false;
-
-                byte size = (byte)(TextRenderer.MeasureText(Table.Items[0].SubItems[0].Text, new Font("Verdana", 9, FontStyle.Regular)).Width);
-
-                ImageList imgList = new ImageList { ImageSize = new Size(1, size) };
-
-                Table.SmallImageList = imgList;
-
-                TableOutput(dataBase.Table);
-            }
-            else
-            {
-                LineBreak.Checked = true;
-            }
-
-            ColumnWidthChangedEventArgs columnWidthChangedEventArgs = new ColumnWidthChangedEventArgs(columnIndex);
-
-            Table_ColumnWidthChanged(sender, columnWidthChangedEventArgs);
-        }
-
         private void Columns_Click(object sender, EventArgs e)
         {
             Columns columns = new Columns(visibleColumns);
@@ -500,6 +470,55 @@ namespace DevList
             Reports report = new Reports(iniFile, dataBase, reportType: "SortByRooms");
 
             report.ShowDialog();
+        }
+
+        private void CommonReport_Click(object sender, EventArgs e)
+        {
+            string tblBegin =
+                                "<style>\r\n\r\n" +
+                                "table {font-family:Verdana; font-size:11px; border-collapse:collapse; border:1px solid #bbbbbb;}\r\n" +
+                                "td {text-align:center; vertical-align:middle;}\r\n\r\n" +
+                                "</style>\r\n\r\n" +
+                                "<table align=center cellpadding=5 border=1 bordercolor=#bbbbbb>\r\n";
+
+            string tblEnds = "</table>";
+            string trBegin = "<tr>";
+            string trEnds = "</tr>\r\n";
+            string tdBegin = "<td>";
+            string tdEnds = "</td>\r\n";
+
+            System.IO.File.WriteAllText($"{Application.StartupPath}\\Print.htm", string.Empty);
+
+            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tblBegin);
+
+            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "<tr bgcolor=#bbbbbb style=\"color:#ffffff; font-weight:bold;\">");
+
+            for (int i = 0; i < Table.Columns.Count; i++)
+            {
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tdBegin);
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", Table.Columns[i].Text);
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tdEnds);
+            }
+
+            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", trEnds);
+
+            foreach (string[] tr in dataBase.Table)
+            {
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", trBegin);
+
+                foreach (string td in tr)
+                {
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tdBegin);
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", td);
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tdEnds);
+                }
+
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", trEnds);
+            }
+
+            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tblEnds);
+
+            System.Diagnostics.Process.Start($"{Application.StartupPath}\\Print.htm");
         }
 
         private void History_Click(object sender, EventArgs e)
@@ -612,99 +631,6 @@ namespace DevList
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Up) == Keys.Up) { Up_Click(sender, e); }
 
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Down) == Keys.Down) { Down_Click(sender, e); }
-        }
-
-        private void PrintPageEvent(object sender, PrintPageEventArgs e)
-        {
-            Bitmap bitmap = new Bitmap(Table.Width, Table.Height);
-            Table.DrawToBitmap(bitmap, Table.ClientRectangle);
-            PictureBox pictureBox = new PictureBox();
-            pictureBox.Image = bitmap;
-            e.Graphics.DrawImage(pictureBox.Image, 0, 0);
-
-            //Font font = new Font("Verdana", 10);
-
-            //float offset = e.MarginBounds.Top;
-
-            //foreach (ListViewItem Item in Table.Items)
-            //{
-            //    // The 5.0f is to add a small space between lines
-            //    offset += (font.GetHeight() + 5.0f);
-
-            //    PointF location = new System.Drawing.PointF(e.MarginBounds.Left, offset);
-
-            //    e.Graphics.DrawString(Item.Text, font, Brushes.Black, location);
-            //}
-        }
-
-        private void StartPrint_Click(object sender, EventArgs e)
-        {
-            PrintDocument printDocument = new PrintDocument();
-
-            printDocument.PrintPage += PrintPageEvent;
-
-            DialogResult result = MessageBox.Show("Продолжить печать?", "Печать", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.Yes) { printDocument.Print(); }
-        }
-
-        private void Preview_Click(object sender, EventArgs e)
-        {
-            PrintDocument printDocument = new PrintDocument();
-
-            printDocument.PrintPage += PrintPageEvent;
-
-            PrintPreviewDialog printPreview = new PrintPreviewDialog { Document = printDocument };
-
-            PrintDialog printDialog = new PrintDialog { Document = printDocument };
-
-            printDialog.ShowDialog(); printPreview.ShowDialog();
-        }
-
-        private void Table_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
-        {
-            if (LineBreak.Checked)
-            {
-                float maxStringWidth = 0;
-
-                float multiplier = 0;
-
-                float spaceCount = 0;
-
-                float widthSymbol = Table.Items[0].SubItems[0].Font.Size;
-
-                for (int i = 0; i < Table.Columns.Count; i++)
-                {
-                    for (int j = 0; j < Table.Items.Count; j++)
-                    {
-                        if (maxStringWidth < TextRenderer.MeasureText(Table.Items[j].SubItems[i].Text, new Font("Verdana", 9, FontStyle.Regular)).Width)
-                        {
-                            maxStringWidth = TextRenderer.MeasureText(Table.Items[j].SubItems[i].Text, new Font("Verdana", 9, FontStyle.Regular)).Width;
-                        }
-                    }
-                }
-
-                for (int i = 0; i < Table.Columns.Count; i++)
-                {
-                    for (int j = 0; j < Table.Items.Count; j++)
-                    {
-                        if (maxStringWidth > Table.Columns[i].Width)
-                        {
-                            foreach (char item in Table.Items[j].SubItems[i].Text) { if (item == ' ') { spaceCount++; } }
-
-                            if (multiplier < spaceCount) { multiplier = spaceCount; }
-
-                            spaceCount = 0;
-                        }
-                    }
-                }
-
-                int size = (int)(widthSymbol * multiplier);
-
-                ImageList imgList = new ImageList { ImageSize = new Size(1, size > 255 ? (int)widthSymbol : size) };
-
-                Table.SmallImageList = imgList;
-            }
         }
     }
 }
