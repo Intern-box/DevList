@@ -474,49 +474,44 @@ namespace DevList
 
         private void CommonReport_Click(object sender, EventArgs e)
         {
-            string tblBegin =
-                                "<style>\r\n\r\n" +
-                                "table {font-family:Verdana; font-size:11px; border-collapse:collapse; border:1px solid #bbbbbb;}\r\n" +
-                                "td {text-align:center; vertical-align:middle;}\r\n\r\n" +
-                                "</style>\r\n\r\n" +
-                                "<table align=center cellpadding=5 border=1 bordercolor=#bbbbbb>\r\n";
-
-            string tblEnds = "</table>";
-            string trBegin = "<tr>";
-            string trEnds = "</tr>\r\n";
-            string tdBegin = "<td>";
-            string tdEnds = "</td>\r\n";
-
             System.IO.File.WriteAllText($"{Application.StartupPath}\\Print.htm", string.Empty);
 
-            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tblBegin);
+            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm",
 
-            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "<tr bgcolor=#bbbbbb style=\"color:#ffffff; font-weight:bold;\">");
+                "<style>\r\n\r\n" +
+                "\ttable {font-family:Verdana; font-size:11px; border-collapse:collapse; border:1px solid #bbbbbb;}\r\n\r\n" +
+                "\ttd {text-align:center; vertical-align:middle;}\r\n\r\n" +
+                "</style>\r\n\r\n" +
+                "<table align=center cellpadding=5 border=1 bordercolor=#bbbbbb>\r\n\r\n"
+
+            );
+
+            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr bgcolor=#bbbbbb style=\"color:#0; font-weight:bold;\">\r\n");
 
             for (int i = 0; i < Table.Columns.Count; i++)
             {
-                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tdBegin);
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
                 System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", Table.Columns[i].Text);
-                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tdEnds);
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
             }
 
-            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", trEnds);
+            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
 
             foreach (string[] tr in dataBase.Table)
             {
-                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", trBegin);
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr>\r\n");
 
                 foreach (string td in tr)
                 {
-                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tdBegin);
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
                     System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", td);
-                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tdEnds);
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
                 }
 
-                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", trEnds);
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
             }
 
-            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tblEnds);
+            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</table>");
 
             System.Diagnostics.Process.Start($"{Application.StartupPath}\\Print.htm");
         }
