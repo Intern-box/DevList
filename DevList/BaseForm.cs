@@ -152,13 +152,39 @@ namespace DevList
         // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
         private void Add_Click(object sender, EventArgs e)
         {
-            BaseSearchEdit window =
-            
-            Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile) : new PartsSearchEditWindow("DevList - Добавить", iniFile);
+            BaseSearchEdit window;
+
+            if (coordinates != null)
+            {
+                if (coordinates.Location != ListViewHitTestLocations.None)
+                {
+                    window =
+
+                    Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile, dataBase.Table[coordinates.Item.Index])
+
+                    : new PartsSearchEditWindow("DevList - Добавить", iniFile, dataBase.Table[coordinates.Item.Index]);
+                }
+                else
+                {
+                    window =
+
+                    Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile)
+
+                    : new PartsSearchEditWindow("DevList - Добавить", iniFile);
+                }
+            }
+            else
+            {
+                window =
+
+                Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile)
+
+                : new PartsSearchEditWindow("DevList - Добавить", iniFile);
+            }
 
             window.ShowDialog();
 
-            if (window.Result != null)
+            if (window.Result[0] != null)
             {
                 if (coordinates == null || coordinates.Location == ListViewHitTestLocations.None) { dataBase.Table.Add(window.Result); }
 

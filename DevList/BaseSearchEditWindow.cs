@@ -44,10 +44,13 @@ namespace DevList
             List rooms = new List(iniFile.Rooms);
             List devices = new List(iniFile.Devices);
             List employees = new List(iniFile.Employees);
+            List names = new List(iniFile.Names);
 
             Rooms.Items.AddRange(File.ReadAllLines(rooms.Path));
             Devices.Items.AddRange(File.ReadAllLines(devices.Path));
             Employees.Items.AddRange(File.ReadAllLines(employees.Path));
+            Names.Items.AddRange(File.ReadAllLines(names.Path));
+            ChangeMan.Items.AddRange(File.ReadAllLines(employees.Path));
         }
 
         private void Execute_Click(object sender, EventArgs e)
