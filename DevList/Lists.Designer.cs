@@ -33,6 +33,7 @@ namespace DevList
             this.LabelSpisok = new System.Windows.Forms.Label();
             this.ButtonSave = new System.Windows.Forms.Button();
             this.Content = new System.Windows.Forms.TextBox();
+            this.Saved = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ListsBox
@@ -86,11 +87,24 @@ namespace DevList
             this.Content.Size = new System.Drawing.Size(422, 277);
             this.Content.TabIndex = 60;
             // 
+            // Saved
+            // 
+            this.Saved.AutoSize = true;
+            this.Saved.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Saved.ForeColor = System.Drawing.Color.Red;
+            this.Saved.Location = new System.Drawing.Point(138, 331);
+            this.Saved.Name = "Saved";
+            this.Saved.Size = new System.Drawing.Size(84, 16);
+            this.Saved.TabIndex = 61;
+            this.Saved.Text = "Сохранено!";
+            this.Saved.Visible = false;
+            // 
             // Lists
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 365);
+            this.Controls.Add(this.Saved);
             this.Controls.Add(this.Content);
             this.Controls.Add(this.ButtonSave);
             this.Controls.Add(this.ListsBox);
@@ -113,5 +127,6 @@ namespace DevList
         private System.Windows.Forms.Label LabelSpisok;
         private System.Windows.Forms.Button ButtonSave;
         private System.Windows.Forms.TextBox Content;
+        private System.Windows.Forms.Label Saved;
     }
 }

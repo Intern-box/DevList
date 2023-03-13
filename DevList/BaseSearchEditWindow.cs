@@ -22,7 +22,7 @@ namespace DevList
             InitializeComponent();
 
             Text = head;
-
+            
             this.iniFile = iniFile;
 
             Date.Text = str[1];

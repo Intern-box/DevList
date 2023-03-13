@@ -42,6 +42,8 @@ namespace DevList
                 if (ListsBox.SelectedIndex == 3) { File.WriteAllText(iniFile.Devices, Content.Text + "\r\n"); }
 
                 if (ListsBox.SelectedIndex == 4) { File.WriteAllText(iniFile.Parts, Content.Text + "\r\n"); }
+
+                Saved.Visible = true;
             }
         }
 

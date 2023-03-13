@@ -119,7 +119,7 @@ namespace DevList
             }
         }
 
-        private void Save_Click(object sender, EventArgs e) { dataBase.Save(); dataBase.Change = false; }
+        private void Save_Click(object sender, EventArgs e) { dataBase.Save(); dataBase.Change = false; Filter.Visible = false; }
 
         private void SaveAs_Click(object sender, EventArgs e)
         {
@@ -305,18 +305,32 @@ namespace DevList
             {
                 int saveCoordinates = coordinates.Item.Index;
 
+                string[] str = dataBase.Table[saveCoordinates];
+
                 BaseSearchEdit window =
                     
                 Text == head ? (BaseSearchEdit)
                     
-                new BaseSearchEditWindow("DevList - Править всё", iniFile, dataBase.Table[saveCoordinates]) :
+                new BaseSearchEditWindow("DevList - Править всё", iniFile, str) :
                 
-                new PartsSearchEditWindow("DevList - Править всё", iniFile, dataBase.Table[saveCoordinates]);
+                new PartsSearchEditWindow("DevList - Править всё", iniFile, str);
 
                 window.ShowDialog();
 
                 if (window.Result[2] != null)
                 {
+                    if (window.Result[3] != str[3])
+                    {
+                        System.IO.File.AppendAllText
+                        (
+                            $"{Path.GetDirectoryName(Path.GetFullPath(iniFile.Path))}\\История перемещений\\{window.Result[3]}.txt",
+                            $"Из помещения: {dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]}\r\n" +
+                            $"переместили: {DateTime.Now}\r\n" +
+                            $"{dataBase.Table[coordinates.Item.Index][5]}\r\n" +
+                            $"с инв.№: {dataBase.Table[coordinates.Item.Index][2]}\r\n\r\n"
+                        );
+                    }
+
                     dataBase.Table[saveCoordinates] = window.Result;
 
                     TableOutput(dataBase.Table);
@@ -639,7 +653,7 @@ namespace DevList
 
         private void BaseForm_KeyUp(object sender, KeyEventArgs e)
         {
-            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.S) == Keys.S) { Add_Click(sender, e); }
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.S) == Keys.S) { Save_Click(sender, e); }
 
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.E) == Keys.E) { EditAll_Click(sender, e); }
 
