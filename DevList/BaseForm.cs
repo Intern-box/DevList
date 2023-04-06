@@ -17,7 +17,11 @@ namespace DevList
 
         public bool[] visibleColumns;
 
-        string head = "DevList 6.8 - Главное окно";
+        string head = "DevList 6.8.1 - Главное окно";
+
+        bool modeSearch;
+
+        BaseSearchEdit saveSearch;
 
         public BaseForm(INIFile iniFile, DataBase dataBase)
         {
@@ -208,6 +212,8 @@ namespace DevList
 
                     EditLists editLists; EditLines editLines;
 
+                    bool result = false;
+
                     if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 3)
                     {
                         editLists = new EditLists("DevList - Правка", coordinates, iniFile);
@@ -231,6 +237,8 @@ namespace DevList
                             dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLists.Result;
 
                             dataBase.Change = true;
+
+                            result = true;
                         }
                     }
                     else
@@ -252,6 +260,8 @@ namespace DevList
                                     dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLists.Result;
 
                                     dataBase.Change = true;
+
+                                    result = true;
                                 }
                             }
                             else
@@ -265,6 +275,8 @@ namespace DevList
                                     dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLines.Result;
 
                                     dataBase.Change = true;
+
+                                    result = true;
                                 }
                             }
 
@@ -280,15 +292,34 @@ namespace DevList
                                 dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLines.Result;
 
                                 dataBase.Change = true;
+
+                                result = true;
                             }
                         }
                     }
 
-                    TableOutput(dataBase.Table);
+                    if (result)
+                    {
+                        if (Filter.Visible)
+                        {
+                            if (modeSearch)
+                            {
+                                TableOutput(dataBase.StringSearch(saveSearch.Result));
+                            }
+                            else
+                            {
+                                TableOutput(dataBase.FindAll(SearchAllBox.Text));
+                            }
+                        }
+                        else
+                        {
+                            TableOutput(dataBase.Table);
+                        }
 
-                    Comment.Width = 150;
+                        Comment.Width = 150;
 
-                    Table.Items[saveCoordinates].Selected = true;
+                        Table.Items[saveCoordinates].Selected = true;
+                    }
                 }
             }
         }
@@ -483,6 +514,10 @@ namespace DevList
                     if (stringEmptyCheck) { TableOutput(dataBase.StringSearch(search.Result)); } else { Table.Items.Clear(); }
 
                     Filter.Visible = true;
+
+                    modeSearch = true;
+
+                    saveSearch = search;
                 }
             }
         }
@@ -491,7 +526,21 @@ namespace DevList
 
         private void SearchAll_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) { TableOutput(dataBase.FindAll(SearchAllBox.Text)); Filter.Visible = true; }
+            if(e.KeyCode == Keys.Enter)
+            {
+                if (SearchAllBox.Text != string.Empty)
+                {
+                    TableOutput(dataBase.FindAll(SearchAllBox.Text));
+
+                    Filter.Visible = true;
+                }
+                else
+                {
+                    TableOutput(dataBase.Table);
+
+                    Filter.Visible = false;
+                }
+            }
         }
 
         private void Lists_Click(object sender, EventArgs e) { Lists lists = new Lists(iniFile); lists.ShowDialog(); }
@@ -640,6 +689,8 @@ namespace DevList
 
         private void Filtr_Click(object sender, EventArgs e)
         {
+            DataBaseChanges();
+
             dataBase = new DataBase(dataBase.Path);
 
             TableOutput(dataBase.Table);
