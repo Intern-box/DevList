@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using System.Drawing;
-using System.Drawing.Printing;
 
 namespace DevList
 {
