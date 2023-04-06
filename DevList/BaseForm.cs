@@ -38,13 +38,13 @@ namespace DevList
 
         private void Table_MouseDown(object sender, MouseEventArgs e) { coordinates = Table.HitTest(e.X, e.Y); }
 
-        private void BaseForm_Load(object sender, EventArgs e) { TableOutput(dataBase.Table); Log.ErrorHandler($"[   ] {Text} - База загружена\r\n"); }
+        private void BaseForm_Load(object sender, EventArgs e) { TableOutput(dataBase.Table, true); Log.ErrorHandler($"[   ] {Text} - База загружена\r\n"); }
 
-        private void TableOutput(List<string[]> table)
+        private void TableOutput(List<string[]> table, bool recalculate)
         {
             Table.Items.Clear();
 
-            for (int i = 0; i < table.Count; i++) { table[i][0] = (i + 1).ToString(); }
+            if (recalculate) { for (int i = 0; i < table.Count; i++) { table[i][0] = (i + 1).ToString(); } }
 
             for (int i = 0; i < table.Count; i++) { ListViewItem str = new ListViewItem(table[i]); Table.Items.Add(str); }
 
@@ -61,7 +61,7 @@ namespace DevList
 
             Table.Items.Clear();
 
-            TableOutput(dataBase.Table);
+            TableOutput(dataBase.Table, false);
 
             Filter.Visible = true;
         }
@@ -80,7 +80,7 @@ namespace DevList
 
                 dataBase = new DataBase(iniFile.Base);
 
-                TableOutput(dataBase.Table);
+                TableOutput(dataBase.Table, true);
             }
         }
 
@@ -117,7 +117,7 @@ namespace DevList
 
                 dataBase = new DataBase(iniFile.Base);
 
-                TableOutput(dataBase.Table);
+                TableOutput(dataBase.Table, true);
             }
         }
 
@@ -192,7 +192,7 @@ namespace DevList
 
                 else { dataBase.Table.Insert(coordinates.Item.Index + 1, window.Result); }
 
-                TableOutput(dataBase.Table);
+                TableOutput(dataBase.Table, true);
 
                 Table.Items[dataBase.Table.Count - 1].Selected = true;
 
@@ -226,11 +226,11 @@ namespace DevList
                             {
                                 System.IO.File.AppendAllText
                                 (
-                                $"{Path.GetDirectoryName(Path.GetFullPath(iniFile.Path))}\\История перемещений\\{editLists.Result}.txt",
-                                $"Из помещения: {dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]}\r\n" +
-                                $"переместили: {DateTime.Now}\r\n" +
-                                $"{dataBase.Table[coordinates.Item.Index][5]}\r\n" +
-                                $"с инв.№: {dataBase.Table[coordinates.Item.Index][2]}\r\n\r\n"
+                                    $"{Path.GetDirectoryName(Path.GetFullPath(iniFile.Path))}\\История перемещений\\{editLists.Result}.txt",
+                                    $"Из помещения: {dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]}\r\n" +
+                                    $"переместили: {DateTime.Now}\r\n" +
+                                    $"{dataBase.Table[coordinates.Item.Index][5]}\r\n" +
+                                    $"с инв.№: {dataBase.Table[coordinates.Item.Index][2]}\r\n\r\n"
                                 );
                             }
 
@@ -304,16 +304,16 @@ namespace DevList
                         {
                             if (modeSearch)
                             {
-                                TableOutput(dataBase.StringSearch(saveSearch.Result));
+                                TableOutput(dataBase.StringSearch(saveSearch.Result), false);
                             }
                             else
                             {
-                                TableOutput(dataBase.FindAll(SearchAllBox.Text));
+                                TableOutput(dataBase.FindAll(SearchAllBox.Text), false);
                             }
                         }
                         else
                         {
-                            TableOutput(dataBase.Table);
+                            TableOutput(dataBase.Table, true);
                         }
 
                         Comment.Width = 150;
@@ -362,7 +362,7 @@ namespace DevList
 
                     dataBase.Table[saveCoordinates] = window.Result;
 
-                    TableOutput(dataBase.Table);
+                    TableOutput(dataBase.Table, true);
 
                     dataBase.Change = true;
                 }
@@ -381,7 +381,7 @@ namespace DevList
 
                     dataBase.MoveLine(saveCoordinates - 1, saveCoordinates);
 
-                    TableOutput(dataBase.Table);
+                    TableOutput(dataBase.Table, true);
 
                     Table.Items[saveCoordinates - 1].Selected = true;
 
@@ -404,7 +404,7 @@ namespace DevList
                 {
                     dataBase.MoveLine(saveCoordinates + 1, saveCoordinates);
 
-                    TableOutput(dataBase.Table);
+                    TableOutput(dataBase.Table, true);
 
                     Table.Items[saveCoordinates + 1].Selected = true;
 
@@ -429,7 +429,7 @@ namespace DevList
                     {
                         Remove remove = new Remove(dataBase, coordinates);
 
-                        TableOutput(dataBase.Table);
+                        TableOutput(dataBase.Table, true);
 
                         dataBase.Change = true;
                     }
@@ -442,7 +442,7 @@ namespace DevList
                     {
                         Remove remove = new Remove(dataBase, coordinates, iniFile, true);
 
-                        TableOutput(dataBase.Table);
+                        TableOutput(dataBase.Table, true);
 
                         dataBase.Change = true;
                     }
@@ -460,7 +460,7 @@ namespace DevList
 
             visibleColumns = columns.Result;
 
-            if (columns.Execute) { TableOutput(dataBase.Table); }
+            if (columns.Execute) { TableOutput(dataBase.Table, true); }
         }
 
         private void Search_Click(object sender, EventArgs e)
@@ -511,7 +511,7 @@ namespace DevList
 
                     foreach (string word in search.Result) { if (word != string.Empty) { stringEmptyCheck = true; } }
 
-                    if (stringEmptyCheck) { TableOutput(dataBase.StringSearch(search.Result)); } else { Table.Items.Clear(); }
+                    if (stringEmptyCheck) { TableOutput(dataBase.StringSearch(search.Result), false); } else { Table.Items.Clear(); }
 
                     Filter.Visible = true;
 
@@ -530,13 +530,13 @@ namespace DevList
             {
                 if (SearchAllBox.Text != string.Empty)
                 {
-                    TableOutput(dataBase.FindAll(SearchAllBox.Text));
+                    TableOutput(dataBase.FindAll(SearchAllBox.Text), false);
 
                     Filter.Visible = true;
                 }
                 else
                 {
-                    TableOutput(dataBase.Table);
+                    TableOutput(dataBase.Table, false);
 
                     Filter.Visible = false;
                 }
@@ -693,7 +693,7 @@ namespace DevList
 
             dataBase = new DataBase(dataBase.Path);
 
-            TableOutput(dataBase.Table);
+            TableOutput(dataBase.Table, true);
 
             Filter.Visible = false;
         }

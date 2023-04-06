@@ -29,21 +29,21 @@ namespace DevList
         /// </summary>
         private void InitializeComponent()
         {
-            this.Text = new System.Windows.Forms.TextBox();
+            this.InputText = new System.Windows.Forms.TextBox();
             this.ButtonClose = new System.Windows.Forms.Button();
             this.ButtonExecute = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Text
+            // InputText
             // 
-            this.Text.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Text.Location = new System.Drawing.Point(12, 12);
-            this.Text.Multiline = true;
-            this.Text.Name = "Text";
-            this.Text.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Text.Size = new System.Drawing.Size(460, 88);
-            this.Text.TabIndex = 5;
-            this.Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Text_KeyDown);
+            this.InputText.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InputText.Location = new System.Drawing.Point(12, 12);
+            this.InputText.Multiline = true;
+            this.InputText.Name = "InputText";
+            this.InputText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.InputText.Size = new System.Drawing.Size(460, 88);
+            this.InputText.TabIndex = 5;
+            this.InputText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Text_KeyDown);
             // 
             // ButtonClose
             // 
@@ -75,7 +75,7 @@ namespace DevList
             this.ClientSize = new System.Drawing.Size(484, 143);
             this.Controls.Add(this.ButtonClose);
             this.Controls.Add(this.ButtonExecute);
-            this.Controls.Add(this.Text);
+            this.Controls.Add(this.InputText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -90,7 +90,7 @@ namespace DevList
         }
 
         #endregion
-        private System.Windows.Forms.TextBox Text;
+        private System.Windows.Forms.TextBox InputText;
         private System.Windows.Forms.Button ButtonClose;
         private System.Windows.Forms.Button ButtonExecute;
     }

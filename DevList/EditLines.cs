@@ -18,9 +18,9 @@ namespace DevList
             base.Text = head;
         }
 
-        private void EditLines_Load(object sender, EventArgs e) { Text.Text = input; }
+        private void EditLines_Load(object sender, EventArgs e) { InputText.Text = input; }
 
-        private void Execute_Click(object sender, EventArgs e) { Result = Text.Text; Close(); }
+        private void Execute_Click(object sender, EventArgs e) { Result = InputText.Text; Close(); }
 
         private void Close_Click(object sender, EventArgs e) { Close(); }
 
