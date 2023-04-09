@@ -267,7 +267,7 @@ namespace DevList
             // Columns
             // 
             this.Columns.Name = "Columns";
-            this.Columns.Size = new System.Drawing.Size(180, 22);
+            this.Columns.Size = new System.Drawing.Size(127, 22);
             this.Columns.Text = "Колонки";
             this.Columns.Click += new System.EventHandler(this.Columns_Click);
             // 

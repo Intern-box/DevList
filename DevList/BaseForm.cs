@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.ListViewItem;
 
 namespace DevList
 {
@@ -12,6 +13,12 @@ namespace DevList
         public DataBase dataBase;
 
         public ListViewHitTestInfo coordinates;
+
+        int Line;
+
+        int Column;
+
+        int Id;
 
         public bool sortingColumns = true;
 
@@ -36,7 +43,16 @@ namespace DevList
             for (int i = 0; i < visibleColumns.Length; i++) { visibleColumns[i] = true; }
         }
 
-        private void Table_MouseDown(object sender, MouseEventArgs e) { coordinates = Table.HitTest(e.X, e.Y); }
+        private void Table_MouseDown(object sender, MouseEventArgs e)
+        {
+            coordinates = Table.HitTest(e.X, e.Y);
+
+            Line = coordinates.Item.Index;
+
+            Column = coordinates.Item.SubItems.IndexOf(coordinates.SubItem);
+
+            Id = int.Parse(Table.Items[Line].SubItems[0].Text) - 1;
+        }
 
         private void BaseForm_Load(object sender, EventArgs e) { TableOutput(dataBase.Table, true); Log.ErrorHandler($"[   ] {Text} - База загружена\r\n"); }
 
@@ -208,13 +224,11 @@ namespace DevList
             {
                 if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) != 0)
                 {
-                    int saveCoordinates = coordinates.Item.Index;
-
                     EditLists editLists; EditLines editLines;
 
                     bool result = false;
 
-                    if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 3)
+                    if (Column == 3)
                     {
                         editLists = new EditLists("DevList - Правка", coordinates, iniFile);
 
@@ -222,19 +236,19 @@ namespace DevList
 
                         if (editLists.Result != null)
                         {
-                            if (editLists.Result != dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)])
+                            if (editLists.Result != dataBase.Table[Line][Column])
                             {
                                 System.IO.File.AppendAllText
                                 (
                                     $"{Path.GetDirectoryName(Path.GetFullPath(iniFile.Path))}\\История перемещений\\{editLists.Result}.txt",
-                                    $"Из помещения: {dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]}\r\n" +
+                                    $"Из помещения: {dataBase.Table[Id][Column]}\r\n" +
                                     $"переместили: {DateTime.Now}\r\n" +
-                                    $"{dataBase.Table[coordinates.Item.Index][5]}\r\n" +
-                                    $"с инв.№: {dataBase.Table[coordinates.Item.Index][2]}\r\n\r\n"
+                                    $"{dataBase.Table[Id][5]}\r\n" +
+                                    $"с инв.№: {dataBase.Table[Id][2]}\r\n\r\n"
                                 );
                             }
 
-                            dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLists.Result;
+                            dataBase.Table[Id][Column] = editLists.Result;
 
                             dataBase.Change = true;
 
@@ -257,7 +271,7 @@ namespace DevList
 
                                 if (editLists.Result != null)
                                 {
-                                    dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLists.Result;
+                                    dataBase.Table[Id][Column] = editLists.Result;
 
                                     dataBase.Change = true;
 
@@ -266,13 +280,13 @@ namespace DevList
                             }
                             else
                             {
-                                editLines = new EditLines("DevList - Правка", dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]);
+                                editLines = new EditLines("DevList - Правка", dataBase.Table[Id][Column]);
 
                                 editLines.ShowDialog();
 
                                 if (editLines.Result != null)
                                 {
-                                    dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLines.Result;
+                                    dataBase.Table[Id][Column] = editLines.Result;
 
                                     dataBase.Change = true;
 
@@ -283,13 +297,13 @@ namespace DevList
                         }
                         else
                         {
-                            editLines = new EditLines("DevList - Правка комплект", dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]);
+                            editLines = new EditLines("DevList - Правка комплект", dataBase.Table[Line][Column]);
 
                             editLines.ShowDialog();
 
                             if (editLines.Result != null)
                             {
-                                dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)] = editLines.Result;
+                                dataBase.Table[Id][Column] = editLines.Result;
 
                                 dataBase.Change = true;
 
@@ -316,9 +330,11 @@ namespace DevList
                             TableOutput(dataBase.Table, true);
                         }
 
+                        dataBase.Change = true;
+
                         Comment.Width = 150;
 
-                        Table.Items[saveCoordinates].Selected = true;
+                        Table.Items[Line].Selected = true;
                     }
                 }
             }
@@ -332,9 +348,7 @@ namespace DevList
         {
             if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
             {
-                int saveCoordinates = coordinates.Item.Index;
-
-                string[] str = dataBase.Table[saveCoordinates];
+                string[] str = dataBase.Table[Id];
 
                 BaseSearchEdit window =
                     
@@ -353,18 +367,36 @@ namespace DevList
                         System.IO.File.AppendAllText
                         (
                             $"{Path.GetDirectoryName(Path.GetFullPath(iniFile.Path))}\\История перемещений\\{window.Result[3]}.txt",
-                            $"Из помещения: {dataBase.Table[coordinates.Item.Index][coordinates.Item.SubItems.IndexOf(coordinates.SubItem)]}\r\n" +
+                            $"Из помещения: {dataBase.Table[Id][Column]}\r\n" +
                             $"переместили: {DateTime.Now}\r\n" +
-                            $"{dataBase.Table[coordinates.Item.Index][5]}\r\n" +
-                            $"с инв.№: {dataBase.Table[coordinates.Item.Index][2]}\r\n\r\n"
+                            $"{dataBase.Table[Id][5]}\r\n" +
+                            $"с инв.№: {dataBase.Table[Id][2]}\r\n\r\n"
                         );
                     }
 
-                    dataBase.Table[saveCoordinates] = window.Result;
+                    dataBase.Table[Id] = window.Result;
 
-                    TableOutput(dataBase.Table, true);
+                    if (Filter.Visible)
+                    {
+                        if (modeSearch)
+                        {
+                            TableOutput(dataBase.StringSearch(saveSearch.Result), false);
+                        }
+                        else
+                        {
+                            TableOutput(dataBase.FindAll(SearchAllBox.Text), false);
+                        }
+                    }
+                    else
+                    {
+                        TableOutput(dataBase.Table, true);
+                    }
 
                     dataBase.Change = true;
+
+                    Comment.Width = 150;
+
+                    Table.Items[Line].Selected = true;
                 }
             }
         }
@@ -533,12 +565,6 @@ namespace DevList
                     TableOutput(dataBase.FindAll(SearchAllBox.Text), false);
 
                     Filter.Visible = true;
-                }
-                else
-                {
-                    TableOutput(dataBase.Table, false);
-
-                    Filter.Visible = false;
                 }
             }
         }
