@@ -14,6 +14,8 @@ namespace DevList
         {
             string[] fileStrings = null;
 
+            Saved.Visible = false;
+
             if (ListsBox.SelectedIndex == 0) { fileStrings = CheckFileExist(iniFile.Rooms); }
 
             if (ListsBox.SelectedIndex == 1) { fileStrings = CheckFileExist(iniFile.Employees); }
