@@ -226,6 +226,8 @@ namespace DevList
             {
                 if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) != 0)
                 {
+                    Errors.Text = $"Line: {Line + 1}; Column: {Column + 1}";
+
                     EditLists editLists; EditLines editLines;
 
                     bool result = false;
@@ -346,6 +348,8 @@ namespace DevList
         {
             if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
             {
+                Errors.Text = $"Line: {Line + 1}";
+
                 string[] str = dataBase.Table[Id];
 
                 BaseSearchEdit window =

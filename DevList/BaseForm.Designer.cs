@@ -78,6 +78,7 @@ namespace DevList
             this.Hostname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ChangeMan = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Errors = new System.Windows.Forms.TextBox();
             this.CMenu.SuspendLayout();
             this.MMenu.SuspendLayout();
             this.SuspendLayout();
@@ -461,6 +462,16 @@ namespace DevList
             this.ChangeMan.Text = "Изменил";
             this.ChangeMan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // Errors
+            // 
+            this.Errors.BackColor = System.Drawing.Color.LightGray;
+            this.Errors.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Errors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Errors.Location = new System.Drawing.Point(0, 539);
+            this.Errors.Name = "Errors";
+            this.Errors.Size = new System.Drawing.Size(1251, 22);
+            this.Errors.TabIndex = 6;
+            // 
             // BaseForm
             // 
             this.AllowDrop = true;
@@ -469,6 +480,7 @@ namespace DevList
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1251, 561);
+            this.Controls.Add(this.Errors);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.LabelSearchAll);
             this.Controls.Add(this.SearchAllBox);
@@ -537,6 +549,7 @@ namespace DevList
         private System.Windows.Forms.ColumnHeader ChangeMan;
         private System.Windows.Forms.ToolStripMenuItem Columns;
         private System.Windows.Forms.ToolStripMenuItem CommonReport;
+        private System.Windows.Forms.TextBox Errors;
     }
 }
 
