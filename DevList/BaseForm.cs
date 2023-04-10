@@ -750,7 +750,12 @@ namespace DevList
 
         void BaseForm_KeyUp(object sender, KeyEventArgs e)
         {
-            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.S) == Keys.S) { Save_Click(sender, e); }
+            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.S) == Keys.S)
+            {
+                Save_Click(sender, e);
+
+                MessageBox.Show("База сохранена!", "Сохранение базы", MessageBoxButtons.OK);
+            }
 
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.E) == Keys.E) { EditAll_Click(sender, e); }
 
