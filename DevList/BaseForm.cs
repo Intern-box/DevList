@@ -84,6 +84,8 @@ namespace DevList
             TableOutput(dataBase.Table, false);
 
             Filter.Visible = true;
+
+            tableParameters.SearchMode = "Column";
         }
 
         void Create_Click(object sender, EventArgs e)
@@ -327,7 +329,14 @@ namespace DevList
                                 TableOutput(dataBase.FindAll(SearchAllBox.Text), false);
                             }
 
-                            ///// Выравнивание по колонкам
+                            if (tableParameters.SearchMode == "Column")
+                            {
+                                ColumnClickEventArgs x = new ColumnClickEventArgs(tableParameters.Column);
+
+                                tableParameters.SortingColumns = true;
+
+                                Table_ColumnClick(sender, x);
+                            }
                         }
                         else
                         {
