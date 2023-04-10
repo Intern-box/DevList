@@ -188,5 +188,21 @@ namespace DevList
 
             if (e.KeyCode == Keys.Escape) { Close_Click(sender, e); }
         }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            Date.Text =
+            Number.Text =
+            Rooms.Text =
+            Employees.Text =
+            Names.Text =
+            Devices.Text =
+            Status.Text =
+            Inventory.Text =
+            Comment.Text =
+            Hostname.Text =
+            IP.Text =
+            ChangeMan.Text = string.Empty;
+        }
     }
 }

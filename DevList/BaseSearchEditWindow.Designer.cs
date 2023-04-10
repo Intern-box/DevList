@@ -65,6 +65,7 @@ namespace DevList
             this.Names = new System.Windows.Forms.ComboBox();
             this.ButtonNamesMinus = new System.Windows.Forms.Button();
             this.ButtonNamesPlus = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LabelNumber
@@ -73,7 +74,7 @@ namespace DevList
             this.LabelNumber.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelNumber.Location = new System.Drawing.Point(95, 46);
             this.LabelNumber.Name = "LabelNumber";
-            this.LabelNumber.Size = new System.Drawing.Size(64, 16);
+            this.LabelNumber.Size = new System.Drawing.Size(63, 16);
             this.LabelNumber.TabIndex = 1;
             this.LabelNumber.Text = "Инв. №:";
             // 
@@ -83,7 +84,7 @@ namespace DevList
             this.LabelRoom.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelRoom.Location = new System.Drawing.Point(67, 76);
             this.LabelRoom.Name = "LabelRoom";
-            this.LabelRoom.Size = new System.Drawing.Size(92, 16);
+            this.LabelRoom.Size = new System.Drawing.Size(91, 16);
             this.LabelRoom.TabIndex = 2;
             this.LabelRoom.Text = "Помещение:";
             // 
@@ -93,7 +94,7 @@ namespace DevList
             this.LabelNames.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelNames.Location = new System.Drawing.Point(47, 135);
             this.LabelNames.Name = "LabelNames";
-            this.LabelNames.Size = new System.Drawing.Size(112, 16);
+            this.LabelNames.Size = new System.Drawing.Size(111, 16);
             this.LabelNames.TabIndex = 3;
             this.LabelNames.Text = "Наименование:";
             // 
@@ -103,7 +104,7 @@ namespace DevList
             this.LabelDevices.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelDevices.Location = new System.Drawing.Point(47, 164);
             this.LabelDevices.Name = "LabelDevices";
-            this.LabelDevices.Size = new System.Drawing.Size(112, 16);
+            this.LabelDevices.Size = new System.Drawing.Size(111, 16);
             this.LabelDevices.TabIndex = 4;
             this.LabelDevices.Text = "Оборудование:";
             // 
@@ -113,7 +114,7 @@ namespace DevList
             this.LabelComment.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelComment.Location = new System.Drawing.Point(56, 253);
             this.LabelComment.Name = "LabelComment";
-            this.LabelComment.Size = new System.Drawing.Size(103, 16);
+            this.LabelComment.Size = new System.Drawing.Size(102, 16);
             this.LabelComment.TabIndex = 5;
             this.LabelComment.Text = "Комментарий:";
             // 
@@ -182,7 +183,7 @@ namespace DevList
             this.LabelEmployees.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelEmployees.Location = new System.Drawing.Point(10, 106);
             this.LabelEmployees.Name = "LabelEmployees";
-            this.LabelEmployees.Size = new System.Drawing.Size(149, 16);
+            this.LabelEmployees.Size = new System.Drawing.Size(148, 16);
             this.LabelEmployees.TabIndex = 15;
             this.LabelEmployees.Text = "Закреплено за ФИО:";
             // 
@@ -276,7 +277,7 @@ namespace DevList
             this.LabelDate.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelDate.Location = new System.Drawing.Point(12, 17);
             this.LabelDate.Name = "LabelDate";
-            this.LabelDate.Size = new System.Drawing.Size(147, 16);
+            this.LabelDate.Size = new System.Drawing.Size(146, 16);
             this.LabelDate.TabIndex = 59;
             this.LabelDate.Text = "Дата приобретения:";
             // 
@@ -301,7 +302,7 @@ namespace DevList
             this.LabelStatus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelStatus.Location = new System.Drawing.Point(73, 194);
             this.LabelStatus.Name = "LabelStatus";
-            this.LabelStatus.Size = new System.Drawing.Size(86, 16);
+            this.LabelStatus.Size = new System.Drawing.Size(85, 16);
             this.LabelStatus.TabIndex = 61;
             this.LabelStatus.Text = "Состояние:";
             // 
@@ -319,7 +320,7 @@ namespace DevList
             this.LabelInventory.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelInventory.Location = new System.Drawing.Point(41, 224);
             this.LabelInventory.Name = "LabelInventory";
-            this.LabelInventory.Size = new System.Drawing.Size(118, 16);
+            this.LabelInventory.Size = new System.Drawing.Size(117, 16);
             this.LabelInventory.TabIndex = 63;
             this.LabelInventory.Text = "Инветаризация:";
             // 
@@ -337,7 +338,7 @@ namespace DevList
             this.LabelHostname.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelHostname.Location = new System.Drawing.Point(80, 282);
             this.LabelHostname.Name = "LabelHostname";
-            this.LabelHostname.Size = new System.Drawing.Size(79, 16);
+            this.LabelHostname.Size = new System.Drawing.Size(78, 16);
             this.LabelHostname.TabIndex = 65;
             this.LabelHostname.Text = "Hostname:";
             // 
@@ -355,7 +356,7 @@ namespace DevList
             this.LabelIP.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelIP.Location = new System.Drawing.Point(132, 311);
             this.LabelIP.Name = "LabelIP";
-            this.LabelIP.Size = new System.Drawing.Size(27, 16);
+            this.LabelIP.Size = new System.Drawing.Size(26, 16);
             this.LabelIP.TabIndex = 67;
             this.LabelIP.Text = "IP:";
             // 
@@ -397,7 +398,7 @@ namespace DevList
             this.LabelChangeMan.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelChangeMan.Location = new System.Drawing.Point(53, 340);
             this.LabelChangeMan.Name = "LabelChangeMan";
-            this.LabelChangeMan.Size = new System.Drawing.Size(106, 16);
+            this.LabelChangeMan.Size = new System.Drawing.Size(105, 16);
             this.LabelChangeMan.TabIndex = 70;
             this.LabelChangeMan.Text = "Изменил ФИО:";
             // 
@@ -433,12 +434,24 @@ namespace DevList
             this.ButtonNamesPlus.UseVisualStyleBackColor = true;
             this.ButtonNamesPlus.Click += new System.EventHandler(this.NamesPlus_Click);
             // 
+            // ClearButton
+            // 
+            this.ClearButton.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ClearButton.Location = new System.Drawing.Point(236, 367);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(89, 29);
+            this.ClearButton.TabIndex = 71;
+            this.ClearButton.Text = "Очистить";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
             // BaseSearchEditWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(583, 409);
+            this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.ButtonNamesMinus);
             this.Controls.Add(this.ButtonNamesPlus);
             this.Controls.Add(this.Names);
@@ -526,5 +539,6 @@ namespace DevList
         private System.Windows.Forms.ComboBox Names;
         private System.Windows.Forms.Button ButtonNamesMinus;
         private System.Windows.Forms.Button ButtonNamesPlus;
+        private System.Windows.Forms.Button ClearButton;
     }
 }

@@ -7,25 +7,15 @@ namespace DevList
 {
     public partial class BaseForm : Form
     {
-        public INIFile iniFile;
+        INIFile iniFile;
 
-        public DataBase dataBase;
+        DataBase dataBase;
 
-        public ListViewHitTestInfo coordinates;
-
-        int Line;
-
-        int Column;
-
-        int Id;
-
-        public bool sortingColumns = true;
-
-        public bool[] visibleColumns;
+        bool[] visibleColumns;
 
         string head = "DevList 6.8.2 - Главное окно";
 
-        bool modeSearch;
+        TableParameters tableParameters = new TableParameters();
 
         BaseSearchEdit saveSearch;
 
@@ -42,40 +32,52 @@ namespace DevList
             for (int i = 0; i < visibleColumns.Length; i++) { visibleColumns[i] = true; }
         }
 
-        private void Table_MouseDown(object sender, MouseEventArgs e)
+        void Table_MouseDown(object sender, MouseEventArgs e)
         {
-            coordinates = Table.HitTest(e.X, e.Y);
+            tableParameters.Coordinates = Table.HitTest(e.X, e.Y);
 
-            if (coordinates.Item != null)
+            if (tableParameters.Coordinates.Item != null)
             {
-                Line = coordinates.Item.Index;
+                tableParameters.Line = tableParameters.Coordinates.Item.Index;
 
-                Column = coordinates.Item.SubItems.IndexOf(coordinates.SubItem);
+                tableParameters.Column = tableParameters.Coordinates.Item.SubItems.IndexOf(tableParameters.Coordinates.SubItem);
 
-                Id = int.Parse(Table.Items[Line].SubItems[0].Text) - 1;
+                tableParameters.Id = int.Parse(Table.Items[tableParameters.Line].SubItems[0].Text) - 1;
             }
         }
 
-        private void BaseForm_Load(object sender, EventArgs e) { TableOutput(dataBase.Table, true); Log.ErrorHandler($"[   ] {Text} - База загружена\r\n"); }
+        void BaseForm_Load(object sender, EventArgs e) { TableOutput(dataBase.Table); Log.ErrorHandler($"[   ] {Text} - База загружена\r\n"); }
 
-        private void TableOutput(List<string[]> table, bool recalculate)
+        void TableOutput(List<string[]> table, bool recalculate = true)
         {
             Table.Items.Clear();
 
             if (recalculate) { for (int i = 0; i < table.Count; i++) { table[i][0] = (i + 1).ToString(); } }
 
-            for (int i = 0; i < table.Count; i++) { ListViewItem str = new ListViewItem(table[i]); Table.Items.Add(str); }
+            for (int i = 0; i < table.Count; i++) { ListViewItem line = new ListViewItem(table[i]); Table.Items.Add(line); }
 
             for (int i = 0; i < visibleColumns.Length; i++) { if (!visibleColumns[i]) { Table.Columns[i].Width = 0; } }
 
             Table.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        private void Table_ColumnClick(object sender, ColumnClickEventArgs e)
+        void Table_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            if (sortingColumns) { dataBase.Table.Sort((x, y) => x[e.Column].CompareTo(y[e.Column])); sortingColumns = false; }
+            if (tableParameters.SortingColumns)
+            {
+                dataBase.Table.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
+                
+                tableParameters.SortingColumns = false;
+                
+                tableParameters.ColumnAlign = e.Column;
+            }
+            else
+            {
+                dataBase.Table.Sort((y, x) => x[e.Column].CompareTo(y[e.Column]));
 
-            else { dataBase.Table.Sort((y, x) => x[e.Column].CompareTo(y[e.Column])); sortingColumns = true; }
+                tableParameters.SortingColumns = true;
+
+                tableParameters.ColumnAlign = e.Column; }
 
             Table.Items.Clear();
 
@@ -84,7 +86,7 @@ namespace DevList
             Filter.Visible = true;
         }
 
-        private void Create_Click(object sender, EventArgs e)
+        void Create_Click(object sender, EventArgs e)
         {
             DataBaseChanges();
 
@@ -98,11 +100,11 @@ namespace DevList
 
                 dataBase = new DataBase(iniFile.Base);
 
-                TableOutput(dataBase.Table, true);
+                TableOutput(dataBase.Table);
             }
         }
 
-        private void DataBaseChanges()
+        void DataBaseChanges()
         {
             if (dataBase.Change)
             {
@@ -123,7 +125,7 @@ namespace DevList
             }
         }
 
-        private void Open_Click(object sender, EventArgs e)
+        void Open_Click(object sender, EventArgs e)
         {
             DataBaseChanges();
 
@@ -135,13 +137,13 @@ namespace DevList
 
                 dataBase = new DataBase(iniFile.Base);
 
-                TableOutput(dataBase.Table, true);
+                TableOutput(dataBase.Table);
             }
         }
 
-        private void Save_Click(object sender, EventArgs e) { dataBase.Save(); dataBase.Change = false; Filter.Visible = false; }
+        void Save_Click(object sender, EventArgs e) { dataBase.Save(); dataBase.Change = false; Filter.Visible = false; }
 
-        private void SaveAs_Click(object sender, EventArgs e)
+        void SaveAs_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog savePath = new FolderBrowserDialog();
 
@@ -162,27 +164,25 @@ namespace DevList
                 System.IO.File.Copy(iniFile.History, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.History)), true);
                 System.IO.File.Copy(iniFile.Set, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Set)), true);
                 System.IO.File.Copy(iniFile.Parts, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Parts)), true);
-
-                dataBase.Change = false;
             }
         }
 
         // Если курсор на НЕ пустой строке, то  ListViewHitTestLocations НЕ none
         // Если курсор на ПУСТОЙ строке, то ListViewHitTestLocations равен NONE
         // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
-        private void Add_Click(object sender, EventArgs e)
+        void Add_Click(object sender, EventArgs e)
         {
             BaseSearchEdit window;
 
-            if (coordinates != null)
+            if (tableParameters.Coordinates != null)
             {
-                if (coordinates.Location != ListViewHitTestLocations.None)
+                if (tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
                 {
                     window =
 
-                    Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile, dataBase.Table[coordinates.Item.Index])
+                    Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile, dataBase.Table[tableParameters.Line])
 
-                    : new PartsSearchEditWindow("DevList - Добавить", iniFile, dataBase.Table[coordinates.Item.Index]);
+                    : new PartsSearchEditWindow("DevList - Добавить", iniFile, dataBase.Table[tableParameters.Line]);
                 }
                 else
                 {
@@ -206,11 +206,11 @@ namespace DevList
 
             if (window.Result[0] != null)
             {
-                if (coordinates == null || coordinates.Location == ListViewHitTestLocations.None) { dataBase.Table.Add(window.Result); }
+                if (tableParameters.Coordinates == null || tableParameters.Coordinates.Location == ListViewHitTestLocations.None) { dataBase.Table.Add(window.Result); }
 
-                else { dataBase.Table.Insert(coordinates.Item.Index + 1, window.Result); }
+                else { dataBase.Table.Insert(tableParameters.Line + 1, window.Result); }
 
-                TableOutput(dataBase.Table, true);
+                TableOutput(dataBase.Table);
 
                 Table.Items[dataBase.Table.Count - 1].Selected = true;
 
@@ -218,41 +218,41 @@ namespace DevList
             }
         }
 
-        private void ContextAdd_Click(object sender, EventArgs e) { Add_Click(sender, e); }
+        void ContextAdd_Click(object sender, EventArgs e) { Add_Click(sender, e); }
 
-        private void Edit_Click(object sender, EventArgs e)
+        void Edit_Click(object sender, EventArgs e)
         {
-            if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
-                if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) != 0)
+                if (tableParameters.Column != 0)
                 {
-                    Errors.Text = $"Line: {Line + 1}; Column: {Column + 1}";
+                    Errors.Text = $"Line: {tableParameters.Line + 1}; Column: {tableParameters.Column + 1}; Id: {tableParameters.Id + 1}";
 
                     EditLists editLists; EditLines editLines;
 
                     bool result = false;
 
-                    if (Column == 3)
+                    if (tableParameters.Column == 3)
                     {
-                        editLists = new EditLists("DevList - Правка", Id, Column, iniFile);
+                        editLists = new EditLists("DevList - Правка", tableParameters.Id, tableParameters.Column, iniFile);
 
                         editLists.ShowDialog();
 
                         if (editLists.Result != null)
                         {
-                            if (editLists.Result != dataBase.Table[Line][Column])
+                            if (editLists.Result != dataBase.Table[tableParameters.Id][tableParameters.Column])
                             {
                                 System.IO.File.AppendAllText
                                 (
                                     $"{Path.GetDirectoryName(Path.GetFullPath(iniFile.Path))}\\История перемещений\\{editLists.Result}.txt",
-                                    $"Из помещения: {dataBase.Table[Id][Column]}\r\n" +
+                                    $"Из помещения: {dataBase.Table[tableParameters.Id][tableParameters.Column]}\r\n" +
                                     $"переместили: {DateTime.Now}\r\n" +
-                                    $"{dataBase.Table[Id][5]}\r\n" +
-                                    $"с инв.№: {dataBase.Table[Id][2]}\r\n\r\n"
+                                    $"{dataBase.Table[tableParameters.Id][5]}\r\n" +
+                                    $"с инв.№: {dataBase.Table[tableParameters.Id][2]}\r\n\r\n"
                                 );
                             }
 
-                            dataBase.Table[Id][Column] = editLists.Result;
+                            dataBase.Table[tableParameters.Id][tableParameters.Column] = editLists.Result;
 
                             dataBase.Save();
 
@@ -263,15 +263,16 @@ namespace DevList
                     {
                         if (Text == head || Text == "DevList - История")
                         {
-                            if (Column == 4 || Column == 5 || Column == 6 || Column == 7 || Column == 12)
+                            if (tableParameters.Column == 4 || tableParameters.Column == 5 || tableParameters.Column == 6 ||
+                                tableParameters.Column == 7 || tableParameters.Column == 12)
                             {
-                                editLists = new EditLists("DevList - Правка", Id, Column, iniFile);
+                                editLists = new EditLists("DevList - Правка", tableParameters.Id, tableParameters.Column, iniFile);
 
                                 editLists.ShowDialog();
 
                                 if (editLists.Result != null)
                                 {
-                                    dataBase.Table[Id][Column] = editLists.Result;
+                                    dataBase.Table[tableParameters.Id][tableParameters.Column] = editLists.Result;
 
                                     dataBase.Save();
 
@@ -280,13 +281,13 @@ namespace DevList
                             }
                             else
                             {
-                                editLines = new EditLines("DevList - Правка", dataBase.Table[Id][Column]);
+                                editLines = new EditLines("DevList - Правка", dataBase.Table[tableParameters.Id][tableParameters.Column]);
 
                                 editLines.ShowDialog();
 
                                 if (editLines.Result != null)
                                 {
-                                    dataBase.Table[Id][Column] = editLines.Result;
+                                    dataBase.Table[tableParameters.Id][tableParameters.Column] = editLines.Result;
 
                                     dataBase.Save();
 
@@ -297,13 +298,13 @@ namespace DevList
                         }
                         else
                         {
-                            editLines = new EditLines("DevList - Правка комплект", dataBase.Table[Id][Column]);
+                            editLines = new EditLines("DevList - Правка комплект", dataBase.Table[tableParameters.Id][tableParameters.Column]);
 
                             editLines.ShowDialog();
 
                             if (editLines.Result != null)
                             {
-                                dataBase.Table[Id][Column] = editLines.Result;
+                                dataBase.Table[tableParameters.Id][tableParameters.Column] = editLines.Result;
 
                                 dataBase.Save();
 
@@ -316,14 +317,17 @@ namespace DevList
                     {
                         if (Filter.Visible)
                         {
-                            if (modeSearch)
+                            if (tableParameters.SearchMode == "Search")
                             {
                                 TableOutput(dataBase.StringSearch(saveSearch.Result), false);
                             }
-                            else
+                            
+                            if(tableParameters.SearchMode == "SearchAll")
                             {
                                 TableOutput(dataBase.FindAll(SearchAllBox.Text), false);
                             }
+
+                            ///// Выравнивание по колонкам
                         }
                         else
                         {
@@ -334,23 +338,23 @@ namespace DevList
 
                         Comment.Width = 150;
 
-                        Table.Items[Line].Selected = true;
+                        Table.Items[tableParameters.Line].Selected = true;
                     }
                 }
             }
         }
 
-        private void ContextEdit_Click(object sender, EventArgs e) { Edit_Click(sender, e); }
+        void ContextEdit_Click(object sender, EventArgs e) { Edit_Click(sender, e); }
 
-        private void Tablica_DoubleClick(object sender, EventArgs e) { Edit_Click(sender, e); }
+        void Tablica_DoubleClick(object sender, EventArgs e) { Edit_Click(sender, e); }
 
-        private void EditAll_Click(object sender, EventArgs e)
+        void EditAll_Click(object sender, EventArgs e)
         {
-            if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
-                Errors.Text = $"Line: {Line + 1}";
+                Errors.Text = $"Line: {tableParameters.Line + 1}; Id: {tableParameters.Id + 1}";
 
-                string[] str = dataBase.Table[Id];
+                string[] str = dataBase.Table[tableParameters.Id];
 
                 BaseSearchEdit window =
                     
@@ -369,25 +373,28 @@ namespace DevList
                         System.IO.File.AppendAllText
                         (
                             $"{Path.GetDirectoryName(Path.GetFullPath(iniFile.Path))}\\История перемещений\\{window.Result[3]}.txt",
-                            $"Из помещения: {dataBase.Table[Id][Column]}\r\n" +
+                            $"Из помещения: {dataBase.Table[tableParameters.Id][tableParameters.Column]}\r\n" +
                             $"переместили: {DateTime.Now}\r\n" +
-                            $"{dataBase.Table[Id][5]}\r\n" +
-                            $"с инв.№: {dataBase.Table[Id][2]}\r\n\r\n"
+                            $"{dataBase.Table[tableParameters.Id][5]}\r\n" +
+                            $"с инв.№: {dataBase.Table[tableParameters.Id][2]}\r\n\r\n"
                         );
                     }
 
-                    dataBase.Table[Id] = window.Result;
+                    dataBase.Table[tableParameters.Id] = window.Result;
 
                     if (Filter.Visible)
                     {
-                        if (modeSearch)
+                        if (tableParameters.SearchMode == "Search")
                         {
                             TableOutput(dataBase.StringSearch(saveSearch.Result), false);
                         }
-                        else
+
+                        if (tableParameters.SearchMode == "SearchAll")
                         {
                             TableOutput(dataBase.FindAll(SearchAllBox.Text), false);
                         }
+
+                        ///// Выравнивание по колонкам
                     }
                     else
                     {
@@ -398,20 +405,20 @@ namespace DevList
 
                     Comment.Width = 150;
 
-                    Table.Items[Line].Selected = true;
+                    Table.Items[tableParameters.Line].Selected = true;
                 }
             }
         }
 
-        private void ContextEditAll_Click(object sender, EventArgs e) { EditAll_Click(sender, e); }
+        void ContextEditAll_Click(object sender, EventArgs e) { EditAll_Click(sender, e); }
 
-        private void Up_Click(object sender, EventArgs e)
+        void Up_Click(object sender, EventArgs e)
         {
-            if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
-                if (coordinates.Item.Index > 0)
+                if (tableParameters.Coordinates.Item.Index > 0)
                 {
-                    int saveCoordinates = coordinates.Item.Index;
+                    int saveCoordinates = tableParameters.Coordinates.Item.Index;
 
                     dataBase.MoveLine(saveCoordinates - 1, saveCoordinates);
 
@@ -426,13 +433,13 @@ namespace DevList
             }
         }
 
-        private void ContextUp_Click(object sender, EventArgs e) { Up_Click(sender, e); }
+        void ContextUp_Click(object sender, EventArgs e) { Up_Click(sender, e); }
 
-        private void Down_Click(object sender, EventArgs e)
+        void Down_Click(object sender, EventArgs e)
         {
-            if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
-                int saveCoordinates = coordinates.Item.Index;
+                int saveCoordinates = tableParameters.Coordinates.Item.Index;
 
                 if (dataBase.Table.Count > saveCoordinates + 1)
                 {
@@ -449,11 +456,11 @@ namespace DevList
             }
         }
 
-        private void ContextDown_Click(object sender, EventArgs e) { Down_Click(sender, e); }
+        void ContextDown_Click(object sender, EventArgs e) { Down_Click(sender, e); }
 
-        private void Remove_Click(object sender, EventArgs e)
+        void Remove_Click(object sender, EventArgs e)
         {
-            if (coordinates != null && coordinates.Location != ListViewHitTestLocations.None)
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
                 if (Text == "DevList - История")
                 {
@@ -461,7 +468,7 @@ namespace DevList
 
                     if (result == DialogResult.Yes)
                     {
-                        Remove remove = new Remove(dataBase, coordinates);
+                        Remove remove = new Remove(dataBase, tableParameters.Coordinates);
 
                         TableOutput(dataBase.Table, true);
 
@@ -474,7 +481,7 @@ namespace DevList
 
                     if (result == DialogResult.Yes)
                     {
-                        Remove remove = new Remove(dataBase, coordinates, iniFile, true);
+                        Remove remove = new Remove(dataBase, tableParameters.Coordinates, iniFile, true);
 
                         TableOutput(dataBase.Table, true);
 
@@ -484,9 +491,9 @@ namespace DevList
             }
         }
 
-        private void ContextRemove_Click(object sender, EventArgs e) { Remove_Click(sender, e); }
+        void ContextRemove_Click(object sender, EventArgs e) { Remove_Click(sender, e); }
 
-        private void Columns_Click(object sender, EventArgs e)
+        void Columns_Click(object sender, EventArgs e)
         {
             Columns columns = new Columns(visibleColumns);
 
@@ -497,15 +504,15 @@ namespace DevList
             if (columns.Execute) { TableOutput(dataBase.Table, true); }
         }
 
-        private void Search_Click(object sender, EventArgs e)
+        void Search_Click(object sender, EventArgs e)
         {
             BaseSearchEdit search;
 
             int saveCoordinates;
 
-            if (coordinates == null || coordinates.Item == null)
+            if (tableParameters.Coordinates == null || tableParameters.Coordinates.Item == null)
             {
-                coordinates = Table.HitTest(0, 0);
+                tableParameters.Coordinates = Table.HitTest(0, 0);
 
                 search = Text == head || Text == "DevList - История" ?
 
@@ -515,7 +522,7 @@ namespace DevList
             }
             else
             {
-                saveCoordinates = coordinates.Item == null ? 0 : coordinates.Item.Index;
+                saveCoordinates = tableParameters.Coordinates.Item == null ? 0 : tableParameters.Coordinates.Item.Index;
 
                 if (saveCoordinates >= 0)
                 {
@@ -549,16 +556,16 @@ namespace DevList
 
                     Filter.Visible = true;
 
-                    modeSearch = true;
+                    tableParameters.SearchMode = "Search";
 
                     saveSearch = search;
                 }
             }
         }
 
-        private void ContextSearch_Click(object sender, EventArgs e) { Search_Click(sender, e); }
+        void ContextSearch_Click(object sender, EventArgs e) { Search_Click(sender, e); }
 
-        private void SearchAll_KeyDown(object sender, KeyEventArgs e)
+        void SearchAll_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
             {
@@ -571,23 +578,23 @@ namespace DevList
             }
         }
 
-        private void Lists_Click(object sender, EventArgs e) { Lists lists = new Lists(iniFile); lists.ShowDialog(); }
+        void Lists_Click(object sender, EventArgs e) { Lists lists = new Lists(iniFile); lists.ShowDialog(); }
 
-        private void SortByTypes_Click(object sender, EventArgs e)
+        void SortByTypes_Click(object sender, EventArgs e)
         {
             Reports report = new Reports(iniFile, dataBase, reportType: "SortByTypes");
 
             report.ShowDialog();
         }
 
-        private void SortByRooms_Click(object sender, EventArgs e)
+        void SortByRooms_Click(object sender, EventArgs e)
         {
             Reports report = new Reports(iniFile, dataBase, reportType: "SortByRooms");
 
             report.ShowDialog();
         }
 
-        private void CommonReport_Click(object sender, EventArgs e)
+        void CommonReport_Click(object sender, EventArgs e)
         {
             System.IO.File.WriteAllText($"{Application.StartupPath}\\Print.htm", string.Empty);
 
@@ -631,7 +638,7 @@ namespace DevList
             System.Diagnostics.Process.Start($"{Application.StartupPath}\\Print.htm");
         }
 
-        private void History_Click(object sender, EventArgs e)
+        void History_Click(object sender, EventArgs e)
         {
             DataBase historyBase = new DataBase(iniFile.History);
 
@@ -666,7 +673,7 @@ namespace DevList
             history.ShowDialog();
         }
 
-        private void Set_Click(object sender, EventArgs e)
+        void Set_Click(object sender, EventArgs e)
         {
             DataBase setBase = new DataBase(iniFile.Set);
 
@@ -715,7 +722,7 @@ namespace DevList
             set.ShowDialog();
         }
 
-        private void Filtr_Click(object sender, EventArgs e)
+        void Filtr_Click(object sender, EventArgs e)
         {
             DataBaseChanges();
 
@@ -726,9 +733,9 @@ namespace DevList
             Filter.Visible = false;
         }
 
-        private void BaseForm_FormClosed(object sender, FormClosedEventArgs e) { DataBaseChanges(); }
+        void BaseForm_FormClosed(object sender, FormClosedEventArgs e) { DataBaseChanges(); }
 
-        private void BaseForm_KeyUp(object sender, KeyEventArgs e)
+        void BaseForm_KeyUp(object sender, KeyEventArgs e)
         {
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.S) == Keys.S) { Save_Click(sender, e); }
 
