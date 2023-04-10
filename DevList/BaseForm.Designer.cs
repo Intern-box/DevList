@@ -78,7 +78,7 @@ namespace DevList
             this.Hostname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ChangeMan = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Errors = new System.Windows.Forms.TextBox();
+            this.Errors = new System.Windows.Forms.StatusStrip();
             this.CMenu.SuspendLayout();
             this.MMenu.SuspendLayout();
             this.SuspendLayout();
@@ -464,8 +464,6 @@ namespace DevList
             // 
             // Errors
             // 
-            this.Errors.BackColor = System.Drawing.Color.LightGray;
-            this.Errors.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Errors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Errors.Location = new System.Drawing.Point(0, 539);
             this.Errors.Name = "Errors";
@@ -549,7 +547,7 @@ namespace DevList
         private System.Windows.Forms.ColumnHeader ChangeMan;
         private System.Windows.Forms.ToolStripMenuItem Columns;
         private System.Windows.Forms.ToolStripMenuItem CommonReport;
-        private System.Windows.Forms.TextBox Errors;
+        private System.Windows.Forms.StatusStrip Errors;
     }
 }
 

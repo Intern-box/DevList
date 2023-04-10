@@ -226,7 +226,7 @@ namespace DevList
             {
                 if (tableParameters.Column != 0)
                 {
-                    Errors.Text = $"Line: {tableParameters.Line + 1}; Column: {tableParameters.Column + 1}; Id: {tableParameters.Id + 1}";
+                    Errors.Items.Add($"Line: {tableParameters.Line + 1}; Column: {tableParameters.Column + 1}; Id: {tableParameters.Id + 1}");
 
                     EditLists editLists; EditLines editLines;
 
@@ -352,7 +352,7 @@ namespace DevList
         {
             if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
-                Errors.Text = $"Line: {tableParameters.Line + 1}; Id: {tableParameters.Id + 1}";
+                Errors.Items.Add($"Line: {tableParameters.Line + 1}; Id: {tableParameters.Id + 1}");
 
                 string[] str = dataBase.Table[tableParameters.Id];
 
@@ -574,6 +574,8 @@ namespace DevList
                     TableOutput(dataBase.FindAll(SearchAllBox.Text), false);
 
                     Filter.Visible = true;
+
+                    tableParameters.SearchMode = "SearchAll";
                 }
             }
         }
