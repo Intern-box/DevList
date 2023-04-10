@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using static System.Windows.Forms.ListViewItem;
 
 namespace DevList
 {
@@ -24,7 +23,7 @@ namespace DevList
 
         public bool[] visibleColumns;
 
-        string head = "DevList 6.8.1 - Главное окно";
+        string head = "DevList 6.8.2 - Главное окно";
 
         bool modeSearch;
 
@@ -47,11 +46,14 @@ namespace DevList
         {
             coordinates = Table.HitTest(e.X, e.Y);
 
-            Line = coordinates.Item.Index;
+            if (coordinates.Item != null)
+            {
+                Line = coordinates.Item.Index;
 
-            Column = coordinates.Item.SubItems.IndexOf(coordinates.SubItem);
+                Column = coordinates.Item.SubItems.IndexOf(coordinates.SubItem);
 
-            Id = int.Parse(Table.Items[Line].SubItems[0].Text) - 1;
+                Id = int.Parse(Table.Items[Line].SubItems[0].Text) - 1;
+            }
         }
 
         private void BaseForm_Load(object sender, EventArgs e) { TableOutput(dataBase.Table, true); Log.ErrorHandler($"[   ] {Text} - База загружена\r\n"); }
@@ -230,7 +232,7 @@ namespace DevList
 
                     if (Column == 3)
                     {
-                        editLists = new EditLists("DevList - Правка", coordinates, iniFile);
+                        editLists = new EditLists("DevList - Правка", Id, Column, iniFile);
 
                         editLists.ShowDialog();
 
@@ -250,7 +252,7 @@ namespace DevList
 
                             dataBase.Table[Id][Column] = editLists.Result;
 
-                            dataBase.Change = true;
+                            dataBase.Save();
 
                             result = true;
                         }
@@ -259,13 +261,9 @@ namespace DevList
                     {
                         if (Text == head || Text == "DevList - История")
                         {
-                            if (coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 4 ||
-                                coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 5 ||
-                                coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 6 ||
-                                coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 7 ||
-                                coordinates.Item.SubItems.IndexOf(coordinates.SubItem) == 12)
+                            if (Column == 4 || Column == 5 || Column == 6 || Column == 7 || Column == 12)
                             {
-                                editLists = new EditLists("DevList - Правка", coordinates, iniFile);
+                                editLists = new EditLists("DevList - Правка", Id, Column, iniFile);
 
                                 editLists.ShowDialog();
 
@@ -273,7 +271,7 @@ namespace DevList
                                 {
                                     dataBase.Table[Id][Column] = editLists.Result;
 
-                                    dataBase.Change = true;
+                                    dataBase.Save();
 
                                     result = true;
                                 }
@@ -288,7 +286,7 @@ namespace DevList
                                 {
                                     dataBase.Table[Id][Column] = editLines.Result;
 
-                                    dataBase.Change = true;
+                                    dataBase.Save();
 
                                     result = true;
                                 }
@@ -297,7 +295,7 @@ namespace DevList
                         }
                         else
                         {
-                            editLines = new EditLines("DevList - Правка комплект", dataBase.Table[Line][Column]);
+                            editLines = new EditLines("DevList - Правка комплект", dataBase.Table[Id][Column]);
 
                             editLines.ShowDialog();
 
@@ -305,7 +303,7 @@ namespace DevList
                             {
                                 dataBase.Table[Id][Column] = editLines.Result;
 
-                                dataBase.Change = true;
+                                dataBase.Save();
 
                                 result = true;
                             }
@@ -330,7 +328,7 @@ namespace DevList
                             TableOutput(dataBase.Table, true);
                         }
 
-                        dataBase.Change = true;
+                        dataBase.Save();
 
                         Comment.Width = 150;
 
@@ -392,7 +390,7 @@ namespace DevList
                         TableOutput(dataBase.Table, true);
                     }
 
-                    dataBase.Change = true;
+                    dataBase.Save();
 
                     Comment.Width = 150;
 

@@ -8,7 +8,7 @@ namespace DevList
     {
         INIFile iniFile;
 
-        public Lists(INIFile iniFile) { InitializeComponent(); this.iniFile = iniFile; }
+        public Lists (INIFile iniFile) { InitializeComponent(); this.iniFile = iniFile; }
 
         private void ListsBox_SelectionChangeCommitted(object sender, EventArgs e)
         {

@@ -6,34 +6,34 @@ namespace DevList
 {
     public partial class EditLists : Form
     {
-        ListViewHitTestInfo coordinates;
-
         INIFile iniFile;
 
         public string Result;
 
-        int nomberColumn;
+        int Column;
 
-        public EditLists(string head, ListViewHitTestInfo coordinates, INIFile iniFile)
+        int Id;
+
+        public EditLists(string head, int Id, int Column, INIFile iniFile)
         {
             InitializeComponent();
 
-            this.coordinates = coordinates;
-
             this.iniFile = iniFile;
 
-            nomberColumn = coordinates.Item.SubItems.IndexOf(coordinates.SubItem);
+            this.Column = Column;
+
+            this.Id = Id;
 
             Text = head;
         }
 
-        public EditLists(string head, int nomberColumn, INIFile iniFile)
+        public EditLists(string head, int Column, INIFile iniFile)
         {
             InitializeComponent();
 
             this.iniFile = iniFile;
 
-            this.nomberColumn = nomberColumn;
+            this.Column = Column;
 
             Text = head;
         }
@@ -42,31 +42,31 @@ namespace DevList
         {
             if (Text == "DevList - Правка")
             {
-                if (nomberColumn == 3)  // Помещение
+                if (Column == 3)  // Помещение
                 {
                     List list = new List(iniFile.Rooms);
 
                     ListsBox.Items.AddRange(list.Content);
                 }
-                if (nomberColumn == 4)  // Закреплено за
+                if (Column == 4)  // Закреплено за
                 {
                     List list = new List(iniFile.Employees);
 
                     ListsBox.Items.AddRange(list.Content);
                 }
-                if (nomberColumn == 5)  // Наименование
+                if (Column == 5)  // Наименование
                 {
                     List list = new List(iniFile.Names);
 
                     ListsBox.Items.AddRange(list.Content);
                 }
-                if (nomberColumn == 6)  // Оборудование
+                if (Column == 6)  // Оборудование
                 {
                     List list = new List(iniFile.Devices);
 
                     ListsBox.Items.AddRange(list.Content);
                 }
-                if (nomberColumn == 7)  // Состояние
+                if (Column == 7)  // Состояние
                 {
                     ButtonPlus.Enabled = false;
                     ButtonMinus.Enabled = false;
@@ -76,7 +76,7 @@ namespace DevList
                     ListsBox.Items.Add("сломано");
                     ListsBox.Items.Add("утеряно");
                 }
-                if (nomberColumn == 12) // Изменил
+                if (Column == 12) // Изменил
                 {
                     List list = new List(iniFile.Employees);
 
@@ -92,7 +92,7 @@ namespace DevList
 
             DataBase dataBase = new DataBase(iniFile.Base);
 
-            if(dataBase.Table.Count > 0 && coordinates != null) { ListsBox.Text = dataBase.Table[coordinates.Item.Index][nomberColumn]; }
+            if (dataBase.Table.Count > 0) { ListsBox.Text = dataBase.Table[Id][Column]; }
         }
 
         private void Execute_Click(object sender, EventArgs e) { Result = ListsBox.Text; Close(); }
@@ -101,7 +101,7 @@ namespace DevList
 
         private void ButtonPlus_Click(object sender, EventArgs e)
         {
-            if (nomberColumn == 3)  // Помещение
+            if (Column == 3)  // Помещение
             {
                 List list = new List(iniFile.Rooms);
 
@@ -111,7 +111,7 @@ namespace DevList
 
                 ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomberColumn == 4)  // Закреплено за
+            if (Column == 4)  // Закреплено за
             {
                 List list = new List(iniFile.Employees);
 
@@ -121,7 +121,7 @@ namespace DevList
 
                 ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomberColumn == 5)  // Наименования
+            if (Column == 5)  // Наименования
             {
                 List list = new List(iniFile.Names);
 
@@ -131,7 +131,7 @@ namespace DevList
 
                 ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomberColumn == 6)  // Оборудование
+            if (Column == 6)  // Оборудование
             {
                 List list = new List(iniFile.Devices);
 
@@ -141,7 +141,7 @@ namespace DevList
 
                 ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomberColumn == 12) // Изменил
+            if (Column == 12) // Изменил
             {
                 List list = new List(iniFile.Employees);
 
@@ -155,7 +155,7 @@ namespace DevList
 
         private void ButtonMinus_Click(object sender, EventArgs e)
         {
-            if (nomberColumn == 3)  // Помещение
+            if (Column == 3)  // Помещение
             {
                 List list = new List(iniFile.Rooms);
 
@@ -165,7 +165,7 @@ namespace DevList
 
                 ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomberColumn == 4)  // Закреплено за
+            if (Column == 4)  // Закреплено за
             {
                 List list = new List(iniFile.Employees);
 
@@ -175,7 +175,7 @@ namespace DevList
 
                 ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomberColumn == 5)  // Наименование
+            if (Column == 5)  // Наименование
             {
                 List list = new List(iniFile.Names);
 
@@ -185,7 +185,7 @@ namespace DevList
 
                 ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomberColumn == 6)  // Оборудование
+            if (Column == 6)  // Оборудование
             {
                 List list = new List(iniFile.Devices);
 
@@ -195,7 +195,7 @@ namespace DevList
 
                 ListsBox.Items.AddRange(File.ReadAllLines(list.Path));
             }
-            if (nomberColumn == 12) // Изменил
+            if (Column == 12) // Изменил
             {
                 List list = new List(iniFile.Employees);
 
