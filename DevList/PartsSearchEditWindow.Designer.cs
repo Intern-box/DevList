@@ -65,6 +65,8 @@ namespace DevList
             this.Number = new System.Windows.Forms.TextBox();
             this.LabelNumber = new System.Windows.Forms.Label();
             this.ButtonClose = new System.Windows.Forms.Button();
+            this.addInEnd = new System.Windows.Forms.CheckBox();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LabelCPU
@@ -437,12 +439,38 @@ namespace DevList
             this.ButtonClose.UseVisualStyleBackColor = true;
             this.ButtonClose.Click += new System.EventHandler(this.Close_Click);
             // 
+            // addInEnd
+            // 
+            this.addInEnd.AutoSize = true;
+            this.addInEnd.Checked = true;
+            this.addInEnd.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.addInEnd.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addInEnd.Location = new System.Drawing.Point(15, 319);
+            this.addInEnd.Name = "addInEnd";
+            this.addInEnd.Size = new System.Drawing.Size(143, 18);
+            this.addInEnd.TabIndex = 86;
+            this.addInEnd.Text = "Добавить в конец";
+            this.addInEnd.UseVisualStyleBackColor = true;
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ClearButton.Location = new System.Drawing.Point(266, 313);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(89, 29);
+            this.ClearButton.TabIndex = 87;
+            this.ClearButton.Text = "Очистить";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
             // PartsSearchEditWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(613, 351);
+            this.Controls.Add(this.ClearButton);
+            this.Controls.Add(this.addInEnd);
             this.Controls.Add(this.Number);
             this.Controls.Add(this.LabelNumber);
             this.Controls.Add(this.Year);
@@ -530,5 +558,7 @@ namespace DevList
         private System.Windows.Forms.TextBox Number;
         private System.Windows.Forms.Label LabelNumber;
         private System.Windows.Forms.Button ButtonClose;
+        private System.Windows.Forms.CheckBox addInEnd;
+        private System.Windows.Forms.Button ClearButton;
     }
 }

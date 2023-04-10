@@ -66,6 +66,8 @@ namespace DevList
             Result[11] = string.Empty;
             Result[12] = string.Empty;
 
+            AddInEnd = addInEnd.Checked;
+
             Execute = true;
 
             Close();
@@ -232,6 +234,20 @@ namespace DevList
             if (e.KeyCode == Keys.Enter) { Execute_Click(sender, e); }
 
             if (e.KeyCode == Keys.Escape) { Close_Click(sender, e); }
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            Number.Text =
+            Date.Text =
+            CPU.Text =
+            Mainboard.Text =
+            RAM.Text =
+            Disk.Text =
+            Videocard.Text =
+            Power.Text =
+            Case.Text =
+            Year.Text = string.Empty;
         }
     }
 }

@@ -208,8 +208,10 @@ namespace DevList
 
             if (window.Result[0] != null)
             {
-                if (tableParameters.Coordinates == null || tableParameters.Coordinates.Location == ListViewHitTestLocations.None) { dataBase.Table.Add(window.Result); }
-
+                if (tableParameters.Coordinates == null || tableParameters.Coordinates.Location == ListViewHitTestLocations.None || window.AddInEnd)
+                {
+                    dataBase.Table.Add(window.Result);
+                }
                 else { dataBase.Table.Insert(tableParameters.Line + 1, window.Result); }
 
                 TableOutput(dataBase.Table);

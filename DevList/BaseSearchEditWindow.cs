@@ -69,6 +69,8 @@ namespace DevList
             Result[11] = IP.Text;
             Result[12] = ChangeMan.Text;
 
+            AddInEnd = addInEnd.Checked;
+
             Execute = true;
 
             Close();

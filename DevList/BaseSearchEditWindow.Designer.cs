@@ -66,6 +66,7 @@ namespace DevList
             this.ButtonNamesMinus = new System.Windows.Forms.Button();
             this.ButtonNamesPlus = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
+            this.addInEnd = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // LabelNumber
@@ -445,12 +446,26 @@ namespace DevList
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
+            // addInEnd
+            // 
+            this.addInEnd.AutoSize = true;
+            this.addInEnd.Checked = true;
+            this.addInEnd.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.addInEnd.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addInEnd.Location = new System.Drawing.Point(15, 373);
+            this.addInEnd.Name = "addInEnd";
+            this.addInEnd.Size = new System.Drawing.Size(143, 18);
+            this.addInEnd.TabIndex = 72;
+            this.addInEnd.Text = "Добавить в конец";
+            this.addInEnd.UseVisualStyleBackColor = true;
+            // 
             // BaseSearchEditWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(583, 409);
+            this.Controls.Add(this.addInEnd);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.ButtonNamesMinus);
             this.Controls.Add(this.ButtonNamesPlus);
@@ -540,5 +555,6 @@ namespace DevList
         private System.Windows.Forms.Button ButtonNamesMinus;
         private System.Windows.Forms.Button ButtonNamesPlus;
         private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.CheckBox addInEnd;
     }
 }

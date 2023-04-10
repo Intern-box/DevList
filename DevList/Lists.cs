@@ -51,8 +51,6 @@ namespace DevList
 
         private void Lists_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) { SaveButton_Click(sender, e); }
-
             if (e.KeyCode == Keys.Escape) { Close(); }
         }
 
