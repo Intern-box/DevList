@@ -13,7 +13,7 @@ namespace DevList
 
         bool[] visibleColumns;
 
-        string head = "DevList 6.8.2 - Главное окно";
+        string head = "DevList 6.8.3 - Главное окно";
 
         TableParameters tableParameters = new TableParameters();
 
@@ -683,7 +683,7 @@ namespace DevList
 
             history.Text = "DevList - История";
 
-            history.ShowDialog();
+            history.Show();
         }
 
         void Set_Click(object sender, EventArgs e)
@@ -732,7 +732,7 @@ namespace DevList
 
             set.WindowState = FormWindowState.Normal;
 
-            set.ShowDialog();
+            set.Show();
         }
 
         void Filtr_Click(object sender, EventArgs e)
