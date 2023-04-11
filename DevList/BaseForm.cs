@@ -56,9 +56,9 @@ namespace DevList
 
             for (int i = 0; i < table.Count; i++) { ListViewItem line = new ListViewItem(table[i]); Table.Items.Add(line); }
 
-            for (int i = 0; i < visibleColumns.Length; i++) { if (!visibleColumns[i]) { Table.Columns[i].Width = 0; } }
-
             Table.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+            for (int i = 0; i < visibleColumns.Length; i++) { if (!visibleColumns[i]) { Table.Columns[i].Width = 0; } }
         }
 
         void Table_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -512,7 +512,7 @@ namespace DevList
 
             visibleColumns = columns.Result;
 
-            if (columns.Execute) { TableOutput(dataBase.Table, true); }
+            if (columns.Execute) { TableOutput(dataBase.Table); }
         }
 
         void Search_Click(object sender, EventArgs e)

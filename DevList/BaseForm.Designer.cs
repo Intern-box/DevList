@@ -390,7 +390,7 @@ namespace DevList
             this.Table.Location = new System.Drawing.Point(0, 25);
             this.Table.Name = "Table";
             this.Table.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Table.Size = new System.Drawing.Size(1251, 536);
+            this.Table.Size = new System.Drawing.Size(1251, 514);
             this.Table.TabIndex = 5;
             this.Table.UseCompatibleStateImageBehavior = false;
             this.Table.View = System.Windows.Forms.View.Details;
@@ -478,11 +478,11 @@ namespace DevList
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1251, 561);
-            this.Controls.Add(this.Errors);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.LabelSearchAll);
             this.Controls.Add(this.SearchAllBox);
             this.Controls.Add(this.MMenu);
+            this.Controls.Add(this.Errors);
             this.KeyPreview = true;
             this.Name = "BaseForm";
             this.ShowIcon = false;
