@@ -143,7 +143,7 @@ namespace DevList
             }
         }
 
-        void Save_Click(object sender, EventArgs e) { dataBase.Save(); dataBase.Change = false; Filter.Visible = false; }
+        void Save_Click(object sender, EventArgs e) { dataBase.Save(); dataBase.Change = false; }
 
         void SaveAs_Click(object sender, EventArgs e)
         {
