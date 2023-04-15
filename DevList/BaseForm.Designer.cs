@@ -390,6 +390,7 @@ namespace DevList
             this.Table.Location = new System.Drawing.Point(0, 25);
             this.Table.Name = "Table";
             this.Table.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Table.ShowItemToolTips = true;
             this.Table.Size = new System.Drawing.Size(1251, 514);
             this.Table.TabIndex = 5;
             this.Table.UseCompatibleStateImageBehavior = false;
