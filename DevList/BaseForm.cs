@@ -59,6 +59,8 @@ namespace DevList
 
             Table.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
+            ChangeMan.Width = 150;
+
             for (int i = 0; i < visibleColumns.Length; i++) { if (!visibleColumns[i]) { Table.Columns[i].Width = 0; } }
         }
 
