@@ -59,7 +59,7 @@ namespace DevList
 
             Table.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
-            ChangeMan.Width = 150;
+            ChangeMan.Width = Comment.Width = 150;
 
             for (int i = 0; i < visibleColumns.Length; i++) { if (!visibleColumns[i]) { Table.Columns[i].Width = 0; } }
         }
@@ -333,8 +333,6 @@ namespace DevList
                             TableOutput(dataBase.Table);
                         }
 
-                        Comment.Width = 150;
-
                         Table.Items[tableParameters.Line].Selected = true;
                     }
                 }
@@ -399,8 +397,6 @@ namespace DevList
                     }
 
                     dataBase.Save();
-
-                    Comment.Width = 150;
 
                     Table.Items[tableParameters.Line].Selected = true;
                 }
