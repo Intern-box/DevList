@@ -1,10 +1,32 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
 namespace DevList
 {
+    class ListViewItemComparer : IComparer
+    {
+        int col;
+
+        bool SortingColumns;
+
+        public ListViewItemComparer(int column, bool SortingColumns) { col = column; this.SortingColumns = SortingColumns; }
+
+        public int Compare(object x, object y)
+        {
+            if (SortingColumns)
+            {
+                return String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
+            }
+            else
+            {
+                return String.Compare(((ListViewItem)y).SubItems[col].Text, ((ListViewItem)x).SubItems[col].Text);
+            }
+        }
+    }
+
     public partial class BaseForm : Form
     {
         INIFile iniFile;
@@ -13,7 +35,7 @@ namespace DevList
 
         bool[] visibleColumns;
 
-        string head = "DevList 6.8.3 - Главное окно";
+        string head = "DevList 6.8.4 - Главное окно";
 
         TableParameters tableParameters = new TableParameters();
 
@@ -63,25 +85,11 @@ namespace DevList
 
         void Table_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            if (tableParameters.SortingColumns)
-            {
-                dataBase.Table.Sort((x, y) => x[e.Column].CompareTo(y[e.Column]));
-                
-                tableParameters.SortingColumns = false;
-                
-                tableParameters.ColumnAlign = e.Column;
-            }
-            else
-            {
-                dataBase.Table.Sort((y, x) => x[e.Column].CompareTo(y[e.Column]));
+            Table.ListViewItemSorter = new ListViewItemComparer(e.Column, tableParameters.SortingColumns);
 
-                tableParameters.SortingColumns = true;
+            if (tableParameters.SortingColumns) { tableParameters.SortingColumns = false; } else { tableParameters.SortingColumns = true; }
 
-                tableParameters.ColumnAlign = e.Column; }
-
-            Table.Items.Clear();
-
-            TableOutput(dataBase.Table, false);
+            tableParameters.ColumnAlign = e.Column;
 
             Filter.Visible = true;
 
@@ -319,33 +327,30 @@ namespace DevList
 
                     if (result)
                     {
+                        dataBase.Save();
+
                         if (Filter.Visible)
                         {
-                            if (tableParameters.SearchMode == "Search")
-                            {
-                                TableOutput(dataBase.StringSearch(saveSearch.Result), false);
-                            }
+                            if (tableParameters.SearchMode == "Search") { TableOutput(dataBase.StringSearch(saveSearch.Result), false); }
                             
-                            if(tableParameters.SearchMode == "SearchAll")
-                            {
-                                TableOutput(dataBase.FindAll(SearchAllBox.Text), false);
-                            }
+                            if(tableParameters.SearchMode == "SearchAll") { TableOutput(dataBase.FindAll(SearchAllBox.Text), false); }
 
                             if (tableParameters.SearchMode == "Column")
                             {
                                 ColumnClickEventArgs x = new ColumnClickEventArgs(tableParameters.Column);
 
-                                tableParameters.SortingColumns = true;
+                                if (tableParameters.SortingColumns) { tableParameters.SortingColumns = false; } else { tableParameters.SortingColumns = true; }
+
+                                TableOutput(dataBase.Table);
 
                                 Table_ColumnClick(sender, x);
+
                             }
                         }
                         else
                         {
-                            TableOutput(dataBase.Table, true);
+                            TableOutput(dataBase.Table);
                         }
-
-                        dataBase.Save();
 
                         Comment.Width = 150;
 
@@ -739,11 +744,20 @@ namespace DevList
         {
             DataBaseChanges();
 
+            if (tableParameters.SearchMode == "Column")
+            {
+                Table.ListViewItemSorter = new ListViewItemComparer(tableParameters.ColumnAlign, true);
+
+                tableParameters.SortingColumns = false;
+            }
+
             dataBase = new DataBase(dataBase.Path);
 
-            TableOutput(dataBase.Table, true);
+            TableOutput(dataBase.Table);
 
             Filter.Visible = false;
+
+            tableParameters.SearchMode = string.Empty;
         }
 
         void BaseForm_FormClosed(object sender, FormClosedEventArgs e) { DataBaseChanges(); }
