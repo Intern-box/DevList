@@ -6,27 +6,6 @@ using System.Windows.Forms;
 
 namespace DevList
 {
-    class ListViewItemComparer : IComparer
-    {
-        int col;
-
-        bool SortingColumns;
-
-        public ListViewItemComparer(int column, bool SortingColumns) { col = column; this.SortingColumns = SortingColumns; }
-
-        public int Compare(object x, object y)
-        {
-            if (SortingColumns)
-            {
-                return String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
-            }
-            else
-            {
-                return String.Compare(((ListViewItem)y).SubItems[col].Text, ((ListViewItem)x).SubItems[col].Text);
-            }
-        }
-    }
-
     public partial class BaseForm : Form
     {
         INIFile iniFile;
@@ -782,6 +761,27 @@ namespace DevList
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Up) == Keys.Up) { Up_Click(sender, e); }
 
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Down) == Keys.Down) { Down_Click(sender, e); }
+        }
+    }
+
+    class ListViewItemComparer : IComparer
+    {
+        int col;
+
+        bool SortingColumns;
+
+        public ListViewItemComparer(int column, bool SortingColumns) { col = column; this.SortingColumns = SortingColumns; }
+
+        public int Compare(object x, object y)
+        {
+            if (SortingColumns)
+            {
+                return String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
+            }
+            else
+            {
+                return String.Compare(((ListViewItem)y).SubItems[col].Text, ((ListViewItem)x).SubItems[col].Text);
+            }
         }
     }
 }
