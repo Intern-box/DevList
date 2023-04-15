@@ -14,7 +14,7 @@ namespace DevList
 
         bool[] visibleColumns;
 
-        string head = "DevList 6.8.4 - Главное окно";
+        string head = "DevList 6.8.5 - Главное окно";
 
         TableParameters tableParameters = new TableParameters();
 
@@ -51,6 +51,8 @@ namespace DevList
 
         void TableOutput(List<string[]> table, bool recalculate = true)
         {
+            Table.Visible = false;
+
             Table.Items.Clear();
 
             if (recalculate) { for (int i = 0; i < table.Count; i++) { table[i][0] = (i + 1).ToString(); } }
@@ -62,6 +64,8 @@ namespace DevList
             ChangeMan.Width = Comment.Width = 150;
 
             for (int i = 0; i < visibleColumns.Length; i++) { if (!visibleColumns[i]) { Table.Columns[i].Width = 0; } }
+
+            Table.Visible = true;
         }
 
         void Table_ColumnClick(object sender, ColumnClickEventArgs e)
