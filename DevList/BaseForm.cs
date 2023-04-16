@@ -725,14 +725,9 @@ namespace DevList
         {
             DataBaseChanges();
 
-            if (tableParameters.SearchMode == "Column")
-            {
-                Table.ListViewItemSorter = new ListViewItemComparer(tableParameters.ColumnAlign, true);
+            if (tableParameters.SearchMode == "Column") { tableParameters.SortingColumns = false; }
 
-                tableParameters.SortingColumns = false;
-            }
-
-            dataBase = new DataBase(dataBase.Path);
+            Table.ListViewItemSorter = null;
 
             TableOutput(dataBase.Table);
 
@@ -776,14 +771,9 @@ namespace DevList
 
         public int Compare(object x, object y)
         {
-            if (SortingColumns)
-            {
-                return String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
-            }
-            else
-            {
-                return String.Compare(((ListViewItem)y).SubItems[col].Text, ((ListViewItem)x).SubItems[col].Text);
-            }
+            if (SortingColumns) { return String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text); }
+
+            else { return String.Compare(((ListViewItem)y).SubItems[col].Text, ((ListViewItem)x).SubItems[col].Text); }
         }
     }
 }
