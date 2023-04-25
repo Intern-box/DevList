@@ -209,7 +209,7 @@ namespace DevList
 
                 TableOutput(dataBase.Table);
 
-                Table.Items[dataBase.Table.Count - 1].Selected = true;
+                Table.Select(); Table.Items[dataBase.Table.Count - 1].Selected = true;
 
                 dataBase.Change = true;
             }
@@ -312,33 +312,10 @@ namespace DevList
 
                     if (result)
                     {
-                        dataBase.Save();
-
-                        if (Filter.Visible)
-                        {
-                            if (tableParameters.SearchMode == "Search") { TableOutput(dataBase.StringSearch(saveSearch.Result), false); }
-                            
-                            if(tableParameters.SearchMode == "SearchAll") { TableOutput(dataBase.FindAll(SearchAllBox.Text), false); }
-
-                            if (tableParameters.SearchMode == "Column")
-                            {
-                                ColumnClickEventArgs x = new ColumnClickEventArgs(tableParameters.Column);
-
-                                if (tableParameters.SortingColumns) { tableParameters.SortingColumns = false; } else { tableParameters.SortingColumns = true; }
-
-                                TableOutput(dataBase.Table);
-
-                                Table_ColumnClick(sender, x);
-
-                            }
-                        }
-                        else
-                        {
-                            TableOutput(dataBase.Table);
-                        }
-
-                        Table.Items[tableParameters.Line].Selected = true;
+                        EditAfterSearch(sender);
                     }
+
+                    Table.Select(); Table.Items[tableParameters.Line].Selected = true;
                 }
             }
         }
@@ -381,28 +358,9 @@ namespace DevList
 
                     dataBase.Table[tableParameters.Id] = window.Result;
 
-                    if (Filter.Visible)
-                    {
-                        if (tableParameters.SearchMode == "Search")
-                        {
-                            TableOutput(dataBase.StringSearch(saveSearch.Result), false);
-                        }
+                    EditAfterSearch(sender);
 
-                        if (tableParameters.SearchMode == "SearchAll")
-                        {
-                            TableOutput(dataBase.FindAll(SearchAllBox.Text), false);
-                        }
-
-                        ///// Выравнивание по колонкам
-                    }
-                    else
-                    {
-                        TableOutput(dataBase.Table, true);
-                    }
-
-                    dataBase.Save();
-
-                    Table.Items[tableParameters.Line].Selected = true;
+                    Table.Select(); Table.Items[tableParameters.Line].Selected = true;
                 }
             }
         }
@@ -415,15 +373,11 @@ namespace DevList
             {
                 if (tableParameters.Coordinates.Item.Index > 0)
                 {
-                    int saveCoordinates = tableParameters.Coordinates.Item.Index;
-
-                    dataBase.MoveLine(saveCoordinates - 1, saveCoordinates);
+                    dataBase.UpDown(tableParameters.Line - 1, tableParameters.Line);
 
                     TableOutput(dataBase.Table, true);
 
-                    Table.Items[saveCoordinates - 1].Selected = true;
-
-                    Table.Items[saveCoordinates - 1].Focused = true;
+                    Table.Select(); Table.Items[tableParameters.Line - 1].Selected = true;
 
                     dataBase.Change = true;
                 }
@@ -436,17 +390,13 @@ namespace DevList
         {
             if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
-                int saveCoordinates = tableParameters.Coordinates.Item.Index;
-
-                if (dataBase.Table.Count > saveCoordinates + 1)
+                if (dataBase.Table.Count > tableParameters.Line + 1)
                 {
-                    dataBase.MoveLine(saveCoordinates + 1, saveCoordinates);
+                    dataBase.UpDown(tableParameters.Line + 1, tableParameters.Line);
 
                     TableOutput(dataBase.Table, true);
 
-                    Table.Items[saveCoordinates + 1].Selected = true;
-
-                    Table.Items[saveCoordinates + 1].Focused = true;
+                    Table.Select(); Table.Items[tableParameters.Line + 1].Selected = true;
 
                     dataBase.Change = true;
                 }
@@ -663,9 +613,9 @@ namespace DevList
 
             history.CEditAll.Visible = false;
 
-            history.CUp.Visible = false;
+            history.ContextUp.Visible = false;
 
-            history.CDown.Visible = false;
+            history.ContextDown.Visible = false;
 
             history.Text = "DevList - История";
 
@@ -758,6 +708,53 @@ namespace DevList
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Up) == Keys.Up) { Up_Click(sender, e); }
 
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Down) == Keys.Down) { Down_Click(sender, e); }
+        }
+
+        void NomberString_Click(object sender, EventArgs e)
+        {
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
+            {
+                UpDownForm upDownForm = new UpDownForm();
+
+                upDownForm.ShowDialog();
+
+                if (upDownForm.Result != null)
+                {
+                    dataBase.Move(tableParameters.Id, int.Parse(upDownForm.Result) - 1);
+
+                    EditAfterSearch(sender);
+                }
+            }
+        }
+
+        void CNomberString_Click(object sender, EventArgs e) { NomberString_Click(sender, e); }
+
+        void EditAfterSearch(object sender)
+        {
+            dataBase.Save();
+
+            if (Filter.Visible)
+            {
+                if (tableParameters.SearchMode == "Search") { TableOutput(dataBase.StringSearch(saveSearch.Result), false); }
+
+                if (tableParameters.SearchMode == "SearchAll") { TableOutput(dataBase.FindAll(SearchAllBox.Text), false); }
+
+                if (tableParameters.SearchMode == "Column")
+                {
+                    ColumnClickEventArgs x = new ColumnClickEventArgs(tableParameters.Column);
+
+                    if (tableParameters.SortingColumns) { tableParameters.SortingColumns = false; } else { tableParameters.SortingColumns = true; }
+
+                    TableOutput(dataBase.Table);
+
+                    Table_ColumnClick(sender, x);
+
+                }
+            }
+            else
+            {
+                TableOutput(dataBase.Table);
+            }
         }
     }
 

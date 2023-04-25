@@ -36,15 +36,24 @@ namespace DevList
 
         public void Save(string path) { File.WriteAllLines(path, Table.Select(x => string.Join(",", x))); }
 
-        public void MoveLine(int firstLine, int secondLine)
+        public void UpDown(int firstLine, int secondLine)
         {
-            string[] temp = new string[Table[firstLine].Length];
+            string[] first = Table[firstLine];
 
-            for (int i = 0; i < Table[firstLine].Length; i++) { temp[i] = Table[firstLine][i]; }
+            string[] second = Table[secondLine];
 
-            for (int i = 0; i < Table[firstLine].Length; i++) { Table[firstLine][i] = Table[secondLine][i]; }
+            Table[firstLine] = second;
 
-            for (int i = 0; i < Table[firstLine].Length; i++) { Table[secondLine][i] = temp[i]; }
+            Table[secondLine] = first;
+        }
+
+        public void Move(int from, int to)
+        {
+            string[] temp = Table[from];
+
+            Table.RemoveAt(from);
+
+            Table.Insert(to, temp);
         }
 
         public List<string[]> StringSearch(string[] request)

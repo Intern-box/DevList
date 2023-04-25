@@ -35,8 +35,10 @@ namespace DevList
             this.CAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.CEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.CEditAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.CUp = new System.Windows.Forms.ToolStripMenuItem();
-            this.CDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContextUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContextDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.CNomberString = new System.Windows.Forms.ToolStripMenuItem();
             this.CRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.MMenu = new System.Windows.Forms.MenuStrip();
             this.File = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,8 +50,10 @@ namespace DevList
             this.Add = new System.Windows.Forms.ToolStripMenuItem();
             this.MEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.MEditAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.Move = new System.Windows.Forms.ToolStripMenuItem();
             this.Up = new System.Windows.Forms.ToolStripMenuItem();
             this.Down = new System.Windows.Forms.ToolStripMenuItem();
+            this.NomberString = new System.Windows.Forms.ToolStripMenuItem();
             this.Remove = new System.Windows.Forms.ToolStripMenuItem();
             this.View = new System.Windows.Forms.ToolStripMenuItem();
             this.Columns = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,58 +94,74 @@ namespace DevList
             this.CAdd,
             this.CEdit,
             this.CEditAll,
-            this.CUp,
-            this.CDown,
+            this.toolStripMenuItem1,
             this.CRemove});
             this.CMenu.Name = "KMenu";
-            this.CMenu.Size = new System.Drawing.Size(142, 158);
+            this.CMenu.Size = new System.Drawing.Size(181, 158);
             // 
             // CSearch
             // 
             this.CSearch.Name = "CSearch";
-            this.CSearch.Size = new System.Drawing.Size(141, 22);
+            this.CSearch.Size = new System.Drawing.Size(180, 22);
             this.CSearch.Text = "Поиск";
             this.CSearch.Click += new System.EventHandler(this.ContextSearch_Click);
             // 
             // CAdd
             // 
             this.CAdd.Name = "CAdd";
-            this.CAdd.Size = new System.Drawing.Size(141, 22);
+            this.CAdd.Size = new System.Drawing.Size(180, 22);
             this.CAdd.Text = "Добавить";
             this.CAdd.Click += new System.EventHandler(this.ContextAdd_Click);
             // 
             // CEdit
             // 
             this.CEdit.Name = "CEdit";
-            this.CEdit.Size = new System.Drawing.Size(141, 22);
+            this.CEdit.Size = new System.Drawing.Size(180, 22);
             this.CEdit.Text = "Править";
             this.CEdit.Click += new System.EventHandler(this.ContextEdit_Click);
             // 
             // CEditAll
             // 
             this.CEditAll.Name = "CEditAll";
-            this.CEditAll.Size = new System.Drawing.Size(141, 22);
+            this.CEditAll.Size = new System.Drawing.Size(180, 22);
             this.CEditAll.Text = "Править всё";
             this.CEditAll.Click += new System.EventHandler(this.ContextEditAll_Click);
             // 
-            // CUp
+            // toolStripMenuItem1
             // 
-            this.CUp.Name = "CUp";
-            this.CUp.Size = new System.Drawing.Size(141, 22);
-            this.CUp.Text = "Вверх";
-            this.CUp.Click += new System.EventHandler(this.ContextUp_Click);
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ContextUp,
+            this.ContextDown,
+            this.CNomberString});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Переместить";
             // 
-            // CDown
+            // ContextUp
             // 
-            this.CDown.Name = "CDown";
-            this.CDown.Size = new System.Drawing.Size(141, 22);
-            this.CDown.Text = "Вниз";
-            this.CDown.Click += new System.EventHandler(this.ContextDown_Click);
+            this.ContextUp.Name = "ContextUp";
+            this.ContextUp.Size = new System.Drawing.Size(180, 22);
+            this.ContextUp.Text = "Вверх";
+            this.ContextUp.Click += new System.EventHandler(this.ContextUp_Click);
+            // 
+            // ContextDown
+            // 
+            this.ContextDown.Name = "ContextDown";
+            this.ContextDown.Size = new System.Drawing.Size(180, 22);
+            this.ContextDown.Text = "Вниз";
+            this.ContextDown.Click += new System.EventHandler(this.ContextDown_Click);
+            // 
+            // CNomberString
+            // 
+            this.CNomberString.Name = "CNomberString";
+            this.CNomberString.Size = new System.Drawing.Size(180, 22);
+            this.CNomberString.Text = "В строку";
+            this.CNomberString.Click += new System.EventHandler(this.CNomberString_Click);
             // 
             // CRemove
             // 
             this.CRemove.Name = "CRemove";
-            this.CRemove.Size = new System.Drawing.Size(141, 22);
+            this.CRemove.Size = new System.Drawing.Size(180, 22);
             this.CRemove.Text = "Удалить";
             this.CRemove.Click += new System.EventHandler(this.ContextRemove_Click);
             // 
@@ -208,8 +228,7 @@ namespace DevList
             this.Add,
             this.MEdit,
             this.MEditAll,
-            this.Up,
-            this.Down,
+            this.Move,
             this.Remove});
             this.Edit.Name = "Edit";
             this.Edit.Size = new System.Drawing.Size(64, 21);
@@ -218,42 +237,59 @@ namespace DevList
             // Add
             // 
             this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(150, 22);
+            this.Add.Size = new System.Drawing.Size(180, 22);
             this.Add.Text = "Добавить";
             this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
             // MEdit
             // 
             this.MEdit.Name = "MEdit";
-            this.MEdit.Size = new System.Drawing.Size(150, 22);
+            this.MEdit.Size = new System.Drawing.Size(180, 22);
             this.MEdit.Text = "Править";
             this.MEdit.Click += new System.EventHandler(this.Edit_Click);
             // 
             // MEditAll
             // 
             this.MEditAll.Name = "MEditAll";
-            this.MEditAll.Size = new System.Drawing.Size(150, 22);
+            this.MEditAll.Size = new System.Drawing.Size(180, 22);
             this.MEditAll.Text = "Править всё";
             this.MEditAll.Click += new System.EventHandler(this.EditAll_Click);
+            // 
+            // Move
+            // 
+            this.Move.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Up,
+            this.Down,
+            this.NomberString});
+            this.Move.Name = "Move";
+            this.Move.Size = new System.Drawing.Size(180, 22);
+            this.Move.Text = "Переместить";
             // 
             // Up
             // 
             this.Up.Name = "Up";
-            this.Up.Size = new System.Drawing.Size(150, 22);
+            this.Up.Size = new System.Drawing.Size(180, 22);
             this.Up.Text = "Вверх";
             this.Up.Click += new System.EventHandler(this.Up_Click);
             // 
             // Down
             // 
             this.Down.Name = "Down";
-            this.Down.Size = new System.Drawing.Size(150, 22);
+            this.Down.Size = new System.Drawing.Size(180, 22);
             this.Down.Text = "Вниз";
             this.Down.Click += new System.EventHandler(this.Down_Click);
+            // 
+            // NomberString
+            // 
+            this.NomberString.Name = "NomberString";
+            this.NomberString.Size = new System.Drawing.Size(180, 22);
+            this.NomberString.Text = "В строку";
+            this.NomberString.Click += new System.EventHandler(this.NomberString_Click);
             // 
             // Remove
             // 
             this.Remove.Name = "Remove";
-            this.Remove.Size = new System.Drawing.Size(150, 22);
+            this.Remove.Size = new System.Drawing.Size(180, 22);
             this.Remove.Text = "Удалить";
             this.Remove.Click += new System.EventHandler(this.Remove_Click);
             // 
@@ -521,8 +557,6 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem Add;
         private System.Windows.Forms.ToolStripMenuItem MEdit;
         private System.Windows.Forms.ToolStripMenuItem MEditAll;
-        private System.Windows.Forms.ToolStripMenuItem Up;
-        private System.Windows.Forms.ToolStripMenuItem Down;
         private System.Windows.Forms.ToolStripMenuItem Remove;
         private System.Windows.Forms.ToolStripMenuItem ButtonSortByTypes;
         private System.Windows.Forms.ToolStripMenuItem ButtonButtonSortByRooms;
@@ -530,8 +564,6 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem CAdd;
         private System.Windows.Forms.ToolStripMenuItem CEdit;
         private System.Windows.Forms.ToolStripMenuItem CEditAll;
-        private System.Windows.Forms.ToolStripMenuItem CUp;
-        private System.Windows.Forms.ToolStripMenuItem CDown;
         private System.Windows.Forms.ToolStripMenuItem CRemove;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Date;
@@ -549,6 +581,14 @@ namespace DevList
         private System.Windows.Forms.ToolStripMenuItem Columns;
         private System.Windows.Forms.ToolStripMenuItem CommonReport;
         private System.Windows.Forms.StatusStrip Errors;
+        private System.Windows.Forms.ToolStripMenuItem Move;
+        private System.Windows.Forms.ToolStripMenuItem Up;
+        private System.Windows.Forms.ToolStripMenuItem Down;
+        private System.Windows.Forms.ToolStripMenuItem NomberString;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ContextUp;
+        private System.Windows.Forms.ToolStripMenuItem ContextDown;
+        private System.Windows.Forms.ToolStripMenuItem CNomberString;
     }
 }
 
