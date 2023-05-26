@@ -33,6 +33,8 @@ namespace DevList
             for (int i = 0; i < visibleColumns.Length; i++) { visibleColumns[i] = true; }
         }
 
+        void BaseForm_Load(object sender, EventArgs e) { TableOutput(dataBase.Table); Log.ErrorHandler($"[   ] {Text} - База загружена\r\n"); }
+
         void Table_MouseDown(object sender, MouseEventArgs e)
         {
             tableParameters.Coordinates = Table.HitTest(e.X, e.Y);
@@ -46,8 +48,6 @@ namespace DevList
                 tableParameters.Id = int.Parse(Table.Items[tableParameters.Line].SubItems[0].Text) - 1;
             }
         }
-
-        void BaseForm_Load(object sender, EventArgs e) { TableOutput(dataBase.Table); Log.ErrorHandler($"[   ] {Text} - База загружена\r\n"); }
 
         void TableOutput(List<string[]> table, bool recalculate = true)
         {

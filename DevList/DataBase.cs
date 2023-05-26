@@ -14,15 +14,13 @@ namespace DevList
 
         public bool Change = false;
 
-        public DataBase(string path)
-        {
-            Path = path;
+        public DataBase(string path) { Path = path; Read(Path); }
 
+        public void Read(string path)
+        {
             foreach (string str in File.ReadAllLines(path))
             {
-                str.TrimEnd('\r'); str.TrimEnd('\n');
-
-                string[] patternString = new string[13];
+                string[] patternString = new string[str.Split(',').Length];
 
                 for (int i = 0; i < patternString.Length; i++) { patternString[i] = string.Empty; }
 
