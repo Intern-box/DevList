@@ -6,18 +6,11 @@ namespace DevList
 {
     public partial class PartsSearchEditWindow : BaseSearchEdit
     {
-        INIFile iniFile;
+        public INIFile iniFile;
 
-        public PartsSearchEditWindow(string head, INIFile iniFile)
-        {
-            InitializeComponent();
+        public PartsSearchEditWindow(string head, INIFile iniFile) : this(null, null, null) { }
 
-            Text = head;
-
-            this.iniFile = iniFile;
-        }
-
-        public PartsSearchEditWindow(string head, INIFile iniFile, string[] input)
+        public PartsSearchEditWindow(string head, INIFile iniFile, string[] str)
         {
             InitializeComponent();
 
@@ -25,16 +18,16 @@ namespace DevList
 
             this.iniFile = iniFile;
 
-            Number.Text = input[1];
-            Date.Text = input[2];
-            CPU.Text = input[3];
-            Mainboard.Text = input[4];
-            RAM.Text = input[5];
-            Disk.Text = input[6];
-            Videocard.Text = input[7];
-            Power.Text = input[8];
-            Case.Text = input[9];
-            Year.Text = input[10];
+            Number.Text = str[1];
+            Date.Text = str[2];
+            CPU.Text = str[3];
+            Mainboard.Text = str[4];
+            RAM.Text = str[5];
+            Disk.Text = str[6];
+            Videocard.Text = str[7];
+            Power.Text = str[8];
+            Case.Text = str[9];
+            Year.Text = str[10];
         }
 
         private void PartsSearchEditWindow_Load(object sender, EventArgs e)

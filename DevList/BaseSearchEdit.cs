@@ -6,7 +6,7 @@ namespace DevList
     {
         public string[] Result = new string[13];
 
-        public bool Execute = false;
+        public bool Execute;
 
         public bool AddInEnd;
     }

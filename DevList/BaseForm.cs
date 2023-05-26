@@ -173,28 +173,22 @@ namespace DevList
             {
                 if (tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
                 {
-                    window =
+                    if (Text == head) { window = new BaseSearchEditWindow("DevList - Добавить", iniFile, dataBase.Table[tableParameters.Line]); }
 
-                    Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile, dataBase.Table[tableParameters.Line])
-
-                    : new PartsSearchEditWindow("DevList - Добавить", iniFile, dataBase.Table[tableParameters.Line]);
+                    else { window = new PartsSearchEditWindow("DevList - Добавить", iniFile, dataBase.Table[tableParameters.Line]); }
                 }
                 else
                 {
-                    window =
+                    if (Text == head) { window = new BaseSearchEditWindow("DevList - Добавить", iniFile); }
 
-                    Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile)
-
-                    : new PartsSearchEditWindow("DevList - Добавить", iniFile);
+                    else { window = new PartsSearchEditWindow("DevList - Добавить", iniFile); }
                 }
             }
             else
             {
-                window =
+                if (Text == head) { window = new BaseSearchEditWindow("DevList - Добавить", iniFile); }
 
-                Text == head ? (BaseSearchEdit)new BaseSearchEditWindow("DevList - Добавить", iniFile)
-
-                : new PartsSearchEditWindow("DevList - Добавить", iniFile);
+                else { window = new PartsSearchEditWindow("DevList - Добавить", iniFile); }
             }
 
             window.ShowDialog();

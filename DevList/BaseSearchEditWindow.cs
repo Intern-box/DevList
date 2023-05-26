@@ -6,16 +6,9 @@ namespace DevList
 {
     public partial class BaseSearchEditWindow : BaseSearchEdit
     {
-        INIFile iniFile;
+        public INIFile iniFile;
 
-        public BaseSearchEditWindow(string head, INIFile iniFile)
-        {
-            InitializeComponent();
-
-            Text = head;
-
-            this.iniFile = iniFile;
-        }
+        public BaseSearchEditWindow(string head, INIFile iniFile) : this (null, null, null) { }
 
         public BaseSearchEditWindow(string head, INIFile iniFile, string[] str)
         {
@@ -152,15 +145,9 @@ namespace DevList
             Names.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ChangeManPlus_Click(object sender, EventArgs e)
-        {
-            EmployeesPlus_Click(sender, e);
-        }
+        private void ChangeManPlus_Click(object sender, EventArgs e) { EmployeesPlus_Click(sender, e); }
 
-        private void ChangeManMinus_Click(object sender, EventArgs e)
-        {
-            EmployeesMinus_Click(sender, e);
-        }
+        private void ChangeManMinus_Click(object sender, EventArgs e) { EmployeesMinus_Click(sender, e); }
 
         private void DevicesPlus_Click(object sender, EventArgs e)
         {
