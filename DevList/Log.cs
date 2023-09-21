@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace DevList
+namespace LogSpace
 {
     public static class Log
     {

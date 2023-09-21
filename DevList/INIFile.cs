@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using DevList;
+using LogSpace;
 
 namespace INIFileSpace
 {
