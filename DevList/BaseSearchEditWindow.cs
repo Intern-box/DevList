@@ -8,7 +8,7 @@ namespace DevList
     {
         public INIFile iniFile;
 
-        public BaseSearchEditWindow(string head, INIFile iniFile) : this (null, null, null) { }
+        public BaseSearchEditWindow(string head, INIFile iniFile) : this (head, iniFile, null) { }
 
         public BaseSearchEditWindow(string head, INIFile iniFile, string[] str)
         {
@@ -18,18 +18,21 @@ namespace DevList
             
             this.iniFile = iniFile;
 
-            Date.Text = str[1];
-            Number.Text = str[2];
-            Rooms.Text = str[3];
-            Employees.Text = str[4];
-            Names.Text = str[5];
-            Devices.Text = str[6];
-            Status.Text = str[7];
-            Inventory.Text = str[8];
-            Comment.Text = str[9];
-            Hostname.Text = str[10];
-            IP.Text = str[11];
-            ChangeMan.Text = str[12];
+            if (str != null)
+            {
+                Date.Text = str[1];
+                Number.Text = str[2];
+                Rooms.Text = str[3];
+                Employees.Text = str[4];
+                Names.Text = str[5];
+                Devices.Text = str[6];
+                Status.Text = str[7];
+                Inventory.Text = str[8];
+                Comment.Text = str[9];
+                Hostname.Text = str[10];
+                IP.Text = str[11];
+                ChangeMan.Text = str[12];
+            }
         }
 
         private void BaseSearchEditWindow_Load(object sender, EventArgs e)

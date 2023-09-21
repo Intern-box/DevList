@@ -8,7 +8,7 @@ namespace DevList
     {
         public INIFile iniFile;
 
-        public PartsSearchEditWindow(string head, INIFile iniFile) : this(null, null, null) { }
+        public PartsSearchEditWindow(string head, INIFile iniFile) : this(head, iniFile, null) { }
 
         public PartsSearchEditWindow(string head, INIFile iniFile, string[] str)
         {
@@ -18,16 +18,19 @@ namespace DevList
 
             this.iniFile = iniFile;
 
-            Number.Text = str[1];
-            Date.Text = str[2];
-            CPU.Text = str[3];
-            Mainboard.Text = str[4];
-            RAM.Text = str[5];
-            Disk.Text = str[6];
-            Videocard.Text = str[7];
-            Power.Text = str[8];
-            Case.Text = str[9];
-            Year.Text = str[10];
+            if (str != null)
+            {
+                Number.Text = str[1];
+                Date.Text = str[2];
+                CPU.Text = str[3];
+                Mainboard.Text = str[4];
+                RAM.Text = str[5];
+                Disk.Text = str[6];
+                Videocard.Text = str[7];
+                Power.Text = str[8];
+                Case.Text = str[9];
+                Year.Text = str[10];
+            }
         }
 
         private void PartsSearchEditWindow_Load(object sender, EventArgs e)

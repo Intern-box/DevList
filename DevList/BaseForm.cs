@@ -49,6 +49,19 @@ namespace DevList
             }
         }
 
+        void Table_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            Table.ListViewItemSorter = new ListViewItemComparer(e.Column, tableParameters.SortingColumns);
+
+            if (tableParameters.SortingColumns) { tableParameters.SortingColumns = false; } else { tableParameters.SortingColumns = true; }
+
+            tableParameters.ColumnAlign = e.Column;
+
+            Filter.Visible = true;
+
+            tableParameters.SearchMode = "Column";
+        }
+
         void TableOutput(List<string[]> table, bool recalculate = true)
         {
             Table.Visible = false;
@@ -66,19 +79,6 @@ namespace DevList
             for (int i = 0; i < visibleColumns.Length; i++) { if (!visibleColumns[i]) { Table.Columns[i].Width = 0; } }
 
             Table.Visible = true;
-        }
-
-        void Table_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            Table.ListViewItemSorter = new ListViewItemComparer(e.Column, tableParameters.SortingColumns);
-
-            if (tableParameters.SortingColumns) { tableParameters.SortingColumns = false; } else { tableParameters.SortingColumns = true; }
-
-            tableParameters.ColumnAlign = e.Column;
-
-            Filter.Visible = true;
-
-            tableParameters.SearchMode = "Column";
         }
 
         void Create_Click(object sender, EventArgs e)
@@ -169,7 +169,7 @@ namespace DevList
         {
             BaseSearchEdit window;
 
-            if (tableParameters.Coordinates != null)
+            if (tableParameters.Column != null)
             {
                 if (tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
                 {
@@ -455,11 +455,9 @@ namespace DevList
             {
                 tableParameters.Coordinates = Table.HitTest(0, 0);
 
-                search = Text == head || Text == "DevList - История" ?
+                if (Text == head || Text == "DevList - История") { search = new BaseSearchEditWindow("DevList - Поиск", iniFile); }
 
-                (BaseSearchEdit)new BaseSearchEditWindow("DevList - Поиск", iniFile)
-
-                : new PartsSearchEditWindow("DevList - Поиск", iniFile);
+                else { search = new PartsSearchEditWindow("DevList - Поиск", iniFile); }
             }
             else
             {
@@ -467,19 +465,15 @@ namespace DevList
 
                 if (saveCoordinates >= 0)
                 {
-                    search = Text == head || Text == "DevList - История" ?
+                    if (Text == head || Text == "DevList - История") { search = new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]); }
 
-                    (BaseSearchEdit)new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]) :
-
-                    new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]);
+                    else { search = new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]); }
                 }
                 else
                 {
-                    search = Text == head || Text == "DevList - История" ?
+                    if (Text == head || Text == "DevList - История") { search = (BaseSearchEdit)new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]); }
 
-                    (BaseSearchEdit)new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]) :
-
-                    new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]);
+                    else { search = new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]); }
                 }
             }
 
