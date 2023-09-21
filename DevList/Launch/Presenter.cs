@@ -1,6 +1,8 @@
 ﻿using LaunchModelSpace;
 using LaunchViewSpace;
 using System.Windows.Forms;
+using INIFileSpace;
+using DevList;
 
 namespace LaunchPresenterSpace
 {
@@ -24,23 +26,34 @@ namespace LaunchPresenterSpace
             Hide();
 
             launchView.ShowDialog();
+
+            switch (launchView.result)
+            {
+                case "download": Download(); break;
+
+                case "create": Create(); break;
+
+                case "open": Open(); break;
+            }
+
+            Close();
         }
 
-        //void Download(object sender, EventArgs e) { launchModel.Download(); Start(launchModel.iniFile); }
+        void Download() { launchModel.Download(); Start(launchModel.iniFile); }
 
-        //void Create(object sender, EventArgs e) { launchModel.Create(); Start(launchModel.iniFile); }
+        void Create() { launchModel.Create(); Start(launchModel.iniFile); }
 
-        //void Open(object sender, EventArgs e) { launchModel.Open(); Start(launchModel.iniFile); }
+        void Open() { launchModel.Open(); Start(launchModel.iniFile); }
 
-        //public void Start(INIFile iniFile)
-        //{
-        //    Hide();
+        public void Start(INIFile iniFile)
+        {
+            Hide();
 
-        //    BaseForm baseForm = new BaseForm(iniFile, new DataBase(iniFile.Base));
+            BaseForm baseForm = new BaseForm(iniFile, new DataBase(iniFile.Base));
 
-        //    baseForm.Text = "DevList 6.8.5 - Главное окно";
+            baseForm.Text = "DevList 6.9 - Главное окно";
 
-        //    baseForm.ShowDialog();
-        //}
+            baseForm.ShowDialog();
+        }
     }
 }

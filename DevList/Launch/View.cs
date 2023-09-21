@@ -5,12 +5,14 @@ namespace LaunchViewSpace
 {
     public partial class LaunchView : Form
     {
+        public string result;
+
         public LaunchView() { InitializeComponent(); }
 
-        public void Download_Click(object sender, EventArgs e) { }
+        void Download_Click(object sender, EventArgs e) { result = "download"; Close(); }
 
-        public void Create_Click(object sender, EventArgs e) { }
+        void Create_Click(object sender, EventArgs e) { result = "create"; Close(); }
 
-        public void Open_Click(object sender, EventArgs e) { }
+        void Open_Click(object sender, EventArgs e) { result = "open"; Close(); }
     }
 }

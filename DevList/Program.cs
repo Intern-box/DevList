@@ -18,9 +18,7 @@ namespace DevList
 
             Application.SetCompatibleTextRenderingDefault(false);
 
-            LaunchPresenter launchPresenter = new LaunchPresenter(new LaunchModel(), new LaunchView());
-
-            Application.Run(launchPresenter);
+            Application.Run(new LaunchPresenter(new LaunchModel(), new LaunchView()));
         }
     }
 }
