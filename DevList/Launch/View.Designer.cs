@@ -1,7 +1,7 @@
 ﻿
-namespace DevList
+namespace LaunchViewSpace
 {
-    partial class LaunchForm
+    partial class LaunchView
     {
         /// <summary>
         /// Required designer variable.
@@ -29,23 +29,23 @@ namespace DevList
         /// </summary>
         private void InitializeComponent()
         {
-            this.Launch = new System.Windows.Forms.Button();
+            this.Download = new System.Windows.Forms.Button();
             this.Create = new System.Windows.Forms.Button();
             this.Error = new System.Windows.Forms.Label();
             this.Open = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Launch
+            // Download
             // 
-            this.Launch.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Launch.Location = new System.Drawing.Point(12, 12);
-            this.Launch.Name = "Launch";
-            this.Launch.Size = new System.Drawing.Size(100, 50);
-            this.Launch.TabIndex = 9;
-            this.Launch.TabStop = false;
-            this.Launch.Text = "Загрузить";
-            this.Launch.UseVisualStyleBackColor = true;
-            this.Launch.Click += new System.EventHandler(this.Launch_Click);
+            this.Download.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Download.Location = new System.Drawing.Point(12, 12);
+            this.Download.Name = "Download";
+            this.Download.Size = new System.Drawing.Size(100, 50);
+            this.Download.TabIndex = 9;
+            this.Download.TabStop = false;
+            this.Download.Text = "Загрузить";
+            this.Download.UseVisualStyleBackColor = true;
+            this.Download.Click += new System.EventHandler(this.Download_Click);
             // 
             // Create
             // 
@@ -84,7 +84,7 @@ namespace DevList
             this.Open.UseVisualStyleBackColor = true;
             this.Open.Click += new System.EventHandler(this.Open_Click);
             // 
-            // LaunchForm
+            // LaunchView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -93,21 +93,20 @@ namespace DevList
             this.Controls.Add(this.Open);
             this.Controls.Add(this.Error);
             this.Controls.Add(this.Create);
-            this.Controls.Add(this.Launch);
+            this.Controls.Add(this.Download);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "LaunchForm";
+            this.Name = "LaunchView";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DevList 6.8.5 - Загрузчик";
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormaZapuska_KeyUp);
+            this.Text = "DevList 6.9 - Загрузчик";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button Launch;
+        private System.Windows.Forms.Button Download;
         private System.Windows.Forms.Button Create;
         private System.Windows.Forms.Label Error;
         private System.Windows.Forms.Button Open;

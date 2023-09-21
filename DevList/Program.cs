@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LaunchModelSpace;
+using LaunchViewSpace;
+using LaunchPresenterSpace;
 
 namespace DevList
 {
@@ -15,8 +15,12 @@ namespace DevList
         static void Main()
         {
             Application.EnableVisualStyles();
+
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LaunchForm());
+
+            LaunchPresenter launchPresenter = new LaunchPresenter(new LaunchModel(), new LaunchView());
+
+            Application.Run(launchPresenter);
         }
     }
 }
