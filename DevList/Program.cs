@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using LaunchModelSpace;
 using LaunchViewSpace;
-using LaunchPresenterSpace;
 
 namespace DevList
 {
@@ -18,7 +16,7 @@ namespace DevList
 
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new LaunchPresenter(new LaunchModel(), new LaunchView()));
+            Application.Run(new LaunchView());
         }
     }
 }

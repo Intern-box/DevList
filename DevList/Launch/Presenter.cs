@@ -3,6 +3,9 @@ using LaunchViewSpace;
 using System.Windows.Forms;
 using INIFileSpace;
 using DevList;
+using BaseFormModelSpace;
+using BaseFormViewSpace;
+using BaseFormPresenterSpace;
 
 namespace LaunchPresenterSpace
 {
@@ -49,11 +52,9 @@ namespace LaunchPresenterSpace
         {
             Hide();
 
-            BaseForm baseForm = new BaseForm(iniFile, new DataBase(iniFile.Base));
+            BaseFormPresenter baseFormPresenter = new BaseFormPresenter(new BaseFormModel(iniFile, new DataBase(iniFile.Base)), new BaseFormView());
 
-            baseForm.Text = "DevList 6.9 - Главное окно";
-
-            baseForm.ShowDialog();
+            baseFormPresenter.ShowDialog();
         }
     }
 }
