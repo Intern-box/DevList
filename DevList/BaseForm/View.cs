@@ -7,16 +7,15 @@ using INIFileSpace;
 using LogSpace;
 using DevList;
 using BaseFormModelSpace;
+using BaseFormPresenterSpace;
 
 namespace BaseFormViewSpace
 {
     public partial class BaseFormView : Form
     {
-        INIFile iniFile;
+        public INIFile iniFile;
 
-        DataBase dataBase;
-
-        string head = "DevList 6.9 - Главное окно";
+        BaseFormPresenter baseFormPresenter;
 
         //    bool[] visibleColumns;
 
@@ -35,10 +34,10 @@ namespace BaseFormViewSpace
 
         void BaseForm_Load(object sender, EventArgs e)
         {
-            dataBase = new DataBase(iniFile.Base);
+            baseFormPresenter = new BaseFormPresenter(this);
 
             //TableOutput(dataBase.Table);
-            
+
             //Log.ErrorHandler($"[   ] {Text} - База загружена\r\n");
         }
 

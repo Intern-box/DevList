@@ -1,21 +1,25 @@
 ﻿using BaseFormModelSpace;
 using BaseFormViewSpace;
-using INIFileSpace;
-using System.Windows.Forms;
+using DataBaseSpace;
 
 namespace BaseFormPresenterSpace
 {
-    public class BaseFormPresenter : Form
+    public class BaseFormPresenter
     {
         BaseFormModel baseFormModel;
 
         BaseFormView baseFormView;
 
-        public BaseFormPresenter(BaseFormModel baseFormModel, BaseFormView baseFormView)
+        public BaseFormPresenter(BaseFormView baseFormView)
         {
-            this.baseFormModel = baseFormModel;
-
             this.baseFormView = baseFormView;
+
+            Run();
+        }
+
+        void Run()
+        {
+            baseFormModel = new BaseFormModel(new DataBase(baseFormView.iniFile.Base));
         }
     }
 }

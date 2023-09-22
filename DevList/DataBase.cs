@@ -5,7 +5,7 @@ using System.Data;
 using System.IO;
 using System.ComponentModel;
 
-namespace DevList
+namespace DataBaseSpace
 {
     public class DataBase
     {
