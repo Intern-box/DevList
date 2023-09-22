@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using System.IO;
+using System.ComponentModel;
 
 namespace DevList
 {
@@ -10,7 +11,7 @@ namespace DevList
     {
         public string Path;
 
-        public List<string[]> Table = new List<string[]>();
+        public BindingList<string[]> Table = new BindingList<string[]>();
 
         public bool Change = false;
 

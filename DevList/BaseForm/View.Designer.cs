@@ -1,7 +1,7 @@
 ﻿
-namespace BaseFormSpace
+namespace BaseFormViewSpace
 {
-    partial class BaseForm
+    partial class BaseFormView
     {
         /// <summary>
         /// Обязательная переменная конструктора.
