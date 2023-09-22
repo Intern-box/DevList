@@ -1,5 +1,5 @@
 ﻿
-namespace DevList
+namespace BaseFormSpace
 {
     partial class BaseForm
     {

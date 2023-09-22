@@ -5,8 +5,9 @@ using System.IO;
 using System.Windows.Forms;
 using INIFileSpace;
 using LogSpace;
+using DevList;
 
-namespace DevList
+namespace BaseFormSpace
 {
     public partial class BaseForm : Form
     {
