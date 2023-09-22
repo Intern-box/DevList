@@ -12,7 +12,11 @@ namespace BaseFormViewSpace
 {
     public partial class BaseFormView : Form
     {
-        //    string head = "DevList 6.9 - Главное окно";
+        INIFile iniFile;
+
+        DataBase dataBase;
+
+        string head = "DevList 6.9 - Главное окно";
 
         //    bool[] visibleColumns;
 
@@ -20,6 +24,8 @@ namespace BaseFormViewSpace
 
         public BaseFormView(INIFile iniFile)
         {
+            this.iniFile = iniFile;
+
             InitializeComponent();
 
             //visibleColumns = new bool[Table.Columns.Count];
@@ -27,7 +33,14 @@ namespace BaseFormViewSpace
             //for (int i = 0; i < visibleColumns.Length; i++) { visibleColumns[i] = true; }
         }
 
-        //    void BaseForm_Load(object sender, EventArgs e) { TableOutput(dataBase.Table); Log.ErrorHandler($"[   ] {Text} - База загружена\r\n"); }
+        void BaseForm_Load(object sender, EventArgs e)
+        {
+            dataBase = new DataBase(iniFile.Base);
+
+            //TableOutput(dataBase.Table);
+            
+            //Log.ErrorHandler($"[   ] {Text} - База загружена\r\n");
+        }
 
         //    void Table_MouseDown(object sender, MouseEventArgs e)
         //    {
