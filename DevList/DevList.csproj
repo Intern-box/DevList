@@ -56,9 +56,7 @@
     </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="Launch\Model.cs" />
-    <Compile Include="Launch\Presenter.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Launch\Presenter.cs" />
     <Compile Include="UpDownForm.cs">
       <SubType>Form</SubType>
     </Compile>

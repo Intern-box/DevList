@@ -1,36 +1,20 @@
 ﻿using LaunchModelSpace;
-using LaunchViewSpace;
-using System.Windows.Forms;
 using INIFileSpace;
-using DevList;
-using BaseFormModelSpace;
 using BaseFormViewSpace;
-using BaseFormPresenterSpace;
 
 namespace LaunchPresenterSpace
 {
-    public class LaunchPresenter : Form
+    public class LaunchPresenter
     {
-        LaunchModel launchModel;
+        LaunchModel launchModel = new LaunchModel();
 
-        LaunchView launchView;
+        public string result;
 
-        public LaunchPresenter(LaunchModel launchModel, LaunchView launchView)
-        {
-            this.launchView = launchView;
-
-            this.launchModel = launchModel;
-
-            Run();
-        }
+        public LaunchPresenter() { Run(); }
 
         void Run()
         {
-            Hide();
-
-            launchView.ShowDialog();
-
-            switch (launchView.result)
+            switch (result)
             {
                 case "download": Download(); break;
 
@@ -38,8 +22,6 @@ namespace LaunchPresenterSpace
 
                 case "open": Open(); break;
             }
-
-            Close();
         }
 
         void Download() { launchModel.Download(); Start(launchModel.iniFile); }
@@ -50,11 +32,9 @@ namespace LaunchPresenterSpace
 
         public void Start(INIFile iniFile)
         {
-            Hide();
+            BaseFormView baseFormView = new BaseFormView(iniFile);
 
-            BaseFormPresenter baseFormPresenter = new BaseFormPresenter(new BaseFormModel(iniFile, new DataBase(iniFile.Base)), new BaseFormView());
-
-            baseFormPresenter.ShowDialog();
+            baseFormView.ShowDialog();
         }
     }
 }

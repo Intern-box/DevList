@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Windows.Forms;
+using LaunchPresenterSpace;
 
 namespace LaunchViewSpace
 {
     public partial class LaunchView : Form
     {
-        public string result;
+        LaunchPresenter launchPresenter;
 
-        public LaunchView() { InitializeComponent(); }
+        public LaunchView()
+        {
+            launchPresenter = new LaunchPresenter();
 
-        void Download_Click(object sender, EventArgs e) { result = "download"; Close(); }
+            InitializeComponent();
+        }
 
-        void Create_Click(object sender, EventArgs e) { result = "create"; Close(); }
+        void Download_Click(object sender, EventArgs e) { launchPresenter.result = "download"; Close(); }
 
-        void Open_Click(object sender, EventArgs e) { result = "open"; Close(); }
+        void Create_Click(object sender, EventArgs e) { launchPresenter.result = "create"; Close(); }
+
+        void Open_Click(object sender, EventArgs e) { launchPresenter.result = "open"; Close(); }
     }
 }
