@@ -10,9 +10,9 @@ namespace LaunchPresenterSpace
 
         public string result;
 
-        public LaunchPresenter() { Run(); }
+        public LaunchPresenter() { Load(); }
 
-        void Run()
+        void Load()
         {
             switch (result)
             {
