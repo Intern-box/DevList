@@ -8,8 +8,6 @@ namespace LaunchPresenterSpace
     {
         LaunchModel launchModel = new LaunchModel();
 
-        public string result;
-
         public LaunchPresenter() { Load(); }
 
         void Load()
