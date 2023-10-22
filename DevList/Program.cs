@@ -17,8 +17,6 @@ namespace DevList
             Application.SetCompatibleTextRenderingDefault(false);
 
             Application.Run(new LaunchView());
-
-            //проверка
         }
     }
 }
