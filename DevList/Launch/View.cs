@@ -15,10 +15,10 @@ namespace LaunchViewSpace
             InitializeComponent();
         }
 
-        public void Download_Click(object sender, EventArgs e) { launchPresenter.result = "download"; Close(); }
+        public void Download_Click(object sender, EventArgs e) { Hide(); launchPresenter.Start("Download"); Close(); }
 
-        public void Create_Click(object sender, EventArgs e) { launchPresenter.result = "create"; Close(); }
+        public void Create_Click(object sender, EventArgs e) { Hide(); launchPresenter.Start("Create"); Close(); }
 
-        public void Open_Click(object sender, EventArgs e) { launchPresenter.result = "open"; Close(); }
+        public void Open_Click(object sender, EventArgs e) { Hide(); launchPresenter.Start("Open"); Close(); }
     }
 }

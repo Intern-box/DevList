@@ -1,5 +1,4 @@
 ﻿using LaunchModelSpace;
-using INIFileSpace;
 using BaseFormViewSpace;
 
 namespace LaunchPresenterSpace
@@ -8,29 +7,27 @@ namespace LaunchPresenterSpace
     {
         LaunchModel launchModel = new LaunchModel();
 
-        public LaunchPresenter() { Load(); }
-
-        void Load()
+        public void Start(string mode)
         {
-            switch (result)
+            switch (mode)
             {
-                case "download": Download(); break;
+                case "Download": Download(); break;
 
-                case "create": Create(); break;
+                case "Create": Create(); break;
 
-                case "open": Open(); break;
+                case "Open": Open(); break;
             }
         }
 
-        void Download() { launchModel.Download(); Start(launchModel.iniFile); }
+        void Download() { launchModel.Download(); BaseFormLoad(); }
 
-        void Create() { launchModel.Create(); Start(launchModel.iniFile); }
+        void Create() { launchModel.Create(); BaseFormLoad(); }
 
-        void Open() { launchModel.Open(); Start(launchModel.iniFile); }
+        void Open() { launchModel.Open(); BaseFormLoad(); }
 
-        public void Start(INIFile iniFile)
+        public void BaseFormLoad()
         {
-            BaseFormView baseFormView = new BaseFormView(iniFile);
+            BaseFormView baseFormView = new BaseFormView(launchModel.iniFile);
 
             baseFormView.ShowDialog();
         }

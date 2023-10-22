@@ -91,9 +91,9 @@ namespace DevList
                 ListsBox.Items.AddRange(list.Content);
             }
 
-            DataBase dataBase = new DataBase(iniFile.Base);
+            //DataBase dataBase = new DataBase(iniFile.Base);
 
-            if (dataBase.Table.Count > 0) { ListsBox.Text = dataBase.Table[Id][Column]; }
+            //if (dataBase.Table.Count > 0) { ListsBox.Text = dataBase.Table[Id][Column]; }
         }
 
         private void Execute_Click(object sender, EventArgs e) { Result = ListsBox.Text; Close(); }
