@@ -1,7 +1,7 @@
 ﻿
-namespace DevList
+namespace SearchEditViewSpace
 {
-    partial class BaseSearchEditWindow
+    partial class SearchEditView
     {
         /// <summary>
         /// Required designer variable.

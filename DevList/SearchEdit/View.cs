@@ -2,16 +2,23 @@
 using System.IO;
 using System.Windows.Forms;
 using INIFileSpace;
+using DevList;
 
-namespace DevList
+namespace SearchEditViewSpace
 {
-    public partial class BaseSearchEditWindow : BaseSearchEdit
+    public partial class SearchEditView : Form
     {
+        public string[] Result = new string[13];
+
+        public bool Execute;
+
+        public bool AddInEnd;
+
         public INIFile iniFile;
 
-        public BaseSearchEditWindow(string head, INIFile iniFile) : this (head, iniFile, null) { }
+        public SearchEditView(string head, INIFile iniFile) : this (head, iniFile, null) { }
 
-        public BaseSearchEditWindow(string head, INIFile iniFile, string[] str)
+        public SearchEditView(string head, INIFile iniFile, string[] str)
         {
             InitializeComponent();
 

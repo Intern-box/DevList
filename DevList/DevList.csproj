@@ -53,9 +53,6 @@
   <ItemGroup>
     <Compile Include="BaseForm\Model.cs" />
     <Compile Include="BaseForm\Presenter.cs" />
-    <Compile Include="BaseSearchEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="Launch\Model.cs" />
     <Compile Include="Launch\Presenter.cs" />
@@ -72,11 +69,11 @@
     <Compile Include="PartsSearchEditWindow.Designer.cs">
       <DependentUpon>PartsSearchEditWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseSearchEditWindow.cs">
+    <Compile Include="SearchEdit\View.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaseSearchEditWindow.Designer.cs">
-      <DependentUpon>BaseSearchEditWindow.cs</DependentUpon>
+    <Compile Include="SearchEdit\View.Designer.cs">
+      <DependentUpon>View.cs</DependentUpon>
     </Compile>
     <Compile Include="INIFile.cs" />
     <Compile Include="Columns.cs">
@@ -132,8 +129,8 @@
     <EmbeddedResource Include="PartsSearchEditWindow.resx">
       <DependentUpon>PartsSearchEditWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaseSearchEditWindow.resx">
-      <DependentUpon>BaseSearchEditWindow.cs</DependentUpon>
+    <EmbeddedResource Include="SearchEdit\View.resx">
+      <DependentUpon>View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Columns.resx">
       <DependentUpon>Columns.cs</DependentUpon>

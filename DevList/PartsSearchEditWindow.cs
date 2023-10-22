@@ -5,8 +5,14 @@ using INIFileSpace;
 
 namespace DevList
 {
-    public partial class PartsSearchEditWindow : BaseSearchEdit
+    public partial class PartsSearchEditWindow : Form
     {
+        public string[] Result = new string[13];
+
+        public bool Execute;
+
+        public bool AddInEnd;
+
         public INIFile iniFile;
 
         public PartsSearchEditWindow(string head, INIFile iniFile) : this(head, iniFile, null) { }
