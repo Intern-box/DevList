@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace DevList
+namespace ListSpace
 {
     public class List
     {

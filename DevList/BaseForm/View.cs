@@ -99,6 +99,8 @@ namespace BaseFormViewSpace
         // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
         void Add_Click(object sender, EventArgs e)
         {
+            baseFormPresenter.Events("Add");
+
             //BaseSearchEdit window;
 
             //if (tableParameters.Column != null)

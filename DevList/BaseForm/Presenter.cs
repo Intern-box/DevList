@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using INIFileSpace;
 using System.IO;
+using SearchEditViewSpace;
 
 namespace BaseFormPresenterSpace
 {
@@ -37,6 +38,8 @@ namespace BaseFormPresenterSpace
                 case "Save": Save(); break;
 
                 case "SaveAs": SaveAs(); break;
+
+                case "Add": Add(); break;
             }
         }
 
@@ -129,6 +132,13 @@ namespace BaseFormPresenterSpace
                 System.IO.File.Copy(baseFormView.iniFile.Set, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Set)), true);
                 System.IO.File.Copy(baseFormView.iniFile.Parts, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Parts)), true);
             }
+        }
+
+        void Add()
+        {
+            SearchEditView searchEditView = new SearchEditView(baseFormView.iniFile);
+
+            searchEditView.ShowDialog();
         }
     }
 }

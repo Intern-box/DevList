@@ -66,7 +66,7 @@ namespace SearchEditViewSpace
             this.ButtonNamesMinus = new System.Windows.Forms.Button();
             this.ButtonNamesPlus = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
-            this.addInEnd = new System.Windows.Forms.CheckBox();
+            this.AddInEnd = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // LabelNumber
@@ -446,26 +446,26 @@ namespace SearchEditViewSpace
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
-            // addInEnd
+            // AddInEnd
             // 
-            this.addInEnd.AutoSize = true;
-            this.addInEnd.Checked = true;
-            this.addInEnd.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.addInEnd.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addInEnd.Location = new System.Drawing.Point(15, 373);
-            this.addInEnd.Name = "addInEnd";
-            this.addInEnd.Size = new System.Drawing.Size(143, 18);
-            this.addInEnd.TabIndex = 72;
-            this.addInEnd.Text = "Добавить в конец";
-            this.addInEnd.UseVisualStyleBackColor = true;
+            this.AddInEnd.AutoSize = true;
+            this.AddInEnd.Checked = true;
+            this.AddInEnd.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.AddInEnd.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddInEnd.Location = new System.Drawing.Point(15, 373);
+            this.AddInEnd.Name = "AddInEnd";
+            this.AddInEnd.Size = new System.Drawing.Size(143, 18);
+            this.AddInEnd.TabIndex = 72;
+            this.AddInEnd.Text = "Добавить в конец";
+            this.AddInEnd.UseVisualStyleBackColor = true;
             // 
-            // BaseSearchEditWindow
+            // SearchEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(583, 409);
-            this.Controls.Add(this.addInEnd);
+            this.Controls.Add(this.AddInEnd);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.ButtonNamesMinus);
             this.Controls.Add(this.ButtonNamesPlus);
@@ -507,10 +507,10 @@ namespace SearchEditViewSpace
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BaseSearchEditWindow";
+            this.Name = "SearchEditView";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Load += new System.EventHandler(this.BaseSearchEditWindow_Load);
+            this.Load += new System.EventHandler(this.SearchEditWindow_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BaseSearchEditWindow_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -523,38 +523,38 @@ namespace SearchEditViewSpace
         private System.Windows.Forms.Label LabelNames;
         private System.Windows.Forms.Label LabelDevices;
         private System.Windows.Forms.Label LabelComment;
-        private System.Windows.Forms.TextBox Number;
-        private System.Windows.Forms.TextBox Comment;
-        private System.Windows.Forms.ComboBox Devices;
         private System.Windows.Forms.Button ButtonExecute;
         private System.Windows.Forms.Button ButtonClose;
-        private System.Windows.Forms.ComboBox Rooms;
         private System.Windows.Forms.Label LabelEmployees;
-        private System.Windows.Forms.ComboBox Employees;
         private System.Windows.Forms.Button ButtonDevicesMinus;
         private System.Windows.Forms.Button ButtonDevicesPlus;
         private System.Windows.Forms.Button ButtonEmployeesMinus;
         private System.Windows.Forms.Button ButtonEmployeesPlus;
         private System.Windows.Forms.Button ButtonRoomsMinus;
         private System.Windows.Forms.Button ButtonRoomsPlus;
-        private System.Windows.Forms.TextBox Date;
         private System.Windows.Forms.Label LabelDate;
-        private System.Windows.Forms.ComboBox Status;
         private System.Windows.Forms.Label LabelStatus;
-        private System.Windows.Forms.TextBox Inventory;
         private System.Windows.Forms.Label LabelInventory;
-        private System.Windows.Forms.TextBox Hostname;
         private System.Windows.Forms.Label LabelHostname;
-        private System.Windows.Forms.TextBox IP;
         private System.Windows.Forms.Label LabelIP;
         private System.Windows.Forms.Button ButtonChangeManMinus;
         private System.Windows.Forms.Button ButtonChangeManPlus;
-        private System.Windows.Forms.ComboBox ChangeMan;
         private System.Windows.Forms.Label LabelChangeMan;
-        private System.Windows.Forms.ComboBox Names;
         private System.Windows.Forms.Button ButtonNamesMinus;
         private System.Windows.Forms.Button ButtonNamesPlus;
         private System.Windows.Forms.Button ClearButton;
-        private System.Windows.Forms.CheckBox addInEnd;
+        public System.Windows.Forms.TextBox Number;
+        public System.Windows.Forms.TextBox Comment;
+        public System.Windows.Forms.ComboBox Devices;
+        public System.Windows.Forms.ComboBox Rooms;
+        public System.Windows.Forms.ComboBox Employees;
+        public System.Windows.Forms.TextBox Date;
+        public System.Windows.Forms.ComboBox Status;
+        public System.Windows.Forms.TextBox Inventory;
+        public System.Windows.Forms.TextBox Hostname;
+        public System.Windows.Forms.TextBox IP;
+        public System.Windows.Forms.ComboBox ChangeMan;
+        public System.Windows.Forms.ComboBox Names;
+        public System.Windows.Forms.CheckBox AddInEnd;
     }
 }

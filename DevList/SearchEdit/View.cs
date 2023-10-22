@@ -1,49 +1,28 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using SearchEditPresenterSpace;
+using ListSpace;
 using INIFileSpace;
-using DevList;
 
 namespace SearchEditViewSpace
 {
     public partial class SearchEditView : Form
     {
-        public string[] Result = new string[13];
+        INIFile iniFile;
 
-        public bool Execute;
+        SearchEditPresenter searchEditPresenter;
 
-        public bool AddInEnd;
-
-        public INIFile iniFile;
-
-        public SearchEditView(string head, INIFile iniFile) : this (head, iniFile, null) { }
-
-        public SearchEditView(string head, INIFile iniFile, string[] str)
+        public SearchEditView(INIFile iniFile)
         {
-            InitializeComponent();
-
-            Text = head;
-            
             this.iniFile = iniFile;
 
-            if (str != null)
-            {
-                Date.Text = str[1];
-                Number.Text = str[2];
-                Rooms.Text = str[3];
-                Employees.Text = str[4];
-                Names.Text = str[5];
-                Devices.Text = str[6];
-                Status.Text = str[7];
-                Inventory.Text = str[8];
-                Comment.Text = str[9];
-                Hostname.Text = str[10];
-                IP.Text = str[11];
-                ChangeMan.Text = str[12];
-            }
+            searchEditPresenter = new SearchEditPresenter(this);
+
+            InitializeComponent();
         }
 
-        private void BaseSearchEditWindow_Load(object sender, EventArgs e)
+        private void SearchEditWindow_Load(object sender, EventArgs e)
         {
             List rooms = new List(iniFile.Rooms);
             List devices = new List(iniFile.Devices);
@@ -59,24 +38,6 @@ namespace SearchEditViewSpace
 
         private void Execute_Click(object sender, EventArgs e)
         {
-            Result[0] = string.Empty;
-            Result[1] = Date.Text;
-            Result[2] = Number.Text;
-            Result[3] = Rooms.Text;
-            Result[4] = Employees.Text;
-            Result[5] = Names.Text;
-            Result[6] = Devices.Text;
-            Result[7] = Status.Text;
-            Result[8] = Inventory.Text;
-            Result[9] = Comment.Text;
-            Result[10] = Hostname.Text;
-            Result[11] = IP.Text;
-            Result[12] = ChangeMan.Text;
-
-            AddInEnd = addInEnd.Checked;
-
-            Execute = true;
-
             Close();
         }
 
