@@ -5,11 +5,11 @@ namespace BaseFormModelSpace
 {
     public class BaseFormModel
     {
-        DataBase dataBase;
+        public DataBase DataBase;
 
         public BaseFormModel(DataBase dataBase)
         {
-            this.dataBase = dataBase;
+            this.DataBase = dataBase;
         }
     }
 }

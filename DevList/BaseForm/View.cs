@@ -8,6 +8,7 @@ using LogSpace;
 using DevList;
 using BaseFormModelSpace;
 using BaseFormPresenterSpace;
+using System.ComponentModel;
 
 namespace BaseFormViewSpace
 {
@@ -36,9 +37,7 @@ namespace BaseFormViewSpace
         {
             baseFormPresenter = new BaseFormPresenter(this);
 
-            //TableOutput(dataBase.Table);
-
-            //Log.ErrorHandler($"[   ] {Text} - База загружена\r\n");
+            TableOutput(baseFormPresenter.Base());
         }
 
         void Table_MouseDown(object sender, MouseEventArgs e)
@@ -68,7 +67,7 @@ namespace BaseFormViewSpace
             tableParameters.SearchMode = "Column";
         }
 
-        void TableOutput(List<string[]> table, bool recalculate = true)
+        public void TableOutput(BindingList<string[]> table, bool recalculate = true)
         {
             Table.Visible = false;
 
@@ -87,86 +86,13 @@ namespace BaseFormViewSpace
             Table.Visible = true;
         }
 
-        void Create_Click(object sender, EventArgs e)
-        {
-            //DataBaseChanges();
+        void Create_Click(object sender, EventArgs e) { baseFormPresenter.Events("Create"); }
 
-            //FolderBrowserDialog pathNewBase = new FolderBrowserDialog();
+        void Open_Click(object sender, EventArgs e) { baseFormPresenter.Events("Open"); }
 
-            //pathNewBase.ShowDialog();
+        void Save_Click(object sender, EventArgs e) { baseFormPresenter.Events("Save"); }
 
-            //if (pathNewBase.SelectedPath != string.Empty)
-            //{
-            //    iniFile = new INIFile(pathNewBase.SelectedPath);
-
-            //    dataBase = new DataBase(iniFile.Base);
-
-            //    TableOutput(dataBase.Table);
-            //}
-        }
-
-        void DataBaseChanges()
-        {
-            //if (dataBase.Change)
-            //{
-            //    DialogResult result =
-
-            //    MessageBox.Show
-            //    (
-            //        "Сохранить изменения?",
-            //        "Открытие файла",
-            //        MessageBoxButtons.YesNo,
-            //        MessageBoxIcon.Information,
-            //        MessageBoxDefaultButton.Button1
-            //    );
-
-            //    if (result == DialogResult.Yes) { dataBase.Save(); }
-
-            //    dataBase.Change = false;
-            //}
-        }
-
-        void Open_Click(object sender, EventArgs e)
-        {
-            //DataBaseChanges();
-
-            //OpenFileDialog openFileWindow = new OpenFileDialog() { Filter = "*.INI|*.ini" };
-
-            //if (openFileWindow.ShowDialog() == DialogResult.OK)
-            //{
-            //    iniFile = new INIFile(openFileWindow.FileName);
-
-            //    dataBase = new DataBase(iniFile.Base);
-
-            //    TableOutput(dataBase.Table);
-            //}
-        }
-
-        void Save_Click(object sender, EventArgs e) { /*dataBase.Save(); dataBase.Change = false;*/ }
-
-        void SaveAs_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog savePath = new FolderBrowserDialog();
-
-            savePath.ShowDialog();
-
-            if (savePath.SelectedPath != string.Empty)
-            {
-                if (!Directory.Exists($"{savePath.SelectedPath}\\БД")) { Directory.CreateDirectory($"{savePath.SelectedPath}\\БД"); }
-
-                if (!Directory.Exists($"{savePath.SelectedPath}\\История перемещений")) { Directory.CreateDirectory($"{savePath.SelectedPath}\\История перемещений"); }
-
-                System.IO.File.Copy(iniFile.Path, Path.Combine(savePath.SelectedPath, Path.GetFileName(iniFile.Path)), true);
-                System.IO.File.Copy(iniFile.Base, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Base)), true);
-                System.IO.File.Copy(iniFile.Rooms, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Rooms)), true);
-                System.IO.File.Copy(iniFile.Devices, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Devices)), true);
-                System.IO.File.Copy(iniFile.Employees, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Employees)), true);
-                System.IO.File.Copy(iniFile.Names, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Names)), true);
-                System.IO.File.Copy(iniFile.History, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.History)), true);
-                System.IO.File.Copy(iniFile.Set, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Set)), true);
-                System.IO.File.Copy(iniFile.Parts, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(iniFile.Parts)), true);
-            }
-        }
+        void SaveAs_Click(object sender, EventArgs e) { baseFormPresenter.Events("SaveAs"); }
 
         // Если курсор на НЕ пустой строке, то  ListViewHitTestLocations НЕ none
         // Если курсор на ПУСТОЙ строке, то ListViewHitTestLocations равен NONE
@@ -680,7 +606,7 @@ namespace BaseFormViewSpace
             //tableParameters.SearchMode = string.Empty;
         }
 
-        void BaseForm_FormClosed(object sender, FormClosedEventArgs e) { DataBaseChanges(); }
+        void BaseForm_FormClosed(object sender, FormClosedEventArgs e) { /*DataBaseChanges();*/ }
 
         void BaseForm_KeyUp(object sender, KeyEventArgs e)
         {
@@ -697,7 +623,7 @@ namespace BaseFormViewSpace
 
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.F) == Keys.F) { Search_Click(sender, e); }
 
-            if (e.KeyCode == Keys.Escape) { DataBaseChanges(); Close(); }
+            //if (e.KeyCode == Keys.Escape) { DataBaseChanges(); Close(); }
 
             if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Up) == Keys.Up) { Up_Click(sender, e); }
 
