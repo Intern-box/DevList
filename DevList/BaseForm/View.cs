@@ -34,7 +34,7 @@ namespace BaseFormViewSpace
 
         void BaseForm_Load(object sender, EventArgs e)
         {
-            //baseFormPresenter = new BaseFormPresenter(this);
+            baseFormPresenter = new BaseFormPresenter(this);
 
             //TableOutput(dataBase.Table);
 
