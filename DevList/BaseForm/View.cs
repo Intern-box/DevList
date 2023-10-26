@@ -97,56 +97,14 @@ namespace BaseFormViewSpace
         // Если курсор на НЕ пустой строке, то  ListViewHitTestLocations НЕ none
         // Если курсор на ПУСТОЙ строке, то ListViewHitTestLocations равен NONE
         // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
-        void Add_Click(object sender, EventArgs e)
-        {
-            baseFormPresenter.Events("Add");
-
-            //BaseSearchEdit window;
-
-            //if (tableParameters.Column != null)
-            //{
-            //    if (tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
-            //    {
-            //        if (Text == head) { window = new BaseSearchEditWindow("DevList - Добавить", iniFile, dataBase.Table[tableParameters.Line]); }
-
-            //        else { window = new PartsSearchEditWindow("DevList - Добавить", iniFile, dataBase.Table[tableParameters.Line]); }
-            //    }
-            //    else
-            //    {
-            //        if (Text == head) { window = new BaseSearchEditWindow("DevList - Добавить", iniFile); }
-
-            //        else { window = new PartsSearchEditWindow("DevList - Добавить", iniFile); }
-            //    }
-            //}
-            //else
-            //{
-            //    if (Text == head) { window = new BaseSearchEditWindow("DevList - Добавить", iniFile); }
-
-            //    else { window = new PartsSearchEditWindow("DevList - Добавить", iniFile); }
-            //}
-
-            //window.ShowDialog();
-
-            //if (window.Result[0] != null)
-            //{
-            //    if (tableParameters.Coordinates == null || tableParameters.Coordinates.Location == ListViewHitTestLocations.None || window.AddInEnd)
-            //    {
-            //        dataBase.Table.Add(window.Result);
-            //    }
-            //    else { dataBase.Table.Insert(tableParameters.Line + 1, window.Result); }
-
-            //    TableOutput(dataBase.Table);
-
-            //    Table.Select(); Table.Items[dataBase.Table.Count - 1].Selected = true;
-
-            //    dataBase.Change = true;
-            //}
-        }
+        void Add_Click(object sender, EventArgs e) { baseFormPresenter.Events("Add"); }
 
         void ContextAdd_Click(object sender, EventArgs e) { Add_Click(sender, e); }
 
         void Edit_Click(object sender, EventArgs e)
         {
+            baseFormPresenter.Events("Edit");
+
             //if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             //{
             //    if (tableParameters.Column != 0)
