@@ -254,6 +254,8 @@ namespace BaseFormViewSpace
 
         void EditAll_Click(object sender, EventArgs e)
         {
+            baseFormPresenter.Events("EditAll");
+
             //if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             //{
             //    Errors.Items.Add($"Line: {tableParameters.Line + 1}; Id: {tableParameters.Id + 1}");
@@ -608,7 +610,7 @@ namespace BaseFormViewSpace
             //tableParameters.SearchMode = string.Empty;
         }
 
-        void BaseForm_FormClosed(object sender, FormClosedEventArgs e) { /*DataBaseChanges();*/ }
+        void BaseForm_FormClosed(object sender, FormClosedEventArgs e) { baseFormPresenter.DataBaseChanges(); }
 
         void BaseForm_KeyUp(object sender, KeyEventArgs e)
         {

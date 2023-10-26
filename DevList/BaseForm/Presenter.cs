@@ -40,10 +40,12 @@ namespace BaseFormPresenterSpace
                 case "SaveAs": SaveAs(); break;
 
                 case "Add": Add(); break;
+
+                case "EditAll": EditAll(); break;
             }
         }
 
-        void DataBaseChanges()
+        public void DataBaseChanges()
         {
             if (baseFormModel.DataBase.Change)
             {
@@ -64,10 +66,7 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        void TableOutput(BindingList<string[]> table)
-        {
-            baseFormView.TableOutput(table);
-        }
+        void TableOutput(BindingList<string[]> table) { baseFormView.TableOutput(table); }
 
         void Create()
         {
@@ -122,19 +121,32 @@ namespace BaseFormPresenterSpace
 
                 if (!Directory.Exists($"{savePath.SelectedPath}\\История перемещений")) { Directory.CreateDirectory($"{savePath.SelectedPath}\\История перемещений"); }
 
-                System.IO.File.Copy(baseFormView.iniFile.Path, Path.Combine(savePath.SelectedPath, Path.GetFileName(baseFormView.iniFile.Path)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Base, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Base)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Rooms, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Rooms)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Devices, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Devices)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Employees, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Employees)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Names, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Names)), true);
-                System.IO.File.Copy(baseFormView.iniFile.History, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.History)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Set, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Set)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Parts, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Parts)), true);
+                File.Copy(baseFormView.iniFile.Path, Path.Combine(savePath.SelectedPath, Path.GetFileName(baseFormView.iniFile.Path)), true);
+                File.Copy(baseFormView.iniFile.Base, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Base)), true);
+                File.Copy(baseFormView.iniFile.Rooms, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Rooms)), true);
+                File.Copy(baseFormView.iniFile.Devices, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Devices)), true);
+                File.Copy(baseFormView.iniFile.Employees, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Employees)), true);
+                File.Copy(baseFormView.iniFile.Names, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Names)), true);
+                File.Copy(baseFormView.iniFile.History, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.History)), true);
+                File.Copy(baseFormView.iniFile.Set, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Set)), true);
+                File.Copy(baseFormView.iniFile.Parts, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Parts)), true);
             }
         }
 
         void Add()
+        {
+            SearchEditView searchEditView = new SearchEditView(baseFormView.iniFile);
+
+            searchEditView.ShowDialog();
+
+            baseFormModel.DataBase.Table.Add(searchEditView.searchEditPresenter.searchEditModel.Data);
+
+            baseFormModel.DataBase.Change = true;
+
+            TableOutput(baseFormModel.DataBase.Table);
+        }
+
+        void EditAll()
         {
             SearchEditView searchEditView = new SearchEditView(baseFormView.iniFile);
 
