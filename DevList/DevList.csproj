@@ -98,18 +98,6 @@
     </Compile>
     <Compile Include="List.cs" />
     <Compile Include="Remove.cs" />
-    <Compile Include="EditLines.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditLines.Designer.cs">
-      <DependentUpon>EditLines.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditLists.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditLists.Designer.cs">
-      <DependentUpon>EditLists.cs</DependentUpon>
-    </Compile>
     <Compile Include="Lists.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,12 +124,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Columns.resx">
       <DependentUpon>Columns.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditLines.resx">
-      <DependentUpon>EditLines.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditLists.resx">
-      <DependentUpon>EditLists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Launch\View.resx">
       <DependentUpon>View.cs</DependentUpon>

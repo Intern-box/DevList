@@ -41,8 +41,6 @@ namespace BaseFormPresenterSpace
 
                 case "Add": Add(); break;
 
-                case "Edit": Edit(); break;
-
                 case "EditAll": EditAll(); break;
             }
         }
@@ -146,11 +144,6 @@ namespace BaseFormPresenterSpace
             baseFormModel.DataBase.Change = true;
 
             TableOutput(baseFormModel.DataBase.Table);
-        }
-
-        void Edit()
-        {
-
         }
 
         void EditAll()
