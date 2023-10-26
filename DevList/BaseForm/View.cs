@@ -20,7 +20,7 @@ namespace BaseFormViewSpace
 
         bool[] visibleColumns;
 
-        TableParameters tableParameters = new TableParameters();
+        public TableParameters tableParameters = new TableParameters();
 
         public BaseFormView(INIFile iniFile)
         {

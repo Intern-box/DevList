@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using INIFileSpace;
 using System.IO;
 using SearchEditViewSpace;
+using DevList;
 
 namespace BaseFormPresenterSpace
 {
@@ -148,9 +149,22 @@ namespace BaseFormPresenterSpace
 
         void EditAll()
         {
-            SearchEditView searchEditView = new SearchEditView(baseFormView.iniFile);
+            if (baseFormView.tableParameters.Coordinates != null && baseFormView.tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
+            {
+                SearchEditView searchEditView = new SearchEditView(baseFormView.iniFile);
 
-            searchEditView.ShowDialog();
+                searchEditView.searchEditPresenter.searchEditModel.Data = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id];
+
+                searchEditView.searchEditPresenter.Get();
+
+                searchEditView.ShowDialog();
+
+                baseFormModel.DataBase.Table[baseFormView.tableParameters.Id] = searchEditView.searchEditPresenter.searchEditModel.Data;
+
+                baseFormModel.DataBase.Change = true;
+
+                TableOutput(baseFormModel.DataBase.Table);
+            }
         }
     }
 }

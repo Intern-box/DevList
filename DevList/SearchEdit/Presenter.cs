@@ -29,7 +29,25 @@ namespace SearchEditPresenterSpace
             searchEditView.ChangeMan.Items.AddRange(File.ReadAllLines(searchEditModel.Employees.Path));
         }
 
-        public string[] Get() { return searchEditModel.Data; }
+        public void Get()
+        {
+            searchEditView.Date.Text = searchEditModel.Data[1];
+            searchEditView.Number.Text = searchEditModel.Data[2];
+            searchEditView.Rooms.Text = searchEditModel.Data[3];
+            searchEditView.Employees.Text = searchEditModel.Data[4];
+            searchEditView.Names.Text = searchEditModel.Data[5];
+            searchEditView.Devices.Text = searchEditModel.Data[6];
+            searchEditView.Status.Text = searchEditModel.Data[7];
+            searchEditView.Inventory.Text = searchEditModel.Data[8];
+            searchEditView.Comment.Text = searchEditModel.Data[9];
+            searchEditView.Hostname.Text = searchEditModel.Data[10];
+            searchEditView.IP.Text = searchEditModel.Data[11];
+            searchEditView.ChangeMan.Text = searchEditModel.Data[12];
+
+            try { if (searchEditModel.Data[13] == "1") { searchEditView.AddInEnd.Checked = true; } else { searchEditView.AddInEnd.Checked = false; } }
+
+            catch (System.Exception) { }
+        }
 
         public void Set()
         {
