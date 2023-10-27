@@ -37,6 +37,25 @@ namespace BaseFormViewSpace
             TableOutput(baseFormPresenter.Base());
         }
 
+        public void TableOutput(BindingList<string[]> table, bool recalculate = true)
+        {
+            Table.Visible = false;
+
+            Table.Items.Clear();
+
+            if (recalculate) { for (int i = 0; i < table.Count; i++) { table[i][0] = (i + 1).ToString(); } }
+
+            for (int i = 0; i < table.Count; i++) { ListViewItem line = new ListViewItem(table[i]); Table.Items.Add(line); }
+
+            Table.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+            ChangeMan.Width = Comment.Width = 150;
+
+            for (int i = 0; i < visibleColumns.Length; i++) { if (!visibleColumns[i]) { Table.Columns[i].Width = 0; } }
+
+            Table.Visible = true;
+        }
+
         void Table_MouseDown(object sender, MouseEventArgs e)
         {
             tableParameters.Coordinates = Table.HitTest(e.X, e.Y);
@@ -64,25 +83,6 @@ namespace BaseFormViewSpace
             tableParameters.SearchMode = "Column";
         }
 
-        public void TableOutput(BindingList<string[]> table, bool recalculate = true)
-        {
-            Table.Visible = false;
-
-            Table.Items.Clear();
-
-            if (recalculate) { for (int i = 0; i < table.Count; i++) { table[i][0] = (i + 1).ToString(); } }
-
-            for (int i = 0; i < table.Count; i++) { ListViewItem line = new ListViewItem(table[i]); Table.Items.Add(line); }
-
-            Table.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-            ChangeMan.Width = Comment.Width = 150;
-
-            for (int i = 0; i < visibleColumns.Length; i++) { if (!visibleColumns[i]) { Table.Columns[i].Width = 0; } }
-
-            Table.Visible = true;
-        }
-
         void Create_Click(object sender, EventArgs e) { baseFormPresenter.Events("Create"); }
 
         void Open_Click(object sender, EventArgs e) { baseFormPresenter.Events("Open"); }
@@ -98,48 +98,7 @@ namespace BaseFormViewSpace
 
         void ContextAdd_Click(object sender, EventArgs e) { Add_Click(sender, e); }
 
-        void EditAll_Click(object sender, EventArgs e)
-        {
-            baseFormPresenter.Events("EditAll");
-
-            //if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
-            //{
-            //    Errors.Items.Add($"Line: {tableParameters.Line + 1}; Id: {tableParameters.Id + 1}");
-
-            //    string[] str = dataBase.Table[tableParameters.Id];
-
-            //    BaseSearchEdit window =
-
-            //    Text == head ? (BaseSearchEdit)
-
-            //    new BaseSearchEditWindow("DevList - Править всё", iniFile, str) :
-
-            //    new PartsSearchEditWindow("DevList - Править всё", iniFile, str);
-
-            //    window.ShowDialog();
-
-            //    if (window.Result[2] != null)
-            //    {
-            //        if (window.Result[3] != str[3])
-            //        {
-            //            System.IO.File.AppendAllText
-            //            (
-            //                $"{Path.GetDirectoryName(Path.GetFullPath(iniFile.Path))}\\История перемещений\\{window.Result[3]}.txt",
-            //                $"Из помещения: {dataBase.Table[tableParameters.Id][tableParameters.Column]}\r\n" +
-            //                $"переместили: {DateTime.Now}\r\n" +
-            //                $"{dataBase.Table[tableParameters.Id][5]}\r\n" +
-            //                $"с инв.№: {dataBase.Table[tableParameters.Id][2]}\r\n\r\n"
-            //            );
-            //        }
-
-            //        dataBase.Table[tableParameters.Id] = window.Result;
-
-            //        EditAfterSearch(sender);
-
-            //        Table.Select(); Table.Items[tableParameters.Line].Selected = true;
-            //    }
-            //}
-        }
+        void EditAll_Click(object sender, EventArgs e) { baseFormPresenter.Events("EditAll"); }
 
         void ContextEditAll_Click(object sender, EventArgs e) { EditAll_Click(sender, e); }
 

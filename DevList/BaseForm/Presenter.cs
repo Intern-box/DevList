@@ -1,4 +1,5 @@
-﻿using BaseFormModelSpace;
+﻿using System;
+using BaseFormModelSpace;
 using BaseFormViewSpace;
 using DataBaseSpace;
 using System.ComponentModel;
@@ -6,7 +7,6 @@ using System.Windows.Forms;
 using INIFileSpace;
 using System.IO;
 using SearchEditViewSpace;
-using DevList;
 
 namespace BaseFormPresenterSpace
 {
@@ -155,9 +155,23 @@ namespace BaseFormPresenterSpace
 
                 searchEditView.searchEditPresenter.searchEditModel.Data = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id];
 
+                string tmp = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id][3];
+
                 searchEditView.searchEditPresenter.Get();
 
                 searchEditView.ShowDialog();
+
+                if (tmp != searchEditView.searchEditPresenter.searchEditModel.Data[3])
+                {
+                    File.AppendAllText
+                    (
+                        $"{Path.GetDirectoryName(Path.GetFullPath(baseFormView.iniFile.Path))}\\История перемещений\\{searchEditView.searchEditPresenter.searchEditModel.Data[3]}.txt",
+                        $"Из помещения: {tmp}\r\n" +
+                        $"переместили: {DateTime.Now}\r\n" +
+                        $"{baseFormModel.DataBase.Table[baseFormView.tableParameters.Id][5]}\r\n" +
+                        $"с инв.№: {baseFormModel.DataBase.Table[baseFormView.tableParameters.Id][2]}\r\n\r\n"
+                    );
+                }
 
                 baseFormModel.DataBase.Table[baseFormView.tableParameters.Id] = searchEditView.searchEditPresenter.searchEditModel.Data;
 
