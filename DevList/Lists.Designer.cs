@@ -1,5 +1,5 @@
 ﻿
-namespace DevList
+namespace ListsSpace
 {
     partial class Lists
     {

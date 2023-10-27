@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace DevList
+namespace TableParametersSpace
 {
     public struct TableParameters
     {

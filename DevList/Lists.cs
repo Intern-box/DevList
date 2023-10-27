@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using INIFileSpace;
 using LogSpace;
 
-namespace DevList
+namespace ListsSpace
 {
     public partial class Lists : Form
     {
