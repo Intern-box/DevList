@@ -6,6 +6,7 @@ using TableParametersSpace;
 using System.ComponentModel;
 using System.Collections;
 using ListsSpace;
+using DataBaseSpace;
 
 namespace BaseFormViewSpace
 {
@@ -34,7 +35,7 @@ namespace BaseFormViewSpace
         {
             baseFormPresenter = new BaseFormPresenter(this);
 
-            TableOutput(baseFormPresenter.Base());
+            TableOutput(baseFormPresenter.Table());
         }
 
         public void TableOutput(BindingList<string[]> table, bool recalculate = true)
@@ -104,38 +105,20 @@ namespace BaseFormViewSpace
 
         void Up_Click(object sender, EventArgs e)
         {
-            //if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
-            //{
-            //    if (tableParameters.Coordinates.Item.Index > 0)
-            //    {
-            //        dataBase.UpDown(tableParameters.Line - 1, tableParameters.Line);
-
-            //        TableOutput(dataBase.Table, true);
-
-            //        Table.Select(); Table.Items[tableParameters.Line - 1].Selected = true;
-
-            //        dataBase.Change = true;
-            //    }
-            //}
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
+            {
+                if (tableParameters.Line > 0) { baseFormPresenter.Events("Up"); }
+            }
         }
 
         void ContextUp_Click(object sender, EventArgs e) { Up_Click(sender, e); }
 
         void Down_Click(object sender, EventArgs e)
         {
-            //if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
-            //{
-            //    if (dataBase.Table.Count > tableParameters.Line + 1)
-            //    {
-            //        dataBase.UpDown(tableParameters.Line + 1, tableParameters.Line);
-
-            //        TableOutput(dataBase.Table, true);
-
-            //        Table.Select(); Table.Items[tableParameters.Line + 1].Selected = true;
-
-            //        dataBase.Change = true;
-            //    }
-            //}
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
+            {
+                if (baseFormPresenter.Table().Count > tableParameters.Line + 1) { baseFormPresenter.Events("Down"); }
+            }
         }
 
         void ContextDown_Click(object sender, EventArgs e) { Down_Click(sender, e); }

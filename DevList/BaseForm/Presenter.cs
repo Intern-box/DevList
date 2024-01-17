@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using INIFileSpace;
 using System.IO;
 using SearchEditViewSpace;
+using TableParametersSpace;
 
 namespace BaseFormPresenterSpace
 {
@@ -23,7 +24,9 @@ namespace BaseFormPresenterSpace
             baseFormModel = new BaseFormModel(new DataBase(baseFormView.iniFile.Base));
         }
 
-        public BindingList<string[]> Base() { return baseFormModel.DataBase.Table; }
+        public DataBase DataBase() { return baseFormModel.DataBase; }
+
+        public BindingList<string[]> Table() { return baseFormModel.DataBase.Table; }
 
         public void Events(string mode)
         {
@@ -40,6 +43,10 @@ namespace BaseFormPresenterSpace
                 case "Add": Add(); break;
 
                 case "EditAll": EditAll(); break;
+
+                case "Up": Up(); break;
+
+                case "Down": Down(); break;
             }
         }
 
@@ -64,8 +71,6 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        void TableOutput(BindingList<string[]> table) { baseFormView.TableOutput(table); }
-
         void Create()
         {
             DataBaseChanges();
@@ -80,7 +85,7 @@ namespace BaseFormPresenterSpace
 
                 baseFormModel.DataBase = new DataBase(baseFormView.iniFile.Base);
 
-                TableOutput(baseFormModel.DataBase.Table);
+                baseFormView.TableOutput(baseFormModel.DataBase.Table);
             }
         }
 
@@ -96,7 +101,7 @@ namespace BaseFormPresenterSpace
 
                 baseFormModel.DataBase = new DataBase(baseFormView.iniFile.Base);
 
-                TableOutput(baseFormModel.DataBase.Table);
+                baseFormView.TableOutput(baseFormModel.DataBase.Table);
             }
         }
 
@@ -141,7 +146,7 @@ namespace BaseFormPresenterSpace
 
             baseFormModel.DataBase.Change = true;
 
-            TableOutput(baseFormModel.DataBase.Table);
+            baseFormView.TableOutput(baseFormModel.DataBase.Table);
         }
 
         void EditAll()
@@ -174,8 +179,33 @@ namespace BaseFormPresenterSpace
 
                 baseFormModel.DataBase.Change = true;
 
-                TableOutput(baseFormModel.DataBase.Table);
+                baseFormView.TableOutput(baseFormModel.DataBase.Table);
             }
+        }
+        void Up()
+        {
+            baseFormModel.DataBase.UpDown(baseFormView.tableParameters.Line - 1, baseFormView.tableParameters.Line);
+
+            baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
+
+            baseFormView.Table.Select();
+            
+            baseFormView.Table.Items[baseFormView.tableParameters.Line - 1].Selected = true;
+
+            baseFormModel.DataBase.Change = true;
+        }
+
+        void Down()
+        {
+            baseFormModel.DataBase.UpDown(baseFormView.tableParameters.Line + 1, baseFormView.tableParameters.Line);
+
+            baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
+
+            baseFormView.Table.Select();
+
+            baseFormView.Table.Items[baseFormView.tableParameters.Line + 1].Selected = true;
+
+            baseFormModel.DataBase.Change = true;
         }
     }
 }
