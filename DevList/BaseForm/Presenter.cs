@@ -51,6 +51,10 @@ namespace BaseFormPresenterSpace
                 case "Down": Down(); break;
 
                 case "Remove": Remove(); break;
+
+                case "SortByTypes": SortByTypes(); break;
+
+                case "SortByRooms": SortByRooms(); break;
             }
         }
 
@@ -240,6 +244,16 @@ namespace BaseFormPresenterSpace
             //        dataBase.Change = true;
             //    }
             //}
+        }
+
+        void SortByTypes()
+        {
+
+        }
+
+        void SortByRooms()
+        {
+
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿
-namespace DevList
+namespace PartsSearchEditWindowSpace
 {
     partial class PartsSearchEditWindow
     {

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Collections;
 using ListsSpace;
 using ColumnsSpace;
+using ReportsSpace;
 
 namespace BaseFormViewSpace
 {
@@ -245,16 +246,16 @@ namespace BaseFormViewSpace
 
         void SortByTypes_Click(object sender, EventArgs e)
         {
-            //Reports report = new Reports(iniFile, dataBase, reportType: "SortByTypes");
+            Reports report = new Reports(iniFile, baseFormPresenter.DataBase(), reportType: "SortByTypes");
 
-            //report.ShowDialog();
+            report.ShowDialog();
         }
 
         void SortByRooms_Click(object sender, EventArgs e)
         {
-            //Reports report = new Reports(iniFile, dataBase, reportType: "SortByRooms");
+            Reports report = new Reports(iniFile, baseFormPresenter.DataBase(), reportType: "SortByRooms");
 
-            //report.ShowDialog();
+            report.ShowDialog();
         }
 
         void CommonReport_Click(object sender, EventArgs e)

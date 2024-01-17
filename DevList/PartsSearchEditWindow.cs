@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using INIFileSpace;
 using ListSpace;
 
-namespace DevList
+namespace PartsSearchEditWindowSpace
 {
     public partial class PartsSearchEditWindow : Form
     {

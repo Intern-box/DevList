@@ -1,5 +1,5 @@
 ﻿
-namespace DevList
+namespace ReportsSpace
 {
     partial class Reports
     {
@@ -30,6 +30,7 @@ namespace DevList
         private void InitializeComponent()
         {
             this.Output = new System.Windows.Forms.TextBox();
+            this.RoomsBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // Output
@@ -44,11 +45,24 @@ namespace DevList
             this.Output.TabIndex = 4;
             this.Output.TabStop = false;
             // 
+            // RoomsBox
+            // 
+            this.RoomsBox.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RoomsBox.FormattingEnabled = true;
+            this.RoomsBox.Location = new System.Drawing.Point(0, 0);
+            this.RoomsBox.Name = "RoomsBox";
+            this.RoomsBox.Size = new System.Drawing.Size(493, 24);
+            this.RoomsBox.TabIndex = 5;
+            this.RoomsBox.Text = "Выберите помещение...";
+            this.RoomsBox.Visible = false;
+            this.RoomsBox.SelectedIndexChanged += new System.EventHandler(this.RoomsBox_SelectedIndexChanged);
+            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(511, 450);
+            this.Controls.Add(this.RoomsBox);
             this.Controls.Add(this.Output);
             this.Name = "Reports";
             this.Text = "DevList - Отчёт";
@@ -62,5 +76,6 @@ namespace DevList
         #endregion
 
         private System.Windows.Forms.TextBox Output;
+        private System.Windows.Forms.ComboBox RoomsBox;
     }
 }
