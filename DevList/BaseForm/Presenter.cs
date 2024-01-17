@@ -23,10 +23,7 @@ namespace BaseFormPresenterSpace
             baseFormModel = new BaseFormModel(new DataBase(baseFormView.iniFile.Base));
         }
 
-        public BindingList<string[]> Base()
-        {
-            return baseFormModel.DataBase.Table;
-        }
+        public BindingList<string[]> Base() { return baseFormModel.DataBase.Table; }
 
         public void Events(string mode)
         {

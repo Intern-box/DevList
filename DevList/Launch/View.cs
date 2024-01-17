@@ -6,14 +6,9 @@ namespace LaunchViewSpace
 {
     public partial class LaunchView : Form
     {
-        LaunchPresenter launchPresenter;
+        LaunchPresenter launchPresenter = new LaunchPresenter();
 
-        public LaunchView()
-        {
-            launchPresenter = new LaunchPresenter();
-
-            InitializeComponent();
-        }
+        public LaunchView() { InitializeComponent(); }
 
         public void Download_Click(object sender, EventArgs e) { Hide(); launchPresenter.Start("Download"); Close(); }
 
