@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace DevList
+namespace ColumnsSpace
 {
     public partial class Columns : Form
     {

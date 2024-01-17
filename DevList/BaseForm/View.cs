@@ -6,7 +6,7 @@ using TableParametersSpace;
 using System.ComponentModel;
 using System.Collections;
 using ListsSpace;
-using DataBaseSpace;
+using ColumnsSpace;
 
 namespace BaseFormViewSpace
 {
@@ -125,48 +125,50 @@ namespace BaseFormViewSpace
 
         void Remove_Click(object sender, EventArgs e)
         {
-            //if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
-            //{
-            //    if (Text == "DevList - История")
-            //    {
-            //        DialogResult result = MessageBox.Show("Удалить полностью?", "Удаление МЦ", MessageBoxButtons.YesNo);
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
+            {
+                baseFormPresenter.Events("Down");
 
-            //        if (result == DialogResult.Yes)
-            //        {
-            //            Remove remove = new Remove(dataBase, tableParameters.Coordinates);
+                //if (Text == "DevList - История")
+                //{
+                //    DialogResult result = MessageBox.Show("Удалить полностью?", "Удаление МЦ", MessageBoxButtons.YesNo);
 
-            //            TableOutput(dataBase.Table, true);
+                //    if (result == DialogResult.Yes)
+                //    {
+                //        Remove remove = new Remove(dataBase, tableParameters.Coordinates);
 
-            //            dataBase.Change = true;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        DialogResult result = MessageBox.Show("Удалить МЦ?\r\n\r\nМЦ будет перемещена в Историю!", "Удаление МЦ", MessageBoxButtons.YesNo);
+                //        TableOutput(dataBase.Table, true);
 
-            //        if (result == DialogResult.Yes)
-            //        {
-            //            Remove remove = new Remove(dataBase, tableParameters.Coordinates, iniFile, true);
+                //        dataBase.Change = true;
+                //    }
+                //}
+                //else
+                //{
+                //    DialogResult result = MessageBox.Show("Удалить МЦ?\r\n\r\nМЦ будет перемещена в Историю!", "Удаление МЦ", MessageBoxButtons.YesNo);
 
-            //            TableOutput(dataBase.Table, true);
+                //    if (result == DialogResult.Yes)
+                //    {
+                //        Remove remove = new Remove(dataBase, tableParameters.Coordinates, iniFile, true);
 
-            //            dataBase.Change = true;
-            //        }
-            //    }
-            //}
+                //        TableOutput(dataBase.Table, true);
+
+                //        dataBase.Change = true;
+                //    }
+                //}
+            }
         }
 
         void ContextRemove_Click(object sender, EventArgs e) { Remove_Click(sender, e); }
 
         void Columns_Click(object sender, EventArgs e)
         {
-            //Columns columns = new Columns(visibleColumns);
+            Columns columns = new Columns(visibleColumns);
 
-            //columns.ShowDialog();
+            columns.ShowDialog();
 
-            //visibleColumns = columns.Result;
+            visibleColumns = columns.Result;
 
-            //if (columns.Execute) { TableOutput(dataBase.Table); }
+            if (columns.Execute) { TableOutput(baseFormPresenter.Table()); }
         }
 
         void Search_Click(object sender, EventArgs e)

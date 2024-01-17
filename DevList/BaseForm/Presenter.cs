@@ -8,6 +8,8 @@ using INIFileSpace;
 using System.IO;
 using SearchEditViewSpace;
 using TableParametersSpace;
+using DevList;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BaseFormPresenterSpace
 {
@@ -47,6 +49,8 @@ namespace BaseFormPresenterSpace
                 case "Up": Up(); break;
 
                 case "Down": Down(); break;
+
+                case "Remove": Remove(); break;
             }
         }
 
@@ -206,6 +210,36 @@ namespace BaseFormPresenterSpace
             baseFormView.Table.Items[baseFormView.tableParameters.Line + 1].Selected = true;
 
             baseFormModel.DataBase.Change = true;
+        }
+
+        void Remove()
+        {
+            //if (Text == "DevList - История")
+            //{
+            //    DialogResult result = MessageBox.Show("Удалить полностью?", "Удаление МЦ", MessageBoxButtons.YesNo);
+
+            //    if (result == DialogResult.Yes)
+            //    {
+            //        Remove remove = new Remove(dataBase, tableParameters.Coordinates);
+
+            //        TableOutput(dataBase.Table, true);
+
+            //        dataBase.Change = true;
+            //    }
+            //}
+            //else
+            //{
+            //    DialogResult result = MessageBox.Show("Удалить МЦ?\r\n\r\nМЦ будет перемещена в Историю!", "Удаление МЦ", MessageBoxButtons.YesNo);
+
+            //    if (result == DialogResult.Yes)
+            //    {
+            //        Remove remove = new Remove(dataBase, tableParameters.Coordinates, iniFile, true);
+
+            //        TableOutput(dataBase.Table, true);
+
+            //        dataBase.Change = true;
+            //    }
+            //}
         }
     }
 }

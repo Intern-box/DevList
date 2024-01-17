@@ -1,5 +1,5 @@
 ﻿
-namespace DevList
+namespace ColumnsSpace
 {
     partial class Columns
     {
