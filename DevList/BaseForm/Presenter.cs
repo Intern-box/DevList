@@ -10,6 +10,7 @@ using SearchEditViewSpace;
 using TableParametersSpace;
 using DevList;
 using static System.Net.Mime.MediaTypeNames;
+using ReportsSpace;
 
 namespace BaseFormPresenterSpace
 {
@@ -51,10 +52,6 @@ namespace BaseFormPresenterSpace
                 case "Down": Down(); break;
 
                 case "Remove": Remove(); break;
-
-                case "SortByTypes": SortByTypes(); break;
-
-                case "SortByRooms": SortByRooms(); break;
             }
         }
 
@@ -248,7 +245,7 @@ namespace BaseFormPresenterSpace
 
         void SortByTypes()
         {
-
+            
         }
 
         void SortByRooms()
