@@ -128,8 +128,6 @@ namespace BaseFormViewSpace
         {
             if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
-                baseFormPresenter.Events("Down");
-
                 //if (Text == "DevList - История")
                 //{
                 //    DialogResult result = MessageBox.Show("Удалить полностью?", "Удаление МЦ", MessageBoxButtons.YesNo);
@@ -260,6 +258,8 @@ namespace BaseFormViewSpace
 
         void CommonReport_Click(object sender, EventArgs e)
         {
+            baseFormPresenter.Events("CommonReport");
+
             //System.IO.File.WriteAllText($"{Application.StartupPath}\\Print.htm", string.Empty);
 
             //System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm",
