@@ -125,35 +125,7 @@ namespace BaseFormViewSpace
 
         void Remove_Click(object sender, EventArgs e)
         {
-            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
-            {
-                //if (Text == "DevList - История")
-                //{
-                //    DialogResult result = MessageBox.Show("Удалить полностью?", "Удаление МЦ", MessageBoxButtons.YesNo);
-
-                //    if (result == DialogResult.Yes)
-                //    {
-                //        Remove remove = new Remove(dataBase, tableParameters.Coordinates);
-
-                //        TableOutput(dataBase.Table, true);
-
-                //        dataBase.Change = true;
-                //    }
-                //}
-                //else
-                //{
-                //    DialogResult result = MessageBox.Show("Удалить МЦ?\r\n\r\nМЦ будет перемещена в Историю!", "Удаление МЦ", MessageBoxButtons.YesNo);
-
-                //    if (result == DialogResult.Yes)
-                //    {
-                //        Remove remove = new Remove(dataBase, tableParameters.Coordinates, iniFile, true);
-
-                //        TableOutput(dataBase.Table, true);
-
-                //        dataBase.Change = true;
-                //    }
-                //}
-            }
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None) { baseFormPresenter.Events("Remove"); }
         }
 
         void ContextRemove_Click(object sender, EventArgs e) { Remove_Click(sender, e); }

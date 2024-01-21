@@ -8,6 +8,7 @@ using INIFileSpace;
 using System.IO;
 using SearchEditViewSpace;
 using ReportsSpace;
+using RemoveSpace;
 
 namespace BaseFormPresenterSpace
 {
@@ -218,32 +219,32 @@ namespace BaseFormPresenterSpace
 
         void Remove()
         {
-            //if (Text == "DevList - История")
-            //{
-            //    DialogResult result = MessageBox.Show("Удалить полностью?", "Удаление МЦ", MessageBoxButtons.YesNo);
+            if (baseFormView.Text == "DevList - История")
+            {
+                DialogResult result = MessageBox.Show("Удалить полностью?", "Удаление МЦ", MessageBoxButtons.YesNo);
 
-            //    if (result == DialogResult.Yes)
-            //    {
-            //        Remove remove = new Remove(dataBase, tableParameters.Coordinates);
+                if (result == DialogResult.Yes)
+                {
+                    Remove remove = new Remove(baseFormModel.DataBase, baseFormView.tableParameters.Coordinates);
 
-            //        TableOutput(dataBase.Table, true);
+                    baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
-            //        dataBase.Change = true;
-            //    }
-            //}
-            //else
-            //{
-            //    DialogResult result = MessageBox.Show("Удалить МЦ?\r\n\r\nМЦ будет перемещена в Историю!", "Удаление МЦ", MessageBoxButtons.YesNo);
+                    baseFormModel.DataBase.Change = true;
+                }
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Удалить МЦ?\r\n\r\nМЦ будет перемещена в Историю!", "Удаление МЦ", MessageBoxButtons.YesNo);
 
-            //    if (result == DialogResult.Yes)
-            //    {
-            //        Remove remove = new Remove(dataBase, tableParameters.Coordinates, iniFile, true);
+                if (result == DialogResult.Yes)
+                {
+                    Remove remove = new Remove(baseFormModel.DataBase, baseFormView.tableParameters.Coordinates, baseFormView.iniFile, true);
 
-            //        TableOutput(dataBase.Table, true);
+                    baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
-            //        dataBase.Change = true;
-            //    }
-            //}
+                    baseFormModel.DataBase.Change = true;
+                }
+            }
         }
 
         void SortByTypes() { Reports report = new Reports(baseFormView.iniFile, baseFormModel.DataBase, reportType: "SortByTypes"); report.ShowDialog(); }
