@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Collections;
 using ListsSpace;
 using ColumnsSpace;
+using DataBaseSpace;
 
 namespace BaseFormViewSpace
 {
@@ -16,13 +17,19 @@ namespace BaseFormViewSpace
 
         BaseFormPresenter baseFormPresenter;
 
+        DataBase historyBase;
+
         bool[] visibleColumns;
 
         public TableParameters tableParameters = new TableParameters();
 
-        public BaseFormView(INIFile iniFile)
+        public BaseFormView(INIFile iniFile) : this (iniFile, null) { }
+
+        public BaseFormView(INIFile iniFile, DataBase dataBase)
         {
             this.iniFile = iniFile;
+
+            historyBase = dataBase;
 
             InitializeComponent();
 
@@ -34,6 +41,8 @@ namespace BaseFormViewSpace
         void BaseForm_Load(object sender, EventArgs e)
         {
             baseFormPresenter = new BaseFormPresenter(this);
+
+            if (historyBase != null) { baseFormPresenter.DataBaseSet(historyBase); }
 
             TableOutput(baseFormPresenter.Table());
         }
@@ -196,20 +205,7 @@ namespace BaseFormViewSpace
 
         void ContextSearch_Click(object sender, EventArgs e) { Search_Click(sender, e); }
 
-        void SearchAll_KeyDown(object sender, KeyEventArgs e)
-        {
-            //if (e.KeyCode == Keys.Enter)
-            //{
-            //    if (SearchAllBox.Text != string.Empty)
-            //    {
-            //        TableOutput(dataBase.FindAll(SearchAllBox.Text), false);
-
-            //        Filter.Visible = true;
-
-            //        tableParameters.SearchMode = "SearchAll";
-            //    }
-            //}
-        }
+        void SearchAll_KeyDown(object sender, KeyEventArgs e) { baseFormPresenter.Events("SearchAll"); }
 
         void Lists_Click(object sender, EventArgs e) { Lists lists = new Lists(iniFile); lists.ShowDialog(); }
 
@@ -219,40 +215,7 @@ namespace BaseFormViewSpace
 
         void CommonReport_Click(object sender, EventArgs e) { baseFormPresenter.Events("CommonReport"); }
 
-        void History_Click(object sender, EventArgs e)
-        {
-            //DataBase historyBase = new DataBase(iniFile.History);
-
-            //BaseFormView history = new BaseFormView(iniFile, historyBase);
-
-            //history.Create.Visible = false;
-
-            //history.Open.Visible = false;
-
-            //history.Save.Visible = false;
-
-            //history.SaveAs.Visible = false;
-
-            //history.Edit.Visible = false;
-
-            //history.Lists.Visible = false;
-
-            //history.Reports.Visible = false;
-
-            //history.History.Visible = false;
-
-            //history.CAdd.Visible = false;
-
-            //history.CEditAll.Visible = false;
-
-            //history.ContextUp.Visible = false;
-
-            //history.ContextDown.Visible = false;
-
-            //history.Text = "DevList - История";
-
-            //history.Show();
-        }
+        void History_Click(object sender, EventArgs e) { baseFormPresenter.Events("History"); }
 
         void Set_Click(object sender, EventArgs e)
         {

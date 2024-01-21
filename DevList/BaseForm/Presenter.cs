@@ -25,7 +25,9 @@ namespace BaseFormPresenterSpace
             baseFormModel = new BaseFormModel(new DataBase(baseFormView.iniFile.Base));
         }
 
-        public DataBase DataBase() { return baseFormModel.DataBase; }
+        public DataBase DataBaseGet() { return baseFormModel.DataBase; }
+
+        public void DataBaseSet(DataBase dataBase) { baseFormModel.DataBase = dataBase; }
 
         public BindingList<string[]> Table() { return baseFormModel.DataBase.Table; }
 
@@ -56,6 +58,10 @@ namespace BaseFormPresenterSpace
                 case "SortByTypes": SortByTypes(); break;
 
                 case "SortByRooms": SortByRooms(); break;
+
+                case "SearchAll": SearchAll(); break;
+
+                case "History": History(); break;
             }
         }
 
@@ -133,15 +139,15 @@ namespace BaseFormPresenterSpace
 
                 if (!Directory.Exists($"{savePath.SelectedPath}\\История перемещений")) { Directory.CreateDirectory($"{savePath.SelectedPath}\\История перемещений"); }
 
-                File.Copy(baseFormView.iniFile.Path, Path.Combine(savePath.SelectedPath, Path.GetFileName(baseFormView.iniFile.Path)), true);
-                File.Copy(baseFormView.iniFile.Base, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Base)), true);
-                File.Copy(baseFormView.iniFile.Rooms, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Rooms)), true);
-                File.Copy(baseFormView.iniFile.Devices, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Devices)), true);
-                File.Copy(baseFormView.iniFile.Employees, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Employees)), true);
-                File.Copy(baseFormView.iniFile.Names, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Names)), true);
-                File.Copy(baseFormView.iniFile.History, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.History)), true);
-                File.Copy(baseFormView.iniFile.Set, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Set)), true);
-                File.Copy(baseFormView.iniFile.Parts, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Parts)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Path, Path.Combine(savePath.SelectedPath, Path.GetFileName(baseFormView.iniFile.Path)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Base, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Base)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Rooms, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Rooms)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Devices, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Devices)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Employees, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Employees)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Names, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Names)), true);
+                System.IO.File.Copy(baseFormView.iniFile.History, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.History)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Set, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Set)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Parts, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Parts)), true);
             }
         }
 
@@ -174,7 +180,7 @@ namespace BaseFormPresenterSpace
 
                 if (tmp != searchEditView.searchEditPresenter.searchEditModel.Data[3])
                 {
-                    File.AppendAllText
+                    System.IO.File.AppendAllText
                     (
                         $"{Path.GetDirectoryName(Path.GetFullPath(baseFormView.iniFile.Path))}\\История перемещений\\{searchEditView.searchEditPresenter.searchEditModel.Data[3]}.txt",
                         $"Из помещения: {tmp}\r\n" +
@@ -253,9 +259,9 @@ namespace BaseFormPresenterSpace
 
         void CommonReport()
         {
-            File.WriteAllText($"{Application.StartupPath}\\Print.htm", string.Empty);
+            System.IO.File.WriteAllText($"{Application.StartupPath}\\Print.htm", string.Empty);
 
-            File.AppendAllText($"{Application.StartupPath}\\Print.htm",
+            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm",
 
                 "<style>\r\n\r\n" +
                 "\ttable {font-family:Verdana; font-size:11px; border-collapse:collapse; border:1px solid #bbbbbb;}\r\n\r\n" +
@@ -265,34 +271,79 @@ namespace BaseFormPresenterSpace
 
             );
 
-            File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr bgcolor=#bbbbbb style=\"color:#0; font-weight:bold;\">\r\n");
+            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr bgcolor=#bbbbbb style=\"color:#0; font-weight:bold;\">\r\n");
 
             for (int i = 0; i < baseFormView.Table.Columns.Count; i++)
             {
-                File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
-                File.AppendAllText($"{Application.StartupPath}\\Print.htm", baseFormView.Table.Columns[i].Text);
-                File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", baseFormView.Table.Columns[i].Text);
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
             }
 
-            File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
+            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
 
             foreach (string[] tr in baseFormModel.DataBase.Table)
             {
-                File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr>\r\n");
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr>\r\n");
 
                 foreach (string td in tr)
                 {
-                    File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
-                    File.AppendAllText($"{Application.StartupPath}\\Print.htm", td);
-                    File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", td);
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
                 }
 
-                File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
             }
 
-            File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</table>");
+            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</table>");
 
             System.Diagnostics.Process.Start($"{Application.StartupPath}\\Print.htm");
+        }
+
+        void SearchAll()
+        {
+            if (baseFormView.SearchAllBox.Text != string.Empty)
+            {
+                baseFormView.TableOutput(baseFormModel.DataBase.FindAll(baseFormView.SearchAllBox.Text), false);
+
+                baseFormView.Filter.Visible = true;
+
+                baseFormView.tableParameters.SearchMode = "SearchAll";
+            }
+        }
+
+        void History()
+        {
+            DataBase historyBase = new DataBase(baseFormView.iniFile.History);
+
+            BaseFormView history = new BaseFormView(baseFormView.iniFile, historyBase);
+
+            history.WindowState = FormWindowState.Normal;
+
+            history.Create.Visible = false;
+
+            history.Open.Visible = false;
+
+            history.Save.Visible = false;
+
+            history.SaveAs.Visible = false;
+
+            history.Edit.Visible = false;
+
+            history.Lists.Visible = false;
+
+            history.Reports.Visible = false;
+
+            history.History.Visible = false;
+
+            history.CAdd.Visible = false;
+
+            history.CEditAll.Visible = false;
+
+            history.Text = "DevList - История";
+
+            history.Show();
         }
     }
 }

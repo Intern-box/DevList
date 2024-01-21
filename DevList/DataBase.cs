@@ -55,9 +55,9 @@ namespace DataBaseSpace
             Table.Insert(to, temp);
         }
 
-        public List<string[]> StringSearch(string[] request)
+        public BindingList<string[]> StringSearch(string[] request)
         {
-            List<string[]> result = new List<string[]>();
+            BindingList<string[]> result = new BindingList<string[]>();
 
             byte needFind = 0;
 
@@ -86,9 +86,9 @@ namespace DataBaseSpace
             return result;
         }
 
-        public List<string[]> FindAll(string request)
+        public BindingList<string[]> FindAll(string request)
         {
-            List<string[]> result = new List<string[]>();
+            BindingList<string[]> result = new BindingList<string[]>();
 
             bool matchFound = false;
 
