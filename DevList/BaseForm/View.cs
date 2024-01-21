@@ -266,20 +266,7 @@ namespace BaseFormViewSpace
             //set.Show();
         }
 
-        void Filtr_Click(object sender, EventArgs e)
-        {
-            //DataBaseChanges();
-
-            //if (tableParameters.SearchMode == "Column") { tableParameters.SortingColumns = false; }
-
-            //Table.ListViewItemSorter = null;
-
-            //TableOutput(dataBase.Table);
-
-            //Filter.Visible = false;
-
-            //tableParameters.SearchMode = string.Empty;
-        }
+        void Filtr_Click(object sender, EventArgs e) { baseFormPresenter.Events("Filtr"); }
 
         void BaseForm_FormClosed(object sender, FormClosedEventArgs e) { baseFormPresenter.DataBaseChanges(); }
 

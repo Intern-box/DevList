@@ -62,6 +62,8 @@ namespace BaseFormPresenterSpace
                 case "SearchAll": SearchAll(); break;
 
                 case "History": History(); break;
+
+                case "Filtr": Filtr(); break;
             }
         }
 
@@ -344,6 +346,21 @@ namespace BaseFormPresenterSpace
             history.Text = "DevList - История";
 
             history.Show();
+        }
+
+        void Filtr()
+        {
+            DataBaseChanges();
+
+            if (baseFormView.tableParameters.SearchMode == "Column") { baseFormView.tableParameters.SortingColumns = false; }
+
+            baseFormView.Table.ListViewItemSorter = null;
+
+            baseFormView.TableOutput(baseFormModel.DataBase.Table);
+
+            baseFormView.Filter.Visible = false;
+
+            baseFormView.tableParameters.SearchMode = string.Empty;
         }
     }
 }
