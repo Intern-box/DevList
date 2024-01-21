@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using INIFileSpace;
 using System.IO;
 using SearchEditViewSpace;
+using ReportsSpace;
 
 namespace BaseFormPresenterSpace
 {
@@ -50,6 +51,10 @@ namespace BaseFormPresenterSpace
                 case "Remove": Remove(); break;
 
                 case "CommonReport": CommonReport(); break;
+
+                case "SortByTypes": SortByTypes(); break;
+
+                case "SortByRooms": SortByRooms(); break;
             }
         }
 
@@ -241,21 +246,15 @@ namespace BaseFormPresenterSpace
             //}
         }
 
-        void SortByTypes()
-        {
-            
-        }
+        void SortByTypes() { Reports report = new Reports(baseFormView.iniFile, baseFormModel.DataBase, reportType: "SortByTypes"); report.ShowDialog(); }
 
-        void SortByRooms()
-        {
-
-        }
+        void SortByRooms() { Reports report = new Reports(baseFormView.iniFile, baseFormModel.DataBase, reportType: "SortByRooms"); report.ShowDialog(); }
 
         void CommonReport()
         {
-            File.WriteAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm", string.Empty);
+            File.WriteAllText($"{Application.StartupPath}\\Print.htm", string.Empty);
 
-            File.AppendAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm",
+            File.AppendAllText($"{Application.StartupPath}\\Print.htm",
 
                 "<style>\r\n\r\n" +
                 "\ttable {font-family:Verdana; font-size:11px; border-collapse:collapse; border:1px solid #bbbbbb;}\r\n\r\n" +
@@ -265,34 +264,34 @@ namespace BaseFormPresenterSpace
 
             );
 
-            File.AppendAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm", "\t<tr bgcolor=#bbbbbb style=\"color:#0; font-weight:bold;\">\r\n");
+            File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr bgcolor=#bbbbbb style=\"color:#0; font-weight:bold;\">\r\n");
 
             for (int i = 0; i < baseFormView.Table.Columns.Count; i++)
             {
-                System.IO.File.AppendAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm", "\t\t<td>");
-                System.IO.File.AppendAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm", baseFormView.Table.Columns[i].Text);
-                System.IO.File.AppendAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm", "</td>\r\n");
+                File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
+                File.AppendAllText($"{Application.StartupPath}\\Print.htm", baseFormView.Table.Columns[i].Text);
+                File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
             }
 
-            File.AppendAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
+            File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
 
             foreach (string[] tr in baseFormModel.DataBase.Table)
             {
-                System.IO.File.AppendAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm", "\t<tr>\r\n");
+                File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr>\r\n");
 
                 foreach (string td in tr)
                 {
-                    System.IO.File.AppendAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm", "\t\t<td>");
-                    System.IO.File.AppendAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm", td);
-                    System.IO.File.AppendAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm", "</td>\r\n");
+                    File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
+                    File.AppendAllText($"{Application.StartupPath}\\Print.htm", td);
+                    File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
                 }
 
-                System.IO.File.AppendAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
+                File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
             }
 
-            File.AppendAllText($"{System.Windows.Forms.Application.StartupPath}\\Print.htm", "</table>");
+            File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</table>");
 
-            System.Diagnostics.Process.Start($"{System.Windows.Forms.Application.StartupPath}\\Print.htm");
+            System.Diagnostics.Process.Start($"{Application.StartupPath}\\Print.htm");
         }
     }
 }
