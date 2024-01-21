@@ -270,28 +270,6 @@ namespace BaseFormViewSpace
 
         void BaseForm_FormClosed(object sender, FormClosedEventArgs e) { baseFormPresenter.DataBaseChanges(); }
 
-        void BaseForm_KeyUp(object sender, KeyEventArgs e)
-        {
-            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.S) == Keys.S)
-            {
-                Save_Click(sender, e);
-
-                MessageBox.Show("База сохранена!", "Сохранение базы", MessageBoxButtons.OK);
-            }
-
-            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.E) == Keys.E) { EditAll_Click(sender, e); }
-
-            if (e.KeyCode == Keys.Delete) { Remove_Click(sender, e); }
-
-            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.F) == Keys.F) { Search_Click(sender, e); }
-
-            //if (e.KeyCode == Keys.Escape) { DataBaseChanges(); Close(); }
-
-            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Up) == Keys.Up) { Up_Click(sender, e); }
-
-            if ((e.KeyData & Keys.Control) == Keys.Control && (e.KeyData & Keys.Down) == Keys.Down) { Down_Click(sender, e); }
-        }
-
         void NomberString_Click(object sender, EventArgs e)
         {
             //if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)

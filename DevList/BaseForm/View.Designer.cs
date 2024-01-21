@@ -507,7 +507,6 @@ namespace BaseFormViewSpace
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BaseForm_FormClosed);
             this.Load += new System.EventHandler(this.BaseForm_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BaseForm_KeyUp);
             this.CMenu.ResumeLayout(false);
             this.MMenu.ResumeLayout(false);
             this.MMenu.PerformLayout();
