@@ -207,7 +207,7 @@ namespace BaseFormViewSpace
 
         void SearchAll_KeyDown(object sender, KeyEventArgs e) { baseFormPresenter.Events("SearchAll"); }
 
-        void Lists_Click(object sender, EventArgs e) { Lists lists = new Lists(iniFile); lists.ShowDialog(); }
+        void Lists_Click(object sender, EventArgs e) { baseFormPresenter.Events("Lists"); }
 
         void SortByTypes_Click(object sender, EventArgs e) { baseFormPresenter.Events("SortByTypes"); }
 

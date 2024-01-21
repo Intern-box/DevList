@@ -9,6 +9,7 @@ using System.IO;
 using SearchEditViewSpace;
 using ReportsSpace;
 using RemoveSpace;
+using ListsSpace;
 
 namespace BaseFormPresenterSpace
 {
@@ -64,6 +65,8 @@ namespace BaseFormPresenterSpace
                 case "History": History(); break;
 
                 case "Filtr": Filtr(); break;
+
+                case "Lists": Lists(); break;
             }
         }
 
@@ -362,5 +365,7 @@ namespace BaseFormPresenterSpace
 
             baseFormView.tableParameters.SearchMode = string.Empty;
         }
+
+        void Lists() { Lists lists = new Lists(baseFormView.iniFile); lists.ShowDialog(); }
     }
 }
