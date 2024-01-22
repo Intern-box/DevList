@@ -151,6 +151,7 @@ namespace BaseFormViewSpace
 
         void Search_Click(object sender, EventArgs e)
         {
+            baseFormPresenter.Events("Search");
             //BaseSearchEdit search;
 
             //int saveCoordinates;

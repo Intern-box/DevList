@@ -510,7 +510,6 @@ namespace SearchEditViewSpace
             this.Name = "SearchEditView";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BaseSearchEditWindow_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
