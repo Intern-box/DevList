@@ -5,9 +5,9 @@ using BaseFormPresenterSpace;
 using TableParametersSpace;
 using System.ComponentModel;
 using System.Collections;
-using ListsSpace;
 using ColumnsSpace;
 using DataBaseSpace;
+using DevList;
 
 namespace BaseFormViewSpace
 {
@@ -272,19 +272,7 @@ namespace BaseFormViewSpace
 
         void NomberString_Click(object sender, EventArgs e)
         {
-            //if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
-            //{
-            //    UpDownForm upDownForm = new UpDownForm();
-
-            //    upDownForm.ShowDialog();
-
-            //    if (upDownForm.Result != null)
-            //    {
-            //        dataBase.Move(tableParameters.Id, int.Parse(upDownForm.Result) - 1);
-
-            //        EditAfterSearch(sender);
-            //    }
-            //}
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None) { baseFormPresenter.Events("NomberString"); }
         }
 
         void CNomberString_Click(object sender, EventArgs e) { NomberString_Click(sender, e); }

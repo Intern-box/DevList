@@ -10,6 +10,8 @@ using SearchEditViewSpace;
 using ReportsSpace;
 using RemoveSpace;
 using ListsSpace;
+using DevList;
+using TableParametersSpace;
 
 namespace BaseFormPresenterSpace
 {
@@ -67,6 +69,8 @@ namespace BaseFormPresenterSpace
                 case "Filtr": Filtr(); break;
 
                 case "Lists": Lists(); break;
+
+                case "NomberString": NomberString(); break;
             }
         }
 
@@ -367,5 +371,17 @@ namespace BaseFormPresenterSpace
         }
 
         void Lists() { Lists lists = new Lists(baseFormView.iniFile); lists.ShowDialog(); }
+
+        void NomberString()
+        {
+            UpDownForm upDownForm = new UpDownForm(); upDownForm.ShowDialog();
+
+            if (upDownForm.Result != null)
+            {
+                baseFormModel.DataBase.Move(baseFormView.tableParameters.Id, int.Parse(upDownForm.Result) - 1);
+
+                baseFormView.TableOutput(baseFormModel.DataBase.Table);
+            }
+        }
     }
 }
