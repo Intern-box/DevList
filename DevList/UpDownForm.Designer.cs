@@ -1,4 +1,4 @@
-﻿namespace DevList
+﻿namespace UpDownFormSpace
 {
     partial class UpDownForm
     {

@@ -10,7 +10,7 @@ using SearchEditViewSpace;
 using ReportsSpace;
 using RemoveSpace;
 using ListsSpace;
-using DevList;
+using UpDownFormSpace;
 
 namespace BaseFormPresenterSpace
 {
@@ -207,6 +207,7 @@ namespace BaseFormPresenterSpace
                 baseFormView.TableOutput(baseFormModel.DataBase.Table);
             }
         }
+
         void Up()
         {
             baseFormModel.DataBase.UpDown(baseFormView.tableParameters.Line - 1, baseFormView.tableParameters.Line);
