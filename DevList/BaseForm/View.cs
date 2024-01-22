@@ -7,7 +7,6 @@ using System.ComponentModel;
 using System.Collections;
 using ColumnsSpace;
 using DataBaseSpace;
-using DevList;
 
 namespace BaseFormViewSpace
 {
@@ -217,54 +216,7 @@ namespace BaseFormViewSpace
 
         void History_Click(object sender, EventArgs e) { baseFormPresenter.Events("History"); }
 
-        void Set_Click(object sender, EventArgs e)
-        {
-            //DataBase setBase = new DataBase(iniFile.Set);
-
-            //BaseFormView set = new BaseFormView(iniFile, setBase);
-
-            //set.Create.Visible = false;
-
-            //set.Open.Visible = false;
-
-            //set.View.Visible = false;
-
-            //set.Reports.Visible = false;
-
-            //set.History.Visible = false;
-
-            //set.Set.Visible = false;
-
-            //set.Table.Columns.Clear();
-
-            //set.Table.Columns.Add(new ColumnHeader() { Name = "ID", Text = "ID", TextAlign = HorizontalAlignment.Center });
-
-            //set.Table.Columns.Add(new ColumnHeader() { Name = "InvNomer", Text = "Системный блок Инв. №", TextAlign = HorizontalAlignment.Center });
-
-            //set.Table.Columns.Add(new ColumnHeader() { Name = "Data", Text = "Приобретено", TextAlign = HorizontalAlignment.Center });
-
-            //set.Table.Columns.Add(new ColumnHeader() { Name = "CPU", Text = "Процессор", TextAlign = HorizontalAlignment.Center });
-
-            //set.Table.Columns.Add(new ColumnHeader() { Name = "Mainboard", Text = "Мат. плата", TextAlign = HorizontalAlignment.Center });
-
-            //set.Table.Columns.Add(new ColumnHeader() { Name = "RAM", Text = "ОЗУ", TextAlign = HorizontalAlignment.Center });
-
-            //set.Table.Columns.Add(new ColumnHeader() { Name = "Disk", Text = "Накопитель", TextAlign = HorizontalAlignment.Center });
-
-            //set.Table.Columns.Add(new ColumnHeader() { Name = "Videocard", Text = "Видеокарта", TextAlign = HorizontalAlignment.Center });
-
-            //set.Table.Columns.Add(new ColumnHeader() { Name = "Power", Text = "Блок питания", TextAlign = HorizontalAlignment.Center });
-
-            //set.Table.Columns.Add(new ColumnHeader() { Name = "Case", Text = "Корпус", TextAlign = HorizontalAlignment.Center });
-
-            //set.Table.Columns.Add(new ColumnHeader() { Name = "GvCPU", Text = "Год выпуска процессора", TextAlign = HorizontalAlignment.Center });
-
-            //set.Text = "DevList - Комплект";
-
-            //set.WindowState = FormWindowState.Normal;
-
-            //set.Show();
-        }
+        void Set_Click(object sender, EventArgs e) { baseFormPresenter.Events("Set"); }
 
         void Filtr_Click(object sender, EventArgs e) { baseFormPresenter.Events("Filtr"); }
 

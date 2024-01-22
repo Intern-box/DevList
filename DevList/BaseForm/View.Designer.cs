@@ -94,7 +94,7 @@ namespace BaseFormViewSpace
             this.toolStripMenuItem1,
             this.CRemove});
             this.CMenu.Name = "KMenu";
-            this.CMenu.Size = new System.Drawing.Size(181, 136);
+            this.CMenu.Size = new System.Drawing.Size(147, 114);
             // 
             // CSearch
             // 
@@ -106,14 +106,14 @@ namespace BaseFormViewSpace
             // CAdd
             // 
             this.CAdd.Name = "CAdd";
-            this.CAdd.Size = new System.Drawing.Size(180, 22);
+            this.CAdd.Size = new System.Drawing.Size(146, 22);
             this.CAdd.Text = "Добавить";
             this.CAdd.Click += new System.EventHandler(this.ContextAdd_Click);
             // 
             // CEditAll
             // 
             this.CEditAll.Name = "CEditAll";
-            this.CEditAll.Size = new System.Drawing.Size(180, 22);
+            this.CEditAll.Size = new System.Drawing.Size(146, 22);
             this.CEditAll.Text = "Править";
             this.CEditAll.Click += new System.EventHandler(this.ContextEditAll_Click);
             // 
@@ -124,20 +124,20 @@ namespace BaseFormViewSpace
             this.ContextDown,
             this.CNomberString});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
             this.toolStripMenuItem1.Text = "Переместить";
             // 
             // ContextUp
             // 
             this.ContextUp.Name = "ContextUp";
-            this.ContextUp.Size = new System.Drawing.Size(180, 22);
+            this.ContextUp.Size = new System.Drawing.Size(121, 22);
             this.ContextUp.Text = "Вверх";
             this.ContextUp.Click += new System.EventHandler(this.ContextUp_Click);
             // 
             // ContextDown
             // 
             this.ContextDown.Name = "ContextDown";
-            this.ContextDown.Size = new System.Drawing.Size(180, 22);
+            this.ContextDown.Size = new System.Drawing.Size(121, 22);
             this.ContextDown.Text = "Вниз";
             this.ContextDown.Click += new System.EventHandler(this.ContextDown_Click);
             // 
@@ -187,28 +187,28 @@ namespace BaseFormViewSpace
             // Create
             // 
             this.Create.Name = "Create";
-            this.Create.Size = new System.Drawing.Size(180, 22);
+            this.Create.Size = new System.Drawing.Size(162, 22);
             this.Create.Text = "Создать";
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
             // Open
             // 
             this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(180, 22);
+            this.Open.Size = new System.Drawing.Size(162, 22);
             this.Open.Text = "Открыть";
             this.Open.Click += new System.EventHandler(this.Open_Click);
             // 
             // Save
             // 
             this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(180, 22);
+            this.Save.Size = new System.Drawing.Size(162, 22);
             this.Save.Text = "Сохранить";
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // SaveAs
             // 
             this.SaveAs.Name = "SaveAs";
-            this.SaveAs.Size = new System.Drawing.Size(180, 22);
+            this.SaveAs.Size = new System.Drawing.Size(162, 22);
             this.SaveAs.Text = "Сохранить как";
             this.SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
             // 
@@ -286,7 +286,7 @@ namespace BaseFormViewSpace
             // Columns
             // 
             this.Columns.Name = "Columns";
-            this.Columns.Size = new System.Drawing.Size(127, 22);
+            this.Columns.Size = new System.Drawing.Size(180, 22);
             this.Columns.Text = "Колонки";
             this.Columns.Click += new System.EventHandler(this.Columns_Click);
             // 
@@ -520,9 +520,7 @@ namespace BaseFormViewSpace
         public System.Windows.Forms.ContextMenuStrip CMenu;
         public System.Windows.Forms.ListView Table;
         private System.Windows.Forms.ToolStripMenuItem File;
-        private System.Windows.Forms.ToolStripMenuItem View;
         private System.Windows.Forms.ToolStripMenuItem Search;
-        private System.Windows.Forms.ToolStripMenuItem Set;
         private System.Windows.Forms.MenuStrip MMenu;
         private System.Windows.Forms.ToolStripMenuItem Add;
         private System.Windows.Forms.ToolStripMenuItem MEditAll;
@@ -567,6 +565,8 @@ namespace BaseFormViewSpace
         public System.Windows.Forms.ToolStripMenuItem CAdd;
         public System.Windows.Forms.ToolStripMenuItem ContextUp;
         public System.Windows.Forms.ToolStripMenuItem ContextDown;
+        public System.Windows.Forms.ToolStripMenuItem View;
+        public System.Windows.Forms.ToolStripMenuItem Set;
     }
 }
 
