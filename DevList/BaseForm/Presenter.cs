@@ -33,50 +33,6 @@ namespace BaseFormPresenterSpace
 
         public BindingList<string[]> Table() { return baseFormModel.DataBase.Table; }
 
-        public void Events(string mode)
-        {
-            switch (mode)
-            {
-                case "Create": Create(); break;
-
-                case "Open": Open(); break;
-
-                case "Save": Save(); break;
-
-                case "SaveAs": SaveAs(); break;
-
-                case "Add": Add(); break;
-
-                case "EditAll": EditAll(); break;
-
-                case "Up": Up(); break;
-
-                case "Down": Down(); break;
-
-                case "Remove": Remove(); break;
-
-                case "CommonReport": CommonReport(); break;
-
-                case "SortByTypes": SortByTypes(); break;
-
-                case "SortByRooms": SortByRooms(); break;
-
-                case "SearchAll": SearchAll(); break;
-
-                case "History": History(); break;
-
-                case "Filtr": Filtr(); break;
-
-                case "Lists": Lists(); break;
-
-                case "NomberString": NomberString(); break;
-
-                case "Set": Set(); break;
-
-                case "Search": Search(); break;
-            }
-        }
-
         public void DataBaseChanges()
         {
             if (baseFormModel.DataBase.Change)
@@ -98,7 +54,7 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        void Create()
+        public void Create()
         {
             DataBaseChanges();
 
@@ -116,7 +72,7 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        void Open()
+        public void Open()
         {
             DataBaseChanges();
 
@@ -132,14 +88,14 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        void Save()
+        public void Save()
         {
             baseFormModel.DataBase.Save();
 
             baseFormModel.DataBase.Change = false;
         }
 
-        void SaveAs()
+        public void SaveAs()
         {
             FolderBrowserDialog savePath = new FolderBrowserDialog();
 
@@ -163,7 +119,7 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        void Add()
+        public void Add()
         {
             SearchEditView searchEditView = new SearchEditView(baseFormView.iniFile);
 
@@ -176,7 +132,7 @@ namespace BaseFormPresenterSpace
             baseFormView.TableOutput(baseFormModel.DataBase.Table);
         }
 
-        void EditAll()
+        public void EditAll()
         {
             if (baseFormView.tableParameters.Coordinates != null && baseFormView.tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
@@ -210,7 +166,7 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        void Up()
+        public void Up()
         {
             baseFormModel.DataBase.UpDown(baseFormView.tableParameters.Line - 1, baseFormView.tableParameters.Line);
 
@@ -223,7 +179,7 @@ namespace BaseFormPresenterSpace
             baseFormModel.DataBase.Change = true;
         }
 
-        void Down()
+        public void Down()
         {
             baseFormModel.DataBase.UpDown(baseFormView.tableParameters.Line + 1, baseFormView.tableParameters.Line);
 
@@ -236,7 +192,7 @@ namespace BaseFormPresenterSpace
             baseFormModel.DataBase.Change = true;
         }
 
-        void Remove()
+        public void Remove()
         {
             if (baseFormView.Text == "DevList - История")
             {
@@ -266,11 +222,11 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        void SortByTypes() { Reports report = new Reports(baseFormView.iniFile, baseFormModel.DataBase, reportType: "SortByTypes"); report.ShowDialog(); }
+        public void SortByTypes() { Reports report = new Reports(baseFormView.iniFile, baseFormModel.DataBase, reportType: "SortByTypes"); report.ShowDialog(); }
 
-        void SortByRooms() { Reports report = new Reports(baseFormView.iniFile, baseFormModel.DataBase, reportType: "SortByRooms"); report.ShowDialog(); }
+        public void SortByRooms() { Reports report = new Reports(baseFormView.iniFile, baseFormModel.DataBase, reportType: "SortByRooms"); report.ShowDialog(); }
 
-        void CommonReport()
+        public void CommonReport()
         {
             System.IO.File.WriteAllText($"{Application.StartupPath}\\Print.htm", string.Empty);
 
@@ -314,7 +270,7 @@ namespace BaseFormPresenterSpace
             System.Diagnostics.Process.Start($"{Application.StartupPath}\\Print.htm");
         }
 
-        void SearchAll()
+        public void SearchAll()
         {
             if (baseFormView.SearchAllBox.Text != string.Empty)
             {
@@ -326,7 +282,7 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        void History()
+        public void History()
         {
             DataBase historyBase = new DataBase(baseFormView.iniFile.History);
 
@@ -359,7 +315,7 @@ namespace BaseFormPresenterSpace
             history.Show();
         }
 
-        void Filtr()
+        public void Filtr()
         {
             DataBaseChanges();
 
@@ -374,9 +330,9 @@ namespace BaseFormPresenterSpace
             baseFormView.tableParameters.SearchMode = string.Empty;
         }
 
-        void Lists() { Lists lists = new Lists(baseFormView.iniFile); lists.ShowDialog(); }
+        public void Lists() { Lists lists = new Lists(baseFormView.iniFile); lists.ShowDialog(); }
 
-        void NomberString()
+        public void NomberString()
         {
             UpDownForm upDownForm = new UpDownForm(); upDownForm.ShowDialog();
 
@@ -388,7 +344,7 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        void Set()
+        public void Set()
         {
             DataBase setBase = new DataBase(baseFormView.iniFile.Set);
 
@@ -437,7 +393,7 @@ namespace BaseFormPresenterSpace
             set.Show();
         }
 
-        void Search()
+        public void Search()
         {
             //BaseSearchEdit search;
 

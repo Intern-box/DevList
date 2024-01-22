@@ -7,23 +7,11 @@ namespace LaunchPresenterSpace
     {
         LaunchModel launchModel = new LaunchModel();
 
-        public void Start(string mode)
-        {
-            switch (mode)
-            {
-                case "Download": Download(); break;
+        public void Download() { launchModel.Download(); BaseFormLoad(); }
 
-                case "Create": Create(); break;
+        public void Create() { launchModel.Create(); BaseFormLoad(); }
 
-                case "Open": Open(); break;
-            }
-        }
-
-        void Download() { launchModel.Download(); BaseFormLoad(); }
-
-        void Create() { launchModel.Create(); BaseFormLoad(); }
-
-        void Open() { launchModel.Open(); BaseFormLoad(); }
+        public void Open() { launchModel.Open(); BaseFormLoad(); }
 
         public void BaseFormLoad()
         {

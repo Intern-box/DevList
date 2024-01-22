@@ -92,22 +92,22 @@ namespace BaseFormViewSpace
             tableParameters.SearchMode = "Column";
         }
 
-        void Create_Click(object sender, EventArgs e) { baseFormPresenter.Events("Create"); }
+        void Create_Click(object sender, EventArgs e) { baseFormPresenter.Create(); }
 
-        void Open_Click(object sender, EventArgs e) { baseFormPresenter.Events("Open"); }
+        void Open_Click(object sender, EventArgs e) { baseFormPresenter.Open(); }
 
-        void Save_Click(object sender, EventArgs e) { baseFormPresenter.Events("Save"); }
+        void Save_Click(object sender, EventArgs e) { baseFormPresenter.Save(); }
 
-        void SaveAs_Click(object sender, EventArgs e) { baseFormPresenter.Events("SaveAs"); }
+        void SaveAs_Click(object sender, EventArgs e) { baseFormPresenter.SaveAs(); }
 
         // Если курсор на НЕ пустой строке, то  ListViewHitTestLocations НЕ none
         // Если курсор на ПУСТОЙ строке, то ListViewHitTestLocations равен NONE
         // Если курсор на строке заголовка, то метод ListView.HitTest() возвращает NULL
-        void Add_Click(object sender, EventArgs e) { baseFormPresenter.Events("Add"); }
+        void Add_Click(object sender, EventArgs e) { baseFormPresenter.Add(); }
 
         void ContextAdd_Click(object sender, EventArgs e) { Add_Click(sender, e); }
 
-        void EditAll_Click(object sender, EventArgs e) { baseFormPresenter.Events("EditAll"); }
+        void EditAll_Click(object sender, EventArgs e) { baseFormPresenter.EditAll(); }
 
         void ContextEditAll_Click(object sender, EventArgs e) { EditAll_Click(sender, e); }
 
@@ -115,7 +115,7 @@ namespace BaseFormViewSpace
         {
             if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
-                if (tableParameters.Line > 0) { baseFormPresenter.Events("Up"); }
+                if (tableParameters.Line > 0) { baseFormPresenter.Up(); }
             }
         }
 
@@ -125,7 +125,7 @@ namespace BaseFormViewSpace
         {
             if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
-                if (baseFormPresenter.Table().Count > tableParameters.Line + 1) { baseFormPresenter.Events("Down"); }
+                if (baseFormPresenter.Table().Count > tableParameters.Line + 1) { baseFormPresenter.Down(); }
             }
         }
 
@@ -133,7 +133,7 @@ namespace BaseFormViewSpace
 
         void Remove_Click(object sender, EventArgs e)
         {
-            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None) { baseFormPresenter.Events("Remove"); }
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None) { baseFormPresenter.Remove(); }
         }
 
         void ContextRemove_Click(object sender, EventArgs e) { Remove_Click(sender, e); }
@@ -151,7 +151,7 @@ namespace BaseFormViewSpace
 
         void Search_Click(object sender, EventArgs e)
         {
-            baseFormPresenter.Events("Search");
+            baseFormPresenter.Search();
             //BaseSearchEdit search;
 
             //int saveCoordinates;
@@ -205,27 +205,27 @@ namespace BaseFormViewSpace
 
         void ContextSearch_Click(object sender, EventArgs e) { Search_Click(sender, e); }
 
-        void SearchAll_KeyDown(object sender, KeyEventArgs e) { baseFormPresenter.Events("SearchAll"); }
+        void SearchAll_KeyDown(object sender, KeyEventArgs e) { baseFormPresenter.SearchAll(); }
 
-        void Lists_Click(object sender, EventArgs e) { baseFormPresenter.Events("Lists"); }
+        void Lists_Click(object sender, EventArgs e) { baseFormPresenter.Lists(); }
 
-        void SortByTypes_Click(object sender, EventArgs e) { baseFormPresenter.Events("SortByTypes"); }
+        void SortByTypes_Click(object sender, EventArgs e) { baseFormPresenter.SortByTypes(); }
 
-        void SortByRooms_Click(object sender, EventArgs e) { baseFormPresenter.Events("SortByRooms"); }
+        void SortByRooms_Click(object sender, EventArgs e) { baseFormPresenter.SortByRooms(); }
 
-        void CommonReport_Click(object sender, EventArgs e) { baseFormPresenter.Events("CommonReport"); }
+        void CommonReport_Click(object sender, EventArgs e) { baseFormPresenter.CommonReport(); }
 
-        void History_Click(object sender, EventArgs e) { baseFormPresenter.Events("History"); }
+        void History_Click(object sender, EventArgs e) { baseFormPresenter.History(); }
 
-        void Set_Click(object sender, EventArgs e) { baseFormPresenter.Events("Set"); }
+        void Set_Click(object sender, EventArgs e) { baseFormPresenter.Set(); }
 
-        void Filtr_Click(object sender, EventArgs e) { baseFormPresenter.Events("Filtr"); }
+        void Filtr_Click(object sender, EventArgs e) { baseFormPresenter.Filtr(); }
 
         void BaseForm_FormClosed(object sender, FormClosedEventArgs e) { baseFormPresenter.DataBaseChanges(); }
 
         void NomberString_Click(object sender, EventArgs e)
         {
-            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None) { baseFormPresenter.Events("NomberString"); }
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None) { baseFormPresenter.NomberString(); }
         }
 
         void CNomberString_Click(object sender, EventArgs e) { NomberString_Click(sender, e); }
