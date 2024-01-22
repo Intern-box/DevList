@@ -4,9 +4,9 @@ using System.Windows.Forms;
 using INIFileSpace;
 using ListSpace;
 
-namespace PartsSearchEditWindowSpace
+namespace PartsSearchEditViewSpace
 {
-    public partial class PartsSearchEditWindow : Form
+    public partial class PartsSearchEditView : Form
     {
         public string[] Result = new string[13];
 
@@ -16,9 +16,9 @@ namespace PartsSearchEditWindowSpace
 
         public INIFile iniFile;
 
-        public PartsSearchEditWindow(string head, INIFile iniFile) : this(head, iniFile, null) { }
+        public PartsSearchEditView(string head, INIFile iniFile) : this(head, iniFile, null) { }
 
-        public PartsSearchEditWindow(string head, INIFile iniFile, string[] str)
+        public PartsSearchEditView(string head, INIFile iniFile, string[] str)
         {
             InitializeComponent();
 

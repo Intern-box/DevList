@@ -1,5 +1,4 @@
 ﻿using DataBaseSpace;
-using INIFileSpace;
 
 namespace BaseFormModelSpace
 {
@@ -7,9 +6,6 @@ namespace BaseFormModelSpace
     {
         public DataBase DataBase;
 
-        public BaseFormModel(DataBase dataBase)
-        {
-            this.DataBase = dataBase;
-        }
+        public BaseFormModel(DataBase dataBase) { DataBase = dataBase; }
     }
 }
