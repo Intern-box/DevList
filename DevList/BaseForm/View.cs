@@ -149,11 +149,11 @@ namespace BaseFormViewSpace
             if (columns.Execute) { TableOutput(baseFormPresenter.Table()); }
         }
 
-        void Search_Click(object sender, EventArgs e) { int saveCoordinates; baseFormPresenter.Search(); }
+        void Search_Click(object sender, EventArgs e) { baseFormPresenter.Search(); }
 
         void ContextSearch_Click(object sender, EventArgs e) { Search_Click(sender, e); }
 
-        void SearchAll_KeyDown(object sender, KeyEventArgs e) { baseFormPresenter.SearchAll(this); }
+        void SearchAll_KeyDown(object sender, KeyEventArgs e) { baseFormPresenter.SearchAll(); }
 
         void Lists_Click(object sender, EventArgs e) { baseFormPresenter.Lists(); }
 

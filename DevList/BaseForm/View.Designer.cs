@@ -187,28 +187,28 @@ namespace BaseFormViewSpace
             // Create
             // 
             this.Create.Name = "Create";
-            this.Create.Size = new System.Drawing.Size(162, 22);
+            this.Create.Size = new System.Drawing.Size(180, 22);
             this.Create.Text = "Создать";
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
             // Open
             // 
             this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(162, 22);
+            this.Open.Size = new System.Drawing.Size(180, 22);
             this.Open.Text = "Открыть";
             this.Open.Click += new System.EventHandler(this.Open_Click);
             // 
             // Save
             // 
             this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(162, 22);
+            this.Save.Size = new System.Drawing.Size(180, 22);
             this.Save.Text = "Сохранить";
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // SaveAs
             // 
             this.SaveAs.Name = "SaveAs";
-            this.SaveAs.Size = new System.Drawing.Size(162, 22);
+            this.SaveAs.Size = new System.Drawing.Size(180, 22);
             this.SaveAs.Text = "Сохранить как";
             this.SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
             // 
@@ -519,7 +519,6 @@ namespace BaseFormViewSpace
         private System.Windows.Forms.Label LabelSearchAll;
         public System.Windows.Forms.ContextMenuStrip CMenu;
         public System.Windows.Forms.ListView Table;
-        private System.Windows.Forms.ToolStripMenuItem File;
         private System.Windows.Forms.ToolStripMenuItem Search;
         private System.Windows.Forms.MenuStrip MMenu;
         private System.Windows.Forms.ToolStripMenuItem Add;
@@ -567,6 +566,7 @@ namespace BaseFormViewSpace
         public System.Windows.Forms.ToolStripMenuItem ContextDown;
         public System.Windows.Forms.ToolStripMenuItem View;
         public System.Windows.Forms.ToolStripMenuItem Set;
+        public System.Windows.Forms.ToolStripMenuItem File;
     }
 }
 
