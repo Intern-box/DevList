@@ -16,6 +16,7 @@ namespace DevList
 
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // Запуск приложения с формы выбора открытия БД
             Application.Run(new LaunchView());
         }
     }

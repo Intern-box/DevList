@@ -6,6 +6,7 @@ namespace INIFileSpace
 {
     public class INIFile
     {
+        // Список путей к файлу БД и сопутствующим файлам и папкам по-умолчанию
         public string Folder;
 
         public string Path = "DevList.ini";
@@ -28,31 +29,41 @@ namespace INIFileSpace
 
         public INIFile() { }
 
+        // При передаче в конструктор пути к файлу с настройками
         public INIFile(string path)
         {
+            // Проверяем на его наличие
             if (!File.Exists(path))
             {
+                // Если файл отсутствует, пишем лог
                 Log.ErrorHandler("[ x ] DevList.ini не существует. Создание структуры папок и файлов");
 
                 try
                 {
+                    // Пробуем создать файл настроек с путями по-умолчанию
                     File.WriteAllText(path, string.Empty);
 
+                    // Инициируем путь до файла
                     Path = path;
 
+                    // и путь до папки с файлом
                     Folder = System.IO.Path.GetDirectoryName(Path);
                 }
                 catch (Exception)
                 {
+                    // Иначе создаём файл
                     if (!File.Exists($"{path}\\{Path}")) { File.WriteAllText($"{path}\\{Path}", string.Empty); }
 
+                    // и инициируем путь к папке с файлом
                     Folder = path;
                 }
 
+                // Проверяем наличие нужных папок. При необходимости создаём
                 if (!Directory.Exists($"{Folder}\\БД")) { Directory.CreateDirectory($"{Folder}\\БД"); }
 
                 if (!Directory.Exists($"{Folder}\\История перемещений")) { Directory.CreateDirectory($"{Folder}\\История перемещений"); }
 
+                // Пишем в файл настроек необходимые пути
                 File.WriteAllText
                 (
                     $"{Folder}\\{Path}",
@@ -66,6 +77,7 @@ namespace INIFileSpace
                     $"{Parts}\r\n"
                 );
 
+                // Создаём необходимые файлы
                 File.WriteAllText($"{Folder}\\{Base}", string.Empty);
                 File.WriteAllText($"{Folder}\\{Rooms}", string.Empty);
                 File.WriteAllText($"{Folder}\\{Devices}", string.Empty);
@@ -75,17 +87,25 @@ namespace INIFileSpace
                 File.WriteAllText($"{Folder}\\{Set}", string.Empty);
                 File.WriteAllText($"{Folder}\\{Parts}", string.Empty);
             }
+
+            // Если файл существует
             else
             {
+                // Пишем лог
                 Log.ErrorHandler("[   ] DevList.ini существует. Открываю");
 
+                // Инициируем путь
                 Path = path;
 
+                // Инициируем путь к папке
                 Folder = System.IO.Path.GetDirectoryName(Path);
             }
 
+            // Читаем файл
             string[] iniFile = File.ReadAllLines(Path);
 
+            // Инициируем переменные настроек из файла.
+            // В случае неудачи - пишем лог.
             try { Base = $"{Folder}\\{iniFile[0]}"; } catch (Exception) { Base = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
             try { Rooms = $"{Folder}\\{iniFile[1]}"; } catch (Exception) { Rooms = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };
             try { Devices = $"{Folder}\\{iniFile[2]}"; } catch (Exception) { Devices = string.Empty; Log.ErrorHandler("[ x ] DevList.ini заполнен с ошибками!"); };

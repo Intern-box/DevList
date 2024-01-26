@@ -14,6 +14,7 @@ namespace BaseFormViewSpace
     {
         public INIFile iniFile;
 
+        // Создавая форму, создаём Presenter для обработки событий
         BaseFormPresenter baseFormPresenter;
 
         DataBase historyBase;
@@ -22,10 +23,12 @@ namespace BaseFormViewSpace
 
         public TableParameters tableParameters = new TableParameters();
 
+        // Получаем только путь до файла с настройками
         public BaseFormView(INIFile iniFile) : this (iniFile, null) { }
 
         public BaseFormView(INIFile iniFile, DataBase dataBase)
         {
+            // Инициируем переменные
             this.iniFile = iniFile;
 
             historyBase = dataBase;
@@ -34,34 +37,47 @@ namespace BaseFormViewSpace
 
             visibleColumns = new bool[Table.Columns.Count];
 
+            // Указываем какие колонки таблицы с БД отображать
             for (int i = 0; i < visibleColumns.Length; i++) { visibleColumns[i] = true; }
         }
 
+        // Работа после отображения формы
         void BaseForm_Load(object sender, EventArgs e)
         {
+            // Инициируем Presenter
             baseFormPresenter = new BaseFormPresenter(this);
 
+            // Если в конструктор передавалась БД с Историей, инициируем БД с Историей
             if (historyBase != null) { baseFormPresenter.DataBaseSet(historyBase); }
 
+            // Выводим содержимое БД в форму
             TableOutput(baseFormPresenter.Table());
         }
 
+        // Вывод данных из файла с БД в форму с признаком пересчитать порядковые номера строк
         public void TableOutput(BindingList<string[]> table, bool recalculate = true)
         {
+            // Для более быстрой отработки вывода инфы из БД сначала скрываем содержимое ListView
             Table.Visible = false;
 
+            // Чистим ListView
             Table.Items.Clear();
 
+            // Пересчитываем порядковые номера строк
             if (recalculate) { for (int i = 0; i < table.Count; i++) { table[i][0] = (i + 1).ToString(); } }
 
+            // Заполняем ListView из БД
             for (int i = 0; i < table.Count; i++) { ListViewItem line = new ListViewItem(table[i]); Table.Items.Add(line); }
 
+            // Признак авторазмерности колонок по ширине
             Table.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
+            // Принудительно устанавливаем ширину колонок
             ChangeMan.Width = Comment.Width = 150;
 
             for (int i = 0; i < visibleColumns.Length; i++) { if (!visibleColumns[i]) { Table.Columns[i].Width = 0; } }
 
+            // Выводим содержимое ListView
             Table.Visible = true;
         }
 
