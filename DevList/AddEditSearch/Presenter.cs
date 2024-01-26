@@ -1,21 +1,21 @@
 ﻿using INIFileSpace;
-using SearchEditModelSpace;
-using SearchEditViewSpace;
+using AddEditSearchModelSpace;
+using AddEditSearchViewSpace;
 using System.IO;
 
-namespace SearchEditPresenterSpace
+namespace AddEditSearchPresenterSpace
 {
-    public class SearchEditPresenter
+    public class AddEditSearchPresenter
     {
-        SearchEditView searchEditView;
+        AddEditSearchView searchEditView;
 
-        public SearchEditModel searchEditModel;
+        public AddEditSearchModel searchEditModel;
 
-        public SearchEditPresenter(SearchEditView searchEditView, INIFile iniFile)
+        public AddEditSearchPresenter(AddEditSearchView searchEditView, INIFile iniFile)
         {
             this.searchEditView = searchEditView;
 
-            searchEditModel = new SearchEditModel(iniFile);
+            searchEditModel = new AddEditSearchModel(iniFile);
 
             Load();
         }

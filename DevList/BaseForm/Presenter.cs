@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using INIFileSpace;
 using System.IO;
-using SearchEditViewSpace;
+using AddEditSearchViewSpace;
 using ReportsSpace;
 using RemoveSpace;
 using ListsSpace;
@@ -121,7 +121,7 @@ namespace BaseFormPresenterSpace
 
         public void Add()
         {
-            SearchEditView searchEditView = new SearchEditView(baseFormView.iniFile);
+            AddEditSearchView searchEditView = new AddEditSearchView(baseFormView.iniFile);
 
             searchEditView.ShowDialog();
 
@@ -136,7 +136,7 @@ namespace BaseFormPresenterSpace
         {
             if (baseFormView.tableParameters.Coordinates != null && baseFormView.tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
-                SearchEditView searchEditView = new SearchEditView(baseFormView.iniFile);
+                AddEditSearchView searchEditView = new AddEditSearchView(baseFormView.iniFile);
 
                 searchEditView.searchEditPresenter.searchEditModel.Data = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id];
 

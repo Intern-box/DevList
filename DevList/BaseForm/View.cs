@@ -149,59 +149,7 @@ namespace BaseFormViewSpace
             if (columns.Execute) { TableOutput(baseFormPresenter.Table()); }
         }
 
-        void Search_Click(object sender, EventArgs e)
-        {
-            baseFormPresenter.Search();
-            //BaseSearchEdit search;
-
-            //int saveCoordinates;
-
-            //if (tableParameters.Coordinates == null || tableParameters.Coordinates.Item == null)
-            //{
-            //    tableParameters.Coordinates = Table.HitTest(0, 0);
-
-            //    if (Text == head || Text == "DevList - История") { search = new BaseSearchEditWindow("DevList - Поиск", iniFile); }
-
-            //    else { search = new PartsSearchEditWindow("DevList - Поиск", iniFile); }
-            //}
-            //else
-            //{
-            //    saveCoordinates = tableParameters.Coordinates.Item == null ? 0 : tableParameters.Coordinates.Item.Index;
-
-            //    if (saveCoordinates >= 0)
-            //    {
-            //        if (Text == head || Text == "DevList - История") { search = new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]); }
-
-            //        else { search = new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]); }
-            //    }
-            //    else
-            //    {
-            //        if (Text == head || Text == "DevList - История") { search = (BaseSearchEdit)new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]); }
-
-            //        else { search = new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]); }
-            //    }
-            //}
-
-            //search.ShowDialog();
-
-            //if (search.Execute)
-            //{
-            //    if (search.Result != null)
-            //    {
-            //        bool stringEmptyCheck = false;
-
-            //        foreach (string word in search.Result) { if (word != string.Empty) { stringEmptyCheck = true; } }
-
-            //        if (stringEmptyCheck) { TableOutput(dataBase.StringSearch(search.Result), false); } else { Table.Items.Clear(); }
-
-            //        Filter.Visible = true;
-
-            //        tableParameters.SearchMode = "Search";
-
-            //        saveSearch = search;
-            //    }
-            //}
-        }
+        void Search_Click(object sender, EventArgs e) { int saveCoordinates; baseFormPresenter.Search(); }
 
         void ContextSearch_Click(object sender, EventArgs e) { Search_Click(sender, e); }
 
@@ -229,34 +177,6 @@ namespace BaseFormViewSpace
         }
 
         void CNomberString_Click(object sender, EventArgs e) { NomberString_Click(sender, e); }
-
-        void EditAfterSearch(object sender)
-        {
-            //dataBase.Save();
-
-            //if (Filter.Visible)
-            //{
-            //    if (tableParameters.SearchMode == "Search") { TableOutput(dataBase.StringSearch(saveSearch.Result), false); }
-
-            //    if (tableParameters.SearchMode == "SearchAll") { TableOutput(dataBase.FindAll(SearchAllBox.Text), false); }
-
-            //    if (tableParameters.SearchMode == "Column")
-            //    {
-            //        ColumnClickEventArgs x = new ColumnClickEventArgs(tableParameters.Column);
-
-            //        if (tableParameters.SortingColumns) { tableParameters.SortingColumns = false; } else { tableParameters.SortingColumns = true; }
-
-            //        TableOutput(dataBase.Table);
-
-            //        Table_ColumnClick(sender, x);
-
-            //    }
-            //}
-            //else
-            //{
-            //    TableOutput(dataBase.Table);
-            //}
-        }
     }
 
     class ListViewItemComparer : IComparer

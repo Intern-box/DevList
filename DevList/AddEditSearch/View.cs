@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
-using SearchEditPresenterSpace;
+using AddEditSearchPresenterSpace;
 using INIFileSpace;
 
-namespace SearchEditViewSpace
+namespace AddEditSearchViewSpace
 {
-    public partial class SearchEditView : Form
+    public partial class AddEditSearchView : Form
     {
-        public SearchEditPresenter searchEditPresenter;
+        public AddEditSearchPresenter searchEditPresenter;
 
-        public SearchEditView(INIFile iniFile)
+        public AddEditSearchView(INIFile iniFile)
         {
             InitializeComponent();
 
-            searchEditPresenter = new SearchEditPresenter(this, iniFile);
+            searchEditPresenter = new AddEditSearchPresenter(this, iniFile);
         }
 
         private void Execute_Click(object sender, EventArgs e) { searchEditPresenter.Set(); Close(); }
