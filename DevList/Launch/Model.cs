@@ -11,7 +11,7 @@ namespace LaunchModelSpace
 
         public void Create()
         {
-            DialogResult result = MessageBox.Show("Данное действие может перезаписать базу!", "Перезаписать файлы?", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Данное действие очистит базу!", "Перезаписать файлы?", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes) { iniFile = new INIFile(Application.StartupPath); }
         }

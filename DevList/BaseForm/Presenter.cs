@@ -272,14 +272,11 @@ namespace BaseFormPresenterSpace
 
         public void SearchAll(BaseFormView form)
         {
-            if (form.SearchAllBox.Text != string.Empty)
-            {
-                form.TableOutput(baseFormModel.DataBase.FindAll(baseFormView.SearchAllBox.Text), false);
+            form.TableOutput(baseFormModel.DataBase.FindAll(form.SearchAllBox.Text), false);
 
-                form.Filter.Visible = true;
+            form.Filter.Visible = true;
 
-                form.tableParameters.SearchMode = "SearchAll";
-            }
+            form.tableParameters.SearchMode = "SearchAll";
         }
 
         public void History()
