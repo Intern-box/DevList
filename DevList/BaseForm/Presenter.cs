@@ -270,15 +270,15 @@ namespace BaseFormPresenterSpace
             System.Diagnostics.Process.Start($"{Application.StartupPath}\\Print.htm");
         }
 
-        public void SearchAll()
+        public void SearchAll(BaseFormView form)
         {
-            if (baseFormView.SearchAllBox.Text != string.Empty)
+            if (form.SearchAllBox.Text != string.Empty)
             {
-                baseFormView.TableOutput(baseFormModel.DataBase.FindAll(baseFormView.SearchAllBox.Text), false);
+                form.TableOutput(baseFormModel.DataBase.FindAll(baseFormView.SearchAllBox.Text), false);
 
-                baseFormView.Filter.Visible = true;
+                form.Filter.Visible = true;
 
-                baseFormView.tableParameters.SearchMode = "SearchAll";
+                form.tableParameters.SearchMode = "SearchAll";
             }
         }
 
