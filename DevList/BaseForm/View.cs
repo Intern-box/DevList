@@ -81,12 +81,16 @@ namespace BaseFormViewSpace
             Table.Visible = true;
         }
 
+        // Реакция на нажатие на кнопки мыши
         void Table_MouseDown(object sender, MouseEventArgs e)
         {
+            // После нажатия на кнопку мыши
             tableParameters.Coordinates = Table.HitTest(e.X, e.Y);
 
+            // проверяем получили или нет координаты нажатия
             if (tableParameters.Coordinates.Item != null)
             {
+                // если получили, записываем в соответствующие переменные
                 tableParameters.Line = tableParameters.Coordinates.Item.Index;
 
                 tableParameters.Column = tableParameters.Coordinates.Item.SubItems.IndexOf(tableParameters.Coordinates.SubItem);
@@ -95,17 +99,20 @@ namespace BaseFormViewSpace
             }
         }
 
+        // Реакция на нажатие на колонки ListView
         void Table_ColumnClick(object sender, ColumnClickEventArgs e)
         {
+            // Производим сортировку
             Table.ListViewItemSorter = new ListViewItemComparer(e.Column, tableParameters.SortingColumns);
 
+            // Изменяем флаг сортировки
             if (tableParameters.SortingColumns) { tableParameters.SortingColumns = false; } else { tableParameters.SortingColumns = true; }
 
+            // Записываем номер столбца
             tableParameters.ColumnAlign = e.Column;
 
+            // Устанавливаем флаг фильтра
             Filter.Visible = true;
-
-            tableParameters.SearchMode = "Column";
         }
 
         void Create_Click(object sender, EventArgs e) { baseFormPresenter.Create(); }

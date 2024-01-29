@@ -11,6 +11,8 @@ using ReportsSpace;
 using RemoveSpace;
 using ListsSpace;
 using UpDownFormSpace;
+using PartsAddEditSearchViewSpace;
+using AbstractAddEditSearchSpace;
 
 namespace BaseFormPresenterSpace
 {
@@ -275,8 +277,6 @@ namespace BaseFormPresenterSpace
             baseFormView.TableOutput(baseFormModel.DataBase.FindAll(baseFormView.SearchAllBox.Text), false);
 
             baseFormView.Filter.Visible = true;
-
-            baseFormView.tableParameters.SearchMode = "SearchAll";
         }
 
         public void History()
@@ -314,15 +314,11 @@ namespace BaseFormPresenterSpace
         {
             DataBaseChanges();
 
-            if (baseFormView.tableParameters.SearchMode == "Column") { baseFormView.tableParameters.SortingColumns = false; }
-
             baseFormView.Table.ListViewItemSorter = null;
 
             baseFormView.TableOutput(baseFormModel.DataBase.Table);
 
             baseFormView.Filter.Visible = false;
-
-            baseFormView.tableParameters.SearchMode = string.Empty;
         }
 
         public void Lists() { Lists lists = new Lists(baseFormView.iniFile); lists.ShowDialog(); }
@@ -390,55 +386,51 @@ namespace BaseFormPresenterSpace
 
         public void Search()
         {
-            //int saveCoordinates;
+            int saveCoordinates;
 
-            //AddEditSearchView search;
+            AbstractAddEditSearch search;
 
-            //if (baseFormView.tableParameters.Coordinates == null || baseFormView.tableParameters.Coordinates.Item == null)
-            //{
-            //    baseFormView.tableParameters.Coordinates = baseFormView.Table.HitTest(0, 0);
+            if (baseFormView.tableParameters.Coordinates == null || baseFormView.tableParameters.Coordinates.Item == null)
+            {
+                baseFormView.tableParameters.Coordinates = baseFormView.Table.HitTest(0, 0);
 
-            //    if (baseFormView.Text == baseFormView.head || Text == "DevList - История") { search = new BaseSearchEditWindow("DevList - Поиск", iniFile); }
+                if (baseFormView.Text == "DevList - История") { search = new AddEditSearchView(baseFormView.iniFile); }
 
-            //    else { search = new PartsSearchEditWindow("DevList - Поиск", iniFile); }
-            //}
-            //else
-            //{
-            //    saveCoordinates = tableParameters.Coordinates.Item == null ? 0 : tableParameters.Coordinates.Item.Index;
+                else { search = new PartsAddEditSearch(baseFormView.iniFile); }
+            }
+            else
+            {
+                saveCoordinates = baseFormView.tableParameters.Coordinates.Item == null ? 0 : baseFormView.tableParameters.Coordinates.Item.Index;
 
-            //    if (saveCoordinates >= 0)
-            //    {
-            //        if (Text == head || Text == "DevList - История") { search = new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]); }
+                if (saveCoordinates >= 0)
+                {
+                    if (baseFormView.Text == "DevList - История") { search = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]); }
 
-            //        else { search = new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[saveCoordinates]); }
-            //    }
-            //    else
-            //    {
-            //        if (Text == head || Text == "DevList - История") { search = (BaseSearchEdit)new BaseSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]); }
+                    else { search = new PartsAddEditSearch(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]); }
+                }
+                else
+                {
+                    if (baseFormView.Text == "DevList - История") { search = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
 
-            //        else { search = new PartsSearchEditWindow("DevList - Поиск", iniFile, dataBase.Table[0]); }
-            //    }
-            //}
+                    else { search = new PartsAddEditSearch(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
+                }
+            }
 
-            //search.ShowDialog();
+            search.ShowDialog();
 
-            //if (search.Execute)
-            //{
-            //    if (search.Result != null)
-            //    {
-            //        bool stringEmptyCheck = false;
+            if (search.Execute)
+            {
+                if (search.Result != null)
+                {
+                    bool stringEmptyCheck = false;
 
-            //        foreach (string word in search.Result) { if (word != string.Empty) { stringEmptyCheck = true; } }
+                    foreach (string word in search.Result) { if (word != string.Empty) { stringEmptyCheck = true; } }
 
-            //        if (stringEmptyCheck) { TableOutput(dataBase.StringSearch(search.Result), false); } else { Table.Items.Clear(); }
+                    if (stringEmptyCheck) { baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(search.Result), false); } else { baseFormView.Table.Items.Clear(); }
 
-            //        Filter.Visible = true;
-
-            //        tableParameters.SearchMode = "Search";
-
-            //        saveSearch = search;
-            //    }
-            //}
+                    baseFormView.Filter.Visible = true;
+                }
+            }
         }
     }
 }

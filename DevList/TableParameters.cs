@@ -4,8 +4,6 @@ namespace TableParametersSpace
 {
     public struct TableParameters
     {
-        public string SearchMode;
-
         public bool SortingColumns;
 
         public int ColumnAlign;

@@ -1,12 +1,13 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
+using System.IO;
+using AbstractAddEditSearchSpace;
 using INIFileSpace;
 using ListSpace;
 
 namespace PartsAddEditSearchViewSpace
 {
-    public partial class PartsAddEditSearch : Form
+    public partial class PartsAddEditSearch : AbstractAddEditSearch
     {
         public string[] Result = new string[13];
 
@@ -16,13 +17,11 @@ namespace PartsAddEditSearchViewSpace
 
         public INIFile iniFile;
 
-        public PartsAddEditSearch(string head, INIFile iniFile) : this(head, iniFile, null) { }
+        public PartsAddEditSearch(INIFile iniFile) : this(iniFile, null) { }
 
-        public PartsAddEditSearch(string head, INIFile iniFile, string[] str)
+        public PartsAddEditSearch(INIFile iniFile, string[] str)
         {
             InitializeComponent();
-
-            Text = head;
 
             this.iniFile = iniFile;
 

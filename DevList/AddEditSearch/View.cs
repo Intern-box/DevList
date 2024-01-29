@@ -1,15 +1,17 @@
 ﻿using System;
-using System.Windows.Forms;
 using AddEditSearchPresenterSpace;
+using AbstractAddEditSearchSpace;
 using INIFileSpace;
 
 namespace AddEditSearchViewSpace
 {
-    public partial class AddEditSearchView : Form
+    public partial class AddEditSearchView : AbstractAddEditSearch
     {
         public AddEditSearchPresenter searchEditPresenter;
 
-        public AddEditSearchView(INIFile iniFile)
+        public AddEditSearchView(INIFile iniFile) : this (iniFile, null) { }
+
+        public AddEditSearchView(INIFile iniFile, string[] index)
         {
             InitializeComponent();
 
