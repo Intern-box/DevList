@@ -1,13 +1,12 @@
 ﻿using INIFileSpace;
 using ListSpace;
+using AbstractAddEditSearchSpace;
 
 namespace AddEditSearchModelSpace
 {
-    public class AddEditSearchModel
+    public class AddEditSearchModel : AbstractAddEditSearch
     {
         public List Rooms, Devices, Employees, Names;
-
-        public string[] Data = new string[14];
 
         public AddEditSearchModel(INIFile iniFile)
         {

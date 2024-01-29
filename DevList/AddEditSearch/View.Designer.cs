@@ -459,7 +459,7 @@ namespace AddEditSearchViewSpace
             this.AddInEnd.Text = "Добавить в конец";
             this.AddInEnd.UseVisualStyleBackColor = true;
             // 
-            // SearchEditView
+            // AddEditSearchView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -507,9 +507,10 @@ namespace AddEditSearchViewSpace
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "SearchEditView";
+            this.Name = "AddEditSearchView";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "DevList - Добавить/Править/Поиск";
             this.ResumeLayout(false);
             this.PerformLayout();
 

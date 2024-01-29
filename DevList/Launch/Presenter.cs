@@ -21,7 +21,7 @@ namespace LaunchPresenterSpace
         public void BaseFormLoad()
         {
             // Передаём путь до файла с "настройками"
-            BaseFormView baseFormView = new BaseFormView(launchModel.iniFile);
+            BaseFormView baseFormView = new BaseFormView("DevList 6.9 - Главное окно", launchModel.iniFile);
 
             // Показываем форму
             baseFormView.ShowDialog();

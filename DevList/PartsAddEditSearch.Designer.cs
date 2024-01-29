@@ -463,7 +463,7 @@ namespace PartsAddEditSearchViewSpace
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
-            // PartsSearchEditWindow
+            // PartsAddEditSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -511,9 +511,10 @@ namespace PartsAddEditSearchViewSpace
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "PartsSearchEditWindow";
+            this.Name = "PartsAddEditSearch";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "DevList - Комплект - Добавить/Править/Поиск";
             this.Load += new System.EventHandler(this.PartsSearchEditWindow_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PartsSearchEditWindow_KeyUp);
             this.ResumeLayout(false);

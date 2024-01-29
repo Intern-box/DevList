@@ -9,12 +9,6 @@ namespace PartsAddEditSearchViewSpace
 {
     public partial class PartsAddEditSearch : AbstractAddEditSearch
     {
-        public string[] Result = new string[13];
-
-        public bool Execute;
-
-        public bool AddInEnd;
-
         public INIFile iniFile;
 
         public PartsAddEditSearch(INIFile iniFile) : this(iniFile, null) { }

@@ -127,7 +127,7 @@ namespace BaseFormPresenterSpace
 
             searchEditView.ShowDialog();
 
-            baseFormModel.DataBase.Table.Add(searchEditView.searchEditPresenter.searchEditModel.Data);
+            baseFormModel.DataBase.Table.Add(searchEditView.AddEditSearchPresenter.addEditSearchModel.Result);
 
             baseFormModel.DataBase.Change = true;
 
@@ -140,19 +140,19 @@ namespace BaseFormPresenterSpace
             {
                 AddEditSearchView searchEditView = new AddEditSearchView(baseFormView.iniFile);
 
-                searchEditView.searchEditPresenter.searchEditModel.Data = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id];
+                searchEditView.AddEditSearchPresenter.addEditSearchModel.Result = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id];
 
                 string tmp = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id][3];
 
-                searchEditView.searchEditPresenter.Get();
+                searchEditView.AddEditSearchPresenter.Get();
 
                 searchEditView.ShowDialog();
 
-                if (tmp != searchEditView.searchEditPresenter.searchEditModel.Data[3])
+                if (tmp != searchEditView.AddEditSearchPresenter.addEditSearchModel.Result[3])
                 {
                     System.IO.File.AppendAllText
                     (
-                        $"{Path.GetDirectoryName(Path.GetFullPath(baseFormView.iniFile.Path))}\\История перемещений\\{searchEditView.searchEditPresenter.searchEditModel.Data[3]}.txt",
+                        $"{Path.GetDirectoryName(Path.GetFullPath(baseFormView.iniFile.Path))}\\История перемещений\\{searchEditView.AddEditSearchPresenter.addEditSearchModel.Result[3]}.txt",
                         $"Из помещения: {tmp}\r\n" +
                         $"переместили: {DateTime.Now}\r\n" +
                         $"{baseFormModel.DataBase.Table[baseFormView.tableParameters.Id][5]}\r\n" +
@@ -160,7 +160,7 @@ namespace BaseFormPresenterSpace
                     );
                 }
 
-                baseFormModel.DataBase.Table[baseFormView.tableParameters.Id] = searchEditView.searchEditPresenter.searchEditModel.Data;
+                baseFormModel.DataBase.Table[baseFormView.tableParameters.Id] = searchEditView.AddEditSearchPresenter.addEditSearchModel.Result;
 
                 baseFormModel.DataBase.Change = true;
 
@@ -283,7 +283,7 @@ namespace BaseFormPresenterSpace
         {
             DataBase historyBase = new DataBase(baseFormView.iniFile.History);
 
-            BaseFormView history = new BaseFormView(baseFormView.iniFile, historyBase);
+            BaseFormView history = new BaseFormView("DevList - История", baseFormView.iniFile, historyBase);
 
             history.WindowState = FormWindowState.Normal;
 
@@ -339,7 +339,7 @@ namespace BaseFormPresenterSpace
         {
             DataBase setBase = new DataBase(baseFormView.iniFile.Set);
 
-            BaseFormView set = new BaseFormView(baseFormView.iniFile, setBase);
+            BaseFormView set = new BaseFormView("DevList - Комплект", baseFormView.iniFile, setBase);
 
             set.Create.Visible = false;
 
@@ -394,7 +394,7 @@ namespace BaseFormPresenterSpace
             {
                 baseFormView.tableParameters.Coordinates = baseFormView.Table.HitTest(0, 0);
 
-                if (baseFormView.Text == "DevList - История") { search = new AddEditSearchView(baseFormView.iniFile); }
+                if (baseFormView.Text == "DevList 6.9 - Главное окно" || baseFormView.Text == "DevList - История") { search = new AddEditSearchView(baseFormView.iniFile); }
 
                 else { search = new PartsAddEditSearch(baseFormView.iniFile); }
             }
@@ -404,13 +404,17 @@ namespace BaseFormPresenterSpace
 
                 if (saveCoordinates >= 0)
                 {
-                    if (baseFormView.Text == "DevList - История") { search = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]); }
+                    if (baseFormView.Text == "DevList 6.9 - Главное окно" || baseFormView.Text == "DevList - История")
+                    
+                    { search = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]); }
 
                     else { search = new PartsAddEditSearch(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]); }
                 }
                 else
                 {
-                    if (baseFormView.Text == "DevList - История") { search = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
+                    if (baseFormView.Text == "DevList 6.9 - Главное окно" || baseFormView.Text == "DevList - История")
+                    
+                    { search = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
 
                     else { search = new PartsAddEditSearch(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
                 }

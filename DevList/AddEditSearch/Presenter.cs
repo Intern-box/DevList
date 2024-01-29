@@ -7,145 +7,147 @@ namespace AddEditSearchPresenterSpace
 {
     public class AddEditSearchPresenter
     {
-        AddEditSearchView searchEditView;
+        AddEditSearchView addEditSearchView;
 
-        public AddEditSearchModel searchEditModel;
+        public AddEditSearchModel addEditSearchModel;
 
         public AddEditSearchPresenter(AddEditSearchView searchEditView, INIFile iniFile)
         {
-            this.searchEditView = searchEditView;
+            this.addEditSearchView = searchEditView;
 
-            searchEditModel = new AddEditSearchModel(iniFile);
+            addEditSearchModel = new AddEditSearchModel(iniFile);
 
             Load();
         }
 
         void Load()
         {
-            searchEditView.Rooms.Items.AddRange(File.ReadAllLines(searchEditModel.Rooms.Path));
-            searchEditView.Devices.Items.AddRange(File.ReadAllLines(searchEditModel.Devices.Path));
-            searchEditView.Employees.Items.AddRange(File.ReadAllLines(searchEditModel.Employees.Path));
-            searchEditView.Names.Items.AddRange(File.ReadAllLines(searchEditModel.Names.Path));
-            searchEditView.ChangeMan.Items.AddRange(File.ReadAllLines(searchEditModel.Employees.Path));
+            addEditSearchView.Rooms.Items.AddRange(File.ReadAllLines(addEditSearchModel.Rooms.Path));
+            addEditSearchView.Devices.Items.AddRange(File.ReadAllLines(addEditSearchModel.Devices.Path));
+            addEditSearchView.Employees.Items.AddRange(File.ReadAllLines(addEditSearchModel.Employees.Path));
+            addEditSearchView.Names.Items.AddRange(File.ReadAllLines(addEditSearchModel.Names.Path));
+            addEditSearchView.ChangeMan.Items.AddRange(File.ReadAllLines(addEditSearchModel.Employees.Path));
         }
 
         public void Get()
         {
-            searchEditView.Date.Text = searchEditModel.Data[1];
-            searchEditView.Number.Text = searchEditModel.Data[2];
-            searchEditView.Rooms.Text = searchEditModel.Data[3];
-            searchEditView.Employees.Text = searchEditModel.Data[4];
-            searchEditView.Names.Text = searchEditModel.Data[5];
-            searchEditView.Devices.Text = searchEditModel.Data[6];
-            searchEditView.Status.Text = searchEditModel.Data[7];
-            searchEditView.Inventory.Text = searchEditModel.Data[8];
-            searchEditView.Comment.Text = searchEditModel.Data[9];
-            searchEditView.Hostname.Text = searchEditModel.Data[10];
-            searchEditView.IP.Text = searchEditModel.Data[11];
-            searchEditView.ChangeMan.Text = searchEditModel.Data[12];
+            addEditSearchView.Date.Text = addEditSearchModel.Result[1];
+            addEditSearchView.Number.Text = addEditSearchModel.Result[2];
+            addEditSearchView.Rooms.Text = addEditSearchModel.Result[3];
+            addEditSearchView.Employees.Text = addEditSearchModel.Result[4];
+            addEditSearchView.Names.Text = addEditSearchModel.Result[5];
+            addEditSearchView.Devices.Text = addEditSearchModel.Result[6];
+            addEditSearchView.Status.Text = addEditSearchModel.Result[7];
+            addEditSearchView.Inventory.Text = addEditSearchModel.Result[8];
+            addEditSearchView.Comment.Text = addEditSearchModel.Result[9];
+            addEditSearchView.Hostname.Text = addEditSearchModel.Result[10];
+            addEditSearchView.IP.Text = addEditSearchModel.Result[11];
+            addEditSearchView.ChangeMan.Text = addEditSearchModel.Result[12];
 
-            try { if (searchEditModel.Data[13] == "1") { searchEditView.AddInEnd.Checked = true; } else { searchEditView.AddInEnd.Checked = false; } }
+            try { if (addEditSearchModel.Result[13] == "1") { addEditSearchView.AddInEnd.Checked = true; } else { addEditSearchView.AddInEnd.Checked = false; } }
 
             catch (System.Exception) { }
         }
 
         public void Set()
         {
-            searchEditModel.Data[0] = string.Empty;
-            searchEditModel.Data[1] = searchEditView.Date.Text;
-            searchEditModel.Data[2] = searchEditView.Number.Text;
-            searchEditModel.Data[3] = searchEditView.Rooms.Text;
-            searchEditModel.Data[4] = searchEditView.Employees.Text;
-            searchEditModel.Data[5] = searchEditView.Names.Text;
-            searchEditModel.Data[6] = searchEditView.Devices.Text;
-            searchEditModel.Data[7] = searchEditView.Status.Text;
-            searchEditModel.Data[8] = searchEditView.Inventory.Text;
-            searchEditModel.Data[9] = searchEditView.Comment.Text;
-            searchEditModel.Data[10] = searchEditView.Hostname.Text;
-            searchEditModel.Data[11] = searchEditView.IP.Text;
-            searchEditModel.Data[12] = searchEditView.ChangeMan.Text;
+            addEditSearchModel.Result[0] = string.Empty;
+            addEditSearchModel.Result[1] = addEditSearchView.Date.Text;
+            addEditSearchModel.Result[2] = addEditSearchView.Number.Text;
+            addEditSearchModel.Result[3] = addEditSearchView.Rooms.Text;
+            addEditSearchModel.Result[4] = addEditSearchView.Employees.Text;
+            addEditSearchModel.Result[5] = addEditSearchView.Names.Text;
+            addEditSearchModel.Result[6] = addEditSearchView.Devices.Text;
+            addEditSearchModel.Result[7] = addEditSearchView.Status.Text;
+            addEditSearchModel.Result[8] = addEditSearchView.Inventory.Text;
+            addEditSearchModel.Result[9] = addEditSearchView.Comment.Text;
+            addEditSearchModel.Result[10] = addEditSearchView.Hostname.Text;
+            addEditSearchModel.Result[11] = addEditSearchView.IP.Text;
+            addEditSearchModel.Result[12] = addEditSearchView.ChangeMan.Text;
 
-            if (searchEditView.AddInEnd.Checked) { searchEditModel.Data[13] = "1"; } else { searchEditModel.Data[13] = "0"; }
+            if (addEditSearchView.AddInEnd.Checked) { addEditSearchModel.AddInEnd = true; } else { addEditSearchModel.AddInEnd = false; }
+
+            addEditSearchModel.Execute = true;
         }
 
         public void RoomsPlus()
         {
-            searchEditModel.Rooms.Add(searchEditView.Rooms.Text);
+            addEditSearchModel.Rooms.Add(addEditSearchView.Rooms.Text);
 
-            searchEditView.Rooms.Items.Clear();
+            addEditSearchView.Rooms.Items.Clear();
 
-            searchEditView.Rooms.Items.AddRange(File.ReadAllLines(searchEditModel.Rooms.Path));
+            addEditSearchView.Rooms.Items.AddRange(File.ReadAllLines(addEditSearchModel.Rooms.Path));
         }
 
         public void RoomsMinus()
         {
-            searchEditModel.Rooms.Remove(searchEditView.Rooms.Text);
+            addEditSearchModel.Rooms.Remove(addEditSearchView.Rooms.Text);
 
-            searchEditView.Rooms.Items.Clear();
+            addEditSearchView.Rooms.Items.Clear();
 
-            searchEditView.Rooms.Items.AddRange(File.ReadAllLines(searchEditModel.Rooms.Path));
+            addEditSearchView.Rooms.Items.AddRange(File.ReadAllLines(addEditSearchModel.Rooms.Path));
         }
 
         public void EmployeesPlus()
         {
-            searchEditModel.Employees.Add(searchEditView.Employees.Text);
+            addEditSearchModel.Employees.Add(addEditSearchView.Employees.Text);
 
-            searchEditView.Employees.Items.Clear();
+            addEditSearchView.Employees.Items.Clear();
 
-            searchEditView.Employees.Items.AddRange(File.ReadAllLines(searchEditModel.Employees.Path));
+            addEditSearchView.Employees.Items.AddRange(File.ReadAllLines(addEditSearchModel.Employees.Path));
 
-            searchEditView.ChangeMan.Items.Clear();
+            addEditSearchView.ChangeMan.Items.Clear();
 
-            searchEditView.ChangeMan.Items.AddRange(File.ReadAllLines(searchEditModel.Employees.Path));
+            addEditSearchView.ChangeMan.Items.AddRange(File.ReadAllLines(addEditSearchModel.Employees.Path));
         }
 
         public void EmployeesMinus()
         {
-            searchEditModel.Employees.Remove(searchEditView.Employees.Text);
+            addEditSearchModel.Employees.Remove(addEditSearchView.Employees.Text);
 
-            searchEditView.Employees.Items.Clear();
+            addEditSearchView.Employees.Items.Clear();
 
-            searchEditView.Employees.Items.AddRange(File.ReadAllLines(searchEditModel.Employees.Path));
+            addEditSearchView.Employees.Items.AddRange(File.ReadAllLines(addEditSearchModel.Employees.Path));
 
-            searchEditView.ChangeMan.Items.Clear();
+            addEditSearchView.ChangeMan.Items.Clear();
 
-            searchEditView.ChangeMan.Items.AddRange(File.ReadAllLines(searchEditModel.Employees.Path));
+            addEditSearchView.ChangeMan.Items.AddRange(File.ReadAllLines(addEditSearchModel.Employees.Path));
         }
 
         public void NamesPlus()
         {
-            searchEditModel.Names.Add(searchEditView.Names.Text);
+            addEditSearchModel.Names.Add(addEditSearchView.Names.Text);
 
-            searchEditView.Names.Items.Clear();
+            addEditSearchView.Names.Items.Clear();
 
-            searchEditView.Names.Items.AddRange(File.ReadAllLines(searchEditModel.Names.Path));
+            addEditSearchView.Names.Items.AddRange(File.ReadAllLines(addEditSearchModel.Names.Path));
         }
 
         public void NamesMinus()
         {
-            searchEditModel.Names.Remove(searchEditView.Names.Text);
+            addEditSearchModel.Names.Remove(addEditSearchView.Names.Text);
 
-            searchEditView.Names.Items.Clear();
+            addEditSearchView.Names.Items.Clear();
 
-            searchEditView.Names.Items.AddRange(File.ReadAllLines(searchEditModel.Names.Path));
+            addEditSearchView.Names.Items.AddRange(File.ReadAllLines(addEditSearchModel.Names.Path));
         }
 
         public void DevicesPlus()
         {
-            searchEditModel.Devices.Add(searchEditView.Devices.Text);
+            addEditSearchModel.Devices.Add(addEditSearchView.Devices.Text);
 
-            searchEditView.Devices.Items.Clear();
+            addEditSearchView.Devices.Items.Clear();
 
-            searchEditView.Devices.Items.AddRange(File.ReadAllLines(searchEditModel.Devices.Path));
+            addEditSearchView.Devices.Items.AddRange(File.ReadAllLines(addEditSearchModel.Devices.Path));
         }
 
         public void DevicesMinus()
         {
-            searchEditModel.Devices.Remove(searchEditView.Devices.Text);
+            addEditSearchModel.Devices.Remove(addEditSearchView.Devices.Text);
 
-            searchEditView.Devices.Items.Clear();
+            addEditSearchView.Devices.Items.Clear();
 
-            searchEditView.Devices.Items.AddRange(File.ReadAllLines(searchEditModel.Devices.Path));
+            addEditSearchView.Devices.Items.AddRange(File.ReadAllLines(addEditSearchModel.Devices.Path));
         }
     }
 }
