@@ -117,7 +117,13 @@ namespace BaseFormPresenterSpace
                 System.IO.File.Copy(baseFormView.iniFile.Names, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Names)), true);
                 System.IO.File.Copy(baseFormView.iniFile.History, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.History)), true);
                 System.IO.File.Copy(baseFormView.iniFile.Set, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Set)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Parts, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Parts)), true);
+                System.IO.File.Copy(baseFormView.iniFile.CPUs, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.CPUs)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Mainboards, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Mainboards)), true);
+                System.IO.File.Copy(baseFormView.iniFile.RAMs, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.RAMs)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Storges, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Storges)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Videocards, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Videocards)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Powers, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Powers)), true);
+                System.IO.File.Copy(baseFormView.iniFile.Cases, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Cases)), true);
             }
         }
 

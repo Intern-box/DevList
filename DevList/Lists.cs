@@ -26,7 +26,19 @@ namespace ListsSpace
 
             if (ListsBox.SelectedIndex == 3) { fileStrings = CheckFileExist(iniFile.Devices); }
 
-            if (ListsBox.SelectedIndex == 4) { fileStrings = CheckFileExist(iniFile.Parts); }
+            if (ListsBox.SelectedIndex == 4) { fileStrings = CheckFileExist(iniFile.CPUs); }
+
+            if (ListsBox.SelectedIndex == 5) { fileStrings = CheckFileExist(iniFile.Mainboards); }
+
+            if (ListsBox.SelectedIndex == 6) { fileStrings = CheckFileExist(iniFile.RAMs); }
+
+            if (ListsBox.SelectedIndex == 7) { fileStrings = CheckFileExist(iniFile.Storges); }
+
+            if (ListsBox.SelectedIndex == 8) { fileStrings = CheckFileExist(iniFile.Videocards); }
+
+            if (ListsBox.SelectedIndex == 9) { fileStrings = CheckFileExist(iniFile.Powers); }
+
+            if (ListsBox.SelectedIndex == 10) { fileStrings = CheckFileExist(iniFile.Cases); }
 
             Content.Clear();
 
@@ -45,15 +57,22 @@ namespace ListsSpace
 
                 if (ListsBox.SelectedIndex == 3) { File.WriteAllText(iniFile.Devices, Content.Text + "\r\n"); }
 
-                if (ListsBox.SelectedIndex == 4) { File.WriteAllText(iniFile.Parts, Content.Text + "\r\n"); }
+                if (ListsBox.SelectedIndex == 4) { File.WriteAllText(iniFile.CPUs, Content.Text + "\r\n"); }
+
+                if (ListsBox.SelectedIndex == 5) { File.WriteAllText(iniFile.Mainboards, Content.Text + "\r\n"); }
+
+                if (ListsBox.SelectedIndex == 6) { File.WriteAllText(iniFile.RAMs, Content.Text + "\r\n"); }
+
+                if (ListsBox.SelectedIndex == 7) { File.WriteAllText(iniFile.Storges, Content.Text + "\r\n"); }
+
+                if (ListsBox.SelectedIndex == 8) { File.WriteAllText(iniFile.Videocards, Content.Text + "\r\n"); }
+
+                if (ListsBox.SelectedIndex == 9) { File.WriteAllText(iniFile.Powers, Content.Text + "\r\n"); }
+
+                if (ListsBox.SelectedIndex == 10) { File.WriteAllText(iniFile.Cases, Content.Text + "\r\n"); }
 
                 Saved.Visible = true;
             }
-        }
-
-        private void Lists_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape) { Close(); }
         }
 
         private string[] CheckFileExist(string path)

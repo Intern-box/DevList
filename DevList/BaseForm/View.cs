@@ -23,7 +23,7 @@ namespace BaseFormViewSpace
 
         public TableParameters tableParameters = new TableParameters();
 
-        // Получаем только путь до файла с настройками
+        // Получаем путь до файла с настройками
         public BaseFormView(string head, INIFile iniFile) : this (head, iniFile, null) { }
 
         public BaseFormView(string head, INIFile iniFile, DataBase dataBase)

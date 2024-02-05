@@ -45,7 +45,13 @@ namespace ListsSpace
             "Сотрудники",
             "Наименования",
             "Оборудование",
-            "Комплектующие"});
+            "Процессоры",
+            "Материнские платы",
+            "Оперативная память",
+            "Диски",
+            "Видеокарты",
+            "Блоки питания",
+            "Корпусы"});
             this.ListsBox.Location = new System.Drawing.Point(78, 12);
             this.ListsBox.Name = "ListsBox";
             this.ListsBox.Size = new System.Drawing.Size(356, 24);
@@ -115,7 +121,6 @@ namespace ListsSpace
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Редактирование списков";
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Lists_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

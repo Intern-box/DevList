@@ -36,15 +36,21 @@ namespace PartsAddEditSearchViewSpace
 
         private void PartsSearchEditWindow_Load(object sender, EventArgs e)
         {
-            List parts = new List(iniFile.Parts);
+            List cpu = new List(iniFile.CPUs);
+            List mainboard = new List(iniFile.Mainboards);
+            List ram = new List(iniFile.RAMs);
+            List storage = new List(iniFile.Storges);
+            List videocard = new List(iniFile.Videocards);
+            List power = new List(iniFile.Powers);
+            List cases = new List(iniFile.Cases);
 
-            CPU.Items.AddRange(File.ReadAllLines(parts.Path));
-            Mainboard.Items.AddRange(File.ReadAllLines(parts.Path));
-            RAM.Items.AddRange(File.ReadAllLines(parts.Path));
-            Disk.Items.AddRange(File.ReadAllLines(parts.Path));
-            Videocard.Items.AddRange(File.ReadAllLines(parts.Path));
-            Power.Items.AddRange(File.ReadAllLines(parts.Path));
-            Case.Items.AddRange(File.ReadAllLines(parts.Path));
+            CPU.Items.AddRange(File.ReadAllLines(cpu.Path));
+            Mainboard.Items.AddRange(File.ReadAllLines(mainboard.Path));
+            RAM.Items.AddRange(File.ReadAllLines(ram.Path));
+            Disk.Items.AddRange(File.ReadAllLines(storage.Path));
+            Videocard.Items.AddRange(File.ReadAllLines(videocard.Path));
+            Power.Items.AddRange(File.ReadAllLines(power.Path));
+            Case.Items.AddRange(File.ReadAllLines(cases.Path));
         }
 
         private void Execute_Click(object sender, EventArgs e)
@@ -74,7 +80,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonCPUPlus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.CPUs);
 
             list.Add(CPU.Text);
 
@@ -85,7 +91,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonCPUMinus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.CPUs);
 
             list.Remove(CPU.Text);
 
@@ -96,7 +102,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonMainboardPlus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.Mainboards);
 
             list.Add(Mainboard.Text);
 
@@ -107,7 +113,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonMainboardMinus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.Mainboards);
 
             list.Remove(Mainboard.Text);
 
@@ -118,7 +124,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonRAMPlus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.RAMs);
 
             list.Add(RAM.Text);
 
@@ -129,7 +135,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonRAMMinus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.RAMs);
 
             list.Remove(RAM.Text);
 
@@ -140,7 +146,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonDiskPlus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.Storges);
 
             list.Add(Disk.Text);
 
@@ -151,7 +157,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonDiskMinus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.Storges);
 
             list.Remove(Disk.Text);
 
@@ -162,7 +168,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonVideocardPlus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.Videocards);
 
             list.Add(Videocard.Text);
 
@@ -173,7 +179,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonVideocardMinus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.Videocards);
 
             list.Remove(Videocard.Text);
 
@@ -184,7 +190,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonPowerPlus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.Powers);
 
             list.Add(Power.Text);
 
@@ -195,7 +201,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonPowerMinus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.Powers);
 
             list.Remove(Power.Text);
 
@@ -206,7 +212,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonCasePlus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.Cases);
 
             list.Add(Case.Text);
 
@@ -217,7 +223,7 @@ namespace PartsAddEditSearchViewSpace
 
         private void ButtonCaseMinus_Click(object sender, EventArgs e)
         {
-            List list = new List(iniFile.Parts);
+            List list = new List(iniFile.Cases);
 
             list.Remove(Case.Text);
 
