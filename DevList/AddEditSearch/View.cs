@@ -1,6 +1,6 @@
 ﻿using System;
-using AddEditSearchPresenterSpace;
 using AbstractAddEditSearchSpace;
+using AddEditSearchPresenterSpace;
 using INIFileSpace;
 
 namespace AddEditSearchViewSpace
@@ -8,6 +8,8 @@ namespace AddEditSearchViewSpace
     public partial class AddEditSearchView : AbstractAddEditSearch
     {
         public AddEditSearchPresenter AddEditSearchPresenter;
+
+        public string[] Result = new string[13];
 
         public AddEditSearchView(INIFile iniFile) : this (iniFile, null) { }
 
