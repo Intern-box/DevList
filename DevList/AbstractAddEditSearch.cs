@@ -8,6 +8,6 @@ namespace AbstractAddEditSearchSpace
 
         public bool AddInEnd;
 
-        public bool Execute;
+        public bool Executed;
     }
 }

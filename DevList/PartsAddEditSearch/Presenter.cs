@@ -1,211 +1,203 @@
 ﻿using PartsAddEditSearchViewSpace;
-using PartsAddEditSearchModelSpace;
-using System.CodeDom.Compiler;
-using System;
-using INIFileSpace;
+using ListSpace;
+using System.IO;
+using AbstractAddEditSearchSpace;
 
 namespace PartsAddEditSearchPresenterSpace
 {
-    public class PartsAddEditSearchPresenter
+    public class PartsAddEditSearchPresenter(PartsAddEditSearchView partsAddEditSearchView) : AbstractAddEditSearch
     {
-        PartsAddEditSearchView partsAddEditSearchView;
+        PartsAddEditSearchView partsAddEditSearchView = partsAddEditSearchView;
 
-        PartsAddEditSearchModel partsAddEditSearchModel = new();
-
-        public PartsAddEditSearchPresenter(PartsAddEditSearchView partsAddEditSearchView)
-        {
-            this.partsAddEditSearchView = partsAddEditSearchView;
-        }
-
-        private void Execute_Click(object sender, EventArgs e)
+        public void Execute()
         {
             Result[0] = string.Empty;
-            Result[1] = Number.Text;
-            Result[2] = Date.Text;
-            Result[3] = CPU.Text;
-            Result[4] = Mainboard.Text;
-            Result[5] = RAM.Text;
-            Result[6] = Disk.Text;
-            Result[7] = Videocard.Text;
-            Result[8] = Power.Text;
-            Result[9] = Case.Text;
-            Result[10] = Year.Text;
+            Result[1] = partsAddEditSearchView.Number.Text;
+            Result[2] = partsAddEditSearchView.Date.Text;
+            Result[3] = partsAddEditSearchView.CPU.Text;
+            Result[4] = partsAddEditSearchView.Mainboard.Text;
+            Result[5] = partsAddEditSearchView.RAM.Text;
+            Result[6] = partsAddEditSearchView.Disk.Text;
+            Result[7] = partsAddEditSearchView.Videocard.Text;
+            Result[8] = partsAddEditSearchView.Power.Text;
+            Result[9] = partsAddEditSearchView.Case.Text;
+            Result[10] = partsAddEditSearchView.Year.Text;
             Result[11] = string.Empty;
             Result[12] = string.Empty;
 
-            AddInEnd = addInEnd.Checked;
+            AddInEnd = partsAddEditSearchView.addInEnd.Checked;
 
-            Execute = true;
+            Executed = true;
 
-            Close();
+            partsAddEditSearchView.Close();
         }
 
-        private void ButtonCPUPlus_Click(object sender, EventArgs e)
+        public void ButtonCPUPlus()
         {
-            List list = new List(iniFile.CPUs);
+            List list = new List(partsAddEditSearchView.iniFile.CPUs);
 
-            list.Add(CPU.Text);
+            list.Add(partsAddEditSearchView.CPU.Text);
 
-            CPU.Items.Clear();
+            partsAddEditSearchView.CPU.Items.Clear();
 
-            CPU.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.CPU.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonCPUMinus_Click(object sender, EventArgs e)
+        public void ButtonCPUMinus()
         {
-            List list = new List(iniFile.CPUs);
+            List list = new List(partsAddEditSearchView.iniFile.CPUs);
 
-            list.Remove(CPU.Text);
+            list.Remove(partsAddEditSearchView.CPU.Text);
 
-            CPU.Items.Clear();
+            partsAddEditSearchView.CPU.Items.Clear();
 
-            CPU.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.CPU.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonMainboardPlus_Click(object sender, EventArgs e)
+        public void ButtonMainboardPlus()
         {
-            List list = new List(iniFile.Mainboards);
+            List list = new List(partsAddEditSearchView.iniFile.Mainboards);
 
-            list.Add(Mainboard.Text);
+            list.Add(partsAddEditSearchView.Mainboard.Text);
 
-            Mainboard.Items.Clear();
+            partsAddEditSearchView.Mainboard.Items.Clear();
 
-            Mainboard.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.Mainboard.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonMainboardMinus_Click(object sender, EventArgs e)
+        public void ButtonMainboardMinus()
         {
-            List list = new List(iniFile.Mainboards);
+            List list = new List(partsAddEditSearchView.iniFile.Mainboards);
 
-            list.Remove(Mainboard.Text);
+            list.Remove(partsAddEditSearchView.Mainboard.Text);
 
-            Mainboard.Items.Clear();
+            partsAddEditSearchView.Mainboard.Items.Clear();
 
-            Mainboard.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.Mainboard.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonRAMPlus_Click(object sender, EventArgs e)
+        public void ButtonRAMPlus()
         {
-            List list = new List(iniFile.RAMs);
+            List list = new List(partsAddEditSearchView.iniFile.RAMs);
 
-            list.Add(RAM.Text);
+            list.Add(partsAddEditSearchView.RAM.Text);
 
-            RAM.Items.Clear();
+            partsAddEditSearchView.RAM.Items.Clear();
 
-            RAM.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.RAM.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonRAMMinus_Click(object sender, EventArgs e)
+        public void ButtonRAMMinus()
         {
-            List list = new List(iniFile.RAMs);
+            List list = new List(partsAddEditSearchView.iniFile.RAMs);
 
-            list.Remove(RAM.Text);
+            list.Remove(partsAddEditSearchView.RAM.Text);
 
-            RAM.Items.Clear();
+            partsAddEditSearchView.RAM.Items.Clear();
 
-            RAM.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.RAM.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonDiskPlus_Click(object sender, EventArgs e)
+        public void ButtonDiskPlus()
         {
-            List list = new List(iniFile.Storges);
+            List list = new List(partsAddEditSearchView.iniFile.Storges);
 
-            list.Add(Disk.Text);
+            list.Add(partsAddEditSearchView.Disk.Text);
 
-            Disk.Items.Clear();
+            partsAddEditSearchView.Disk.Items.Clear();
 
-            Disk.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.Disk.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonDiskMinus_Click(object sender, EventArgs e)
+        public void ButtonDiskMinus()
         {
-            List list = new List(iniFile.Storges);
+            List list = new List(partsAddEditSearchView.iniFile.Storges);
 
-            list.Remove(Disk.Text);
+            list.Remove(partsAddEditSearchView.Disk.Text);
 
-            Disk.Items.Clear();
+            partsAddEditSearchView.Disk.Items.Clear();
 
-            Disk.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.Disk.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonVideocardPlus_Click(object sender, EventArgs e)
+        public void ButtonVideocardPlus()
         {
-            List list = new List(iniFile.Videocards);
+            List list = new List(partsAddEditSearchView.iniFile.Videocards);
 
-            list.Add(Videocard.Text);
+            list.Add(partsAddEditSearchView.Videocard.Text);
 
-            Videocard.Items.Clear();
+            partsAddEditSearchView.Videocard.Items.Clear();
 
-            Videocard.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.Videocard.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonVideocardMinus_Click(object sender, EventArgs e)
+        public void ButtonVideocardMinus()
         {
-            List list = new List(iniFile.Videocards);
+            List list = new List(partsAddEditSearchView.iniFile.Videocards);
 
-            list.Remove(Videocard.Text);
+            list.Remove(partsAddEditSearchView.Videocard.Text);
 
-            Videocard.Items.Clear();
+            partsAddEditSearchView.Videocard.Items.Clear();
 
-            Videocard.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.Videocard.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonPowerPlus_Click(object sender, EventArgs e)
+        public void ButtonPowerPlus()
         {
-            List list = new List(iniFile.Powers);
+            List list = new List(partsAddEditSearchView.iniFile.Powers);
 
-            list.Add(Power.Text);
+            list.Add(partsAddEditSearchView.Power.Text);
 
-            Power.Items.Clear();
+            partsAddEditSearchView.Power.Items.Clear();
 
-            Power.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.Power.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonPowerMinus_Click(object sender, EventArgs e)
+        public void ButtonPowerMinus()
         {
-            List list = new List(iniFile.Powers);
+            List list = new List(partsAddEditSearchView.iniFile.Powers);
 
-            list.Remove(Power.Text);
+            list.Remove(partsAddEditSearchView.Power.Text);
 
-            Power.Items.Clear();
+            partsAddEditSearchView.Power.Items.Clear();
 
-            Power.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.Power.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonCasePlus_Click(object sender, EventArgs e)
+        public void ButtonCasePlus()
         {
-            List list = new List(iniFile.Cases);
+            List list = new List(partsAddEditSearchView.iniFile.Cases);
 
-            list.Add(Case.Text);
+            list.Add(partsAddEditSearchView.Case.Text);
 
-            Case.Items.Clear();
+            partsAddEditSearchView.Case.Items.Clear();
 
-            Case.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.Case.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ButtonCaseMinus_Click(object sender, EventArgs e)
+        public void ButtonCaseMinus()
         {
-            List list = new List(iniFile.Cases);
+            List list = new List(partsAddEditSearchView.iniFile.Cases);
 
-            list.Remove(Case.Text);
+            list.Remove(partsAddEditSearchView.Case.Text);
 
-            Case.Items.Clear();
+            partsAddEditSearchView.Case.Items.Clear();
 
-            Case.Items.AddRange(File.ReadAllLines(list.Path));
+            partsAddEditSearchView.Case.Items.AddRange(File.ReadAllLines(list.Path));
         }
 
-        private void ClearButton_Click(object sender, EventArgs e)
+        public void ClearButton()
         {
-            Number.Text =
-            Date.Text =
-            CPU.Text =
-            Mainboard.Text =
-            RAM.Text =
-            Disk.Text =
-            Videocard.Text =
-            Power.Text =
-            Case.Text =
-            Year.Text = string.Empty;
+            partsAddEditSearchView.Number.Text =
+            partsAddEditSearchView.Date.Text =
+            partsAddEditSearchView.CPU.Text =
+            partsAddEditSearchView.Mainboard.Text =
+            partsAddEditSearchView.RAM.Text =
+            partsAddEditSearchView.Disk.Text =
+            partsAddEditSearchView.Videocard.Text =
+            partsAddEditSearchView.Power.Text =
+            partsAddEditSearchView.Case.Text =
+            partsAddEditSearchView.Year.Text = string.Empty;
         }
     }
 }

@@ -54,37 +54,37 @@ namespace PartsAddEditSearchViewSpace
             Case.Items.AddRange(File.ReadAllLines(cases.Path));
         }
 
-        private void Execute_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void Execute_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.Execute(); }
 
-        private void ButtonCPUPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonCPUPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonCPUPlus(); }
 
-        private void ButtonCPUMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonCPUMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonCPUMinus(); }
 
-        private void ButtonMainboardPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonMainboardPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonMainboardPlus(); }
 
-        private void ButtonMainboardMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonMainboardMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonMainboardMinus(); }
 
-        private void ButtonRAMPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonRAMPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonRAMPlus(); }
 
-        private void ButtonRAMMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonRAMMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonRAMMinus(); }
 
-        private void ButtonDiskPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonDiskPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonDiskPlus(); }
 
-        private void ButtonDiskMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonDiskMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonDiskMinus(); }
 
-        private void ButtonVideocardPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonVideocardPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonVideocardPlus(); }
 
-        private void ButtonVideocardMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonVideocardMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonVideocardMinus(); }
 
-        private void ButtonPowerPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonPowerPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonPowerPlus(); }
 
-        private void ButtonPowerMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonPowerMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonPowerMinus(); }
 
-        private void ButtonCasePlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonCasePlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonCasePlus(); }
 
-        private void ButtonCaseMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ButtonCaseMinus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonCaseMinus(); }
 
-        private void ClearButton_Click(object sender, EventArgs e) { partsAddEditSearchPresenter. }
+        private void ClearButton_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ClearButton(); }
 
         private void Close_Click(object sender, EventArgs e) { Close(); }
     }

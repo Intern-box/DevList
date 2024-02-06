@@ -463,7 +463,7 @@ namespace PartsAddEditSearchViewSpace
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
-            // PartsAddEditSearch
+            // PartsAddEditSearchView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -511,12 +511,10 @@ namespace PartsAddEditSearchViewSpace
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "PartsAddEditSearch";
+            this.Name = "PartsAddEditSearchView";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Комплект - Добавить/Править/Поиск";
-            this.Load += new System.EventHandler(this.PartsSearchEditWindow_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PartsSearchEditWindow_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -526,40 +524,40 @@ namespace PartsAddEditSearchViewSpace
         private System.Windows.Forms.Label LabelCPU;
         private System.Windows.Forms.Label LabelRAM;
         private System.Windows.Forms.Label LabelDisk;
-        private System.Windows.Forms.ComboBox Disk;
         private System.Windows.Forms.Button ButtonExecute;
-        private System.Windows.Forms.ComboBox CPU;
         private System.Windows.Forms.Label LabelMainboard;
-        private System.Windows.Forms.ComboBox Mainboard;
         private System.Windows.Forms.Button ButtonDiskMinus;
         private System.Windows.Forms.Button ButtonDiskPlus;
         private System.Windows.Forms.Button ButtonMainboardMinus;
         private System.Windows.Forms.Button ButtonMainboardPlus;
         private System.Windows.Forms.Button ButtonCPUMinus;
         private System.Windows.Forms.Button ButtonCPUPlus;
-        private System.Windows.Forms.TextBox Date;
         private System.Windows.Forms.Label LabelDate;
         private System.Windows.Forms.Button ButtonVideocardMinus;
         private System.Windows.Forms.Button ButtonVideocardPlus;
-        private System.Windows.Forms.ComboBox Videocard;
         private System.Windows.Forms.Label LabelVideocard;
-        private System.Windows.Forms.ComboBox RAM;
         private System.Windows.Forms.Button ButtonRAMMinus;
         private System.Windows.Forms.Button ButtonRAMPlus;
         private System.Windows.Forms.Button ButtonPowerMinus;
         private System.Windows.Forms.Button ButtonPowerPlus;
-        private System.Windows.Forms.ComboBox Power;
         private System.Windows.Forms.Label LabelPower;
         private System.Windows.Forms.Button ButtonCaseMinus;
         private System.Windows.Forms.Button ButtonCasePlus;
-        private System.Windows.Forms.ComboBox Case;
         private System.Windows.Forms.Label LabelCase;
-        private System.Windows.Forms.TextBox Year;
         private System.Windows.Forms.Label LabelYear;
-        private System.Windows.Forms.TextBox Number;
         private System.Windows.Forms.Label LabelNumber;
         private System.Windows.Forms.Button ButtonClose;
-        private System.Windows.Forms.CheckBox addInEnd;
         private System.Windows.Forms.Button ClearButton;
+        public System.Windows.Forms.ComboBox Disk;
+        public System.Windows.Forms.ComboBox CPU;
+        public System.Windows.Forms.ComboBox Mainboard;
+        public System.Windows.Forms.TextBox Date;
+        public System.Windows.Forms.ComboBox Videocard;
+        public System.Windows.Forms.ComboBox RAM;
+        public System.Windows.Forms.ComboBox Power;
+        public System.Windows.Forms.ComboBox Case;
+        public System.Windows.Forms.TextBox Year;
+        public System.Windows.Forms.TextBox Number;
+        public System.Windows.Forms.CheckBox addInEnd;
     }
 }

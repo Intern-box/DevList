@@ -428,7 +428,7 @@ namespace BaseFormPresenterSpace
 
             search.ShowDialog();
 
-            if (search.Execute)
+            if (search.Executed)
             {
                 if (search.Result != null)
                 {

@@ -63,7 +63,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PartsAddEditSearch\Model.cs" />
-    <Compile Include="PartsAddEditSearch\Presenter.cs" />
+    <Compile Include="PartsAddEditSearch\Presenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UpDownForm.cs">
       <SubType>Form</SubType>
     </Compile>
