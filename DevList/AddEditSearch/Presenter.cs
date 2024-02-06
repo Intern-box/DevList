@@ -11,9 +11,9 @@ namespace AddEditSearchPresenterSpace
 
         public AddEditSearchModel addEditSearchModel;
 
-        public AddEditSearchPresenter(AddEditSearchView searchEditView, INIFile iniFile)
+        public AddEditSearchPresenter(AddEditSearchView addEditSearchView, INIFile iniFile)
         {
-            this.addEditSearchView = searchEditView;
+            this.addEditSearchView = addEditSearchView;
 
             addEditSearchModel = new AddEditSearchModel(iniFile);
 

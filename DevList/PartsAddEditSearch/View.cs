@@ -4,6 +4,7 @@ using System.IO;
 using AbstractAddEditSearchSpace;
 using INIFileSpace;
 using ListSpace;
+using PartsAddEditSearchPresenterSpace;
 
 namespace PartsAddEditSearchViewSpace
 {
@@ -11,10 +12,14 @@ namespace PartsAddEditSearchViewSpace
     {
         public INIFile iniFile;
 
+        PartsAddEditSearchPresenter partsAddEditSearchPresenter;
+
         public PartsAddEditSearchView(INIFile iniFile) : this(iniFile, null) { }
 
         public PartsAddEditSearchView(INIFile iniFile, string[] str)
         {
+            partsAddEditSearchPresenter = new(this);
+
             InitializeComponent();
 
             this.iniFile = iniFile;
