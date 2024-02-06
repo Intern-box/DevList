@@ -40,10 +40,7 @@ namespace INIFileSpace
         public string Cases = "Комплектующие\\Cases.txt";
 
         // Создание объекта с настройками по-умолчанию
-        public INIFile()
-        {
-            TryDir(); TryFile(); ReadFile();
-        }
+        public INIFile() { TryDir(); TryFile(); ReadFile(); }
 
         // При передаче в конструктор пути к файлу с настройками
         public INIFile(string path)
