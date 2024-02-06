@@ -1,7 +1,7 @@
 ﻿
 namespace PartsAddEditSearchViewSpace
 {
-    partial class PartsAddEditSearch
+    partial class PartsAddEditSearchView
     {
         /// <summary>
         /// Required designer variable.

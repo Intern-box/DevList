@@ -62,6 +62,8 @@
     <Compile Include="AddEditSearch\Model.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PartsAddEditSearch\Model.cs" />
+    <Compile Include="PartsAddEditSearch\Presenter.cs" />
     <Compile Include="UpDownForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,11 +71,11 @@
       <DependentUpon>UpDownForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Log.cs" />
-    <Compile Include="PartsAddEditSearch.cs">
+    <Compile Include="PartsAddEditSearch\View.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PartsAddEditSearch.Designer.cs">
-      <DependentUpon>PartsAddEditSearch.cs</DependentUpon>
+    <Compile Include="PartsAddEditSearch\View.Designer.cs">
+      <DependentUpon>View.cs</DependentUpon>
     </Compile>
     <Compile Include="AddEditSearch\View.cs">
       <SubType>Form</SubType>
@@ -120,8 +122,8 @@
     <EmbeddedResource Include="Launch\Presenter.resx">
       <DependentUpon>Presenter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PartsAddEditSearch.resx">
-      <DependentUpon>PartsAddEditSearch.cs</DependentUpon>
+    <EmbeddedResource Include="PartsAddEditSearch\View.resx">
+      <DependentUpon>View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddEditSearch\View.resx">
       <DependentUpon>View.cs</DependentUpon>

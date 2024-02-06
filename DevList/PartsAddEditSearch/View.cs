@@ -7,13 +7,13 @@ using ListSpace;
 
 namespace PartsAddEditSearchViewSpace
 {
-    public partial class PartsAddEditSearch : AbstractAddEditSearch
+    public partial class PartsAddEditSearchView : AbstractAddEditSearch
     {
         public INIFile iniFile;
 
-        public PartsAddEditSearch(INIFile iniFile) : this(iniFile, null) { }
+        public PartsAddEditSearchView(INIFile iniFile) : this(iniFile, null) { }
 
-        public PartsAddEditSearch(INIFile iniFile, string[] str)
+        public PartsAddEditSearchView(INIFile iniFile, string[] str)
         {
             InitializeComponent();
 

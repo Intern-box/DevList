@@ -402,7 +402,7 @@ namespace BaseFormPresenterSpace
 
                 if (baseFormView.Text == "DevList 6.9 - Главное окно" || baseFormView.Text == "DevList - История") { search = new AddEditSearchView(baseFormView.iniFile); }
 
-                else { search = new PartsAddEditSearch(baseFormView.iniFile); }
+                else { search = new PartsAddEditSearchViewSpace.PartsAddEditSearchView(baseFormView.iniFile); }
             }
             else
             {
@@ -414,7 +414,7 @@ namespace BaseFormPresenterSpace
                     
                     { search = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]); }
 
-                    else { search = new PartsAddEditSearch(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]); }
+                    else { search = new PartsAddEditSearchViewSpace.PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]); }
                 }
                 else
                 {
@@ -422,7 +422,7 @@ namespace BaseFormPresenterSpace
                     
                     { search = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
 
-                    else { search = new PartsAddEditSearch(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
+                    else { search = new PartsAddEditSearchViewSpace.PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
                 }
             }
 
