@@ -59,7 +59,6 @@
     </Compile>
     <Compile Include="Launch\Presenter.cs" />
     <Compile Include="AddEditSearch\Presenter.cs" />
-    <Compile Include="PartsAddEditSearch\Model.cs" />
     <Compile Include="PartsAddEditSearch\Presenter.cs">
       <SubType>Form</SubType>
     </Compile>
