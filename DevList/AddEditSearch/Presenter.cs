@@ -11,7 +11,7 @@ namespace AddEditSearchPresenterSpace
 
         List Rooms, Devices, Employees, Names;
 
-        public string[] Result = new string[13];
+        public string[] Result = new string[14];
 
         public AddEditSearchPresenter(AddEditSearchView addEditSearchView, INIFile iniFile)
         {

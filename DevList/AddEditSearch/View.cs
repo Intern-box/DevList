@@ -9,8 +9,6 @@ namespace AddEditSearchViewSpace
     {
         public AddEditSearchPresenter AddEditSearchPresenter;
 
-        public string[] Result = new string[13];
-
         public AddEditSearchView(INIFile iniFile) : this (iniFile, null) { }
 
         public AddEditSearchView(INIFile iniFile, string[] str)

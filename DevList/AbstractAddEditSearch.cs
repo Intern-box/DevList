@@ -4,7 +4,7 @@ namespace AbstractAddEditSearchSpace
 {
     public abstract class AbstractAddEditSearch : Form
     {
-        public string[] Result = new string[13];
+        public string[] Result = new string[14];
 
         public bool AddInEnd;
 

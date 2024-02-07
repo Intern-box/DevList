@@ -129,16 +129,6 @@ namespace BaseFormPresenterSpace
 
         public void Add()
         {
-            //AddEditSearchView addEditsearchView = new AddEditSearchView(baseFormView.iniFile);
-
-            //addEditsearchView.ShowDialog();
-
-            //baseFormModel.DataBase.Table.Add(addEditsearchView.AddEditSearchPresenter.addEditSearchModel.Result);
-
-            //baseFormModel.DataBase.Change = true;
-
-            //baseFormView.TableOutput(baseFormModel.DataBase.Table);
-
             int saveCoordinates;
 
             AbstractAddEditSearch addEditsearchView;
@@ -147,8 +137,7 @@ namespace BaseFormPresenterSpace
             {
                 baseFormView.tableParameters.Coordinates = baseFormView.Table.HitTest(0, 0);
 
-                if (baseFormView.Text == "DevList 6.9 - Главное окно")
-                { addEditsearchView = new AddEditSearchView(baseFormView.iniFile); }
+                if (baseFormView.Text == "DevList 6.9 - Главное окно") { addEditsearchView = new AddEditSearchView(baseFormView.iniFile); }
 
                 else { addEditsearchView = new PartsAddEditSearchView(baseFormView.iniFile); }
             }
@@ -169,14 +158,9 @@ namespace BaseFormPresenterSpace
                 }
                 else
                 {
-                    if (baseFormView.Text == "DevList 6.9 - Главное окно")
-                    {
-                        addEditsearchView = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]);
-                    }
-                    else
-                    {
-                        addEditsearchView = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]);
-                    }
+                    if (baseFormView.Text == "DevList 6.9 - Главное окно") { addEditsearchView = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
+
+                    else { addEditsearchView = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
                 }
             }
 
@@ -184,14 +168,11 @@ namespace BaseFormPresenterSpace
 
             if (addEditsearchView.Result[13] == "1")
             {
-                if (addEditsearchView.Result != null)
-                {
-                    baseFormModel.DataBase.Table.Add(addEditsearchView.Result);
+                baseFormModel.DataBase.Table.Add(addEditsearchView.Result);
 
-                    baseFormModel.DataBase.Change = true;
+                baseFormModel.DataBase.Change = true;
 
-                    baseFormView.TableOutput(baseFormModel.DataBase.Table);
-                }
+                baseFormView.TableOutput(baseFormModel.DataBase.Table);
             }
         }
 
