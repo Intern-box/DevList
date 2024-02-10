@@ -1,6 +1,7 @@
 ﻿using INIFileSpace;
 using System.Windows.Forms;
 using BaseFormViewSpace;
+using System.IO;
 
 namespace LaunchPresenterSpace
 {
@@ -23,7 +24,17 @@ namespace LaunchPresenterSpace
             DialogResult result = MessageBox.Show("Данное действие очистит базу!", "Перезаписать файлы?", MessageBoxButtons.YesNo);
 
             // Если перезапись одобрена, формируем новую, пустую БД и сопутствующие файлы и папки
-            if (result == DialogResult.Yes) { iniFile = new INIFile(Application.StartupPath); }
+            if (result == DialogResult.Yes)
+            {
+                Directory.Delete($"{Application.StartupPath}\\БД", true);
+                Directory.Delete($"{Application.StartupPath}\\История перемещений", true);
+                Directory.Delete($"{Application.StartupPath}\\Комплектующие", true);
+
+                File.Delete($"{Application.StartupPath}\\DevList.ini");
+                File.Delete($"{Application.StartupPath}\\DevList.log");
+
+                iniFile = new INIFile(Application.StartupPath);
+            }
 
             BaseFormLoad();
         }
