@@ -60,6 +60,9 @@ namespace DataBaseSpace
 
             byte needFind = 0;
 
+            // Обнуляю флаг Executed
+            request[13] = null;
+
             for (int i = 1; i < request.Length; i++) { if (request[i] != null && request[i] != string.Empty) { needFind++; } }
 
             byte found = 0;
