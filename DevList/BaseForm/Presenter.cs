@@ -168,13 +168,14 @@ namespace BaseFormPresenterSpace
 
             if (addEditsearchView.Result[13] == "1")
             {
-                if (addEditsearchView.AddInEnd)
+                if (addEditsearchView.AddInEnd) { baseFormModel.DataBase.Table.Add(addEditsearchView.Result); }
+
+                else
                 {
                     saveCoordinates = baseFormModel.DataBase.Table.Count == 0 ? 0 : saveCoordinates + 1;
 
                     baseFormModel.DataBase.Table.Insert(saveCoordinates, addEditsearchView.Result);
                 }
-                else { baseFormModel.DataBase.Table.Add(addEditsearchView.Result); }
 
                 baseFormModel.DataBase.Change = true;
 
@@ -187,6 +188,8 @@ namespace BaseFormPresenterSpace
             if (baseFormView.tableParameters.Coordinates != null && baseFormView.tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
                 AddEditSearchView addEditsearchView = new AddEditSearchView(baseFormView.iniFile);
+
+                addEditsearchView.addInEnd.Visible = false;
 
                 addEditsearchView.Result = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id];
 
@@ -322,9 +325,12 @@ namespace BaseFormPresenterSpace
 
         public void SearchAll()
         {
-            baseFormView.TableOutput(baseFormModel.DataBase.FindAll(baseFormView.SearchAllBox.Text), false);
+            if (baseFormView.SearchAllBox.Text != string.Empty)
+            {
+                baseFormView.TableOutput(baseFormModel.DataBase.FindAll(baseFormView.SearchAllBox.Text), false);
 
-            baseFormView.Filter.Visible = true;
+                baseFormView.Filter.Visible = true;
+            }
         }
 
         public void History()
