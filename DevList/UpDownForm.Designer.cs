@@ -51,7 +51,6 @@
             this.Number.Name = "Number";
             this.Number.Size = new System.Drawing.Size(184, 23);
             this.Number.TabIndex = 1;
-            this.Number.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Number_KeyDown);
             // 
             // ButtonExecute
             // 
@@ -90,7 +89,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UpDownForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UpDownForm_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
