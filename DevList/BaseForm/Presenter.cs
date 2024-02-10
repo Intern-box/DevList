@@ -129,7 +129,7 @@ namespace BaseFormPresenterSpace
 
         public void Add()
         {
-            int saveCoordinates;
+            int saveCoordinates = baseFormView.tableParameters.Line;
 
             AbstractAddEditSearch addEditsearchView;
 
@@ -168,7 +168,13 @@ namespace BaseFormPresenterSpace
 
             if (addEditsearchView.Result[13] == "1")
             {
-                baseFormModel.DataBase.Table.Add(addEditsearchView.Result);
+                if (addEditsearchView.AddInEnd)
+                {
+                    saveCoordinates = baseFormModel.DataBase.Table.Count == 0 ? 0 : saveCoordinates + 1;
+
+                    baseFormModel.DataBase.Table.Insert(saveCoordinates, addEditsearchView.Result);
+                }
+                else { baseFormModel.DataBase.Table.Add(addEditsearchView.Result); }
 
                 baseFormModel.DataBase.Change = true;
 
@@ -182,7 +188,7 @@ namespace BaseFormPresenterSpace
             {
                 AddEditSearchView addEditsearchView = new AddEditSearchView(baseFormView.iniFile);
 
-                addEditsearchView.AddEditSearchPresenter.Result = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id];
+                addEditsearchView.Result = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id];
 
                 string tmp = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id][3];
 
@@ -190,11 +196,11 @@ namespace BaseFormPresenterSpace
 
                 addEditsearchView.ShowDialog();
 
-                if (tmp != addEditsearchView.AddEditSearchPresenter.Result[3])
+                if (tmp != addEditsearchView.Result[3])
                 {
                     System.IO.File.AppendAllText
                     (
-                        $"{Path.GetDirectoryName(Path.GetFullPath(baseFormView.iniFile.Path))}\\История перемещений\\{addEditsearchView.AddEditSearchPresenter.Result[3]}.txt",
+                        $"{Path.GetDirectoryName(Path.GetFullPath(baseFormView.iniFile.Path))}\\История перемещений\\{addEditsearchView.Result[3]}.txt",
                         $"Из помещения: {tmp}\r\n" +
                         $"переместили: {DateTime.Now}\r\n" +
                         $"{baseFormModel.DataBase.Table[baseFormView.tableParameters.Id][5]}\r\n" +
@@ -202,7 +208,7 @@ namespace BaseFormPresenterSpace
                     );
                 }
 
-                baseFormModel.DataBase.Table[baseFormView.tableParameters.Id] = addEditsearchView.AddEditSearchPresenter.Result;
+                baseFormModel.DataBase.Table[baseFormView.tableParameters.Id] = addEditsearchView.Result;
 
                 baseFormModel.DataBase.Change = true;
 
@@ -464,7 +470,7 @@ namespace BaseFormPresenterSpace
 
             search.ShowDialog();
 
-            if (search.Executed)
+            if (search.Result[13] == "1")
             {
                 if (search.Result != null)
                 {

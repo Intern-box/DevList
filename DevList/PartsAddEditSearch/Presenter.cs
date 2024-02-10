@@ -1,41 +1,37 @@
 ﻿using PartsAddEditSearchViewSpace;
 using ListSpace;
 using System.IO;
-using AbstractAddEditSearchSpace;
+using AddEditSearchViewSpace;
 
 namespace PartsAddEditSearchPresenterSpace
 {
-    public class PartsAddEditSearchPresenter(PartsAddEditSearchView partsAddEditSearchView) : AbstractAddEditSearch
+    public class PartsAddEditSearchPresenter(PartsAddEditSearchView partsAddEditSearchView)
     {
         PartsAddEditSearchView partsAddEditSearchView = partsAddEditSearchView;
 
         public void Execute()
         {
-            Result[0] = string.Empty;
-            Result[1] = partsAddEditSearchView.Number.Text;
-            Result[2] = partsAddEditSearchView.Date.Text;
-            Result[3] = partsAddEditSearchView.CPU.Text;
-            Result[4] = partsAddEditSearchView.Mainboard.Text;
-            Result[5] = partsAddEditSearchView.RAM.Text;
-            Result[6] = partsAddEditSearchView.Disk.Text;
-            Result[7] = partsAddEditSearchView.Videocard.Text;
-            Result[8] = partsAddEditSearchView.Power.Text;
-            Result[9] = partsAddEditSearchView.Case.Text;
-            Result[10] = partsAddEditSearchView.Year.Text;
-            Result[11] = string.Empty;
-            Result[12] = string.Empty;
+            partsAddEditSearchView.Result[0] = string.Empty;
+            partsAddEditSearchView.Result[1] = partsAddEditSearchView.Number.Text;
+            partsAddEditSearchView.Result[2] = partsAddEditSearchView.Date.Text;
+            partsAddEditSearchView.Result[3] = partsAddEditSearchView.CPU.Text;
+            partsAddEditSearchView.Result[4] = partsAddEditSearchView.Mainboard.Text;
+            partsAddEditSearchView.Result[5] = partsAddEditSearchView.RAM.Text;
+            partsAddEditSearchView.Result[6] = partsAddEditSearchView.Disk.Text;
+            partsAddEditSearchView.Result[7] = partsAddEditSearchView.Videocard.Text;
+            partsAddEditSearchView.Result[8] = partsAddEditSearchView.Power.Text;
+            partsAddEditSearchView.Result[9] = partsAddEditSearchView.Case.Text;
+            partsAddEditSearchView.Result[10] = partsAddEditSearchView.Year.Text;
+            partsAddEditSearchView.Result[11] = string.Empty;
+            partsAddEditSearchView.Result[12] = string.Empty;
 
-            AddInEnd = partsAddEditSearchView.addInEnd.Checked;
+            foreach (string Str in partsAddEditSearchView.Result) if (Str != string.Empty) { partsAddEditSearchView.Result[13] = "1"; break; }
 
-            Executed = true;
-
-            partsAddEditSearchView.Close();
+            if (partsAddEditSearchView.addInEnd.Checked) { partsAddEditSearchView.AddInEnd = true; } else { partsAddEditSearchView.AddInEnd = false; }
         }
-
         public void ButtonCPUPlus()
         {
             List list = new List(partsAddEditSearchView.iniFile.CPUs);
-
             list.Add(partsAddEditSearchView.CPU.Text);
 
             partsAddEditSearchView.CPU.Items.Clear();

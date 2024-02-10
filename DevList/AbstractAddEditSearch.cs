@@ -7,7 +7,5 @@ namespace AbstractAddEditSearchSpace
         public string[] Result = new string[14];
 
         public bool AddInEnd;
-
-        public bool Executed;
     }
 }

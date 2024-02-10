@@ -54,7 +54,7 @@ namespace PartsAddEditSearchViewSpace
             Case.Items.AddRange(File.ReadAllLines(cases.Path));
         }
 
-        private void Execute_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.Execute(); }
+        private void Execute_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.Execute(); Close(); }
 
         private void ButtonCPUPlus_Click(object sender, EventArgs e) { partsAddEditSearchPresenter.ButtonCPUPlus(); }
 
