@@ -22,6 +22,8 @@ namespace BaseFormPresenterSpace
 
         BaseFormView baseFormView;
 
+        BindingList<string[]> LastResult;
+
         public BaseFormPresenter(BaseFormView baseFormView)
         {
             this.baseFormView = baseFormView;
@@ -373,6 +375,8 @@ namespace BaseFormPresenterSpace
             baseFormView.TableOutput(baseFormModel.DataBase.Table);
 
             baseFormView.Filter.Visible = false;
+
+            LastResult = null;
         }
 
         public void Lists() { Lists lists = new Lists(baseFormView.iniFile); lists.ShowDialog(); }
@@ -478,13 +482,31 @@ namespace BaseFormPresenterSpace
 
             if (search.Result[13] == "1")
             {
-                if (search.Result != null)
+                bool stringEmptyCheck = false;
+
+                foreach (string word in search.Result) { if (word != string.Empty) { stringEmptyCheck = true; } }
+
+                if (baseFormView.Filter.Visible)
                 {
-                    bool stringEmptyCheck = false;
+                    if (stringEmptyCheck)
+                    {
+                        baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(LastResult, search.Result), false);
 
-                    foreach (string word in search.Result) { if (word != string.Empty) { stringEmptyCheck = true; } }
+                        LastResult = baseFormModel.DataBase.StringSearch(LastResult, search.Result);
+                    }
 
-                    if (stringEmptyCheck) { baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(search.Result), false); } else { baseFormView.Table.Items.Clear(); }
+                    else { baseFormView.Table.Items.Clear(); }
+                }
+                else
+                {
+                    if (stringEmptyCheck)
+                    {
+                        baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(search.Result), false);
+
+                        LastResult = baseFormModel.DataBase.StringSearch(search.Result);
+                    }
+                    
+                    else { baseFormView.Table.Items.Clear(); }
 
                     baseFormView.Filter.Visible = true;
                 }

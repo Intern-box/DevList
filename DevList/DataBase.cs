@@ -88,6 +88,40 @@ namespace DataBaseSpace
             return result;
         }
 
+        public BindingList<string[]> StringSearch(BindingList<string[]> Table, string[] request)
+        {
+            BindingList<string[]> result = new BindingList<string[]>();
+
+            byte needFind = 0;
+
+            // Обнуляю флаг Executed
+            request[13] = null;
+
+            for (int i = 1; i < request.Length; i++) { if (request[i] != null && request[i] != string.Empty) { needFind++; } }
+
+            byte found = 0;
+
+            foreach (string[] str in Table)
+            {
+                for (int i = 1; i < Table[0].Length; i++)
+                {
+                    if (request[i] != null && request[i] != string.Empty)
+                    {
+                        if (str[i].IndexOf(request[i], StringComparison.CurrentCultureIgnoreCase) != -1)
+                        {
+                            found++;
+                        }
+                    }
+                }
+
+                if (found >= needFind) { result.Add(str); }
+
+                found = 0;
+            }
+
+            return result;
+        }
+
         public BindingList<string[]> FindAll(string request)
         {
             BindingList<string[]> result = new BindingList<string[]>();
