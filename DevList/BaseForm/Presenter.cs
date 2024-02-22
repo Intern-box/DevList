@@ -24,6 +24,8 @@ namespace BaseFormPresenterSpace
 
         BindingList<string[]> LastResult;
 
+        AbstractAddEditSearch search;
+
         public BaseFormPresenter(BaseFormView baseFormView)
         {
             this.baseFormView = baseFormView;
@@ -203,7 +205,7 @@ namespace BaseFormPresenterSpace
 
                 if (tmp != addEditsearchView.Result[3])
                 {
-                    System.IO.File.AppendAllText
+                    File.AppendAllText
                     (
                         $"{Path.GetDirectoryName(Path.GetFullPath(baseFormView.iniFile.Path))}\\История перемещений\\{addEditsearchView.Result[3]}.txt",
                         $"Из помещения: {tmp}\r\n" +
@@ -217,7 +219,14 @@ namespace BaseFormPresenterSpace
 
                 baseFormModel.DataBase.Change = true;
 
-                baseFormView.TableOutput(baseFormModel.DataBase.Table);
+                if (baseFormView.Filter.Visible)
+                {
+                    baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(LastResult, search.Result));
+                }
+                else
+                {
+                    baseFormView.TableOutput(baseFormModel.DataBase.Table);
+                }
             }
         }
 
@@ -445,8 +454,6 @@ namespace BaseFormPresenterSpace
         public void Search()
         {
             int saveCoordinates;
-
-            AbstractAddEditSearch search;
 
             if (baseFormView.tableParameters.Coordinates == null || baseFormView.tableParameters.Coordinates.Item == null)
             {
