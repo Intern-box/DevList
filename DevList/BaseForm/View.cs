@@ -134,7 +134,7 @@ namespace BaseFormViewSpace
 
         void EditAll_Click(object sender, EventArgs e) { baseFormPresenter.EditAll(); }
 
-        private void Table_DoubleClick(object sender, EventArgs e) { EditAll_Click(sender, e); }
+        void Table_DoubleClick(object sender, EventArgs e) { EditAll_Click(sender, e); }
 
         void ContextEditAll_Click(object sender, EventArgs e) { EditAll_Click(sender, e); }
 
