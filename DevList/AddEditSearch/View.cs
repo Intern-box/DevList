@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using AbstractAddEditSearchSpace;
 using AddEditSearchPresenterSpace;
 using INIFileSpace;
@@ -72,6 +73,16 @@ namespace AddEditSearchViewSpace
             Hostname.Text =
             IP.Text =
             ChangeMan.Text = string.Empty;
+        }
+
+        private void AddEditSearchView_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape: Close_Click(sender, e); break;
+
+                case Keys.Enter: Execute_Click(sender, e); break;
+            }
         }
     }
 }

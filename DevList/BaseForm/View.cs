@@ -24,7 +24,7 @@ namespace BaseFormViewSpace
         public TableParameters tableParameters = new TableParameters();
 
         // Получаем путь до файла с настройками
-        public BaseFormView(string head, INIFile iniFile) : this (head, iniFile, null) { }
+        public BaseFormView(string head, INIFile iniFile) : this(head, iniFile, null) { }
 
         public BaseFormView(string head, INIFile iniFile, DataBase dataBase)
         {
@@ -134,6 +134,8 @@ namespace BaseFormViewSpace
 
         void EditAll_Click(object sender, EventArgs e) { baseFormPresenter.EditAll(); }
 
+        private void Table_DoubleClick(object sender, EventArgs e) { EditAll_Click(sender, e); }
+
         void ContextEditAll_Click(object sender, EventArgs e) { EditAll_Click(sender, e); }
 
         void Up_Click(object sender, EventArgs e)
@@ -196,27 +198,31 @@ namespace BaseFormViewSpace
 
         void BaseForm_FormClosed(object sender, FormClosedEventArgs e) { baseFormPresenter.DataBaseChanges(); }
 
+        void BaseFormView_KeyDown(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Escape) { Close(); } }
+
+        void Table_KeyDown(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Escape) { Close(); } }
+
         void NomberString_Click(object sender, EventArgs e)
         {
             if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None) { baseFormPresenter.NomberString(); }
         }
 
         void CNomberString_Click(object sender, EventArgs e) { NomberString_Click(sender, e); }
-    }
 
-    class ListViewItemComparer : IComparer
-    {
-        int col;
-
-        bool SortingColumns;
-
-        public ListViewItemComparer(int column, bool SortingColumns) { col = column; this.SortingColumns = SortingColumns; }
-
-        public int Compare(object x, object y)
+        class ListViewItemComparer : IComparer
         {
-            if (SortingColumns) { return String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text); }
+            int col;
 
-            else { return String.Compare(((ListViewItem)y).SubItems[col].Text, ((ListViewItem)x).SubItems[col].Text); }
+            bool SortingColumns;
+
+            public ListViewItemComparer(int column, bool SortingColumns) { col = column; this.SortingColumns = SortingColumns; }
+
+            public int Compare(object x, object y)
+            {
+                if (SortingColumns) { return String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text); }
+
+                else { return String.Compare(((ListViewItem)y).SubItems[col].Text, ((ListViewItem)x).SubItems[col].Text); }
+            }
         }
     }
 }

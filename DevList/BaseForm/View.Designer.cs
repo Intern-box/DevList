@@ -187,28 +187,28 @@ namespace BaseFormViewSpace
             // Create
             // 
             this.Create.Name = "Create";
-            this.Create.Size = new System.Drawing.Size(180, 22);
+            this.Create.Size = new System.Drawing.Size(162, 22);
             this.Create.Text = "Создать";
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
             // Open
             // 
             this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(180, 22);
+            this.Open.Size = new System.Drawing.Size(162, 22);
             this.Open.Text = "Открыть";
             this.Open.Click += new System.EventHandler(this.Open_Click);
             // 
             // Save
             // 
             this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(180, 22);
+            this.Save.Size = new System.Drawing.Size(162, 22);
             this.Save.Text = "Сохранить";
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // SaveAs
             // 
             this.SaveAs.Name = "SaveAs";
-            this.SaveAs.Size = new System.Drawing.Size(180, 22);
+            this.SaveAs.Size = new System.Drawing.Size(162, 22);
             this.SaveAs.Text = "Сохранить как";
             this.SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
             // 
@@ -286,7 +286,7 @@ namespace BaseFormViewSpace
             // Columns
             // 
             this.Columns.Name = "Columns";
-            this.Columns.Size = new System.Drawing.Size(180, 22);
+            this.Columns.Size = new System.Drawing.Size(127, 22);
             this.Columns.Text = "Колонки";
             this.Columns.Click += new System.EventHandler(this.Columns_Click);
             // 
@@ -414,6 +414,8 @@ namespace BaseFormViewSpace
             this.Table.UseCompatibleStateImageBehavior = false;
             this.Table.View = System.Windows.Forms.View.Details;
             this.Table.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.Table_ColumnClick);
+            this.Table.DoubleClick += new System.EventHandler(this.Table_DoubleClick);
+            this.Table.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Table_KeyDown);
             this.Table.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Table_MouseDown);
             // 
             // ID
@@ -507,6 +509,7 @@ namespace BaseFormViewSpace
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BaseForm_FormClosed);
             this.Load += new System.EventHandler(this.BaseForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BaseFormView_KeyDown);
             this.CMenu.ResumeLayout(false);
             this.MMenu.ResumeLayout(false);
             this.MMenu.PerformLayout();
