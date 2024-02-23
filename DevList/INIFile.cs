@@ -49,7 +49,7 @@ namespace INIFileSpace
             if (File.Exists(path))
             {
                 // Если существует, то пишем лог
-                Log.ErrorHandler("[   ] DevList.ini существует. Открываю");
+                Log.ErrorHandler(Folder, "[   ] DevList.ini существует. Открываю");
 
                 // Инициируем путь
                 Path = path;
@@ -59,6 +59,9 @@ namespace INIFileSpace
             }
             else
             {
+                // Если путь к папке существует, то записываем в переменную
+                if (Directory.Exists(path)) { Folder = path; }
+
                 TryDir(); TryFile();
             }
 
@@ -70,21 +73,21 @@ namespace INIFileSpace
         {
             if (!Directory.Exists($"{Folder}\\БД"))
             {
-                Log.ErrorHandler($"[ x ] Папка \"{Folder}\\БД\" не существует. Создание папки");
+                Log.ErrorHandler(Folder, $"[ x ] Папка \"{Folder}\\БД\" не существует. Создание папки");
 
                 Directory.CreateDirectory($"{Folder}\\БД");
             }
 
             if (!Directory.Exists($"{Folder}\\Комплектующие"))
             {
-                Log.ErrorHandler($"[ x ] Папка \"{Folder}\\Комплектующие\" не существует. Создание папки");
+                Log.ErrorHandler(Folder, $"[ x ] Папка \"{Folder}\\Комплектующие\" не существует. Создание папки");
 
                 Directory.CreateDirectory($"{Folder}\\Комплектующие");
             }
 
             if (!Directory.Exists($"{Folder}\\История перемещений"))
             {
-                Log.ErrorHandler($"[ x ] Папка \"{Folder}\\История перемещений\" не существует. Создание папки");
+                Log.ErrorHandler(Folder, $"[ x ] Папка \"{Folder}\\История перемещений\" не существует. Создание папки");
 
                 Directory.CreateDirectory($"{Folder}\\История перемещений");
             }
@@ -93,10 +96,10 @@ namespace INIFileSpace
         // Проверяем наличие нужных файлов
         void TryFile()
         {
-            if (!File.Exists(Path))
+            if (!File.Exists($"{Folder}\\{Path}"))
             {
                 // Если файла настроек не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] DevList.ini не существует. Создание файла");
+                Log.ErrorHandler(Folder, $"[ x ] DevList.ini не существует. Создание файла");
 
                 File.WriteAllText
                 (
@@ -118,115 +121,115 @@ namespace INIFileSpace
                 );
             }
 
-            if (!File.Exists(Base))
+            if (!File.Exists($"{Folder}\\{Base}"))
             {
                 // Если файла с базой не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {Base} не существует. Создание файла");
+                Log.ErrorHandler(Folder, $"[ x ] {Base} не существует. Создание файла");
 
-                File.WriteAllText( Base, string.Empty);
+                File.WriteAllText($"{Folder}\\{Base}", string.Empty);
             }
 
-            if (!File.Exists(Rooms))
+            if (!File.Exists($"{Folder}\\{Rooms}"))
             {
                 // Если файла со списком помещений не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {Rooms} не существует. Создание файла");
+                Log.ErrorHandler(Folder, $"[ x ] {Rooms} не существует. Создание файла");
 
-                File.WriteAllText( Rooms, string.Empty);
+                File.WriteAllText($"{Folder}\\{Rooms}", string.Empty);
             }
 
-            if (!File.Exists(Devices))
+            if (!File.Exists($"{Folder}\\{Devices}"))
             {
                 // Если файла со списком оборудования не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {Devices} не существует. Создание файла");
+                Log.ErrorHandler(Folder, $"[ x ] {Devices} не существует. Создание файла");
 
-                File.WriteAllText( Devices, string.Empty);
+                File.WriteAllText($"{Folder}\\{Devices}", string.Empty);
             }
 
-            if (!File.Exists(Employees))
+            if (!File.Exists($"{Folder}\\{Employees}"))
             {
                 // Если файла со списком сотрудника не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {Employees} не существует. Создание файла");
+                Log.ErrorHandler(Folder, $"[ x ] {Employees} не существует. Создание файла");
 
-                File.WriteAllText( Employees, string.Empty);
+                File.WriteAllText($"{Folder}\\{Employees}", string.Empty);
             }
 
-            if (!File.Exists(Names))
+            if (!File.Exists($"{Folder}\\{Names}"))
             {
                 // Если файла со списком наименований не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {Names} не существует. Создание файла");
+                Log.ErrorHandler(Folder, $"[ x ] {Names} не существует. Создание файла");
 
-                File.WriteAllText( Names, string.Empty);
+                File.WriteAllText($"{Folder}\\{Names}", string.Empty);
             }
 
-            if (!File.Exists(History))
+            if (!File.Exists($"{Folder}\\{History}"))
             {
                 // Если файла с историей не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {History} не существует. Создание файла");
+                Log.ErrorHandler(Folder, $"[ x ] {History} не существует. Создание файла");
 
-                File.WriteAllText( History, string.Empty);
+                File.WriteAllText($"{Folder}\\{History}", string.Empty);
             }
 
-            if (!File.Exists(Set))
+            if (!File.Exists($"{Folder}\\{Set}"))
             {
                 // Если файла с комплектом не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {Set} не существует. Создание файла"); 
+                Log.ErrorHandler(Folder, $"[ x ] {Set} не существует. Создание файла"); 
                 
-                File.WriteAllText( Set, string.Empty);
+                File.WriteAllText($"{Folder}\\{Set}", string.Empty);
             }
 
-            if (!File.Exists(CPUs))
+            if (!File.Exists($"{Folder}\\{CPUs}"))
             {
                 // Если файла со списком ЦПУ не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {CPUs} не существует. Создание файла"); 
+                Log.ErrorHandler(Folder, $"[ x ] {CPUs} не существует. Создание файла"); 
                 
-                File.WriteAllText( CPUs, string.Empty);
+                File.WriteAllText($"{Folder}\\{CPUs}", string.Empty);
             }
 
-            if (!File.Exists(Mainboards))
+            if (!File.Exists($"{Folder}\\{Mainboards}"))
             {
                 // Если файла со списком мат. плат не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {Mainboards} не существует. Создание файла"); 
+                Log.ErrorHandler(Folder, $"[ x ] {Mainboards} не существует. Создание файла"); 
                 
-                File.WriteAllText( Mainboards, string.Empty);
+                File.WriteAllText($"{Folder}\\{Mainboards}", string.Empty);
             }
 
-            if (!File.Exists(RAMs))
+            if (!File.Exists($"{Folder}\\{RAMs}"))
             {
                 // Если файла со списком ОЗУ не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {RAMs} не существует. Создание файла"); 
+                Log.ErrorHandler(Folder, $"[ x ] {RAMs} не существует. Создание файла"); 
                 
-                File.WriteAllText( RAMs, string.Empty);
+                File.WriteAllText($"{Folder}\\{RAMs}", string.Empty);
             }
 
-            if (!File.Exists(Storges))
+            if (!File.Exists($"{Folder}\\{Storges}"))
             {
                 // Если файла со списком ПЗУ не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {Storges} не существует. Создание файла"); 
+                Log.ErrorHandler(Folder, $"[ x ] {Storges} не существует. Создание файла"); 
                 
-                File.WriteAllText( Storges, string.Empty);
+                File.WriteAllText($"{Folder}\\{Storges}", string.Empty);
             }
 
-            if (!File.Exists(Videocards))
+            if (!File.Exists($"{Folder}\\{Videocards}"))
             {
                 // Если файла со списком видеокарт не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {Videocards} не существует. Создание файла");
+                Log.ErrorHandler(Folder, $"[ x ] {Videocards} не существует. Создание файла");
 
-                File.WriteAllText( Videocards, string.Empty);
+                File.WriteAllText($"{Folder}\\{Videocards}", string.Empty);
             }
 
-            if (!File.Exists(Powers))
+            if (!File.Exists($"{Folder}\\{Powers}"))
             {
                 // Если файла со списком блоков питания не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {Powers} не существует. Создание файла"); 
+                Log.ErrorHandler(Folder, $"[ x ] {Powers} не существует. Создание файла"); 
                 
-                File.WriteAllText( Powers, string.Empty); }
+                File.WriteAllText($"{Folder}\\{Powers}", string.Empty); }
 
-            if (!File.Exists(Cases))
+            if (!File.Exists($"{Folder}\\{Cases}"))
             {
                 // Если файла со списком корпусов для системных блоков не существует, то пишем лог и создаём
-                Log.ErrorHandler($"[ x ] {Cases} не существует. Создание файла"); 
+                Log.ErrorHandler(Folder, $"[ x ] {Cases} не существует. Создание файла"); 
                 
-                File.WriteAllText( Cases, string.Empty); }
+                File.WriteAllText($"{Folder}\\{Cases}", string.Empty); }
         }
 
         // Читаем файл
@@ -235,20 +238,20 @@ namespace INIFileSpace
             string[] iniFile = File.ReadAllLines(Path);
 
             // Инициируем переменные настроек из файла. В случае неудачи - пишем лог
-            try { Base = $"{Folder}\\{iniFile[0]}"; } catch (Exception) { Base = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с БД!"); };
-            try { Rooms = $"{Folder}\\{iniFile[1]}"; } catch (Exception) { Rooms = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с помещениями!"); };
-            try { Devices = $"{Folder}\\{iniFile[2]}"; } catch (Exception) { Devices = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с оборудованием!"); };
-            try { Employees = $"{Folder}\\{iniFile[3]}"; } catch (Exception) { Employees = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с сотрудниками!"); };
-            try { Names = $"{Folder}\\{iniFile[4]}"; } catch (Exception) { Names = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с наименованиями!"); };
-            try { History = $"{Folder}\\{iniFile[5]}"; } catch (Exception) { History = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с историей!"); };
-            try { Set = $"{Folder}\\{iniFile[6]}"; } catch (Exception) { Set = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с комплектом!"); };
-            try { CPUs = $"{Folder}\\{iniFile[7]}"; } catch (Exception) { CPUs = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с ЦПУ!"); };
-            try { Mainboards = $"{Folder}\\{iniFile[8]}"; } catch (Exception) { Mainboards = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с мат. платами!"); };
-            try { RAMs = $"{Folder}\\{iniFile[9]}"; } catch (Exception) { RAMs = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с ОЗУ!"); };
-            try { Storges = $"{Folder}\\{iniFile[10]}"; } catch (Exception) { Storges = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с ПЗУ!"); };
-            try { Videocards = $"{Folder}\\{iniFile[11]}"; } catch (Exception) { Videocards = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с видеокартами!"); };
-            try { Powers = $"{Folder}\\{iniFile[12]}"; } catch (Exception) { Powers = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с БП!"); };
-            try { Cases = $"{Folder}\\{iniFile[13]}"; } catch (Exception) { Cases = string.Empty; Log.ErrorHandler("[ x ] В DevList.ini неверная строка с корпусами!"); };
+            try { Base = $"{Folder}\\{iniFile[0]}"; } catch (Exception) { Base = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с БД!"); };
+            try { Rooms = $"{Folder}\\{iniFile[1]}"; } catch (Exception) { Rooms = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с помещениями!"); };
+            try { Devices = $"{Folder}\\{iniFile[2]}"; } catch (Exception) { Devices = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с оборудованием!"); };
+            try { Employees = $"{Folder}\\{iniFile[3]}"; } catch (Exception) { Employees = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с сотрудниками!"); };
+            try { Names = $"{Folder}\\{iniFile[4]}"; } catch (Exception) { Names = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с наименованиями!"); };
+            try { History = $"{Folder}\\{iniFile[5]}"; } catch (Exception) { History = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с историей!"); };
+            try { Set = $"{Folder}\\{iniFile[6]}"; } catch (Exception) { Set = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с комплектом!"); };
+            try { CPUs = $"{Folder}\\{iniFile[7]}"; } catch (Exception) { CPUs = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с ЦПУ!"); };
+            try { Mainboards = $"{Folder}\\{iniFile[8]}"; } catch (Exception) { Mainboards = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с мат. платами!"); };
+            try { RAMs = $"{Folder}\\{iniFile[9]}"; } catch (Exception) { RAMs = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с ОЗУ!"); };
+            try { Storges = $"{Folder}\\{iniFile[10]}"; } catch (Exception) { Storges = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с ПЗУ!"); };
+            try { Videocards = $"{Folder}\\{iniFile[11]}"; } catch (Exception) { Videocards = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с видеокартами!"); };
+            try { Powers = $"{Folder}\\{iniFile[12]}"; } catch (Exception) { Powers = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с БП!"); };
+            try { Cases = $"{Folder}\\{iniFile[13]}"; } catch (Exception) { Cases = string.Empty; Log.ErrorHandler(Folder, "[ x ] В DevList.ini неверная строка с корпусами!"); };
         }
     }
 }

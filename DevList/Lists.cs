@@ -83,7 +83,7 @@ namespace ListsSpace
             }
             catch (Exception)
             {
-                Log.ErrorHandler($"[ x ] DevList.ini - отсутствует файл {path} или неправильный путь!");
+                Log.ErrorHandler(iniFile.Folder, $"[ x ] DevList.ini - отсутствует файл {path} или неправильный путь!");
 
                 MessageBox.Show("Отсутствует файл или неверный путь!", "Не вижу файл!", MessageBoxButtons.OK);
 
