@@ -1,8 +1,8 @@
-﻿using System;
+﻿using INIFileSpace;
+using AddEditSearchPresenterSpace;
+using System;
 using System.Windows.Forms;
 using AbstractAddEditSearchSpace;
-using AddEditSearchPresenterSpace;
-using INIFileSpace;
 
 namespace AddEditSearchViewSpace
 {

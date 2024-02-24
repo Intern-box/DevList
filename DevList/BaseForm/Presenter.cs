@@ -139,40 +139,9 @@ namespace BaseFormPresenterSpace
 
         public void Add()
         {
-            int saveCoordinates = baseFormView.tableParameters.Line;
+            int saveCoordinates = tableParameters.Line;
 
-            AbstractAddEditSearch addEditsearchView;
-
-            if (baseFormView.tableParameters.Coordinates == null || baseFormView.tableParameters.Coordinates.Item == null)
-            {
-                baseFormView.tableParameters.Coordinates = baseFormView.Table.HitTest(0, 0);
-
-                if (baseFormView.Text == "DevList 6.9 - Главное окно") { addEditsearchView = new AddEditSearchView(baseFormView.iniFile); }
-
-                else { addEditsearchView = new PartsAddEditSearchView(baseFormView.iniFile); }
-            }
-            else
-            {
-                saveCoordinates = baseFormView.tableParameters.Coordinates.Item == null ? 0 : baseFormView.tableParameters.Coordinates.Item.Index;
-
-                if (saveCoordinates >= 0)
-                {
-                    if (baseFormView.Text == "DevList 6.9 - Главное окно")
-                    {
-                        addEditsearchView = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]);
-                    }
-                    else
-                    {
-                        addEditsearchView = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]);
-                    }
-                }
-                else
-                {
-                    if (baseFormView.Text == "DevList 6.9 - Главное окно") { addEditsearchView = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
-
-                    else { addEditsearchView = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
-                }
-            }
+            AbstractAddEditSearch addEditsearchView = WindowSelection(baseFormView.Table.Columns.Count);
 
             addEditsearchView.ShowDialog();
 
@@ -526,22 +495,22 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        void WindowSelection()
+        AbstractAddEditSearch WindowSelection(int columnsCount)
         {
             int saveCoordinates;
 
-            IAddEditSearch window;
+            AbstractAddEditSearch window = null;
 
             if (tableParameters.Coordinates == null || tableParameters.Coordinates.Item == null)
             {
                 tableParameters.Coordinates = baseFormView.Table.HitTest(0, 0);
 
-                //switch (baseFormView.Text)
-                //{
-                //    case $"DevList 6.9 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile); break;
+                switch (baseFormView.Text)
+                {
+                    case $"DevList 6.9 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile); break;
 
-                //    case "DevList - Комплект": window = new PartsAddEditSearchView(baseFormView.iniFile); break;
-                //}
+                    case "DevList - Комплект": window = new PartsAddEditSearchView(baseFormView.iniFile); break;
+                }
             }
             else
             {
@@ -549,23 +518,27 @@ namespace BaseFormPresenterSpace
 
                 if (saveCoordinates >= 0)
                 {
-                    //switch (baseFormView.Text)
-                    //{
-                    //    case $"DevList 6.9 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]); break;
+                    switch (baseFormView.Text)
+                    {
+                        case $"DevList 6.9 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]); break;
 
-                    //    case "DevList - Комплект": window = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]); break;
-                    //}
+                        case "DevList - Комплект": window = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]); break;
+                    }
                 }
                 else
                 {
-                    //switch (baseFormView.Text)
-                    //{
-                    //    case $"DevList 6.9 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); break;
+                    switch (baseFormView.Text)
+                    {
+                        case $"DevList 6.9 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); break;
 
-                    //    case "DevList - Комплект": window = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); break;
-                    //}
+                        case "DevList - Комплект": window = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); break;
+                    }
                 }
             }
+
+            window.InitResult(columnsCount);
+
+            return window;
         }
     }
 }
