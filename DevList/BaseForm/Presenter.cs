@@ -13,6 +13,8 @@ using ListsSpace;
 using UpDownFormSpace;
 using AbstractAddEditSearchSpace;
 using PartsAddEditSearchViewSpace;
+using TableParametersSpace;
+using IAddEditSearchSpace;
 
 namespace BaseFormPresenterSpace
 {
@@ -26,9 +28,13 @@ namespace BaseFormPresenterSpace
 
         AbstractAddEditSearch search;
 
-        public BaseFormPresenter(BaseFormView baseFormView)
+        TableParameters tableParameters;
+
+        public BaseFormPresenter(BaseFormView baseFormView, TableParameters tableParameters)
         {
             this.baseFormView = baseFormView;
+
+            this.tableParameters = tableParameters;
 
             baseFormModel = new BaseFormModel(new DataBase(baseFormView.iniFile.Base));
         }
@@ -516,6 +522,46 @@ namespace BaseFormPresenterSpace
                     else { baseFormView.Table.Items.Clear(); }
 
                     baseFormView.Filter.Visible = true;
+                }
+            }
+        }
+
+        void WindowSelection()
+        {
+            string mainWindow = "DevList 6.9 - Главное окно";
+
+            int saveCoordinates;
+
+            IAddEditSearch window;
+
+            if (tableParameters.Coordinates == null || tableParameters.Coordinates.Item == null)
+            {
+                tableParameters.Coordinates = baseFormView.Table.HitTest(0, 0);
+
+                //if (baseFormView.Text == mainWindow) { window = new AddEditSearchView(baseFormView.iniFile); }
+
+                //else { window = new PartsAddEditSearchView(baseFormView.iniFile); }
+            }
+            else
+            {
+                saveCoordinates = tableParameters.Coordinates.Item == null ? 0 : tableParameters.Line;
+
+                if (saveCoordinates >= 0)
+                {
+                    //if (baseFormView.Text == mainWindow)
+                    //{
+                    //    window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]);
+                    //}
+                    //else
+                    //{
+                    //    window = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates]);
+                    //}
+                }
+                else
+                {
+                    //if (baseFormView.Text == mainWindow) { window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
+
+                    //else { window = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0]); }
                 }
             }
         }

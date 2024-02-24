@@ -47,7 +47,7 @@ namespace BaseFormViewSpace
         void BaseForm_Load(object sender, EventArgs e)
         {
             // Инициируем Presenter
-            baseFormPresenter = new BaseFormPresenter(this);
+            baseFormPresenter = new BaseFormPresenter(this, tableParameters);
 
             // Если в конструктор передавалась БД с Историей, инициируем БД с Историей
             if (historyBase != null) { baseFormPresenter.DataBaseSet(historyBase); }

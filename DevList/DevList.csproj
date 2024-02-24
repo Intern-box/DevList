@@ -57,6 +57,7 @@
     <Compile Include="AbstractAddEditSearch.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="IAddEditSearch.cs" />
     <Compile Include="Launch\Presenter.cs" />
     <Compile Include="AddEditSearch\Presenter.cs" />
     <Compile Include="PartsAddEditSearch\Presenter.cs" />
