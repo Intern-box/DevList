@@ -26,12 +26,16 @@ namespace LaunchPresenterSpace
             // Если перезапись одобрена, формируем новую, пустую БД и сопутствующие файлы и папки
             if (result == DialogResult.Yes)
             {
-                Directory.Delete($"{Application.StartupPath}\\БД", true);
-                Directory.Delete($"{Application.StartupPath}\\История перемещений", true);
-                Directory.Delete($"{Application.StartupPath}\\Комплектующие", true);
+                try
+                {
+                    Directory.Delete($"{Application.StartupPath}\\БД", true);
+                    Directory.Delete($"{Application.StartupPath}\\История перемещений", true);
+                    Directory.Delete($"{Application.StartupPath}\\Комплектующие", true);
 
-                File.Delete($"{Application.StartupPath}\\DevList.ini");
-                File.Delete($"{Application.StartupPath}\\DevList.log");
+                    File.Delete($"{Application.StartupPath}\\DevList.ini");
+                    File.Delete($"{Application.StartupPath}\\DevList.log");
+                }
+                catch (System.Exception) { }
 
                 iniFile = new INIFile(Application.StartupPath);
 
