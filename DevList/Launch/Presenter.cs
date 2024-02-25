@@ -34,9 +34,9 @@ namespace LaunchPresenterSpace
                 File.Delete($"{Application.StartupPath}\\DevList.log");
 
                 iniFile = new INIFile(Application.StartupPath);
-            }
 
-            BaseFormLoad();
+                BaseFormLoad();
+            }
         }
 
         // Обработка нажатия кнопки "Открыть"
@@ -45,9 +45,7 @@ namespace LaunchPresenterSpace
             OpenFileDialog openFile = new() { Filter = "*.INI|*.ini" };
 
             // Если файл существует, открываем БД
-            if (openFile.ShowDialog() == DialogResult.OK) { iniFile = new INIFile(openFile.FileName); }
-
-            BaseFormLoad();
+            if (openFile.ShowDialog() == DialogResult.OK) { iniFile = new INIFile(openFile.FileName); BaseFormLoad(); }
         }
 
         // Создаём основную форму для работы в БД
