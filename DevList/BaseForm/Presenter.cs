@@ -14,7 +14,6 @@ using UpDownFormSpace;
 using AbstractAddEditSearchSpace;
 using PartsAddEditSearchViewSpace;
 using TableParametersSpace;
-using IAddEditSearchSpace;
 
 namespace BaseFormPresenterSpace
 {
@@ -117,21 +116,24 @@ namespace BaseFormPresenterSpace
 
                 if (!Directory.Exists($"{savePath.SelectedPath}\\История перемещений")) { Directory.CreateDirectory($"{savePath.SelectedPath}\\История перемещений"); }
 
+                if (!Directory.Exists($"{savePath.SelectedPath}\\Комплектующие")) { Directory.CreateDirectory($"{savePath.SelectedPath}\\Комплектующие"); }
+
                 System.IO.File.Copy(baseFormView.iniFile.Path, Path.Combine(savePath.SelectedPath, Path.GetFileName(baseFormView.iniFile.Path)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Base, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Base)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Rooms, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Rooms)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Devices, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Devices)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Employees, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Employees)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Names, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Names)), true);
-                System.IO.File.Copy(baseFormView.iniFile.History, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.History)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Set, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Set)), true);
-                System.IO.File.Copy(baseFormView.iniFile.CPUs, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.CPUs)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Mainboards, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Mainboards)), true);
-                System.IO.File.Copy(baseFormView.iniFile.RAMs, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.RAMs)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Storges, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Storges)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Videocards, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Videocards)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Powers, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Powers)), true);
-                System.IO.File.Copy(baseFormView.iniFile.Cases, Path.Combine($"{savePath.SelectedPath}\\БД", Path.GetFileName(baseFormView.iniFile.Cases)), true);
+
+                foreach (FileInfo file in new DirectoryInfo(Path.GetDirectoryName(baseFormView.iniFile.Path) + "\\БД").GetFiles())
+                {
+                    System.IO.File.Copy(file.FullName, Path.Combine(savePath.SelectedPath + "\\БД", Path.GetFileName(file.FullName)), true);
+                }
+
+                foreach (FileInfo file in new DirectoryInfo(Path.GetDirectoryName(baseFormView.iniFile.Path) + "\\История перемещений").GetFiles())
+                {
+                    System.IO.File.Copy(file.FullName, Path.Combine(savePath.SelectedPath + "\\История перемещений", Path.GetFileName(file.FullName)), true);
+                }
+
+                foreach (FileInfo file in new DirectoryInfo(Path.GetDirectoryName(baseFormView.iniFile.Path) + "\\Комплектующие").GetFiles())
+                {
+                    System.IO.File.Copy(file.FullName, Path.Combine(savePath.SelectedPath + "\\Комплектующие", Path.GetFileName(file.FullName)), true);
+                }
             }
         }
 
