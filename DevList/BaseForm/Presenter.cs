@@ -120,6 +120,11 @@ namespace BaseFormPresenterSpace
 
                 System.IO.File.Copy(baseFormView.iniFile.Path, Path.Combine(savePath.SelectedPath, Path.GetFileName(baseFormView.iniFile.Path)), true);
 
+                foreach (FileInfo file in new DirectoryInfo(Path.GetDirectoryName(baseFormView.iniFile.Path)).GetFiles())
+                {
+                    System.IO.File.Copy(file.FullName, Path.Combine(savePath.SelectedPath, Path.GetFileName(file.FullName)), true);
+                }
+
                 foreach (FileInfo file in new DirectoryInfo(Path.GetDirectoryName(baseFormView.iniFile.Path) + "\\БД").GetFiles())
                 {
                     System.IO.File.Copy(file.FullName, Path.Combine(savePath.SelectedPath + "\\БД", Path.GetFileName(file.FullName)), true);
