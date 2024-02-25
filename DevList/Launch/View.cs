@@ -19,5 +19,7 @@ namespace LaunchViewSpace
 
         // Нажата кнопка "Открыть"
         public void Open_Click(object sender, EventArgs e) { Hide(); launchPresenter.Open(); Close(); }
+
+        private void LaunchView_KeyDown(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Escape) { Close(); } }
     }
 }

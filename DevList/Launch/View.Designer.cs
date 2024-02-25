@@ -100,6 +100,7 @@ namespace LaunchViewSpace
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DevList 6.9 - Загрузчик";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LaunchView_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
