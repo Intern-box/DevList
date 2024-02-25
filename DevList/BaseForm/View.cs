@@ -47,7 +47,7 @@ namespace BaseFormViewSpace
         void BaseForm_Load(object sender, EventArgs e)
         {
             // Инициируем Presenter
-            baseFormPresenter = new BaseFormPresenter(this, tableParameters);
+            baseFormPresenter = new BaseFormPresenter(this);
 
             // Если в конструктор передавалась БД с Историей, инициируем БД с Историей
             if (historyBase != null) { baseFormPresenter.DataBaseSet(historyBase); }
@@ -132,7 +132,7 @@ namespace BaseFormViewSpace
 
         void ContextAdd_Click(object sender, EventArgs e) { Add_Click(sender, e); }
 
-        void EditAll_Click(object sender, EventArgs e) { baseFormPresenter.EditAll(); }
+        void EditAll_Click(object sender, EventArgs e) { baseFormPresenter.Edit(); }
 
         void Table_DoubleClick(object sender, EventArgs e) { EditAll_Click(sender, e); }
 

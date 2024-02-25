@@ -10,7 +10,6 @@ namespace PartsAddEditSearchPresenterSpace
 
         public void Execute()
         {
-            partsAddEditSearchView.Result[0] = string.Empty;
             partsAddEditSearchView.Result[1] = partsAddEditSearchView.Number.Text;
             partsAddEditSearchView.Result[2] = partsAddEditSearchView.Date.Text;
             partsAddEditSearchView.Result[3] = partsAddEditSearchView.CPU.Text;
@@ -21,13 +20,10 @@ namespace PartsAddEditSearchPresenterSpace
             partsAddEditSearchView.Result[8] = partsAddEditSearchView.Power.Text;
             partsAddEditSearchView.Result[9] = partsAddEditSearchView.Case.Text;
             partsAddEditSearchView.Result[10] = partsAddEditSearchView.Year.Text;
-            partsAddEditSearchView.Result[11] = string.Empty;
-            partsAddEditSearchView.Result[12] = string.Empty;
 
-            foreach (string Str in partsAddEditSearchView.Result) if (Str != string.Empty) { partsAddEditSearchView.Result[13] = "1"; break; }
-
-            if (partsAddEditSearchView.addInEnd.Checked) { partsAddEditSearchView.AddInEnd = true; } else { partsAddEditSearchView.AddInEnd = false; }
+            partsAddEditSearchView.Executed = true;
         }
+
         public void ButtonCPUPlus()
         {
             List list = new List(partsAddEditSearchView.iniFile.CPUs);

@@ -30,11 +30,9 @@ namespace BaseFormPresenterSpace
 
         TableParameters tableParameters;
 
-        public BaseFormPresenter(BaseFormView baseFormView, TableParameters tableParameters)
+        public BaseFormPresenter(BaseFormView baseFormView)
         {
             this.baseFormView = baseFormView;
-
-            this.tableParameters = tableParameters;
 
             baseFormModel = new BaseFormModel(new DataBase(baseFormView.iniFile.Base));
         }
@@ -141,11 +139,11 @@ namespace BaseFormPresenterSpace
         {
             int saveCoordinates = tableParameters.Line;
 
-            AbstractAddEditSearch addEditsearchView = WindowSelection(baseFormView.Table.Columns.Count);
+            AbstractAddEditSearch addEditsearchView = WindowSelection(baseFormView.Table.Columns.Count, null);
 
             addEditsearchView.ShowDialog();
 
-            if (addEditsearchView.Result[13] == "1")
+            if (addEditsearchView.Executed)
             {
                 if (addEditsearchView.AddInEnd) { baseFormModel.DataBase.Table.Add(addEditsearchView.Result); }
 
@@ -162,84 +160,87 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        public void EditAll()
+        public void Edit()
         {
-            if (baseFormView.tableParameters.Coordinates != null && baseFormView.tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
+            tableParameters = baseFormView.tableParameters;
+
+            if (tableParameters.Coordinates != null && tableParameters.Coordinates.Location != ListViewHitTestLocations.None)
             {
-                AddEditSearchView addEditsearchView = new AddEditSearchView(baseFormView.iniFile);
+                AbstractAddEditSearch addEditsearchView = WindowSelection(baseFormView.Table.Columns.Count, baseFormView.iniFile);
 
-                addEditsearchView.addInEnd.Visible = false;
+                addEditsearchView.Result = baseFormModel.DataBase.Table[tableParameters.Id];
 
-                addEditsearchView.Result = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id];
-
-                string tmp = baseFormModel.DataBase.Table[baseFormView.tableParameters.Id][3];
-
-                addEditsearchView.AddEditSearchPresenter.Get();
+                string tmp = baseFormModel.DataBase.Table[tableParameters.Id][3];
 
                 addEditsearchView.ShowDialog();
 
-                if (tmp != addEditsearchView.Result[3])
+                if (addEditsearchView.Executed)
                 {
-                    File.AppendAllText
-                    (
-                        $"{Path.GetDirectoryName(Path.GetFullPath(baseFormView.iniFile.Path))}\\История перемещений\\{addEditsearchView.Result[3]}.txt",
-                        $"Из помещения: {tmp}\r\n" +
-                        $"переместили: {DateTime.Now}\r\n" +
-                        $"{baseFormModel.DataBase.Table[baseFormView.tableParameters.Id][5]}\r\n" +
-                        $"с инв.№: {baseFormModel.DataBase.Table[baseFormView.tableParameters.Id][2]}\r\n\r\n"
-                    );
-                }
+                    if (baseFormView.Text == "DevList 6.9 - Главное окно" && tmp != addEditsearchView.Result[3])
+                    {
+                        File.AppendAllText
+                        (
+                            $"{Path.GetDirectoryName(Path.GetFullPath(baseFormView.iniFile.Path))}\\История перемещений\\{addEditsearchView.Result[3]}.txt",
+                            $"Из помещения: {tmp}\r\n" +
+                            $"переместили: {DateTime.Now}\r\n" +
+                            $"{baseFormModel.DataBase.Table[tableParameters.Id][5]}\r\n" +
+                            $"с инв.№: {baseFormModel.DataBase.Table[tableParameters.Id][2]}\r\n\r\n"
+                        );
+                    }
 
-                baseFormModel.DataBase.Table[baseFormView.tableParameters.Id] = addEditsearchView.Result;
+                    baseFormModel.DataBase.Table[tableParameters.Id] = addEditsearchView.Result;
 
-                baseFormModel.DataBase.Change = true;
+                    baseFormModel.DataBase.Change = true;
 
-                if (baseFormView.Filter.Visible)
-                {
-                    baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(LastResult, search.Result));
-                }
-                else
-                {
-                    baseFormView.TableOutput(baseFormModel.DataBase.Table);
+                    if (baseFormView.Filter.Visible)
+                    {
+                        baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(LastResult, search.Result));
+                    }
+                    else
+                    {
+                        baseFormView.TableOutput(baseFormModel.DataBase.Table);
+                    }
                 }
             }
         }
 
         public void Up()
         {
-            baseFormModel.DataBase.UpDown(baseFormView.tableParameters.Line - 1, baseFormView.tableParameters.Line);
+            baseFormModel.DataBase.UpDown(tableParameters.Line - 1, tableParameters.Line);
 
             baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
             baseFormView.Table.Select();
             
-            baseFormView.Table.Items[baseFormView.tableParameters.Line - 1].Selected = true;
+            baseFormView.Table.Items[tableParameters.Line - 1].Selected = true;
 
             baseFormModel.DataBase.Change = true;
         }
 
         public void Down()
         {
-            baseFormModel.DataBase.UpDown(baseFormView.tableParameters.Line + 1, baseFormView.tableParameters.Line);
+            baseFormModel.DataBase.UpDown(tableParameters.Line + 1, tableParameters.Line);
 
             baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
             baseFormView.Table.Select();
 
-            baseFormView.Table.Items[baseFormView.tableParameters.Line + 1].Selected = true;
+            baseFormView.Table.Items[tableParameters.Line + 1].Selected = true;
 
             baseFormModel.DataBase.Change = true;
         }
 
         public void Remove()
         {
+            tableParameters = baseFormView.tableParameters;
+
             if (baseFormView.Text == "DevList - История")
             {
                 DialogResult result = MessageBox.Show("Удалить полностью?", "Удаление МЦ", MessageBoxButtons.YesNo);
 
                 if (result == DialogResult.Yes)
                 {
-                    Remove remove = new Remove(baseFormModel.DataBase, baseFormView.tableParameters.Coordinates);
+                    Remove remove = new Remove(baseFormModel.DataBase, tableParameters.Coordinates);
 
                     baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
@@ -252,7 +253,7 @@ namespace BaseFormPresenterSpace
 
                 if (result == DialogResult.Yes)
                 {
-                    Remove remove = new Remove(baseFormModel.DataBase, baseFormView.tableParameters.Coordinates, baseFormView.iniFile, true);
+                    Remove remove = new Remove(baseFormModel.DataBase, tableParameters.Coordinates, baseFormView.iniFile, true);
 
                     baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
@@ -371,7 +372,7 @@ namespace BaseFormPresenterSpace
 
             if (upDownForm.Result != null)
             {
-                baseFormModel.DataBase.Move(baseFormView.tableParameters.Id, int.Parse(upDownForm.Result) - 1);
+                baseFormModel.DataBase.Move(tableParameters.Id, int.Parse(upDownForm.Result) - 1);
 
                 baseFormView.TableOutput(baseFormModel.DataBase.Table);
             }
@@ -430,9 +431,9 @@ namespace BaseFormPresenterSpace
         {
             int saveCoordinates;
 
-            if (baseFormView.tableParameters.Coordinates == null || baseFormView.tableParameters.Coordinates.Item == null)
+            if (tableParameters.Coordinates == null || tableParameters.Coordinates.Item == null)
             {
-                baseFormView.tableParameters.Coordinates = baseFormView.Table.HitTest(0, 0);
+                tableParameters.Coordinates = baseFormView.Table.HitTest(0, 0);
 
                 if (baseFormView.Text == "DevList 6.9 - Главное окно" || baseFormView.Text == "DevList - История") { search = new AddEditSearchView(baseFormView.iniFile); }
 
@@ -440,7 +441,7 @@ namespace BaseFormPresenterSpace
             }
             else
             {
-                saveCoordinates = baseFormView.tableParameters.Coordinates.Item == null ? 0 : baseFormView.tableParameters.Coordinates.Item.Index;
+                saveCoordinates = tableParameters.Coordinates.Item == null ? 0 : tableParameters.Coordinates.Item.Index;
 
                 if (saveCoordinates >= 0)
                 {
@@ -495,7 +496,7 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        AbstractAddEditSearch WindowSelection(int columnsCount)
+        AbstractAddEditSearch WindowSelection(int columnsCount, INIFile iniFile)
         {
             int saveCoordinates;
 
@@ -537,6 +538,8 @@ namespace BaseFormPresenterSpace
             }
 
             window.InitResult(columnsCount);
+
+            if (iniFile != null) { window.iniFile = iniFile; }
 
             return window;
         }

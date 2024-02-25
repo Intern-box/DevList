@@ -48,7 +48,7 @@ namespace BaseFormViewSpace
             this.Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.Add = new System.Windows.Forms.ToolStripMenuItem();
             this.MEditAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.Move = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToMove = new System.Windows.Forms.ToolStripMenuItem();
             this.Up = new System.Windows.Forms.ToolStripMenuItem();
             this.Down = new System.Windows.Forms.ToolStripMenuItem();
             this.NomberString = new System.Windows.Forms.ToolStripMenuItem();
@@ -217,7 +217,7 @@ namespace BaseFormViewSpace
             this.Edit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Add,
             this.MEditAll,
-            this.Move,
+            this.ToMove,
             this.Remove});
             this.Edit.Name = "Edit";
             this.Edit.Size = new System.Drawing.Size(64, 21);
@@ -239,13 +239,13 @@ namespace BaseFormViewSpace
             // 
             // Move
             // 
-            this.Move.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToMove.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Up,
             this.Down,
             this.NomberString});
-            this.Move.Name = "Move";
-            this.Move.Size = new System.Drawing.Size(153, 22);
-            this.Move.Text = "Переместить";
+            this.ToMove.Name = "Move";
+            this.ToMove.Size = new System.Drawing.Size(153, 22);
+            this.ToMove.Text = "Переместить";
             // 
             // Up
             // 
@@ -547,7 +547,7 @@ namespace BaseFormViewSpace
         private System.Windows.Forms.ToolStripMenuItem Columns;
         private System.Windows.Forms.ToolStripMenuItem CommonReport;
         private System.Windows.Forms.StatusStrip Errors;
-        private System.Windows.Forms.ToolStripMenuItem Move;
+        private System.Windows.Forms.ToolStripMenuItem ToMove;
         private System.Windows.Forms.ToolStripMenuItem Up;
         private System.Windows.Forms.ToolStripMenuItem Down;
         private System.Windows.Forms.ToolStripMenuItem NomberString;

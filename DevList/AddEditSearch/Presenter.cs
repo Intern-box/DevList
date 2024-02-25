@@ -41,13 +41,10 @@ namespace AddEditSearchPresenterSpace
             addEditSearchView.Hostname.Text = addEditSearchView.Result[10];
             addEditSearchView.IP.Text = addEditSearchView.Result[11];
             addEditSearchView.ChangeMan.Text = addEditSearchView.Result[12];
-
-            foreach (string Str in addEditSearchView.Result) if (Str != string.Empty) { addEditSearchView.Result[addEditSearchView.Result.Length - 1] = "1"; break; }
         }
 
-        public void Set()
+        public void Execute()
         {
-            addEditSearchView.Result[0] = string.Empty;
             addEditSearchView.Result[1] = addEditSearchView.Date.Text;
             addEditSearchView.Result[2] = addEditSearchView.Number.Text;
             addEditSearchView.Result[3] = addEditSearchView.Rooms.Text;
@@ -60,10 +57,6 @@ namespace AddEditSearchPresenterSpace
             addEditSearchView.Result[10] = addEditSearchView.Hostname.Text;
             addEditSearchView.Result[11] = addEditSearchView.IP.Text;
             addEditSearchView.Result[12] = addEditSearchView.ChangeMan.Text;
-
-            foreach (string Str in addEditSearchView.Result) if (Str != string.Empty) { addEditSearchView.Result[addEditSearchView.Result.Length - 1] = "1"; break; }
-
-            if (addEditSearchView.addInEnd.Checked) { addEditSearchView.AddInEnd = true; } else { addEditSearchView.AddInEnd = false; }
         }
 
         public void RoomsPlus()

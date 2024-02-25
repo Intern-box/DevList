@@ -7,15 +7,9 @@ namespace RemoveSpace
 {
     public class Remove
     {
-        public Remove(DataBase dataBase, ListViewHitTestInfo coordinates)
-        {
-            RemoveThat(dataBase, coordinates);
-        }
+        public Remove(DataBase dataBase, ListViewHitTestInfo coordinates) { RemoveThat(dataBase, coordinates); }
 
-        public Remove(DataBase dataBase, ListViewHitTestInfo coordinates, INIFile iniFile, bool remove)
-        {
-            RemoveThat(dataBase, coordinates, iniFile, remove);
-        }
+        public Remove(DataBase dataBase, ListViewHitTestInfo coordinates, INIFile iniFile, bool remove) { RemoveThat(dataBase, coordinates, iniFile, remove); }
 
         void RemoveThat(DataBase dataBase, ListViewHitTestInfo coordinates) { dataBase.Table.RemoveAt(coordinates.Item.Index); }
 

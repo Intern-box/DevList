@@ -35,7 +35,7 @@ namespace AddEditSearchViewSpace
             }
         }
 
-        private void Execute_Click(object sender, EventArgs e) { AddEditSearchPresenter.Set(); Close(); }
+        private void Execute_Click(object sender, EventArgs e) { AddEditSearchPresenter.Execute(); Close(); }
 
         private void Close_Click(object sender, EventArgs e) { Close(); }
 
