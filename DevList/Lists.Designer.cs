@@ -71,6 +71,7 @@ namespace ListsSpace
             // ButtonSave
             // 
             this.ButtonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonSave.Enabled = false;
             this.ButtonSave.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButtonSave.Location = new System.Drawing.Point(345, 325);
             this.ButtonSave.Name = "ButtonSave";

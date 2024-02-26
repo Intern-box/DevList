@@ -16,29 +16,27 @@ namespace ListsSpace
         {
             string[] fileStrings = null;
 
-            Saved.Visible = false;
+            if (ListsBox.SelectedIndex == 0) { fileStrings = CheckFileExist(iniFile.Rooms); ButtonSave.Enabled = true; }
 
-            if (ListsBox.SelectedIndex == 0) { fileStrings = CheckFileExist(iniFile.Rooms); }
+            if (ListsBox.SelectedIndex == 1) { fileStrings = CheckFileExist(iniFile.Employees); ButtonSave.Enabled = true; }
 
-            if (ListsBox.SelectedIndex == 1) { fileStrings = CheckFileExist(iniFile.Employees); }
+            if (ListsBox.SelectedIndex == 2) { fileStrings = CheckFileExist(iniFile.Names); ButtonSave.Enabled = true; }
 
-            if (ListsBox.SelectedIndex == 2) { fileStrings = CheckFileExist(iniFile.Names); }
+            if (ListsBox.SelectedIndex == 3) { fileStrings = CheckFileExist(iniFile.Devices); ButtonSave.Enabled = true; }
 
-            if (ListsBox.SelectedIndex == 3) { fileStrings = CheckFileExist(iniFile.Devices); }
+            if (ListsBox.SelectedIndex == 4) { fileStrings = CheckFileExist(iniFile.CPUs); ButtonSave.Enabled = true; }
 
-            if (ListsBox.SelectedIndex == 4) { fileStrings = CheckFileExist(iniFile.CPUs); }
+            if (ListsBox.SelectedIndex == 5) { fileStrings = CheckFileExist(iniFile.Mainboards); ButtonSave.Enabled = true; }
 
-            if (ListsBox.SelectedIndex == 5) { fileStrings = CheckFileExist(iniFile.Mainboards); }
+            if (ListsBox.SelectedIndex == 6) { fileStrings = CheckFileExist(iniFile.RAMs); ButtonSave.Enabled = true; }
 
-            if (ListsBox.SelectedIndex == 6) { fileStrings = CheckFileExist(iniFile.RAMs); }
+            if (ListsBox.SelectedIndex == 7) { fileStrings = CheckFileExist(iniFile.Storges); ButtonSave.Enabled = true; }
 
-            if (ListsBox.SelectedIndex == 7) { fileStrings = CheckFileExist(iniFile.Storges); }
+            if (ListsBox.SelectedIndex == 8) { fileStrings = CheckFileExist(iniFile.Videocards); ButtonSave.Enabled = true; }
 
-            if (ListsBox.SelectedIndex == 8) { fileStrings = CheckFileExist(iniFile.Videocards); }
+            if (ListsBox.SelectedIndex == 9) { fileStrings = CheckFileExist(iniFile.Powers); ButtonSave.Enabled = true; }
 
-            if (ListsBox.SelectedIndex == 9) { fileStrings = CheckFileExist(iniFile.Powers); }
-
-            if (ListsBox.SelectedIndex == 10) { fileStrings = CheckFileExist(iniFile.Cases); }
+            if (ListsBox.SelectedIndex == 10) { fileStrings = CheckFileExist(iniFile.Cases); ButtonSave.Enabled = true; }
 
             Content.Clear();
 
