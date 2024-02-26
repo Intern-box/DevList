@@ -1,7 +1,0 @@
-﻿namespace IAddEditSearchSpace
-{
-    interface IAddEditSearch
-    {
-
-    }
-}

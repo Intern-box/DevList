@@ -53,21 +53,20 @@
   <ItemGroup>
     <Compile Include="BaseForm\Model.cs" />
     <Compile Include="BaseForm\Presenter.cs" />
-    <Compile Include="DataBase.cs" />
-    <Compile Include="AbstractAddEditSearch.cs">
+    <Compile Include="DevList\DataBase.cs" />
+    <Compile Include="DevList\AbstractAddEditSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IAddEditSearch.cs" />
     <Compile Include="Launch\Presenter.cs" />
     <Compile Include="AddEditSearch\Presenter.cs" />
     <Compile Include="PartsAddEditSearch\Presenter.cs" />
-    <Compile Include="UpDownForm.cs">
+    <Compile Include="DevList\UpDownForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpDownForm.Designer.cs">
+    <Compile Include="DevList\UpDownForm.Designer.cs">
       <DependentUpon>UpDownForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Log.cs" />
+    <Compile Include="DevList\Log.cs" />
     <Compile Include="PartsAddEditSearch\View.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,17 +79,17 @@
     <Compile Include="AddEditSearch\View.Designer.cs">
       <DependentUpon>View.cs</DependentUpon>
     </Compile>
-    <Compile Include="INIFile.cs" />
-    <Compile Include="Columns.cs">
+    <Compile Include="DevList\INIFile.cs" />
+    <Compile Include="DevList\Columns.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Columns.Designer.cs">
+    <Compile Include="DevList\Columns.Designer.cs">
       <DependentUpon>Columns.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports.cs">
+    <Compile Include="DevList\Reports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports.Designer.cs">
+    <Compile Include="DevList\Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
     <Compile Include="Launch\View.cs">
@@ -99,12 +98,12 @@
     <Compile Include="Launch\View.Designer.cs">
       <DependentUpon>View.cs</DependentUpon>
     </Compile>
-    <Compile Include="List.cs" />
-    <Compile Include="Remove.cs" />
-    <Compile Include="Lists.cs">
+    <Compile Include="DevList\List.cs" />
+    <Compile Include="DevList\Remove.cs" />
+    <Compile Include="DevList\Lists.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lists.Designer.cs">
+    <Compile Include="DevList\Lists.Designer.cs">
       <DependentUpon>Lists.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseForm\View.cs">
@@ -115,7 +114,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TableParameters.cs" />
+    <Compile Include="DevList\TableParameters.cs" />
     <EmbeddedResource Include="Launch\Presenter.resx">
       <DependentUpon>Presenter.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,16 +124,16 @@
     <EmbeddedResource Include="AddEditSearch\View.resx">
       <DependentUpon>View.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Columns.resx">
+    <EmbeddedResource Include="DevList\Columns.resx">
       <DependentUpon>Columns.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Launch\View.resx">
       <DependentUpon>View.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports.resx">
+    <EmbeddedResource Include="DevList\Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lists.resx">
+    <EmbeddedResource Include="DevList\Lists.resx">
       <DependentUpon>Lists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm\View.resx">
@@ -150,7 +149,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UpDownForm.resx">
+    <EmbeddedResource Include="DevList\UpDownForm.resx">
       <DependentUpon>UpDownForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
