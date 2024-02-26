@@ -144,6 +144,8 @@ namespace BaseFormPresenterSpace
 
         public void Add()
         {
+            tableParameters = baseFormView.tableParameters;
+
             int saveCoordinates = tableParameters.Line;
 
             AbstractAddEditSearch addEditsearchView = WindowSelection(baseFormView.Table.Columns.Count, null, true);
@@ -213,6 +215,8 @@ namespace BaseFormPresenterSpace
 
         public void Up()
         {
+            tableParameters = baseFormView.tableParameters;
+
             baseFormModel.DataBase.UpDown(tableParameters.Line - 1, tableParameters.Line);
 
             baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
@@ -226,6 +230,8 @@ namespace BaseFormPresenterSpace
 
         public void Down()
         {
+            tableParameters = baseFormView.tableParameters;
+
             baseFormModel.DataBase.UpDown(tableParameters.Line + 1, tableParameters.Line);
 
             baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
@@ -375,6 +381,8 @@ namespace BaseFormPresenterSpace
 
         public void NomberString()
         {
+            tableParameters = baseFormView.tableParameters;
+
             UpDownForm upDownForm = new UpDownForm(); upDownForm.ShowDialog();
 
             if (upDownForm.Result != null)
