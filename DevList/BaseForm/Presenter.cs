@@ -441,6 +441,8 @@ namespace BaseFormPresenterSpace
 
         public void Search()
         {
+            tableParameters = baseFormView.tableParameters;
+
             AbstractAddEditSearch search = WindowSelection(baseFormView.Table.Columns.Count, baseFormView.iniFile, false);
 
             search.ShowDialog();
