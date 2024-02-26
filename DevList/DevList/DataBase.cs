@@ -66,7 +66,7 @@ namespace DataBaseSpace
 
             foreach (string[] str in Table)
             {
-                for (int i = 1; i < Table[0].Length; i++)
+                for (int i = 1; i < request.Length; i++)
                 {
                     if (request[i] != null && request[i] != string.Empty)
                     {
@@ -97,7 +97,7 @@ namespace DataBaseSpace
 
             foreach (string[] str in Table)
             {
-                for (int i = 1; i < Table[0].Length; i++)
+                for (int i = 1; i < request.Length; i++)
                 {
                     if (request[i] != null && request[i] != string.Empty)
                     {
