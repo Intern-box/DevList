@@ -97,12 +97,7 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        public void Save()
-        {
-            baseFormModel.DataBase.Save();
-
-            baseFormModel.DataBase.Change = false;
-        }
+        public void Save() { DataBaseChanges(); }
 
         public void SaveAs()
         {

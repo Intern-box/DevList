@@ -198,7 +198,12 @@ namespace BaseFormViewSpace
 
         void BaseForm_FormClosed(object sender, FormClosedEventArgs e) { baseFormPresenter.DataBaseChanges(); }
 
-        void BaseFormView_KeyDown(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Escape) { Close(); } }
+        void BaseFormView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) { Close(); }
+
+            if (e.Control && e.KeyCode == Keys.S) { baseFormPresenter.DataBaseChanges(); }
+        }
 
         void Table_KeyDown(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Escape) { Close(); } }
 
