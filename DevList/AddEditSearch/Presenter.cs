@@ -57,6 +57,8 @@ namespace AddEditSearchPresenterSpace
             addEditSearchView.Result[10] = addEditSearchView.Hostname.Text;
             addEditSearchView.Result[11] = addEditSearchView.IP.Text;
             addEditSearchView.Result[12] = addEditSearchView.ChangeMan.Text;
+
+            addEditSearchView.Executed = true;
         }
 
         public void RoomsPlus()
