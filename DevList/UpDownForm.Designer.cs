@@ -87,8 +87,10 @@
             this.Controls.Add(this.Number);
             this.Controls.Add(this.Info);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "UpDownForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UpDownForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

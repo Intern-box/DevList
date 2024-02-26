@@ -390,6 +390,8 @@ namespace BaseFormPresenterSpace
                 baseFormModel.DataBase.Move(tableParameters.Id, int.Parse(upDownForm.Result) - 1);
 
                 baseFormView.TableOutput(baseFormModel.DataBase.Table);
+
+                baseFormModel.DataBase.Change = true;
             }
         }
 
