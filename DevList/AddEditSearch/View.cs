@@ -10,11 +10,13 @@ namespace AddEditSearchViewSpace
     {
         public AddEditSearchPresenter AddEditSearchPresenter;
 
-        public AddEditSearchView(INIFile iniFile) : this (iniFile, null) { }
+        public AddEditSearchView(INIFile iniFile, bool addInEndFlag) : this (iniFile, null, true) { }
 
-        public AddEditSearchView(INIFile iniFile, string[] str)
+        public AddEditSearchView(INIFile iniFile, string[] str, bool addInEndFlag)
         {
             InitializeComponent();
+
+            if (!addInEndFlag) { addInEnd.Visible = false; }
 
             AddEditSearchPresenter = new AddEditSearchPresenter(this, iniFile);
 

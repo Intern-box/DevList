@@ -10,17 +10,17 @@ namespace PartsAddEditSearchViewSpace
 {
     public partial class PartsAddEditSearchView : AbstractAddEditSearch
     {
-        public INIFile iniFile;
-
         PartsAddEditSearchPresenter partsAddEditSearchPresenter;
 
-        public PartsAddEditSearchView(INIFile iniFile) : this(iniFile, null) { }
+        public PartsAddEditSearchView(INIFile iniFile, bool addInEndFlag) : this(iniFile, null, true) { }
 
-        public PartsAddEditSearchView(INIFile iniFile, string[] str)
+        public PartsAddEditSearchView(INIFile iniFile, string[] str, bool addInEndFlag)
         {
             partsAddEditSearchPresenter = new(this);
 
             InitializeComponent();
+
+            if (!addInEndFlag) { addInEnd.Visible = false; }
 
             this.iniFile = iniFile;
 
