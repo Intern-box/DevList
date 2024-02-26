@@ -1,6 +1,7 @@
 ﻿using PartsAddEditSearchViewSpace;
 using ListSpace;
 using System.IO;
+using AddEditSearchViewSpace;
 
 namespace PartsAddEditSearchPresenterSpace
 {
@@ -22,6 +23,8 @@ namespace PartsAddEditSearchPresenterSpace
             partsAddEditSearchView.Result[10] = partsAddEditSearchView.Year.Text;
 
             partsAddEditSearchView.Executed = true;
+
+            if (partsAddEditSearchView.addInEnd.Checked) { partsAddEditSearchView.AddInEnd = true; }
         }
 
         public void ButtonCPUPlus()

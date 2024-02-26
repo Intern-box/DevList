@@ -59,6 +59,8 @@ namespace AddEditSearchPresenterSpace
             addEditSearchView.Result[12] = addEditSearchView.ChangeMan.Text;
 
             addEditSearchView.Executed = true;
+
+            if (addEditSearchView.addInEnd.Checked) { addEditSearchView.AddInEnd = true; }
         }
 
         public void RoomsPlus()
