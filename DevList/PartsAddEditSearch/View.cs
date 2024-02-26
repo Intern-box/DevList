@@ -12,7 +12,7 @@ namespace PartsAddEditSearchViewSpace
     {
         PartsAddEditSearchPresenter partsAddEditSearchPresenter;
 
-        public PartsAddEditSearchView(INIFile iniFile, bool addInEndFlag) : this(iniFile, null, true) { }
+        public PartsAddEditSearchView(INIFile iniFile, bool addInEndFlag) : this(iniFile, null, addInEndFlag) { }
 
         public PartsAddEditSearchView(INIFile iniFile, string[] str, bool addInEndFlag)
         {
