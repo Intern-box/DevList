@@ -203,6 +203,10 @@ namespace BaseFormViewSpace
             if (e.KeyCode == Keys.Escape) { Close(); }
 
             if (e.Control && e.KeyCode == Keys.S) { baseFormPresenter.DataBaseChanges(); }
+
+            if (e.Control && e.KeyCode == Keys.F) { baseFormPresenter.Search(); }
+
+            if (e.Control && e.KeyCode == Keys.P) { baseFormPresenter.CommonReport(); }
         }
 
         void Table_KeyDown(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Escape) { Close(); } }
