@@ -503,7 +503,7 @@ namespace BaseFormPresenterSpace
             }
             else
             {
-                saveCoordinates = tableParameters.Coordinates.Item == null ? 0 : tableParameters.Line;
+                saveCoordinates = tableParameters.Coordinates.Item == null ? 0 : tableParameters.Id;
 
                 if (saveCoordinates >= 0)
                 {

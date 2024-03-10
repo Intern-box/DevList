@@ -132,11 +132,11 @@ namespace BaseFormViewSpace
 
         void ContextAdd_Click(object sender, EventArgs e) { Add_Click(sender, e); }
 
-        void EditAll_Click(object sender, EventArgs e) { baseFormPresenter.Edit(); }
+        void Edit_Click(object sender, EventArgs e) { baseFormPresenter.Edit(); }
 
-        void Table_DoubleClick(object sender, EventArgs e) { EditAll_Click(sender, e); }
+        void Table_DoubleClick(object sender, EventArgs e) { Edit_Click(sender, e); }
 
-        void ContextEditAll_Click(object sender, EventArgs e) { EditAll_Click(sender, e); }
+        void ContextEditAll_Click(object sender, EventArgs e) { Edit_Click(sender, e); }
 
         void Up_Click(object sender, EventArgs e)
         {

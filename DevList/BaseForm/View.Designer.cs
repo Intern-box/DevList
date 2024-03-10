@@ -235,7 +235,7 @@ namespace BaseFormViewSpace
             this.MEditAll.Name = "MEditAll";
             this.MEditAll.Size = new System.Drawing.Size(153, 22);
             this.MEditAll.Text = "Править";
-            this.MEditAll.Click += new System.EventHandler(this.EditAll_Click);
+            this.MEditAll.Click += new System.EventHandler(this.Edit_Click);
             // 
             // Move
             // 
