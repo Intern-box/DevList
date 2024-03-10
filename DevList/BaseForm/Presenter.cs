@@ -455,7 +455,7 @@ namespace BaseFormPresenterSpace
             {
                 bool stringEmptyCheck = false;
 
-                foreach (string word in search.Result) { if (word != string.Empty) { stringEmptyCheck = true; } }
+                foreach (string word in search.Result) { if (word != string.Empty) { stringEmptyCheck = true; break; } }
 
                 if (baseFormView.Filter.Visible)
                 {
