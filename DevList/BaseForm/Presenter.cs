@@ -200,14 +200,9 @@ namespace BaseFormPresenterSpace
 
                     baseFormModel.DataBase.Change = true;
 
-                    if (baseFormView.Filter.Visible)
-                    {
-                        baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(LastResult, search.Result));
-                    }
-                    else
-                    {
-                        baseFormView.TableOutput(baseFormModel.DataBase.Table);
-                    }
+                    if (baseFormView.Filter.Visible) { baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(LastResult, search.Result)); }
+
+                    else { baseFormView.TableOutput(baseFormModel.DataBase.Table); }
                 }
             }
         }
@@ -447,7 +442,7 @@ namespace BaseFormPresenterSpace
         {
             tableParameters = baseFormView.tableParameters;
 
-            AbstractAddEditSearch search = WindowSelection(baseFormView.Table.Columns.Count, baseFormView.iniFile, false);
+            search = WindowSelection(baseFormView.Table.Columns.Count, baseFormView.iniFile, false);
 
             search.ShowDialog();
 
