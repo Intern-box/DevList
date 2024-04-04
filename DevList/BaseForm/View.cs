@@ -21,7 +21,7 @@ namespace BaseFormViewSpace
 
         bool[] visibleColumns;
 
-        public TableParameters tableParameters = new TableParameters();
+        public TableParameters tableParameters = new();
 
         // Получаем путь до файла с настройками
         public BaseFormView(string head, INIFile iniFile) : this(head, iniFile, null) { }
