@@ -202,10 +202,12 @@ namespace BaseFormPresenterSpace
 
                     if (baseFormView.Filter.Visible) { baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(LastResult, search.Result)); }
 
-                    else { baseFormView.TableOutput(baseFormModel.DataBase.Table); }
+                    else { /*baseFormView.TableOutput(baseFormModel.DataBase.Table);*/ Update(addEditsearchView.Result); }
                 }
             }
         }
+
+        void Update(string[] Result) { for (int i = 0; i < baseFormView.Table.Columns.Count; i++) { baseFormView.Table.Items[tableParameters.Line].SubItems[i].Text = Result[i]; } }
 
         public void Up()
         {
