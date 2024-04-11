@@ -54,7 +54,7 @@
     <Compile Include="BaseForm\Model.cs" />
     <Compile Include="BaseForm\Presenter.cs" />
     <Compile Include="DevList\DataBase.cs" />
-    <Compile Include="DevList\AbstractAddEditSearch.cs">
+    <Compile Include="AddEditSearch\AbstractAddEditSearch.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Launch\Presenter.cs" />
