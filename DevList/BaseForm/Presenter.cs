@@ -162,9 +162,12 @@ namespace BaseFormPresenterSpace
 
                 baseFormView.TableOutput(baseFormModel.DataBase.Table);
 
-                baseFormView.Table.Items[saveCoordinates].Focused = true;
-
                 baseFormView.Table.EnsureVisible(saveCoordinates);
+
+                // Выделение строки
+                baseFormView.Table.Select(); baseFormView.Table.Items[saveCoordinates].Selected = true;
+                
+                baseFormView.Table.Items[saveCoordinates].Focused = true;
             }
         }
 
