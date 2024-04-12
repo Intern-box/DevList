@@ -162,20 +162,22 @@ namespace BaseFormPresenterSpace
 
                 baseFormView.TableOutput(baseFormModel.DataBase.Table);
 
-                baseFormView.Table.EnsureVisible(saveCoordinates);
-
                 // Выделение строки
                 if (addEditSearchView.AddInEnd)
                 {
+                    baseFormView.Table.EnsureVisible(baseFormModel.DataBase.Table.Count - 1);
+
                     baseFormView.Table.Select(); baseFormView.Table.Items[baseFormModel.DataBase.Table.Count - 1].Selected = true;
 
                     baseFormView.Table.Items[baseFormModel.DataBase.Table.Count - 1].Focused = true;
                 }
                 else
                 {
+                    baseFormView.Table.EnsureVisible(saveCoordinates++);
+
                     baseFormView.Table.Select(); baseFormView.Table.Items[saveCoordinates++].Selected = true;
 
-                    baseFormView.Table.Items[saveCoordinates].Focused = true;
+                    baseFormView.Table.Items[saveCoordinates++].Focused = true;
                 }
             }
         }
@@ -255,6 +257,8 @@ namespace BaseFormPresenterSpace
         {
             tableParameters = baseFormView.tableParameters;
 
+            int saveCoordinates = tableParameters.Line;
+
             if (baseFormView.Text == "DevList - История")
             {
                 DialogResult result = MessageBox.Show("Удалить полностью?", "Удаление МЦ", MessageBoxButtons.YesNo);
@@ -266,6 +270,12 @@ namespace BaseFormPresenterSpace
                     baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
                     baseFormModel.DataBase.Change = true;
+
+                    baseFormView.Table.EnsureVisible(baseFormModel.DataBase.Table.Count - 1);
+
+                    baseFormView.Table.Select(); baseFormView.Table.Items[saveCoordinates - 1].Selected = true;
+
+                    baseFormView.Table.Items[saveCoordinates - 1].Focused = true;
                 }
             }
             else
@@ -279,6 +289,12 @@ namespace BaseFormPresenterSpace
                     baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
                     baseFormModel.DataBase.Change = true;
+
+                    baseFormView.Table.EnsureVisible(baseFormModel.DataBase.Table.Count - 1);
+
+                    baseFormView.Table.Select(); baseFormView.Table.Items[saveCoordinates - 1].Selected = true;
+
+                    baseFormView.Table.Items[saveCoordinates - 1].Focused = true;
                 }
             }
         }
