@@ -143,19 +143,19 @@ namespace BaseFormPresenterSpace
 
             int saveCoordinates = tableParameters.Line;
 
-            AbstractAddEditSearch addEditsearchView = WindowSelection(baseFormView.Table.Columns.Count, null, true);
+            AbstractAddEditSearch addEditSearchView = WindowSelection(baseFormView.Table.Columns.Count, null, true);
 
-            addEditsearchView.ShowDialog();
+            addEditSearchView.ShowDialog();
 
-            if (addEditsearchView.Executed)
+            if (addEditSearchView.Executed)
             {
-                if (addEditsearchView.AddInEnd) { baseFormModel.DataBase.Table.Add(addEditsearchView.Result); }
+                if (addEditSearchView.AddInEnd) { baseFormModel.DataBase.Table.Add(addEditSearchView.Result); }
 
                 else
                 {
                     saveCoordinates = baseFormModel.DataBase.Table.Count == 0 ? 0 : saveCoordinates + 1;
 
-                    baseFormModel.DataBase.Table.Insert(saveCoordinates, addEditsearchView.Result);
+                    baseFormModel.DataBase.Table.Insert(saveCoordinates, addEditSearchView.Result);
                 }
 
                 baseFormModel.DataBase.Change = true;
@@ -165,9 +165,18 @@ namespace BaseFormPresenterSpace
                 baseFormView.Table.EnsureVisible(saveCoordinates);
 
                 // Выделение строки
-                baseFormView.Table.Select(); baseFormView.Table.Items[saveCoordinates].Selected = true;
-                
-                baseFormView.Table.Items[saveCoordinates].Focused = true;
+                if (addEditSearchView.AddInEnd)
+                {
+                    baseFormView.Table.Select(); baseFormView.Table.Items[baseFormModel.DataBase.Table.Count - 1].Selected = true;
+
+                    baseFormView.Table.Items[baseFormModel.DataBase.Table.Count - 1].Focused = true;
+                }
+                else
+                {
+                    baseFormView.Table.Select(); baseFormView.Table.Items[saveCoordinates++].Selected = true;
+
+                    baseFormView.Table.Items[saveCoordinates].Focused = true;
+                }
             }
         }
 
@@ -205,7 +214,7 @@ namespace BaseFormPresenterSpace
 
                     if (baseFormView.Filter.Visible) { baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(LastResult, search.Result)); }
 
-                    else { /*baseFormView.TableOutput(baseFormModel.DataBase.Table);*/ Update(addEditsearchView.Result); }
+                    else { Update(addEditsearchView.Result); }
                 }
             }
         }
