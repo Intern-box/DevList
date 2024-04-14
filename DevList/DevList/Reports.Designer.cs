@@ -64,7 +64,11 @@ namespace ReportsSpace
             this.ClientSize = new System.Drawing.Size(511, 450);
             this.Controls.Add(this.RoomsBox);
             this.Controls.Add(this.Output);
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Reports";
+            this.ShowIcon = false;
             this.Text = "DevList - Отчёт";
             this.Load += new System.EventHandler(this.Reports_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Otcheti_KeyUp);

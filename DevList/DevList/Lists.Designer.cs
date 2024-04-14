@@ -118,10 +118,13 @@ namespace ListsSpace
             this.Controls.Add(this.LabelSpisok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Lists";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Редактирование списков";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Lists_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

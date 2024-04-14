@@ -88,5 +88,7 @@ namespace ListsSpace
                 return null;
             }
         }
+
+        private void Lists_KeyUp(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Escape) { Close(); } }
     }
 }

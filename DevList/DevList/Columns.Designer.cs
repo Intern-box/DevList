@@ -231,12 +231,14 @@ namespace ColumnsSpace
             this.Controls.Add(this.CheckBoxNumber);
             this.Controls.Add(this.CheckBoxDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Columns";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Колонки таблицы";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Columns_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
