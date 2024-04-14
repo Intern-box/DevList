@@ -237,13 +237,13 @@ namespace BaseFormViewSpace
             this.MEditAll.Text = "Править";
             this.MEditAll.Click += new System.EventHandler(this.Edit_Click);
             // 
-            // Move
+            // ToMove
             // 
             this.ToMove.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Up,
             this.Down,
             this.NomberString});
-            this.ToMove.Name = "Move";
+            this.ToMove.Name = "ToMove";
             this.ToMove.Size = new System.Drawing.Size(153, 22);
             this.ToMove.Text = "Переместить";
             // 
@@ -366,7 +366,7 @@ namespace BaseFormViewSpace
             this.SearchAllBox.Name = "SearchAllBox";
             this.SearchAllBox.Size = new System.Drawing.Size(310, 23);
             this.SearchAllBox.TabIndex = 3;
-            this.SearchAllBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchAll_KeyDown);
+            this.SearchAllBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchAllBox_KeyUp);
             // 
             // LabelSearchAll
             // 
@@ -415,7 +415,6 @@ namespace BaseFormViewSpace
             this.Table.View = System.Windows.Forms.View.Details;
             this.Table.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.Table_ColumnClick);
             this.Table.DoubleClick += new System.EventHandler(this.Table_DoubleClick);
-            this.Table.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Table_KeyDown);
             this.Table.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Table_MouseDown);
             // 
             // ID
@@ -507,9 +506,8 @@ namespace BaseFormViewSpace
             this.Name = "BaseFormView";
             this.ShowIcon = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BaseForm_FormClosed);
             this.Load += new System.EventHandler(this.BaseForm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BaseFormView_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BaseFormView_KeyUp);
             this.CMenu.ResumeLayout(false);
             this.MMenu.ResumeLayout(false);
             this.MMenu.PerformLayout();

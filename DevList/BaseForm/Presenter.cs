@@ -516,6 +516,11 @@ namespace BaseFormPresenterSpace
             }
         }
 
+        public void CloseCheck(object sender, KeyEventArgs e)
+        {
+            if (!baseFormView.Filter.Visible) { if (e.KeyCode == Keys.Escape) { DataBaseChanges(); baseFormView.Close(); } } else { Filtr(); }
+        }
+
         AbstractAddEditSearch WindowSelection(int columnsCount, INIFile iniFile, bool addInEndFlag)
         {
             int saveCoordinates;
