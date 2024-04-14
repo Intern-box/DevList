@@ -198,7 +198,7 @@ namespace BaseFormPresenterSpace
 
                 if (addEditsearchView.Executed)
                 {
-                    if (baseFormView.Text == "DevList 7.0 - Главное окно" && tmp != addEditsearchView.Result[3])
+                    if (baseFormView.Text == "DevList 7.1 - Главное окно" && tmp != addEditsearchView.Result[3])
                     {
                         File.AppendAllText
                         (
@@ -528,7 +528,7 @@ namespace BaseFormPresenterSpace
 
                 switch (baseFormView.Text)
                 {
-                    case $"DevList 7.0 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, addInEndFlag); break;
+                    case $"DevList 7.1 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, addInEndFlag); break;
 
                     case "DevList - Комплект": window = new PartsAddEditSearchView(baseFormView.iniFile, addInEndFlag); break;
                 }
@@ -541,7 +541,7 @@ namespace BaseFormPresenterSpace
                 {
                     switch (baseFormView.Text)
                     {
-                        case $"DevList 7.0 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates], addInEndFlag); break;
+                        case $"DevList 7.1 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates], addInEndFlag); break;
 
                         case "DevList - Комплект": window = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates], addInEndFlag); break;
                     }
@@ -550,7 +550,7 @@ namespace BaseFormPresenterSpace
                 {
                     switch (baseFormView.Text)
                     {
-                        case $"DevList 7.0 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0], addInEndFlag); break;
+                        case $"DevList 7.1 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0], addInEndFlag); break;
 
                         case "DevList - Комплект": window = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0], addInEndFlag); break;
                     }
