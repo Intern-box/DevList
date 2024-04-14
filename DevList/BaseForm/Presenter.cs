@@ -326,9 +326,12 @@ namespace BaseFormPresenterSpace
 
             for (int i = 0; i < baseFormView.Table.Columns.Count; i++)
             {
-                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
-                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", baseFormView.Table.Columns[i].Text);
-                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
+                if (baseFormView.Table.Columns[i].Width != 0)
+                {
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", baseFormView.Table.Columns[i].Text);
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
+                }
             }
 
             System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
@@ -337,11 +340,14 @@ namespace BaseFormPresenterSpace
             {
                 System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr>\r\n");
 
-                foreach (string td in tr)
+                for (int i = 0; i < tr.Length; i++)
                 {
-                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
-                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", td);
-                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
+                    if (baseFormView.Table.Columns[i].Width != 0)
+                    {
+                        System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
+                        System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tr[i]);
+                        System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
+                    }
                 }
 
                 System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
