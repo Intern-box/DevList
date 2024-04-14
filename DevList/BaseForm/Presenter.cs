@@ -214,7 +214,12 @@ namespace BaseFormPresenterSpace
 
                     baseFormModel.DataBase.Change = true;
 
-                    if (baseFormView.Filter.Visible) { baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(LastResult, search.Result)); }
+                    if (baseFormView.Filter.Visible)
+                    {
+                        if (search != null) { baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(LastResult, search.Result)); }
+
+                        else { baseFormView.TableOutput(baseFormModel.DataBase.StringSearch(LastResult, baseFormModel.DataBase.FindAll(baseFormView.SearchAllBox.Text)[0])); }
+                    }
 
                     else { Update(addEditsearchView.Result); }
                 }
@@ -352,6 +357,8 @@ namespace BaseFormPresenterSpace
             if (baseFormView.SearchAllBox.Text != string.Empty)
             {
                 baseFormView.TableOutput(baseFormModel.DataBase.FindAll(baseFormView.SearchAllBox.Text), false);
+
+                LastResult = baseFormModel.DataBase.FindAll(baseFormView.SearchAllBox.Text);
 
                 baseFormView.Filter.Visible = true;
             }
