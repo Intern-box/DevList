@@ -3,6 +3,8 @@ using System.Linq;
 using System.Data;
 using System.IO;
 using System.ComponentModel;
+using System.Windows.Forms;
+using INIFileSpace;
 
 namespace DataBaseSpace
 {
@@ -18,15 +20,33 @@ namespace DataBaseSpace
 
         public void Read(string path)
         {
-            foreach (string str in File.ReadAllLines(path))
+            try
             {
-                string[] patternString = new string[str.Split(',').Length];
+                foreach (string str in File.ReadAllLines(path))
+                {
+                    string[] patternString = new string[str.Split(',').Length];
 
-                for (int i = 0; i < patternString.Length; i++) { patternString[i] = string.Empty; }
+                    for (int i = 0; i < patternString.Length; i++) { patternString[i] = string.Empty; }
 
-                for (int i = 0; i < str.Split(',').Length; i++) { patternString[i] = str.Split(',')[i]; }
+                    for (int i = 0; i < str.Split(',').Length; i++) { patternString[i] = str.Split(',')[i]; }
 
-                Table.Add(patternString);
+                    Table.Add(patternString);
+                }
+            }
+            catch (Exception)
+            {
+                File.Delete($"{System.IO.Path.GetDirectoryName(Path)}\\БД.tmp");
+
+                MessageBox.Show
+                (
+                    "Закройте базу данных в других программах!",
+                    "База данных открыта в другой программе!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1
+                );
+
+                Application.Exit();
             }
         }
 
