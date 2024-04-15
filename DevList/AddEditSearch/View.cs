@@ -77,14 +77,11 @@ namespace AddEditSearchViewSpace
             ChangeMan.Text = string.Empty;
         }
 
-        private void AddEditSearchView_KeyDown(object sender, KeyEventArgs e)
+        private void AddEditSearchView_KeyUp(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
-            {
-                case Keys.Escape: Close_Click(sender, e); break;
+            if (e.KeyCode == Keys.Escape) { Close_Click(sender, e); }
 
-                case Keys.Enter: Execute_Click(sender, e); break;
-            }
+            if (e.KeyCode == Keys.Enter) { Execute_Click(sender, e); }
         }
     }
 }

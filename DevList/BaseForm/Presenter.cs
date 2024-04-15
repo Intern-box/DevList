@@ -436,7 +436,7 @@ namespace BaseFormPresenterSpace
         {
             DataBase setBase = new DataBase(baseFormView.iniFile.Set);
 
-            BaseFormView set = new BaseFormView("DevList - Комплект", baseFormView.iniFile, setBase, false);
+            BaseFormView set = new BaseFormView("DevList - Комплект", baseFormView.iniFile, setBase, baseFormView.Mode);
 
             set.Create.Visible = false;
 
@@ -529,7 +529,11 @@ namespace BaseFormPresenterSpace
 
         public void ReadOnly()
         {
-            baseFormView.MMenu.Visible = false;
+            baseFormView.File.Visible = false;
+
+            baseFormView.Edit.Visible = false;
+
+            baseFormView.Lists.Visible = false;
         }
 
         AbstractAddEditSearch WindowSelection(int columnsCount, INIFile iniFile, bool addInEndFlag)

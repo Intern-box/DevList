@@ -115,6 +115,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DevList\TableParameters.cs" />
+    <EmbeddedResource Include="AddEditSearch\AbstractAddEditSearch.resx">
+      <DependentUpon>AbstractAddEditSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Launch\Presenter.resx">
       <DependentUpon>Presenter.cs</DependentUpon>
     </EmbeddedResource>

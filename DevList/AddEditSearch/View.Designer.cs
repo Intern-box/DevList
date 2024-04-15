@@ -511,7 +511,7 @@ namespace AddEditSearchViewSpace
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Добавить/Править/Поиск";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddEditSearchView_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AddEditSearchView_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
