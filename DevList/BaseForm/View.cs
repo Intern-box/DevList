@@ -140,7 +140,7 @@ namespace BaseFormViewSpace
 
         void Edit_Click(object sender, EventArgs e) { baseFormPresenter.Edit(); }
 
-        void Table_DoubleClick(object sender, EventArgs e) { Edit_Click(sender, e); }
+        void Table_DoubleClick(object sender, EventArgs e) { if (!Mode) { Edit_Click(sender, e); } }
 
         void ContextEditAll_Click(object sender, EventArgs e) { Edit_Click(sender, e); }
 
@@ -211,7 +211,7 @@ namespace BaseFormViewSpace
         {
             if (e.KeyCode == Keys.Escape) { baseFormPresenter.CloseCheck(sender, e); }
 
-            if (e.Control && e.KeyCode == Keys.S) { baseFormPresenter.DataBaseChanges(); }
+            if (e.Control && e.KeyCode == Keys.S) { if (!Mode) { baseFormPresenter.DataBaseChanges(); } }
 
             if (e.Control && e.KeyCode == Keys.F) { baseFormPresenter.Search(); }
 

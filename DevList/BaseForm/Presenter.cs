@@ -394,7 +394,7 @@ namespace BaseFormPresenterSpace
 
             history.CAdd.Visible = false;
 
-            history.CEditAll.Visible = false;
+            history.CEdit.Visible = false;
 
             history.Text = "DevList - История";
 
@@ -524,7 +524,7 @@ namespace BaseFormPresenterSpace
 
         public void CloseCheck(object sender, KeyEventArgs e)
         {
-            if (!baseFormView.Filter.Visible) { if (e.KeyCode == Keys.Escape) { DataBaseChanges(); baseFormView.Close(); } } else { Filtr(); }
+            if (!baseFormView.Filter.Visible) { if (e.KeyCode == Keys.Escape) { if (!baseFormView.Mode) { DataBaseChanges(); } baseFormView.Close(); } } else { Filtr(); }
         }
 
         public void ReadOnly()
@@ -534,6 +534,14 @@ namespace BaseFormPresenterSpace
             baseFormView.Edit.Visible = false;
 
             baseFormView.Lists.Visible = false;
+
+            baseFormView.CAdd.Visible = false;
+
+            baseFormView.CEdit.Visible = false;
+
+            baseFormView.CMove.Visible = false;
+
+            baseFormView.CRemove.Visible = false;
         }
 
         AbstractAddEditSearch WindowSelection(int columnsCount, INIFile iniFile, bool addInEndFlag)

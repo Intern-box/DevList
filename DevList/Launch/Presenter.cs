@@ -86,11 +86,13 @@ namespace LaunchPresenterSpace
             // Если файл существует, открываем БД
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-                switch (DataBaseIsBusy("БД\\БД.tmp"))
-                {
-                    case true: iniFile = new INIFile(openFile.FileName); BaseFormLoad(true); break;
+                iniFile = new INIFile(openFile.FileName);
 
-                    case false: iniFile = new INIFile(openFile.FileName); BaseFormLoad(false); break;
+                switch (DataBaseIsBusy($"{iniFile.Folder}\\БД\\БД.tmp"))
+                {
+                    case true: BaseFormLoad(true); break;
+
+                    case false: BaseFormLoad(false); break;
                 }
             }
         }
@@ -115,8 +117,8 @@ namespace LaunchPresenterSpace
             else { baseFormView = new("DevList 7.1 - Главное окно", iniFile, null, false); SetOpenFlag(); baseFormView.ShowDialog(); RemoveOpenFlag(); }
         }
 
-        void SetOpenFlag() { File.AppendAllText("БД\\БД.tmp", string.Empty); File.SetAttributes("БД\\БД.tmp", FileAttributes.Hidden); }
+        void SetOpenFlag() { File.AppendAllText($"{iniFile.Folder}\\БД\\БД.tmp", string.Empty); File.SetAttributes($"{iniFile.Folder}\\БД\\БД.tmp", FileAttributes.Hidden); }
 
-        void RemoveOpenFlag() { File.Delete("БД\\БД.tmp"); }
+        void RemoveOpenFlag() { File.Delete($"{iniFile.Folder}\\БД\\БД.tmp"); }
     }
 }
