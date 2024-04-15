@@ -88,9 +88,9 @@ namespace LaunchPresenterSpace
             {
                 switch (DataBaseIsBusy("БД\\БД.tmp"))
                 {
-                    case true: BaseFormLoad(true); break;
+                    case true: iniFile = new INIFile(openFile.FileName); BaseFormLoad(true); break;
 
-                    case false: BaseFormLoad(false); break;
+                    case false: iniFile = new INIFile(openFile.FileName); BaseFormLoad(false); break;
                 }
             }
         }
