@@ -10,12 +10,47 @@ namespace LaunchPresenterSpace
         // Файл с настройками
         INIFile iniFile;
 
+        // Проверка на доступность редактирования базы
+        bool DataBaseIsBusy(string DataBaseFilePath) { if (File.Exists(DataBaseFilePath)) { return true; } else { return false; } }
+
+        string AttentionDataBaseBusy()
+        {
+            DialogResult result =
+
+                MessageBox.Show
+                (
+                    "Да - Открыть только для чтения;\n" +
+                    "Нет - Закрыть программу;\n" +
+                    "Отмена - Принудительное открытие для записи.\n" +
+                    "\n" +
+                    "Принудительная запись может повредить базу!",
+                    "База данных кем то занята!",
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1
+                );
+
+            switch (result)
+            {
+                case DialogResult.Yes: return "Yes";
+
+                case DialogResult.No: return "No";
+
+                case DialogResult.Cancel: return "Cancel";
+
+                default: return "No";
+            }
+        }
+
         // Обработка нажатия кнопки "Загрузить"
         public void Download()
         {
-            iniFile = new INIFile();
+            switch (DataBaseIsBusy("БД\\БД.tmp"))
+            {
+                case true: iniFile = new INIFile(); BaseFormLoad(true); break;
 
-            BaseFormLoad();
+                case false: iniFile = new INIFile(); BaseFormLoad(false); break;
+            }
         }
 
         // Обработка нажатия кнопки "Создать"
@@ -39,7 +74,7 @@ namespace LaunchPresenterSpace
 
                 iniFile = new INIFile(Application.StartupPath);
 
-                BaseFormLoad();
+                BaseFormLoad(false);
             }
         }
 
@@ -49,17 +84,39 @@ namespace LaunchPresenterSpace
             OpenFileDialog openFile = new() { Filter = "*.INI|*.ini" };
 
             // Если файл существует, открываем БД
-            if (openFile.ShowDialog() == DialogResult.OK) { iniFile = new INIFile(openFile.FileName); BaseFormLoad(); }
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                switch (DataBaseIsBusy("БД\\БД.tmp"))
+                {
+                    case true: BaseFormLoad(true); break;
+
+                    case false: BaseFormLoad(false); break;
+                }
+            }
         }
 
         // Создаём основную форму для работы в БД
-        public void BaseFormLoad()
+        public void BaseFormLoad(bool dataBaseBusy)
         {
-            // Передаём путь до файла с "настройками"
-            BaseFormView baseFormView = new("DevList 7.1 - Главное окно", iniFile);
+            BaseFormView baseFormView;
 
-            // Показываем форму
-            baseFormView.ShowDialog();
+            if (dataBaseBusy)
+            {
+                switch (AttentionDataBaseBusy())
+                {
+                    case "Yes": baseFormView = new("DevList 7.1 - Главное окно", iniFile, null, dataBaseBusy); baseFormView.ShowDialog(); break;
+
+                    case "No": Application.Exit(); break;
+
+                    case "Cancel": baseFormView = new("DevList 7.1 - Главное окно", iniFile, null, false); baseFormView.ShowDialog(); break;
+                }
+            }
+
+            else { baseFormView = new("DevList 7.1 - Главное окно", iniFile, null, false); SetOpenFlag(); baseFormView.ShowDialog(); RemoveOpenFlag(); }
         }
+
+        void SetOpenFlag() { File.AppendAllText("БД\\БД.tmp", string.Empty); File.SetAttributes("БД\\БД.tmp", FileAttributes.Hidden); }
+
+        void RemoveOpenFlag() { File.Delete("БД\\БД.tmp"); }
     }
 }

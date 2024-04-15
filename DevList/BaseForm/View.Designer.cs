@@ -521,7 +521,6 @@ namespace BaseFormViewSpace
         public System.Windows.Forms.ContextMenuStrip CMenu;
         public System.Windows.Forms.ListView Table;
         private System.Windows.Forms.ToolStripMenuItem Search;
-        private System.Windows.Forms.MenuStrip MMenu;
         private System.Windows.Forms.ToolStripMenuItem Add;
         private System.Windows.Forms.ToolStripMenuItem MEditAll;
         private System.Windows.Forms.ToolStripMenuItem Remove;
@@ -568,6 +567,7 @@ namespace BaseFormViewSpace
         public System.Windows.Forms.ToolStripMenuItem View;
         public System.Windows.Forms.ToolStripMenuItem Set;
         public System.Windows.Forms.ToolStripMenuItem File;
+        public System.Windows.Forms.MenuStrip MMenu;
     }
 }
 

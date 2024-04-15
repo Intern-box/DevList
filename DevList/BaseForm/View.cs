@@ -23,15 +23,19 @@ namespace BaseFormViewSpace
 
         public TableParameters tableParameters = new();
 
-        // Получаем путь до файла с настройками
-        public BaseFormView(string head, INIFile iniFile) : this(head, iniFile, null) { }
+        bool mode;
 
-        public BaseFormView(string head, INIFile iniFile, DataBase dataBase)
+        // Получаем путь до файла с настройками
+        public BaseFormView(string head, INIFile iniFile) : this(head, iniFile, null, false) { }
+
+        public BaseFormView(string head, INIFile iniFile, DataBase dataBase, bool mode)
         {
             // Инициируем переменные
             Text = head;
 
             this.iniFile = iniFile;
+
+            this.mode = mode;
 
             historyBase = dataBase;
 
@@ -54,6 +58,8 @@ namespace BaseFormViewSpace
 
             // Выводим содержимое БД в форму
             TableOutput(baseFormPresenter.Table());
+
+            if (mode) { baseFormPresenter.ReadOnly(); }
         }
 
         // Вывод данных из файла с БД в форму с признаком пересчитать порядковые номера строк

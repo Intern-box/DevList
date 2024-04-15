@@ -374,7 +374,7 @@ namespace BaseFormPresenterSpace
         {
             DataBase historyBase = new DataBase(baseFormView.iniFile.History);
 
-            BaseFormView history = new BaseFormView("DevList - История", baseFormView.iniFile, historyBase);
+            BaseFormView history = new BaseFormView("DevList - История", baseFormView.iniFile, historyBase, false);
 
             history.WindowState = FormWindowState.Normal;
 
@@ -436,7 +436,7 @@ namespace BaseFormPresenterSpace
         {
             DataBase setBase = new DataBase(baseFormView.iniFile.Set);
 
-            BaseFormView set = new BaseFormView("DevList - Комплект", baseFormView.iniFile, setBase);
+            BaseFormView set = new BaseFormView("DevList - Комплект", baseFormView.iniFile, setBase, false);
 
             set.Create.Visible = false;
 
@@ -525,6 +525,11 @@ namespace BaseFormPresenterSpace
         public void CloseCheck(object sender, KeyEventArgs e)
         {
             if (!baseFormView.Filter.Visible) { if (e.KeyCode == Keys.Escape) { DataBaseChanges(); baseFormView.Close(); } } else { Filtr(); }
+        }
+
+        public void ReadOnly()
+        {
+            baseFormView.MMenu.Visible = false;
         }
 
         AbstractAddEditSearch WindowSelection(int columnsCount, INIFile iniFile, bool addInEndFlag)
