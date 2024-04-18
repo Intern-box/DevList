@@ -7,26 +7,26 @@ namespace RemoveSpace
 {
     public class Remove
     {
-        public Remove(DataBase dataBase, ListViewHitTestInfo coordinates) { RemoveThat(dataBase, coordinates); }
+        public Remove(DataBase dataBase, int Line) { RemoveThat(dataBase, Line); }
 
-        public Remove(DataBase dataBase, ListViewHitTestInfo coordinates, INIFile iniFile, bool remove) { RemoveThat(dataBase, coordinates, iniFile, remove); }
+        public Remove(DataBase dataBase, int Line, INIFile iniFile, bool remove) { RemoveThat(dataBase, Line, iniFile, remove); }
 
-        void RemoveThat(DataBase dataBase, ListViewHitTestInfo coordinates) { dataBase.Table.RemoveAt(coordinates.Item.Index); }
+        void RemoveThat(DataBase dataBase, int Line) { dataBase.Table.RemoveAt(Line); }
 
-        void RemoveThat(DataBase dataBase, ListViewHitTestInfo coordinates, INIFile iniFile, bool remove)
+        void RemoveThat(DataBase dataBase, int Line, INIFile iniFile, bool remove)
         {
             if (remove)
             {
                 DataBase history = new DataBase(iniFile.History);
 
-                history.Table.Add(dataBase.Table[coordinates.Item.Index]);
+                history.Table.Add(dataBase.Table[Line]);
 
-                dataBase.Table[coordinates.Item.Index][9] = $"Удалено {DateTime.Now.Date.ToString().Substring(0, DateTime.Now.Date.ToString().IndexOf(" "))}";
+                dataBase.Table[Line][9] = $"Удалено {DateTime.Now.Date.ToString().Substring(0, DateTime.Now.Date.ToString().IndexOf(" "))}";
 
                 history.Save();
             }
 
-            dataBase.Table.RemoveAt(coordinates.Item.Index);
+            dataBase.Table.RemoveAt(Line);
         }
     }
 }

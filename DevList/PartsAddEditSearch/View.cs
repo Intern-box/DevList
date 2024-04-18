@@ -89,14 +89,11 @@ namespace PartsAddEditSearchViewSpace
 
         private void Close_Click(object sender, EventArgs e) { Close(); }
 
-        private void PartsAddEditSearchView_KeyDown(object sender, KeyEventArgs e)
+        private void PartsAddEditSearchView_KeyUp(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
-            {
-                case Keys.Escape: Close_Click(sender, e); break;
+            if (e.KeyCode == Keys.Escape) { Close_Click(sender, e); }
 
-                case Keys.Enter: Execute_Click(sender, e); break;
-            }
+            if (e.KeyCode == Keys.Enter) { Execute_Click(sender, e); }
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Data;
 using System.IO;
 using System.ComponentModel;
 using System.Windows.Forms;
-using INIFileSpace;
 
 namespace DataBaseSpace
 {

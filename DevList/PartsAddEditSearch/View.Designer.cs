@@ -515,7 +515,7 @@ namespace PartsAddEditSearchViewSpace
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DevList - Комплект - Добавить/Править/Поиск";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PartsAddEditSearchView_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PartsAddEditSearchView_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

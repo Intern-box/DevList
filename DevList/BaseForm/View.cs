@@ -140,7 +140,7 @@ namespace BaseFormViewSpace
 
         void Edit_Click(object sender, EventArgs e) { baseFormPresenter.Edit(); }
 
-        void Table_DoubleClick(object sender, EventArgs e) { if (!Mode) { Edit_Click(sender, e); } }
+        void Table_DoubleClick(object sender, EventArgs e) { if (Text != "DevList - История" && Mode == false) { Edit_Click(sender, e); } }
 
         void ContextEditAll_Click(object sender, EventArgs e) { Edit_Click(sender, e); }
 
@@ -186,7 +186,7 @@ namespace BaseFormViewSpace
 
         void ContextSearch_Click(object sender, EventArgs e) { Search_Click(sender, e); }
 
-        void CRecover_Click(object sender, EventArgs e) { baseFormPresenter.Recover(); }
+        void CRecover_Click(object sender, EventArgs e) { baseFormPresenter.Recover(iniFile.Base); }
 
         void Lists_Click(object sender, EventArgs e) { baseFormPresenter.Lists(); }
 
@@ -196,7 +196,7 @@ namespace BaseFormViewSpace
 
         void CommonReport_Click(object sender, EventArgs e) { baseFormPresenter.CommonReport(); }
 
-        void History_Click(object sender, EventArgs e) { baseFormPresenter.History(); }
+        void History_Click(object sender, EventArgs e) { baseFormPresenter.History(); TableOutput(baseFormPresenter.Table()); }
 
         void Set_Click(object sender, EventArgs e) { baseFormPresenter.Set(); }
 
@@ -209,9 +209,9 @@ namespace BaseFormViewSpace
 
         void CNomberString_Click(object sender, EventArgs e) { NomberString_Click(sender, e); }
 
-        private void BaseFormView_KeyUp(object sender, KeyEventArgs e)
+        void BaseFormView_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape) { baseFormPresenter.CloseCheck(sender, e); }
+            if (e.KeyCode == Keys.Escape) { baseFormPresenter.CloseCheck(sender, e); Close(); }
 
             if (e.Control && e.KeyCode == Keys.S) { if (!Mode) { baseFormPresenter.DataBaseChanges(); } }
 
@@ -220,7 +220,7 @@ namespace BaseFormViewSpace
             if (e.Control && e.KeyCode == Keys.P) { baseFormPresenter.CommonReport(); }
         }
 
-        private void SearchAllBox_KeyUp(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Enter) { baseFormPresenter.SearchAll(); } }
+        void SearchAllBox_KeyUp(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Enter) { baseFormPresenter.SearchAll(); } }
 
         class ListViewItemComparer : IComparer
         {
