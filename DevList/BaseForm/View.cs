@@ -186,6 +186,8 @@ namespace BaseFormViewSpace
 
         void ContextSearch_Click(object sender, EventArgs e) { Search_Click(sender, e); }
 
+        void CRecover_Click(object sender, EventArgs e) { baseFormPresenter.Recover(); }
+
         void Lists_Click(object sender, EventArgs e) { baseFormPresenter.Lists(); }
 
         void SortByTypes_Click(object sender, EventArgs e) { baseFormPresenter.SortByTypes(); }

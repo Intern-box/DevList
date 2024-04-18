@@ -39,6 +39,7 @@ namespace BaseFormViewSpace
             this.ContextDown = new System.Windows.Forms.ToolStripMenuItem();
             this.CNomberString = new System.Windows.Forms.ToolStripMenuItem();
             this.CRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.CRecover = new System.Windows.Forms.ToolStripMenuItem();
             this.MMenu = new System.Windows.Forms.MenuStrip();
             this.File = new System.Windows.Forms.ToolStripMenuItem();
             this.Create = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,9 +93,10 @@ namespace BaseFormViewSpace
             this.CAdd,
             this.CEdit,
             this.CMove,
-            this.CRemove});
+            this.CRemove,
+            this.CRecover});
             this.CMenu.Name = "KMenu";
-            this.CMenu.Size = new System.Drawing.Size(181, 136);
+            this.CMenu.Size = new System.Drawing.Size(181, 158);
             // 
             // CSearch
             // 
@@ -130,21 +132,21 @@ namespace BaseFormViewSpace
             // ContextUp
             // 
             this.ContextUp.Name = "ContextUp";
-            this.ContextUp.Size = new System.Drawing.Size(180, 22);
+            this.ContextUp.Size = new System.Drawing.Size(121, 22);
             this.ContextUp.Text = "Вверх";
             this.ContextUp.Click += new System.EventHandler(this.ContextUp_Click);
             // 
             // ContextDown
             // 
             this.ContextDown.Name = "ContextDown";
-            this.ContextDown.Size = new System.Drawing.Size(180, 22);
+            this.ContextDown.Size = new System.Drawing.Size(121, 22);
             this.ContextDown.Text = "Вниз";
             this.ContextDown.Click += new System.EventHandler(this.ContextDown_Click);
             // 
             // CNomberString
             // 
             this.CNomberString.Name = "CNomberString";
-            this.CNomberString.Size = new System.Drawing.Size(180, 22);
+            this.CNomberString.Size = new System.Drawing.Size(121, 22);
             this.CNomberString.Text = "В строку";
             this.CNomberString.Click += new System.EventHandler(this.CNomberString_Click);
             // 
@@ -154,6 +156,14 @@ namespace BaseFormViewSpace
             this.CRemove.Size = new System.Drawing.Size(180, 22);
             this.CRemove.Text = "Удалить";
             this.CRemove.Click += new System.EventHandler(this.ContextRemove_Click);
+            // 
+            // CRecover
+            // 
+            this.CRecover.Name = "CRecover";
+            this.CRecover.Size = new System.Drawing.Size(180, 22);
+            this.CRecover.Text = "Восстановить";
+            this.CRecover.Visible = false;
+            this.CRecover.Click += new System.EventHandler(this.CRecover_Click);
             // 
             // MMenu
             // 
@@ -568,6 +578,7 @@ namespace BaseFormViewSpace
         public System.Windows.Forms.MenuStrip MMenu;
         public System.Windows.Forms.ToolStripMenuItem CMove;
         public System.Windows.Forms.ToolStripMenuItem CRemove;
+        public System.Windows.Forms.ToolStripMenuItem CRecover;
     }
 }
 

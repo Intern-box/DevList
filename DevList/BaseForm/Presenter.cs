@@ -29,11 +29,19 @@ namespace BaseFormPresenterSpace
 
         TableParameters tableParameters;
 
+        DataBase historyBase;
+
+        BaseFormView history;
+
         public BaseFormPresenter(BaseFormView baseFormView)
         {
             this.baseFormView = baseFormView;
 
             baseFormModel = new BaseFormModel(new DataBase(baseFormView.iniFile.Base));
+
+            historyBase = new DataBase(baseFormView.iniFile.History);
+
+            history = new BaseFormView("DevList - История", baseFormView.iniFile, historyBase, false);
         }
 
         public DataBase DataBaseGet() { return baseFormModel.DataBase; }
@@ -372,10 +380,6 @@ namespace BaseFormPresenterSpace
 
         public void History()
         {
-            DataBase historyBase = new DataBase(baseFormView.iniFile.History);
-
-            BaseFormView history = new BaseFormView("DevList - История", baseFormView.iniFile, historyBase, false);
-
             history.WindowState = FormWindowState.Normal;
 
             history.File.Visible = false;
@@ -395,6 +399,8 @@ namespace BaseFormPresenterSpace
             history.CAdd.Visible = false;
 
             history.CEdit.Visible = false;
+
+            history.CRecover.Visible = true;
 
             history.Text = "DevList - История";
 
@@ -519,6 +525,42 @@ namespace BaseFormPresenterSpace
 
                     baseFormView.Filter.Visible = true;
                 }
+            }
+        }
+
+        public void Recover()
+        {
+            tableParameters = baseFormView.tableParameters;
+
+            int saveCoordinates = tableParameters.Line;
+
+            DialogResult result = MessageBox.Show("Переместить МЦ в Базу?", "Перемещение МЦ", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                baseFormModel.DataBase.Table.Add(historyBase.Table[tableParameters.Line]);
+
+                baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
+
+                baseFormModel.DataBase.Change = true;
+
+                baseFormView.Table.EnsureVisible(baseFormModel.DataBase.Table.Count - 1);
+
+                baseFormView.Table.Select(); baseFormView.Table.Items[baseFormModel.DataBase.Table.Count - 1].Selected = true;
+
+                baseFormView.Table.Items[baseFormModel.DataBase.Table.Count - 1].Focused = true;
+
+                Remove remove = new Remove(historyBase, tableParameters.Coordinates);
+
+                history.TableOutput(historyBase.Table, true);
+
+                historyBase.Change = true;
+
+                history.Table.EnsureVisible(baseFormModel.DataBase.Table.Count - 1);
+
+                history.Table.Select(); baseFormView.Table.Items[saveCoordinates - 1].Selected = true;
+
+                history.Table.Items[saveCoordinates - 1].Focused = true;
             }
         }
 
