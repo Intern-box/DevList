@@ -217,13 +217,13 @@ namespace BaseFormViewSpace
 
             if (e.Control && e.KeyCode == Keys.P) { baseFormPresenter.CommonReport(); }
 
-            if (e.KeyCode == Keys.F5 && Text != "DevList - История") { baseFormPresenter.Table(new DataBase("БД\\БД.csv")); TableOutput(baseFormPresenter.Table()); }
+            if (e.KeyCode == Keys.F5 && Text != "DevList - История") { TableOutput(baseFormPresenter.Table()); }
 
             if (e.Control && e.KeyCode == Keys.Up) { baseFormPresenter.Up(); }
 
             if (e.Control && e.KeyCode == Keys.Down) { baseFormPresenter.Down(); }
 
-            if (e.KeyCode == Keys.Delete) { baseFormPresenter.Remove(); }
+            if (e.KeyCode == Keys.Delete) { if (Text != "DevList - История" && Mode == false) { baseFormPresenter.Remove(); } }
         }
 
         void SearchAllBox_KeyUp(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Enter) { baseFormPresenter.SearchAll(); } }
