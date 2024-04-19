@@ -194,7 +194,7 @@ namespace BaseFormViewSpace
 
         void CommonReport_Click(object sender, EventArgs e) { baseFormPresenter.CommonReport(); }
 
-        void History_Click(object sender, EventArgs e) { baseFormPresenter.History(); TableOutput(baseFormPresenter.Table()); }
+        void History_Click(object sender, EventArgs e) { baseFormPresenter.History(); }
 
         void Set_Click(object sender, EventArgs e) { baseFormPresenter.Set(); }
 
@@ -218,6 +218,12 @@ namespace BaseFormViewSpace
             if (e.Control && e.KeyCode == Keys.P) { baseFormPresenter.CommonReport(); }
 
             if (e.KeyCode == Keys.F5 && Text != "DevList - История") { baseFormPresenter.Table(new DataBase("БД\\БД.csv")); TableOutput(baseFormPresenter.Table()); }
+
+            if (e.Control && e.KeyCode == Keys.Up) { baseFormPresenter.Up(); }
+
+            if (e.Control && e.KeyCode == Keys.Down) { baseFormPresenter.Down(); }
+
+            if (e.KeyCode == Keys.Delete) { baseFormPresenter.Remove(); }
         }
 
         void SearchAllBox_KeyUp(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Enter) { baseFormPresenter.SearchAll(); } }

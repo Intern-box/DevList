@@ -150,11 +150,11 @@ namespace BaseFormPresenterSpace
                 }
                 else
                 {
-                    baseFormView.Table.EnsureVisible(saveCoordinates++);
+                    baseFormView.Table.EnsureVisible(saveCoordinates);
 
-                    baseFormView.Table.Select(); baseFormView.Table.Items[saveCoordinates++].Selected = true;
+                    baseFormView.Table.Select(); baseFormView.Table.Items[saveCoordinates].Selected = true;
 
-                    baseFormView.Table.Items[saveCoordinates++].Focused = true;
+                    baseFormView.Table.Items[saveCoordinates].Focused = true;
                 }
             }
         }
@@ -207,37 +207,51 @@ namespace BaseFormPresenterSpace
 
         public void Up()
         {
-            tableParameters = baseFormView.tableParameters;
+            int saveCoordinates = baseFormView.Table.SelectedIndices[0];
 
-            baseFormModel.DataBase.UpDown(tableParameters.Line - 1, tableParameters.Line);
+            if (saveCoordinates > 0)
+            {
+                baseFormModel.DataBase.UpDown(saveCoordinates - 1, saveCoordinates);
 
-            baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
+                baseFormModel.DataBase.Save();
 
-            baseFormView.Table.Select();
-            
-            baseFormView.Table.Items[tableParameters.Line - 1].Selected = true;
+                baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
-            baseFormModel.DataBase.Save();
+                baseFormView.Table.Select();
+
+                baseFormView.Table.Items[saveCoordinates - 1].Selected = true;
+
+                baseFormView.Table.Items[saveCoordinates - 1].Focused = true;
+
+                baseFormView.Table.EnsureVisible(saveCoordinates - 1);
+            }
         }
 
         public void Down()
         {
-            tableParameters = baseFormView.tableParameters;
+            int saveCoordinates = baseFormView.Table.SelectedIndices[0];
 
-            baseFormModel.DataBase.UpDown(tableParameters.Line + 1, tableParameters.Line);
+            if (saveCoordinates < baseFormModel.DataBase.Table.Count - 1)
+            {
+                baseFormModel.DataBase.UpDown(saveCoordinates + 1, saveCoordinates);
 
-            baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
+                baseFormModel.DataBase.Save();
 
-            baseFormView.Table.Select();
+                baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
-            baseFormView.Table.Items[tableParameters.Line + 1].Selected = true;
+                baseFormView.Table.Select();
 
-            baseFormModel.DataBase.Save();
+                baseFormView.Table.Items[saveCoordinates + 1].Selected = true;
+
+                baseFormView.Table.Items[saveCoordinates + 1].Focused = true;
+
+                baseFormView.Table.EnsureVisible(saveCoordinates + 1);
+            }
         }
 
         public void Remove()
         {
-            tableParameters = baseFormView.tableParameters;
+            int saveCoordinates = baseFormView.Table.SelectedIndices[0];
 
             if (baseFormView.Text == "DevList - История")
             {
@@ -245,19 +259,32 @@ namespace BaseFormPresenterSpace
 
                 if (result == DialogResult.Yes)
                 {
-                    Remove remove = new Remove(baseFormModel.DataBase, tableParameters.Line);
+                    Remove remove = new Remove(baseFormModel.DataBase, saveCoordinates);
 
                     baseFormModel.DataBase.Save();
 
                     baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
-                    if (baseFormModel.DataBase.Table.Count > 0)
+                    baseFormView.Table.Select();
+
+                    if (saveCoordinates > 0)
                     {
-                        baseFormView.Table.EnsureVisible(baseFormModel.DataBase.Table.Count - 1);
+                        baseFormView.Table.Items[saveCoordinates - 1].Selected = true;
 
-                        baseFormView.Table.Select(); baseFormView.Table.Items[baseFormModel.DataBase.Table.Count - 1].Selected = true;
+                        baseFormView.Table.Items[saveCoordinates - 1].Focused = true;
 
-                        baseFormView.Table.Items[baseFormModel.DataBase.Table.Count - 1].Focused = true;
+                        baseFormView.Table.EnsureVisible(saveCoordinates - 1);
+                    }
+                    else
+                    {
+                        if (baseFormModel.DataBase.Table.Count > 0)
+                        {
+                            baseFormView.Table.Items[saveCoordinates].Selected = true;
+
+                            baseFormView.Table.Items[saveCoordinates].Focused = true;
+
+                            baseFormView.Table.EnsureVisible(saveCoordinates);
+                        }
                     }
                 }
             }
@@ -267,19 +294,32 @@ namespace BaseFormPresenterSpace
 
                 if (result == DialogResult.Yes)
                 {
-                    Remove remove = new Remove(baseFormModel.DataBase, tableParameters.Line, baseFormView.iniFile, true);
+                    Remove remove = new Remove(baseFormModel.DataBase, saveCoordinates, baseFormView.iniFile, true);
 
                     baseFormModel.DataBase.Save();
 
                     baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
-                    if (baseFormModel.DataBase.Table.Count > 0)
+                    baseFormView.Table.Select();
+
+                    if (saveCoordinates > 0)
                     {
-                        baseFormView.Table.EnsureVisible(baseFormModel.DataBase.Table.Count - 1);
+                        baseFormView.Table.Items[saveCoordinates - 1].Selected = true;
 
-                        baseFormView.Table.Select(); baseFormView.Table.Items[baseFormModel.DataBase.Table.Count - 1].Selected = true;
+                        baseFormView.Table.Items[saveCoordinates - 1].Focused = true;
 
-                        baseFormView.Table.Items[baseFormModel.DataBase.Table.Count - 1].Focused = true;
+                        baseFormView.Table.EnsureVisible(saveCoordinates - 1);
+                    }
+                    else
+                    {
+                        if (baseFormModel.DataBase.Table.Count > 0)
+                        {
+                            baseFormView.Table.Items[saveCoordinates].Selected = true;
+
+                            baseFormView.Table.Items[saveCoordinates].Focused = true;
+
+                            baseFormView.Table.EnsureVisible(saveCoordinates);
+                        }
                     }
                 }
             }
@@ -399,13 +439,11 @@ namespace BaseFormPresenterSpace
 
         public void NomberString()
         {
-            tableParameters = baseFormView.tableParameters;
-
             UpDownForm upDownForm = new UpDownForm(); upDownForm.ShowDialog();
 
             if (upDownForm.Result != null)
             {
-                baseFormModel.DataBase.Move(tableParameters.Id, int.Parse(upDownForm.Result) - 1);
+                baseFormModel.DataBase.Move(baseFormView.Table.SelectedIndices[0], int.Parse(upDownForm.Result) - 1);
 
                 baseFormModel.DataBase.Save();
 
@@ -464,8 +502,6 @@ namespace BaseFormPresenterSpace
 
         public void Search()
         {
-            tableParameters = baseFormView.tableParameters;
-
             search = WindowSelection(baseFormView.Table.Columns.Count, baseFormView.iniFile, false);
 
             search.ShowDialog();
@@ -505,29 +541,39 @@ namespace BaseFormPresenterSpace
 
         public void Recover()
         {
-            tableParameters = baseFormView.tableParameters;
+            int saveCoordinates = baseFormView.Table.SelectedIndices[0];
 
             DialogResult result = MessageBox.Show("Переместить МЦ в Базу?", "Перемещение МЦ", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
-                baseFormModel.DataBase.Table[tableParameters.Line][9] = string.Empty;
+                baseFormModel.DataBase.Table[saveCoordinates][9] = string.Empty;
 
-                File.AppendAllText("БД\\БД.csv", $"{string.Join(",", baseFormModel.DataBase.Table[tableParameters.Line])}\n");
+                File.AppendAllText("БД\\БД.csv", $"{string.Join(",", baseFormModel.DataBase.Table[saveCoordinates])}\n");
 
-                Remove remove = new Remove(baseFormModel.DataBase, tableParameters.Line);
+                Remove remove = new Remove(baseFormModel.DataBase, saveCoordinates);
 
                 baseFormModel.DataBase.Save();
 
                 baseFormView.TableOutput(baseFormModel.DataBase.Table, true);
 
-                if (baseFormModel.DataBase.Table.Count > 0)
+                baseFormView.Table.Select();
+
+                if (saveCoordinates > 0)
                 {
-                    baseFormView.Table.EnsureVisible(baseFormModel.DataBase.Table.Count - 1);
+                    baseFormView.Table.Items[saveCoordinates - 1].Selected = true;
 
-                    baseFormView.Table.Select(); baseFormView.Table.Items[baseFormModel.DataBase.Table.Count - 1].Selected = true;
+                    baseFormView.Table.Items[saveCoordinates - 1].Focused = true;
 
-                    baseFormView.Table.Items[baseFormModel.DataBase.Table.Count - 1].Focused = true;
+                    baseFormView.Table.EnsureVisible(saveCoordinates - 1);
+                }
+                else
+                {
+                    baseFormView.Table.Items[saveCoordinates].Selected = true;
+
+                    baseFormView.Table.Items[saveCoordinates].Focused = true;
+
+                    baseFormView.Table.EnsureVisible(saveCoordinates);
                 }
             }
         }
