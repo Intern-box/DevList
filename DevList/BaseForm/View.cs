@@ -186,7 +186,7 @@ namespace BaseFormViewSpace
 
         void ContextSearch_Click(object sender, EventArgs e) { Search_Click(sender, e); }
 
-        void CRecover_Click(object sender, EventArgs e) { baseFormPresenter.Recover(iniFile.Base); }
+        void CRecover_Click(object sender, EventArgs e) { baseFormPresenter.Recover(); }
 
         void Lists_Click(object sender, EventArgs e) { baseFormPresenter.Lists(); }
 
@@ -218,6 +218,8 @@ namespace BaseFormViewSpace
             if (e.Control && e.KeyCode == Keys.F) { baseFormPresenter.Search(); }
 
             if (e.Control && e.KeyCode == Keys.P) { baseFormPresenter.CommonReport(); }
+
+            if (e.KeyCode == Keys.F5 && Text != "DevList - История") { baseFormPresenter.Table(new DataBase("БД\\БД.csv")); TableOutput(baseFormPresenter.Table()); }
         }
 
         void SearchAllBox_KeyUp(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Enter) { baseFormPresenter.SearchAll(); } }
