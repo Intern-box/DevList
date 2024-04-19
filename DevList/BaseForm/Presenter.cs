@@ -44,31 +44,8 @@ namespace BaseFormPresenterSpace
 
         public void Table(DataBase Base) { baseFormModel.DataBase = Base; }
 
-        public void DataBaseChanges()
-        {
-            if (baseFormModel.DataBase.Change)
-            {
-                DialogResult result =
-
-                MessageBox.Show
-                (
-                    "Сохранить изменения?",
-                    "Открытие файла",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Information,
-                    MessageBoxDefaultButton.Button1
-                );
-
-                if (result == DialogResult.Yes) { baseFormModel.DataBase.Save(); }
-
-                baseFormModel.DataBase.Change = false;
-            }
-        }
-
         public void Create()
         {
-            DataBaseChanges();
-
             FolderBrowserDialog pathNewBase = new FolderBrowserDialog();
 
             pathNewBase.ShowDialog();
@@ -85,8 +62,6 @@ namespace BaseFormPresenterSpace
 
         public void Open()
         {
-            DataBaseChanges();
-
             OpenFileDialog openFileWindow = new OpenFileDialog() { Filter = "*.INI|*.ini" };
 
             if (openFileWindow.ShowDialog() == DialogResult.OK)
@@ -99,7 +74,7 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        public void Save() { DataBaseChanges(); }
+        public void Save() => baseFormModel.DataBase.Save();
 
         public void SaveAs()
         {
@@ -160,7 +135,7 @@ namespace BaseFormPresenterSpace
                     baseFormModel.DataBase.Table.Insert(saveCoordinates, addEditSearchView.Result);
                 }
 
-                baseFormModel.DataBase.Change = true;
+                baseFormModel.DataBase.Save();
 
                 baseFormView.TableOutput(baseFormModel.DataBase.Table);
 
@@ -200,7 +175,7 @@ namespace BaseFormPresenterSpace
 
                 if (addEditsearchView.Executed)
                 {
-                    if (baseFormView.Text == "DevList 7.1 - Главное окно" && tmp != addEditsearchView.Result[3])
+                    if (baseFormView.Text == "DevList 7.2 - Главное окно" && tmp != addEditsearchView.Result[3])
                     {
                         File.AppendAllText
                         (
@@ -214,7 +189,7 @@ namespace BaseFormPresenterSpace
 
                     baseFormModel.DataBase.Table[tableParameters.Id] = addEditsearchView.Result;
 
-                    baseFormModel.DataBase.Change = true;
+                    baseFormModel.DataBase.Save();
 
                     if (baseFormView.Filter.Visible)
                     {
@@ -242,7 +217,7 @@ namespace BaseFormPresenterSpace
             
             baseFormView.Table.Items[tableParameters.Line - 1].Selected = true;
 
-            baseFormModel.DataBase.Change = true;
+            baseFormModel.DataBase.Save();
         }
 
         public void Down()
@@ -257,7 +232,7 @@ namespace BaseFormPresenterSpace
 
             baseFormView.Table.Items[tableParameters.Line + 1].Selected = true;
 
-            baseFormModel.DataBase.Change = true;
+            baseFormModel.DataBase.Save();
         }
 
         public void Remove()
@@ -411,8 +386,6 @@ namespace BaseFormPresenterSpace
 
         public void Filtr()
         {
-            DataBaseChanges();
-
             baseFormView.Table.ListViewItemSorter = null;
 
             baseFormView.TableOutput(baseFormModel.DataBase.Table);
@@ -434,9 +407,9 @@ namespace BaseFormPresenterSpace
             {
                 baseFormModel.DataBase.Move(tableParameters.Id, int.Parse(upDownForm.Result) - 1);
 
-                baseFormView.TableOutput(baseFormModel.DataBase.Table);
+                baseFormModel.DataBase.Save();
 
-                baseFormModel.DataBase.Change = true;
+                baseFormView.TableOutput(baseFormModel.DataBase.Table);
             }
         }
 
@@ -567,7 +540,7 @@ namespace BaseFormPresenterSpace
             {
                 if (e.KeyCode == Keys.Escape)
                 {
-                    if (!baseFormView.Mode) { DataBaseChanges(); }
+                    if (!baseFormView.Mode) { baseFormModel.DataBase.Save(); }
                 }
             }
         }
@@ -601,7 +574,7 @@ namespace BaseFormPresenterSpace
 
                 switch (baseFormView.Text)
                 {
-                    case $"DevList 7.1 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, addInEndFlag); break;
+                    case $"DevList 7.2 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, addInEndFlag); break;
 
                     case "DevList - Комплект": window = new PartsAddEditSearchView(baseFormView.iniFile, addInEndFlag); break;
                 }
@@ -614,7 +587,7 @@ namespace BaseFormPresenterSpace
                 {
                     switch (baseFormView.Text)
                     {
-                        case $"DevList 7.1 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates], addInEndFlag); break;
+                        case $"DevList 7.2 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates], addInEndFlag); break;
 
                         case "DevList - Комплект": window = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[saveCoordinates], addInEndFlag); break;
                     }
@@ -623,7 +596,7 @@ namespace BaseFormPresenterSpace
                 {
                     switch (baseFormView.Text)
                     {
-                        case $"DevList 7.1 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0], addInEndFlag); break;
+                        case $"DevList 7.2 - Главное окно": window = new AddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0], addInEndFlag); break;
 
                         case "DevList - Комплект": window = new PartsAddEditSearchView(baseFormView.iniFile, baseFormModel.DataBase.Table[0], addInEndFlag); break;
                     }

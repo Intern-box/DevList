@@ -13,8 +13,6 @@ namespace DataBaseSpace
 
         public BindingList<string[]> Table = new BindingList<string[]>();
 
-        public bool Change = false;
-
         public DataBase(string path) { Path = path; Read(Path); }
 
         public void Read(string path)

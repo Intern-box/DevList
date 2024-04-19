@@ -44,7 +44,6 @@ namespace BaseFormViewSpace
             this.File = new System.Windows.Forms.ToolStripMenuItem();
             this.Create = new System.Windows.Forms.ToolStripMenuItem();
             this.Open = new System.Windows.Forms.ToolStripMenuItem();
-            this.Save = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.Add = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,26 +95,26 @@ namespace BaseFormViewSpace
             this.CRemove,
             this.CRecover});
             this.CMenu.Name = "KMenu";
-            this.CMenu.Size = new System.Drawing.Size(181, 158);
+            this.CMenu.Size = new System.Drawing.Size(150, 136);
             // 
             // CSearch
             // 
             this.CSearch.Name = "CSearch";
-            this.CSearch.Size = new System.Drawing.Size(180, 22);
+            this.CSearch.Size = new System.Drawing.Size(149, 22);
             this.CSearch.Text = "Поиск";
             this.CSearch.Click += new System.EventHandler(this.ContextSearch_Click);
             // 
             // CAdd
             // 
             this.CAdd.Name = "CAdd";
-            this.CAdd.Size = new System.Drawing.Size(180, 22);
+            this.CAdd.Size = new System.Drawing.Size(149, 22);
             this.CAdd.Text = "Добавить";
             this.CAdd.Click += new System.EventHandler(this.ContextAdd_Click);
             // 
             // CEdit
             // 
             this.CEdit.Name = "CEdit";
-            this.CEdit.Size = new System.Drawing.Size(180, 22);
+            this.CEdit.Size = new System.Drawing.Size(149, 22);
             this.CEdit.Text = "Править";
             this.CEdit.Click += new System.EventHandler(this.ContextEditAll_Click);
             // 
@@ -126,7 +125,7 @@ namespace BaseFormViewSpace
             this.ContextDown,
             this.CNomberString});
             this.CMove.Name = "CMove";
-            this.CMove.Size = new System.Drawing.Size(180, 22);
+            this.CMove.Size = new System.Drawing.Size(149, 22);
             this.CMove.Text = "Переместить";
             // 
             // ContextUp
@@ -153,14 +152,14 @@ namespace BaseFormViewSpace
             // CRemove
             // 
             this.CRemove.Name = "CRemove";
-            this.CRemove.Size = new System.Drawing.Size(180, 22);
+            this.CRemove.Size = new System.Drawing.Size(149, 22);
             this.CRemove.Text = "Удалить";
             this.CRemove.Click += new System.EventHandler(this.ContextRemove_Click);
             // 
             // CRecover
             // 
             this.CRecover.Name = "CRecover";
-            this.CRecover.Size = new System.Drawing.Size(180, 22);
+            this.CRecover.Size = new System.Drawing.Size(149, 22);
             this.CRecover.Text = "Восстановить";
             this.CRecover.Visible = false;
             this.CRecover.Click += new System.EventHandler(this.CRecover_Click);
@@ -188,7 +187,6 @@ namespace BaseFormViewSpace
             this.File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Create,
             this.Open,
-            this.Save,
             this.SaveAs});
             this.File.Name = "File";
             this.File.Size = new System.Drawing.Size(50, 21);
@@ -197,28 +195,21 @@ namespace BaseFormViewSpace
             // Create
             // 
             this.Create.Name = "Create";
-            this.Create.Size = new System.Drawing.Size(162, 22);
+            this.Create.Size = new System.Drawing.Size(180, 22);
             this.Create.Text = "Создать";
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
             // Open
             // 
             this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(162, 22);
+            this.Open.Size = new System.Drawing.Size(180, 22);
             this.Open.Text = "Открыть";
             this.Open.Click += new System.EventHandler(this.Open_Click);
-            // 
-            // Save
-            // 
-            this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(162, 22);
-            this.Save.Text = "Сохранить";
-            this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // SaveAs
             // 
             this.SaveAs.Name = "SaveAs";
-            this.SaveAs.Size = new System.Drawing.Size(162, 22);
+            this.SaveAs.Size = new System.Drawing.Size(180, 22);
             this.SaveAs.Text = "Сохранить как";
             this.SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
             // 
@@ -562,7 +553,6 @@ namespace BaseFormViewSpace
         public System.Windows.Forms.ToolStripMenuItem Filter;
         public System.Windows.Forms.ToolStripMenuItem Create;
         public System.Windows.Forms.ToolStripMenuItem Open;
-        public System.Windows.Forms.ToolStripMenuItem Save;
         public System.Windows.Forms.ToolStripMenuItem SaveAs;
         public System.Windows.Forms.ToolStripMenuItem Edit;
         public System.Windows.Forms.ToolStripMenuItem Lists;

@@ -106,15 +106,15 @@ namespace LaunchPresenterSpace
             {
                 switch (AttentionDataBaseBusy())
                 {
-                    case "Yes": baseFormView = new("DevList 7.1 - Главное окно", iniFile, null, dataBaseBusy); baseFormView.ShowDialog(); break;
+                    case "Yes": baseFormView = new("DevList 7.2 - Главное окно", iniFile, null, dataBaseBusy); baseFormView.ShowDialog(); break;
 
                     case "No": Application.Exit(); break;
 
-                    case "Cancel": baseFormView = new("DevList 7.1 - Главное окно", iniFile, null, false); baseFormView.ShowDialog(); break;
+                    case "Cancel": baseFormView = new("DevList 7.2 - Главное окно", iniFile, null, false); baseFormView.ShowDialog(); break;
                 }
             }
 
-            else { baseFormView = new("DevList 7.1 - Главное окно", iniFile, null, false); SetOpenFlag(); baseFormView.ShowDialog(); RemoveOpenFlag(); }
+            else { baseFormView = new("DevList 7.2 - Главное окно", iniFile, null, false); SetOpenFlag(); baseFormView.ShowDialog(); RemoveOpenFlag(); }
         }
 
         void SetOpenFlag() { File.AppendAllText($"{iniFile.Folder}\\БД\\БД.tmp", string.Empty); File.SetAttributes($"{iniFile.Folder}\\БД\\БД.tmp", FileAttributes.Hidden); }

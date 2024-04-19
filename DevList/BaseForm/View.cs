@@ -127,8 +127,6 @@ namespace BaseFormViewSpace
 
         void Open_Click(object sender, EventArgs e) { baseFormPresenter.Open(); }
 
-        void Save_Click(object sender, EventArgs e) { baseFormPresenter.Save(); }
-
         void SaveAs_Click(object sender, EventArgs e) { baseFormPresenter.SaveAs(); }
 
         // Если курсор на НЕ пустой строке, то  ListViewHitTestLocations НЕ none
@@ -213,7 +211,7 @@ namespace BaseFormViewSpace
         {
             if (e.KeyCode == Keys.Escape) { baseFormPresenter.CloseCheck(sender, e); Close(); }
 
-            if (e.Control && e.KeyCode == Keys.S) { if (!Mode) { baseFormPresenter.DataBaseChanges(); } }
+            if (e.Control && e.KeyCode == Keys.S) { if (!Mode) { baseFormPresenter.Save(); } }
 
             if (e.Control && e.KeyCode == Keys.F) { baseFormPresenter.Search(); }
 
