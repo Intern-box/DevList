@@ -217,7 +217,7 @@ namespace BaseFormViewSpace
 
             if (e.Control && e.KeyCode == Keys.P) { baseFormPresenter.CommonReport(); }
 
-            if (e.KeyCode == Keys.F5 && Text != "DevList - История") { TableOutput(baseFormPresenter.Table()); }
+            if (e.KeyCode == Keys.F5) { TableOutput(baseFormPresenter.Table()); }
 
             if (e.Control && e.KeyCode == Keys.Up) { baseFormPresenter.Up(); }
 
