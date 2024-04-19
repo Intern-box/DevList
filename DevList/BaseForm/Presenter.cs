@@ -325,58 +325,73 @@ namespace BaseFormPresenterSpace
             }
         }
 
-        public void SortByTypes() { Reports report = new Reports(baseFormView.iniFile, baseFormModel.DataBase, reportType: "SortByTypes"); report.ShowDialog(); }
+        public void SortByTypes()
+        {
+            if (baseFormModel.DataBase.Table.Count > 0)
+            {
+                Reports report = new Reports(baseFormView.iniFile, baseFormModel.DataBase, reportType: "SortByTypes"); report.ShowDialog();
+            }
+        }
 
-        public void SortByRooms() { Reports report = new Reports(baseFormView.iniFile, baseFormModel.DataBase, reportType: "SortByRooms"); report.ShowDialog(); }
+        public void SortByRooms()
+        {
+            if (baseFormModel.DataBase.Table.Count > 0)
+            {
+                Reports report = new Reports(baseFormView.iniFile, baseFormModel.DataBase, reportType: "SortByRooms"); report.ShowDialog();
+            }
+        }
 
         public void CommonReport()
         {
-            System.IO.File.WriteAllText($"{Application.StartupPath}\\Print.htm", string.Empty);
-
-            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm",
-
-                "<style>\r\n\r\n" +
-                "\ttable {font-family:Verdana; font-size:11px; border-collapse:collapse; border:1px solid #bbbbbb;}\r\n\r\n" +
-                "\ttd {text-align:center; vertical-align:middle;}\r\n\r\n" +
-                "</style>\r\n\r\n" +
-                "<table align=center cellpadding=5 border=1 bordercolor=#bbbbbb>\r\n\r\n"
-
-            );
-
-            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr bgcolor=#bbbbbb style=\"color:#0; font-weight:bold;\">\r\n");
-
-            for (int i = 0; i < baseFormView.Table.Columns.Count; i++)
+            if (baseFormModel.DataBase.Table.Count > 0)
             {
-                if (baseFormView.Table.Columns[i].Width != 0)
-                {
-                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
-                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", baseFormView.Table.Columns[i].Text);
-                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
-                }
-            }
+                System.IO.File.WriteAllText($"{Application.StartupPath}\\Print.htm", string.Empty);
 
-            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm",
 
-            foreach (string[] tr in baseFormModel.DataBase.Table)
-            {
-                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr>\r\n");
+                    "<style>\r\n\r\n" +
+                    "\ttable {font-family:Verdana; font-size:11px; border-collapse:collapse; border:1px solid #bbbbbb;}\r\n\r\n" +
+                    "\ttd {text-align:center; vertical-align:middle;}\r\n\r\n" +
+                    "</style>\r\n\r\n" +
+                    "<table align=center cellpadding=5 border=1 bordercolor=#bbbbbb>\r\n\r\n"
 
-                for (int i = 0; i < tr.Length; i++)
+                );
+
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr bgcolor=#bbbbbb style=\"color:#0; font-weight:bold;\">\r\n");
+
+                for (int i = 0; i < baseFormView.Table.Columns.Count; i++)
                 {
                     if (baseFormView.Table.Columns[i].Width != 0)
                     {
                         System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
-                        System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tr[i]);
+                        System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", baseFormView.Table.Columns[i].Text);
                         System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
                     }
                 }
 
                 System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
+
+                foreach (string[] tr in baseFormModel.DataBase.Table)
+                {
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t<tr>\r\n");
+
+                    for (int i = 0; i < tr.Length; i++)
+                    {
+                        if (baseFormView.Table.Columns[i].Width != 0)
+                        {
+                            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t\t<td>");
+                            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", tr[i]);
+                            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</td>\r\n");
+                        }
+                    }
+
+                    System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "\t</tr>\r\n\r\n");
+                }
+
+                System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</table>");
+
+                System.Diagnostics.Process.Start($"{Application.StartupPath}\\Print.htm");
             }
-
-            System.IO.File.AppendAllText($"{Application.StartupPath}\\Print.htm", "</table>");
-
-            System.Diagnostics.Process.Start($"{Application.StartupPath}\\Print.htm");
         }
 
         public void SearchAll()
